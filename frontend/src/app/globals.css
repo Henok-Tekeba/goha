@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    overflow-x: hidden;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: white;
+    color: #171717;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .dark body {
+    background: #0a0a0a;
+    color: #fafafa;
+  }
+  *, *::before, *::after {
+    min-width: 0;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #fafafa 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #1f1f1f 25%, #262626 50%, #1f1f1f 75%);
+  background-size: 200px 100%;
+}
+
+/* Smooth transition for theme colors — only on elements not inside view-transition */
+html:not(.view-transition) *,
+html:not(.view-transition) *::before,
+html:not(.view-transition) *::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* View Transitions — curtain wipe */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* New theme always slides over the old one */
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}

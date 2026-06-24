@@ -1,0 +1,96 @@
+{
+  "guides": [
+    {
+      "id": "speech-to-text",
+      "title": "Need speech-to-text?",
+      "description": "Production-ready ASR models for Amharic, Oromo, Tigrinya and more.",
+      "items": [
+        {
+          "name": "wav2vec2-large-xlsr-53-amharic",
+          "org": "agkphysics",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 172334,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "wav2vec2-large-mms-1b-amharic-colab",
+          "org": "oddegen",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 533,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "whisper-amharic-finetuned",
+          "org": "Dawit-H",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 499,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "top-downloads",
+      "title": "New to Ethiopian AI?",
+      "description": "The models with the most community traction — start here.",
+      "items": [
+        {
+          "name": "wav2vec2-large-xlsr-53-amharic",
+          "org": "agkphysics",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 172334,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "tigrinya-human-model",
+          "org": "lamekyemane09",
+          "badge": "LLM",
+          "bc": "b-llm",
+          "dl": 852,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "roberta-amharic-text-embedding-medium",
+          "org": "rasyosef",
+          "badge": "Embeddings",
+          "bc": "b-emb",
+          "dl": 577,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        }
+      ]
+    }
+  ]
+}

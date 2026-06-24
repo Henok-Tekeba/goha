@@ -1,0 +1,13 @@
+{
+  "name": "goha-et-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "fast-xml-parser": "^5.9.3"
+  }
+}

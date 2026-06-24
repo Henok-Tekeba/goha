@@ -1,0 +1,36 @@
+name: Daily Scrape
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: scraper/package-lock.json
+
+      - run: npm ci
+        working-directory: scraper
+
+      - run: npm start
+        working-directory: scraper
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - run: |
+          git config user.name "goha-bot"
+          git config user.email "bot@goha.et"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || git commit -m "daily scrape $(date +%Y-%m-%d)"
+          git push
