@@ -1,4 +1,4 @@
-const OWNER = process.env.NEXT_PUBLIC_GH_OWNER || "tekebahenok6";
+const OWNER = process.env.NEXT_PUBLIC_GH_OWNER || "Henok-Tekeba";
 const REPO = process.env.NEXT_PUBLIC_GH_REPO || "goha";
 const BRANCH = process.env.NEXT_PUBLIC_GH_BRANCH || "main";
 const BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/data`;
