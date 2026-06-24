@@ -17,7 +17,6 @@ import Pagination from "./Pagination";
 import ComparePill from "./ComparePill";
 import ComparePanel from "./ComparePanel";
 import Bottom from "./Bottom";
-import Newsletter from "./Newsletter";
 
 const LANG_CODE: Record<string, string> = {
   amharic: "AM", oromo: "OM", tigrinya: "TI", geez: "GZ",
@@ -250,7 +249,6 @@ export default function ExplorePage({ initialStats }: { initialStats: Stats }) {
         />
       )}
       <Bottom stats={stats} />
-      <Newsletter />
     </>
   );
 }
