@@ -415,7 +415,6 @@ function build() {
   /* Write individual files for frontend */
   const writeJSON = (name, data) => writeFileSync(join(DATA_DIR, name), JSON.stringify(data, null, 2));
 
-  writeJSON("build-db.json", output);
   writeJSON("stats.json", { data: stats, total: 1, page: 1, limit: 1 });
   writeJSON("models.json", { data: cleanedModels, total: cleanedModels.length, page: 1, limit: cleanedModels.length });
   writeJSON("datasets.json", { data: cleanedDatasets, total: cleanedDatasets.length, page: 1, limit: cleanedDatasets.length });
