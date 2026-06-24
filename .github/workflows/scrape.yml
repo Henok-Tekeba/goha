@@ -30,7 +30,7 @@ jobs:
 
       - run: |
           git config user.name "${{ github.repository_owner }}"
-          git config user.email "${{ github.repository_owner }}@users.noreply.github.com"
+          git config user.email "tekebahenok6@gmail.com"
           git add data/
           git diff --quiet && git diff --staged --quiet || git commit -m "daily scrape $(date +%Y-%m-%d)"
           git push
