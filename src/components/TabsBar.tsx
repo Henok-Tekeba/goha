@@ -45,7 +45,7 @@ export default function TabsBar({
           </button>
         ))}
       </div>
-      <div className="font-mono text-[11px] sm:text-[10px] text-neutral-400 dark:text-neutral-500 shrink-0 ml-3">
+      <div className="hidden sm:block font-mono text-[10px] text-neutral-400 dark:text-neutral-500 shrink-0 ml-3">
         {total} result{total !== 1 ? "s" : ""}
       </div>
     </div>
