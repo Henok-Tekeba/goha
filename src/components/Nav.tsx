@@ -47,6 +47,7 @@ export default function Nav() {
   };
 
   const navLinks = [
+    { href: "/leaderboards", label: "Leaderboards" },
     { href: "/stats", label: "Stats" },
   ];
 
