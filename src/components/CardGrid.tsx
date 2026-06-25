@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import type { Item } from "@/types";
 import Sparkline from "./Sparkline";
 import { Sparkles, Trophy, Gem } from "lucide-react";
@@ -113,6 +114,7 @@ export default function CardGrid({
   compareSelected?: Set<string>;
   onToggleCompare?: (item: Item) => void;
 }) {
+  const router = useRouter();
   const cards = items || [];
 
   if (loading) {
@@ -321,14 +323,24 @@ export default function CardGrid({
                   onToggleCompare?.(d);
                   return;
                 }
-                openCard(d);
+                const t = (d as any)._type;
+                if (t === "model" && (d.id || d.name)) {
+                  router.push(`/model/${encodeURIComponent(d.id || d.name)}`);
+                } else {
+                  openCard(d);
+                }
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (compareMode) {
                     onToggleCompare?.(d);
                   } else {
-                    openCard(d);
+                    const t = (d as any)._type;
+                    if (t === "model" && (d.id || d.name)) {
+                      router.push(`/model/${encodeURIComponent(d.id || d.name)}`);
+                    } else {
+                      openCard(d);
+                    }
                   }
                 }
               }}
