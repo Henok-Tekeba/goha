@@ -10,7 +10,7 @@ const TASKS: { key: TaskKey; label: string; verdict: string; badgeClass: string;
   {
     key: "b-asr",
     label: "ASR",
-    verdict: "Highest community adoption for Amharic speech recognition",
+    verdict: "Most downloaded ASR model for Amharic",
     badgeClass: "b-asr",
     badgeBg: "bg-emerald-600 dark:bg-emerald-500 ",
     badgeBorder: "border-emerald-200 dark:border-emerald-800",
@@ -19,7 +19,7 @@ const TASKS: { key: TaskKey; label: string; verdict: string; badgeClass: string;
   {
     key: "b-nmt",
     label: "Translation",
-    verdict: "Best available Amharic-English translation model",
+    verdict: "Top Amharic-English translation model",
     badgeClass: "b-nmt",
     badgeBg: "bg-[#f0f9ff]",
     badgeBorder: "border-[#bae6fd]",
@@ -28,7 +28,7 @@ const TASKS: { key: TaskKey; label: string; verdict: string; badgeClass: string;
   {
     key: "b-emb",
     label: "Embeddings",
-    verdict: "Top semantic embedding model for Amharic text",
+    verdict: "Most used embedding model for Amharic",
     badgeClass: "b-emb",
     badgeBg: "bg-[#f9f9f9]",
     badgeBorder: "border-neutral-200 dark:border-neutral-800",
@@ -37,7 +37,7 @@ const TASKS: { key: TaskKey; label: string; verdict: string; badgeClass: string;
   {
     key: "b-llm",
     label: "LLM",
-    verdict: "Most downloaded Amharic language generation model",
+    verdict: "Most downloaded LLM for Amharic",
     badgeClass: "b-llm",
     badgeBg: "bg-[#faf5ff]",
     badgeBorder: "border-[#ddd6fe]",
@@ -46,7 +46,7 @@ const TASKS: { key: TaskKey; label: string; verdict: string; badgeClass: string;
   {
     key: "b-ner",
     label: "NER",
-    verdict: "Leading named entity recognition for Ethiopian languages",
+    verdict: "Best NER model for Ethiopian languages",
     badgeClass: "b-ner",
     badgeBg: "bg-[#fffbeb]",
     badgeBorder: "border-[#fde68a]",

@@ -35,7 +35,7 @@ export default function Hero({
         Ethiopian AI Radar
       </p>
       <h1 className="text-[28px] sm:text-3xl md:text-[40px] font-medium leading-[1.15] tracking-[-0.03em] text-neutral-900 dark:text-neutral-100 mb-3 max-w-[600px] mx-auto px-4 sm:px-0">
-        Tracking the ecosystem in motion &mdash; what&rsquo;s new, what&rsquo;s growing, what&rsquo;s being built.
+        See what&rsquo;s new, what&rsquo;s trending, and what&rsquo;s being built for Ethiopian languages.
       </h1>
       <div className="flex items-center justify-center gap-4 sm:gap-6 mb-7 sm:mb-8">
         <div>

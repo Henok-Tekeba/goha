@@ -15,9 +15,7 @@ export default function Featured() {
           <div className="text-base sm:text-[15px] font-medium text-neutral-900 dark:text-neutral-100 mb-1 tracking-tight">Aleph ፩</div>
           <div className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 mb-2.5">Addis AI &middot; Addis Ababa, Ethiopia</div>
           <div className="text-sm sm:text-xs text-[#525252] leading-relaxed mb-3">
-            The first foundational large language model built natively for Ethiopian languages.
-            Instruction-tuned on Amharic, expanding to Afaan Oromo and Tigrinya. A landmark for
-            African language AI.
+            The first LLM built for Ethiopian languages. Currently supports Amharic, with Oromo and Tigrinya coming.
           </div>
           <div className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1 cursor-pointer">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>

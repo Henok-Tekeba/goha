@@ -30,8 +30,7 @@ export default function Bottom({ stats }: { stats: Stats }) {
           Know something we don&apos;t?
         </div>
         <div className="text-sm sm:text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5">
-          Open a PR with a single JSON file. Every entry is community-maintained. CI validates
-          schema on every submission automatically.
+          Submit a JSON file through a PR. CI checks the schema automatically.
         </div>
         <div className="flex gap-2">
           <button

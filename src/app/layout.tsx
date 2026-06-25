@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 const title = "goha.et — The home of Ethiopian AI";
 const description =
-  "Every model, dataset, company, and researcher building AI for Ethiopian languages — curated, indexed, impossible to miss.";
+  "Find models, datasets, companies, and research papers for Ethiopian languages.";
 
 export const metadata: Metadata = {
   title,
