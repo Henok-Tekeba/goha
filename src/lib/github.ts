@@ -25,3 +25,24 @@ export function fetchStats() { return fetchJSON<SinglePayload<Stats>>("stats.jso
 export function fetchTrending() { return fetchJSON<TrendingPayload>("trending.json"); }
 export function fetchActivityFeed() { return fetchJSON<any[]>("activity_feed.json"); }
 export function fetchQuickstart() { return fetchJSON<QuickstartPayload>("quickstart.json"); }
+
+/* Server-side helpers for detail pages */
+export async function fetchModelById(id: string) {
+  const { data } = await fetchModels();
+  return (data as any[]).find((m: any) => m.id === id) ?? null;
+}
+
+export async function fetchDatasetById(id: string) {
+  const { data } = await fetchDatasets();
+  return (data as any[]).find((d: any) => d.id === id) ?? null;
+}
+
+export async function fetchCompanyBySlug(slug: string) {
+  const { data } = await fetchCompanies();
+  return (data as any[]).find((c: any) => c.name.toLowerCase().replace(/\s+/g, '-') === slug) ?? null;
+}
+
+export async function fetchPaperByArxivId(arxivId: string) {
+  const { data } = await fetchPapers();
+  return (data as any[]).find((p: any) => p.arxiv_id === arxivId) ?? null;
+}

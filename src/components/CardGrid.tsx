@@ -12,6 +12,14 @@ function fmt(n: number | null): string {
   return n >= 1000 ? (n / 1000).toFixed(1) + "k" : String(n);
 }
 
+function localUrl(d: Item): string | null {
+  if (d._type === "model" && d.id) return `/models/${d.id}`;
+  if (d._type === "dataset" && d.id) return `/datasets/${d.id}`;
+  if (d._type === "company") return `/companies/${d.name.toLowerCase().replace(/\s+/g, '-')}`;
+  if (d._type === "paper" && (d as any).arxiv_id) return `/papers/${(d as any).arxiv_id}`;
+  return null;
+}
+
 function cardUrl(d: Item): string | null {
   if (d.hf_url) return d.hf_url;
   if (d.url) return d.url;
@@ -172,8 +180,11 @@ export default function CardGrid({
               <div
                 key={`paper-${(d as any).arxiv_id || d.name}-${i}`}
                 className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-3 sm:p-4 cursor-pointer flex flex-col relative group hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-md transition-all min-w-0 w-full"
-                onClick={() => href && window.open(href, "_blank")}
-                onKeyDown={(e) => e.key === "Enter" && href && window.open(href, "_blank")}
+                onClick={() => {
+                  const local = localUrl(d);
+                  if (local) { router.push(local); } else if (href) { window.open(href, "_blank"); }
+                }}
+                onKeyDown={(e) => e.key === "Enter" && (localUrl(d) ? router.push(localUrl(d)!) : href && window.open(href, "_blank"))}
                 role="link"
                 tabIndex={0}
               >
@@ -240,8 +251,16 @@ export default function CardGrid({
               <div
                 key={`${d.name}-${i}`}
                 className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-3 sm:p-5 cursor-pointer flex flex-col relative group hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-md transition-all min-w-0 w-full"
-                onClick={() => openCard(d)}
-                onKeyDown={(e) => e.key === "Enter" && openCard(d)}
+                onClick={() => {
+                  const local = localUrl(d);
+                  if (local) { router.push(local); } else { openCard(d); }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    const local = localUrl(d);
+                    if (local) { router.push(local); } else { openCard(d); }
+                  }
+                }}
                 role="link"
                 tabIndex={0}
               >
@@ -319,29 +338,13 @@ export default function CardGrid({
               key={`${d.name}-${i}`}
               className={`bg-white dark:bg-neutral-900 border rounded-xl p-3 sm:p-4 cursor-pointer flex flex-col relative group transition-all min-w-0 w-full ${compareChecked ? "border-emerald-500 ring-1 ring-emerald-300 dark:ring-emerald-700" : "border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-md"}`}
               onClick={() => {
-                if (compareMode) {
-                  onToggleCompare?.(d);
-                  return;
-                }
-                const t = (d as any)._type;
-                if (t === "model" && (d.id || d.name)) {
-                  router.push(`/model/${encodeURIComponent(d.id || d.name)}`);
-                } else {
-                  openCard(d);
-                }
+                const local = localUrl(d);
+                if (local) { router.push(local); } else { openCard(d); }
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  if (compareMode) {
-                    onToggleCompare?.(d);
-                  } else {
-                    const t = (d as any)._type;
-                    if (t === "model" && (d.id || d.name)) {
-                      router.push(`/model/${encodeURIComponent(d.id || d.name)}`);
-                    } else {
-                      openCard(d);
-                    }
-                  }
+                  const local = localUrl(d);
+                  if (local) { router.push(local); } else { openCard(d); }
                 }
               }}
               role="link"
