@@ -1,137 +1,185 @@
 "use client";
 
-import { useEffect, useMemo, useState, createElement } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { fetchModels } from "@/lib/github";
-import { ArrowLeft, Trophy, Mic, Search, ArrowUpDown } from "lucide-react";
+import { ArrowLeft, Trophy, Mic, Search, Languages, Hash, Brain, Eye } from "lucide-react";
 
-const LOWER_BETTER = new Set([
-  "wer", "word_error_rate", "character_error_rate", "cer",
-  "perplexity", "eval_loss", "query_active_dims", "corpus_active_dims",
-]);
-
-function sortDir(metricType: string): "asc" | "desc" {
-  return LOWER_BETTER.has(metricType.toLowerCase()) ? "asc" : "desc";
-}
-
-function formatValue(val: number, metricType: string): string {
-  const t = metricType.toLowerCase();
-  if (t === "wer" || t === "word_error_rate" || t === "character_error_rate" || t === "cer") {
-    const pct = val <= 1 ? val * 100 : val;
-    return pct.toFixed(2) + "%";
-  }
-  if (t.includes("accuracy") || t.includes("precision") || t.includes("recall") || t.includes("mrr") || t.includes("ndcg") || t.includes("map")) {
-    return (val * 100).toFixed(1) + "%";
-  }
-  if (val < 1) return (val * 100).toFixed(1) + "%";
-  return val.toFixed(2);
-}
-
-interface LeaderboardRow {
+interface LBEntry {
   modelName: string;
   modelId: string;
   org: string;
+  score: number;
+  display: string;
   badge: string;
-  bc: string;
-  value: number;
-  formatted: string;
-  config?: string;
+  dataset?: string;
 }
 
-interface LeaderboardCategory {
-  id: string;
-  taskName: string;
-  taskType: string;
-  datasetName: string;
-  metricName: string;
-  metricType: string;
-  sort: "asc" | "desc";
-  rows: LeaderboardRow[];
+interface LBCategory {
+  key: string;
+  label: string;
+  icon: any;
+  metricLabel: string;
+  lowerBetter: boolean;
+  entries: LBEntry[];
 }
 
-function buildLeaderboards(models: any[]): LeaderboardCategory[] {
-  const groups = new Map<string, any[]>();
+const TASK_DEFS = [
+  {
+    badges: ["b-asr"],
+    label: "Automatic Speech Recognition",
+    key: "asr",
+    icon: Mic,
+    metricLabel: "WER \u2193",
+    lowerBetter: true,
+    pickMetric: (metrics: any[]) => {
+      const wer = metrics.find((m: any) => m.type?.toLowerCase() === "wer");
+      if (wer) return { value: wer.value, label: "" };
+      const cer = metrics.find((m: any) => m.type?.toLowerCase() === "character_error_rate");
+      if (cer) return { value: cer.value, label: "CER" };
+      return null;
+    },
+    format: (v: number) => {
+      const pct = v <= 1 ? v * 100 : v;
+      return pct.toFixed(2) + "%";
+    },
+  },
+  {
+    badges: ["b-nmt", "b-translation"],
+    label: "Machine Translation",
+    key: "translation",
+    icon: Languages,
+    metricLabel: "BLEU \u2191",
+    lowerBetter: false,
+    pickMetric: (metrics: any[]) => {
+      const bleu = metrics.find((m: any) => m.type?.toLowerCase() === "bleu");
+      if (bleu) return { value: bleu.value, label: "" };
+      return null;
+    },
+    format: (v: number) => v.toFixed(2),
+  },
+  {
+    badges: ["b-ner"],
+    label: "Named Entity Recognition",
+    key: "ner",
+    icon: Hash,
+    metricLabel: "F1 \u2191",
+    lowerBetter: false,
+    pickMetric: (metrics: any[]) => {
+      const f1 = metrics.find((m: any) => m.type?.toLowerCase() === "f1" || m.name?.toLowerCase() === "f1");
+      if (f1) return { value: f1.value, label: "" };
+      const acc = metrics.find((m: any) => m.type?.toLowerCase() === "accuracy");
+      if (acc) return { value: acc.value, label: "Acc" };
+      return null;
+    },
+    format: (v: number) => (v <= 1 ? (v * 100).toFixed(1) + "%" : v.toFixed(1) + "%"),
+  },
+  {
+    badges: ["b-emb"],
+    label: "Embeddings & Retrieval",
+    key: "embeddings",
+    icon: Search,
+    metricLabel: "NDCG@10 \u2191",
+    lowerBetter: false,
+    pickMetric: (metrics: any[]) => {
+      const pref = ["ndcg@10", "ndcg", "cosine_ndcg@10", "mrr@10", "cosine_accuracy@1", "accuracy@1"];
+      for (const p of pref) {
+        const m = metrics.find((x: any) => x.type?.toLowerCase() === p);
+        if (m) return { value: m.value, label: m.name };
+      }
+      return null;
+    },
+    format: (v: number) => (v <= 1 ? (v * 100).toFixed(1) + "%" : v.toFixed(2)),
+  },
+  {
+    badges: ["b-llm"],
+    label: "Language Models",
+    key: "llm",
+    icon: Brain,
+    metricLabel: "Perplexity \u2193",
+    lowerBetter: true,
+    pickMetric: (metrics: any[]) => {
+      const ppl = metrics.find((m: any) => m.type?.toLowerCase() === "perplexity");
+      if (ppl) return { value: ppl.value, label: "" };
+      return null;
+    },
+    format: (v: number) => v.toFixed(2),
+  },
+  {
+    badges: ["b-default", "b-vision"],
+    label: "Vision & Classification",
+    key: "vision",
+    icon: Eye,
+    metricLabel: "Accuracy \u2191",
+    lowerBetter: false,
+    pickMetric: (metrics: any[]) => {
+      const acc = metrics.find((m: any) => m.type?.toLowerCase() === "accuracy");
+      if (acc) return { value: acc.value, label: "" };
+      return null;
+    },
+    format: (v: number) => (v <= 1 ? (v * 100).toFixed(1) + "%" : v.toFixed(1) + "%"),
+  },
+];
 
-  for (const m of models) {
-    const evals = m.eval_results;
-    if (!evals || !Array.isArray(evals)) continue;
-    for (const er of evals) {
-      const taskType = er.task?.type || "";
-      const dsName = er.dataset?.name || "Unknown";
-      const config = er.dataset?.config || "";
-      const key = `${taskType}::${dsName}`;
+function buildLeaderboards(models: any[]): LBCategory[] {
+  const categories: LBCategory[] = [];
 
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key)!.push({ model: m, eval: er, config });
-    }
-  }
+  for (const def of TASK_DEFS) {
+    const entries: LBEntry[] = [];
 
-  const categories: LeaderboardCategory[] = [];
+    for (const m of models) {
+      const badgeMatch = def.badges.includes(m.bc);
+      if (!badgeMatch) continue;
+      if (!m.eval_results || !Array.isArray(m.eval_results)) continue;
 
-  for (const [key, entries] of groups.entries()) {
-    const first = entries[0].eval;
-    const taskName = first.task?.name || "Unknown";
-    const taskType = first.task?.type || "";
-    const dsName = first.dataset?.name || "Unknown";
+      let best: { value: number; label: string } | null = null;
+      let dataset = "";
 
-    const allMetrics = new Map<string, { type: string; name: string }>();
-    for (const e of entries) {
-      for (const mm of e.eval.metrics || []) {
-        if (!allMetrics.has(mm.type)) {
-          allMetrics.set(mm.type, { type: mm.type, name: mm.name });
+      for (const er of m.eval_results) {
+        const metrics = er.metrics || [];
+        const picked = def.pickMetric(metrics);
+        if (!picked) continue;
+        if (!best || (def.lowerBetter ? picked.value < best.value : picked.value > best.value)) {
+          best = picked;
+          dataset = er.dataset?.name || "";
         }
       }
-    }
 
-    for (const [metricType, metricInfo] of allMetrics.entries()) {
-      const rows: LeaderboardRow[] = [];
-      for (const e of entries) {
-        const metric = (e.eval.metrics || []).find((mm: any) => mm.type === metricType);
-        if (!metric || metric.value === undefined || metric.value === null) continue;
-        rows.push({
-          modelName: e.model.name,
-          modelId: e.model.id,
-          org: e.model.org,
-          badge: e.model.badge,
-          bc: e.model.bc,
-          value: metric.value,
-          formatted: formatValue(metric.value, metricType),
-          config: e.config || undefined,
-        });
-      }
+      if (!best) continue;
 
-      if (rows.length < 2) continue;
-
-      const sd = sortDir(metricType);
-      rows.sort((a, b) => sd === "asc" ? a.value - b.value : b.value - a.value);
-
-      const id = `${key}::${metricType}`.replace(/[^a-z0-9]/gi, "-").toLowerCase();
-      categories.push({
-        id,
-        taskName,
-        taskType,
-        datasetName: dsName + (entries[0].config ? ` (${entries[0].config})` : ""),
-        metricName: metricInfo.name,
-        metricType,
-        sort: sd,
-        rows,
+      const display = best.label ? `${def.format(best.value)} (${best.label})` : def.format(best.value);
+      entries.push({
+        modelName: m.name,
+        modelId: m.id,
+        org: m.org,
+        score: best.value,
+        display,
+        badge: m.badge,
+        dataset,
       });
     }
+
+    if (entries.length < 1) continue;
+
+    entries.sort((a, b) => def.lowerBetter ? a.score - b.score : b.score - a.score);
+
+    categories.push({
+      key: def.key,
+      label: def.label,
+      icon: def.icon,
+      metricLabel: def.metricLabel,
+      lowerBetter: def.lowerBetter,
+      entries,
+    });
   }
 
-  categories.sort((a, b) => b.rows.length - a.rows.length);
   return categories;
 }
-
-const TASK_ICONS: Record<string, any> = {
-  "automatic-speech-recognition": Mic,
-  "information-retrieval": Search,
-};
 
 export default function LeaderboardPage() {
   const [models, setModels] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeKey, setActiveKey] = useState<string>("");
 
   useEffect(() => {
     fetchModels()
@@ -141,18 +189,18 @@ export default function LeaderboardPage() {
   }, []);
 
   const categories = useMemo(() => buildLeaderboards(models), [models]);
-  const active = activeCategory ? categories.find(c => c.id === activeCategory) : categories[0];
+  const active = categories.find(c => c.key === activeKey) || categories[0];
 
   useEffect(() => {
-    if (categories.length > 0 && !activeCategory) {
-      setActiveCategory(categories[0].id);
+    if (categories.length > 0 && !activeKey) {
+      setActiveKey(categories[0].key);
     }
-  }, [categories, activeCategory]);
+  }, [categories, activeKey]);
 
   if (loading) {
     return (
       <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
           <div className="skeleton h-6 w-32 rounded mb-8" />
           {[1,2,3].map(i => <div key={i} className="skeleton h-20 rounded-xl mb-3" />)}
         </div>
@@ -170,7 +218,7 @@ export default function LeaderboardPage() {
           <div className="text-center py-16">
             <Trophy size={32} className="mx-auto text-neutral-300 dark:text-neutral-700 mb-3" />
             <h1 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 mb-2">No leaderboards yet</h1>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">Leaderboards will show up once models publish evaluation results on HuggingFace.</p>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">Models need to publish evaluation results on HuggingFace to appear here.</p>
           </div>
         </div>
       </div>
@@ -179,7 +227,7 @@ export default function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 mb-6">
           <ArrowLeft size={14} /> Back
         </Link>
@@ -189,62 +237,68 @@ export default function LeaderboardPage() {
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">Leaderboards</h1>
         </div>
         <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
-          Models ranked by self-reported evaluation scores. Only categories with 2+ entries are shown.
+          Models ranked by the standard metric for their task. Scores are self-reported on HuggingFace.
         </p>
 
         <div className="flex gap-2 overflow-x-auto pb-2 mb-6 scrollbar-thin">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`shrink-0 font-mono text-[11px] px-3 py-1.5 rounded-full border transition-colors whitespace-nowrap ${
-                activeCategory === cat.id
-                  ? "bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 border-neutral-900 dark:border-neutral-100"
-                  : "text-neutral-500 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400"
-              }`}
-            >
-              {cat.taskName} &middot; {cat.datasetName}
-            </button>
-          ))}
+          {categories.map(cat => {
+            const Icon = cat.icon;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => setActiveKey(cat.key)}
+                className={`shrink-0 inline-flex items-center gap-1.5 font-mono text-[11px] px-3 py-1.5 rounded-full border transition-colors whitespace-nowrap ${
+                  activeKey === cat.key
+                    ? "bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 border-neutral-900 dark:border-neutral-100"
+                    : "text-neutral-500 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400"
+                }`}
+              >
+                <Icon size={13} />
+                {cat.label}
+                <span className="opacity-60">({cat.entries.length})</span>
+              </button>
+            );
+          })}
         </div>
 
         {active && (
           <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden">
             <div className="px-4 sm:px-5 py-3 sm:py-3.5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                {createElement(TASK_ICONS[active.taskType] || Trophy, { size: 15, className: "text-neutral-400 dark:text-neutral-500" })}
-                <span className="text-sm font-medium text-neutral-900 dark:text-neutral-100">{active.taskName}</span>
-                <span className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 rounded px-1.5 py-0.5">{active.datasetName}</span>
+                {(() => { const Icon = active.icon; return <Icon size={15} className="text-neutral-400 dark:text-neutral-500" />; })()}
+                <span className="text-sm font-medium text-neutral-900 dark:text-neutral-100">{active.label}</span>
               </div>
-              <span className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 flex items-center gap-1">
-                <ArrowUpDown size={11} />
-                {active.metricName} ({active.sort === "asc" ? "lower is better" : "higher is better"})
+              <span className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500">
+                {active.metricLabel} &middot; {active.entries.length} model{active.entries.length === 1 ? "" : "s"}
               </span>
             </div>
             <div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-              {active.rows.map((row, i) => (
+              {active.entries.map((entry, i) => (
                 <Link
-                  key={row.modelId || row.modelName}
-                  href={`/models/${row.modelId}`}
+                  key={entry.modelId || entry.modelName}
+                  href={`/models/${entry.modelId}`}
                   className="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-3 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors group"
                 >
-                  <span className={`font-mono text-[11px] sm:text-[10px] w-6 text-center shrink-0 ${
-                    i === 0 ? "text-amber-500 font-bold" :
-                    i === 1 ? "text-neutral-400" :
-                    i === 2 ? "text-amber-700 dark:text-amber-300" :
-                    "text-neutral-300 dark:text-neutral-600"
-                  }`}>
+                  <span className="font-mono text-[11px] sm:text-[10px] w-6 text-center shrink-0">
                     {i === 0 ? "\u{1F947}" : i === 1 ? "\u{1F948}" : i === 2 ? "\u{1F949}" : `#${i + 1}`}
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="text-[13px] sm:text-[12px] font-medium text-neutral-900 dark:text-neutral-100 truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {row.modelName}
+                      {entry.modelName}
                     </div>
-                    <div className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 truncate">{row.org}</div>
+                    <div className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 truncate flex items-center gap-2">
+                      <span>{entry.org}</span>
+                      {entry.dataset && (
+                        <>
+                          <span className="text-neutral-300 dark:text-neutral-600">&middot;</span>
+                          <span>{entry.dataset}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-[14px] sm:text-[13px] font-semibold text-neutral-900 dark:text-neutral-100 tabular-nums">{row.formatted}</div>
-                    <div className="font-mono text-[9px] text-neutral-400 dark:text-neutral-500 uppercase">{row.badge || "Model"}</div>
+                    <div className="text-[14px] sm:text-[13px] font-semibold text-neutral-900 dark:text-neutral-100 tabular-nums">{entry.display}</div>
+                    <div className="font-mono text-[9px] text-neutral-400 dark:text-neutral-500 uppercase">{entry.badge || "Model"}</div>
                   </div>
                 </Link>
               ))}
@@ -253,7 +307,7 @@ export default function LeaderboardPage() {
         )}
 
         <p className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 text-center mt-6">
-          Scores are self-reported by model authors on HuggingFace. goha.et displays them as-is.
+          Scores are self-reported by model authors on HuggingFace via their model card. Only the primary metric per task type is shown.
         </p>
       </div>
     </div>
