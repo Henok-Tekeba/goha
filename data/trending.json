@@ -1,77 +1,77 @@
 {
   "items": [
     {
-      "name": "wav2vec2-large-xlsr-53-amharic",
-      "org": "agkphysics",
+      "name": "Ethio-ASR-tigrinya",
+      "org": "badrex",
       "badge": "ASR",
-      "growth": null,
-      "dl": 172334,
+      "growth": 14,
+      "dl": 148,
       "lang": null,
       "desc": "",
-      "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
+      "id": "badrex/Ethio-ASR-tigrinya",
       "isNew": false,
-      "added_at": "2026-06-24T18:25:42.726Z"
+      "added_at": "2026-06-25T09:28:24.891Z"
     },
     {
-      "name": "tigrinya-human-model",
-      "org": "lamekyemane09",
-      "badge": "LLM",
-      "growth": null,
-      "dl": 852,
+      "name": "bert-base-multilingual-cased-finetuned-amharic",
+      "org": "Davlan",
+      "badge": "Masked LM",
+      "growth": 10,
+      "dl": 118,
       "lang": null,
       "desc": "",
-      "id": "lamekyemane09/tigrinya-human-model",
+      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
       "isNew": false,
-      "added_at": "2026-06-24T18:25:43.920Z"
+      "added_at": "2026-06-25T09:28:23.574Z"
     },
     {
-      "name": "roberta-amharic-text-embedding-medium",
+      "name": "omnivoice-amharic",
+      "org": "african-low-resource",
+      "badge": "ASR",
+      "growth": -6,
+      "dl": 179,
+      "lang": null,
+      "desc": "",
+      "id": "african-low-resource/omnivoice-amharic",
+      "isNew": false,
+      "added_at": "2026-06-25T09:28:23.574Z"
+    },
+    {
+      "name": "whisper-amharic-small-v2",
+      "org": "chappM",
+      "badge": "ASR",
+      "growth": -7,
+      "dl": 71,
+      "lang": null,
+      "desc": "",
+      "id": "chappM/whisper-amharic-small-v2",
+      "isNew": false,
+      "added_at": "2026-06-25T09:28:23.576Z"
+    },
+    {
+      "name": "reranker-amharic-base",
       "org": "rasyosef",
       "badge": "Embeddings",
-      "growth": null,
-      "dl": 577,
+      "growth": -8,
+      "dl": 326,
       "lang": null,
       "desc": "",
-      "id": "rasyosef/roberta-amharic-text-embedding-medium",
+      "id": "rasyosef/reranker-amharic-base",
       "isNew": false,
-      "added_at": "2026-06-24T18:25:42.728Z"
+      "added_at": "2026-06-25T09:28:23.573Z"
     },
     {
-      "name": "wav2vec2-large-mms-1b-amharic-colab",
-      "org": "oddegen",
-      "badge": "ASR",
-      "growth": null,
-      "dl": 533,
-      "lang": null,
-      "desc": "",
-      "id": "oddegen/wav2vec2-large-mms-1b-amharic-colab",
-      "isNew": false,
-      "added_at": "2026-06-24T18:25:42.728Z"
-    },
-    {
-      "name": "whisper-amharic-finetuned",
-      "org": "Dawit-H",
-      "badge": "ASR",
-      "growth": null,
-      "dl": 499,
-      "lang": null,
-      "desc": "",
-      "id": "Dawit-H/whisper-amharic-finetuned",
-      "isNew": false,
-      "added_at": "2026-06-24T18:25:42.728Z"
-    },
-    {
-      "name": "embedding-amharic-base",
+      "name": "roberta-amharic-text-embedding-base",
       "org": "rasyosef",
       "badge": "Embeddings",
-      "growth": null,
-      "dl": 357,
+      "growth": -11,
+      "dl": 75,
       "lang": null,
       "desc": "",
-      "id": "rasyosef/embedding-amharic-base",
+      "id": "rasyosef/roberta-amharic-text-embedding-base",
       "isNew": false,
-      "added_at": "2026-06-24T18:25:42.728Z"
+      "added_at": "2026-06-25T09:28:23.576Z"
     }
   ],
-  "label": "Most Downloaded"
+  "label": "Trending This Week"
 }
