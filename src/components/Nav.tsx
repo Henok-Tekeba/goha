@@ -92,12 +92,6 @@ export default function Nav() {
             </svg>
           )}
         </button>
-        <a
-          href="/submit"
-          className="text-xs font-medium text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-emerald-950 px-4 py-2 sm:px-3.5 sm:py-1.5 rounded-full transition-colors"
-        >
-          + Submit
-        </a>
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
