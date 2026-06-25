@@ -212,30 +212,54 @@ export default function ExplorePage({ initialStats }: { initialStats: Stats }) {
         onSearchChange={setSearchQuery}
         stats={stats}
       />
-      <QuickStart />
-      <BestFor />
-      <ActivityFeed />
-      <ThisWeek />
-      <TrendingSection />
-      <TabsBar activeTab={activeTab} counts={counts} onTabChange={handleTabChange} />
-      <FilterChips activeLang={activeLang} onLangChange={setActiveLang} />
-      <div ref={tabSectionRef}>
-        <CardGrid
-          items={paginated.pageItems}
-          query={searchQuery}
-          loading={loading}
-          compareMode={activeTab === "models"}
-          compareSelected={compareKeys}
-          onToggleCompare={handleToggleCompare}
-        />
-        {PAGINATED_TABS.includes(activeTab) && (
-          <Pagination
-            page={paginated.currentPage}
-            totalPages={paginated.totalPages}
-            onChange={handlePageChange}
+      {searchQuery ? (
+        <div ref={tabSectionRef} className="pt-4 sm:pt-5">
+          <TabsBar activeTab={activeTab} counts={counts} onTabChange={handleTabChange} />
+          <FilterChips activeLang={activeLang} onLangChange={setActiveLang} />
+          <CardGrid
+            items={paginated.pageItems}
+            query={searchQuery}
+            loading={loading}
+            compareMode={activeTab === "models"}
+            compareSelected={compareKeys}
+            onToggleCompare={handleToggleCompare}
           />
-        )}
-      </div>
+          {PAGINATED_TABS.includes(activeTab) && (
+            <Pagination
+              page={paginated.currentPage}
+              totalPages={paginated.totalPages}
+              onChange={handlePageChange}
+            />
+          )}
+        </div>
+      ) : (
+        <>
+          <QuickStart />
+          <BestFor />
+          <ActivityFeed />
+          <ThisWeek />
+          <TrendingSection />
+          <TabsBar activeTab={activeTab} counts={counts} onTabChange={handleTabChange} />
+          <FilterChips activeLang={activeLang} onLangChange={setActiveLang} />
+          <div ref={tabSectionRef}>
+            <CardGrid
+              items={paginated.pageItems}
+              query={searchQuery}
+              loading={loading}
+              compareMode={activeTab === "models"}
+              compareSelected={compareKeys}
+              onToggleCompare={handleToggleCompare}
+            />
+            {PAGINATED_TABS.includes(activeTab) && (
+              <Pagination
+                page={paginated.currentPage}
+                totalPages={paginated.totalPages}
+                onChange={handlePageChange}
+              />
+            )}
+          </div>
+        </>
+      )}
       <ComparePill
         count={compareSelected.length}
         onOpen={() => setCompareOpen(true)}
