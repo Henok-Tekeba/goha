@@ -32,17 +32,16 @@ const TASK_DEFS = [
     icon: Mic,
     metricLabel: "WER \u2193",
     lowerBetter: true,
+    hasFallback: true,
     pickMetric: (metrics: any[]) => {
       const wer = metrics.find((m: any) => m.type?.toLowerCase() === "wer");
-      if (wer) return { value: wer.value, label: "" };
+      if (wer) return { value: wer.value <= 1 ? wer.value * 100 : wer.value, label: "" };
       const cer = metrics.find((m: any) => m.type?.toLowerCase() === "character_error_rate");
-      if (cer) return { value: cer.value, label: "CER" };
+      if (cer) return { value: cer.value <= 1 ? cer.value * 100 : cer.value, label: "CER" };
       return null;
     },
-    format: (v: number) => {
-      const pct = v <= 1 ? v * 100 : v;
-      return pct.toFixed(2) + "%";
-    },
+    format: (v: number) => v.toFixed(2) + "%",
+    normalizeFallback: (v: number) => v <= 1 ? v * 100 : v,
   },
   {
     badges: ["b-nmt", "b-translation"],
@@ -130,18 +129,27 @@ function buildLeaderboards(models: any[]): LBCategory[] {
     for (const m of models) {
       const badgeMatch = def.badges.includes(m.bc);
       if (!badgeMatch) continue;
-      if (!m.eval_results || !Array.isArray(m.eval_results)) continue;
 
       let best: { value: number; label: string } | null = null;
       let dataset = "";
 
-      for (const er of m.eval_results) {
-        const metrics = er.metrics || [];
-        const picked = def.pickMetric(metrics);
-        if (!picked) continue;
-        if (!best || (def.lowerBetter ? picked.value < best.value : picked.value > best.value)) {
-          best = picked;
-          dataset = er.dataset?.name || "";
+      if (m.eval_results && Array.isArray(m.eval_results)) {
+        for (const er of m.eval_results) {
+          const metrics = er.metrics || [];
+          const picked = def.pickMetric(metrics);
+          if (!picked) continue;
+          if (!best || (def.lowerBetter ? picked.value < best.value : picked.value > best.value)) {
+            best = picked;
+            dataset = er.dataset?.name || "";
+          }
+        }
+      }
+
+      if (!best && def.hasFallback && m.wer_score != null) {
+        const val = parseFloat(m.wer_score);
+        if (!isNaN(val)) {
+          const normalized = def.normalizeFallback ? def.normalizeFallback(val) : val;
+          best = { value: normalized, label: "" };
         }
       }
 
