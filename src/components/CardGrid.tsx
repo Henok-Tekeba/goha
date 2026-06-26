@@ -2,10 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import type { Item } from "@/types";
-import Sparkline from "./Sparkline";
 import { Sparkles, Trophy, Gem } from "lucide-react";
-
-const MX = 2341;
 
 function fmt(n: number | null): string {
   if (n === null) return "";
@@ -164,7 +161,6 @@ export default function CardGrid({
       <div className="px-4 sm:px-6 py-4 sm:py-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-2.5 sm:gap-3">
         {cards.map((d, i) => {
-          const pct = d.dl !== null ? Math.round((d.dl / MX) * 100) : 0;
           const isCompany = d.bc === "b-co";
           const isPaper = (d as any)._type === "paper" || d.bc === "b-paper" || Array.isArray((d as any).authors);
 
@@ -265,7 +261,6 @@ export default function CardGrid({
                 tabIndex={0}
               >
                 <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex items-center gap-1.5">
-                  {d.isNew && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400">
                     <path d="M7 17L17 7" />
                     <path d="M7 7h10v10" />
@@ -374,13 +369,10 @@ export default function CardGrid({
                     )}
                   </button>
                 ) : (
-                  <>
-                    {d.isNew && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400">
-                      <path d="M7 17L17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
-                  </>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400">
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
                 )}
               </div>
               <div className="flex items-start justify-between mb-2 sm:mb-2.5 gap-1.5 min-w-0 w-full pr-7 sm:pr-0">
@@ -390,10 +382,10 @@ export default function CardGrid({
                   >
                     {d.badge}
                   </span>
-                  {d.verdict && d.verdict.type !== "growing" && (() => {
+                  {d.verdict && d.verdict.type !== "growing" && d.verdict.type !== "new" && (() => {
                     const VIcon = VERDICT_ICONS[d.verdict.type];
                     return (
-                      <span className={`font-mono text-[8px] sm:text-[9px] font-medium px-1 py-0.5 rounded-full border inline-flex items-center gap-1 ${VERDICT_STYLES[d.verdict.type] ?? VERDICT_STYLES.new}`}>
+                      <span className={`font-mono text-[8px] sm:text-[9px] font-medium px-1 py-0.5 rounded-full border inline-flex items-center gap-1 ${VERDICT_STYLES[d.verdict.type] ?? ""}`}>
                         {VIcon && <VIcon size={10} />}
                         {d.verdict.label}
                       </span>
@@ -411,18 +403,24 @@ export default function CardGrid({
               >
                 {d.desc}
               </div>
-              {d.dl !== null && (
-                <div className="font-mono text-[9px] sm:text-[10px] text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 flex-wrap w-full">
-                  <span className="hidden sm:inline-flex items-center gap-1.5">
-                    <Sparkline sparkline={(d as any).sparkline} />
-                    <div className="w-7 h-[3px] bg-neutral-200 dark:bg-neutral-700 rounded overflow-hidden">
-                      <div
-                        className="h-full bg-emerald-500 rounded opacity-50"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
+              <div className="flex gap-1 flex-wrap min-w-0 w-full items-end">
+                <div className="flex gap-1 flex-wrap min-w-0 flex-1">
+                  {d.tags.slice(0, 2).map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[8px] sm:text-[9px] text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 rounded px-1.5 py-0.5 border border-neutral-200 dark:border-neutral-700"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {d.lang && (
+                    <span className="font-mono text-[8px] sm:text-[9px] font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5">
+                      {d.lang}
+                    </span>
+                  )}
+                </div>
+                {d.dl !== null && (
+                  <span className="font-mono text-[9px] sm:text-[10px] text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 shrink-0 ml-auto">
                     {fmt(d.dl)}/mo
                     {d.growth != null && d.growth !== 0 && Math.abs(d.growth) >= 5 && (
                       <span className={`text-[8px] sm:text-[9px] font-medium flex items-center gap-[1px] ${
@@ -432,21 +430,6 @@ export default function CardGrid({
                         {Math.abs(d.growth)}%
                       </span>
                     )}
-                  </span>
-                </div>
-              )}
-              <div className="flex gap-1 flex-wrap min-w-0 w-full">
-                {d.tags.slice(0, 2).map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[8px] sm:text-[9px] text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 rounded px-1.5 py-0.5 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    {t}
-                  </span>
-                ))}
-                {d.lang && (
-                  <span className="font-mono text-[8px] sm:text-[9px] font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5">
-                    {d.lang}
                   </span>
                 )}
               </div>
