@@ -424,6 +424,67 @@ function build() {
   writeJSON("quickstart.json", quickstart);
   writeJSON("activity_feed.json", activityFeed);
 
+  /* Stats history from snapshots */
+  const statsHistory = snapshots.map(snap => {
+    const totalModels = snap.models?.length || 0;
+    const totalDatasets = snap.datasets?.length || 0;
+    const totalModelDownloads = snap.models?.reduce((sum, m) => sum + (m.downloads || 0), 0) || 0;
+    const totalLikes = snap.models?.reduce((sum, m) => sum + (m.likes || 0), 0) || 0;
+    const totalDatasetDownloads = snap.datasets?.reduce((sum, d) => sum + (d.downloads || 0), 0) || 0;
+    return {
+      date: snap.date,
+      models: totalModels,
+      datasets: totalDatasets,
+      totalModelDownloads,
+      totalLikes,
+      totalDatasetDownloads,
+    };
+  });
+  writeJSON("stats_history.json", statsHistory);
+
+  /* Top gainers and milestones from snapshots */
+  if (snapshots.length >= 2) {
+    const first = snapshots[0];
+    const last = snapshots[snapshots.length - 1];
+    const firstModelMap = new Map(first.models.map(m => [m.id, m]));
+    const firstDatasetMap = new Map(first.datasets.map(d => [d.id, d]));
+
+    const topGainers = [];
+    for (const m of last.models) {
+      const old = firstModelMap.get(m.id);
+      if (!old) continue;
+      const gain = m.downloads - old.downloads;
+      if (gain <= 0) continue;
+      const pct = old.downloads > 0 ? Math.round((gain / old.downloads) * 100) : 0;
+      topGainers.push({
+        id: m.id,
+        name: m.id.split('/').pop(),
+        org: m.id.split('/')[0],
+        gain,
+        growth: pct,
+        start: old.downloads,
+        end: m.downloads,
+      });
+    }
+    topGainers.sort((a, b) => b.gain - a.gain);
+
+    const milestones = [100, 500, 1000, 5000, 10000, 50000, 100000];
+    const crossed = [];
+    for (const m of last.models) {
+      const old = firstModelMap.get(m.id);
+      if (!old) continue;
+      for (const mil of milestones) {
+        if (old.downloads < mil && m.downloads >= mil) {
+          crossed.push({ id: m.id, milestone: mil, downloads: m.downloads, date: last.date });
+        }
+      }
+    }
+
+    writeJSON("stats_insights.json", { topGainers: topGainers.slice(0, 20), milestones: crossed });
+  } else {
+    writeJSON("stats_insights.json", { topGainers: [], milestones: [] });
+  }
+
   console.log(`\n  Built:`);
   console.log(`  Models:       ${cleanedModels.length}`);
   console.log(`  Datasets:     ${cleanedDatasets.length}`);
@@ -433,7 +494,7 @@ function build() {
   console.log(`  Repos:        ${normalizedRepos.length}`);
   console.log(`  Feed:         ${activityFeed.length}`);
   console.log(`  MX (max dl):  ${MX}`);
-  console.log(`\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json`);
+  console.log(`\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json, stats_history.json`);
 }
 
 build();

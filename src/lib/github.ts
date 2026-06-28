@@ -25,6 +25,39 @@ export function fetchStats() { return fetchJSON<SinglePayload<Stats>>("stats.jso
 export function fetchTrending() { return fetchJSON<TrendingPayload>("trending.json"); }
 export function fetchActivityFeed() { return fetchJSON<any[]>("activity_feed.json"); }
 export function fetchQuickstart() { return fetchJSON<QuickstartPayload>("quickstart.json"); }
+export function fetchStatsHistory() { return fetchJSON<StatsHistoryEntry[]>("stats_history.json"); }
+export function fetchStatsInsights() { return fetchJSON<StatsInsights>("stats_insights.json"); }
+
+export interface StatsHistoryEntry {
+  date: string;
+  models: number;
+  datasets: number;
+  totalModelDownloads: number;
+  totalLikes: number;
+  totalDatasetDownloads: number;
+}
+
+export interface StatsInsights {
+  topGainers: TopGainer[];
+  milestones: Milestone[];
+}
+
+export interface TopGainer {
+  id: string;
+  name: string;
+  org: string;
+  gain: number;
+  growth: number;
+  start: number;
+  end: number;
+}
+
+export interface Milestone {
+  id: string;
+  milestone: number;
+  downloads: number;
+  date: string;
+}
 
 /* Server-side helpers for detail pages */
 export async function fetchModelById(id: string) {
