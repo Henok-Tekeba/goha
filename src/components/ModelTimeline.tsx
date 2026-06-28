@@ -54,11 +54,11 @@ export default function ModelTimeline({ timeline }: { timeline: ModelSnapshotTim
 
   return (
     <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
           Download timeline
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="font-mono text-[10px] text-neutral-400">
             {dates[0]} &ndash; {dates[dates.length - 1]}
           </span>
@@ -88,7 +88,7 @@ export default function ModelTimeline({ timeline }: { timeline: ModelSnapshotTim
         ))}
       </svg>
 
-      <div className="flex justify-between mt-1 px-12">
+      <div className="flex justify-between mt-1 px-2 sm:px-12">
         {dates.map((d, i) => (
           <span key={i} className="font-mono text-[9px] text-neutral-400 dark:text-neutral-500">
             {d.slice(5)}
