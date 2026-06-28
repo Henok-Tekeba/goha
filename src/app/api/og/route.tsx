@@ -1,5 +1,5 @@
 import { ImageResponse } from "@vercel/og";
-import { fetchModelById, fetchDatasetById } from "@/lib/github";
+import { fetchModelById, fetchDatasetById, fetchStats } from "@/lib/github";
 
 export const runtime = "edge";
 
@@ -9,6 +9,17 @@ export async function GET(request: Request) {
   const id = searchParams.get("id") || "";
 
   if (!id) {
+    let models = 0, datasets = 0, companies = 0, research = 0;
+    try {
+      const s = await fetchStats();
+      if (s?.data) {
+        models = s.data.models ?? 0;
+        datasets = s.data.datasets ?? 0;
+        companies = s.data.companies ?? 0;
+        research = s.data.research ?? 0;
+      }
+    } catch {}
+
     return new ImageResponse(
       <Card>
         <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "center" }}>
@@ -24,10 +35,10 @@ export async function GET(request: Request) {
             for Ethiopian languages.
           </h1>
           <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
-            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>Models</span>
-            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>Datasets</span>
-            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>Companies</span>
-            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>Research</span>
+            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>{models} models</span>
+            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>{datasets} datasets</span>
+            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>{companies} companies</span>
+            <span style={{ fontSize: 36, fontWeight: 600, color: "#fafafa" }}>{research} papers</span>
           </div>
         </div>
         <Footer />
