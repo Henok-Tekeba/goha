@@ -9,107 +9,167 @@ function fmt(n: number | null | undefined): string {
   return String(n);
 }
 
+function StatBox({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+      <div className="flex items-center gap-2 text-neutral-400 dark:text-neutral-500 mb-1">
+        {icon}
+        <span className="font-mono text-[10px] uppercase tracking-wider">{label}</span>
+      </div>
+      <div className="text-xl font-medium tracking-tight text-neutral-900 dark:text-neutral-100">{value}</div>
+    </div>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-8">
+      <h2 className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-3">{title}</h2>
+      {children}
+    </div>
+  );
+}
+
 export default function DatasetDetail({ item, timeline }: { item: any; timeline?: DatasetSnapshotTimeline | null }) {
   if (!item) {
     return (
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
-        <h1 className="text-lg font-medium text-neutral-900 dark:text-neutral-100 mb-2">Dataset not found</h1>
-        <Link href="/" className="text-emerald-600 dark:text-emerald-400 hover:underline text-sm inline-flex items-center gap-1">
-          <ArrowLeft size={14} /> Back to home
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 mb-8">
+          <ArrowLeft size={14} /> Back
         </Link>
+        <div className="text-center py-16">
+          <div className="text-lg font-medium text-neutral-900 dark:text-neutral-100 mb-2">Dataset not found</div>
+          <p className="text-sm text-neutral-500">This dataset doesn&apos;t exist or hasn&apos;t been indexed yet.</p>
+        </div>
       </div>
     );
   }
 
-  return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 overflow-hidden">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1.5 text-[13px] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-6"
-      >
-        <ArrowLeft size={14} /> Back to home
-      </Link>
+  const hfUrl = item.hf_url || (item.id ? `https://huggingface.co/datasets/${item.id}` : null);
 
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="font-mono text-[10px] font-medium px-2 py-0.5 rounded-full border text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950 border-teal-200 dark:border-teal-800">
-              Dataset
-            </span>
-            {item.isNew && (
-              <span className="font-mono text-[10px] font-medium px-2 py-0.5 rounded-full border text-violet-700 dark:text-violet-300 bg-violet-50 dark:bg-violet-950 border-violet-200 dark:border-violet-800">
-                New
+  return (
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 mb-6">
+          <ArrowLeft size={14} /> Back to browse
+        </Link>
+
+        {/* Header */}
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 sm:p-7 mb-4">
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-mono text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-full border text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950 border-teal-200 dark:border-teal-800">
+                Dataset
               </span>
+              {item.isNew && (
+                <span className="font-mono text-[9px] text-violet-700 dark:text-violet-300 bg-violet-50 dark:bg-violet-950 border border-violet-200 dark:border-violet-800 rounded-full px-1.5 py-0.5 inline-flex items-center gap-1">
+                  New
+                </span>
+              )}
+            </div>
+            {hfUrl && (
+              <a href={hfUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-1.5 transition-colors">
+                <ExternalLink size={14} />
+                <span className="hidden sm:inline">View on HuggingFace</span>
+              </a>
             )}
           </div>
-          <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
+
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 mb-1">
             {item.name}
           </h1>
           {item.org && (
-            <p className="text-[13px] font-mono text-neutral-500 dark:text-neutral-400 mt-1">{item.org}</p>
+            <div className="flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400 mb-4">
+              <Database size={14} />
+              {item.org}
+            </div>
+          )}
+
+          {item.desc && (
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">{item.desc}</p>
           )}
         </div>
-        {item.hf_url && (
-          <a
-            href={item.hf_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-1.5 text-[12px] font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-2 hover:bg-emerald-100 dark:hover:bg-emerald-900 transition-colors"
-          >
-            <ExternalLink size={13} /> Open on HF
-          </a>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+          <StatBox icon={<Download size={14} />} label="Downloads / mo" value={fmt(item.downloads_monthly ?? item.dl)} />
+          <StatBox icon={<Heart size={14} />} label="Likes" value={fmt(item.likes)} />
+          <StatBox icon={<Globe size={14} />} label="Languages" value={item.langs?.length ? item.langs.join(" · ") : "—"} />
+        </div>
+
+        {/* Timeline */}
+        {timeline && timeline.downloads.length >= 2 && (
+          <div className="mb-6">
+            <DatasetTimeline timeline={timeline} />
+          </div>
         )}
+
+        {/* Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 sm:p-5">
+            <Section title="Details">
+              <div className="space-y-3">
+                {item.file_count != null && (
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider">Files</span>
+                    <span className="text-sm text-neutral-900 dark:text-neutral-100">{fmt(item.file_count)}</span>
+                  </div>
+                )}
+                {item.size_categories && (
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider">Size</span>
+                    <span className="text-sm text-neutral-900 dark:text-neutral-100 capitalize">{item.size_categories}</span>
+                  </div>
+                )}
+                {item.license && (
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider">License</span>
+                    <span className="text-sm text-neutral-900 dark:text-neutral-100 capitalize">{item.license}</span>
+                  </div>
+                )}
+              </div>
+            </Section>
+          </div>
+
+          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 sm:p-5">
+            <Section title="Tags & Languages">
+              <div className="space-y-3">
+                {item.langs && item.langs.length > 0 && (
+                  <div>
+                    <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider mb-2 block">Languages</span>
+                    <div className="flex flex-wrap gap-1">
+                      {item.langs.map((l: string) => (
+                        <span key={l} className="font-mono text-[11px] font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-2 py-0.5">
+                          {l}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {item.tags && item.tags.length > 0 && (
+                  <div>
+                    <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider mb-2 block">Tags</span>
+                    <div className="flex flex-wrap gap-1">
+                      {item.tags.slice(0, 8).map((t: string) => (
+                        <span key={t} className="font-mono text-[9px] text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Section>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6 mt-8">
+          <div className="flex items-center justify-between font-mono text-[10px] text-neutral-400">
+            <span>Indexed {item.added_at ? new Date(item.added_at).toLocaleDateString() : "recently"}</span>
+          </div>
+        </div>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-8">
-        <div className="flex items-center gap-2.5 px-4 py-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
-          <Download size={16} className="text-neutral-400 dark:text-neutral-500 shrink-0" />
-          <div className="min-w-0">
-            <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Downloads / mo</div>
-            <div className="text-[14px] font-medium text-neutral-900 dark:text-neutral-100 mt-0.5">{fmt(item.downloads_monthly ?? item.dl)}</div>
-          </div>
-        </div>
-        <div className="flex items-center gap-2.5 px-4 py-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
-          <Heart size={16} className="text-neutral-400 dark:text-neutral-500 shrink-0" />
-          <div className="min-w-0">
-            <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Likes</div>
-            <div className="text-[14px] font-medium text-neutral-900 dark:text-neutral-100 mt-0.5">{fmt(item.likes)}</div>
-          </div>
-        </div>
-        <div className="flex items-center gap-2.5 px-4 py-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
-          <Globe size={16} className="text-neutral-400 dark:text-neutral-500 shrink-0" />
-          <div className="min-w-0">
-            <div className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Languages</div>
-            <div className="text-[14px] font-medium text-neutral-900 dark:text-neutral-100 mt-0.5">{item.langs?.length ? item.langs.join(" · ") : "—"}</div>
-          </div>
-        </div>
-      </div>
-
-      {timeline && timeline.downloads.length >= 2 && (
-        <div className="mb-8">
-          <DatasetTimeline timeline={timeline} />
-        </div>
-      )}
-
-      {item.description && (
-        <section className="mb-8">
-          <h2 className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">Description</h2>
-          <p className="text-[14px] text-neutral-700 dark:text-neutral-300 leading-relaxed whitespace-pre-wrap">{item.description}</p>
-        </section>
-      )}
-
-      {item.tags && item.tags.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-3">Tags</h2>
-          <div className="flex flex-wrap gap-1.5">
-            {item.tags.map((t: string) => (
-              <span key={t} className="font-mono text-[10px] text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-2 py-1">
-                {t}
-              </span>
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   );
 }
