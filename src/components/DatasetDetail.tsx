@@ -153,12 +153,12 @@ function DatasetTimeline({ timeline }: { timeline: DatasetSnapshotTimeline }) {
 
   return (
     <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div className="flex items-center gap-2">
-          <TrendingUp size={14} className="text-emerald-600 dark:text-emerald-400" />
+          <TrendingUp size={14} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
           <span className="font-mono text-[10px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Download timeline</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="font-mono text-[10px] text-neutral-400">
             {dates[0]} &ndash; {dates[dates.length - 1]}
           </span>
@@ -183,7 +183,7 @@ function DatasetTimeline({ timeline }: { timeline: DatasetSnapshotTimeline }) {
         <circle cx={pad.left + (downloads.length - 1) * stepX} cy={yPos(downloads[downloads.length - 1])} r="3.5" fill="#059669" stroke="white" strokeWidth="2" />
       </svg>
 
-      <div className="flex justify-between mt-1 px-12">
+      <div className="flex justify-between mt-1 px-2 sm:px-12">
         {dates.map((d, i) => (
           <span key={i} className="font-mono text-[9px] text-neutral-400 dark:text-neutral-500">{d.slice(5)}</span>
         ))}
