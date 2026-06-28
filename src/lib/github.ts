@@ -27,6 +27,7 @@ export function fetchActivityFeed() { return fetchJSON<any[]>("activity_feed.jso
 export function fetchQuickstart() { return fetchJSON<QuickstartPayload>("quickstart.json"); }
 export function fetchStatsHistory() { return fetchJSON<StatsHistoryEntry[]>("stats_history.json"); }
 export function fetchStatsInsights() { return fetchJSON<StatsInsights>("stats_insights.json"); }
+export function fetchModelSnapshots() { return fetchJSON<Record<string, ModelSnapshotTimeline>>("model_snapshots.json"); }
 
 export interface StatsHistoryEntry {
   date: string;
@@ -57,6 +58,12 @@ export interface Milestone {
   milestone: number;
   downloads: number;
   date: string;
+}
+
+export interface ModelSnapshotTimeline {
+  dates: string[];
+  downloads: number[];
+  likes: number[];
 }
 
 /* Server-side helpers for detail pages */
