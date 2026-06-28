@@ -22,7 +22,7 @@ export default function DatasetDetail({ item, timeline }: { item: any; timeline?
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 overflow-hidden">
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 text-[13px] text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-6"
@@ -168,7 +168,7 @@ function DatasetTimeline({ timeline }: { timeline: DatasetSnapshotTimeline }) {
         </div>
       </div>
 
-      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="max-w-full">
         {yLabels.map((t, i) => (
           <g key={i}>
             <line x1={pad.left} y1={t.y} x2={width - pad.right} y2={t.y} stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />

@@ -68,7 +68,7 @@ export default function ModelTimeline({ timeline }: { timeline: ModelSnapshotTim
         </div>
       </div>
 
-      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="max-w-full">
         {yLabels.map((t, i) => (
           <g key={i}>
             <line x1={pad.left} y1={t.y} x2={width - pad.right} y2={t.y} stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />
@@ -131,7 +131,7 @@ function LikesTimeline({ likes, dates, width, height }: { likes: number[]; dates
   }
 
   return (
-    <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+    <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="max-w-full">
       {yLabels.map((t, i) => (
         <g key={i}>
           <line x1={pad.left} y1={t.y} x2={width - pad.right} y2={t.y} stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />
