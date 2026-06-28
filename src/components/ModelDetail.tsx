@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Download, Heart, Cpu, BarChart3, Building2, FileText, Scale, CheckCircle, Database } from "lucide-react";
+import ModelTimeline from "./ModelTimeline";
 
 function fmt(n: number | null | undefined): string {
   if (n == null) return "—";
@@ -52,7 +53,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-export default function ModelDetail({ item, related }: { item: any; related?: any[] }) {
+export default function ModelDetail({ item, related, timeline }: { item: any; related?: any[]; timeline?: any }) {
   if (!item) {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
@@ -123,6 +124,9 @@ export default function ModelDetail({ item, related }: { item: any; related?: an
               : "—"
           } />
         </div>
+
+        {/* Timeline */}
+        {timeline && <div className="mb-6"><ModelTimeline timeline={timeline} /></div>}
 
         {/* Details Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
