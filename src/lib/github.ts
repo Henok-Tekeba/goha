@@ -28,6 +28,7 @@ export function fetchQuickstart() { return fetchJSON<QuickstartPayload>("quickst
 export function fetchStatsHistory() { return fetchJSON<StatsHistoryEntry[]>("stats_history.json"); }
 export function fetchStatsInsights() { return fetchJSON<StatsInsights>("stats_insights.json"); }
 export function fetchModelSnapshots() { return fetchJSON<Record<string, ModelSnapshotTimeline>>("model_snapshots.json"); }
+export function fetchDatasetSnapshots() { return fetchJSON<Record<string, DatasetSnapshotTimeline>>("dataset_snapshots.json"); }
 
 export interface StatsHistoryEntry {
   date: string;
@@ -64,6 +65,11 @@ export interface ModelSnapshotTimeline {
   dates: string[];
   downloads: number[];
   likes: number[];
+}
+
+export interface DatasetSnapshotTimeline {
+  dates: string[];
+  downloads: number[];
 }
 
 /* Server-side helpers for detail pages */

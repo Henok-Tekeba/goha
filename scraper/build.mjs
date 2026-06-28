@@ -497,6 +497,17 @@ function build() {
   }
   writeJSON("model_snapshots.json", modelSnapshots);
 
+  /* Per-dataset snapshot timeline for detail pages */
+  const datasetSnapshots = {};
+  for (const snap of snapshots) {
+    for (const d of snap.datasets || []) {
+      if (!datasetSnapshots[d.id]) datasetSnapshots[d.id] = { dates: [], downloads: [] };
+      datasetSnapshots[d.id].dates.push(snap.date);
+      datasetSnapshots[d.id].downloads.push(d.downloads);
+    }
+  }
+  writeJSON("dataset_snapshots.json", datasetSnapshots);
+
   console.log(`\n  Built:`);
   console.log(`  Models:       ${cleanedModels.length}`);
   console.log(`  Datasets:     ${cleanedDatasets.length}`);
@@ -506,7 +517,7 @@ function build() {
   console.log(`  Repos:        ${normalizedRepos.length}`);
   console.log(`  Feed:         ${activityFeed.length}`);
   console.log(`  MX (max dl):  ${MX}`);
-  console.log(`\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json, stats_history.json, model_snapshots.json`);
+  console.log(`\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json, stats_history.json, model_snapshots.json, dataset_snapshots.json`);
 }
 
 build();
