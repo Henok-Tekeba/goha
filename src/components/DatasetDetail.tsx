@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Download, Heart, Database, Globe, TrendingUp } from "lucide-react";
 import type { DatasetSnapshotTimeline } from "@/lib/github";
+import WatchButton from "./WatchButton";
 
 function fmt(n: number | null | undefined): string {
   if (n == null) return "—";
@@ -72,6 +73,9 @@ export default function DatasetDetail({ item, timeline }: { item: any; timeline?
                 <ExternalLink size={14} />
                 <span className="hidden sm:inline">View on HuggingFace</span>
               </a>
+            )}
+            {item && (
+              <WatchButton item={{ id: item.id || item.name, type: "dataset", name: item.name, org: item.org || "", badge: "Dataset", addedAt: new Date().toISOString() }} />
             )}
           </div>
 

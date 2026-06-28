@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Download, Heart, Cpu, BarChart3, Building2, FileText, Scale, CheckCircle, Database } from "lucide-react";
 import ModelTimeline from "./ModelTimeline";
+import WatchButton from "./WatchButton";
 
 function fmt(n: number | null | undefined): string {
   if (n == null) return "—";
@@ -95,6 +96,9 @@ export default function ModelDetail({ item, related, timeline }: { item: any; re
                 <ExternalLink size={14} />
                 <span className="hidden sm:inline">View on HuggingFace</span>
               </a>
+            )}
+            {item && (
+              <WatchButton item={{ id: item.id || item.name, type: "model", name: item.name, org: item.org || "", badge: item.badge, addedAt: new Date().toISOString() }} />
             )}
           </div>
 
