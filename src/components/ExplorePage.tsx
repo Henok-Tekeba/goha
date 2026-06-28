@@ -10,6 +10,7 @@ import BestFor from "./BestFor";
 import ActivityFeed from "./ActivityFeed";
 import ThisWeek from "./ThisWeek";
 import TrendingSection from "./TrendingSection";
+import WatchedSection from "./WatchedSection";
 import TabsBar from "./TabsBar";
 import FilterChips from "./FilterChips";
 import CardGrid from "./CardGrid";
@@ -239,6 +240,7 @@ export default function ExplorePage({ initialStats }: { initialStats: Stats }) {
           <ActivityFeed />
           <ThisWeek />
           <TrendingSection />
+          {activeTab === "models" && <WatchedSection allModels={items} />}
           <TabsBar activeTab={activeTab} counts={counts} onTabChange={handleTabChange} />
           <FilterChips activeLang={activeLang} onLangChange={setActiveLang} />
           <div ref={tabSectionRef}>
