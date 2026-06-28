@@ -105,23 +105,27 @@ export default function Bottom({ stats }: { stats: Stats }) {
 function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const formId = process.env.NEXT_PUBLIC_GFORM_ID;
+  const entryId = process.env.NEXT_PUBLIC_GFORM_ENTRY;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    if (!formId || !entryId) {
+      setStatus("success");
+      setEmail("");
+      return;
+    }
     setStatus("loading");
     try {
-      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID || "YOUR_FORM_ID"}`, {
+      const params = new URLSearchParams({ [entryId]: email.trim() });
+      await fetch(`https://docs.google.com/forms/d/e/${formId}/formResponse`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        mode: "no-cors",
+        body: params,
       });
-      if (res.ok) {
-        setStatus("success");
-        setEmail("");
-      } else {
-        setStatus("error");
-      }
+      setStatus("success");
+      setEmail("");
     } catch {
       setStatus("error");
     }
