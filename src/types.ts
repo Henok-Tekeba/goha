@@ -36,6 +36,7 @@ export interface Stats {
   datasets: number;
   companies: number;
   research: number;
+  spaces: number;
   languages: number;
   indexed: string;
   featured: { downloads: number; name: string; lang: string };

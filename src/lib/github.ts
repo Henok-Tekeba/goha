@@ -29,6 +29,7 @@ export function fetchStatsHistory() { return fetchJSON<StatsHistoryEntry[]>("sta
 export function fetchStatsInsights() { return fetchJSON<StatsInsights>("stats_insights.json"); }
 export function fetchModelSnapshots() { return fetchJSON<Record<string, ModelSnapshotTimeline>>("model_snapshots.json"); }
 export function fetchDatasetSnapshots() { return fetchJSON<Record<string, DatasetSnapshotTimeline>>("dataset_snapshots.json"); }
+export function fetchSpaces() { return fetchJSON<Payload<any>>("spaces.json"); }
 
 export interface StatsHistoryEntry {
   date: string;
