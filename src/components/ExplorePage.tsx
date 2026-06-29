@@ -80,6 +80,7 @@ export default function ExplorePage({ initialStats }: { initialStats: Stats }) {
             datasets: data.datasets ?? 0,
             companies: data.companies ?? 0,
             research: data.research ?? 0,
+            spaces: data.spaces ?? 0,
             languages: data.languages ?? 6,
             indexed: data.indexed || "just now",
             featured: data.featured || { downloads: 0, name: "", lang: "" },

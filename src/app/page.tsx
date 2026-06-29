@@ -5,6 +5,7 @@ const initialStats = {
   datasets: 0,
   companies: 0,
   research: 0,
+  spaces: 0,
   languages: 6,
   indexed: "loading\u2026",
   featured: { downloads: 0, name: "", lang: "" },
