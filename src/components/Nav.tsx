@@ -48,6 +48,7 @@ export default function Nav() {
 
   const navLinks = [
     { href: "/leaderboards", label: "Leaderboards" },
+    { href: "/spaces", label: "Spaces" },
     { href: "/stats", label: "Stats" },
   ];
 
