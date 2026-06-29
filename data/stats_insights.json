@@ -4,55 +4,73 @@
       "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
       "name": "wav2vec2-large-xlsr-53-amharic",
       "org": "agkphysics",
-      "gain": 3964,
+      "gain": 3980,
       "growth": 2,
       "start": 172334,
-      "end": 176298
+      "end": 176314
     },
     {
       "id": "badrex/Ethio-ASR-tigrinya",
       "name": "Ethio-ASR-tigrinya",
       "org": "badrex",
-      "gain": 122,
-      "growth": 94,
+      "gain": 137,
+      "growth": 105,
       "start": 130,
-      "end": 252
+      "end": 267
+    },
+    {
+      "id": "rasyosef/roberta-base-amharic",
+      "name": "roberta-base-amharic",
+      "org": "rasyosef",
+      "gain": 135,
+      "growth": 66,
+      "start": 205,
+      "end": 340
     },
     {
       "id": "b1n1yam/shook-medium-amharic-2k",
       "name": "shook-medium-amharic-2k",
       "org": "b1n1yam",
-      "gain": 93,
-      "growth": 37,
+      "gain": 96,
+      "growth": 38,
       "start": 251,
-      "end": 344
-    },
-    {
-      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
-      "name": "bert-base-multilingual-cased-finetuned-amharic",
-      "org": "Davlan",
-      "gain": 73,
-      "growth": 68,
-      "start": 107,
-      "end": 180
-    },
-    {
-      "id": "lamekyemane09/tigrinya-human-model",
-      "name": "tigrinya-human-model",
-      "org": "lamekyemane09",
-      "gain": 53,
-      "growth": 6,
-      "start": 852,
-      "end": 905
+      "end": 347
     },
     {
       "id": "rasyosef/gpt2-small-amharic",
       "name": "gpt2-small-amharic",
       "org": "rasyosef",
-      "gain": 48,
-      "growth": 62,
+      "gain": 94,
+      "growth": 122,
       "start": 77,
-      "end": 125
+      "end": 171
+    },
+    {
+      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
+      "name": "bert-base-multilingual-cased-finetuned-amharic",
+      "org": "Davlan",
+      "gain": 76,
+      "growth": 71,
+      "start": 107,
+      "end": 183
+    },
+    {
+      "id": "lamekyemane09/tigrinya-human-model",
+      "name": "tigrinya-human-model",
+      "org": "lamekyemane09",
+      "gain": 54,
+      "growth": 6,
+      "start": 852,
+      "end": 906
+    },
+    {
+      "id": "luel/gemma-3-4b-tigrinya-qa",
+      "name": "gemma-3-4b-tigrinya-qa",
+      "org": "luel",
+      "gain": 50,
+      "growth": 47,
+      "start": 107,
+      "end": 157
     },
     {
       "id": "fgaim/tiroberta-geezswitch",
@@ -73,31 +91,40 @@
       "end": 55
     },
     {
-      "id": "luel/gemma-3-4b-tigrinya-qa",
-      "name": "gemma-3-4b-tigrinya-qa",
-      "org": "luel",
-      "gain": 39,
-      "growth": 36,
-      "start": 107,
-      "end": 146
+      "id": "rasyosef/bert-mini-amharic",
+      "name": "bert-mini-amharic",
+      "org": "rasyosef",
+      "gain": 20,
+      "growth": 7,
+      "start": 270,
+      "end": 290
     },
     {
-      "id": "rasyosef/roberta-base-amharic",
-      "name": "roberta-base-amharic",
+      "id": "rasyosef/bert-tiny-amharic",
+      "name": "bert-tiny-amharic",
       "org": "rasyosef",
-      "gain": 10,
+      "gain": 5,
       "growth": 5,
-      "start": 205,
-      "end": 215
+      "start": 103,
+      "end": 108
     },
     {
       "id": "luel/gemma-3-4b-tigrinya",
       "name": "gemma-3-4b-tigrinya",
       "org": "luel",
-      "gain": 5,
-      "growth": 71,
+      "gain": 4,
+      "growth": 57,
       "start": 7,
-      "end": 12
+      "end": 11
+    },
+    {
+      "id": "obann001/Ethiopia_Flux_LoRA",
+      "name": "Ethiopia_Flux_LoRA",
+      "org": "obann001",
+      "gain": 4,
+      "growth": 1,
+      "start": 303,
+      "end": 307
     },
     {
       "id": "Samuael/tigrinya-asr-characters",
@@ -118,13 +145,13 @@
       "end": 535
     },
     {
-      "id": "rasyosef/bert-tiny-amharic",
-      "name": "bert-tiny-amharic",
-      "org": "rasyosef",
+      "id": "abdukuzi/josie-4b-amharic-2026",
+      "name": "josie-4b-amharic-2026",
+      "org": "abdukuzi",
       "gain": 2,
       "growth": 2,
-      "start": 103,
-      "end": 105
+      "start": 85,
+      "end": 87
     },
     {
       "id": "ey0syas/amharic-whisper-ai",
@@ -136,6 +163,15 @@
       "end": 55
     },
     {
+      "id": "zeharay/amharic-qa-demo-model",
+      "name": "amharic-qa-demo-model",
+      "org": "zeharay",
+      "gain": 2,
+      "growth": 5,
+      "start": 43,
+      "end": 45
+    },
+    {
       "id": "Zeyede21/bilingual-amharic-english-ner",
       "name": "bilingual-amharic-english-ner",
       "org": "Zeyede21",
@@ -143,50 +179,14 @@
       "growth": 5,
       "start": 42,
       "end": 44
-    },
-    {
-      "id": "luel/gpt2-tigrinya-medium",
-      "name": "gpt2-tigrinya-medium",
-      "org": "luel",
-      "gain": 2,
-      "growth": 25,
-      "start": 8,
-      "end": 10
-    },
-    {
-      "id": "Aregay01/whisper-small-tigrinya-merged",
-      "name": "whisper-small-tigrinya-merged",
-      "org": "Aregay01",
-      "gain": 2,
-      "growth": 29,
-      "start": 7,
-      "end": 9
-    },
-    {
-      "id": "abdukuzi/josie-4b-amharic-2026",
-      "name": "josie-4b-amharic-2026",
-      "org": "abdukuzi",
-      "gain": 1,
-      "growth": 1,
-      "start": 85,
-      "end": 86
-    },
-    {
-      "id": "mifafikir/whisper-tiny-amharic-smoke",
-      "name": "whisper-tiny-amharic-smoke",
-      "org": "mifafikir",
-      "gain": 1,
-      "growth": 2,
-      "start": 59,
-      "end": 60
     }
   ],
   "milestones": [
     {
       "id": "rasyosef/gpt2-small-amharic",
       "milestone": 100,
-      "downloads": 125,
-      "date": "2026-06-28"
+      "downloads": 171,
+      "date": "2026-06-29"
     }
   ]
 }
