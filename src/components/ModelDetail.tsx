@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Download, Heart, Cpu, BarChart3, Building2, FileText, Scale, CheckCircle, Database } from "lucide-react";
 import ModelTimeline from "./ModelTimeline";
 import WatchButton from "./WatchButton";
-import InferencePanel from "./InferencePanel";
 
 function fmt(n: number | null | undefined): string {
   if (n == null) return "—";
@@ -132,9 +131,6 @@ export default function ModelDetail({ item, related, timeline }: { item: any; re
 
         {/* Timeline */}
         {timeline && <div className="mb-6"><ModelTimeline timeline={timeline} /></div>}
-
-        {/* Inference */}
-        <div className="mb-6"><InferencePanel model={item} /></div>
 
         {/* Details Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
