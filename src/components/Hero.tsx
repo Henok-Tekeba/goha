@@ -11,7 +11,7 @@ export default function Hero({
 }: {
   searchQuery: string;
   onSearchChange: (q: string) => void;
-  stats: { models: number; datasets: number; companies: number; research: number; indexed: string };
+  stats: { models: number; datasets: number; companies: number; research: number; spaces: number; indexed: string };
 }) {
   const [newThisWeek, setNewThisWeek] = useState(0);
   const [trendingNow, setTrendingNow] = useState(0);
@@ -70,6 +70,8 @@ export default function Hero({
         <span><span className="text-neutral-700 dark:text-neutral-300 font-medium"><AnimatedCounter value={stats.companies} /></span> companies</span>
         <span className="text-neutral-300 dark:text-neutral-700 hidden sm:inline">·</span>
         <span><span className="text-neutral-700 dark:text-neutral-300 font-medium"><AnimatedCounter value={stats.research} /></span> researchers</span>
+        <span className="text-neutral-300 dark:text-neutral-700 hidden sm:inline">·</span>
+        <span><span className="text-neutral-700 dark:text-neutral-300 font-medium"><AnimatedCounter value={stats.spaces} /></span> spaces</span>
         <span className="text-neutral-300 dark:text-neutral-700 hidden sm:inline">·</span>
         <span>indexed <span className="text-neutral-700 dark:text-neutral-300 font-medium">{stats.indexed}</span></span>
       </div>
