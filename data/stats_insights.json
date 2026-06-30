@@ -4,46 +4,55 @@
       "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
       "name": "wav2vec2-large-xlsr-53-amharic",
       "org": "agkphysics",
-      "gain": 3980,
+      "gain": 3969,
       "growth": 2,
       "start": 172334,
-      "end": 176314
-    },
-    {
-      "id": "badrex/Ethio-ASR-tigrinya",
-      "name": "Ethio-ASR-tigrinya",
-      "org": "badrex",
-      "gain": 137,
-      "growth": 105,
-      "start": 130,
-      "end": 267
+      "end": 176303
     },
     {
       "id": "rasyosef/roberta-base-amharic",
       "name": "roberta-base-amharic",
       "org": "rasyosef",
-      "gain": 135,
-      "growth": 66,
+      "gain": 378,
+      "growth": 184,
       "start": 205,
-      "end": 340
+      "end": 583
     },
     {
-      "id": "b1n1yam/shook-medium-amharic-2k",
-      "name": "shook-medium-amharic-2k",
-      "org": "b1n1yam",
-      "gain": 96,
-      "growth": 38,
-      "start": 251,
-      "end": 347
+      "id": "badrex/Ethio-ASR-tigrinya",
+      "name": "Ethio-ASR-tigrinya",
+      "org": "badrex",
+      "gain": 148,
+      "growth": 114,
+      "start": 130,
+      "end": 278
     },
     {
       "id": "rasyosef/gpt2-small-amharic",
       "name": "gpt2-small-amharic",
       "org": "rasyosef",
-      "gain": 94,
-      "growth": 122,
+      "gain": 111,
+      "growth": 144,
       "start": 77,
-      "end": 171
+      "end": 188
+    },
+    {
+      "id": "b1n1yam/shook-medium-amharic-2k",
+      "name": "shook-medium-amharic-2k",
+      "org": "b1n1yam",
+      "gain": 106,
+      "growth": 42,
+      "start": 251,
+      "end": 357
+    },
+    {
+      "id": "rasyosef/bert-mini-amharic",
+      "name": "bert-mini-amharic",
+      "org": "rasyosef",
+      "gain": 89,
+      "growth": 33,
+      "start": 270,
+      "end": 359
     },
     {
       "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
@@ -62,6 +71,15 @@
       "growth": 6,
       "start": 852,
       "end": 906
+    },
+    {
+      "id": "rasyosef/bert-tiny-amharic",
+      "name": "bert-tiny-amharic",
+      "org": "rasyosef",
+      "gain": 51,
+      "growth": 50,
+      "start": 103,
+      "end": 154
     },
     {
       "id": "luel/gemma-3-4b-tigrinya-qa",
@@ -85,28 +103,19 @@
       "id": "fgaim/tielectra-geezswitch",
       "name": "tielectra-geezswitch",
       "org": "fgaim",
-      "gain": 48,
-      "growth": 686,
+      "gain": 47,
+      "growth": 671,
       "start": 7,
-      "end": 55
+      "end": 54
     },
     {
-      "id": "rasyosef/bert-mini-amharic",
-      "name": "bert-mini-amharic",
-      "org": "rasyosef",
-      "gain": 20,
+      "id": "obann001/Ethiopia_sdxl_lora",
+      "name": "Ethiopia_sdxl_lora",
+      "org": "obann001",
+      "gain": 10,
       "growth": 7,
-      "start": 270,
-      "end": 290
-    },
-    {
-      "id": "rasyosef/bert-tiny-amharic",
-      "name": "bert-tiny-amharic",
-      "org": "rasyosef",
-      "gain": 5,
-      "growth": 5,
-      "start": 103,
-      "end": 108
+      "start": 144,
+      "end": 154
     },
     {
       "id": "luel/gemma-3-4b-tigrinya",
@@ -170,23 +179,20 @@
       "growth": 5,
       "start": 43,
       "end": 45
-    },
-    {
-      "id": "Zeyede21/bilingual-amharic-english-ner",
-      "name": "bilingual-amharic-english-ner",
-      "org": "Zeyede21",
-      "gain": 2,
-      "growth": 5,
-      "start": 42,
-      "end": 44
     }
   ],
   "milestones": [
     {
+      "id": "rasyosef/roberta-base-amharic",
+      "milestone": 500,
+      "downloads": 583,
+      "date": "2026-06-30"
+    },
+    {
       "id": "rasyosef/gpt2-small-amharic",
       "milestone": 100,
-      "downloads": 171,
-      "date": "2026-06-29"
+      "downloads": 188,
+      "date": "2026-06-30"
     }
   ]
 }
