@@ -6,37 +6,11 @@
       "description": "Production-ready ASR models for Amharic, Oromo, Tigrinya and more.",
       "items": [
         {
-          "name": "wav2vec2-large-xlsr-53-amharic",
-          "org": "agkphysics",
+          "name": "omnivoice-amharic",
+          "org": "ethiopian-Demtse",
           "badge": "ASR",
           "bc": "b-asr",
-          "dl": 77665,
-          "lang": null,
-          "verdict": {
-            "label": "New",
-            "icon": "new",
-            "type": "new"
-          }
-        },
-        {
-          "name": "Ethio-ASR-amharic",
-          "org": "badrex",
-          "badge": "ASR",
-          "bc": "b-asr",
-          "dl": 396,
-          "lang": null,
-          "verdict": {
-            "label": "New",
-            "icon": "new",
-            "type": "new"
-          }
-        },
-        {
-          "name": "shook-medium-amharic-2k",
-          "org": "b1n1yam",
-          "badge": "ASR",
-          "bc": "b-asr",
-          "dl": 394,
+          "dl": 38,
           "lang": null,
           "verdict": {
             "label": "New",
@@ -52,11 +26,24 @@
       "description": "The models with the most community traction — start here.",
       "items": [
         {
-          "name": "wav2vec2-large-xlsr-53-amharic",
-          "org": "agkphysics",
+          "name": "Ethiopia_Flux_LoRA",
+          "org": "obann001",
+          "badge": "Image Gen",
+          "bc": "b-default",
+          "dl": 194,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "omnivoice-amharic",
+          "org": "ethiopian-Demtse",
           "badge": "ASR",
           "bc": "b-asr",
-          "dl": 77665,
+          "dl": 38,
           "lang": null,
           "verdict": {
             "label": "New",
@@ -65,24 +52,11 @@
           }
         },
         {
-          "name": "roberta-base-amharic",
-          "org": "rasyosef",
-          "badge": "Masked LM",
+          "name": "Ethiopia_sdxl_lora",
+          "org": "obann001",
+          "badge": "Image Gen",
           "bc": "b-default",
-          "dl": 1596,
-          "lang": null,
-          "verdict": {
-            "label": "New",
-            "icon": "new",
-            "type": "new"
-          }
-        },
-        {
-          "name": "bert-base-multilingual-cased-finetuned-amharic",
-          "org": "Davlan",
-          "badge": "Masked LM",
-          "bc": "b-default",
-          "dl": 748,
+          "dl": 32,
           "lang": null,
           "verdict": {
             "label": "New",
