@@ -1,17 +1,77 @@
 {
   "items": [
     {
-      "name": "Ethiopia_Flux_LoRA",
-      "org": "obann001",
-      "badge": "Image Gen",
-      "growth": null,
-      "dl": 194,
+      "name": "bert-small-amharic",
+      "org": "rasyosef",
+      "badge": "Masked LM",
+      "growth": 11056,
+      "dl": 6359,
       "lang": null,
       "desc": "",
-      "id": "obann001/Ethiopia_Flux_LoRA",
+      "id": "rasyosef/bert-small-amharic",
       "isNew": false,
-      "added_at": "2026-07-16T08:36:51.944Z"
+      "added_at": "2026-07-17T08:14:33.454Z"
+    },
+    {
+      "name": "bert-base-multilingual-cased-finetuned-amharic",
+      "org": "Davlan",
+      "badge": "Masked LM",
+      "growth": 251,
+      "dl": 723,
+      "lang": null,
+      "desc": "",
+      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
+      "isNew": false,
+      "added_at": "2026-07-17T08:14:33.454Z"
+    },
+    {
+      "name": "roberta-amharic-text-embedding-base",
+      "org": "rasyosef",
+      "badge": "Embeddings",
+      "growth": 144,
+      "dl": 83,
+      "lang": null,
+      "desc": "",
+      "id": "rasyosef/roberta-amharic-text-embedding-base",
+      "isNew": false,
+      "added_at": "2026-07-17T08:14:33.459Z"
+    },
+    {
+      "name": "amharic-property-retriever-afro-xlmr-base",
+      "org": "dice-research",
+      "badge": "Embeddings",
+      "growth": 96,
+      "dl": 251,
+      "lang": null,
+      "desc": "",
+      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
+      "isNew": false,
+      "added_at": "2026-07-17T08:14:33.455Z"
+    },
+    {
+      "name": "roberta-medium-amharic",
+      "org": "rasyosef",
+      "badge": "Masked LM",
+      "growth": 66,
+      "dl": 183,
+      "lang": null,
+      "desc": "",
+      "id": "rasyosef/roberta-medium-amharic",
+      "isNew": false,
+      "added_at": "2026-07-17T08:14:33.455Z"
+    },
+    {
+      "name": "Ethio-ASR-oromo",
+      "org": "badrex",
+      "badge": "ASR",
+      "growth": 58,
+      "dl": 60,
+      "lang": null,
+      "desc": "",
+      "id": "badrex/Ethio-ASR-oromo",
+      "isNew": false,
+      "added_at": "2026-07-17T08:14:34.269Z"
     }
   ],
-  "label": "Most Downloaded"
+  "label": "Trending This Week"
 }

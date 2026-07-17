@@ -1,6 +1,39 @@
 {
   "data": [
     {
+      "arxiv_id": "2607.15209v1",
+      "title": "Expanding the Lexicon of Ge'ez Based African Languages: A Comparative Study of Amharic and Tigrinya",
+      "authors": [
+        "Hailay Kidu Teklehaymanot",
+        "Debela Desalegn Yadeta",
+        "Wolfgang Nejdl"
+      ],
+      "abstract": "Multilingual pre-trained language models (PLMs) exhibit degraded performance on low-resource, non-Latin-script languages, driven by high out-of-vocabulary (OOV) rates and excessive subword fragmentation that result from Latin-script-centric tokenizer training. We introduce VEXMLM, a vocabulary-extended variant of XLM-R targeting the two highest-resource Ge'ez-script languages, Amharic and Tigrinya, and further evaluated on 17 additional low-resource African languages (19 total). We train a language-specific SentencePiece tokenizer on curated Amharic and Tigrinya monolingual corpora, extend XLM-R's vocabulary with 30,000 Ge'ez-script subwords derived from this tokenizer, and initialize their embeddings by averaging the embeddings of their constituent subwords under XLM-R's original tokenizer. VEXMLM is trained in two stages: (1) continued masked language modeling over the extended vocabulary on the curated corpora, and (2) supervised fine-tuning on question answering (QA), named entity recognition (NER), and sentiment analysis (SA). On Amharic/Tigrinya QA, VEXMLM achieves 87.0 EM /90.0 F1, versus 66.0 EM/78.0 F1 for XLM-R and 74.0 EM/ 78.0 F1 for Glot500. On SA, VEXMLM reaches 80.0\\% accuracy versus 77.0\\% (XLM-R) and 46.0\\% (Glot500). On NER, VEXMLM raises OOV-token entity accuracy from 81.4\\% to 94.3\\%, averaged over 11 of the 19 evaluated languages for which OOV analysis was possible. Our contributions are: (i) a vocabulary-extension and embedding-initialization procedure tailored to Ge'ez script; (ii) a two-stage training strategy under which vocabulary and continued-pretraining gains on Amharic/Tigrinya transfer to 17 typologically related, unaugmented African languages; and (iii) an evaluation spanning both intrinsic tokenization metrics (vocabulary coverage, fertility, OOV rate) and extrinsic task performance across all 19 languages.",
+      "published_date": "2026-07-16T17:08:28Z",
+      "updated_date": "2026-07-16T17:08:28Z",
+      "url": "https://arxiv.org/abs/2607.15209v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "_type": "paper",
+      "name": "Expanding the Lexicon of Ge'ez Based African Languages: A Comparative Study of Amharic and Tigrinya",
+      "org": "Hailay Kidu Teklehaymanot, Debela Desalegn Yadeta, Wolfgang Nejdl",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "Multilingual pre-trained language models (PLMs) exhibit degraded performance on low-resource, non-Latin-script languages, driven by high out-of-vocabulary (OOV) rates and excessive subword fragmentation that result from Latin-script-centric tokenizer training. We introduce VEXMLM, a vocabulary-extended variant of XLM-R targeting the two highest-resource Ge'ez-script languages, Amharic and Tigrinya, and further evaluated on 17 additional low-resource African languages (19 total). We train a language-specific SentencePiece tokenizer on curated Amharic and Tigrinya monolingual corpora, extend XLM-R's vocabulary with 30,000 Ge'ez-script subwords derived from this tokenizer, and initialize their embeddings by averaging the embeddings of their constituent subwords under XLM-R's original tokenizer. VEXMLM is trained in two stages: (1) continued masked language modeling over the extended vocabulary on the curated corpora, and (2) supervised fine-tuning on question answering (QA), named entity recognition (NER), and sentiment analysis (SA). On Amharic/Tigrinya QA, VEXMLM achieves 87.0 EM /90.0 F1, versus 66.0 EM/78.0 F1 for XLM-R and 74.0 EM/ 78.0 F1 for Glot500. On SA, VEXMLM reaches 80.0\\% accuracy versus 77.0\\% (XLM-R) and 46.0\\% (Glot500). On NER, VEXMLM raises OOV-token entity accuracy from 81.4\\% to 94.3\\%, averaged over 11 of the 19 evaluated languages for which OOV analysis was possible. Our contributions are: (i) a vocabulary-extension and embedding-initialization procedure tailored to Ge'ez script; (ii) a two-stage training strategy under which vocabulary and continued-pretraining gains on Amharic/Tigrinya transfer to 17 typologically related, unaugmented African languages; and (iii) an evaluation spanning both intrinsic tokenization metrics (vocabulary coverage, fertility, OOV rate) and extrinsic task performance across all 19 languages.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2605.24556v1",
       "title": "The Multilingual Curse at the Retrieval Layer: Evidence from Amharic",
       "authors": [
@@ -702,46 +735,6 @@
       "verified": false
     },
     {
-      "arxiv_id": "2201.02710v1",
-      "title": "A New Amharic Speech Emotion Dataset and Classification Benchmark",
-      "authors": [
-        "Ephrem A. Retta",
-        "Eiad Almekhlafi",
-        "Richard Sutcliffe",
-        "Mustafa Mhamed",
-        "Haider Ali",
-        "Jun Feng"
-      ],
-      "abstract": "In this paper we present the Amharic Speech Emotion Dataset (ASED), which covers four dialects (Gojjam, Wollo, Shewa and Gonder) and five different emotions (neutral, fearful, happy, sad and angry). We believe it is the first Speech Emotion Recognition (SER) dataset for the Amharic language. 65 volunteer participants, all native speakers, recorded 2,474 sound samples, two to four seconds in length. Eight judges assigned emotions to the samples with high agreement level (Fleiss kappa = 0.8). The resulting dataset is freely available for download. Next, we developed a four-layer variant of the well-known VGG model which we call VGGb. Three experiments were then carried out using VGGb for SER, using ASED. First, we investigated whether Mel-spectrogram features or Mel-frequency Cepstral coefficient (MFCC) features work best for Amharic. This was done by training two VGGb SER models on ASED, one using Mel-spectrograms and the other using MFCC. Four forms of training were tried, standard cross-validation, and three variants based on sentences, dialects and speaker groups. Thus, a sentence used for training would not be used for testing, and the same for a dialect and speaker group. The conclusion was that MFCC features are superior under all four training schemes. MFCC was therefore adopted for Experiment 2, where VGGb and three other existing models were compared on ASED: RESNet50, Alex-Net and LSTM. VGGb was found to have very good accuracy (90.73%) as well as the fastest training time. In Experiment 3, the performance of VGGb was compared when trained on two existing SER datasets, RAVDESS (English) and EMO-DB (German) as well as on ASED (Amharic). Results are comparable across these languages, with ASED being the highest. This suggests that VGGb can be successfully applied to other languages. We hope that ASED will encourage researchers to experiment with other models for Amharic SER.",
-      "published_date": "2022-01-07T23:50:34Z",
-      "updated_date": "2022-01-07T23:50:34Z",
-      "url": "https://arxiv.org/abs/2201.02710v1",
-      "categories": [
-        "cs.CL",
-        "cs.SD",
-        "eess.AS"
-      ],
-      "_type": "paper",
-      "name": "A New Amharic Speech Emotion Dataset and Classification Benchmark",
-      "org": "Ephrem A. Retta, Eiad Almekhlafi, Richard Sutcliffe, Mustafa Mhamed, Haider Ali, Jun Feng",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "In this paper we present the Amharic Speech Emotion Dataset (ASED), which covers four dialects (Gojjam, Wollo, Shewa and Gonder) and five different emotions (neutral, fearful, happy, sad and angry). We believe it is the first Speech Emotion Recognition (SER) dataset for the Amharic language. 65 volunteer participants, all native speakers, recorded 2,474 sound samples, two to four seconds in length. Eight judges assigned emotions to the samples with high agreement level (Fleiss kappa = 0.8). The resulting dataset is freely available for download. Next, we developed a four-layer variant of the well-known VGG model which we call VGGb. Three experiments were then carried out using VGGb for SER, using ASED. First, we investigated whether Mel-spectrogram features or Mel-frequency Cepstral coefficient (MFCC) features work best for Amharic. This was done by training two VGGb SER models on ASED, one using Mel-spectrograms and the other using MFCC. Four forms of training were tried, standard cross-validation, and three variants based on sentences, dialects and speaker groups. Thus, a sentence used for training would not be used for testing, and the same for a dialect and speaker group. The conclusion was that MFCC features are superior under all four training schemes. MFCC was therefore adopted for Experiment 2, where VGGb and three other existing models were compared on ASED: RESNet50, Alex-Net and LSTM. VGGb was found to have very good accuracy (90.73%) as well as the fastest training time. In Experiment 3, the performance of VGGb was compared when trained on two existing SER datasets, RAVDESS (English) and EMO-DB (German) as well as on ASED (Amharic). Results are comparable across these languages, with ASED being the highest. This suggests that VGGb can be successfully applied to other languages. We hope that ASED will encourage researchers to experiment with other models for Amharic SER.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CL",
-        "cs.SD",
-        "eess.AS"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
       "arxiv_id": "2604.20813v1",
       "title": "Adapting TrOCR for Printed Tigrinya Text Recognition: Word-Aware Loss Weighting for Cross-Script Transfer Learning",
       "authors": [
@@ -1278,6 +1271,46 @@
       "isNew": false,
       "tags": [
         "cs.CL"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
+      "arxiv_id": "2201.02710v1",
+      "title": "A New Amharic Speech Emotion Dataset and Classification Benchmark",
+      "authors": [
+        "Ephrem A. Retta",
+        "Eiad Almekhlafi",
+        "Richard Sutcliffe",
+        "Mustafa Mhamed",
+        "Haider Ali",
+        "Jun Feng"
+      ],
+      "abstract": "In this paper we present the Amharic Speech Emotion Dataset (ASED), which covers four dialects (Gojjam, Wollo, Shewa and Gonder) and five different emotions (neutral, fearful, happy, sad and angry). We believe it is the first Speech Emotion Recognition (SER) dataset for the Amharic language. 65 volunteer participants, all native speakers, recorded 2,474 sound samples, two to four seconds in length. Eight judges assigned emotions to the samples with high agreement level (Fleiss kappa = 0.8). The resulting dataset is freely available for download. Next, we developed a four-layer variant of the well-known VGG model which we call VGGb. Three experiments were then carried out using VGGb for SER, using ASED. First, we investigated whether Mel-spectrogram features or Mel-frequency Cepstral coefficient (MFCC) features work best for Amharic. This was done by training two VGGb SER models on ASED, one using Mel-spectrograms and the other using MFCC. Four forms of training were tried, standard cross-validation, and three variants based on sentences, dialects and speaker groups. Thus, a sentence used for training would not be used for testing, and the same for a dialect and speaker group. The conclusion was that MFCC features are superior under all four training schemes. MFCC was therefore adopted for Experiment 2, where VGGb and three other existing models were compared on ASED: RESNet50, Alex-Net and LSTM. VGGb was found to have very good accuracy (90.73%) as well as the fastest training time. In Experiment 3, the performance of VGGb was compared when trained on two existing SER datasets, RAVDESS (English) and EMO-DB (German) as well as on ASED (Amharic). Results are comparable across these languages, with ASED being the highest. This suggests that VGGb can be successfully applied to other languages. We hope that ASED will encourage researchers to experiment with other models for Amharic SER.",
+      "published_date": "2022-01-07T23:50:34Z",
+      "updated_date": "2022-01-07T23:50:34Z",
+      "url": "https://arxiv.org/abs/2201.02710v1",
+      "categories": [
+        "cs.CL",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "_type": "paper",
+      "name": "A New Amharic Speech Emotion Dataset and Classification Benchmark",
+      "org": "Ephrem A. Retta, Eiad Almekhlafi, Richard Sutcliffe, Mustafa Mhamed, Haider Ali, Jun Feng",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "In this paper we present the Amharic Speech Emotion Dataset (ASED), which covers four dialects (Gojjam, Wollo, Shewa and Gonder) and five different emotions (neutral, fearful, happy, sad and angry). We believe it is the first Speech Emotion Recognition (SER) dataset for the Amharic language. 65 volunteer participants, all native speakers, recorded 2,474 sound samples, two to four seconds in length. Eight judges assigned emotions to the samples with high agreement level (Fleiss kappa = 0.8). The resulting dataset is freely available for download. Next, we developed a four-layer variant of the well-known VGG model which we call VGGb. Three experiments were then carried out using VGGb for SER, using ASED. First, we investigated whether Mel-spectrogram features or Mel-frequency Cepstral coefficient (MFCC) features work best for Amharic. This was done by training two VGGb SER models on ASED, one using Mel-spectrograms and the other using MFCC. Four forms of training were tried, standard cross-validation, and three variants based on sentences, dialects and speaker groups. Thus, a sentence used for training would not be used for testing, and the same for a dialect and speaker group. The conclusion was that MFCC features are superior under all four training schemes. MFCC was therefore adopted for Experiment 2, where VGGb and three other existing models were compared on ASED: RESNet50, Alex-Net and LSTM. VGGb was found to have very good accuracy (90.73%) as well as the fastest training time. In Experiment 3, the performance of VGGb was compared when trained on two existing SER datasets, RAVDESS (English) and EMO-DB (German) as well as on ASED (Amharic). Results are comparable across these languages, with ASED being the highest. This suggests that VGGb can be successfully applied to other languages. We hope that ASED will encourage researchers to experiment with other models for Amharic SER.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL",
+        "cs.SD",
+        "eess.AS"
       ],
       "downloads_monthly": 0,
       "likes": 0,
@@ -2279,42 +2312,6 @@
       "isNew": false,
       "tags": [
         "cs.CL"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
-      "arxiv_id": "2304.12979v1",
-      "title": "GMNLP at SemEval-2023 Task 12: Sentiment Analysis with Phylogeny-Based Adapters",
-      "authors": [
-        "Md Mahfuz Ibn Alam",
-        "Ruoyu Xie",
-        "Fahim Faisal",
-        "Antonios Anastasopoulos"
-      ],
-      "abstract": "This report describes GMU's sentiment analysis system for the SemEval-2023 shared task AfriSenti-SemEval. We participated in all three sub-tasks: Monolingual, Multilingual, and Zero-Shot. Our approach uses models initialized with AfroXLMR-large, a pre-trained multilingual language model trained on African languages and fine-tuned correspondingly. We also introduce augmented training data along with original training data. Alongside finetuning, we perform phylogeny-based adapter tuning to create several models and ensemble the best models for the final submission. Our system achieves the best F1-score on track 5: Amharic, with 6.2 points higher F1-score than the second-best performing system on this track. Overall, our system ranks 5th among the 10 systems participating in all 15 tracks.",
-      "published_date": "2023-04-25T16:39:51Z",
-      "updated_date": "2023-04-25T16:39:51Z",
-      "url": "https://arxiv.org/abs/2304.12979v1",
-      "categories": [
-        "cs.CL",
-        "cs.LG"
-      ],
-      "_type": "paper",
-      "name": "GMNLP at SemEval-2023 Task 12: Sentiment Analysis with Phylogeny-Based Adapters",
-      "org": "Md Mahfuz Ibn Alam, Ruoyu Xie, Fahim Faisal, Antonios Anastasopoulos",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "This report describes GMU's sentiment analysis system for the SemEval-2023 shared task AfriSenti-SemEval. We participated in all three sub-tasks: Monolingual, Multilingual, and Zero-Shot. Our approach uses models initialized with AfroXLMR-large, a pre-trained multilingual language model trained on African languages and fine-tuned correspondingly. We also introduce augmented training data along with original training data. Alongside finetuning, we perform phylogeny-based adapter tuning to create several models and ensemble the best models for the final submission. Our system achieves the best F1-score on track 5: Amharic, with 6.2 points higher F1-score than the second-best performing system on this track. Overall, our system ranks 5th among the 10 systems participating in all 15 tracks.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CL",
-        "cs.LG"
       ],
       "downloads_monthly": 0,
       "likes": 0,

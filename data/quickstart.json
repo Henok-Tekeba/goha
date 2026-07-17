@@ -6,11 +6,37 @@
       "description": "Production-ready ASR models for Amharic, Oromo, Tigrinya and more.",
       "items": [
         {
-          "name": "omnivoice-amharic",
-          "org": "ethiopian-Demtse",
+          "name": "wav2vec2-large-xlsr-53-amharic",
+          "org": "agkphysics",
           "badge": "ASR",
           "bc": "b-asr",
-          "dl": 38,
+          "dl": 77668,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "shook-medium-amharic-2k",
+          "org": "b1n1yam",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 408,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "Ethio-ASR-amharic",
+          "org": "badrex",
+          "badge": "ASR",
+          "bc": "b-asr",
+          "dl": 406,
           "lang": null,
           "verdict": {
             "label": "New",
@@ -26,24 +52,11 @@
       "description": "The models with the most community traction — start here.",
       "items": [
         {
-          "name": "Ethiopia_Flux_LoRA",
-          "org": "obann001",
-          "badge": "Image Gen",
-          "bc": "b-default",
-          "dl": 194,
-          "lang": null,
-          "verdict": {
-            "label": "New",
-            "icon": "new",
-            "type": "new"
-          }
-        },
-        {
-          "name": "omnivoice-amharic",
-          "org": "ethiopian-Demtse",
+          "name": "wav2vec2-large-xlsr-53-amharic",
+          "org": "agkphysics",
           "badge": "ASR",
           "bc": "b-asr",
-          "dl": 38,
+          "dl": 77668,
           "lang": null,
           "verdict": {
             "label": "New",
@@ -52,11 +65,24 @@
           }
         },
         {
-          "name": "Ethiopia_sdxl_lora",
-          "org": "obann001",
-          "badge": "Image Gen",
+          "name": "bert-small-amharic",
+          "org": "rasyosef",
+          "badge": "Masked LM",
           "bc": "b-default",
-          "dl": 32,
+          "dl": 6359,
+          "lang": null,
+          "verdict": {
+            "label": "New",
+            "icon": "new",
+            "type": "new"
+          }
+        },
+        {
+          "name": "roberta-base-amharic",
+          "org": "rasyosef",
+          "badge": "Masked LM",
+          "bc": "b-default",
+          "dl": 1710,
           "lang": null,
           "verdict": {
             "label": "New",
