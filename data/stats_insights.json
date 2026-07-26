@@ -4,18 +4,18 @@
       "id": "rasyosef/bert-small-amharic",
       "name": "bert-small-amharic",
       "org": "rasyosef",
-      "gain": 8198,
+      "gain": 8196,
       "growth": 130,
       "start": 6328,
-      "end": 14526
+      "end": 14524
     },
     {
       "id": "rasyosef/reranker-amharic-base",
       "name": "reranker-amharic-base",
       "org": "rasyosef",
-      "gain": 210,
-      "growth": 236,
-      "start": 89,
+      "gain": 211,
+      "growth": 240,
+      "start": 88,
       "end": 299
     },
     {
@@ -28,76 +28,67 @@
       "end": 1772
     },
     {
-      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
-      "name": "amharic-property-retriever-afro-xlmr-base",
-      "org": "dice-research",
-      "gain": 77,
-      "growth": 29,
-      "start": 268,
-      "end": 345
-    },
-    {
       "id": "rasyosef/bert-medium-amharic",
       "name": "bert-medium-amharic",
       "org": "rasyosef",
-      "gain": 55,
-      "growth": 31,
-      "start": 180,
-      "end": 235
+      "gain": 78,
+      "growth": 48,
+      "start": 164,
+      "end": 242
     },
     {
-      "id": "b1n1yam/shook-medium-amharic-2k",
-      "name": "shook-medium-amharic-2k",
-      "org": "b1n1yam",
-      "gain": 51,
-      "growth": 12,
-      "start": 428,
-      "end": 479
+      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
+      "name": "amharic-property-retriever-afro-xlmr-base",
+      "org": "dice-research",
+      "gain": 76,
+      "growth": 28,
+      "start": 268,
+      "end": 344
     },
     {
       "id": "obann001/Ethiopia_Flux_LoRA",
       "name": "Ethiopia_Flux_LoRA",
       "org": "obann001",
-      "gain": 50,
-      "growth": 26,
-      "start": 192,
-      "end": 242
+      "gain": 55,
+      "growth": 29,
+      "start": 188,
+      "end": 243
     },
     {
       "id": "badrex/Ethio-ASR-amharic",
       "name": "Ethio-ASR-amharic",
       "org": "badrex",
-      "gain": 44,
+      "gain": 45,
       "growth": 11,
-      "start": 408,
+      "start": 407,
       "end": 452
     },
     {
       "id": "rasyosef/roberta-amharic-text-embedding-base",
       "name": "roberta-amharic-text-embedding-base",
       "org": "rasyosef",
-      "gain": 42,
-      "growth": 50,
-      "start": 84,
+      "gain": 44,
+      "growth": 54,
+      "start": 82,
       "end": 126
     },
     {
       "id": "dice-research/amharic-property-retriever-base-xlmr",
       "name": "amharic-property-retriever-base-xlmr",
       "org": "dice-research",
-      "gain": 32,
-      "growth": 59,
-      "start": 54,
+      "gain": 33,
+      "growth": 62,
+      "start": 53,
       "end": 86
     },
     {
       "id": "dice-research/amharic-property-retriever-mbert",
       "name": "amharic-property-retriever-mbert",
       "org": "dice-research",
-      "gain": 31,
-      "growth": 49,
+      "gain": 30,
+      "growth": 48,
       "start": 63,
-      "end": 94
+      "end": 93
     },
     {
       "id": "rasyosef/bert-amharic-text-embedding-medium",
@@ -109,13 +100,22 @@
       "end": 89
     },
     {
-      "id": "Desalegnn/Desu1-xlm-roberta-base-amharic-embed-45k",
-      "name": "Desu1-xlm-roberta-base-amharic-embed-45k",
-      "org": "Desalegnn",
-      "gain": 30,
-      "growth": 59,
-      "start": 51,
-      "end": 81
+      "id": "rasyosef/Llama-3.2-1B-Amharic-Instruct",
+      "name": "Llama-3.2-1B-Amharic-Instruct",
+      "org": "rasyosef",
+      "gain": 29,
+      "growth": 14,
+      "start": 201,
+      "end": 230
+    },
+    {
+      "id": "african-low-resource/omnivoice-amharic",
+      "name": "omnivoice-amharic",
+      "org": "african-low-resource",
+      "gain": 29,
+      "growth": 34,
+      "start": 86,
+      "end": 115
     },
     {
       "id": "yosefw/bert-amharic-embed-small",
@@ -136,13 +136,22 @@
       "end": 88
     },
     {
+      "id": "Desalegnn/Desu1-xlm-roberta-base-amharic-embed-45k",
+      "name": "Desu1-xlm-roberta-base-amharic-embed-45k",
+      "org": "Desalegnn",
+      "gain": 28,
+      "growth": 55,
+      "start": 51,
+      "end": 79
+    },
+    {
       "id": "yosefw/roberta-amharic-embed-base",
       "name": "roberta-amharic-embed-base",
       "org": "yosefw",
-      "gain": 27,
-      "growth": 56,
+      "gain": 28,
+      "growth": 58,
       "start": 48,
-      "end": 75
+      "end": 76
     },
     {
       "id": "Samuael/geez_t5-15k",
@@ -163,21 +172,12 @@
       "end": 76
     },
     {
-      "id": "rasyosef/Llama-3.2-1B-Amharic-Instruct",
-      "name": "Llama-3.2-1B-Amharic-Instruct",
-      "org": "rasyosef",
-      "gain": 24,
-      "growth": 12,
-      "start": 206,
-      "end": 230
-    },
-    {
-      "id": "yosefw/SPLADE-RoBERTa-Amharic-Base-V4",
-      "name": "SPLADE-RoBERTa-Amharic-Base-V4",
-      "org": "yosefw",
-      "gain": 21,
-      "growth": 44,
-      "start": 48,
+      "id": "seyyaw/whisper-finetuned-amharic",
+      "name": "whisper-finetuned-amharic",
+      "org": "seyyaw",
+      "gain": 22,
+      "growth": 47,
+      "start": 47,
       "end": 69
     }
   ],
@@ -185,20 +185,26 @@
     {
       "id": "rasyosef/bert-small-amharic",
       "milestone": 10000,
-      "downloads": 14526,
-      "date": "2026-07-25"
+      "downloads": 14524,
+      "date": "2026-07-26"
     },
     {
       "id": "rasyosef/reranker-amharic-base",
       "milestone": 100,
       "downloads": 299,
-      "date": "2026-07-25"
+      "date": "2026-07-26"
     },
     {
       "id": "rasyosef/roberta-amharic-text-embedding-base",
       "milestone": 100,
       "downloads": 126,
-      "date": "2026-07-25"
+      "date": "2026-07-26"
+    },
+    {
+      "id": "african-low-resource/omnivoice-amharic",
+      "milestone": 100,
+      "downloads": 115,
+      "date": "2026-07-26"
     }
   ]
 }
