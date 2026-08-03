@@ -4,55 +4,64 @@
       "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
       "name": "wav2vec2-large-xlsr-53-amharic",
       "org": "agkphysics",
-      "gain": 39104,
+      "gain": 39100,
       "growth": 78,
-      "start": 49955,
-      "end": 89059
+      "start": 49957,
+      "end": 89057
     },
     {
       "id": "rasyosef/reranker-amharic-base",
       "name": "reranker-amharic-base",
       "org": "rasyosef",
-      "gain": 1623,
-      "growth": 543,
+      "gain": 1622,
+      "growth": 542,
       "start": 299,
-      "end": 1922
+      "end": 1921
     },
     {
       "id": "badrex/Ethio-ASR-amharic",
       "name": "Ethio-ASR-amharic",
       "org": "badrex",
-      "gain": 549,
-      "growth": 118,
-      "start": 465,
-      "end": 1014
+      "gain": 423,
+      "growth": 73,
+      "start": 581,
+      "end": 1004
     },
     {
       "id": "b1n1yam/shook-medium-amharic-2k",
       "name": "shook-medium-amharic-2k",
       "org": "b1n1yam",
       "gain": 155,
-      "growth": 37,
-      "start": 420,
-      "end": 575
+      "growth": 36,
+      "start": 427,
+      "end": 582
     },
     {
       "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
       "name": "bert-base-multilingual-cased-finetuned-amharic",
       "org": "Davlan",
-      "gain": 72,
-      "growth": 11,
-      "start": 631,
-      "end": 703
+      "gain": 78,
+      "growth": 12,
+      "start": 635,
+      "end": 713
     },
     {
       "id": "african-low-resource/omnivoice-amharic",
       "name": "omnivoice-amharic",
       "org": "african-low-resource",
-      "gain": 53,
-      "growth": 46,
+      "gain": 70,
+      "growth": 61,
       "start": 114,
-      "end": 167
+      "end": 184
+    },
+    {
+      "id": "badrex/Ethio-ASR-tigrinya",
+      "name": "Ethio-ASR-tigrinya",
+      "org": "badrex",
+      "gain": 69,
+      "growth": 19,
+      "start": 361,
+      "end": 430
     },
     {
       "id": "b1n1yam/shook-tiny-amharic-600hr",
@@ -82,49 +91,40 @@
       "end": 67
     },
     {
+      "id": "rasyosef/roberta-amharic-text-embedding-base",
+      "name": "roberta-amharic-text-embedding-base",
+      "org": "rasyosef",
+      "gain": 30,
+      "growth": 24,
+      "start": 126,
+      "end": 156
+    },
+    {
       "id": "rasyosef/roberta-amharic-text-embedding-medium",
       "name": "roberta-amharic-text-embedding-medium",
       "org": "rasyosef",
       "gain": 29,
-      "growth": 33,
-      "start": 89,
-      "end": 118
-    },
-    {
-      "id": "rasyosef/roberta-amharic-text-embedding-base",
-      "name": "roberta-amharic-text-embedding-base",
-      "org": "rasyosef",
-      "gain": 27,
-      "growth": 21,
-      "start": 126,
-      "end": 153
+      "growth": 32,
+      "start": 90,
+      "end": 119
     },
     {
       "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
       "name": "amharic-property-retriever-afro-xlmr-base",
       "org": "dice-research",
-      "gain": 26,
-      "growth": 8,
-      "start": 342,
-      "end": 368
-    },
-    {
-      "id": "badrex/Ethio-ASR-tigrinya",
-      "name": "Ethio-ASR-tigrinya",
-      "org": "badrex",
-      "gain": 21,
-      "growth": 6,
-      "start": 351,
-      "end": 372
+      "gain": 25,
+      "growth": 7,
+      "start": 344,
+      "end": 369
     },
     {
       "id": "Desalegnn/Desu1-xlm-roberta-base-amharic-embed-45k",
       "name": "Desu1-xlm-roberta-base-amharic-embed-45k",
       "org": "Desalegnn",
-      "gain": 20,
-      "growth": 26,
+      "gain": 21,
+      "growth": 27,
       "start": 78,
-      "end": 98
+      "end": 99
     },
     {
       "id": "yosefw/bert-amharic-embed-small",
@@ -154,22 +154,22 @@
       "end": 95
     },
     {
-      "id": "dice-research/amharic-property-retriever-mbert",
-      "name": "amharic-property-retriever-mbert",
-      "org": "dice-research",
+      "id": "rasyosef/bert-amharic-text-embedding-medium",
+      "name": "bert-amharic-text-embedding-medium",
+      "org": "rasyosef",
       "gain": 18,
       "growth": 20,
       "start": 90,
       "end": 108
     },
     {
-      "id": "dice-research/amharic-property-retriever-base-xlmr",
-      "name": "amharic-property-retriever-base-xlmr",
-      "org": "dice-research",
+      "id": "yosefw/SPLADE-RoBERTa-Amharic-Base-V4",
+      "name": "SPLADE-RoBERTa-Amharic-Base-V4",
+      "org": "yosefw",
       "gain": 18,
-      "growth": 21,
-      "start": 85,
-      "end": 103
+      "growth": 26,
+      "start": 69,
+      "end": 87
     },
     {
       "id": "Desalegnn/Desu-snowflake-arctic-embed-l-v2.0-finetuned-amharic-45k",
@@ -185,62 +185,56 @@
     {
       "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
       "milestone": 50000,
-      "downloads": 89059,
-      "date": "2026-08-02"
+      "downloads": 89057,
+      "date": "2026-08-03"
     },
     {
       "id": "rasyosef/reranker-amharic-base",
       "milestone": 500,
-      "downloads": 1922,
-      "date": "2026-08-02"
+      "downloads": 1921,
+      "date": "2026-08-03"
     },
     {
       "id": "rasyosef/reranker-amharic-base",
       "milestone": 1000,
-      "downloads": 1922,
-      "date": "2026-08-02"
-    },
-    {
-      "id": "badrex/Ethio-ASR-amharic",
-      "milestone": 500,
-      "downloads": 1014,
-      "date": "2026-08-02"
+      "downloads": 1921,
+      "date": "2026-08-03"
     },
     {
       "id": "badrex/Ethio-ASR-amharic",
       "milestone": 1000,
-      "downloads": 1014,
-      "date": "2026-08-02"
+      "downloads": 1004,
+      "date": "2026-08-03"
     },
     {
       "id": "b1n1yam/shook-medium-amharic-2k",
       "milestone": 500,
-      "downloads": 575,
-      "date": "2026-08-02"
+      "downloads": 582,
+      "date": "2026-08-03"
     },
     {
       "id": "rasyosef/roberta-amharic-text-embedding-medium",
       "milestone": 100,
-      "downloads": 118,
-      "date": "2026-08-02"
-    },
-    {
-      "id": "dice-research/amharic-property-retriever-mbert",
-      "milestone": 100,
-      "downloads": 108,
-      "date": "2026-08-02"
+      "downloads": 119,
+      "date": "2026-08-03"
     },
     {
       "id": "rasyosef/bert-amharic-text-embedding-medium",
       "milestone": 100,
-      "downloads": 105,
-      "date": "2026-08-02"
+      "downloads": 108,
+      "date": "2026-08-03"
+    },
+    {
+      "id": "dice-research/amharic-property-retriever-mbert",
+      "milestone": 100,
+      "downloads": 107,
+      "date": "2026-08-03"
     },
     {
       "id": "dice-research/amharic-property-retriever-base-xlmr",
       "milestone": 100,
-      "downloads": 103,
-      "date": "2026-08-02"
+      "downloads": 101,
+      "date": "2026-08-03"
     }
   ]
 }
