@@ -4,82 +4,73 @@
       "id": "badrex/Ethio-ASR-tigrinya",
       "name": "Ethio-ASR-tigrinya",
       "org": "badrex",
-      "gain": 168,
-      "growth": 45,
-      "start": 377,
+      "gain": 167,
+      "growth": 44,
+      "start": 378,
       "end": 545
-    },
-    {
-      "id": "badrex/Ethio-ASR-amharic",
-      "name": "Ethio-ASR-amharic",
-      "org": "badrex",
-      "gain": 75,
-      "growth": 7,
-      "start": 1010,
-      "end": 1085
     },
     {
       "id": "b1n1yam/shook-medium-amharic-2k",
       "name": "shook-medium-amharic-2k",
       "org": "b1n1yam",
-      "gain": 71,
+      "gain": 73,
       "growth": 13,
-      "start": 557,
+      "start": 555,
       "end": 628
+    },
+    {
+      "id": "badrex/Ethio-ASR-amharic",
+      "name": "Ethio-ASR-amharic",
+      "org": "badrex",
+      "gain": 58,
+      "growth": 6,
+      "start": 1027,
+      "end": 1085
     },
     {
       "id": "rasyosef/roberta-amharic-text-embedding-base",
       "name": "roberta-amharic-text-embedding-base",
       "org": "rasyosef",
-      "gain": 58,
-      "growth": 39,
-      "start": 147,
+      "gain": 55,
+      "growth": 37,
+      "start": 150,
       "end": 205
     },
     {
       "id": "badrex/Ethio-ASR-oromo",
       "name": "Ethio-ASR-oromo",
       "org": "badrex",
-      "gain": 52,
-      "growth": 87,
-      "start": 60,
+      "gain": 51,
+      "growth": 84,
+      "start": 61,
       "end": 112
-    },
-    {
-      "id": "african-low-resource/omnivoice-amharic",
-      "name": "omnivoice-amharic",
-      "org": "african-low-resource",
-      "gain": 47,
-      "growth": 36,
-      "start": 131,
-      "end": 178
-    },
-    {
-      "id": "ethiopian-Demtse/omnivoice-amharic",
-      "name": "omnivoice-amharic",
-      "org": "ethiopian-Demtse",
-      "gain": 18,
-      "growth": 38,
-      "start": 47,
-      "end": 65
     },
     {
       "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
       "name": "bert-base-multilingual-cased-finetuned-amharic",
       "org": "Davlan",
-      "gain": 14,
+      "gain": 15,
       "growth": 2,
       "start": 704,
-      "end": 718
+      "end": 719
     },
     {
-      "id": "Hailay/fasttext-tigrinya",
-      "name": "fasttext-tigrinya",
-      "org": "Hailay",
+      "id": "ethiopian-Demtse/omnivoice-amharic",
+      "name": "omnivoice-amharic",
+      "org": "ethiopian-Demtse",
+      "gain": 15,
+      "growth": 30,
+      "start": 50,
+      "end": 65
+    },
+    {
+      "id": "african-low-resource/omnivoice-amharic",
+      "name": "omnivoice-amharic",
+      "org": "african-low-resource",
       "gain": 14,
-      "growth": 0,
-      "start": 0,
-      "end": 14
+      "growth": 9,
+      "start": 164,
+      "end": 178
     },
     {
       "id": "rasyosef/Llama-3.2-1B-Amharic-Instruct",
@@ -127,6 +118,15 @@
       "end": 39
     },
     {
+      "id": "Hailay/fasttext-tigrinya",
+      "name": "fasttext-tigrinya",
+      "org": "Hailay",
+      "gain": 8,
+      "growth": 133,
+      "start": 6,
+      "end": 14
+    },
+    {
       "id": "yosefw/llama-3.2-amharic-32k-1024-v4",
       "name": "llama-3.2-amharic-32k-1024-v4",
       "org": "yosefw",
@@ -143,15 +143,6 @@
       "growth": 5,
       "start": 147,
       "end": 154
-    },
-    {
-      "id": "rasyosef/roberta-amharic-text-embedding-medium",
-      "name": "roberta-amharic-text-embedding-medium",
-      "org": "rasyosef",
-      "gain": 7,
-      "growth": 6,
-      "start": 111,
-      "end": 118
     },
     {
       "id": "uhhlt/amharic-hate-speech",
@@ -172,13 +163,22 @@
       "end": 99
     },
     {
-      "id": "speechbrain/asr-wav2vec2-dvoice-amharic",
-      "name": "asr-wav2vec2-dvoice-amharic",
-      "org": "speechbrain",
-      "gain": 6,
-      "growth": 8,
-      "start": 75,
-      "end": 81
+      "id": "rasyosef/bert-medium-amharic",
+      "name": "bert-medium-amharic",
+      "org": "rasyosef",
+      "gain": 5,
+      "growth": 2,
+      "start": 218,
+      "end": 223
+    },
+    {
+      "id": "rasyosef/roberta-amharic-text-embedding-medium",
+      "name": "roberta-amharic-text-embedding-medium",
+      "org": "rasyosef",
+      "gain": 5,
+      "growth": 4,
+      "start": 113,
+      "end": 118
     }
   ],
   "milestones": [
@@ -186,19 +186,19 @@
       "id": "chappM/whisper-amharic-small-v2",
       "milestone": 100,
       "downloads": 101,
-      "date": "2026-08-06"
+      "date": "2026-08-07"
     },
     {
       "id": "badrex/Ethio-ASR-oromo",
       "milestone": 100,
       "downloads": 112,
-      "date": "2026-08-06"
+      "date": "2026-08-07"
     },
     {
       "id": "badrex/Ethio-ASR-tigrinya",
       "milestone": 500,
       "downloads": 545,
-      "date": "2026-08-06"
+      "date": "2026-08-07"
     }
   ]
 }
