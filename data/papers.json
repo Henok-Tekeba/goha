@@ -1572,7 +1572,7 @@
       "verified": false
     },
     {
-      "arxiv_id": "2602.09373v1",
+      "arxiv_id": "2602.09373v2",
       "title": "AfriNLLB: Efficient Translation Models for African Languages",
       "authors": [
         "Yasmin Moslem",
@@ -1581,8 +1581,8 @@
       ],
       "abstract": "In this work, we present AfriNLLB, a series of lightweight models for efficient translation from and into African languages. AfriNLLB supports 15 language pairs (30 translation directions), including Swahili, Hausa, Yoruba, Amharic, Somali, Zulu, Lingala, Afrikaans, Wolof, and Egyptian Arabic, as well as other African Union official languages such as Arabic (MSA), French, Portuguese, and Spanish. Our training data covers bidirectional translation between English and 13 languages, and between French and two languages (Lingala and Wolof). AfriNLLB models are based on NLLB-200 600M, which we compress using iterative layer pruning and quantization. We fine-tune the pruned models on parallel corpora we curated for African languages, employing knowledge distillation from a larger teacher model. Our work aims at enabling efficient deployment of translation models for African languages in resource-constrained settings. Our evaluation results demonstrate that AfriNLLB models achieve performance comparable to the baseline while being significantly faster. We release two versions of the AfriNLLB models, a Transformers version that allows further fine-tuning and a CTranslate2 version for efficient inference. Moreover, we release all the training data that we used for fine-tuning the baseline and pruned models to facilitate further research.",
       "published_date": "2026-02-10T03:23:59Z",
-      "updated_date": "2026-02-10T03:23:59Z",
-      "url": "https://arxiv.org/abs/2602.09373v1",
+      "updated_date": "2026-08-07T17:27:46Z",
+      "url": "https://arxiv.org/abs/2602.09373v2",
       "categories": [
         "cs.CL"
       ],
