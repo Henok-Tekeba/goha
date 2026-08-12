@@ -1389,6 +1389,51 @@
       "verified": false
     },
     {
+      "arxiv_id": "2608.11146v1",
+      "title": "The Illusion of Cross-Lingual Safety in Low-Resource Languages",
+      "authors": [
+        "Abigail Oppong",
+        "P Sam Sahil",
+        "Tadesse Destaw Belay",
+        "Maryam Ibrahim Mukhtar",
+        "Esmael Ahmed Abdu",
+        "Tassallah Abdullahi",
+        "Jessica Oparebea",
+        "Saminu Mohammad Aliyu",
+        "Idris Abdulmumin",
+        "Abubakar Juma Chilala",
+        "Nicholaus Dismas Ladislaus",
+        "Alfred Malengo Kondoro",
+        "Lemofouet Valdini Douglace",
+        "Shamsuddeen Hassan Muhammad",
+        "Seid Muhie Yimam"
+      ],
+      "abstract": "Safety alignment in large language models (LLMs) is largely developed in English, assuming these safeguards generalize across multilingual settings. However, this assumption remains underexplored and exposes a vulnerability in low-resource languages. We investigate cross-lingual safety transfer in four African languages, Twi, Hausa, Amharic, and Swahili, using LoDNA, a new safety dataset that pairs literal translations with culturally localized prompts. To move beyond generation-based evaluation, we propose a latent geometric framework that probes hidden-state refusal representations in LLMs. Our experimental results show that cross-lingual safety transfer is severely limited; harmful prompts retain less than 10% of the English refusal signal across most language-model pairs. Literal and localized prompts are semantically aligned (cosine 0.95-0.996) but drift across layers, suggesting models encode the concepts without routing them to safety mechanisms. These findings demonstrate that current multilingual safety alignment is superficial, providing strong evidence against the assumption of a universal, language-agnostic harm manifold within the specific low-resource languages studied. Warning: This paper contains example data that may be offensive or harmful.",
+      "published_date": "2026-08-11T17:05:26Z",
+      "updated_date": "2026-08-11T17:05:26Z",
+      "url": "https://arxiv.org/abs/2608.11146v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "_type": "paper",
+      "name": "The Illusion of Cross-Lingual Safety in Low-Resource Languages",
+      "org": "Abigail Oppong, P Sam Sahil, Tadesse Destaw Belay, Maryam Ibrahim Mukhtar, Esmael Ahmed Abdu, Tassallah Abdullahi, Jessica Oparebea, Saminu Mohammad Aliyu, Idris Abdulmumin, Abubakar Juma Chilala, Nicholaus Dismas Ladislaus, Alfred Malengo Kondoro, Lemofouet Valdini Douglace, Shamsuddeen Hassan Muhammad, Seid Muhie Yimam",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "Safety alignment in large language models (LLMs) is largely developed in English, assuming these safeguards generalize across multilingual settings. However, this assumption remains underexplored and exposes a vulnerability in low-resource languages. We investigate cross-lingual safety transfer in four African languages, Twi, Hausa, Amharic, and Swahili, using LoDNA, a new safety dataset that pairs literal translations with culturally localized prompts. To move beyond generation-based evaluation, we propose a latent geometric framework that probes hidden-state refusal representations in LLMs. Our experimental results show that cross-lingual safety transfer is severely limited; harmful prompts retain less than 10% of the English refusal signal across most language-model pairs. Literal and localized prompts are semantically aligned (cosine 0.95-0.996) but drift across layers, suggesting models encode the concepts without routing them to safety mechanisms. These findings demonstrate that current multilingual safety alignment is superficial, providing strong evidence against the assumption of a universal, language-agnostic harm manifold within the specific low-resource languages studied. Warning: This paper contains example data that may be offensive or harmful.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2607.23058v1",
       "title": "ADAGE: A Language-Agnostic Pipeline for Analogical Reasoning Evaluation",
       "authors": [
@@ -1926,39 +1971,6 @@
       "badge": "Paper",
       "bc": "b-paper",
       "desc": "Task-oriented dialogue (TOD) systems have been widely deployed in many industries as they deliver more efficient customer support. These systems are typically constructed for a single domain or language and do not generalise well beyond this. To support work on Natural Language Understanding (NLU) in TOD across multiple languages and domains simultaneously, we constructed MULTI3NLU++, a multilingual, multi-intent, multi-domain dataset. MULTI3NLU++ extends the English only NLU++ dataset to include manual translations into a range of high, medium, and low resource languages (Spanish, Marathi, Turkish and Amharic), in two domains (BANKING and HOTELS). Because of its multi-intent property, MULTI3NLU++ represents complex and natural user goals, and therefore allows us to measure the realistic performance of TOD systems in a varied set of the world's languages. We use MULTI3NLU++ to benchmark state-of-the-art multilingual models for the NLU tasks of intent detection and slot labelling for TOD systems in the multilingual setting. The results demonstrate the challenging nature of the dataset, particularly in the low-resource language setting, offering ample room for future experimentation in multi-domain multilingual TOD setups.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CL"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
-      "arxiv_id": "2112.08191v1",
-      "title": "Lesan -- Machine Translation for Low Resource Languages",
-      "authors": [
-        "Asmelash Teka Hadgu",
-        "Abel Aregawi",
-        "Adam Beaudoin"
-      ],
-      "abstract": "Millions of people around the world can not access content on the Web because most of the content is not readily available in their language. Machine translation (MT) systems have the potential to change this for many languages. Current MT systems provide very accurate results for high resource language pairs, e.g., German and English. However, for many low resource languages, MT is still under active research. The key challenge is lack of datasets to build these systems. We present Lesan, an MT system for low resource languages. Our pipeline solves the key bottleneck to low resource MT by leveraging online and offline sources, a custom OCR system for Ethiopic and an automatic alignment module. The final step in the pipeline is a sequence to sequence model that takes parallel corpus as input and gives us a translation model. Lesan's translation model is based on the Transformer architecture. After constructing a base model, back translation, is used to leverage monolingual corpora. Currently Lesan supports translation to and from Tigrinya, Amharic and English. We perform extensive human evaluation and show that Lesan outperforms state-of-the-art systems such as Google Translate and Microsoft Translator across all six pairs. Lesan is freely available and has served more than 10 million translations so far. At the moment, there are only 217 Tigrinya and 15,009 Amharic Wikipedia articles. We believe that Lesan will contribute towards democratizing access to the Web through MT for millions of people.",
-      "published_date": "2021-12-15T15:11:53Z",
-      "updated_date": "2021-12-15T15:11:53Z",
-      "url": "https://arxiv.org/abs/2112.08191v1",
-      "categories": [
-        "cs.CL"
-      ],
-      "_type": "paper",
-      "name": "Lesan -- Machine Translation for Low Resource Languages",
-      "org": "Asmelash Teka Hadgu, Abel Aregawi, Adam Beaudoin",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "Millions of people around the world can not access content on the Web because most of the content is not readily available in their language. Machine translation (MT) systems have the potential to change this for many languages. Current MT systems provide very accurate results for high resource language pairs, e.g., German and English. However, for many low resource languages, MT is still under active research. The key challenge is lack of datasets to build these systems. We present Lesan, an MT system for low resource languages. Our pipeline solves the key bottleneck to low resource MT by leveraging online and offline sources, a custom OCR system for Ethiopic and an automatic alignment module. The final step in the pipeline is a sequence to sequence model that takes parallel corpus as input and gives us a translation model. Lesan's translation model is based on the Transformer architecture. After constructing a base model, back translation, is used to leverage monolingual corpora. Currently Lesan supports translation to and from Tigrinya, Amharic and English. We perform extensive human evaluation and show that Lesan outperforms state-of-the-art systems such as Google Translate and Microsoft Translator across all six pairs. Lesan is freely available and has served more than 10 million translations so far. At the moment, there are only 217 Tigrinya and 15,009 Amharic Wikipedia articles. We believe that Lesan will contribute towards democratizing access to the Web through MT for millions of people.",
       "dl": null,
       "lang": null,
       "langs": [],
