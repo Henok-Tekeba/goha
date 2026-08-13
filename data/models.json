@@ -7,7 +7,7 @@
       "pipeline_tag": "automatic-speech-recognition",
       "type_label": "ASR",
       "hf_url": "https://huggingface.co/agkphysics/wav2vec2-large-xlsr-53-amharic",
-      "downloads_monthly": 60762,
+      "downloads_monthly": 70215,
       "likes": 5,
       "last_updated": "2023-08-31T12:35:35.000Z",
       "tags": [
@@ -24,7 +24,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.461Z",
+      "added_at": "2026-08-13T07:38:43.435Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -39,32 +39,32 @@
       "org": "agkphysics",
       "badge": "ASR",
       "bc": "b-asr",
-      "dl": 60762,
+      "dl": 70215,
       "lang": null,
       "langs": [],
       "isNew": false,
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": -14,
+      "growth": null,
       "sparkline": {
         "points": [
-          70459,
           70435,
           70435,
           70428,
           70438,
           71827,
-          60762
+          60762,
+          70215
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -80,7 +80,7 @@
       "pipeline_tag": "fill-mask",
       "type_label": "Masked LM",
       "hf_url": "https://huggingface.co/rasyosef/bert-small-amharic",
-      "downloads_monthly": 14542,
+      "downloads_monthly": 12292,
       "likes": 0,
       "last_updated": "2024-06-27T21:24:09.000Z",
       "tags": [
@@ -96,7 +96,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.463Z",
+      "added_at": "2026-08-13T07:38:43.437Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -115,32 +115,32 @@
       "org": "rasyosef",
       "badge": "Masked LM",
       "bc": "b-default",
-      "dl": 14542,
+      "dl": 12292,
       "lang": null,
       "langs": [],
       "isNew": false,
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": null,
+      "growth": -15,
       "sparkline": {
         "points": [
-          14536,
           14536,
           14536,
           14532,
           14540,
           14540,
-          14542
+          14542,
+          12292
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -180,7 +180,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.463Z",
+      "added_at": "2026-08-13T07:38:43.437Z",
       "license": "mit",
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -233,21 +233,21 @@
       "sparkline": {
         "points": [
           1916,
-          1916,
           1911,
           1882,
           1883,
           1878,
+          1877,
           1877
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -282,7 +282,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.463Z",
+      "added_at": "2026-08-13T07:38:43.437Z",
       "license": "cc-by-4.0",
       "base_model": "facebook/w2v-bert-2.0",
       "eval_results": null,
@@ -310,21 +310,21 @@
       "sparkline": {
         "points": [
           1085,
-          1085,
           1092,
           1042,
           1066,
           1135,
+          1130,
           1130
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -353,7 +353,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.463Z",
+      "added_at": "2026-08-13T07:38:43.437Z",
       "license": null,
       "base_model": null,
       "eval_results": [],
@@ -377,21 +377,21 @@
       "sparkline": {
         "points": [
           628,
-          628,
           626,
           630,
           680,
           687,
+          688,
           688
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -423,7 +423,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.464Z",
+      "added_at": "2026-08-13T07:38:43.438Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -453,21 +453,21 @@
       "sparkline": {
         "points": [
           503,
-          503,
           471,
           415,
           333,
           333,
+          335,
           335
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -501,7 +501,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.464Z",
+      "added_at": "2026-08-13T07:38:43.438Z",
       "license": "llama3.2",
       "base_model": "meta-llama/Llama-3.2-1B",
       "eval_results": [],
@@ -525,21 +525,21 @@
       "sparkline": {
         "points": [
           272,
-          272,
           275,
           276,
           287,
           287,
+          298,
           298
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -579,7 +579,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.464Z",
+      "added_at": "2026-08-13T07:38:43.438Z",
       "license": "mit",
       "base_model": "Davlan/afro-xlmr-large-76L",
       "eval_results": [
@@ -710,164 +710,21 @@
       "sparkline": {
         "points": [
           285,
-          285,
           271,
           263,
           262,
           259,
+          287,
           287
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "rasyosef/bert-medium-amharic",
-      "name": "bert-medium-amharic",
-      "type": "model",
-      "pipeline_tag": "fill-mask",
-      "type_label": "Masked LM",
-      "hf_url": "https://huggingface.co/rasyosef/bert-medium-amharic",
-      "downloads_monthly": 258,
-      "likes": 1,
-      "last_updated": "2024-06-27T21:23:46.000Z",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "bert",
-        "fill-mask",
-        "am",
-        "dataset:oscar",
-        "dataset:mc4",
-        "dataset:rasyosef/amharic-sentences-corpus",
-        "endpoints_compatible",
-        "region:us",
-        "deploy:azure"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.465Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 40455680,
-      "training_datasets": [
-        "oscar",
-        "mc4",
-        "rasyosef/amharic-sentences-corpus"
-      ],
-      "confirmed_languages": [
-        "am"
-      ],
-      "file_count": 9,
-      "wer_score": null,
-      "_type": "model",
-      "org": "rasyosef",
-      "badge": "Masked LM",
-      "bc": "b-default",
-      "dl": 258,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": 16,
-      "sparkline": {
-        "points": [
-          223,
-          223,
-          223,
-          223,
-          242,
-          242,
-          258
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
-      "name": "bert-base-multilingual-cased-finetuned-amharic",
-      "type": "model",
-      "pipeline_tag": "fill-mask",
-      "type_label": "Masked LM",
-      "hf_url": "https://huggingface.co/Davlan/bert-base-multilingual-cased-finetuned-amharic",
-      "downloads_monthly": 256,
-      "likes": 3,
-      "last_updated": "2021-06-02T12:37:53.000Z",
-      "tags": [
-        "transformers",
-        "pytorch",
-        "bert",
-        "fill-mask",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.465Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": null,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 8,
-      "wer_score": null,
-      "_type": "model",
-      "org": "Davlan",
-      "badge": "Masked LM",
-      "bc": "b-default",
-      "dl": 256,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": -64,
-      "sparkline": {
-        "points": [
-          718,
-          719,
-          719,
-          701,
-          764,
-          594,
-          256
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -908,7 +765,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.465Z",
+      "added_at": "2026-08-13T07:38:43.438Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -1141,21 +998,21 @@
       "sparkline": {
         "points": [
           205,
-          205,
           208,
           207,
           226,
           226,
+          242,
           242
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1188,7 +1045,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.465Z",
+      "added_at": "2026-08-13T07:38:43.439Z",
       "license": null,
       "base_model": "rasyosef/Llama-3.2-1B-Amharic",
       "eval_results": null,
@@ -1214,21 +1071,21 @@
       "sparkline": {
         "points": [
           247,
-          247,
           202,
           202,
           207,
           207,
+          224,
           224
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1271,7 +1128,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.466Z",
+      "added_at": "2026-08-13T07:38:43.439Z",
       "license": "apache-2.0",
       "base_model": "k2-fsa/OmniVoice",
       "eval_results": null,
@@ -1304,21 +1161,164 @@
       "sparkline": {
         "points": [
           178,
-          178,
           228,
           232,
           229,
           226,
+          223,
           223
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "rasyosef/bert-medium-amharic",
+      "name": "bert-medium-amharic",
+      "type": "model",
+      "pipeline_tag": "fill-mask",
+      "type_label": "Masked LM",
+      "hf_url": "https://huggingface.co/rasyosef/bert-medium-amharic",
+      "downloads_monthly": 220,
+      "likes": 1,
+      "last_updated": "2024-06-27T21:23:46.000Z",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "bert",
+        "fill-mask",
+        "am",
+        "dataset:oscar",
+        "dataset:mc4",
+        "dataset:rasyosef/amharic-sentences-corpus",
+        "endpoints_compatible",
+        "region:us",
+        "deploy:azure"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.439Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 40455680,
+      "training_datasets": [
+        "oscar",
+        "mc4",
+        "rasyosef/amharic-sentences-corpus"
+      ],
+      "confirmed_languages": [
+        "am"
+      ],
+      "file_count": 9,
+      "wer_score": null,
+      "_type": "model",
+      "org": "rasyosef",
+      "badge": "Masked LM",
+      "bc": "b-default",
+      "dl": 220,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          223,
+          223,
+          223,
+          242,
+          242,
+          258,
+          220
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
+      "name": "bert-base-multilingual-cased-finetuned-amharic",
+      "type": "model",
+      "pipeline_tag": "fill-mask",
+      "type_label": "Masked LM",
+      "hf_url": "https://huggingface.co/Davlan/bert-base-multilingual-cased-finetuned-amharic",
+      "downloads_monthly": 198,
+      "likes": 3,
+      "last_updated": "2021-06-02T12:37:53.000Z",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "bert",
+        "fill-mask",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.440Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": null,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 8,
+      "wer_score": null,
+      "_type": "model",
+      "org": "Davlan",
+      "badge": "Masked LM",
+      "bc": "b-default",
+      "dl": 198,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": -72,
+      "sparkline": {
+        "points": [
+          719,
+          719,
+          701,
+          764,
+          594,
+          256,
+          198
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1352,7 +1352,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.467Z",
+      "added_at": "2026-08-13T07:38:43.440Z",
       "license": "llama3.2",
       "base_model": "meta-llama/Llama-3.2-1B",
       "eval_results": [],
@@ -1378,19 +1378,19 @@
           158,
           158,
           158,
-          158,
           162,
           162,
+          169,
           169
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1423,7 +1423,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.467Z",
+      "added_at": "2026-08-13T07:38:43.440Z",
       "license": null,
       "base_model": "meta-llama/Llama-3.2-1B-Instruct",
       "eval_results": null,
@@ -1449,92 +1449,21 @@
       "sparkline": {
         "points": [
           154,
-          154,
           153,
           153,
           161,
           161,
+          168,
           168
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "uhhlt/amharic-hate-speech",
-      "name": "amharic-hate-speech",
-      "type": "model",
-      "pipeline_tag": "text-classification",
-      "type_label": "Classification",
-      "hf_url": "https://huggingface.co/uhhlt/amharic-hate-speech",
-      "downloads_monthly": 147,
-      "likes": 0,
-      "last_updated": "2024-07-20T02:31:33.000Z",
-      "tags": [
-        "transformers",
-        "pytorch",
-        "roberta",
-        "text-classification",
-        "generated_from_trainer",
-        "base_model:uhhlt/am-roberta",
-        "base_model:finetune:uhhlt/am-roberta",
-        "license:mit",
-        "text-embeddings-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.467Z",
-      "license": "mit",
-      "base_model": "uhhlt/am-roberta",
-      "eval_results": [],
-      "param_count": null,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 10,
-      "wer_score": null,
-      "_type": "model",
-      "org": "uhhlt",
-      "badge": "Classification",
-      "bc": "b-default",
-      "dl": 147,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          146,
-          146,
-          146,
-          147,
-          148,
-          148,
-          147
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1576,7 +1505,7 @@
         "deploy:azure"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.468Z",
+      "added_at": "2026-08-13T07:38:43.441Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/bert-medium-amharic",
       "eval_results": [
@@ -1809,21 +1738,21 @@
       "sparkline": {
         "points": [
           111,
-          111,
           110,
           108,
           109,
           109,
+          131,
           131
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -1864,7 +1793,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.468Z",
+      "added_at": "2026-08-13T07:38:43.441Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-medium-amharic",
       "eval_results": [
@@ -2098,20 +2027,20 @@
         "points": [
           118,
           118,
-          118,
           117,
           121,
           121,
+          122,
           122
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -2151,7 +2080,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.468Z",
+      "added_at": "2026-08-13T07:38:43.441Z",
       "license": "mit",
       "base_model": "FacebookAI/xlm-roberta-base",
       "eval_results": [
@@ -2283,20 +2212,20 @@
         "points": [
           100,
           100,
-          100,
           98,
           97,
           103,
+          122,
           122
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -2336,7 +2265,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.469Z",
+      "added_at": "2026-08-13T07:38:43.442Z",
       "license": "mit",
       "base_model": "google-bert/bert-base-multilingual-cased",
       "eval_results": [
@@ -2467,21 +2396,21 @@
       "sparkline": {
         "points": [
           103,
-          103,
           102,
           100,
           98,
           103,
+          120,
           120
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -2525,7 +2454,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.443Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-medium-amharic",
       "eval_results": [
@@ -2758,91 +2687,21 @@
       "sparkline": {
         "points": [
           99,
-          99,
           98,
           96,
           95,
           101,
+          118,
           118
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "rasyosef/bert-mini-amharic",
-      "name": "bert-mini-amharic",
-      "type": "model",
-      "pipeline_tag": "fill-mask",
-      "type_label": "Masked LM",
-      "hf_url": "https://huggingface.co/rasyosef/bert-mini-amharic",
-      "downloads_monthly": 116,
-      "likes": 0,
-      "last_updated": "2024-06-27T21:22:51.000Z",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "bert",
-        "fill-mask",
-        "am",
-        "dataset:oscar",
-        "dataset:mc4",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 10726144,
-      "training_datasets": [
-        "oscar",
-        "mc4"
-      ],
-      "confirmed_languages": [
-        "am"
-      ],
-      "file_count": 9,
-      "wer_score": null,
-      "_type": "model",
-      "org": "rasyosef",
-      "badge": "Masked LM",
-      "bc": "b-default",
-      "dl": 116,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          79,
-          79,
-          95,
-          95,
-          116
-        ],
-        "timestamps": [
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -2876,7 +2735,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.443Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-tiny",
       "eval_results": [],
@@ -2904,19 +2763,19 @@
           95,
           95,
           95,
-          95,
           102,
+          115,
           115,
           115
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -2958,7 +2817,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.443Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/bert-small-amharic",
       "eval_results": [
@@ -3291,21 +3150,21 @@
       "sparkline": {
         "points": [
           97,
-          97,
           96,
           94,
           99,
           99,
+          114,
           114
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -3347,7 +3206,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.443Z",
       "license": "apache-2.0",
       "base_model": "Snowflake/snowflake-arctic-embed-l-v2.0",
       "eval_results": [
@@ -3581,21 +3440,21 @@
       "sparkline": {
         "points": [
           96,
-          96,
           95,
           92,
           96,
           96,
+          102,
           102
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -3637,7 +3496,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.443Z",
       "license": "apache-2.0",
       "base_model": "yosefw/roberta-base-am-embed",
       "eval_results": [
@@ -3868,21 +3727,92 @@
       "sparkline": {
         "points": [
           94,
-          94,
           93,
           91,
           96,
           96,
+          102,
           102
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "uhhlt/amharic-hate-speech",
+      "name": "amharic-hate-speech",
+      "type": "model",
+      "pipeline_tag": "text-classification",
+      "type_label": "Classification",
+      "hf_url": "https://huggingface.co/uhhlt/amharic-hate-speech",
+      "downloads_monthly": 99,
+      "likes": 0,
+      "last_updated": "2024-07-20T02:31:33.000Z",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "roberta",
+        "text-classification",
+        "generated_from_trainer",
+        "base_model:uhhlt/am-roberta",
+        "base_model:finetune:uhhlt/am-roberta",
+        "license:mit",
+        "text-embeddings-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.444Z",
+      "license": "mit",
+      "base_model": "uhhlt/am-roberta",
+      "eval_results": [],
+      "param_count": null,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 10,
+      "wer_score": null,
+      "_type": "model",
+      "org": "uhhlt",
+      "badge": "Classification",
+      "bc": "b-default",
+      "dl": 99,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": -32,
+      "sparkline": {
+        "points": [
+          146,
+          146,
+          147,
+          148,
+          148,
+          147,
+          99
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -3917,7 +3847,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.470Z",
+      "added_at": "2026-08-13T07:38:43.444Z",
       "license": "openrail",
       "base_model": "openai/whisper-small",
       "eval_results": [
@@ -3965,21 +3895,21 @@
       "sparkline": {
         "points": [
           101,
-          101,
           100,
           96,
           94,
           97,
+          98,
           98
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -4025,7 +3955,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.471Z",
+      "added_at": "2026-08-13T07:38:43.444Z",
       "license": "mit",
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -4178,21 +4108,160 @@
       "sparkline": {
         "points": [
           87,
-          87,
           86,
           85,
           84,
           89,
+          94,
           94
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "rasyosef/bert-mini-amharic",
+      "name": "bert-mini-amharic",
+      "type": "model",
+      "pipeline_tag": "fill-mask",
+      "type_label": "Masked LM",
+      "hf_url": "https://huggingface.co/rasyosef/bert-mini-amharic",
+      "downloads_monthly": 92,
+      "likes": 0,
+      "last_updated": "2024-06-27T21:22:51.000Z",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "bert",
+        "fill-mask",
+        "am",
+        "dataset:oscar",
+        "dataset:mc4",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.444Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 10726144,
+      "training_datasets": [
+        "oscar",
+        "mc4"
+      ],
+      "confirmed_languages": [
+        "am"
+      ],
+      "file_count": 9,
+      "wer_score": null,
+      "_type": "model",
+      "org": "rasyosef",
+      "badge": "Masked LM",
+      "bc": "b-default",
+      "dl": 92,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          79,
+          79,
+          95,
+          95,
+          116,
+          92
+        ],
+        "timestamps": [
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Samuael/llama-2-7b-tebot-amharic_tuned_3",
+      "name": "llama-2-7b-tebot-amharic_tuned_3",
+      "type": "model",
+      "pipeline_tag": "text-generation",
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/Samuael/llama-2-7b-tebot-amharic_tuned_3",
+      "downloads_monthly": 88,
+      "likes": 0,
+      "last_updated": "2023-08-24T11:25:42.000Z",
+      "tags": [
+        "transformers",
+        "pytorch",
+        "llama",
+        "text-generation",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.444Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": null,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 9,
+      "wer_score": null,
+      "_type": "model",
+      "org": "Samuael",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 88,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": 7,
+      "sparkline": {
+        "points": [
+          82,
+          82,
+          85,
+          86,
+          86,
+          86,
+          88
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -4236,7 +4305,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.471Z",
+      "added_at": "2026-08-13T07:38:43.445Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -4469,21 +4538,21 @@
       "sparkline": {
         "points": [
           83,
-          83,
           82,
           80,
           79,
           84,
+          88,
           88
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -4527,7 +4596,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.471Z",
+      "added_at": "2026-08-13T07:38:43.445Z",
       "license": "apache-2.0",
       "base_model": "Snowflake/snowflake-arctic-embed-l-v2.0",
       "eval_results": [
@@ -4760,21 +4829,21 @@
       "sparkline": {
         "points": [
           80,
-          80,
           79,
           78,
           78,
           81,
+          88,
           88
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -4804,7 +4873,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.472Z",
+      "added_at": "2026-08-13T07:38:43.445Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -4831,85 +4900,18 @@
           86,
           86,
           86,
-          86,
+          87,
           87,
           87
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Samuael/llama-2-7b-tebot-amharic_tuned_3",
-      "name": "llama-2-7b-tebot-amharic_tuned_3",
-      "type": "model",
-      "pipeline_tag": "text-generation",
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/Samuael/llama-2-7b-tebot-amharic_tuned_3",
-      "downloads_monthly": 86,
-      "likes": 0,
-      "last_updated": "2023-08-24T11:25:42.000Z",
-      "tags": [
-        "transformers",
-        "pytorch",
-        "llama",
-        "text-generation",
-        "text-generation-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.472Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": null,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 9,
-      "wer_score": null,
-      "_type": "model",
-      "org": "Samuael",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 86,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          82,
-          82,
-          82,
-          85,
-          86,
-          86,
-          86
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -4952,7 +4954,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.472Z",
+      "added_at": "2026-08-13T07:38:43.445Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-medium-amharic",
       "eval_results": [
@@ -5184,20 +5186,20 @@
         "points": [
           60,
           60,
-          60,
           59,
           59,
           65,
+          83,
           83
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5238,7 +5240,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.472Z",
+      "added_at": "2026-08-13T07:38:43.445Z",
       "license": null,
       "base_model": "rasyosef/roberta-medium-amharic",
       "eval_results": [
@@ -5316,20 +5318,20 @@
         "points": [
           73,
           73,
-          73,
           71,
           70,
           75,
+          80,
           80
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5359,7 +5361,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.473Z",
+      "added_at": "2026-08-13T07:38:43.446Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -5386,18 +5388,18 @@
           79,
           79,
           79,
-          79,
+          80,
           80,
           80
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5429,7 +5431,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.473Z",
+      "added_at": "2026-08-13T07:38:43.446Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-small",
       "eval_results": [],
@@ -5454,20 +5456,20 @@
         "points": [
           64,
           64,
-          64,
           57,
+          79,
           79,
           79,
           79
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5497,7 +5499,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.473Z",
+      "added_at": "2026-08-13T07:38:43.446Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -5524,18 +5526,18 @@
           77,
           77,
           77,
-          77,
+          78,
           78,
           78
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5565,7 +5567,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.473Z",
+      "added_at": "2026-08-13T07:38:43.446Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -5592,18 +5594,18 @@
           77,
           77,
           77,
-          77,
+          78,
           78,
           78
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5647,7 +5649,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.473Z",
+      "added_at": "2026-08-13T07:38:43.446Z",
       "license": "apache-2.0",
       "base_model": "Snowflake/snowflake-arctic-embed-l-v2.0",
       "eval_results": [
@@ -5882,13 +5884,15 @@
           56,
           56,
           61,
+          78,
           78
         ],
         "timestamps": [
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -5929,7 +5933,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.474Z",
+      "added_at": "2026-08-13T07:38:43.447Z",
       "license": null,
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -6006,83 +6010,21 @@
       "sparkline": {
         "points": [
           70,
-          70,
           69,
           68,
           67,
           72,
+          76,
           76
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "rasyosef/gpt2-small-amharic",
-      "name": "gpt2-small-amharic",
-      "type": "model",
-      "pipeline_tag": "text-generation",
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/rasyosef/gpt2-small-amharic",
-      "downloads_monthly": 75,
-      "likes": 0,
-      "last_updated": "2024-07-04T23:52:14.000Z",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "gpt2",
-        "text-generation",
-        "am",
-        "text-generation-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:03.474Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 33674240,
-      "training_datasets": [],
-      "confirmed_languages": [
-        "am"
-      ],
-      "file_count": 10,
-      "wer_score": null,
-      "_type": "model",
-      "org": "rasyosef",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 75,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": 32,
-      "sparkline": {
-        "points": [
-          57,
-          57,
-          75
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -6126,7 +6068,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.474Z",
+      "added_at": "2026-08-13T07:38:43.447Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-medium-amharic",
       "eval_results": [
@@ -6356,7 +6298,16 @@
       "featured": false,
       "verified": true,
       "growth": null,
-      "sparkline": null,
+      "sparkline": {
+        "points": [
+          75,
+          75
+        ],
+        "timestamps": [
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
       "verdict": {
         "label": "New",
         "icon": "new",
@@ -6386,7 +6337,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.474Z",
+      "added_at": "2026-08-13T07:38:43.447Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -6410,25 +6361,87 @@
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": -11,
+      "growth": -8,
       "sparkline": {
         "points": [
-          81,
           78,
           78,
           79,
           77,
           77,
+          72,
           72
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "rasyosef/gpt2-small-amharic",
+      "name": "gpt2-small-amharic",
+      "type": "model",
+      "pipeline_tag": "text-generation",
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/rasyosef/gpt2-small-amharic",
+      "downloads_monthly": 72,
+      "likes": 0,
+      "last_updated": "2024-07-04T23:52:14.000Z",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "gpt2",
+        "text-generation",
+        "am",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:43.447Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 33674240,
+      "training_datasets": [],
+      "confirmed_languages": [
+        "am"
+      ],
+      "file_count": 10,
+      "wer_score": null,
+      "_type": "model",
+      "org": "rasyosef",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 72,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": 26,
+      "sparkline": {
+        "points": [
+          57,
+          75,
+          72
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -6471,7 +6484,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.474Z",
+      "added_at": "2026-08-13T07:38:43.447Z",
       "license": "apache-2.0",
       "base_model": "rasyosef/roberta-base-amharic",
       "eval_results": [
@@ -6699,7 +6712,16 @@
       "featured": false,
       "verified": true,
       "growth": null,
-      "sparkline": null,
+      "sparkline": {
+        "points": [
+          70,
+          70
+        ],
+        "timestamps": [
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
       "verdict": {
         "label": "New",
         "icon": "new",
@@ -6729,7 +6751,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:03.475Z",
+      "added_at": "2026-08-13T07:38:43.447Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -6760,20 +6782,20 @@
         "points": [
           88,
           88,
-          88,
           86,
           68,
           68,
+          69,
           69
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -6808,7 +6830,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": "cc-by-4.0",
       "base_model": "facebook/w2v-bert-2.0",
       "eval_results": null,
@@ -6836,21 +6858,21 @@
       "sparkline": {
         "points": [
           112,
-          112,
           113,
           113,
           115,
           132,
+          121,
           121
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -6883,7 +6905,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": "cc-by-sa-4.0",
       "base_model": null,
       "eval_results": null,
@@ -6911,21 +6933,21 @@
       "sparkline": {
         "points": [
           8,
-          8,
           10,
           10,
+          11,
           11,
           11,
           11
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -6955,7 +6977,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": "other",
       "base_model": "deepseek-ai/deepseek-coder-6.7b-base",
       "eval_results": null,
@@ -6983,17 +7005,17 @@
           9,
           9,
           9,
-          9,
+          10,
           10
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7023,7 +7045,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": "cc-by-nc-4.0",
       "base_model": null,
       "eval_results": null,
@@ -7047,21 +7069,21 @@
       "sparkline": {
         "points": [
           12,
-          12,
           11,
           11,
+          10,
           10,
           10,
           10
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7093,7 +7115,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": "mit",
       "base_model": "castorini/afriberta_large",
       "eval_results": [],
@@ -7117,21 +7139,21 @@
       "sparkline": {
         "points": [
           19,
-          19,
           15,
           11,
+          9,
           9,
           9,
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7156,7 +7178,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7180,7 +7202,7 @@
       "sparkline": {
         "points": [
           7,
-          7,
+          9,
           9,
           9,
           9,
@@ -7188,13 +7210,13 @@
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7224,7 +7246,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.037Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7248,7 +7270,7 @@
       "sparkline": {
         "points": [
           6,
-          6,
+          7,
           7,
           7,
           7,
@@ -7256,13 +7278,13 @@
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7288,7 +7310,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -7313,20 +7335,20 @@
         "points": [
           9,
           9,
-          9,
+          7,
           7,
           7,
           7,
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7361,7 +7383,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "apache-2.0",
       "base_model": "kkenna/afaan-oromo-qwen-0.5b-sft",
       "eval_results": null,
@@ -7395,13 +7417,13 @@
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7430,7 +7452,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7454,7 +7476,7 @@
       "sparkline": {
         "points": [
           5,
-          5,
+          6,
           6,
           6,
           6,
@@ -7462,13 +7484,13 @@
           6
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7493,7 +7515,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7517,21 +7539,21 @@
       "sparkline": {
         "points": [
           8,
-          8,
           5,
+          4,
           4,
           4,
           4,
           4
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7564,7 +7586,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "cc-by-sa-4.0",
       "base_model": "SWivid/F5-TTS",
       "eval_results": null,
@@ -7600,13 +7622,13 @@
           3
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7636,7 +7658,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": null,
       "base_model": "facebook/w2v-bert-2.0",
       "eval_results": null,
@@ -7663,20 +7685,20 @@
         "points": [
           3,
           3,
-          3,
+          2,
           2,
           2,
           2,
           2
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7700,7 +7722,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "other",
       "base_model": null,
       "eval_results": null,
@@ -7732,13 +7754,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -7762,7 +7784,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.162Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -7794,13 +7816,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -7819,7 +7841,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -7851,13 +7873,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -7878,7 +7900,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.038Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7910,13 +7932,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -7937,7 +7959,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -7969,13 +7991,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -7996,7 +8018,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8028,13 +8050,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8064,7 +8086,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "mit",
       "base_model": null,
       "eval_results": [],
@@ -8101,13 +8123,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8126,7 +8148,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8158,13 +8180,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8183,7 +8205,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -8215,13 +8237,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8240,7 +8262,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -8272,13 +8294,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8297,7 +8319,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -8329,13 +8351,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8362,7 +8384,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "cc-by-sa-4.0",
       "base_model": null,
       "eval_results": null,
@@ -8398,13 +8420,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8422,7 +8444,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8454,13 +8476,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8481,7 +8503,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": "cc-by-nc-4.0",
       "base_model": null,
       "eval_results": null,
@@ -8515,13 +8537,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8539,7 +8561,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8571,13 +8593,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8595,7 +8617,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8627,13 +8649,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8655,7 +8677,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.163Z",
+      "added_at": "2026-08-13T07:38:44.039Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -8687,13 +8709,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -8723,7 +8745,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.846Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "cc-by-4.0",
       "base_model": "facebook/w2v-bert-2.0",
       "eval_results": null,
@@ -8751,21 +8773,21 @@
       "sparkline": {
         "points": [
           545,
-          545,
           560,
           587,
           606,
           638,
+          659,
           659
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -8805,7 +8827,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "gemma",
       "base_model": "luel/gemma-3-4b-tigrinya",
       "eval_results": [
@@ -8857,21 +8879,21 @@
       "sparkline": {
         "points": [
           67,
-          67,
           66,
           66,
           60,
           56,
+          53,
           53
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -8908,7 +8930,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "cc-by-4.0",
       "base_model": "facebook/nllb-200-distilled-600M",
       "eval_results": null,
@@ -8943,13 +8965,13 @@
           39
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -8978,7 +9000,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -9004,19 +9026,19 @@
           36,
           36,
           36,
-          36,
           35,
           34,
+          32,
           32
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9051,7 +9073,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "gemma",
       "base_model": "google/gemma-3-4b-pt",
       "eval_results": [
@@ -9097,21 +9119,21 @@
       "sparkline": {
         "points": [
           21,
-          21,
           20,
           20,
           21,
           19,
+          19,
           19
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9144,7 +9166,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -9171,20 +9193,20 @@
         "points": [
           16,
           16,
-          16,
+          17,
           17,
           17,
           17,
           17
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9213,7 +9235,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -9242,18 +9264,18 @@
           14,
           14,
           14,
-          14,
+          16,
           16,
           16
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9287,7 +9309,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "apache-2.0",
       "base_model": "Samuael/asr-amharic-phoneme-based-37-6",
       "eval_results": [
@@ -9343,13 +9365,13 @@
           14
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9382,7 +9404,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.847Z",
+      "added_at": "2026-08-13T07:38:44.626Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-large-v3",
       "eval_results": [],
@@ -9408,7 +9430,7 @@
       "sparkline": {
         "points": [
           10,
-          10,
+          9,
           9,
           9,
           9,
@@ -9416,13 +9438,13 @@
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9466,7 +9488,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": "mit",
       "base_model": "microsoft/trocr-base-handwritten",
       "eval_results": [
@@ -9526,21 +9548,21 @@
       "sparkline": {
         "points": [
           15,
-          15,
           10,
+          9,
           9,
           9,
           9,
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9569,7 +9591,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": [],
@@ -9593,21 +9615,21 @@
       "sparkline": {
         "points": [
           14,
-          14,
           15,
           15,
           14,
           12,
+          9,
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9649,7 +9671,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": "mit",
       "base_model": "microsoft/trocr-base-printed",
       "eval_results": [
@@ -9709,21 +9731,21 @@
       "sparkline": {
         "points": [
           17,
-          17,
           11,
           10,
           10,
           9,
+          8,
           8
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9759,7 +9781,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": "apache-2.0",
       "base_model": "unsloth/Qwen3-4B",
       "eval_results": null,
@@ -9787,19 +9809,19 @@
           8,
           8,
           8,
-          8,
           7,
+          8,
           8,
           8
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9831,7 +9853,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -9858,20 +9880,20 @@
         "points": [
           6,
           6,
-          6,
+          7,
           7,
           7,
           7,
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9896,7 +9918,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -9923,18 +9945,18 @@
           4,
           4,
           4,
-          4,
+          7,
           7,
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -9963,7 +9985,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -9987,21 +10009,21 @@
       "sparkline": {
         "points": [
           7,
-          7,
           8,
           7,
           8,
+          7,
           7,
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10037,7 +10059,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -10073,13 +10095,13 @@
           6
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10109,7 +10131,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10136,18 +10158,18 @@
           6,
           6,
           6,
-          6,
           7,
+          6,
           6
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10180,7 +10202,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": "Samuael/ethiopic-sec2sec-tigrinya",
       "eval_results": [],
@@ -10212,13 +10234,13 @@
           5
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10247,7 +10269,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10272,20 +10294,20 @@
         "points": [
           7,
           7,
-          7,
           6,
+          5,
           5,
           5,
           5
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10310,7 +10332,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10338,17 +10360,17 @@
           6,
           6,
           6,
-          6,
+          5,
           5
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10383,7 +10405,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": "mit",
       "base_model": "gpt2",
       "eval_results": null,
@@ -10419,13 +10441,13 @@
           3
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10454,7 +10476,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.848Z",
+      "added_at": "2026-08-13T07:38:44.627Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10486,13 +10508,13 @@
           2
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10523,7 +10545,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-small",
       "eval_results": [],
@@ -10555,13 +10577,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10592,7 +10614,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-small",
       "eval_results": [],
@@ -10624,13 +10646,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10661,7 +10683,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "apache-2.0",
       "base_model": "openai/whisper-small",
       "eval_results": [],
@@ -10693,13 +10715,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -10722,7 +10744,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10754,13 +10776,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -10778,7 +10800,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10810,13 +10832,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -10835,7 +10857,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -10867,13 +10889,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -10892,7 +10914,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -10924,13 +10946,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -10951,7 +10973,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -10983,13 +11005,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11010,7 +11032,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11042,13 +11064,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11069,7 +11091,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.849Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11101,13 +11123,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11128,7 +11150,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -11164,13 +11186,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11191,7 +11213,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -11227,13 +11249,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11251,7 +11273,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11283,13 +11305,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11310,7 +11332,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11342,13 +11364,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11366,7 +11388,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11398,13 +11420,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11423,7 +11445,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11455,13 +11477,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11480,7 +11502,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.628Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11512,13 +11534,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11537,7 +11559,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11569,13 +11591,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11594,7 +11616,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11626,13 +11648,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11651,7 +11673,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11683,13 +11705,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11708,7 +11730,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11740,13 +11762,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11766,7 +11788,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11798,13 +11820,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11823,7 +11845,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11855,13 +11877,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11880,7 +11902,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:04.850Z",
+      "added_at": "2026-08-13T07:38:44.629Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -11912,13 +11934,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -11929,7 +11951,7 @@
       "pipeline_tag": "text-classification",
       "type_label": "Classification",
       "hf_url": "https://huggingface.co/fgaim/tielectra-geezswitch",
-      "downloads_monthly": 59,
+      "downloads_monthly": 65,
       "likes": 0,
       "last_updated": "2022-05-14T06:20:23.000Z",
       "tags": [
@@ -11944,7 +11966,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.547Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "cc-by-4.0",
       "base_model": null,
       "eval_results": [],
@@ -11959,32 +11981,32 @@
       "org": "fgaim",
       "badge": "Classification",
       "bc": "b-default",
-      "dl": 59,
+      "dl": 65,
       "lang": null,
       "langs": [],
       "isNew": false,
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": 48,
+      "growth": 59,
       "sparkline": {
         "points": [
-          40,
           41,
           41,
           58,
           57,
           57,
-          59
+          59,
+          65
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12000,7 +12022,7 @@
       "pipeline_tag": "text-classification",
       "type_label": "Classification",
       "hf_url": "https://huggingface.co/fgaim/tiroberta-geezswitch",
-      "downloads_monthly": 54,
+      "downloads_monthly": 61,
       "likes": 1,
       "last_updated": "2022-05-13T18:27:38.000Z",
       "tags": [
@@ -12016,7 +12038,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.547Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "cc-by-4.0",
       "base_model": null,
       "eval_results": [],
@@ -12031,32 +12053,32 @@
       "org": "fgaim",
       "badge": "Classification",
       "bc": "b-default",
-      "dl": 54,
+      "dl": 61,
       "lang": null,
       "langs": [],
       "isNew": false,
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": 50,
+      "growth": 65,
       "sparkline": {
         "points": [
-          36,
           37,
           37,
           53,
           53,
           52,
-          54
+          54,
+          61
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12072,7 +12094,7 @@
       "pipeline_tag": null,
       "type_label": "LLM",
       "hf_url": "https://huggingface.co/Samuael/geez_t5-big-15k",
-      "downloads_monthly": 50,
+      "downloads_monthly": 48,
       "likes": 1,
       "last_updated": "2024-04-09T08:19:43.000Z",
       "tags": [
@@ -12089,7 +12111,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.547Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": null,
       "base_model": "Samuael/geez_t5-big-15k",
       "eval_results": [],
@@ -12102,32 +12124,32 @@
       "org": "Samuael",
       "badge": "LLM",
       "bc": "b-llm",
-      "dl": 50,
+      "dl": 48,
       "lang": null,
       "langs": [],
       "isNew": false,
       "desc": "",
       "featured": false,
       "verified": true,
-      "growth": 6,
+      "growth": null,
       "sparkline": {
         "points": [
-          47,
           47,
           47,
           49,
           48,
           48,
-          50
+          50,
+          48
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12143,7 +12165,7 @@
       "pipeline_tag": null,
       "type_label": "LLM",
       "hf_url": "https://huggingface.co/Samuael/geez_t5-15k",
-      "downloads_monthly": 39,
+      "downloads_monthly": 31,
       "likes": 0,
       "last_updated": "2024-04-02T15:28:16.000Z",
       "tags": [
@@ -12160,7 +12182,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.547Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": null,
       "base_model": "Samuael/geez_t5-15k",
       "eval_results": [],
@@ -12173,7 +12195,7 @@
       "org": "Samuael",
       "badge": "LLM",
       "bc": "b-llm",
-      "dl": 39,
+      "dl": 31,
       "lang": null,
       "langs": [],
       "isNew": false,
@@ -12189,16 +12211,16 @@
           39,
           39,
           39,
-          39
+          31
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12214,7 +12236,7 @@
       "pipeline_tag": "text-generation",
       "type_label": "LLM",
       "hf_url": "https://huggingface.co/Geezy/DialoGPT-small-guy",
-      "downloads_monthly": 27,
+      "downloads_monthly": 28,
       "likes": 0,
       "last_updated": "2021-08-31T15:29:36.000Z",
       "tags": [
@@ -12228,7 +12250,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -12241,7 +12263,7 @@
       "org": "Geezy",
       "badge": "LLM",
       "bc": "b-llm",
-      "dl": 27,
+      "dl": 28,
       "lang": null,
       "langs": [],
       "isNew": false,
@@ -12254,19 +12276,19 @@
           28,
           28,
           28,
-          28,
           27,
           27,
-          27
+          27,
+          28
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12301,7 +12323,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "apache-2.0",
       "base_model": "NaolBM/RedJackal-VL-4B-Base",
       "eval_results": null,
@@ -12327,21 +12349,21 @@
       "sparkline": {
         "points": [
           9,
-          9,
           10,
           10,
           9,
           12,
+          13,
           13
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12366,7 +12388,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -12398,88 +12420,13 @@
           9
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Hailay/GeezScriptTokenizer",
-      "name": "GeezScriptTokenizer",
-      "type": "model",
-      "pipeline_tag": "text-generation",
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/Hailay/GeezScriptTokenizer",
-      "downloads_monthly": 8,
-      "likes": 0,
-      "last_updated": "2025-05-17T11:33:36.000Z",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "roberta",
-        "text-generation",
-        "ti",
-        "am",
-        "dataset:Hailay/TigQA",
-        "license:apache-2.0",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": "apache-2.0",
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 124697433,
-      "training_datasets": [
-        "Hailay/TigQA"
-      ],
-      "confirmed_languages": [
-        "ti",
-        "am"
-      ],
-      "file_count": 11,
-      "wer_score": null,
-      "_type": "model",
-      "org": "Hailay",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 8,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          11,
-          11,
-          10,
-          10,
-          9,
-          9,
-          8
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12507,7 +12454,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -12535,19 +12482,94 @@
           12,
           12,
           12,
-          12,
           11,
           11,
+          7,
           7
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Hailay/GeezScriptTokenizer",
+      "name": "GeezScriptTokenizer",
+      "type": "model",
+      "pipeline_tag": "text-generation",
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/Hailay/GeezScriptTokenizer",
+      "downloads_monthly": 7,
+      "likes": 0,
+      "last_updated": "2025-05-17T11:33:36.000Z",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "roberta",
+        "text-generation",
+        "ti",
+        "am",
+        "dataset:Hailay/TigQA",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.215Z",
+      "license": "apache-2.0",
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 124697433,
+      "training_datasets": [
+        "Hailay/TigQA"
+      ],
+      "confirmed_languages": [
+        "ti",
+        "am"
+      ],
+      "file_count": 11,
+      "wer_score": null,
+      "_type": "model",
+      "org": "Hailay",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 7,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          11,
+          10,
+          10,
+          9,
+          9,
+          8,
+          7
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12576,7 +12598,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": null,
       "base_model": "Samuael/geez_t5-big-15k",
       "eval_results": [],
@@ -12608,13 +12630,13 @@
           6
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12650,7 +12672,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "apache-2.0",
       "base_model": "unsloth/Qwen3-VL-4B-Instruct",
       "eval_results": null,
@@ -12679,18 +12701,161 @@
           4,
           4,
           4,
-          4,
+          5,
           5,
           5
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Samuael/geez_15k_sc_t5",
+      "name": "geez_15k_sc_t5",
+      "type": "model",
+      "pipeline_tag": null,
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/Samuael/geez_15k_sc_t5",
+      "downloads_monthly": 4,
+      "likes": 0,
+      "last_updated": "2024-03-22T19:27:08.000Z",
+      "tags": [
+        "transformers",
+        "tensorboard",
+        "safetensors",
+        "t5",
+        "text2text-generation",
+        "arxiv:1910.09700",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.215Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 60179968,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 11,
+      "wer_score": null,
+      "_type": "model",
+      "org": "Samuael",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 4,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Samuael/geez-asr",
+      "name": "geez-asr",
+      "type": "model",
+      "pipeline_tag": "automatic-speech-recognition",
+      "type_label": "ASR",
+      "hf_url": "https://huggingface.co/Samuael/geez-asr",
+      "downloads_monthly": 4,
+      "likes": 0,
+      "last_updated": "2024-09-27T03:02:57.000Z",
+      "tags": [
+        "transformers",
+        "tensorboard",
+        "safetensors",
+        "wav2vec2",
+        "automatic-speech-recognition",
+        "generated_from_trainer",
+        "dataset:alffa_amharic",
+        "base_model:Samuael/asr-amharic-phoneme-based-37-6",
+        "base_model:finetune:Samuael/asr-amharic-phoneme-based-37-6",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.215Z",
+      "license": "apache-2.0",
+      "base_model": "Samuael/asr-amharic-phoneme-based-37-6",
+      "eval_results": [],
+      "param_count": 318010215,
+      "training_datasets": [
+        "alffa_amharic"
+      ],
+      "confirmed_languages": [],
+      "file_count": 13,
+      "wer_score": "0.1471",
+      "_type": "model",
+      "org": "Samuael",
+      "badge": "ASR",
+      "bc": "b-asr",
+      "dl": 4,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12725,7 +12890,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.215Z",
       "license": "apache-2.0",
       "base_model": "NaolBM/RedJackal-VL-Base-4B",
       "eval_results": null,
@@ -12755,17 +12920,17 @@
           5,
           5,
           5,
-          5,
+          4,
           4
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -12796,7 +12961,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "apache-2.0",
       "base_model": "Wan-AI/Wan2.2-I2V-A14B",
       "eval_results": null,
@@ -12828,358 +12993,13 @@
           4
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Samuael/geez_15k_sc_t5",
-      "name": "geez_15k_sc_t5",
-      "type": "model",
-      "pipeline_tag": null,
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/Samuael/geez_15k_sc_t5",
-      "downloads_monthly": 3,
-      "likes": 0,
-      "last_updated": "2024-03-22T19:27:08.000Z",
-      "tags": [
-        "transformers",
-        "tensorboard",
-        "safetensors",
-        "t5",
-        "text2text-generation",
-        "arxiv:1910.09700",
-        "text-generation-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 60179968,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 11,
-      "wer_score": null,
-      "_type": "model",
-      "org": "Samuael",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 3,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Samuael/geez-asr",
-      "name": "geez-asr",
-      "type": "model",
-      "pipeline_tag": "automatic-speech-recognition",
-      "type_label": "ASR",
-      "hf_url": "https://huggingface.co/Samuael/geez-asr",
-      "downloads_monthly": 3,
-      "likes": 0,
-      "last_updated": "2024-09-27T03:02:57.000Z",
-      "tags": [
-        "transformers",
-        "tensorboard",
-        "safetensors",
-        "wav2vec2",
-        "automatic-speech-recognition",
-        "generated_from_trainer",
-        "dataset:alffa_amharic",
-        "base_model:Samuael/asr-amharic-phoneme-based-37-6",
-        "base_model:finetune:Samuael/asr-amharic-phoneme-based-37-6",
-        "license:apache-2.0",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": "apache-2.0",
-      "base_model": "Samuael/asr-amharic-phoneme-based-37-6",
-      "eval_results": [],
-      "param_count": 318010215,
-      "training_datasets": [
-        "alffa_amharic"
-      ],
-      "confirmed_languages": [],
-      "file_count": 13,
-      "wer_score": "0.1471",
-      "_type": "model",
-      "org": "Samuael",
-      "badge": "ASR",
-      "bc": "b-asr",
-      "dl": 3,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          2,
-          2,
-          3,
-          3,
-          3,
-          3,
-          3
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Samuael/geez_15k_sc_mt5",
-      "name": "geez_15k_sc_mt5",
-      "type": "model",
-      "pipeline_tag": null,
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/Samuael/geez_15k_sc_mt5",
-      "downloads_monthly": 2,
-      "likes": 0,
-      "last_updated": "2024-04-02T15:30:40.000Z",
-      "tags": [
-        "transformers",
-        "tensorboard",
-        "safetensors",
-        "t5",
-        "text2text-generation",
-        "generated_from_trainer",
-        "base_model:Samuael/geez_15k_sc_mt5",
-        "base_model:finetune:Samuael/geez_15k_sc_mt5",
-        "text-generation-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": null,
-      "base_model": "Samuael/geez_15k_sc_mt5",
-      "eval_results": [],
-      "param_count": 72766976,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 25,
-      "wer_score": "0.2849",
-      "_type": "model",
-      "org": "Samuael",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 2,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          3,
-          3,
-          3,
-          3,
-          2,
-          2,
-          2
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "Samuael/geez_t5-base-15k",
-      "name": "geez_t5-base-15k",
-      "type": "model",
-      "pipeline_tag": null,
-      "type_label": "LLM",
-      "hf_url": "https://huggingface.co/Samuael/geez_t5-base-15k",
-      "downloads_monthly": 2,
-      "likes": 0,
-      "last_updated": "2024-04-16T10:50:54.000Z",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "t5",
-        "text2text-generation",
-        "arxiv:1910.09700",
-        "text-generation-inference",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 72766976,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 5,
-      "wer_score": null,
-      "_type": "model",
-      "org": "Samuael",
-      "badge": "LLM",
-      "bc": "b-llm",
-      "dl": 2,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
-        ]
-      },
-      "verdict": {
-        "label": "New",
-        "icon": "new",
-        "type": "new"
-      }
-    },
-    {
-      "id": "tinycompany/Geezer-2.8b",
-      "name": "Geezer-2.8b",
-      "type": "model",
-      "pipeline_tag": null,
-      "type_label": "NLP",
-      "hf_url": "https://huggingface.co/tinycompany/Geezer-2.8b",
-      "downloads_monthly": 2,
-      "likes": 0,
-      "last_updated": "2025-03-15T14:30:29.000Z",
-      "tags": [
-        "safetensors",
-        "gpt_neox",
-        "region:us"
-      ],
-      "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
-      "license": null,
-      "base_model": null,
-      "eval_results": null,
-      "param_count": 2937082880,
-      "training_datasets": [],
-      "confirmed_languages": [],
-      "file_count": 10,
-      "wer_score": null,
-      "_type": "model",
-      "org": "tinycompany",
-      "badge": "Model",
-      "bc": "b-default",
-      "dl": 2,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "desc": "",
-      "featured": false,
-      "verified": true,
-      "growth": null,
-      "sparkline": {
-        "points": [
-          3,
-          3,
-          2,
-          2,
-          2,
-          2,
-          2
-        ],
-        "timestamps": [
-          "2026-08-06",
-          "2026-08-07",
-          "2026-08-08",
-          "2026-08-09",
-          "2026-08-10",
-          "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -13195,7 +13015,7 @@
       "pipeline_tag": "text-classification",
       "type_label": "Classification",
       "hf_url": "https://huggingface.co/TransferGraph/fgaim_tiroberta-geezswitch-finetuned-lora-tweet_eval_emotion",
-      "downloads_monthly": 1,
+      "downloads_monthly": 2,
       "likes": 0,
       "last_updated": "2024-02-29T12:53:41.000Z",
       "tags": [
@@ -13211,7 +13031,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "cc-by-4.0",
       "base_model": "fgaim/tiroberta-geezswitch",
       "eval_results": [
@@ -13248,7 +13068,7 @@
       "org": "TransferGraph",
       "badge": "Classification",
       "bc": "b-default",
-      "dl": 1,
+      "dl": 2,
       "lang": null,
       "langs": [],
       "isNew": false,
@@ -13264,16 +13084,218 @@
           1,
           1,
           1,
-          1
+          2
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Samuael/geez_15k_sc_mt5",
+      "name": "geez_15k_sc_mt5",
+      "type": "model",
+      "pipeline_tag": null,
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/Samuael/geez_15k_sc_mt5",
+      "downloads_monthly": 2,
+      "likes": 0,
+      "last_updated": "2024-04-02T15:30:40.000Z",
+      "tags": [
+        "transformers",
+        "tensorboard",
+        "safetensors",
+        "t5",
+        "text2text-generation",
+        "generated_from_trainer",
+        "base_model:Samuael/geez_15k_sc_mt5",
+        "base_model:finetune:Samuael/geez_15k_sc_mt5",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.216Z",
+      "license": null,
+      "base_model": "Samuael/geez_15k_sc_mt5",
+      "eval_results": [],
+      "param_count": 72766976,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 25,
+      "wer_score": "0.2849",
+      "_type": "model",
+      "org": "Samuael",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 2,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "Samuael/geez_t5-base-15k",
+      "name": "geez_t5-base-15k",
+      "type": "model",
+      "pipeline_tag": null,
+      "type_label": "LLM",
+      "hf_url": "https://huggingface.co/Samuael/geez_t5-base-15k",
+      "downloads_monthly": 2,
+      "likes": 0,
+      "last_updated": "2024-04-16T10:50:54.000Z",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "t5",
+        "text2text-generation",
+        "arxiv:1910.09700",
+        "text-generation-inference",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.216Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 72766976,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 5,
+      "wer_score": null,
+      "_type": "model",
+      "org": "Samuael",
+      "badge": "LLM",
+      "bc": "b-llm",
+      "dl": 2,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
+        ]
+      },
+      "verdict": {
+        "label": "New",
+        "icon": "new",
+        "type": "new"
+      }
+    },
+    {
+      "id": "tinycompany/Geezer-2.8b",
+      "name": "Geezer-2.8b",
+      "type": "model",
+      "pipeline_tag": null,
+      "type_label": "NLP",
+      "hf_url": "https://huggingface.co/tinycompany/Geezer-2.8b",
+      "downloads_monthly": 2,
+      "likes": 0,
+      "last_updated": "2025-03-15T14:30:29.000Z",
+      "tags": [
+        "safetensors",
+        "gpt_neox",
+        "region:us"
+      ],
+      "description": "",
+      "added_at": "2026-08-13T07:38:45.216Z",
+      "license": null,
+      "base_model": null,
+      "eval_results": null,
+      "param_count": 2937082880,
+      "training_datasets": [],
+      "confirmed_languages": [],
+      "file_count": 10,
+      "wer_score": null,
+      "_type": "model",
+      "org": "tinycompany",
+      "badge": "Model",
+      "bc": "b-default",
+      "dl": 2,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "desc": "",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": {
+        "points": [
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "timestamps": [
+          "2026-08-07",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-10",
+          "2026-08-11",
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -13296,7 +13318,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13328,13 +13350,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13353,7 +13375,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "openrail",
       "base_model": null,
       "eval_results": null,
@@ -13385,13 +13407,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13409,7 +13431,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.548Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13441,13 +13463,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13465,7 +13487,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13497,13 +13519,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13524,7 +13546,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13556,13 +13578,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13583,7 +13605,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13615,13 +13637,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13642,7 +13664,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13674,13 +13696,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13699,7 +13721,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -13731,13 +13753,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13755,7 +13777,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -13787,13 +13809,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13822,7 +13844,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "mit",
       "base_model": "gpt2",
       "eval_results": [],
@@ -13854,13 +13876,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13895,7 +13917,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "mit",
       "base_model": null,
       "eval_results": [],
@@ -13932,13 +13954,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -13962,7 +13984,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": "mit",
       "base_model": "facebook/nllb-200-distilled-600M",
       "eval_results": null,
@@ -13994,13 +14016,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14018,7 +14040,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.216Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14050,13 +14072,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14087,7 +14109,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.217Z",
       "license": "apache-2.0",
       "base_model": null,
       "eval_results": null,
@@ -14124,13 +14146,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14160,7 +14182,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.217Z",
       "license": "mit",
       "base_model": null,
       "eval_results": [],
@@ -14198,13 +14220,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14222,7 +14244,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.217Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14254,13 +14276,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14279,7 +14301,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.217Z",
       "license": "openrail",
       "base_model": null,
       "eval_results": null,
@@ -14311,13 +14333,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14351,7 +14373,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:05.549Z",
+      "added_at": "2026-08-13T07:38:45.217Z",
       "license": "unknown",
       "base_model": null,
       "eval_results": null,
@@ -14389,13 +14411,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14434,7 +14456,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": "apache-2.0",
       "base_model": "k2-fsa/OmniVoice",
       "eval_results": null,
@@ -14468,20 +14490,20 @@
         "points": [
           65,
           65,
-          65,
           66,
           65,
           65,
+          64,
           64
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -14516,7 +14538,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": "apache-2.0",
       "base_model": "deepseek-ai/DeepSeek-OCR-2",
       "eval_results": null,
@@ -14542,21 +14564,21 @@
       "sparkline": {
         "points": [
           5,
-          5,
           4,
           4,
           4,
           37,
+          44,
           44
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -14572,7 +14594,7 @@
       "pipeline_tag": "text-classification",
       "type_label": "Classification",
       "hf_url": "https://huggingface.co/Kaleab1999/ethiopian-airlines",
-      "downloads_monthly": 2,
+      "downloads_monthly": 5,
       "likes": 0,
       "last_updated": "2022-11-18T19:49:34.000Z",
       "tags": [
@@ -14584,7 +14606,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14597,7 +14619,7 @@
       "org": "Kaleab1999",
       "badge": "Classification",
       "bc": "b-default",
-      "dl": 2,
+      "dl": 5,
       "lang": null,
       "langs": [],
       "isNew": false,
@@ -14613,16 +14635,16 @@
           2,
           2,
           2,
-          2
+          5
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -14650,7 +14672,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14682,13 +14704,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14711,7 +14733,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14743,13 +14765,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14767,7 +14789,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14799,13 +14821,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14823,7 +14845,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.211Z",
+      "added_at": "2026-08-13T07:38:45.779Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -14855,13 +14877,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -14886,7 +14908,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.881Z",
+      "added_at": "2026-08-13T07:38:46.351Z",
       "license": "openrail",
       "base_model": "black-forest-labs/FLUX.1-dev",
       "eval_results": null,
@@ -14910,21 +14932,21 @@
       "sparkline": {
         "points": [
           151,
-          151,
           155,
           163,
+          165,
           165,
           165,
           165
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -14940,7 +14962,7 @@
       "pipeline_tag": "text-to-image",
       "type_label": "Image Generation",
       "hf_url": "https://huggingface.co/obann001/Ethiopia_sdxl_lora",
-      "downloads_monthly": 29,
+      "downloads_monthly": 38,
       "likes": 0,
       "last_updated": "2024-12-14T18:06:53.000Z",
       "tags": [
@@ -14955,7 +14977,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.881Z",
+      "added_at": "2026-08-13T07:38:46.351Z",
       "license": "openrail",
       "base_model": "SG161222/RealVisXL_V4.0",
       "eval_results": null,
@@ -14968,7 +14990,7 @@
       "org": "obann001",
       "badge": "Image Gen",
       "bc": "b-default",
-      "dl": 29,
+      "dl": 38,
       "lang": null,
       "langs": [],
       "isNew": false,
@@ -14980,20 +15002,20 @@
         "points": [
           15,
           15,
-          15,
           17,
           24,
           24,
-          29
+          29,
+          38
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15026,7 +15048,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.881Z",
+      "added_at": "2026-08-13T07:38:46.351Z",
       "license": "apache-2.0",
       "base_model": "Qwen/Qwen3-14B",
       "eval_results": null,
@@ -15052,19 +15074,19 @@
           18,
           18,
           18,
-          18,
+          19,
           19,
           19,
           19
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15095,7 +15117,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": "openrail",
       "base_model": "SG161222/RealVisXL_V4.0",
       "eval_results": null,
@@ -15119,21 +15141,21 @@
       "sparkline": {
         "points": [
           9,
-          9,
           8,
           10,
           9,
           9,
+          6,
           6
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15163,7 +15185,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -15189,19 +15211,19 @@
           5,
           5,
           5,
-          5,
+          4,
           4,
           4,
           4
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15229,7 +15251,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": null,
       "base_model": "osllmai-community/Llama-3.2-3B-Instruct-bnb-4bit",
       "eval_results": null,
@@ -15261,13 +15283,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15300,7 +15322,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -15335,13 +15357,13 @@
           1
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       },
       "verdict": {
@@ -15366,7 +15388,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": null,
       "base_model": null,
       "eval_results": null,
@@ -15398,13 +15420,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     },
@@ -15423,7 +15445,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-08-12T07:37:06.882Z",
+      "added_at": "2026-08-13T07:38:46.352Z",
       "license": "mit",
       "base_model": null,
       "eval_results": null,
@@ -15455,13 +15477,13 @@
           0
         ],
         "timestamps": [
-          "2026-08-06",
           "2026-08-07",
           "2026-08-08",
           "2026-08-09",
           "2026-08-10",
           "2026-08-11",
-          "2026-08-12"
+          "2026-08-12",
+          "2026-08-13"
         ]
       }
     }
