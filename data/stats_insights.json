@@ -4,46 +4,46 @@
       "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
       "name": "wav2vec2-large-xlsr-53-amharic",
       "org": "agkphysics",
-      "gain": 14277,
-      "growth": 23,
-      "start": 60762,
-      "end": 75039
+      "gain": 4838,
+      "growth": 7,
+      "start": 70215,
+      "end": 75053
     },
     {
       "id": "obann001/Ethiopia_Flux_LoRA",
       "name": "Ethiopia_Flux_LoRA",
       "org": "obann001",
-      "gain": 363,
-      "growth": 220,
+      "gain": 313,
+      "growth": 190,
       "start": 165,
-      "end": 528
-    },
-    {
-      "id": "badrex/Ethio-ASR-amharic",
-      "name": "Ethio-ASR-amharic",
-      "org": "badrex",
-      "gain": 284,
-      "growth": 25,
-      "start": 1130,
-      "end": 1414
-    },
-    {
-      "id": "badrex/Ethio-ASR-tigrinya",
-      "name": "Ethio-ASR-tigrinya",
-      "org": "badrex",
-      "gain": 210,
-      "growth": 32,
-      "start": 659,
-      "end": 869
+      "end": 478
     },
     {
       "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
       "name": "bert-base-multilingual-cased-finetuned-amharic",
       "org": "Davlan",
-      "gain": 148,
-      "growth": 58,
-      "start": 256,
-      "end": 404
+      "gain": 282,
+      "growth": 142,
+      "start": 198,
+      "end": 480
+    },
+    {
+      "id": "badrex/Ethio-ASR-amharic",
+      "name": "Ethio-ASR-amharic",
+      "org": "badrex",
+      "gain": 281,
+      "growth": 25,
+      "start": 1130,
+      "end": 1411
+    },
+    {
+      "id": "badrex/Ethio-ASR-tigrinya",
+      "name": "Ethio-ASR-tigrinya",
+      "org": "badrex",
+      "gain": 223,
+      "growth": 34,
+      "start": 659,
+      "end": 882
     },
     {
       "id": "obann001/Ethiopia_V2_sdxl_lora",
@@ -55,31 +55,49 @@
       "end": 106
     },
     {
-      "id": "badrex/Ethio-ASR-oromo",
-      "name": "Ethio-ASR-oromo",
-      "org": "badrex",
-      "gain": 74,
-      "growth": 61,
-      "start": 121,
-      "end": 195
-    },
-    {
       "id": "african-low-resource/omnivoice-amharic",
       "name": "omnivoice-amharic",
       "org": "african-low-resource",
-      "gain": 54,
-      "growth": 24,
+      "gain": 96,
+      "growth": 43,
       "start": 223,
-      "end": 277
+      "end": 319
+    },
+    {
+      "id": "badrex/Ethio-ASR-oromo",
+      "name": "Ethio-ASR-oromo",
+      "org": "badrex",
+      "gain": 73,
+      "growth": 60,
+      "start": 121,
+      "end": 194
     },
     {
       "id": "yosefw/llama-3.2-amharic-32k-1024-v8",
       "name": "llama-3.2-amharic-32k-1024-v8",
       "org": "yosefw",
-      "gain": 46,
-      "growth": 15,
+      "gain": 50,
+      "growth": 17,
       "start": 298,
-      "end": 344
+      "end": 348
+    },
+    {
+      "id": "rasyosef/roberta-amharic-text-embedding-base",
+      "name": "roberta-amharic-text-embedding-base",
+      "org": "rasyosef",
+      "gain": 43,
+      "growth": 18,
+      "start": 242,
+      "end": 285
+    },
+    {
+      "id": "yosefw/llama-3.2-amharic-32k-1024-v4",
+      "name": "llama-3.2-amharic-32k-1024-v4",
+      "org": "yosefw",
+      "gain": 38,
+      "growth": 22,
+      "start": 169,
+      "end": 207
     },
     {
       "id": "b1n1yam/shook-tiny-amharic-600hr",
@@ -91,31 +109,22 @@
       "end": 153
     },
     {
-      "id": "yosefw/llama-3.2-amharic-32k-1024-v4",
-      "name": "llama-3.2-amharic-32k-1024-v4",
-      "org": "yosefw",
-      "gain": 36,
-      "growth": 21,
-      "start": 169,
-      "end": 205
+      "id": "rasyosef/reranker-amharic-base",
+      "name": "reranker-amharic-base",
+      "org": "rasyosef",
+      "gain": 25,
+      "growth": 1,
+      "start": 1877,
+      "end": 1902
     },
     {
       "id": "obann001/Ethiopia_sdxl_lora",
       "name": "Ethiopia_sdxl_lora",
       "org": "obann001",
-      "gain": 32,
-      "growth": 110,
-      "start": 29,
-      "end": 61
-    },
-    {
-      "id": "rasyosef/roberta-amharic-text-embedding-base",
-      "name": "roberta-amharic-text-embedding-base",
-      "org": "rasyosef",
-      "gain": 28,
-      "growth": 12,
-      "start": 242,
-      "end": 270
+      "gain": 24,
+      "growth": 63,
+      "start": 38,
+      "end": 62
     },
     {
       "id": "chappM/whisper-amharic-small-v2",
@@ -136,15 +145,6 @@
       "end": 102
     },
     {
-      "id": "rasyosef/reranker-amharic-base",
-      "name": "reranker-amharic-base",
-      "org": "rasyosef",
-      "gain": 21,
-      "growth": 1,
-      "start": 1877,
-      "end": 1898
-    },
-    {
       "id": "rasyosef/roberta-amharic-text-embedding-medium",
       "name": "roberta-amharic-text-embedding-medium",
       "org": "rasyosef",
@@ -154,22 +154,13 @@
       "end": 140
     },
     {
-      "id": "Aregay01/whisper-large-v3-tigrinya-experiment",
-      "name": "whisper-large-v3-tigrinya-experiment",
-      "org": "Aregay01",
-      "gain": 13,
-      "growth": 144,
-      "start": 9,
-      "end": 22
-    },
-    {
-      "id": "Tcyber/deepseek_ocr_ethiopian_legal_FULL",
-      "name": "deepseek_ocr_ethiopian_legal_FULL",
-      "org": "Tcyber",
-      "gain": 12,
-      "growth": 27,
-      "start": 44,
-      "end": 56
+      "id": "rasyosef/gpt2-small-amharic",
+      "name": "gpt2-small-amharic",
+      "org": "rasyosef",
+      "gain": 11,
+      "growth": 15,
+      "start": 72,
+      "end": 83
     },
     {
       "id": "multilingual-tts/F5-TTS-OpenBible-Oromo",
@@ -179,6 +170,15 @@
       "growth": 367,
       "start": 3,
       "end": 14
+    },
+    {
+      "id": "Aregay01/whisper-large-v3-tigrinya-experiment",
+      "name": "whisper-large-v3-tigrinya-experiment",
+      "org": "Aregay01",
+      "gain": 11,
+      "growth": 122,
+      "start": 9,
+      "end": 20
     }
   ],
   "milestones": [
@@ -186,25 +186,19 @@
       "id": "chappM/whisper-amharic-small-v2",
       "milestone": 100,
       "downloads": 121,
-      "date": "2026-08-18"
+      "date": "2026-08-19"
     },
     {
       "id": "seyyaw/whisper-finetuned-amharic",
       "milestone": 100,
       "downloads": 102,
-      "date": "2026-08-18"
-    },
-    {
-      "id": "obann001/Ethiopia_Flux_LoRA",
-      "milestone": 500,
-      "downloads": 528,
-      "date": "2026-08-18"
+      "date": "2026-08-19"
     },
     {
       "id": "obann001/Ethiopia_V2_sdxl_lora",
       "milestone": 100,
       "downloads": 106,
-      "date": "2026-08-18"
+      "date": "2026-08-19"
     }
   ]
 }
