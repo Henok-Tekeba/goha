@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "name": "whisper-medium-amharic",
+      "org": "mintesnotfikir",
+      "badge": "ASR",
+      "growth": 371,
+      "dl": 820,
+      "lang": null,
+      "desc": "",
+      "id": "mintesnotfikir/whisper-medium-amharic",
+      "isNew": false,
+      "added_at": "2026-08-24T07:03:35.147Z"
+    },
+    {
       "name": "F5-TTS-OpenBible-Oromo",
       "org": "multilingual-tts",
       "badge": "TTS",
@@ -10,67 +22,55 @@
       "desc": "",
       "id": "multilingual-tts/F5-TTS-OpenBible-Oromo",
       "isNew": false,
-      "added_at": "2026-08-23T06:45:36.764Z"
+      "added_at": "2026-08-24T07:03:35.746Z"
     },
     {
-      "name": "bert-base-multilingual-cased-finetuned-amharic",
-      "org": "Davlan",
-      "badge": "Masked LM",
-      "growth": 138,
-      "dl": 474,
-      "lang": null,
-      "desc": "",
-      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
-      "isNew": false,
-      "added_at": "2026-08-23T06:45:36.092Z"
-    },
-    {
-      "name": "omnivoice-amharic",
-      "org": "african-low-resource",
+      "name": "qwen3-asr-0.6b-amharic-mixed",
+      "org": "b1n1yam",
       "badge": "ASR",
-      "growth": 31,
-      "dl": 353,
+      "growth": 68,
+      "dl": 104,
       "lang": null,
       "desc": "",
-      "id": "african-low-resource/omnivoice-amharic",
+      "id": "b1n1yam/qwen3-asr-0.6b-amharic-mixed",
       "isNew": false,
-      "added_at": "2026-08-23T06:45:36.092Z"
+      "added_at": "2026-08-24T07:03:35.151Z"
+    },
+    {
+      "name": "wav2vec2-large-xlsr-53-amharic",
+      "org": "agkphysics",
+      "badge": "ASR",
+      "growth": 38,
+      "dl": 103858,
+      "lang": null,
+      "desc": "",
+      "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
+      "isNew": false,
+      "added_at": "2026-08-24T07:03:35.145Z"
     },
     {
       "name": "gpt2-small-amharic",
       "org": "rasyosef",
       "badge": "LLM",
-      "growth": 26,
-      "dl": 87,
+      "growth": 27,
+      "dl": 80,
       "lang": null,
       "desc": "",
       "id": "rasyosef/gpt2-small-amharic",
       "isNew": false,
-      "added_at": "2026-08-23T06:45:36.097Z"
+      "added_at": "2026-08-24T07:03:35.152Z"
     },
     {
-      "name": "roberta-amharic-text-embedding-base",
-      "org": "rasyosef",
-      "badge": "Embeddings",
-      "growth": 24,
-      "dl": 307,
-      "lang": null,
-      "desc": "",
-      "id": "rasyosef/roberta-amharic-text-embedding-base",
-      "isNew": false,
-      "added_at": "2026-08-23T06:45:36.092Z"
-    },
-    {
-      "name": "Ethio-ASR-oromo",
-      "org": "badrex",
+      "name": "omnivoice-amharic",
+      "org": "african-low-resource",
       "badge": "ASR",
-      "growth": 21,
-      "dl": 236,
+      "growth": 26,
+      "dl": 350,
       "lang": null,
       "desc": "",
-      "id": "badrex/Ethio-ASR-oromo",
+      "id": "african-low-resource/omnivoice-amharic",
       "isNew": false,
-      "added_at": "2026-08-23T06:45:36.764Z"
+      "added_at": "2026-08-24T07:03:35.148Z"
     }
   ],
   "label": "Trending This Week"
