@@ -1,85 +1,85 @@
 {
   "topGainers": [
     {
-      "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
-      "name": "qwen3.5-4b-amharic-sft",
-      "org": "abdukuzi45",
-      "gain": 504,
-      "growth": 166,
-      "start": 304,
-      "end": 808
-    },
-    {
       "id": "rasyosef/roberta-amharic-text-embedding-base",
       "name": "roberta-amharic-text-embedding-base",
       "org": "rasyosef",
-      "gain": 81,
-      "growth": 25,
-      "start": 326,
-      "end": 407
+      "gain": 103,
+      "growth": 31,
+      "start": 327,
+      "end": 430
+    },
+    {
+      "id": "chappM/whisper-amharic-small-v2",
+      "name": "whisper-amharic-small-v2",
+      "org": "chappM",
+      "gain": 56,
+      "growth": 65,
+      "start": 86,
+      "end": 142
+    },
+    {
+      "id": "EthioNLP/Amharic-llama-base-model",
+      "name": "Amharic-llama-base-model",
+      "org": "EthioNLP",
+      "gain": 55,
+      "growth": 63,
+      "start": 88,
+      "end": 143
     },
     {
       "id": "rasyosef/Llama-3.2-1B-Amharic",
       "name": "Llama-3.2-1B-Amharic",
       "org": "rasyosef",
-      "gain": 70,
-      "growth": 115,
-      "start": 61,
+      "gain": 50,
+      "growth": 62,
+      "start": 81,
       "end": 131
     },
     {
       "id": "badrex/Ethio-ASR-oromo",
       "name": "Ethio-ASR-oromo",
       "org": "badrex",
-      "gain": 39,
-      "growth": 16,
-      "start": 240,
-      "end": 279
+      "gain": 44,
+      "growth": 18,
+      "start": 241,
+      "end": 285
     },
     {
       "id": "rasyosef/roberta-base-amharic",
       "name": "roberta-base-amharic",
       "org": "rasyosef",
-      "gain": 37,
-      "growth": 48,
+      "gain": 40,
+      "growth": 52,
       "start": 77,
-      "end": 114
-    },
-    {
-      "id": "Desalegnn/Desu-snowflake-arctic-embed-l-v2.0-finetuned-amharic-final",
-      "name": "Desu-snowflake-arctic-embed-l-v2.0-finetuned-amharic-final",
-      "org": "Desalegnn",
-      "gain": 33,
-      "growth": 55,
-      "start": 60,
-      "end": 93
+      "end": 117
     },
     {
       "id": "seyyaw/whisper-finetuned-amharic",
       "name": "whisper-finetuned-amharic",
       "org": "seyyaw",
       "gain": 22,
-      "growth": 25,
-      "start": 89,
-      "end": 111
+      "growth": 24,
+      "start": 90,
+      "end": 112
+    },
+    {
+      "id": "Desalegnn/Desu-snowflake-arctic-embed-l-v2.0-finetuned-amharic-final",
+      "name": "Desu-snowflake-arctic-embed-l-v2.0-finetuned-amharic-final",
+      "org": "Desalegnn",
+      "gain": 20,
+      "growth": 33,
+      "start": 60,
+      "end": 80
     },
     {
       "id": "yosefw/SPLADE-RoBERTa-Amharic-Base-V4",
       "name": "SPLADE-RoBERTa-Amharic-Base-V4",
       "org": "yosefw",
-      "gain": 22,
-      "growth": 42,
+      "gain": 20,
+      "growth": 38,
       "start": 52,
-      "end": 74
-    },
-    {
-      "id": "rasyosef/bert-amharic-text-embedding-medium",
-      "name": "bert-amharic-text-embedding-medium",
-      "org": "rasyosef",
-      "gain": 19,
-      "growth": 20,
-      "start": 97,
-      "end": 116
+      "end": 72
     },
     {
       "id": "yosefw/roberta-amharic-embed-base",
@@ -91,126 +91,126 @@
       "end": 88
     },
     {
-      "id": "luel/gemma-3-4b-tigrinya-qa",
-      "name": "gemma-3-4b-tigrinya-qa",
-      "org": "luel",
+      "id": "yosefw/bert-amharic-embed-small",
+      "name": "bert-amharic-embed-small",
+      "org": "yosefw",
       "gain": 18,
-      "growth": 58,
-      "start": 31,
-      "end": 49
+      "growth": 28,
+      "start": 64,
+      "end": 82
+    },
+    {
+      "id": "dice-research/amharic-property-retriever-base-xlmr",
+      "name": "amharic-property-retriever-base-xlmr",
+      "org": "dice-research",
+      "gain": 17,
+      "growth": 24,
+      "start": 71,
+      "end": 88
     },
     {
       "id": "rasyosef/snowflake-arctic-embed-l-v2.0-finetuned-amharic",
       "name": "snowflake-arctic-embed-l-v2.0-finetuned-amharic",
       "org": "rasyosef",
-      "gain": 17,
-      "growth": 22,
-      "start": 77,
+      "gain": 16,
+      "growth": 21,
+      "start": 78,
       "end": 94
     },
     {
       "id": "dice-research/amharic-property-retriever-mbert",
       "name": "amharic-property-retriever-mbert",
       "org": "dice-research",
-      "gain": 17,
-      "growth": 24,
+      "gain": 16,
+      "growth": 22,
       "start": 72,
-      "end": 89
+      "end": 88
     },
     {
-      "id": "yosefw/bert-amharic-embed-small",
-      "name": "bert-amharic-embed-small",
-      "org": "yosefw",
-      "gain": 16,
-      "growth": 25,
-      "start": 65,
-      "end": 81
+      "id": "Desalegnn/Desu1-xlm-roberta-base-amharic-embed-45k",
+      "name": "Desu1-xlm-roberta-base-amharic-embed-45k",
+      "org": "Desalegnn",
+      "gain": 15,
+      "growth": 21,
+      "start": 70,
+      "end": 85
     },
     {
       "id": "Desalegnn/Desu1-roberta-amharic-embed-medium-45k",
       "name": "Desu1-roberta-amharic-embed-medium-45k",
       "org": "Desalegnn",
-      "gain": 15,
-      "growth": 31,
-      "start": 49,
-      "end": 64
-    },
-    {
-      "id": "mintesnotfikir/whisper-medium-amharic",
-      "name": "whisper-medium-amharic",
-      "org": "mintesnotfikir",
       "gain": 14,
-      "growth": 2,
-      "start": 821,
-      "end": 835
+      "growth": 29,
+      "start": 49,
+      "end": 63
     },
     {
-      "id": "rasyosef/roberta-amharic-text-embedding-medium",
-      "name": "roberta-amharic-text-embedding-medium",
+      "id": "rasyosef/bert-amharic-text-embedding-medium",
+      "name": "bert-amharic-text-embedding-medium",
       "org": "rasyosef",
       "gain": 13,
-      "growth": 11,
-      "start": 117,
-      "end": 130
+      "growth": 13,
+      "start": 100,
+      "end": 113
     },
     {
       "id": "rasyosef/Llama-3.2-400M-Amharic",
       "name": "Llama-3.2-400M-Amharic",
       "org": "rasyosef",
-      "gain": 12,
-      "growth": 22,
-      "start": 55,
-      "end": 67
+      "gain": 13,
+      "growth": 23,
+      "start": 57,
+      "end": 70
     },
     {
-      "id": "rasyosef/bert-medium-amharic",
-      "name": "bert-medium-amharic",
+      "id": "luel/gemma-3-4b-tigrinya-qa",
+      "name": "gemma-3-4b-tigrinya-qa",
+      "org": "luel",
+      "gain": 13,
+      "growth": 27,
+      "start": 48,
+      "end": 61
+    },
+    {
+      "id": "rasyosef/roberta-amharic-text-embedding-medium",
+      "name": "roberta-amharic-text-embedding-medium",
       "org": "rasyosef",
-      "gain": 11,
-      "growth": 6,
-      "start": 187,
-      "end": 198
-    },
-    {
-      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
-      "name": "amharic-property-retriever-afro-xlmr-base",
-      "org": "dice-research",
-      "gain": 11,
+      "gain": 12,
       "growth": 10,
-      "start": 115,
-      "end": 126
+      "start": 117,
+      "end": 129
     }
   ],
   "milestones": [
     {
-      "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
-      "milestone": 500,
-      "downloads": 808,
-      "date": "2026-08-31"
+      "id": "EthioNLP/Amharic-llama-base-model",
+      "milestone": 100,
+      "downloads": 143,
+      "date": "2026-09-01"
+    },
+    {
+      "id": "chappM/whisper-amharic-small-v2",
+      "milestone": 100,
+      "downloads": 142,
+      "date": "2026-09-01"
     },
     {
       "id": "rasyosef/Llama-3.2-1B-Amharic",
       "milestone": 100,
       "downloads": 131,
-      "date": "2026-08-31"
-    },
-    {
-      "id": "rasyosef/bert-amharic-text-embedding-medium",
-      "milestone": 100,
-      "downloads": 116,
-      "date": "2026-08-31"
+      "date": "2026-09-01"
     },
     {
       "id": "rasyosef/roberta-base-amharic",
       "milestone": 100,
-      "downloads": 114,
-      "date": "2026-08-31"
+      "downloads": 117,
+      "date": "2026-09-01"
     },
     {
       "id": "seyyaw/whisper-finetuned-amharic",
       "milestone": 100,
-      "downloads": 111,
-      "date": "2026-08-31"
+      "downloads": 112,
+      "date": "2026-09-01"
     }
   ]
 }
