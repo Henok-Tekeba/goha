@@ -23,7 +23,7 @@
         "clip"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharicCLIP Annotation Dataset\n\t\n\n69,629 images organized by category for Amharic caption annotation.\n\n\t\n\t\t\n\t\n\t\n\t\tStructure\n\t\n\nimages/\n    animals10/        18,644 images — 10 animal classes\n        cat/\n        dog/\n        horse/ ...\n    intel/            11,998 images — 6 scene classes\n        forest/\n        mountain/ ...\n    fruits360/        38,987 images — 131 fruit classes\n        apple/\n        banana/ ...\n\n\n\t\n\t\t\n\t\n\t\n\t\tImage URL Format… See the full description on the dataset page: https://huggingface.co/datasets/CLIPAMharic/AmharicCLIP-annotation.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "CLIPAMharic",
       "badge": "Dataset",
@@ -68,7 +68,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "SaarAI",
       "badge": "Dataset",
@@ -112,7 +112,7 @@
         "region:us"
       ],
       "description": "Amharic Pretraining Corpus is a large-scale dataset (~103M) for general amharic language pretraining tasks. It consists of diverse text sources, including news articles, books, social media posts, government documents, and web content, all written in Amharic.\nYou can load the dataset as follows\nfrom datasets import load_dataset\n\nds = load_dataset(\"yordanoswuletaw/amharic-pretraining-corpus\")\n\n",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "yordanoswuletaw",
       "badge": "Dataset",
@@ -158,7 +158,7 @@
         "am"
       ],
       "description": "\n\t\n\t\t\n\t\tIntroduction\n\t\n\nThe Amharic Hate Speech data is collected using the Twitter API spanning from October 1, 2020 - November 30, 2022, considering the socio-political dynamics of Ethiopia in Twitter space. We used WebAnno tool for data annotation; each tweet is annotated by two native speakers and curated by one more experienced adjudicator to determine the gold labels. A total of 15.1k tweets consisting of three class labels namely: Hate, Offensive and Normal are presented. Read our… See the full description on the dataset page: https://huggingface.co/datasets/uhhlt/amharichatespeechranlp.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "uhhlt",
       "badge": "Dataset",
@@ -207,7 +207,7 @@
         "speech-synthesis"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharic TTS Benchmark\n\t\n\nSeven text-to-speech systems and the original human recordings, evaluated on 100\nAmharic prompts from three open datasets. Run date 2026-08-12.\nPublished results: addisassistant.com/benchmarks\n\n\t\n\t\t\n\t\n\t\n\t\tReproduce the CER/WER results\n\t\n\npython score.py\n\nNo arguments. It reads data/judge_rows.jsonl, recomputes every character and\nword edit count from the transcripts and writes data/summary.json.\nThis covers the CER/WER results only. Listening scores… See the full description on the dataset page: https://huggingface.co/datasets/addisai/amharic-tts-benchmark.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "addisai",
       "badge": "Dataset",
@@ -249,7 +249,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "abdukuzi45",
       "badge": "Dataset",
@@ -302,7 +302,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Shewa Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Shewa dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/leyu-amharic/leyu-amharic-shewa-dialect.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.173Z",
       "_type": "dataset",
       "org": "leyu-amharic",
       "badge": "Dataset",
@@ -344,7 +344,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "abdukuzi",
       "badge": "Dataset",
@@ -397,7 +397,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Addis Ababa Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Addis Ababa dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent… See the full description on the dataset page: https://huggingface.co/datasets/leyu-amharic/leyu-amharic-addis-ababa-dialect.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "leyu-amharic",
       "badge": "Dataset",
@@ -452,7 +452,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Wello Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Wello dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/leyu-amharic/leyu-amharic-wello-dialect.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "leyu-amharic",
       "badge": "Dataset",
@@ -498,7 +498,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharic SFT Combined with CoT (2026)\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\t📊 Dataset Overview\n\t\n\nThis dataset contains over 1.5 million high-quality conversational samples designed for Supervised Fine-Tuning (SFT) of Amharic Large Language Models. It includes Chain-of-Thought (CoT) reasoning to improve the logical deduction capabilities of the models in Amharic.\n\nTotal Rows (Raw): ~1.68 Million\nValidated Samples: 1,524,808\nTotal File Size: 2.15 GB\nTotal Tokens: ~1.31 Billion\n\n\n\t\n\t\t\n\t\n\t\n\t\t📝 Prompt… See the full description on the dataset page: https://huggingface.co/datasets/abdukuzi45/amharic-sft-mixed-cot-2026.",
-      "added_at": "2026-09-01T11:20:04.684Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "abdukuzi45",
       "badge": "Dataset",
@@ -543,7 +543,7 @@
         "region:us"
       ],
       "description": "\n\n\t\n\t\t\n\t\tAmharic Sentences Corpus V1.0\n\t\n\n\n\t\n\t\t\n\t\tSource: Telegram\n\t\n\nThis 1.6 million Amharic sentences corpus reflects current Amharic usage as of December 20, 2025, and is designed for anyone interested in:\n\nTraining Amharic-based LLMs\nFine-tuning NLP models\nBuilding search, summarization, or generative systems in Amharic\n\nThe dataset is heavily cleaned and normalized, but like any serious LLM dataset, it still needs proper tokenization for pre-training.\nI recommend using an… See the full description on the dataset page: https://huggingface.co/datasets/a3xrfgb/amharic-sentences-corpus.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "a3xrfgb",
       "badge": "Dataset",
@@ -571,7 +571,7 @@
       "type_label": "ASR",
       "hf_url": "https://huggingface.co/datasets/snapwre/amharic-speech",
       "downloads_monthly": 265,
-      "likes": 20,
+      "likes": 23,
       "last_updated": "2026-08-31T00:25:32.000Z",
       "tags": [
         "task_categories:automatic-speech-recognition",
@@ -592,7 +592,7 @@
         "crowdsourced"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tDataset.ET Amharic Speech — v0.2.0\n\t\n\n51.547 hours · 16,866 clips · 493 speakers · 15,443 distinct prompts\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\nRead speech in Amharic, crowdsourced from volunteer contributors in Ethiopia\nthrough a Telegram bot, peer-validated by other contributors, and screened\nacoustically before release. Amharic has very little open speech data; this\ncorpus exists to change that.\nContributors read a displayed prompt aloud, other contributors listen and vote on\nwhether… See the full description on the dataset page: https://huggingface.co/datasets/snapwre/amharic-speech.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "snapwre",
       "badge": "Dataset",
@@ -647,7 +647,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gonder Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gonnder dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns… See the full description on the dataset page: https://huggingface.co/datasets/leyu-amharic/leyu-amharic-gonder-dialect.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "leyu-amharic",
       "badge": "Dataset",
@@ -692,7 +692,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSFT-Data for Walia-LLM: Enhancing Amharic-LLaMA by Integrating Task-Specific and Generative Datasets\n\t\n\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThe Walia dataset is designed to enhance large language models for the Amharic language by:\n\nConverting existing task-specific datasets (e.g., sentiment analysis, QA, NER) into instruction format.\nCreating new generative datasets (e.g., poem generation, religious lyrics, story generation).\nTranslating English instruction datasets (e.g., Alpaca, Dolly) into… See the full description on the dataset page: https://huggingface.co/datasets/EthioNLP/Amharic_Instruction_dataset.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.174Z",
       "_type": "dataset",
       "org": "EthioNLP",
       "badge": "Dataset",
@@ -736,7 +736,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "shunyalabs",
       "badge": "Dataset",
@@ -789,7 +789,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gojjam Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gojjam dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/leyu-amharic/leyu-amharic-gojjam-dialect.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "leyu-amharic",
       "badge": "Dataset",
@@ -835,7 +835,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAn Amharic News Text classification Dataset\n\t\n\n\nIn NLP, text classification is one of the primary problems we try to solve and its uses in language analyses are indisputable. The lack of labeled training data made it harder to do these tasks in low resource languages like Amharic. The task of collecting, labeling, annotating, and making valuable this kind of data will encourage junior researchers, schools, and machine learning practitioners to implement existing classification models… See the full description on the dataset page: https://huggingface.co/datasets/israel/Amharic-News-Text-classification-Dataset.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "israel",
       "badge": "Dataset",
@@ -888,7 +888,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Addis Ababa Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Addis Ababa dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent… See the full description on the dataset page: https://huggingface.co/datasets/gheero-Leyu/leyu-amharic-addis-ababa-dialect.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "gheero-Leyu",
       "badge": "Dataset",
@@ -943,7 +943,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Wello Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Wello dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/gheero-Leyu/leyu-amharic-wello-dialect.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "gheero-Leyu",
       "badge": "Dataset",
@@ -997,7 +997,7 @@
         "leyu-data-collection-2026"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\t🇪🇹 Leyu Ethiopian Multilingual Speech Corpus 2026\n\t\n\nOfficial research-grade multilingual speech dataset submitted for the Leyu Platform Data Collection Competition 2026, organized by gheero (Leyu Platform Team).\n\n\n\t\n\t\t\n\t\n\t\n\t\t🏢 Platform & Team Verification Details\n\t\n\n\nTeam Name: SoundWaveET\nHugging Face Organization: SoundWaveET\nDataset Repository: SoundWaveET/leyu-ethiopian-multilingual-speech-corpus-2026\nPlatform Live Frontend: https://leyusound.netlify.app\nPlatform Live API:… See the full description on the dataset page: https://huggingface.co/datasets/SoundWaveET/leyu-amharic-speech-corpus-2026.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "SoundWaveET",
       "badge": "Dataset",
@@ -1045,7 +1045,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\t🎵 Amharic Bible Audio Dataset\n\t\n\n\n\t\n\t\t\n\t\t📋 Dataset Description\n\t\n\nThis dataset contains 59K audio chunks derived from Amharic Bible readings, split into 5-second segments for optimal training of speech models.\n\n\t\n\t\t\n\t\tAudio Specifications\n\t\n\n\nFormat: WAV (16-bit PCM)\nSample Rate: 24 kHz\nDuration: 5 seconds per chunk\nTotal Hours: ~82.5 hours\n\n\n\t\n\t\t\n\t\t🚀 Usage\n\t\n\n\n\t\n\t\t\n\t\tLoad with HuggingFace Datasets\n\t\n\nfrom datasets import load_dataset\n\n# Load the dataset\ndataset =… See the full description on the dataset page: https://huggingface.co/datasets/NaolBM/amharic-audio.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "NaolBM",
       "badge": "Dataset",
@@ -1089,7 +1089,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic Sentences Corpus\n\t\n\nThis dataset is compiled by Yimam et al. (2021) at LT Group, University of Hamburg, Germany. It comprises a collection of 6.4 million Amharic sentences intended for use in language model pretraining.\n\n\t\n\t\t\n\t\tSource\n\t\n\n\nGitHub https://github.com/uhh-lt/ethiopicmodels\nDataset: https://data.mendeley.com/datasets/dtywyf3sth/1\nPaper: https://www.mdpi.com/1999-5903/13/11/275\n\nFor citing this dataset, please use the following:\n@Article{fi13110275,\nAUTHOR = {Yimam… See the full description on the dataset page: https://huggingface.co/datasets/rasyosef/amharic-sentences-corpus.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "rasyosef",
       "badge": "Dataset",
@@ -1134,7 +1134,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.175Z",
       "_type": "dataset",
       "org": "israel",
       "badge": "Dataset",
@@ -1175,7 +1175,7 @@
         "region:us"
       ],
       "description": "Dataset used for pretraining Amharic llama. (Partial, books/papers portion to be uploaded)\nMore details: https://arxiv.org/abs/2403.06354\n",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.176Z",
       "_type": "dataset",
       "org": "iocuydi",
       "badge": "Dataset",
@@ -1219,7 +1219,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic ASR Dataset\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThis dataset is a processed version of the original BDU-speech dataset by Yohannes A. Ejigu.\nIt contains paired Amharic speech audio and transcriptions, structured for use in automatic speech recognition (ASR) research and model training.\nAudio files are decoded as mono. Sampling rates may vary across files.\n\n\n\t\n\t\t\n\t\tDataset Info\n\t\n\nDatasetDict({\n    train: Dataset({\n        features: ['audio', 'sentence'],\n        num_rows: 32901… See the full description on the dataset page: https://huggingface.co/datasets/chappM/amharic-bdu-asr.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.176Z",
       "_type": "dataset",
       "org": "chappM",
       "badge": "Dataset",
@@ -1261,7 +1261,7 @@
         "region:us"
       ],
       "description": "ዛጎል ዜና- መንግስት አምስት ሺህ የሚጠጉ እስረኞችን “ተመራቂዎች” በሚል መፍታቱን ይፋ ባደረገበት ቀን በተመሳሳይ አምቦ ተማሪዎች ተቃውሞ ማሰማታቸው ተሰማ። ተማሪዎቹ የአስቸኳይ አዋጁን በመጣስ ” መረራ ይፈታ” እያሉ ተቃውሞ መጀመራቸው ነው የተሰማው። ከትምህርት ቤት ወደ ትምህርት ቤት የሰፋው ተቃውሞ ብህይወት ላይ አደጋ ባያስከትልም በንብረት ላይ ግን ጉዳት አድርሷል። መኪና ሲቃጠል ያዩ የአይን ምስክሮች ተቃውሞውን በጀመሩት ላይም ሆነ ዘግይተው በተቀላቀሉት ላይ እንደ ቀደሞው ያለ የሃይል እርምጃ አልተወሰደም። የኦሮሚያ ሚዲያ ኔት ወርክ እንዳለው ደግሞ በርካታ ሰዎች ታስረዋል።\nለወትሮው ህገ መንግስቱን በሃይል ለመናድ የተነሱ፣ የነውጥ ሃይሎች፣ አተራማሾች፣ የጥፋት ሃይል ተላላኪዎች በሚል ተጠርጥረው በቁጥጥር ስር ከዋሉት መካከል 4035 የሚሆኑት ሲፈቱ እስረኞቹ “ስድስት ኮርስ… See the full description on the dataset page: https://huggingface.co/datasets/surafelkindu/Amharic_corpus.",
-      "added_at": "2026-09-01T11:20:04.685Z",
+      "added_at": "2026-09-02T10:54:33.176Z",
       "_type": "dataset",
       "org": "surafelkindu",
       "badge": "Dataset",
@@ -1332,7 +1332,7 @@
         "human-transcription-on-demand"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharic Spontaneous Speech — Silencio\n\t\n\nSpontaneous Amharic from 29 distinct speakers — one clip each. Four self-reported regional varieties: Addis Ababa, Gondar, Gojjam and Tigray. Long-form, mean clip length over two minutes. Audio and speaker metadata only: no transcripts, by design — human transcription is available on demand.\n\n\t\n\t\t\n\n\n\n\n\t\t\nHours\n1.1\n\n\nClips\n29\n\n\nSpeakers\n29\n\n\nCountries\n2\n\n\nSpeaker origin regions\n4\n\n\nL1 speakers of the recorded language\n28 of 29 (28 clips)… See the full description on the dataset page: https://huggingface.co/datasets/SilencioNetwork/amharic-speech.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "SilencioNetwork",
       "badge": "Dataset",
@@ -1387,7 +1387,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gonder Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gonnder dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns… See the full description on the dataset page: https://huggingface.co/datasets/gheero-Leyu/leyu-amharic-gonder-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "gheero-Leyu",
       "badge": "Dataset",
@@ -1442,7 +1442,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Wello Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Wello dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/leyu-amharic-wello-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -1497,7 +1497,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gonder Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gonnder dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/leyu-amharic-gonder-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -1552,7 +1552,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gojjam Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gojjam dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/leyu-amharic-gojjam-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -1599,7 +1599,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmQA: Amharic Question Answering Dataset\n\t\n\nAmharic question and answer dataset in a prompt and completion format.\n\n\t\n\t\t\n\t\tDataset Details\n\t\n\nIn Amharic, interrogative sentences can be formulated using information-seeking pronouns like “ምን” (what), “መቼ” (when), “ማን” (who), “የት” (where), “የትኛው” (which), etc. and prepositional interrogative phrases like “ለምን” [ለ-ምን] (why), “በምን” [በ-ምን] (by what), etc. Besides, a verb phrase could be used to pose questions (Getahun 2013; Baye 2009). As… See the full description on the dataset page: https://huggingface.co/datasets/Henok/amharic-qa.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "Henok",
       "badge": "Dataset",
@@ -1654,7 +1654,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Shewa Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Shewa dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/gheero-Leyu/leyu-amharic-shewa-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "gheero-Leyu",
       "badge": "Dataset",
@@ -1698,7 +1698,7 @@
         "region:us"
       ],
       "description": "\n\n\t\n\t\t\n\t\tAmharic Articles Dataset\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThis dataset comprises news articles in Amharic.\n\n\t\n\t\t\n\t\tDataset Details\n\t\n\n\nLanguage: Amharic\n\nTime Coverage: Primarily December 2020 and January 2021 (Ethiopian Calendar: Tahisas 2013 and Tir 2013)\n\nData Format: Each entry is a text line within a .txt text corpus.\n\n\n\n\t\n\t\t\n\t\tPotential Uses\n\t\n\nThis dataset can be used for various purposes:\n\nPretraining Amharic Language Models: The dataset can be used for pretraining new… See the full description on the dataset page: https://huggingface.co/datasets/amanuelbyte/Amharic_dataset.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "amanuelbyte",
       "badge": "Dataset",
@@ -1736,7 +1736,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "b1n1yam",
       "badge": "Dataset",
@@ -1789,7 +1789,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Amharic - Gojjam Dialect Speech Corpus\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused on the Gojjam dialect of the Amharic language. It is designed to support speech technology research across multiple tasks, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS). The corpus captures dialect-specific phonetic variations, accent patterns, and… See the full description on the dataset page: https://huggingface.co/datasets/gheero-Leyu/leyu-amharic-gojjam-dialect.",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "gheero-Leyu",
       "badge": "Dataset",
@@ -1833,7 +1833,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.177Z",
       "_type": "dataset",
       "org": "KYAGABA",
       "badge": "Dataset",
@@ -1876,7 +1876,7 @@
         "region:us"
       ],
       "description": "apache-2.0",
-      "added_at": "2026-09-01T11:20:04.686Z",
+      "added_at": "2026-09-02T10:54:33.178Z",
       "_type": "dataset",
       "org": "Tvsybkzkmapab",
       "badge": "Dataset",
@@ -1933,7 +1933,7 @@
         "encyclopedic"
       ],
       "description": "\n\t\n\t\t\n\t\tWikipedia Amharic (አማርኛ ዊኪፒዲያ)\n\t\n\n\n  \n  \n\n\t\n\t\t\n\t\tHigh-Quality Amharic Wikipedia Translations\n\t\n\n  Translated by Addis AI - Aleph (፩)\n  \n  \n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset contains Wikipedia articles professionally translated from English to Amharic (አማርኛ) using Addis AI - Aleph (፩), a state-of-the-art translation model specifically optimized for Ethiopian languages. This represents one of the largest and highest-quality Amharic knowledge bases available, providing… See the full description on the dataset page: https://huggingface.co/datasets/addisai/wikipedia-amharic.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "addisai",
       "badge": "Dataset",
@@ -1984,7 +1984,7 @@
         "Ads"
       ],
       "description": "mit",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "BiniyamAjaw",
       "badge": "Dataset",
@@ -2031,7 +2031,7 @@
         "webdataset"
       ],
       "description": "\n\t\n\t\t\n\t\tOmniVoice Amharic v4 — Pre-extracted Audio Tokens\n\t\n\nPre-extracted HiggsAudioV2 audio tokens for training OmniVoice Amharic TTS.\nDownloading these tokens (~648 MB, ~2 min) skips the 30+ minute token extraction step (steps 1-3 of the training pipeline).\n\n\t\n\t\t\n\t\tDataset Stats\n\t\n\n\n\t\n\t\t\nStat\nValue\n\n\n\t\t\nTotal samples\n81,731\n\n\nTotal audio\n~331 hours\n\n\nAvg sample duration\n~14.6 seconds\n\n\nAudio shards\n164 (.tar files)\n\n\nText shards\n164 (.jsonl files)\n\n\nSamples per shard\n500 (last shard: 231)… See the full description on the dataset page: https://huggingface.co/datasets/demeleww/Amharic_tokens.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "demeleww",
       "badge": "Dataset",
@@ -2082,7 +2082,7 @@
         "amharic"
       ],
       "description": "\n\t\n\t\t\n\t\tEnglish-Amharic Parallel Dataset\n\t\n\nThis dataset contains parallel sentences in English and Amharic (Ethiopia).\n\n\t\n\t\t\n\t\tDataset Information\n\t\n\n\nLanguage Pair: English ↔ Amharic\nLanguage Code: amh\nCountry: Ethiopia\nOriginal Source: OPUS MT560 Dataset\n\n\n\t\n\t\t\n\t\tDataset Structure\n\t\n\nThe dataset contains parallel sentences that can be used for:\n\nMachine translation training\nCross-lingual NLP tasks\nLanguage model fine-tuning\n\n\n\t\n\t\t\n\t\tCitation\n\t\n\nIf you use this dataset, please cite the… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/english-amharic_sentence-pairs_mt560.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -2128,7 +2128,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharic SFT Combined Dataset 2026 (Cleaned)\n\t\n\nThis dataset is the cleaned version of the Amharic SFT dataset with empty <think> tags removed.\n\n\t\n\t\t\n\t\n\t\n\t\t📊 Dataset Statistics\n\t\n\n\nTotal Examples: 1,524,808\nClean Status: ✅ All empty <think> tags removed\nRows Preserved: ✅ All 1,524,808 rows (0 deleted)\n\n\n\t\n\t\t\n\t\n\t\n\t\t🧹 Cleaning Applied\n\t\n\n\nEmpty <think> tags removed — Patterns like <think>\\n\\n</think>, <think> </think>, <think></think> were removed\nAll rows preserved — No filtering… See the full description on the dataset page: https://huggingface.co/datasets/abdukuzi45/amharic-sft-combined-2026-with-cot.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "abdukuzi45",
       "badge": "Dataset",
@@ -2176,7 +2176,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic News Category Classification\n\t\n\nThis amharic text dataset can be used to train/finetune models for the following tasks\n\nclassification : using the categories \nsummarization : using the headlines\n\n\n\t\n\t\t\n\t\tFinetuning\n\t\n\nHere is a github repo that contains three notebooks that use this dataset to finetune the following models.\n\nxlm-roberta-base : a multilingual transformer model with 280M parameters\nbert-small-amharic : a new amharic version of the bert-small transformer model… See the full description on the dataset page: https://huggingface.co/datasets/rasyosef/amharic-news-category-classification.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.179Z",
       "_type": "dataset",
       "org": "rasyosef",
       "badge": "Dataset",
@@ -2229,7 +2229,7 @@
         "multilingual"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tDataset Card for FineTome Single Turn Conversations - Amharic\n\t\n\nThis dataset contains 83,290 conversational examples translated from English to Amharic, providing high-quality instruction-following conversations for training language models in Amharic.\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Details\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Description\n\t\n\nThis dataset is a translation of the FineTome-single-turn-dedup dataset into Amharic, creating one of the largest publicly available collection of… See the full description on the dataset page: https://huggingface.co/datasets/addisai/FineTome-single-turn-dedup-amharic.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.180Z",
       "_type": "dataset",
       "org": "addisai",
       "badge": "Dataset",
@@ -2276,7 +2276,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSFT-Data for Walia-LLM: Enhancing Amharic-LLaMA by Integrating Task-Specific and Generative Datasets\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThe Walia dataset is designed to enhance large language models for the Amharic language by:\n\nConverting existing task-specific datasets (e.g., sentiment analysis, QA, NER) into instruction format.\nCreating new generative datasets (e.g., poem generation, religious lyrics, story generation).\nTranslating English instruction datasets (e.g., Alpaca, Dolly) into… See the full description on the dataset page: https://huggingface.co/datasets/EthioNLP/Amharic_LLAMA_MT.",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.180Z",
       "_type": "dataset",
       "org": "EthioNLP",
       "badge": "Dataset",
@@ -2322,7 +2322,7 @@
         "art"
       ],
       "description": "mit",
-      "added_at": "2026-09-01T11:20:04.687Z",
+      "added_at": "2026-09-02T10:54:33.180Z",
       "_type": "dataset",
       "org": "KerVerse",
       "badge": "Dataset",
@@ -2369,7 +2369,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic Passage Retrieval Dataset V2\n\t\n\nThis dataset is the official benchmark for the paper \"The Multilingual Curse at the Retrieval Layer: Evidence from Amharic\".\nIt provides a fixed 90/10 train–test split consisting of 68,000 query–passage pairs, specifically designed for evaluating and training dense, late-interaction, learned sparse, and cross-encoder retrieval models for the Amharic language.\n\nGitHub Repository: rasyosef/amharic-neural-ir\nPaper: The Multilingual Curse at the… See the full description on the dataset page: https://huggingface.co/datasets/rasyosef/Amharic-Passage-Retrieval-Dataset-V2.",
-      "added_at": "2026-09-01T11:20:04.688Z",
+      "added_at": "2026-09-02T10:54:33.181Z",
       "_type": "dataset",
       "org": "rasyosef",
       "badge": "Dataset",
@@ -2424,7 +2424,7 @@
         "production"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic LLM Training Dataset\n\t\n\nComplete production-ready Amharic dataset for large language model training and deployment.\n\n\t\n\t\t\n\t\t🚀 Quick Start for Deployment\n\t\n\nfrom datasets import load_dataset\n\n# Load the complete dataset\ndataset = load_dataset(\"YoseAli/amharic-llm-training-data\")\n\n# Access splits\ntrain_data = dataset[\"train\"]  # 761,501 samples\ntest_data = dataset[\"test\"]    # 84,612 samples\n\nprint(f\"Training samples: {len(train_data):,}\")\nprint(f\"Test samples: {len(test_data):… See the full description on the dataset page: https://huggingface.co/datasets/YoseAli/amharic-llm-training-data.",
-      "added_at": "2026-09-01T11:20:04.688Z",
+      "added_at": "2026-09-02T10:54:33.181Z",
       "_type": "dataset",
       "org": "YoseAli",
       "badge": "Dataset",
@@ -2468,7 +2468,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.893Z",
       "_type": "dataset",
       "org": "KYAGABA",
       "badge": "Dataset",
@@ -2517,7 +2517,7 @@
         "oromo"
       ],
       "description": "\n\t\n\t\t\n\t\tEnglish-Oromo Parallel Dataset\n\t\n\nThis dataset contains parallel sentences in English and Oromo (orm).\n\n\t\n\t\t\n\t\tDataset Information\n\t\n\n\nLanguage Pair: English ↔ Oromo\nLanguage Code: orm\nCountry: orm\nOriginal Source: OPUS MT560 Dataset\n\n\n\t\n\t\t\n\t\tDataset Structure\n\t\n\nThe dataset contains parallel sentences that can be used for:\n\nMachine translation training\nCross-lingual NLP tasks\nLanguage model fine-tuning\n\n\n\t\n\t\t\n\t\tCitation\n\t\n\nIf you use this dataset, please cite the citation guide of the… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/english-oromo_sentence-pairs_mt560.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.893Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -2566,7 +2566,7 @@
         "leyu-data-collection-2026"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Afaan Oromo Speech Corpus 2026\n\t\n\nOfficial speech dataset submission for the Leyu Data Collection Competition 2026.\n\n\t\n\t\t\n\t\n\t\n\t\tOrganization & Team\n\t\n\n\nHugging Face Org: SoundWaveET\nDataset Repo: SoundWaveET/leyu-oromo-speech-corpus-2026\n\n",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.893Z",
       "_type": "dataset",
       "org": "SoundWaveET",
       "badge": "Dataset",
@@ -2611,7 +2611,7 @@
         "art"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Card for Dataset Name\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThis dataset card aims to be a base template for new datasets. It has been generated using this raw template.\n\n\t\n\t\t\n\t\tSupported Tasks and Leaderboards\n\t\n\n[More Information Needed]\n\n\t\n\t\t\n\t\tLanguages\n\t\n\n[More Information Needed]\n\n\t\n\t\t\n\t\tDataset Structure\n\t\n\n\n\t\n\t\t\n\t\tData Instances\n\t\n\n[More Information Needed]\n\n\t\n\t\t\n\t\tData Fields\n\t\n\n[More Information Needed]\n\n\t\n\t\t\n\t\tData Splits\n\t\n\n[More Information Needed]\n\n\t\n\t\t\n\t\tDataset Creation… See the full description on the dataset page: https://huggingface.co/datasets/Soressaa/oromo_name.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.893Z",
       "_type": "dataset",
       "org": "Soressaa",
       "badge": "Dataset",
@@ -2660,7 +2660,7 @@
         "low-resource"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tOromo Speech Data (Pooled)\n\t\n\nA ~189.2-hour Afaan Oromo speech corpus, drawn from a single source (Afrivoice\nEthiopia) and filtered to only genuinely transcribed audio. Part of the\nAfroNet multi-language TTS data\neffort — sibling release to Yoruba/Hausa/Igbo/Kinyarwanda/Swahili, but Oromo (and\nits four sibling Ethiopian-language releases, Amharic/Sidama/Tigrinya/Wolaytta) are\neach published independently, not bundled into one combined \"Ethiopia\" dataset,\neven though they share a… See the full description on the dataset page: https://huggingface.co/datasets/Professor/oromo-speech-data.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.893Z",
       "_type": "dataset",
       "org": "Professor",
       "badge": "Dataset",
@@ -2711,7 +2711,7 @@
         "binary-classification"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo Sentiment Corpus\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThis dataset contains sentiment-labeled text data in Oromo for binary sentiment classification (Positive/Negative). Sentiments are extracted and processed from the English meanings of the sentences using DistilBERT for sentiment classification. The dataset is part of a larger collection of African language sentiment analysis resources.\n\n\t\n\t\t\n\t\tDataset Statistics\n\t\n\n\nTotal samples: 825,272\nPositive sentiment: 457396 (55.4%)… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-sentiments-corpus.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -2758,7 +2758,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAfaan Oromo TTS\n\t\n\n\n\t\n\t\t\n\t\tConfigs\n\t\n\n\ndefault\n\n\n\t\n\t\t\n\t\tSplits\n\t\n\n\ntrain\n\n\n\t\n\t\t\n\t\tColumns\n\t\n\n\nid\nspeaker_id\ntext\ntranscription\nlanguage\ngender\naudio\n\n",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "b1n1yam",
       "badge": "Dataset",
@@ -2809,7 +2809,7 @@
         "crowdsourced"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tDataset.ET Afaan Oromoo Speech — v0.1.0\n\t\n\n9.843 hours · 3,594 clips · 74 speakers · 3,283 distinct prompts\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\nRead speech in Afaan Oromoo, crowdsourced from volunteer contributors in Ethiopia\nthrough a Telegram bot, peer-validated by other contributors, and screened\nacoustically before release. Afaan Oromoo has very little open speech data; this\ncorpus exists to change that.\nContributors read a displayed prompt aloud, other contributors listen and vote… See the full description on the dataset page: https://huggingface.co/datasets/snapwre/afaan-oromoo-speech.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "snapwre",
       "badge": "Dataset",
@@ -2853,7 +2853,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "badrex",
       "badge": "Dataset",
@@ -2906,7 +2906,7 @@
         "instruction-tuning"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Description\n\t\n\nCode-170k-oromo is a groundbreaking dataset containing 176,999 programming conversations, originally sourced from glaiveai/glaive-code-assistant-v2 and translated into Oromo, making coding education accessible to Oromo speakers.\n\n\t\n\t\t\n\t\t🌟 Key Features\n\t\n\n\n176,999 high-quality conversations about programming and coding\nPure Oromo language - democratizing coding education\nMulti-turn dialogues covering various programming concepts\nDiverse topics: algorithms, data… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/Code-170k-oromo.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -2949,7 +2949,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tLingala-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Lingala-Oromo_Sentence-Pairs\nNumber of Rows: 66262\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/lingala-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -2997,7 +2997,7 @@
         "text-classification"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo Emotion Analysis Corpus\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThis dataset contains emotion-labeled text data in Oromo for emotion classification (joy, sadness, anger, fear, surprise, disgust, neutral). Emotions were extracted and processed from the English meanings of the sentences using the model j-hartmann/emotion-english-distilroberta-base. The dataset is part of a larger collection of African language emotion analysis resources.\n\n\t\n\t\t\n\t\tDataset Statistics\n\t\n\n\nTotal samples: 825… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-emotions-corpus.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3040,7 +3040,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tEwe-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Ewe-Oromo_Sentence-Pairs\nNumber of Rows: 74474\nNumber of Columns:… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/ewe-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3082,7 +3082,7 @@
         "region:us"
       ],
       "description": "This repository contains the dataset used for the TaCo paper.\nPlease refer to the paper for more details: OpenReview\nIf you have used our dataset, please cite it as follows:\nCitation\n@inproceedings{upadhayay2024taco,\ntitle={TaCo: Enhancing Cross-Lingual Transfer for Low-Resource Languages in {LLM}s through Translation-Assisted Chain-of-Thought Processes},\nauthor={Bibek Upadhayay and Vahid Behzadan},\nbooktitle={5th Workshop on practical ML for limited/low resource settings, ICLR},\nyear={2024}… See the full description on the dataset page: https://huggingface.co/datasets/saillab/alpaca-oromo-cleaned.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.894Z",
       "_type": "dataset",
       "org": "saillab",
       "badge": "Dataset",
@@ -3125,7 +3125,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Rundi_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Rundi_Sentence-Pairs\nNumber of Rows: 91889\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-rundi_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.454Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3166,7 +3166,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tFulah-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Fulah-Oromo_Sentence-Pairs\nNumber of Rows: 92794\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/fulah-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3207,7 +3207,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tNuer-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Nuer-Oromo_Sentence-Pairs\nNumber of Rows: 16609\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/nuer-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3248,7 +3248,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDinka-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Dinka-Oromo_Sentence-Pairs\nNumber of Rows: 18728\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/dinka-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3290,7 +3290,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Card for Dataset Name\n\t\n\n\n\nThis dataset card aims to be a base template for new datasets. It has been generated using this raw template.\n\n\t\n\t\t\n\t\tDataset Details\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\n\n\n\n\n\nCurated by: [More Information Needed]\nFunded by [optional]: [More Information Needed]\nShared by [optional]: [More Information Needed]\nLanguage(s) (NLP): [More Information Needed]\nLicense: [More Information Needed]\n\n\n\t\n\t\t\n\t\tDataset Sources [optional]\n\t\n\n\n\n\nRepository: [More… See the full description on the dataset page: https://huggingface.co/datasets/Henocke/afaan_oromo_english_parallel.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "Henocke",
       "badge": "Dataset",
@@ -3331,7 +3331,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Somali_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Somali_Sentence-Pairs\nNumber of Rows: 88097\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-somali_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3372,7 +3372,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Tumbuka_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Tumbuka_Sentence-Pairs\nNumber of Rows: 73849\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-tumbuka_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.455Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3414,7 +3414,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.895Z",
       "_type": "dataset",
       "org": "KYAGABA",
       "badge": "Dataset",
@@ -3456,7 +3456,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.896Z",
       "_type": "dataset",
       "org": "KYAGABA",
       "badge": "Dataset",
@@ -3497,7 +3497,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Tigrinya_Sentence-Pairs\nNumber of Rows: 58814\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.896Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3538,7 +3538,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Shona_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Shona_Sentence-Pairs\nNumber of Rows: 102932\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-shona_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.896Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3579,7 +3579,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKimbundu-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kimbundu-Oromo_Sentence-Pairs\nNumber of Rows: 34479\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kimbundu-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.896Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3620,7 +3620,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tHausa-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Hausa-Oromo_Sentence-Pairs\nNumber of Rows: 118255\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/hausa-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3661,7 +3661,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tIgbo-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Igbo-Oromo_Sentence-Pairs\nNumber of Rows: 63492\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/igbo-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3702,7 +3702,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAfrikaans-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Afrikaans-Oromo_Sentence-Pairs\nNumber of Rows: 471697\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/afrikaans-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3743,7 +3743,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tFrench-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset can be used for machine translation, sentence alignment, or other natural language processing tasks.\nIt is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\tMetadata\n\t\n\n\nFile Name: French-Oromo_Sentence-Pairs\nFile Size: 113902124 bytes\nLanguages: French, French\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThe dataset contains sentence pairs in… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/french-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3784,7 +3784,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Yoruba_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Yoruba_Sentence-Pairs\nNumber of Rows: 84299\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-yoruba_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3825,7 +3825,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Xhosa_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Xhosa_Sentence-Pairs\nNumber of Rows: 104058\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-xhosa_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.456Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3866,7 +3866,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Wolof_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Wolof_Sentence-Pairs\nNumber of Rows: 38907\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-wolof_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3907,7 +3907,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Twi_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Twi_Sentence-Pairs\nNumber of Rows: 100171\nNumber of Columns:… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-twi_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3948,7 +3948,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tFon-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Fon-Oromo_Sentence-Pairs\nNumber of Rows: 50665\nNumber of Columns:… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/fon-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -3989,7 +3989,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tChichewa-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Chichewa-Oromo_Sentence-Pairs\nNumber of Rows: 94366\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/chichewa-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.897Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4030,7 +4030,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tBambara-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Bambara-Oromo_Sentence-Pairs\nNumber of Rows: 30267\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/bambara-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4071,7 +4071,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tPedi-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Pedi-Oromo_Sentence-Pairs\nNumber of Rows: 80150\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/pedi-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4112,7 +4112,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDyula-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Dyula-Oromo_Sentence-Pairs\nNumber of Rows: 45729\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/dyula-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4153,7 +4153,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAkan-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Akan-Oromo_Sentence-Pairs\nNumber of Rows: 47083\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/akan-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4194,7 +4194,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tEnglish-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset can be used for machine translation, sentence alignment, or other natural language processing tasks.\nIt is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\tMetadata\n\t\n\n\nFile Name: English-Oromo_Sentence-Pairs\nFile Size: 373356060 bytes\nLanguages: English, English\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThe dataset contains sentence pairs in… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/english-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4230,7 +4230,7 @@
         "region:us"
       ],
       "description": "Ce répertoire est vide, il a été créé pour améliorer le référencement du jeu de données michsethowusu/french-oromo_sentence-pairs.\n",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "french-datasets",
       "badge": "Dataset",
@@ -4275,7 +4275,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "FarmerlineML",
       "badge": "Dataset",
@@ -4317,7 +4317,7 @@
         "region:us"
       ],
       "description": "This repository contains the dataset used for the TaCo paper.\nThe dataset follows the style outlined in the TaCo paper, as follows:\n{\n\"instruction\": \"instruction in xx\",\n\"input\": \"input in xx\",\n\"output\": \"Instruction in English: instruction in en , \n            Response in English: response in en ,\n            Response in xx: response in xx \"\n}\n\nPlease refer to the paper for more details: OpenReview\nIf you have used our dataset, please cite it as follows:\nCitation… See the full description on the dataset page: https://huggingface.co/datasets/saillab/alpaca_oromo_taco.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "saillab",
       "badge": "Dataset",
@@ -4360,7 +4360,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Umbundu_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Umbundu_Sentence-Pairs\nNumber of Rows: 48783\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-umbundu_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.457Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4401,7 +4401,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKongo-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kongo-Oromo_Sentence-Pairs\nNumber of Rows: 50122\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kongo-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.458Z",
+      "added_at": "2026-09-02T10:54:33.898Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4444,7 +4444,7 @@
         "region:us"
       ],
       "description": "cc-by-4.0",
-      "added_at": "2026-09-01T11:20:05.458Z",
+      "added_at": "2026-09-02T10:54:33.899Z",
       "_type": "dataset",
       "org": "eyob7",
       "badge": "Dataset",
@@ -4487,7 +4487,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Tsonga_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Tsonga_Sentence-Pairs\nNumber of Rows: 91347\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-tsonga_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.458Z",
+      "added_at": "2026-09-02T10:54:33.899Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4528,7 +4528,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAmharic-Oromo_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Amharic-Oromo_Sentence-Pairs\nNumber of Rows: 109805\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/amharic-oromo_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.458Z",
+      "added_at": "2026-09-02T10:54:33.899Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4569,7 +4569,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tOromo-Swahili_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Oromo-Swahili_Sentence-Pairs\nNumber of Rows: 205237\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/oromo-swahili_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:05.458Z",
+      "added_at": "2026-09-02T10:54:33.899Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -4616,7 +4616,7 @@
         "eritrea"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tTigrinya Training Corpus\n\t\n\nA large, multi-source Tigrinya-language text corpus assembled for continued pretraining (CPT) and\ninstruction-tuning of LLMs on Tigrinya. It combines natively-authored Tigrinya text (news, religious\ntexts, literature, legal documents, social media, OCR'd books), machine-translated text\n(English → Tigrinya via NLLB, quality-filtered), and synthetic instruction/QA data.\n\n⚠️ Draft card. Sizes and subset descriptions below were generated from the local file… See the full description on the dataset page: https://huggingface.co/datasets/Ha-Te-21/tigrinya-corpus.",
-      "added_at": "2026-09-01T11:20:06.193Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "Ha-Te-21",
       "badge": "Dataset",
@@ -4663,7 +4663,7 @@
         "low-resource"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya Abusive Language Detection (TiALD) Dataset\n\t\n\nTiALD is a large-scale, multi-task benchmark dataset for abusive language detection in the Tigrinya language. It consists of 13,717 YouTube comments annotated for abusiveness, sentiment, and topic tasks. The dataset includes comments written in both the Ge’ez script and prevalent non-standard Latin transliterations to mirror real-world usage.\nThe dataset also includes contextual metadata such as video titles and VLM-generated and… See the full description on the dataset page: https://huggingface.co/datasets/fgaim/tigrinya-abusive-language-detection.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "fgaim",
       "badge": "Dataset",
@@ -4715,7 +4715,7 @@
         "geezlab"
       ],
       "description": "\n\t\n\t\t\n\t\tGLOCR: GeezLab OCR Dataset\n\t\n\n\n\t\n\t\t\n\t\tOverview\n\t\n\nGLOCR is a Text Recognition (TR) and Optical Character Recognition (OCR) dataset for the Tigrinya language. The dataset contains a total of 661K image-label pairs from multiple data sources. In addition to the characters-only data, the major part of the dataset is a collection of multi-word text images with labels from three categories: News (from Haddas Ertra newspaper), the Bible, and random-trigrams of the 150k most common words in… See the full description on the dataset page: https://huggingface.co/datasets/fgaim/GLOCR-Tigrinya.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "fgaim",
       "badge": "Dataset",
@@ -4763,7 +4763,7 @@
         "low-resource"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tTigrinya Speech Data (Pooled)\n\t\n\nA ~180.0-hour Tigrinya speech corpus, drawn from a single source (Afrivoice\nEthiopia) and filtered to only genuinely transcribed audio. Part of the\nAfroNet multi-language TTS data\neffort — sibling release to Yoruba/Hausa/Igbo/Kinyarwanda/Swahili, but Tigrinya (and\nits four sibling Ethiopian-language releases, Amharic/Oromo/Sidama/Wolaytta) are\neach published independently, not bundled into one combined \"Ethiopia\" dataset,\neven though they share a… See the full description on the dataset page: https://huggingface.co/datasets/Professor/tigrinya-speech-data.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "Professor",
       "badge": "Dataset",
@@ -4812,7 +4812,7 @@
         "silver-standard"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-SQuAD: Machine-Translated Training Dataset\n\t\n\nTigrinya-SQuAD is a machine-translated and filtered version of the English SQuAD 1.1 training dataset, automatically converted to Tigrinya for training question-answering models in low-resource settings.\nThis silver dataset serves as training data for Tigrinya question-answering systems. For evaluation and benchmarking, please use the gold-standard TiQuAD dataset, which contains human-annotated validation and test sets.\nPublished… See the full description on the dataset page: https://huggingface.co/datasets/fgaim/tigrinya-squad.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "fgaim",
       "badge": "Dataset",
@@ -4856,7 +4856,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "hagos1",
       "badge": "Dataset",
@@ -4902,7 +4902,7 @@
         "leyu-data-collection-2026"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Tigrinya Speech Corpus 2026\n\t\n\nOfficial speech dataset submission for the Leyu Data Collection Competition 2026.\n\n\t\n\t\t\n\t\n\t\n\t\tOrganization & Team\n\t\n\n\nHugging Face Org: SoundWaveET\nDataset Repo: SoundWaveET/leyu-tigrinya-speech-corpus-2026\n\n",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "SoundWaveET",
       "badge": "Dataset",
@@ -4946,7 +4946,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.615Z",
       "_type": "dataset",
       "org": "badrex",
       "badge": "Dataset",
@@ -4994,7 +4994,7 @@
         "small-language-models"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tTigrinya Raw Pretraining Sources\n\t\n\nThis repository contains raw files collected from publicly available Tigrinya datasets.\nThese files are used as input sources for the Qal language model project: https://fanus.dev/projects/qal\nImportant Note\nThis is not a cleaned training corpus.\nThe files are organized for easier access and reproducibility, but preprocessing is handled separately. Before training, the text should be cleaned, normalized, deduplicated, filtered, and split into… See the full description on the dataset page: https://huggingface.co/datasets/farefaine/tigrinya-pretraining.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "farefaine",
       "badge": "Dataset",
@@ -5043,7 +5043,7 @@
         "tigrigna"
       ],
       "description": "\n\t\n\t\t\n\t\tTIgrinyaLargeTextDataset\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nTIgrinyaLargeTextDataset is a large-scale collection of Tigrinya language articles designed for training Large Language Models (LLMs) and other Natural Language Processing (NLP) tasks. This dataset addresses the critical need for high-quality Tigrinya language resources in the machine learning community.\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\n\nLanguage: Tigrinya\nTask Categories: Language Modeling, Text Generation, NLP Research\nSize: 12,374… See the full description on the dataset page: https://huggingface.co/datasets/mewaeltsegay/TigrinyaLargeText.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "mewaeltsegay",
       "badge": "Dataset",
@@ -5087,7 +5087,7 @@
         "region:us"
       ],
       "description": "This repository contains the dataset used for the TaCo paper.\nPlease refer to the paper for more details: OpenReview\nIf you have used our dataset, please cite it as follows:\nCitation\n@inproceedings{upadhayay2024taco,\ntitle={TaCo: Enhancing Cross-Lingual Transfer for Low-Resource Languages in {LLM}s through Translation-Assisted Chain-of-Thought Processes},\nauthor={Bibek Upadhayay and Vahid Behzadan},\nbooktitle={5th Workshop on practical ML for limited/low resource settings, ICLR},\nyear={2024}… See the full description on the dataset page: https://huggingface.co/datasets/saillab/alpaca-tigrinya-cleaned.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "saillab",
       "badge": "Dataset",
@@ -5131,7 +5131,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Card for \"GLOCR-v1-Tigrinya-Bible-Train\"\n\t\n\nThis dataset only contains 80k Trigriya Bible that took from Here\nMore Information needed\n",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "bustamiyusoef",
       "badge": "Dataset",
@@ -5172,7 +5172,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKamba-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kamba-Tigrinya_Sentence-Pairs\nNumber of Rows: 48413\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kamba-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5225,7 +5225,7 @@
         "instruction-tuning"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Description\n\t\n\nCode-170k-tigrinya is a groundbreaking dataset containing 176,999 programming conversations, originally sourced from glaiveai/glaive-code-assistant-v2 and translated into Tigrinya, making coding education accessible to Tigrinya speakers.\n\n\t\n\t\t\n\t\t🌟 Key Features\n\t\n\n\n176,999 high-quality conversations about programming and coding\nPure Tigrinya language - democratizing coding education\nMulti-turn dialogues covering various programming concepts\nDiverse topics:… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/Code-170k-tigrinya.",
-      "added_at": "2026-09-01T11:20:06.194Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5268,7 +5268,7 @@
         "region:us"
       ],
       "description": "apache-2.0",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "Aregay01",
       "badge": "Dataset",
@@ -5309,7 +5309,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.616Z",
       "_type": "dataset",
       "org": "SIMBA9657",
       "badge": "Dataset",
@@ -5350,7 +5350,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Zulu_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Zulu_Sentence-Pairs\nNumber of Rows: 251069\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-zulu_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5391,7 +5391,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tGanda-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Ganda-Tigrinya_Sentence-Pairs\nNumber of Rows: 101857\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/ganda-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5432,7 +5432,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tEwe-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Ewe-Tigrinya_Sentence-Pairs\nNumber of Rows: 153185\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/ewe-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5468,7 +5468,7 @@
         "region:us"
       ],
       "description": "First sentiment analysis (with two classes) dataset for Tigrinya language. This train set is constructed automatically while the test set labeled manually. \n\nNegative sentiment labeled as 0.\nPositive sentiment labeled as 1.\n\ntrain size: 49374 (25031 negative and 24343 positive)\ntest size:  4000 (2000 negative and 2000 positive)\nFor more information on our experiments and results please check our paper:\nTitle: Transferring Monolingual Model to Low-Resource Language: The Case of Tigrinya\nLink:… See the full description on the dataset page: https://huggingface.co/datasets/abrhaleitela/Sentiment-Analysis-for-Tigrinya.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "abrhaleitela",
       "badge": "Dataset",
@@ -5509,7 +5509,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tShona-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Shona-Tigrinya_Sentence-Pairs\nNumber of Rows: 226951\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/shona-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5550,7 +5550,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tLingala-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Lingala-Tigrinya_Sentence-Pairs\nNumber of Rows: 97834… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/lingala-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5591,7 +5591,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tFulah-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Fulah-Tigrinya_Sentence-Pairs\nNumber of Rows: 124029\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/fulah-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5632,7 +5632,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKimbundu-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kimbundu-Tigrinya_Sentence-Pairs\nNumber of Rows: 40798… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kimbundu-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5673,7 +5673,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Tswana_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Tswana_Sentence-Pairs\nNumber of Rows: 154981\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-tswana_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5714,7 +5714,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSwahili-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Swahili-Tigrinya_Sentence-Pairs\nNumber of Rows: 423022… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/swahili-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5755,7 +5755,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKinyarwanda-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kinyarwanda-Tigrinya_Sentence-Pairs\nNumber of Rows:… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kinyarwanda-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.195Z",
+      "added_at": "2026-09-02T10:54:34.617Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5805,7 +5805,7 @@
         "low-resource"
       ],
       "description": "\n\t\n\t\t\n\t\thaddas-tigrinya-corpus\n\t\n\nMonolingual Tigrinya newspaper text segmented into article bodies. Suitable for continued pretraining or causal language modeling of Tigrinya LLMs.\n\n\t\n\t\t\n\t\tSource\n\t\n\nDerived from the Haddas Eritrea newspaper archive: 63 PDF issues processed\nby the haddas-eritrea pipeline (extract -> clean -> segment -> translate -> label).\n\nGenerated: 2026-04-26 12:21 UTC\nRow count: 2653\nSchema: id, text, char_count, topic, issue_date, source_pdf, page_start, page_end… See the full description on the dataset page: https://huggingface.co/datasets/SIMBA9657/haddas-tigrinya-corpus.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.618Z",
       "_type": "dataset",
       "org": "SIMBA9657",
       "badge": "Dataset",
@@ -5848,7 +5848,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Yoruba_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Yoruba_Sentence-Pairs\nNumber of Rows: 133381\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-yoruba_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.618Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5889,7 +5889,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDinka-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Dinka-Tigrinya_Sentence-Pairs\nNumber of Rows: 26547\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/dinka-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.618Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -5931,7 +5931,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya Medical & Healthcare Corpus\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThis dataset contains 1,000 high-quality records documenting Tigrinya-language healthcare and medical content. It pairs an underserved language with an underserved industry: healthcare/medical information access.\n\n\t\n\t\t\n\t\tWhy This Dataset Matters\n\t\n\n\nTigrinya (ISO 639-3: tir) is spoken by ~7 million people in Eritrea and Ethiopia\nDespite significant speaker population, healthcare materials in Tigrinya are severely… See the full description on the dataset page: https://huggingface.co/datasets/lblommesteyn/tigrinya-medical-healthcare-corpus.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.618Z",
       "_type": "dataset",
       "org": "lblommesteyn",
       "badge": "Dataset",
@@ -5972,7 +5972,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKongo-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kongo-Tigrinya_Sentence-Pairs\nNumber of Rows: 69626\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kongo-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.618Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6013,7 +6013,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tKikuyu-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Kikuyu-Tigrinya_Sentence-Pairs\nNumber of Rows: 51429\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/kikuyu-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6054,7 +6054,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAkan-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Akan-Tigrinya_Sentence-Pairs\nNumber of Rows: 34201\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/akan-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6095,7 +6095,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Xhosa_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Xhosa_Sentence-Pairs\nNumber of Rows: 158878\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-xhosa_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.196Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6136,7 +6136,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Wolof_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Wolof_Sentence-Pairs\nNumber of Rows: 35192\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-wolof_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6177,7 +6177,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSomali-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Somali-Tigrinya_Sentence-Pairs\nNumber of Rows: 169620\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/somali-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6218,7 +6218,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tRundi-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Rundi-Tigrinya_Sentence-Pairs\nNumber of Rows: 161796\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/rundi-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6259,7 +6259,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tAfrikaans-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Afrikaans-Tigrinya_Sentence-Pairs\nNumber of Rows: 454333… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/afrikaans-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6301,7 +6301,7 @@
         "region:us"
       ],
       "description": "This repository contains the dataset used for the TaCo paper.\nThe dataset follows the style outlined in the TaCo paper, as follows:\n{\n\"instruction\": \"instruction in xx\",\n\"input\": \"input in xx\",\n\"output\": \"Instruction in English: instruction in en , \n            Response in English: response in en ,\n            Response in xx: response in xx \"\n}\n\nPlease refer to the paper for more details: OpenReview\nIf you have used our dataset, please cite it as follows:\nCitation… See the full description on the dataset page: https://huggingface.co/datasets/saillab/alpaca_tigrinya_taco.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.619Z",
       "_type": "dataset",
       "org": "saillab",
       "badge": "Dataset",
@@ -6344,7 +6344,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSwati-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Swati-Tigrinya_Sentence-Pairs\nNumber of Rows: 36832\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/swati-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6385,7 +6385,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tIgbo-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Igbo-Tigrinya_Sentence-Pairs\nNumber of Rows: 101632\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/igbo-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6426,7 +6426,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDyula-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Dyula-Tigrinya_Sentence-Pairs\nNumber of Rows: 55864\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/dyula-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6467,7 +6467,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Tumbuka_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Tumbuka_Sentence-Pairs\nNumber of Rows: 152916… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-tumbuka_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.197Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6508,7 +6508,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Tsonga_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Tsonga_Sentence-Pairs\nNumber of Rows: 157713\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-tsonga_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.198Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6549,7 +6549,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tBemba-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Bemba-Tigrinya_Sentence-Pairs\nNumber of Rows: 113617\nNumber… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/bemba-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.198Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6590,7 +6590,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tBambara-Tigrinya_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Bambara-Tigrinya_Sentence-Pairs\nNumber of Rows: 28792… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/bambara-tigrinya_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.198Z",
+      "added_at": "2026-09-02T10:54:34.620Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6631,7 +6631,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Umbundu_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Umbundu_Sentence-Pairs\nNumber of Rows: 66683… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-umbundu_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.198Z",
+      "added_at": "2026-09-02T10:54:34.621Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6672,7 +6672,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tTigrinya-Twi_Sentence-Pairs Dataset\n\t\n\nThis dataset contains sentence pairs for African languages along with similarity scores. It can be used for machine translation, sentence alignment, or other natural language processing tasks.\nThis dataset is based on the NLLBv1 dataset, published on OPUS under an open-source initiative led by META. You can find more information here: OPUS - NLLB-v1\n\n\t\n\t\t\n\t\n\t\n\t\tMetadata\n\t\n\n\nFile Name: Tigrinya-Twi_Sentence-Pairs\nNumber of Rows: 142353\nNumber of… See the full description on the dataset page: https://huggingface.co/datasets/michsethowusu/tigrinya-twi_sentence-pairs.",
-      "added_at": "2026-09-01T11:20:06.198Z",
+      "added_at": "2026-09-02T10:54:34.621Z",
       "_type": "dataset",
       "org": "michsethowusu",
       "badge": "Dataset",
@@ -6721,7 +6721,7 @@
         "character-recognition"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAmharic (Geʽez) Handwritten Character Dataset (32×32)\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Details\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDescription\n\t\n\nThis dataset contains handwritten images of Amharic (Geʽez script) characters intended for character-level Optical Character Recognition (OCR) and handwriting recognition research.\n\n\t\n\t\t\nProperty\nValue\n\n\n\t\t\nTotal Images\n13,000+\n\n\nClasses\n287 distinct characters\n\n\nImage Size\n32 × 32 pixels\n\n\nFormat\nGrayscale\n\n\nDistribution\nBalanced across all classes\n\n\n\t\n\nThe dataset is… See the full description on the dataset page: https://huggingface.co/datasets/Yaredoffice/geez-characters.",
-      "added_at": "2026-09-01T11:20:06.924Z",
+      "added_at": "2026-09-02T10:54:35.325Z",
       "_type": "dataset",
       "org": "Yaredoffice",
       "badge": "Dataset",
@@ -6765,7 +6765,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:06.924Z",
+      "added_at": "2026-09-02T10:54:35.325Z",
       "_type": "dataset",
       "org": "Bedru",
       "badge": "Dataset",
@@ -6800,7 +6800,7 @@
         "region:us"
       ],
       "description": "openrail",
-      "added_at": "2026-09-01T11:20:06.924Z",
+      "added_at": "2026-09-02T10:54:35.325Z",
       "_type": "dataset",
       "org": "TsehaynehM",
       "badge": "Dataset",
@@ -6859,7 +6859,7 @@
         "tts"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Ethiopian Languages Speech Dataset\n\t\n\nAudio recordings paired with corresponding text transcripts, collected on the Leyu Data Collection Platform — an open-source platform for crowdsourced speech data collection — for the Leyu Platform Competition, covering 4 languages: Amharic, Afaan Oromo, Sidama, Tigrinya.\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\n\nLanguages: Amharic (am), Afaan Oromo (om), Sidama (sid), Tigrinya (ti)\nTotal examples: 2750\nLicense: CC-BY-4.0\nTask categories: Automatic… See the full description on the dataset page: https://huggingface.co/datasets/Benji-fish/ethiopian-languages-speech-dataset.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.027Z",
       "_type": "dataset",
       "org": "Benji-fish",
       "badge": "Dataset",
@@ -6912,7 +6912,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tEthio Speech Copus — Afrivoices Ethiopian\n\t\n\n\n\t\n\t\t\n\t\t📌 Overview\n\t\n\nThe Ethio Speech Corpus dataset is a multilingual speech corpus containing audio–text pairs across five Ethiopian languages. \nIt is designed to support the development of speech-to-text technologies for low-resource languages.\nThis dataset is part of the Afrivoices initiative — a collaborative effort to create a large-scale ASR dataset for African languages. \nThe broader goal of the initiative is to collect 600 hours… See the full description on the dataset page: https://huggingface.co/datasets/badrex/ethiopian-speech-flat.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.027Z",
       "_type": "dataset",
       "org": "badrex",
       "badge": "Dataset",
@@ -6968,7 +6968,7 @@
         "leyu-data-collection-2026"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\t🇪🇹 Leyu Ethiopian Multilingual Speech Corpus 2026\n\t\n\nOfficial research-grade multilingual speech dataset submitted for the Leyu Platform Data Collection Competition 2026, organized by gheero (Leyu Platform Team).\n\n\n\t\n\t\t\n\t\n\t\n\t\t🏢 Platform & Team Verification Details\n\t\n\n\nTeam Name: SoundWaveET\nHugging Face Organization: SoundWaveET\nDataset Repository: SoundWaveET/leyu-ethiopian-multilingual-speech-corpus-2026\nPlatform Live Frontend: https://leyusound.netlify.app\nPlatform Live API:… See the full description on the dataset page: https://huggingface.co/datasets/SoundWaveET/leyu-ethiopian-multilingual-speech-corpus-2026.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.027Z",
       "_type": "dataset",
       "org": "SoundWaveET",
       "badge": "Dataset",
@@ -7021,7 +7021,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tFLEURS — Ethiopian Languages\n\t\n\nThis dataset is a restructured v2 conversion of the Google FLEURS dataset for two Ethiopian languages: Amharic (am_et) and Oromo (om_et).\n\n\t\n\t\t\n\t\tSubsets\n\t\n\n\n\t\n\t\t\nSubset\nLanguage\nISO 639-2\nTrain\nDev\nTest\n\n\n\t\t\namh\nAmharic\namh\n3,163\n223\n516\n\n\norm\nOromo\norm\n1,701\n19\n41\n\n\n\t\n\n\n\t\n\t\t\n\t\tSplits\n\t\n\n\n\t\n\t\t\nSplit\nDescription\n\n\n\t\t\ntrain\nTraining split\n\n\ndev\nDevelopment split (renamed from validation in original FLEURS)\n\n\ntest\nTest split\n\n\n\t\n\n\n\t\n\t\t\n\t\tUsage\n\t\n\nfrom… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/fleurs-ethiopian-v2.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.027Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -7064,7 +7064,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tHigh quality Ethiopian Iconic figures dataset\n\t\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTopics\n\t\n\nethiopia / ethiopian / ethiopiandataset / ethiopianvision / ethiopianimages / ethiopianphotography / ethiopianvisuals / ethiopianculture / ethiopianart / ethiopiandigitalculture / ethiopianmachinelearning / ethiopiancomputervision / ethiopiangenerativeai / ethiopiandiffusion / ethiopianstreetphotography / ethiopianportraits / ethiopianlifestyle / ethiopianurbanculture / ethiopiancreativephotography /… See the full description on the dataset page: https://huggingface.co/datasets/a3xrfgb/Ethiopian-Iconic-figures.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.027Z",
       "_type": "dataset",
       "org": "a3xrfgb",
       "badge": "Dataset",
@@ -7124,7 +7124,7 @@
         "school"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopian - Primary & Secondary School Population by Gender | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: education - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nEducation datasets help… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopian-primary-secondary-school-population-by-gender.",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.028Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -7168,7 +7168,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:07.641Z",
+      "added_at": "2026-09-02T10:54:36.028Z",
       "_type": "dataset",
       "org": "badrex",
       "badge": "Dataset",
@@ -7228,7 +7228,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Airports | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopian-airdromes.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.028Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -7276,7 +7276,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tCommon Voice 24.0 — Ethiopian Languages (v2)\n\t\n\nThis is a cleaned and restructured version of hadamard-2/common-voice-24-ethiopian, which is a verbatim archival upload of the Mozilla Common Voice 24.0 scripted speech data for Amharic and Tigrinya. This version conforms to the Waxal ASR schema.\n\n\t\n\t\t\n\t\n\t\n\t\tSubsets\n\t\n\n\n\t\n\t\t\nSubset\nLanguage\nISO 639-2\nClips\nValidated Hours\nSpeakers\n\n\n\t\t\namh\nAmharic\namh\n1,045\n1.82h\n46\n\n\ntir\nTigrinya\ntir\n69\n0.10h\n16\n\n\n\t\n\n\n\t\n\t\t\n\t\tSplits\n\t\n\n\n\t\n\t\t\nSplit… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/common-voice-24-ethiopian-v2.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.028Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -7321,7 +7321,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tDataset Card for \"Ethiopian-foods\"\n\t\n\n\n\t\n\t\t\n\t\tThe dataset contains images of the following Ethiopian foods collected from social medias\n\t\n\n\nBeyaynetu (በያይነቱ)\nChechebsa (ጨጨብሳ)\nDoro Wat (ዶሮ ወጥ)\nFir-fir (ፍርፍር)\nGenfo (ገንፎ)\nKikil (ቅቅል)\nKitfo (ክትፎ)\nShekla Tibs (ሸክላ ጥብስ)\nShiro Wat (ሽሮ ወጥ)\nTihlo (ጥህሎ)\nTire Siga(ጥሬ ስጋ)\n\n",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.028Z",
       "_type": "dataset",
       "org": "Tinsae",
       "badge": "Dataset",
@@ -7374,7 +7374,7 @@
         "english"
       ],
       "description": "\n\t\n\t\t\n\t\tEthiopian Legal OCR (Parquet v2)\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\nThis dataset contains Ethiopian legal-document page images paired with OCR ground-truth text.\nIt is prepared for training and evaluating OCR and vision-language transcription models.\n\nTotal examples: 1,534\nTrain split: 1,381\nValidation split: 153\nStorage format: Parquet (viewer-safe image struct)\n\n\n\t\n\t\t\n\t\tDataset Structure\n\t\n\n\n\t\n\t\t\n\t\tSplits\n\t\n\n\ntrain: 1,381 rows\nvalidation: 153 rows\n\n\n\t\n\t\t\n\t\tColumns\n\t\n\n\nimage: image object… See the full description on the dataset page: https://huggingface.co/datasets/Tcyber/ethiopian-legal-ocr-v3-parquet-v2.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "Tcyber",
       "badge": "Dataset",
@@ -7438,7 +7438,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Health Facilities | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopian-health-facilities.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -7486,7 +7486,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tCommon Voice 24.0 — Ethiopian Languages\n\t\n\nThis dataset is a verbatim archival upload of the Mozilla Common Voice 24.0 scripted speech data for two Ethiopian languages: Amharic (am) and Tigrinya (ti), sourced from the Mozilla Data Collective.\n\n\t\n\t\t\n\t\tSubsets\n\t\n\n\n\t\n\t\t\nSubset\nLanguage\nCode\nClips\nTotal Hours\nValidated Hours\nSpeakers\n\n\n\t\t\namharic\nAmharic\nam\n1,632\n2.85h\n1.82h\n46\n\n\ntigrinya\nTigrinya\nti\n451\n0.65h\n0.10h\n16\n\n\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tSplits\n\t\n\nEach subset contains the following splits:… See the full description on the dataset page: https://huggingface.co/datasets/hadamard-2/common-voice-24-ethiopian.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "hadamard-2",
       "badge": "Dataset",
@@ -7523,7 +7523,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tSPECIFICATION:\n\t\n\nProduct Type: Ethiopian Amharic language, free dialogue, mobile 16K 【Corpus Type】 Family, health, travel, education, work, cuisine, marriage, movies, music, socializing, celebrities, weather, sports, and other common topics of daily life. Natural context, applicable to all industries.\nPronunciation Person Information: Gender: Male 50%, Female 50% Age: The pronunciation people mainly cover the age range of 16-45. Accent: The pronunciation people mainly come from… See the full description on the dataset page: https://huggingface.co/datasets/DataoceanAI/Ethiopian_Amharic_Free_Dialogue_Speech_Corpus.",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "DataoceanAI",
       "badge": "Dataset",
@@ -7564,7 +7564,7 @@
         "region:us"
       ],
       "description": "\n\t\n\t\t\n\t\tethiopian-legal-ocr-v1-clean\n\t\n\nThis dataset was created using the Claude Dataset Skill.\n",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "Tcyber",
       "badge": "Dataset",
@@ -7598,7 +7598,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "Tcyber",
       "badge": "Dataset",
@@ -7632,7 +7632,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "kedhamyas",
       "badge": "Dataset",
@@ -7666,7 +7666,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "edealasc",
       "badge": "Dataset",
@@ -7700,7 +7700,7 @@
         "region:us"
       ],
       "description": "",
-      "added_at": "2026-09-01T11:20:07.642Z",
+      "added_at": "2026-09-02T10:54:36.029Z",
       "_type": "dataset",
       "org": "Peterase",
       "badge": "Dataset",
@@ -7719,6 +7719,118 @@
         "icon": "new",
         "type": "new"
       }
+    },
+    {
+      "id": "LeyuCompetition/benji-ethiopian-languages-speech-dataset",
+      "name": "benji-ethiopian-languages-speech-dataset",
+      "type": "dataset",
+      "pipeline_tag": null,
+      "type_label": "ASR",
+      "hf_url": "https://huggingface.co/datasets/LeyuCompetition/benji-ethiopian-languages-speech-dataset",
+      "downloads_monthly": 0,
+      "likes": 0,
+      "last_updated": "2026-09-02T08:06:04.000Z",
+      "tags": [
+        "task_categories:automatic-speech-recognition",
+        "task_categories:text-to-speech",
+        "language:am",
+        "language:om",
+        "language:sid",
+        "language:ti",
+        "license:cc-by-4.0",
+        "size_categories:1K<n<10K",
+        "format:parquet",
+        "modality:audio",
+        "modality:text",
+        "library:datasets",
+        "library:dask",
+        "library:polars",
+        "library:mlcroissant",
+        "region:us",
+        "amharic",
+        "afaan-oromo",
+        "sidama",
+        "tigrinya",
+        "africa",
+        "ethiopia",
+        "dialect",
+        "speech",
+        "asr",
+        "tts"
+      ],
+      "description": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Ethiopian Languages Speech Dataset\n\t\n\nAudio recordings paired with corresponding text transcripts, collected on the Leyu Data Collection Platform — an open-source platform for crowdsourced speech data collection — for the Leyu Platform Competition, covering 4 languages: Amharic, Afaan Oromo, Sidama, Tigrinya.\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\n\nLanguages: Amharic (am), Afaan Oromo (om), Sidama (sid), Tigrinya (ti)\nTotal examples: 2750\nLicense: CC-BY-4.0\nTask categories: Automatic… See the full description on the dataset page: https://huggingface.co/datasets/LeyuCompetition/benji-ethiopian-languages-speech-dataset.",
+      "added_at": "2026-09-02T10:54:36.029Z",
+      "_type": "dataset",
+      "org": "LeyuCompetition",
+      "badge": "Dataset",
+      "bc": "b-ds",
+      "dl": 0,
+      "lang": "AM·OM·SI·TI",
+      "langs": [
+        "AM",
+        "OM",
+        "SI",
+        "TI"
+      ],
+      "isNew": false,
+      "desc": "\n\t\n\t\t\n\t\n\t\n\t\tLeyu Ethiopian Languages Speech Dataset\n\t\n\nAudio recordings paired with corresponding text transcripts, collected on the Leyu Data Collection Platform — an open-source platform for crowdsourced speech data collection — for the Leyu Platform Competition, covering 4 languages: Amharic, Afaan Oromo, Sidama, Tigrinya.\n\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\n\nLanguages: Amharic (am), Afaan Oromo (om), Sidama (sid), Tigrinya (ti)\nTotal examples: 2750\nLicense: CC-BY-4.0\nTask categories: Automatic… See the full description on the dataset page: https://huggingface.co/datasets/LeyuCompetition/benji-ethiopian-languages-speech-dataset.",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": null
+    },
+    {
+      "id": "LeyuCompetition/sound-wave-leyu-ethiopian-multilingual-speech-corpus-2026",
+      "name": "sound-wave-leyu-ethiopian-multilingual-speech-corpus-2026",
+      "type": "dataset",
+      "pipeline_tag": null,
+      "type_label": "ASR",
+      "hf_url": "https://huggingface.co/datasets/LeyuCompetition/sound-wave-leyu-ethiopian-multilingual-speech-corpus-2026",
+      "downloads_monthly": 0,
+      "likes": 0,
+      "last_updated": "2026-09-02T08:12:58.000Z",
+      "tags": [
+        "task_categories:automatic-speech-recognition",
+        "language:am",
+        "language:or",
+        "language:ti",
+        "language:sid",
+        "language:wal",
+        "license:cc-by-4.0",
+        "size_categories:1K<n<10K",
+        "modality:audio",
+        "region:us",
+        "speech",
+        "audio",
+        "ethiopian-languages",
+        "amharic",
+        "afaan-oromo",
+        "tigrinya",
+        "sidama",
+        "wolaytta",
+        "leyu-data-collection-2026"
+      ],
+      "description": "\n\t\n\t\t\n\t\n\t\n\t\t🇪🇹 Leyu Ethiopian Multilingual Speech Corpus 2026\n\t\n\nOfficial research-grade multilingual speech dataset submitted for the Leyu Platform Data Collection Competition 2026, organized by gheero (Leyu Platform Team).\n\n\n\t\n\t\t\n\t\n\t\n\t\t🏢 Platform & Team Verification Details\n\t\n\n\nTeam Name: SoundWaveET\nHugging Face Organization: SoundWaveET\nDataset Repository: SoundWaveET/leyu-ethiopian-multilingual-speech-corpus-2026\nPlatform Live Frontend: https://leyusound.netlify.app\nPlatform Live API:… See the full description on the dataset page: https://huggingface.co/datasets/LeyuCompetition/sound-wave-leyu-ethiopian-multilingual-speech-corpus-2026.",
+      "added_at": "2026-09-02T10:54:36.029Z",
+      "_type": "dataset",
+      "org": "LeyuCompetition",
+      "badge": "Dataset",
+      "bc": "b-ds",
+      "dl": 0,
+      "lang": "AM·OR·TI·SI·WA",
+      "langs": [
+        "AM",
+        "OR",
+        "TI",
+        "SI",
+        "WA"
+      ],
+      "isNew": false,
+      "desc": "\n\t\n\t\t\n\t\n\t\n\t\t🇪🇹 Leyu Ethiopian Multilingual Speech Corpus 2026\n\t\n\nOfficial research-grade multilingual speech dataset submitted for the Leyu Platform Data Collection Competition 2026, organized by gheero (Leyu Platform Team).\n\n\n\t\n\t\t\n\t\n\t\n\t\t🏢 Platform & Team Verification Details\n\t\n\n\nTeam Name: SoundWaveET\nHugging Face Organization: SoundWaveET\nDataset Repository: SoundWaveET/leyu-ethiopian-multilingual-speech-corpus-2026\nPlatform Live Frontend: https://leyusound.netlify.app\nPlatform Live API:… See the full description on the dataset page: https://huggingface.co/datasets/LeyuCompetition/sound-wave-leyu-ethiopian-multilingual-speech-corpus-2026.",
+      "featured": false,
+      "verified": true,
+      "growth": null,
+      "sparkline": null
     },
     {
       "id": "DigitalUmuganda/Afrivoice_Ethiopia",
@@ -7748,7 +7860,7 @@
         "speech"
       ],
       "description": "\n\t\n\t\t\n\t\tAfrivoice Ethiopia\n\t\n\n\n\t\n\t\t\n\t\tDataset Summary\n\t\n\n\n\t\n\t\t\nLanguage\nCategory\nTotal number of hours\nTotal number of transcribed hours\nTotal number of clips\nTotal of Size of the dataset in GB\n\n\n\t\t\nAmharic\nUnscripted\n351.17\n81.67\n71119\n20.7\n\n\n\nScripted\n113.55\n113.55\n22412\n7.9\n\n\n\nExpert\n153.44\n24.28\n31144\n8.1\n\n\nAfaan OromoUnscripted\n338.36\n80.44\n65555\n21.8\n\n\n\nScripted\n111.93\n111.93\n23051\n9.7\n\n\n\nExpert\n153.7\n29.88\n29638\n8.2\n\n\nSidama\nUnscripted\n348.67\n74.94\n72801\n23.5\n\n\n\nScripted\n114.93\n114.93… See the full description on the dataset page: https://huggingface.co/datasets/DigitalUmuganda/Afrivoice_Ethiopia.",
-      "added_at": "2026-09-01T11:20:08.372Z",
+      "added_at": "2026-09-02T10:54:36.743Z",
       "_type": "dataset",
       "org": "DigitalUmuganda",
       "badge": "Dataset",
@@ -7814,7 +7926,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Environment | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: climate_environment - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-environment-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.373Z",
+      "added_at": "2026-09-02T10:54:36.743Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -7878,7 +7990,7 @@
         "cancer"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tSSA Breast DNA Methylation Dataset (Women, Multi-ancestry) | Africa (Electric Sheep Africa metadata inventory)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-cancer-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.373Z",
+      "added_at": "2026-09-02T10:54:36.744Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -7942,7 +8054,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Food Prices | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-wfp-food-prices-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.373Z",
+      "added_at": "2026-09-02T10:54:36.744Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8008,7 +8120,7 @@
         "migration"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia Displacement - [IDPs] - Village Assessment Survey - Tigray - [IOM DTM] | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-displacement-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.374Z",
+      "added_at": "2026-09-02T10:54:36.744Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8061,7 +8173,7 @@
         "open-data-cube"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia Water Accounting\n\t\n\nWater accounting for Ethiopia at ~1060 m: rainfall, total ET, green and blue ET, water yield and runoff, each as a yearly average and split into dry and wet seasons, averaged over 2003-2021. Water Accounting Plus output rebuilt from IWMI's Africa GeoPortal tile services, which serve no downloadable raster.\n\nRegion Ethiopia\nPeriod 2003-2021\nTheme Water accounting\nGrid EPSG:4326, 1574 x 1215 at 0.009521932 deg (~1060 m)\nBands 18\nFiles 18 Cloud-Optimised… See the full description on the dataset page: https://huggingface.co/datasets/IWMIHQ/ethiopia_water_accounting.",
-      "added_at": "2026-09-01T11:20:08.374Z",
+      "added_at": "2026-09-02T10:54:36.744Z",
       "_type": "dataset",
       "org": "IWMIHQ",
       "badge": "Dataset",
@@ -8124,7 +8236,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Food Security and Nutrition Indicators | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-faostat-food-security-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.374Z",
+      "added_at": "2026-09-02T10:54:36.745Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8190,7 +8302,7 @@
         "food"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Agriculture and Rural Development | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: agriculture_food - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-agriculture-and-rural-development-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.374Z",
+      "added_at": "2026-09-02T10:54:36.745Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8252,7 +8364,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Poverty | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured evidence, build… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-poverty-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.374Z",
+      "added_at": "2026-09-02T10:54:36.745Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8315,7 +8427,7 @@
         "income"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - External Debt | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-external-debt-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.375Z",
+      "added_at": "2026-09-02T10:54:36.746Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8379,7 +8491,7 @@
         "food"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Climate Change | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: agriculture_food - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-climate-change-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.375Z",
+      "added_at": "2026-09-02T10:54:36.746Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8442,7 +8554,7 @@
         "displacement"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Drought Induced Displacement Estimates | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-drought-induced-displacement.",
-      "added_at": "2026-09-01T11:20:08.375Z",
+      "added_at": "2026-09-02T10:54:36.747Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8508,7 +8620,7 @@
         "sanitation"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Infrastructure | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: infrastructure_transport - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-infrastructure-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.376Z",
+      "added_at": "2026-09-02T10:54:36.747Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8574,7 +8686,7 @@
         "poverty"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Energy and Mining | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-energy-and-mining-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.377Z",
+      "added_at": "2026-09-02T10:54:36.748Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8640,7 +8752,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Human Development Indicators | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-hdro-data-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.377Z",
+      "added_at": "2026-09-02T10:54:36.748Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8702,7 +8814,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Urban Development | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden, service… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-urban-development-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.377Z",
+      "added_at": "2026-09-02T10:54:36.749Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8764,7 +8876,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Real Time Prices | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-real-time-prices.",
-      "added_at": "2026-09-01T11:20:08.377Z",
+      "added_at": "2026-09-02T10:54:36.749Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8830,7 +8942,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia: Coronavirus(COVID-19) Subnational Cases | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-coronavirus-covid-19-subnational-cases.",
-      "added_at": "2026-09-01T11:20:08.377Z",
+      "added_at": "2026-09-02T10:54:36.749Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8890,7 +9002,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia: Children Under Five Mortality Rate | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-children-under-five-mortality-rate-in-ethiopia-at-sub-national-level-zip.",
-      "added_at": "2026-09-01T11:20:08.378Z",
+      "added_at": "2026-09-02T10:54:36.750Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -8952,7 +9064,7 @@
         "immunization"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Health | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden, service… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-health-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.378Z",
+      "added_at": "2026-09-02T10:54:36.750Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9015,7 +9127,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Accessibility Indicators | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-education-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.378Z",
+      "added_at": "2026-09-02T10:54:36.750Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9077,7 +9189,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Populated Places GeoNames | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-populated-places-geonames.",
-      "added_at": "2026-09-01T11:20:08.378Z",
+      "added_at": "2026-09-02T10:54:36.750Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9141,7 +9253,7 @@
         "weather"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Climate data | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: climate_environment - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-climate-data.",
-      "added_at": "2026-09-01T11:20:08.379Z",
+      "added_at": "2026-09-02T10:54:36.751Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9203,7 +9315,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Food Prices | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-faostat-food-prices-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.379Z",
+      "added_at": "2026-09-02T10:54:36.751Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9267,7 +9379,7 @@
         "violence"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Data on Conflict Events | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: governance_security - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ucdp-data-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.379Z",
+      "added_at": "2026-09-02T10:54:36.751Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9333,7 +9445,7 @@
         "market"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Market Centers | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-market-centers.",
-      "added_at": "2026-09-01T11:20:08.379Z",
+      "added_at": "2026-09-02T10:54:36.752Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9392,7 +9504,7 @@
         "mortality"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia-Infant Mortality Rate | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-infant-mortality-rate.",
-      "added_at": "2026-09-01T11:20:08.379Z",
+      "added_at": "2026-09-02T10:54:36.752Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9453,7 +9565,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia Current Situation FEWS NET Acute Food Insecurity Classifications Data | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-current-situation-fewsnet-ipc-classification.",
-      "added_at": "2026-09-01T11:20:08.380Z",
+      "added_at": "2026-09-02T10:54:36.752Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9518,7 +9630,7 @@
         "household"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Social Development | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: demographics_social - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-social-development-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.380Z",
+      "added_at": "2026-09-02T10:54:36.752Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9578,7 +9690,7 @@
         "hiv"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia HIV Prevalence 2012 | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden, service… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-hiv-prevalence.",
-      "added_at": "2026-09-01T11:20:08.380Z",
+      "added_at": "2026-09-02T10:54:36.753Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9640,7 +9752,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tSatellite detected water extent over Shabelle District, Shabelle Region, Ethiopia as of 28 March 2023 | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-water-extent-over-shabelle-district-shabelle-region-ethiopia-as-of-28-march-2023.",
-      "added_at": "2026-09-01T11:20:08.380Z",
+      "added_at": "2026-09-02T10:54:36.753Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9706,7 +9818,7 @@
         "infrastructure"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tAirports in Ethiopia | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: infrastructure_transport - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-aviation-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.381Z",
+      "added_at": "2026-09-02T10:54:36.753Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9769,7 +9881,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia: Operational Presence | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: humanitarian_development - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-operational-presence.",
-      "added_at": "2026-09-01T11:20:08.381Z",
+      "added_at": "2026-09-02T10:54:36.754Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9831,7 +9943,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia Daily FEWS NET Cross Border Trade Data | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-daily-cross-border-trade-for-ethiopia-6824.",
-      "added_at": "2026-09-01T11:20:08.381Z",
+      "added_at": "2026-09-02T10:54:36.754Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9897,7 +10009,7 @@
         "investment"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Private Sector | Africa (original)\n\t\n\nSize category: 1K<n<10K - Formats: parquet - Sector: economics_finance - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nPublic datasets help analysts inspect structured… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-private-sector-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.382Z",
+      "added_at": "2026-09-02T10:54:36.756Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -9957,7 +10069,7 @@
         "immunization"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia-Fully Immunized Children | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-fully-immunized-children.",
-      "added_at": "2026-09-01T11:20:08.382Z",
+      "added_at": "2026-09-02T10:54:36.756Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10019,7 +10131,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tETHIOPIA - Education indicators, UNECA | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: education - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nEducation datasets help researchers study access… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-uneca-education.",
-      "added_at": "2026-09-01T11:20:08.383Z",
+      "added_at": "2026-09-02T10:54:36.757Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10089,7 +10201,7 @@
         "weather"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Economic, Social, Environmental, Health, Education, Development and Energy | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: climate_environment - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-world-bank-combined-indicators-for-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.383Z",
+      "added_at": "2026-09-02T10:54:36.757Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10148,7 +10260,7 @@
         "mortality"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia Child Mortality Rates | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-child-mortality-rates.",
-      "added_at": "2026-09-01T11:20:08.383Z",
+      "added_at": "2026-09-02T10:54:36.757Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10212,7 +10324,7 @@
         "eth"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia: Coronavirus (Covid-19) Cases | Africa (original)\n\t\n\nSize category: n<1K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-ethiopia-covid19-cases.",
-      "added_at": "2026-09-01T11:20:08.384Z",
+      "added_at": "2026-09-02T10:54:36.758Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10280,7 +10392,7 @@
         "mortality"
       ],
       "description": "\n\t\n\t\t\n\t\n\t\n\t\tEthiopia - Health Indicators | Africa (original)\n\t\n\nSize category: 10K<n<100K - Formats: parquet - Sector: health - Engineered by Electric Sheep Africa\n\n\n\n\n\n\t\n\t\t\n\t\n\t\n\t\tTL;DR\n\t\n\nThis dataset is part of the Electric Sheep Africa catalog on Hugging Face. It is indexed for African data discovery with standardized metadata, loading guidance, provenance notes, and analyst-oriented context.\n\n\t\n\t\t\n\t\n\t\n\t\tWhat This Dataset Covers\n\t\n\nHealth datasets help researchers examine disease burden… See the full description on the dataset page: https://huggingface.co/datasets/electricsheepafrica/africa-disability-ethiopia.",
-      "added_at": "2026-09-01T11:20:08.384Z",
+      "added_at": "2026-09-02T10:54:36.758Z",
       "_type": "dataset",
       "org": "electricsheepafrica",
       "badge": "Dataset",
@@ -10303,7 +10415,7 @@
       }
     }
   ],
-  "total": 212,
+  "total": 214,
   "page": 1,
-  "limit": 212
+  "limit": 214
 }
