@@ -1,222 +1,216 @@
 {
   "topGainers": [
     {
-      "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
-      "name": "qwen3.5-4b-amharic-sft",
-      "org": "abdukuzi45",
-      "gain": 429,
-      "growth": 53,
-      "start": 808,
-      "end": 1237
-    },
-    {
       "id": "rasyosef/embedding-amharic-base",
       "name": "embedding-amharic-base",
       "org": "rasyosef",
-      "gain": 344,
+      "gain": 342,
       "growth": 50,
-      "start": 686,
-      "end": 1030
+      "start": 689,
+      "end": 1031
     },
     {
       "id": "obann001/Ethiopia_sdxl_lora",
       "name": "Ethiopia_sdxl_lora",
       "org": "obann001",
-      "gain": 284,
-      "growth": 451,
-      "start": 63,
-      "end": 347
-    },
-    {
-      "id": "obann001/Ethiopia_Flux_LoRA",
-      "name": "Ethiopia_Flux_LoRA",
-      "org": "obann001",
-      "gain": 154,
-      "growth": 34,
-      "start": 455,
-      "end": 609
-    },
-    {
-      "id": "rasyosef/roberta-amharic-text-embedding-base",
-      "name": "roberta-amharic-text-embedding-base",
-      "org": "rasyosef",
-      "gain": 131,
-      "growth": 27,
-      "start": 491,
-      "end": 622
-    },
-    {
-      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
-      "name": "amharic-property-retriever-afro-xlmr-base",
-      "org": "dice-research",
-      "gain": 114,
-      "growth": 46,
-      "start": 249,
-      "end": 363
-    },
-    {
-      "id": "african-low-resource/omnivoice-amharic",
-      "name": "omnivoice-amharic",
-      "org": "african-low-resource",
-      "gain": 108,
-      "growth": 38,
-      "start": 283,
-      "end": 391
+      "gain": 265,
+      "growth": 257,
+      "start": 103,
+      "end": 368
     },
     {
       "id": "badrex/Ethio-ASR-amharic",
       "name": "Ethio-ASR-amharic",
       "org": "badrex",
-      "gain": 102,
-      "growth": 13,
-      "start": 794,
-      "end": 896
+      "gain": 256,
+      "growth": 34,
+      "start": 752,
+      "end": 1008
     },
     {
-      "id": "rasyosef/Llama-3.2-1B-Amharic",
-      "name": "Llama-3.2-1B-Amharic",
+      "id": "obann001/Ethiopia_Flux_LoRA",
+      "name": "Ethiopia_Flux_LoRA",
+      "org": "obann001",
+      "gain": 187,
+      "growth": 41,
+      "start": 461,
+      "end": 648
+    },
+    {
+      "id": "african-low-resource/omnivoice-amharic",
+      "name": "omnivoice-amharic",
+      "org": "african-low-resource",
+      "gain": 132,
+      "growth": 47,
+      "start": 283,
+      "end": 415
+    },
+    {
+      "id": "rasyosef/roberta-amharic-text-embedding-base",
+      "name": "roberta-amharic-text-embedding-base",
       "org": "rasyosef",
-      "gain": 77,
-      "growth": 54,
-      "start": 143,
-      "end": 220
+      "gain": 124,
+      "growth": 25,
+      "start": 506,
+      "end": 630
     },
     {
-      "id": "EthioNLP/Amharic-llama-base-model",
-      "name": "Amharic-llama-base-model",
-      "org": "EthioNLP",
-      "gain": 73,
-      "growth": 44,
-      "start": 166,
-      "end": 239
+      "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
+      "name": "amharic-property-retriever-afro-xlmr-base",
+      "org": "dice-research",
+      "gain": 115,
+      "growth": 46,
+      "start": 249,
+      "end": 364
     },
     {
       "id": "rasyosef/roberta-base-amharic",
       "name": "roberta-base-amharic",
       "org": "rasyosef",
-      "gain": 70,
-      "growth": 56,
-      "start": 124,
-      "end": 194
+      "gain": 85,
+      "growth": 66,
+      "start": 128,
+      "end": 213
     },
     {
-      "id": "mintesnotfikir/whisper-medium-amharic",
-      "name": "whisper-medium-amharic",
-      "org": "mintesnotfikir",
-      "gain": 28,
-      "growth": 3,
-      "start": 848,
-      "end": 876
-    },
-    {
-      "id": "obann001/Ethiopia_V2_sdxl_lora",
-      "name": "Ethiopia_V2_sdxl_lora",
-      "org": "obann001",
-      "gain": 26,
-      "growth": 23,
-      "start": 115,
-      "end": 141
-    },
-    {
-      "id": "rasyosef/Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia",
-      "name": "Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia",
+      "id": "rasyosef/Llama-3.2-1B-Amharic",
+      "name": "Llama-3.2-1B-Amharic",
       "org": "rasyosef",
-      "gain": 22,
-      "growth": 28,
-      "start": 79,
-      "end": 101
+      "gain": 80,
+      "growth": 56,
+      "start": 144,
+      "end": 224
+    },
+    {
+      "id": "EthioNLP/Amharic-llama-base-model",
+      "name": "Amharic-llama-base-model",
+      "org": "EthioNLP",
+      "gain": 61,
+      "growth": 33,
+      "start": 183,
+      "end": 244
     },
     {
       "id": "rasyosef/gpt2-medium-amharic-28k-512",
       "name": "gpt2-medium-amharic-28k-512",
       "org": "rasyosef",
-      "gain": 20,
-      "growth": 32,
+      "gain": 39,
+      "growth": 62,
       "start": 63,
-      "end": 83
+      "end": 102
     },
     {
-      "id": "Davlan/xlm-roberta-base-finetuned-amharic",
-      "name": "xlm-roberta-base-finetuned-amharic",
+      "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
+      "name": "bert-base-multilingual-cased-finetuned-amharic",
       "org": "Davlan",
-      "gain": 18,
-      "growth": 30,
-      "start": 60,
-      "end": 78
+      "gain": 37,
+      "growth": 6,
+      "start": 588,
+      "end": 625
+    },
+    {
+      "id": "mintesnotfikir/whisper-medium-amharic",
+      "name": "whisper-medium-amharic",
+      "org": "mintesnotfikir",
+      "gain": 32,
+      "growth": 4,
+      "start": 853,
+      "end": 885
+    },
+    {
+      "id": "rasyosef/Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia",
+      "name": "Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia",
+      "org": "rasyosef",
+      "gain": 26,
+      "growth": 33,
+      "start": 80,
+      "end": 106
+    },
+    {
+      "id": "ethiospeech01/whisper-fullft-v3-ethiopian",
+      "name": "whisper-fullft-v3-ethiopian",
+      "org": "ethiospeech01",
+      "gain": 25,
+      "growth": 0,
+      "start": 0,
+      "end": 25
+    },
+    {
+      "id": "obann001/Ethiopia_V2_sdxl_lora",
+      "name": "Ethiopia_V2_sdxl_lora",
+      "org": "obann001",
+      "gain": 22,
+      "growth": 18,
+      "start": 120,
+      "end": 142
+    },
+    {
+      "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
+      "name": "qwen3.5-4b-amharic-sft",
+      "org": "abdukuzi45",
+      "gain": 21,
+      "growth": 2,
+      "start": 1222,
+      "end": 1243
     },
     {
       "id": "rasyosef/Llama-3.2-400M-Amharic",
       "name": "Llama-3.2-400M-Amharic",
       "org": "rasyosef",
-      "gain": 16,
-      "growth": 22,
+      "gain": 21,
+      "growth": 28,
       "start": 74,
-      "end": 90
+      "end": 95
     },
     {
-      "id": "luel/gemma-3-4b-tigrinya-qa",
-      "name": "gemma-3-4b-tigrinya-qa",
-      "org": "luel",
-      "gain": 15,
-      "growth": 24,
-      "start": 63,
-      "end": 78
-    },
-    {
-      "id": "Hailay/entimt-en-tigrinya-mt",
-      "name": "entimt-en-tigrinya-mt",
-      "org": "Hailay",
-      "gain": 15,
-      "growth": 107,
-      "start": 14,
-      "end": 29
+      "id": "chappM/whisper-amharic-small-v2",
+      "name": "whisper-amharic-small-v2",
+      "org": "chappM",
+      "gain": 18,
+      "growth": 15,
+      "start": 123,
+      "end": 141
     },
     {
       "id": "rasyosef/roberta-amharic-text-embedding-medium",
       "name": "roberta-amharic-text-embedding-medium",
       "org": "rasyosef",
-      "gain": 14,
+      "gain": 15,
       "growth": 11,
-      "start": 132,
-      "end": 146
+      "start": 133,
+      "end": 148
     }
   ],
   "milestones": [
     {
-      "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
-      "milestone": 1000,
-      "downloads": 1237,
-      "date": "2026-09-11"
-    },
-    {
       "id": "rasyosef/embedding-amharic-base",
       "milestone": 1000,
-      "downloads": 1030,
-      "date": "2026-09-11"
+      "downloads": 1031,
+      "date": "2026-09-12"
     },
     {
-      "id": "rasyosef/roberta-amharic-text-embedding-base",
-      "milestone": 500,
-      "downloads": 622,
-      "date": "2026-09-11"
+      "id": "badrex/Ethio-ASR-amharic",
+      "milestone": 1000,
+      "downloads": 1008,
+      "date": "2026-09-12"
     },
     {
       "id": "rasyosef/Llama-3.2-400M-Amharic-Instruct-Poems-Stories-Wikipedia",
       "milestone": 100,
-      "downloads": 101,
-      "date": "2026-09-11"
+      "downloads": 106,
+      "date": "2026-09-12"
+    },
+    {
+      "id": "rasyosef/gpt2-medium-amharic-28k-512",
+      "milestone": 100,
+      "downloads": 102,
+      "date": "2026-09-12"
     },
     {
       "id": "obann001/Ethiopia_Flux_LoRA",
       "milestone": 500,
-      "downloads": 609,
-      "date": "2026-09-11"
-    },
-    {
-      "id": "obann001/Ethiopia_sdxl_lora",
-      "milestone": 100,
-      "downloads": 347,
-      "date": "2026-09-11"
+      "downloads": 648,
+      "date": "2026-09-12"
     }
   ]
 }
