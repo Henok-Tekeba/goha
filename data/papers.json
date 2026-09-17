@@ -2463,6 +2463,39 @@
       "verified": false
     },
     {
+      "arxiv_id": "2609.18960v1",
+      "title": "When Audit Quality Fails to Predict Downstream Utility: A Counterfactual Study of Synthetic-Data Selectors for Low-Resource African NLP",
+      "authors": [
+        "Son Ha Xuan",
+        "Phat T. Tran-Truong",
+        "Xuan-Bach Le"
+      ],
+      "abstract": "Quality-aware synthetic-data selection rests on a proxy: examples that an LLM judge rates as good should also help a downstream model learn. In a controlled replay in low-resource African-language classification, we show that this proxy breaks. Across four languages (Amharic, Hausa, Swahili, Yoruba), two classification tasks (MasakhaNEWS, AfriSenti), and five matched-budget selectors, audit rankings and downstream rankings diverge. Within each cell, the Spearman between judged label correctness and Macro-F1 across selectors has mean $ρ{=}0.04$ (median $0.00$), showing that the mismatch is not an aggregation artifact. \\method{}-V2, our counterfactual audit framework, produces the cleanest selected pool on three audit channels at once: highest judged label correctness ($0.904$ vs.\\ $0.767$ for naive, a $17.9\\%$ relative gain), lowest shortcut score, and a hard-reject rate of $0.162$ vs.\\ $0.486$ for naive. AlpaGasus nevertheless leads downstream Macro-F1 ($0.202$ vs.\\ $0.163$ for \\method{}-V2), and the inversion persists on the five non-degenerate cells. The lesson is methodological: in this controlled setting, audit quality is a property of the selected pool, not a guarantee of downstream utility. Synthetic-data evaluation should therefore report audit and downstream metrics on the same retained sets. We release the audit tables, per-selector retained pools, and a claim ledger that links every reported number to its source row.",
+      "published_date": "2026-07-15T16:06:34Z",
+      "updated_date": "2026-07-15T16:06:34Z",
+      "url": "https://arxiv.org/abs/2609.18960v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "_type": "paper",
+      "name": "When Audit Quality Fails to Predict Downstream Utility: A Counterfactual Study of Synthetic-Data Selectors for Low-Resource African NLP",
+      "org": "Son Ha Xuan, Phat T. Tran-Truong, Xuan-Bach Le",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "Quality-aware synthetic-data selection rests on a proxy: examples that an LLM judge rates as good should also help a downstream model learn. In a controlled replay in low-resource African-language classification, we show that this proxy breaks. Across four languages (Amharic, Hausa, Swahili, Yoruba), two classification tasks (MasakhaNEWS, AfriSenti), and five matched-budget selectors, audit rankings and downstream rankings diverge. Within each cell, the Spearman between judged label correctness and Macro-F1 across selectors has mean $ρ{=}0.04$ (median $0.00$), showing that the mismatch is not an aggregation artifact. \\method{}-V2, our counterfactual audit framework, produces the cleanest selected pool on three audit channels at once: highest judged label correctness ($0.904$ vs.\\ $0.767$ for naive, a $17.9\\%$ relative gain), lowest shortcut score, and a hard-reject rate of $0.162$ vs.\\ $0.486$ for naive. AlpaGasus nevertheless leads downstream Macro-F1 ($0.202$ vs.\\ $0.163$ for \\method{}-V2), and the inversion persists on the five non-degenerate cells. The lesson is methodological: in this controlled setting, audit quality is a property of the selected pool, not a guarantee of downstream utility. Synthetic-data evaluation should therefore report audit and downstream metrics on the same retained sets. We release the audit tables, per-selector retained pools, and a claim ledger that links every reported number to its source row.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2602.09914v1",
       "title": "AmharicIR+Instr: A Two-Dataset Resource for Neural Retrieval and Instruction Tuning",
       "authors": [
@@ -2674,7 +2707,7 @@
       "verified": false
     }
   ],
-  "total": 72,
+  "total": 73,
   "page": 1,
-  "limit": 72
+  "limit": 73
 }
