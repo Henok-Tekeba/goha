@@ -1725,15 +1725,15 @@
       "verified": false
     },
     {
-      "arxiv_id": "2510.24789v1",
+      "arxiv_id": "2510.24789v2",
       "title": "Cross-Lingual Summarization as a Black-Box Watermark Removal Attack",
       "authors": [
         "Gokul Ganesan"
       ],
       "abstract": "Watermarking has been proposed as a lightweight mechanism to identify AI-generated text, with schemes typically relying on perturbations to token distributions. While prior work shows that paraphrasing can weaken such signals, these attacks remain partially detectable or degrade text quality. We demonstrate that cross-lingual summarization attacks (CLSA) -- translation to a pivot language followed by summarization and optional back-translation -- constitute a qualitatively stronger attack vector. By forcing a semantic bottleneck across languages, CLSA systematically destroys token-level statistical biases while preserving semantic fidelity. In experiments across multiple watermarking schemes (KGW, SIR, XSIR, Unigram) and five languages (Amharic, Chinese, Hindi, Spanish, Swahili), we show that CLSA reduces watermark detection accuracy more effectively than monolingual paraphrase at similar quality levels. Our results highlight an underexplored vulnerability that challenges the practicality of watermarking for provenance or regulation. We argue that robust provenance solutions must move beyond distributional watermarking and incorporate cryptographic or model-attestation approaches. On 300 held-out samples per language, CLSA consistently drives detection toward chance while preserving task utility. Concretely, for XSIR (explicitly designed for cross-lingual robustness), AUROC with paraphrasing is $0.827$, with Cross-Lingual Watermark Removal Attacks (CWRA) [He et al., 2024] using Chinese as the pivot, it is $0.823$, whereas CLSA drives it down to $0.53$ (near chance). Results highlight a practical, low-cost removal pathway that crosses languages and compresses content without visible artifacts.",
       "published_date": "2025-10-27T06:55:52Z",
-      "updated_date": "2025-10-27T06:55:52Z",
-      "url": "https://arxiv.org/abs/2510.24789v1",
+      "updated_date": "2026-10-03T00:52:02Z",
+      "url": "https://arxiv.org/abs/2510.24789v2",
       "categories": [
         "cs.CL",
         "cs.CR"
