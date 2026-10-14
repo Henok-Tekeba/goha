@@ -1,6 +1,38 @@
 {
   "data": [
     {
+      "arxiv_id": "2610.14756v1",
+      "title": "Amharic-English Cross-Language Question Answering Using Statistical Machine Translation, Named Entity Recognition, and Semantic Indexing",
+      "authors": [
+        "Emebet Bekele",
+        "Fekade Getahun"
+      ],
+      "abstract": "The predominance of English-language Web content creates an information-access barrier for speakers of low-resource languages such as Amharic. This paper presents the design, imple-mentation, and evaluation of a bidirectional Amharic-English cross-language question answering (CLQA) system that allows a user to formulate a natural-language question in either Amharic or English and retrieve an answer from documents written in the other language. The system integrates a statistical machine translation (SMT) component for query translation, a maximum-entropy named entity recognition (NER) component for Amharic text processing, semantic-based indexing, question analysis, passage retrieval, and answer extraction. A domain-diverse Amharic-English parallel corpus was used to train the SMT component, while monolingual cor-pora supported language modeling. Documents were normalized, tokenized, stemmed, indexed, and semantically enriched before retrieval. The original evaluation used precision and recall as the principal effectiveness measures. For Amharic-to-English retrieval, the system achieved 72% precision and 79% recall; for English-to-Amharic retrieval, it achieved 65% precision and 70% recall. These findings show that a modular translation-and-retrieval architecture can provide useful cross-language access even under low-resource conditions. This revised article preserves the original experimental claims while situating them in the context of subsequent multilingual transformer and Amharic QA research.",
+      "published_date": "2026-10-10T09:25:01Z",
+      "updated_date": "2026-10-10T09:25:01Z",
+      "url": "https://arxiv.org/abs/2610.14756v1",
+      "categories": [
+        "cs.CL"
+      ],
+      "_type": "paper",
+      "name": "Amharic-English Cross-Language Question Answering Using Statistical Machine Translation, Named Entity Recognition, and Semantic Indexing",
+      "org": "Emebet Bekele, Fekade Getahun",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "The predominance of English-language Web content creates an information-access barrier for speakers of low-resource languages such as Amharic. This paper presents the design, imple-mentation, and evaluation of a bidirectional Amharic-English cross-language question answering (CLQA) system that allows a user to formulate a natural-language question in either Amharic or English and retrieve an answer from documents written in the other language. The system integrates a statistical machine translation (SMT) component for query translation, a maximum-entropy named entity recognition (NER) component for Amharic text processing, semantic-based indexing, question analysis, passage retrieval, and answer extraction. A domain-diverse Amharic-English parallel corpus was used to train the SMT component, while monolingual cor-pora supported language modeling. Documents were normalized, tokenized, stemmed, indexed, and semantically enriched before retrieval. The original evaluation used precision and recall as the principal effectiveness measures. For Amharic-to-English retrieval, the system achieved 72% precision and 79% recall; for English-to-Amharic retrieval, it achieved 65% precision and 70% recall. These findings show that a modular translation-and-retrieval architecture can provide useful cross-language access even under low-resource conditions. This revised article preserves the original experimental claims while situating them in the context of subsequent multilingual transformer and Amharic QA research.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2607.15209v3",
       "title": "Expanding the Lexicon of Ge'ez Based African Languages: A Comparative Study of Amharic and Tigrinya",
       "authors": [
@@ -688,40 +720,6 @@
       "badge": "Paper",
       "bc": "b-paper",
       "desc": "Ethiopic/Amharic script is one of the oldest African writing systems, which serves at least 23 languages (e.g., Amharic, Tigrinya) in East Africa for more than 120 million people. The Amharic writing system, Abugida, has 282 syllables, 15 punctuation marks, and 20 numerals. The Amharic syllabic matrix is derived from 34 base graphemes/consonants by adding up to 12 appropriate diacritics or vocalic markers to the characters. The syllables with a common consonant or vocalic markers are likely to be visually similar and challenge text recognition tasks. In this work, we presented the first comprehensive public datasets named HUST-ART, HUST-AST, ABE, and Tana for Amharic script detection and recognition in the natural scene. We have also conducted extensive experiments to evaluate the performance of the state of art methods in detecting and recognizing Amharic scene text on our datasets. The evaluation results demonstrate the robustness of our datasets for benchmarking and its potential of promoting the development of robust Amharic script detection and recognition algorithms. Consequently, the outcome will benefit people in East Africa, including diplomats from several countries and international communities.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CV"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
-      "arxiv_id": "2202.12687v1",
-      "title": "Improving Amharic Handwritten Word Recognition Using Auxiliary Task",
-      "authors": [
-        "Mesay Samuel Gondere",
-        "Lars Schmidt-Thieme",
-        "Durga Prasad Sharma",
-        "Abiot Sinamo Boltena"
-      ],
-      "abstract": "Amharic is one of the official languages of the Federal Democratic Republic of Ethiopia. It is one of the languages that use an Ethiopic script which is derived from Gee'z, ancient and currently a liturgical language. Amharic is also one of the most widely used literature-rich languages of Ethiopia. There are very limited innovative and customized research works in Amharic optical character recognition (OCR) in general and Amharic handwritten text recognition in particular. In this study, Amharic handwritten word recognition will be investigated. State-of-the-art deep learning techniques including convolutional neural networks together with recurrent neural networks and connectionist temporal classification (CTC) loss were used to make the recognition in an end-to-end fashion. More importantly, an innovative way of complementing the loss function using the auxiliary task from the row-wise similarities of the Amharic alphabet was tested to show a significant recognition improvement over a baseline method. Such findings will promote innovative problem-specific solutions as well as will open insight to a generalized solution that emerges from problem-specific domains.",
-      "published_date": "2022-02-25T13:45:39Z",
-      "updated_date": "2022-02-25T13:45:39Z",
-      "url": "https://arxiv.org/abs/2202.12687v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "_type": "paper",
-      "name": "Improving Amharic Handwritten Word Recognition Using Auxiliary Task",
-      "org": "Mesay Samuel Gondere, Lars Schmidt-Thieme, Durga Prasad Sharma, Abiot Sinamo Boltena",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "Amharic is one of the official languages of the Federal Democratic Republic of Ethiopia. It is one of the languages that use an Ethiopic script which is derived from Gee'z, ancient and currently a liturgical language. Amharic is also one of the most widely used literature-rich languages of Ethiopia. There are very limited innovative and customized research works in Amharic optical character recognition (OCR) in general and Amharic handwritten text recognition in particular. In this study, Amharic handwritten word recognition will be investigated. State-of-the-art deep learning techniques including convolutional neural networks together with recurrent neural networks and connectionist temporal classification (CTC) loss were used to make the recognition in an end-to-end fashion. More importantly, an innovative way of complementing the loss function using the auxiliary task from the row-wise similarities of the Amharic alphabet was tested to show a significant recognition improvement over a baseline method. Such findings will promote innovative problem-specific solutions as well as will open insight to a generalized solution that emerges from problem-specific domains.",
       "dl": null,
       "lang": null,
       "langs": [],
@@ -2307,58 +2305,6 @@
       "verified": false
     },
     {
-      "arxiv_id": "2406.09948v2",
-      "title": "BLEnD: A Benchmark for LLMs on Everyday Knowledge in Diverse Cultures and Languages",
-      "authors": [
-        "Junho Myung",
-        "Nayeon Lee",
-        "Yi Zhou",
-        "Jiho Jin",
-        "Rifki Afina Putri",
-        "Dimosthenis Antypas",
-        "Hsuvas Borkakoty",
-        "Eunsu Kim",
-        "Carla Perez-Almendros",
-        "Abinew Ali Ayele",
-        "Víctor Gutiérrez-Basulto",
-        "Yazmín Ibáñez-García",
-        "Hwaran Lee",
-        "Shamsuddeen Hassan Muhammad",
-        "Kiwoong Park",
-        "Anar Sabuhi Rzayev",
-        "Nina White",
-        "Seid Muhie Yimam",
-        "Mohammad Taher Pilehvar",
-        "Nedjma Ousidhoum",
-        "Jose Camacho-Collados",
-        "Alice Oh"
-      ],
-      "abstract": "Large language models (LLMs) often lack culture-specific knowledge of daily life, especially across diverse regions and non-English languages. Existing benchmarks for evaluating LLMs' cultural sensitivities are limited to a single language or collected from online sources such as Wikipedia, which do not reflect the mundane everyday lifestyles of diverse regions. That is, information about the food people eat for their birthday celebrations, spices they typically use, musical instruments youngsters play, or the sports they practice in school is common cultural knowledge but uncommon in easily collected online sources, especially for underrepresented cultures. To address this issue, we introduce BLEnD, a hand-crafted benchmark designed to evaluate LLMs' everyday knowledge across diverse cultures and languages. BLEnD comprises 52.6k question-answer pairs from 16 countries/regions, in 13 different languages, including low-resource ones such as Amharic, Assamese, Azerbaijani, Hausa, and Sundanese. We construct the benchmark to include two formats of questions: short-answer and multiple-choice. We show that LLMs perform better for cultures that are highly represented online, with a maximum 57.34% difference in GPT-4, the best-performing model, in the short-answer format. For cultures represented by mid-to-high-resource languages, LLMs perform better in their local languages, but for cultures represented by low-resource languages, LLMs perform better in English than the local languages. We make our dataset publicly available at: https://github.com/nlee0212/BLEnD.",
-      "published_date": "2024-06-14T11:48:54Z",
-      "updated_date": "2025-01-16T01:41:48Z",
-      "url": "https://arxiv.org/abs/2406.09948v2",
-      "categories": [
-        "cs.CL"
-      ],
-      "_type": "paper",
-      "name": "BLEnD: A Benchmark for LLMs on Everyday Knowledge in Diverse Cultures and Languages",
-      "org": "Junho Myung, Nayeon Lee, Yi Zhou, Jiho Jin, Rifki Afina Putri, Dimosthenis Antypas, Hsuvas Borkakoty, Eunsu Kim, Carla Perez-Almendros, Abinew Ali Ayele, Víctor Gutiérrez-Basulto, Yazmín Ibáñez-García, Hwaran Lee, Shamsuddeen Hassan Muhammad, Kiwoong Park, Anar Sabuhi Rzayev, Nina White, Seid Muhie Yimam, Mohammad Taher Pilehvar, Nedjma Ousidhoum, Jose Camacho-Collados, Alice Oh",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "Large language models (LLMs) often lack culture-specific knowledge of daily life, especially across diverse regions and non-English languages. Existing benchmarks for evaluating LLMs' cultural sensitivities are limited to a single language or collected from online sources such as Wikipedia, which do not reflect the mundane everyday lifestyles of diverse regions. That is, information about the food people eat for their birthday celebrations, spices they typically use, musical instruments youngsters play, or the sports they practice in school is common cultural knowledge but uncommon in easily collected online sources, especially for underrepresented cultures. To address this issue, we introduce BLEnD, a hand-crafted benchmark designed to evaluate LLMs' everyday knowledge across diverse cultures and languages. BLEnD comprises 52.6k question-answer pairs from 16 countries/regions, in 13 different languages, including low-resource ones such as Amharic, Assamese, Azerbaijani, Hausa, and Sundanese. We construct the benchmark to include two formats of questions: short-answer and multiple-choice. We show that LLMs perform better for cultures that are highly represented online, with a maximum 57.34% difference in GPT-4, the best-performing model, in the short-answer format. For cultures represented by mid-to-high-resource languages, LLMs perform better in their local languages, but for cultures represented by low-resource languages, LLMs perform better in English than the local languages. We make our dataset publicly available at: https://github.com/nlee0212/BLEnD.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CL"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
       "arxiv_id": "2403.13737v4",
       "title": "EthioLLM: Multilingual Large Language Models for Ethiopian Languages with Task Evaluation",
       "authors": [
@@ -2779,7 +2725,7 @@
       "verified": false
     }
   ],
-  "total": 75,
+  "total": 74,
   "page": 1,
-  "limit": 75
+  "limit": 74
 }
