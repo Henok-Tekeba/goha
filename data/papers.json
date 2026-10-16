@@ -1424,6 +1424,44 @@
       "verified": false
     },
     {
+      "arxiv_id": "2610.22244v1",
+      "title": "Language Is a Security Surface for Agent Guards",
+      "authors": [
+        "Hasan Demirkiran",
+        "Jens Ernstberger"
+      ],
+      "abstract": "Step-level guards decide, before each tool call, whether an agent's next action is safe given the user's request and the trajectory so far. Users write those requests in many languages, while guard prompts and the benchmarks on which purpose-built guards are trained and evaluated are English. We ask whether a guard's verdict depends on the language of the request. We build LinguaGuardBench from the 1,220 labelled steps of TS-Bench AgentDojo-Traj: we translate only the user instruction into German, French, Turkish, Swahili and Amharic, and keep every tool call, observation and label byte-identical, so any change in a verdict is attributable to language alone. Six English rewordings and a whitespace placebo serve as controls, and managed guards are run three times to measure their noise. Across 19 guards, from frontier APIs to 4B open models and four purpose-built agent guards, most open, small and purpose-built guards change verdicts under translation beyond their own noise floor, and the effect grows with the rarity of the language: among the nine guards below 13B parameters, the mean placebo-adjusted flip rate rises from +1.5 pp on French to +4.4 pp on Amharic. Purpose-built guards are the most sensitive. The direction of the damage tends to follow guard size: open guards of 12-30B parameters block more benign steps (up to +5.0 pp false positives), and every significant loss of recall is in a guard below 10B (up to -7.4 pp). Frontier guards shift by at most about one point; the strongest, Gemini 3.8 Flash, returns identical verdicts with and without the request. The damage is concentrated in a few instructions and, in a post-hoc analysis, falls on steps where the agent's reasoning restates the English request, consistent with guards reacting to inconsistency between channels. English paraphrase moves every guard less than translation does. We release the benchmark and all 489k verdicts.",
+      "published_date": "2026-10-15T17:19:40Z",
+      "updated_date": "2026-10-15T17:19:40Z",
+      "url": "https://arxiv.org/abs/2610.22244v1",
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "_type": "paper",
+      "name": "Language Is a Security Surface for Agent Guards",
+      "org": "Hasan Demirkiran, Jens Ernstberger",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "Step-level guards decide, before each tool call, whether an agent's next action is safe given the user's request and the trajectory so far. Users write those requests in many languages, while guard prompts and the benchmarks on which purpose-built guards are trained and evaluated are English. We ask whether a guard's verdict depends on the language of the request. We build LinguaGuardBench from the 1,220 labelled steps of TS-Bench AgentDojo-Traj: we translate only the user instruction into German, French, Turkish, Swahili and Amharic, and keep every tool call, observation and label byte-identical, so any change in a verdict is attributable to language alone. Six English rewordings and a whitespace placebo serve as controls, and managed guards are run three times to measure their noise. Across 19 guards, from frontier APIs to 4B open models and four purpose-built agent guards, most open, small and purpose-built guards change verdicts under translation beyond their own noise floor, and the effect grows with the rarity of the language: among the nine guards below 13B parameters, the mean placebo-adjusted flip rate rises from +1.5 pp on French to +4.4 pp on Amharic. Purpose-built guards are the most sensitive. The direction of the damage tends to follow guard size: open guards of 12-30B parameters block more benign steps (up to +5.0 pp false positives), and every significant loss of recall is in a guard below 10B (up to -7.4 pp). Frontier guards shift by at most about one point; the strongest, Gemini 3.8 Flash, returns identical verdicts with and without the request. The damage is concentrated in a few instructions and, in a post-hoc analysis, falls on steps where the agent's reasoning restates the English request, consistent with guards reacting to inconsistency between channels. English paraphrase moves every guard less than translation does. We release the benchmark and all 489k verdicts.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CR",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2609.37882v1",
       "title": "How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language Text Classification",
       "authors": [
@@ -2010,42 +2048,6 @@
       "isNew": false,
       "tags": [
         "cs.HC",
-        "cs.CL"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
-      "arxiv_id": "2212.10455v2",
-      "title": "MULTI3NLU++: A Multilingual, Multi-Intent, Multi-Domain Dataset for Natural Language Understanding in Task-Oriented Dialogue",
-      "authors": [
-        "Nikita Moghe",
-        "Evgeniia Razumovskaia",
-        "Liane Guillou",
-        "Ivan Vulić",
-        "Anna Korhonen",
-        "Alexandra Birch"
-      ],
-      "abstract": "Task-oriented dialogue (TOD) systems have been widely deployed in many industries as they deliver more efficient customer support. These systems are typically constructed for a single domain or language and do not generalise well beyond this. To support work on Natural Language Understanding (NLU) in TOD across multiple languages and domains simultaneously, we constructed MULTI3NLU++, a multilingual, multi-intent, multi-domain dataset. MULTI3NLU++ extends the English only NLU++ dataset to include manual translations into a range of high, medium, and low resource languages (Spanish, Marathi, Turkish and Amharic), in two domains (BANKING and HOTELS). Because of its multi-intent property, MULTI3NLU++ represents complex and natural user goals, and therefore allows us to measure the realistic performance of TOD systems in a varied set of the world's languages. We use MULTI3NLU++ to benchmark state-of-the-art multilingual models for the NLU tasks of intent detection and slot labelling for TOD systems in the multilingual setting. The results demonstrate the challenging nature of the dataset, particularly in the low-resource language setting, offering ample room for future experimentation in multi-domain multilingual TOD setups.",
-      "published_date": "2022-12-20T17:34:25Z",
-      "updated_date": "2023-06-19T04:09:37Z",
-      "url": "https://arxiv.org/abs/2212.10455v2",
-      "categories": [
-        "cs.CL"
-      ],
-      "_type": "paper",
-      "name": "MULTI3NLU++: A Multilingual, Multi-Intent, Multi-Domain Dataset for Natural Language Understanding in Task-Oriented Dialogue",
-      "org": "Nikita Moghe, Evgeniia Razumovskaia, Liane Guillou, Ivan Vulić, Anna Korhonen, Alexandra Birch",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "Task-oriented dialogue (TOD) systems have been widely deployed in many industries as they deliver more efficient customer support. These systems are typically constructed for a single domain or language and do not generalise well beyond this. To support work on Natural Language Understanding (NLU) in TOD across multiple languages and domains simultaneously, we constructed MULTI3NLU++, a multilingual, multi-intent, multi-domain dataset. MULTI3NLU++ extends the English only NLU++ dataset to include manual translations into a range of high, medium, and low resource languages (Spanish, Marathi, Turkish and Amharic), in two domains (BANKING and HOTELS). Because of its multi-intent property, MULTI3NLU++ represents complex and natural user goals, and therefore allows us to measure the realistic performance of TOD systems in a varied set of the world's languages. We use MULTI3NLU++ to benchmark state-of-the-art multilingual models for the NLU tasks of intent detection and slot labelling for TOD systems in the multilingual setting. The results demonstrate the challenging nature of the dataset, particularly in the low-resource language setting, offering ample room for future experimentation in multi-domain multilingual TOD setups.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
         "cs.CL"
       ],
       "downloads_monthly": 0,
