@@ -129,12 +129,18 @@ export default function Header({ githubStars }: HeaderProps) {
               { label: "Research", href: "/?categories=Research" },
               { label: "Companies", href: "/?categories=Company" },
             ].map((item) => (
-              <div key={item.href} onMouseEnter={handleNavItemEnter} className="relative">
+              <div
+                key={item.href}
+                onMouseEnter={handleNavItemEnter}
+                className="relative"
+              >
                 <Link href={item.href}>
                   <Button
                     variant="ghost"
                     className={
-                      pathname === item.href ? "bg-accent hover:bg-accent" : undefined
+                      pathname === item.href
+                        ? "bg-accent hover:bg-accent"
+                        : undefined
                     }
                     size="sm"
                   >

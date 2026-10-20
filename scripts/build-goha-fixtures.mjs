@@ -12,7 +12,7 @@
  *
  * Run after every scrape:  node scripts/build-goha-fixtures.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -34,15 +34,26 @@ const hash32 = (s) => {
 
 /* ------------- language taxonomy (canonical names, full code coverage) ------------- */
 const LANG_NAMES = {
-  am: "Amharic", amh: "Amharic",
-  om: "Afaan Oromo", orm: "Afaan Oromo", gaz: "Afaan Oromo",
-  ti: "Tigrinya", tir: "Tigrinya",
-  gez: "Ge'ez", zgh: "Ge'ez",
-  so: "Somali", som: "Somali",
-  aa: "Afaraf", aar: "Afaraf",
-  wal: "Wolayttattoo", wol: "Wolayttattoo",
-  haw: "Hadiyya", sid: "Sidaamu Afoo",
-  en: "English", ar: "Arabic", ara: "Arabic",
+  am: "Amharic",
+  amh: "Amharic",
+  om: "Afaan Oromo",
+  orm: "Afaan Oromo",
+  gaz: "Afaan Oromo",
+  ti: "Tigrinya",
+  tir: "Tigrinya",
+  gez: "Ge'ez",
+  zgh: "Ge'ez",
+  so: "Somali",
+  som: "Somali",
+  aa: "Afaraf",
+  aar: "Afaraf",
+  wal: "Wolayttattoo",
+  wol: "Wolayttattoo",
+  haw: "Hadiyya",
+  sid: "Sidaamu Afoo",
+  en: "English",
+  ar: "Arabic",
+  ara: "Arabic",
 };
 const langFromCode = (c) => LANG_NAMES[c] ?? null;
 
@@ -93,18 +104,37 @@ const papers = dataArr("papers.json");
 /* Type categories power the nav (Models/Datasets/Research/Companies);
    task categories (ASR, LLM...) remain available in the filter UI. */
 const catNames = [
-  "Model", "Dataset", "Company", "Research",
-  "ASR", "Translation", "LLM", "NER", "Embeddings", "Other",
+  "Model",
+  "Dataset",
+  "Company",
+  "Research",
+  "ASR",
+  "Translation",
+  "LLM",
+  "NER",
+  "Embeddings",
+  "Other",
 ];
 const categories = catNames.map((name, i) => ({ id: id("cat", i + 1), name }));
 const catId = new Map(categories.map((c) => [c.name, c.id]));
 
 /* per-type icon tiles (model cards never fall back to initials) */
 const TYPE_ICONS = {
-  asr: "audio", nmt: "translation", llm: "ai", ner: "ner",
-  emb: "embedding", ds: "dataset", co: "company", paper: "research",
+  asr: "audio",
+  nmt: "translation",
+  llm: "ai",
+  ner: "ner",
+  emb: "embedding",
+  ds: "dataset",
+  co: "company",
+  paper: "research",
 };
-const KIND_ICONS = { model: "ai", dataset: "dataset", company: "company", paper: "research" };
+const KIND_ICONS = {
+  model: "ai",
+  dataset: "dataset",
+  company: "company",
+  paper: "research",
+};
 const typeIconFor = (it, kind) =>
   `/types/${TYPE_ICONS[it.bc] ?? KIND_ICONS[kind] ?? "ai"}.svg`;
 
@@ -125,24 +155,33 @@ for (const it of [...models, ...datasets]) {
 
 const now = "2026-01-01T00:00:00.000Z";
 
-const topLangs = [...langCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
-const topStacks = [...stackCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6)
+const topLangs = [...langCount.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
+const topStacks = [...stackCount.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6)
   .map(([tag]) => stackByTag.get(tag));
 
 const langSlug = (name) =>
-  name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 const techStacks = [];
 topLangs.forEach(([name], i) =>
   techStacks.push({
-    id: id("tst", i + 1), name,
+    id: id("tst", i + 1),
+    name,
     iconUrl: `/langs/${langSlug(name)}.svg`,
     type: "LANGUAGE",
   })
 );
 topStacks.forEach((s, i) =>
   techStacks.push({
-    id: id("tst", 51 + i), name: s.name,
+    id: id("tst", 51 + i),
+    name: s.name,
     iconUrl: s.devicon ? devicon(s.devicon) : `/langs/sym-${s.symbol}.svg`,
     type: "TECH",
   })
@@ -154,7 +193,10 @@ mkdirSync(LANGS_OUT, { recursive: true });
 const TYPES_OUT = path.join(ROOT, "public", "types");
 mkdirSync(TYPES_OUT, { recursive: true });
 
-const tile = (inner, hue) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+const tile = (
+  inner,
+  hue
+) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="${hue === "blue" ? "#8ec5ff" : "#51a2ff"}"/>
@@ -191,7 +233,10 @@ for (const [key, sym] of Object.entries(TYPE_SYMBOLS)) {
 }
 
 const glyphTile = (glyph) =>
-  tile(`<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="white" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`, "blue");
+  tile(
+    `<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="white" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`,
+    "blue"
+  );
 
 const SYMBOLS = {
   layers: `<path d="M12 4l7 3.5-7 3.5-7-3.5L12 4z" fill="white" opacity="0.95"/><path d="M5 12l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/><path d="M5 16l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>`,
@@ -205,21 +250,32 @@ const SYMBOLS = {
 
 for (const [name] of topLangs) {
   const meta = LANG_META[name] ?? { glyph: name.charAt(0).toUpperCase() };
-  writeFileSync(path.join(LANGS_OUT, `${langSlug(name)}.svg`), glyphTile(meta.glyph));
+  writeFileSync(
+    path.join(LANGS_OUT, `${langSlug(name)}.svg`),
+    glyphTile(meta.glyph)
+  );
 }
 for (const s of topStacks) {
-  if (s.symbol) writeFileSync(path.join(LANGS_OUT, `sym-${s.symbol}.svg`), tile(SYMBOLS[s.symbol], "deep"));
+  if (s.symbol)
+    writeFileSync(
+      path.join(LANGS_OUT, `sym-${s.symbol}.svg`),
+      tile(SYMBOLS[s.symbol], "deep")
+    );
 }
 
 /* ---------------- projects ---------------- */
 const iso = (s, fb) =>
-  (s && !isNaN(new Date(s).getTime()) ? new Date(s).toISOString() : fb);
+  s && !isNaN(new Date(s).getTime()) ? new Date(s).toISOString() : fb;
 
 const nfCompact = new Intl.NumberFormat("en", { notation: "compact" });
 const nfParams = (p) =>
   typeof p === "number" && p >= 1000
-    ? nfCompact.format(p).replace("M", "M").toUpperCase() === nfCompact.format(p)
-      ? nfCompact.format(p).toUpperCase().replace(/([0-9])\./, "$1.")
+    ? nfCompact.format(p).replace("M", "M").toUpperCase() ===
+      nfCompact.format(p)
+      ? nfCompact
+          .format(p)
+          .toUpperCase()
+          .replace(/([0-9])\./, "$1.")
       : nfCompact.format(p).toUpperCase()
     : String(p);
 
@@ -235,7 +291,7 @@ function readmeForModel(it, badge, langs, paramCount) {
   lines.push(`# ${it.name}`);
   lines.push("");
   lines.push(
-    `> Indexed by goha.et — the Ethiopian AI ecosystem directory.` +
+    "> Indexed by goha.et — the Ethiopian AI ecosystem directory." +
       (badge ? ` **${badge}**` : "") +
       (langs.length ? ` · ${langs.join(", ")}` : "")
   );
@@ -244,13 +300,18 @@ function readmeForModel(it, badge, langs, paramCount) {
   lines.push("");
   lines.push("| | |");
   lines.push("|---|---|");
-  lines.push(`| Monthly downloads | **${(it.downloads_monthly ?? 0).toLocaleString("en")}** |`);
+  lines.push(
+    `| Monthly downloads | **${(it.downloads_monthly ?? 0).toLocaleString("en")}** |`
+  );
   lines.push(`| Likes | ${(it.likes ?? 0).toLocaleString("en")} |`);
   if (paramCount) lines.push(`| Parameters | ${nfParams(paramCount)} |`);
   if (it.license) lines.push(`| License | \`${it.license}\` |`);
   if (it.wer_score != null) lines.push(`| WER (reported) | ${it.wer_score} |`);
   if (it.file_count) lines.push(`| Files | ${it.file_count} |`);
-  if (it.last_updated) lines.push(`| Last updated | ${new Date(it.last_updated).toISOString().slice(0, 10)} |`);
+  if (it.last_updated)
+    lines.push(
+      `| Last updated | ${new Date(it.last_updated).toISOString().slice(0, 10)} |`
+    );
   lines.push("");
   const desc = cleanDesc(it.description);
   if (desc) {
@@ -273,7 +334,7 @@ function readmeForModel(it, badge, langs, paramCount) {
   }
   const evals = Array.isArray(it.eval_results)
     ? it.eval_results
-    : it.eval_results?.eval ?? [];
+    : (it.eval_results?.eval ?? []);
   if (evals.length) {
     lines.push("## Evaluation");
     lines.push("");
@@ -281,12 +342,15 @@ function readmeForModel(it, badge, langs, paramCount) {
     lines.push("|---|---|---|");
     for (const e of evals) {
       for (const m of e.metrics || []) {
-        const val = typeof m.value === "number"
-          ? (m.value < 1 && /^wer|cer|error/i.test(m.name || m.type || "")
-            ? `${(m.value * 100).toFixed(2)}%`
-            : String(m.value))
-          : String(m.value ?? "");
-        lines.push(`| ${m.name || m.type} | ${val}${m.verified ? " ✓" : ""} | ${e.dataset?.name || "—"} |`);
+        const val =
+          typeof m.value === "number"
+            ? m.value < 1 && /^wer|cer|error/i.test(m.name || m.type || "")
+              ? `${(m.value * 100).toFixed(2)}%`
+              : String(m.value)
+            : String(m.value ?? "");
+        lines.push(
+          `| ${m.name || m.type} | ${val}${m.verified ? " ✓" : ""} | ${e.dataset?.name || "—"} |`
+        );
       }
     }
     lines.push("");
@@ -299,7 +363,9 @@ function readmeForModel(it, badge, langs, paramCount) {
   }
   lines.push("---");
   lines.push("");
-  lines.push(`[Open on Hugging Face](${it.hf_url}) · [goha.et](https://goha.et)`);
+  lines.push(
+    `[Open on Hugging Face](${it.hf_url}) · [goha.et](https://goha.et)`
+  );
   return Buffer.from(lines.join("\n")).toString("base64");
 }
 
@@ -332,8 +398,13 @@ for (const src of [
     }
   }
 
-  const badge = it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
-  const catName = catNames.includes(badge) ? badge : src.kind === "dataset" ? "Dataset" : "Other";
+  const badge =
+    it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
+  const catName = catNames.includes(badge)
+    ? badge
+    : src.kind === "dataset"
+      ? "Dataset"
+      : "Other";
 
   const created = iso(it.added_at, iso(it.last_updated, now));
   const updated = iso(it.last_updated, created);
@@ -345,7 +416,10 @@ for (const src of [
 
   const paramCount =
     it.param_count ??
-    (it.tags?.find?.((t) => /(\d+(\.\d+)?)([mb])\b/i.test(t))?.match?.(/(\d+(\.\d+)?)([mb])/i)?.[0] ?? null);
+    it.tags
+      ?.find?.((t) => /(\d+(\.\d+)?)([mb])\b/i.test(t))
+      ?.match?.(/(\d+(\.\d+)?)([mb])/i)?.[0] ??
+    null;
   const params = paramCount ? `${String(paramCount).toUpperCase()}` : null;
 
   projects.push({
@@ -361,9 +435,15 @@ for (const src of [
     /* goha ecosystem metrics */
     downloadsMonthly: it.downloads_monthly ?? 0,
     growth: typeof it.growth === "number" ? it.growth : null,
-    sparkline: it.sparkline && Array.isArray(it.sparkline.points) && it.sparkline.points.length > 1
-      ? { points: it.sparkline.points, timestamps: it.sparkline.timestamps ?? [] }
-      : null,
+    sparkline:
+      it.sparkline &&
+      Array.isArray(it.sparkline.points) &&
+      it.sparkline.points.length > 1
+        ? {
+            points: it.sparkline.points,
+            timestamps: it.sparkline.timestamps ?? [],
+          }
+        : null,
     repoUrl: it.hf_url || null,
     githubUrl: null,
     gitlabUrl: null,
@@ -375,15 +455,24 @@ for (const src of [
     owner: { id: id("usr", hash32(orgName)), name: orgName },
     projectTechStacks: [
       ...langs.map((n) => techStacks.find((t) => t.name === n)).filter(Boolean),
-      ...stackObjs.map((s) => techStacks.find((t) => t.name === s.name)).filter(Boolean),
+      ...stackObjs
+        .map((s) => techStacks.find((t) => t.name === s.name))
+        .filter(Boolean),
     ].slice(0, 6),
     projectCategories: [
-      { id: catId.get(src.kind === "dataset" ? "Dataset" : "Model") ?? categories[0].id, name: src.kind === "dataset" ? "Dataset" : "Model" },
+      {
+        id:
+          catId.get(src.kind === "dataset" ? "Dataset" : "Model") ??
+          categories[0].id,
+        name: src.kind === "dataset" ? "Dataset" : "Model",
+      },
       { id: catId.get(catName) ?? categories.at(-1).id, name: catName },
     ],
     repositoryDetails: {
       name: it.name || it.id,
-      description: cleanDesc(it.description) ? cleanDesc(it.description).slice(0, 240) : null,
+      description: cleanDesc(it.description)
+        ? cleanDesc(it.description).slice(0, 240)
+        : null,
       url: it.hf_url || null,
       html_url: it.hf_url || null,
       created_at: created,
@@ -432,7 +521,9 @@ for (const c of companies) {
     imagesUrls: [],
     owner: { id: id("usr", hash32(c.name)), name: c.name },
     projectTechStacks: (c.langs || [])
-      .map((l) => techStacks.find((t) => t.name.toLowerCase() === l.toLowerCase()))
+      .map((l) =>
+        techStacks.find((t) => t.name.toLowerCase() === l.toLowerCase())
+      )
       .filter(Boolean),
     projectCategories: [{ id: catId.get("Company"), name: "Company" }],
     repositoryDetails: {
@@ -440,7 +531,9 @@ for (const c of companies) {
       description: c.desc || null,
       url: c.github || null,
       html_url: c.github || c.website || null,
-      created_at: c.founded ? new Date(`${c.founded}-01-01`).toISOString() : now,
+      created_at: c.founded
+        ? new Date(`${c.founded}-01-01`).toISOString()
+        : now,
       updated_at: now,
       pushed_at: now,
       stars: c.likes ?? 0,
@@ -458,7 +551,15 @@ for (const c of companies) {
       pullRequests: [],
       readme: readmeSimple(
         c.name,
-        [c.desc, c.founded ? `Founded in ${c.founded}.` : null, (c.langs || []).length ? `Working in: ${c.langs.map((l) => LANG_NAMES[l] ?? l).join(", ")}.` : null].filter(Boolean).join(" "),
+        [
+          c.desc,
+          c.founded ? `Founded in ${c.founded}.` : null,
+          (c.langs || []).length
+            ? `Working in: ${c.langs.map((l) => LANG_NAMES[l] ?? l).join(", ")}.`
+            : null,
+        ]
+          .filter(Boolean)
+          .join(" "),
         c.website
       ),
       contributionFile: undefined,
@@ -490,7 +591,10 @@ for (const p of papers) {
     discordUrl: null,
     websiteUrl: abs,
     imagesUrls: [],
-    owner: { id: id("usr", hash32(p.authors?.[0] || "arxiv")), name: p.authors?.[0] || "arXiv" },
+    owner: {
+      id: id("usr", hash32(p.authors?.[0] || "arxiv")),
+      name: p.authors?.[0] || "arXiv",
+    },
     projectTechStacks: [],
     projectCategories: [{ id: catId.get("Research"), name: "Research" }],
     repositoryDetails: {
@@ -516,7 +620,9 @@ for (const p of papers) {
       pullRequests: [],
       readme: readmeSimple(
         p.title,
-        [authorsLine ? `*${authorsLine}*` : null, cleanDesc(p.abstract)].filter(Boolean).join("\n\n"),
+        [authorsLine ? `*${authorsLine}*` : null, cleanDesc(p.abstract)]
+          .filter(Boolean)
+          .join("\n\n"),
         abs
       ),
       contributionFile: undefined,
@@ -563,7 +669,10 @@ const tech = (
 
 export const categories: CategoryType[] = [
 ${categories
-  .map((c) => `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: "${c.name}" },`)
+  .map(
+    (c) =>
+      `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: "${c.name}" },`
+  )
   .join("\n")}
 ];
 

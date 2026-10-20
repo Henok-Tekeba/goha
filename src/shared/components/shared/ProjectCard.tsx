@@ -195,11 +195,16 @@ export default function ProjectCardComponent({
               )}
 
               <div className="ml-auto flex items-center justify-between space-x-2">
-                {sparkline && sparkline.points && sparkline.points.length > 1 && (
-                  <span className="mr-1 hidden sm:inline-flex">
-                    <CardSparkline points={sparkline.points} growth={growth} />
-                  </span>
-                )}
+                {sparkline &&
+                  sparkline.points &&
+                  sparkline.points.length > 1 && (
+                    <span className="mr-1 hidden sm:inline-flex">
+                      <CardSparkline
+                        points={sparkline.points}
+                        growth={growth}
+                      />
+                    </span>
+                  )}
                 <div className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
                   <FaDownload className="mr-0.5 size-2.5 text-black/50" />
                   {isRepositoryLoading ? (
