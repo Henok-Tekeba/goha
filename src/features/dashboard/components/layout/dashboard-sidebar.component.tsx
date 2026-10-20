@@ -197,8 +197,8 @@ export default function DashboardSidebar() {
               >
                 <div className="rounded-xl bg-secondary p-4">
                   <div className="mb-3 text-start text-muted-foreground text-xs">
-                    Submit a project for goha.et. <br /> Import a
-                    repository from Github or Gitlab.
+                    Submit a project for goha.et. <br /> Import a repository
+                    from Github or Gitlab.
                   </div>
                   <Button
                     asChild

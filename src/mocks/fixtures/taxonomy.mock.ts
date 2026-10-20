@@ -35,13 +35,43 @@ export const techStacks: TechStackType[] = [
   tech(mockPublicId("tst", 1), "Amharic", "/langs/amharic.svg", "LANGUAGE"),
   tech(mockPublicId("tst", 2), "English", "/langs/english.svg", "LANGUAGE"),
   tech(mockPublicId("tst", 3), "Tigrinya", "/langs/tigrinya.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 4), "Afaan Oromo", "/langs/afaan-oromo.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 5), "Sidaamu Afoo", "/langs/sidaamu-afoo.svg", "LANGUAGE"),
+  tech(
+    mockPublicId("tst", 4),
+    "Afaan Oromo",
+    "/langs/afaan-oromo.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    mockPublicId("tst", 5),
+    "Sidaamu Afoo",
+    "/langs/sidaamu-afoo.svg",
+    "LANGUAGE"
+  ),
   tech(mockPublicId("tst", 6), "Orm", "/langs/orm.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 7), "Wolayttattoo", "/langs/wolayttattoo.svg", "LANGUAGE"),
+  tech(
+    mockPublicId("tst", 7),
+    "Wolayttattoo",
+    "/langs/wolayttattoo.svg",
+    "LANGUAGE"
+  ),
   tech(mockPublicId("tst", 8), "Amh", "/langs/amh.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 9), "Transformers", "/langs/transformers.svg", "TECH"),
-  tech(mockPublicId("tst", 10), "Pytorch", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg", "TECH"),
-  tech(mockPublicId("tst", 11), "Keras", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/keras/keras-original.svg", "TECH"),
+  tech(
+    mockPublicId("tst", 9),
+    "Transformers",
+    "/langs/transformers.svg",
+    "TECH"
+  ),
+  tech(
+    mockPublicId("tst", 10),
+    "Pytorch",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+    "TECH"
+  ),
+  tech(
+    mockPublicId("tst", 11),
+    "Keras",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/keras/keras-original.svg",
+    "TECH"
+  ),
   tech(mockPublicId("tst", 12), "Onnx", "/langs/onnx.svg", "TECH"),
 ];

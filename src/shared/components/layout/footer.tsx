@@ -168,7 +168,7 @@ export default function Footer() {
               <span className="text-muted-foreground text-sm">
                 © goha.et • 2026
               </span>
-              <span className="text-muted-foreground text-xs max-w-[280px] leading-relaxed">
+              <span className="max-w-[280px] text-muted-foreground text-xs leading-relaxed">
                 UI adapted from{" "}
                 <a
                   className="underline underline-offset-4 transition hover:text-foreground"

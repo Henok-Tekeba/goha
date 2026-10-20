@@ -27,9 +27,9 @@ export default function PrivacyPolicyPage() {
             1. Introduction
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et ("we", "our", "us") is committed to protecting
-            your privacy. This Privacy Policy describes how we handle personal
-            information when you use our website and services.
+            goha.et ("we", "our", "us") is committed to protecting your privacy.
+            This Privacy Policy describes how we handle personal information
+            when you use our website and services.
           </p>
         </section>
 

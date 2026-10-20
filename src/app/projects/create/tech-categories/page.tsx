@@ -4,8 +4,7 @@ import StepTechCategoriesView from "@/features/projects/views/stepper-views/comm
 
 export const metadata: Metadata = {
   title: "Add technologies & categories",
-  description:
-    "Add technologies & categories to your project on goha.et",
+  description: "Add technologies & categories to your project on goha.et",
 };
 
 export default function page() {

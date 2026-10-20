@@ -98,12 +98,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
           href="/"
           className="flex items-center gap-2 transition-opacity duration-200 ease-out hover:opacity-50"
         >
-          <Image
-            src="/goha-logo.svg"
-            alt="goha.et"
-            width={168}
-            height={40}
-          />
+          <Image src="/goha-logo.svg" alt="goha.et" width={168} height={40} />
         </Link>
 
         <div className="flex items-center gap-4">

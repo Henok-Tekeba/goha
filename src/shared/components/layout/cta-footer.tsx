@@ -54,10 +54,9 @@ export default function CTAFooter({
           in Ethiopian AI
         </h1>
         <p className="mt-5 max-w-[450px] px-2 text-center text-neutral-950 text-sm">
-          goha.et surfaces every model, dataset, company and paper built for
-          {" "}
-          <br className="hidden md:block" /> Ethiopian languages — indexed
-          daily and open to everyone.
+          goha.et surfaces every model, dataset, company and paper built for{" "}
+          <br className="hidden md:block" /> Ethiopian languages — indexed daily
+          and open to everyone.
         </p>
         <div className="mt-6 flex flex-row justify-center gap-3 md:justify-center">
           <Button asChild>

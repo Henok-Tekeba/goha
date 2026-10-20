@@ -86,10 +86,9 @@ export default function TermsAndConditionsPage() {
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
             The website, trademarks, logos, and other materials are owned by
-            goha.et or its licensors and are protected by applicable
-            IP laws. Except as permitted by law, you may not copy, modify,
-            distribute, or create derivative works without prior written
-            consent.
+            goha.et or its licensors and are protected by applicable IP laws.
+            Except as permitted by law, you may not copy, modify, distribute, or
+            create derivative works without prior written consent.
           </p>
         </section>
 
@@ -121,11 +120,11 @@ export default function TermsAndConditionsPage() {
             9. Limitation of Liability
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            To the fullest extent permitted by law, goha.et will not
-            be liable for any indirect, incidental, special, consequential, or
-            punitive damages, or any loss of profits or revenues, whether
-            incurred directly or indirectly, or any loss of data, use, goodwill,
-            or other intangible losses.
+            To the fullest extent permitted by law, goha.et will not be liable
+            for any indirect, incidental, special, consequential, or punitive
+            damages, or any loss of profits or revenues, whether incurred
+            directly or indirectly, or any loss of data, use, goodwill, or other
+            intangible losses.
           </p>
         </section>
 
@@ -134,11 +133,11 @@ export default function TermsAndConditionsPage() {
             10. Indemnification
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            You agree to indemnify and hold harmless goha.et and its
-            affiliates from and against any claims, liabilities, damages,
-            losses, and expenses, including reasonable attorneys’ fees, arising
-            out of or in any way connected with your use of the website or
-            violation of these Terms.
+            You agree to indemnify and hold harmless goha.et and its affiliates
+            from and against any claims, liabilities, damages, losses, and
+            expenses, including reasonable attorneys’ fees, arising out of or in
+            any way connected with your use of the website or violation of these
+            Terms.
           </p>
         </section>
 

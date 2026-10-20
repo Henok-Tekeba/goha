@@ -61,9 +61,7 @@ export default function FooterMinimal({
         </div>
 
         <div className="flex items-center gap-4 text-xs md:text-sm">
-          <span className="text-muted-foreground">
-            © goha.et • 2026
-          </span>
+          <span className="text-muted-foreground">© goha.et • 2026</span>
           <span className="text-muted-foreground">
             UI adapted from{" "}
             <Link

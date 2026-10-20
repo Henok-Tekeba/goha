@@ -81,8 +81,8 @@ export function DiscoveryHeroIntro({
         transition={{ duration: DURATION, delay: STAGGER * 3, ease }}
       >
         <p className="mt-5 max-w-[450px] px-2 text-center text-neutral-950 text-sm">
-          A live index of models, datasets, companies and research for
-          Ethiopian languages — find, compare and explore the ecosystem.
+          A live index of models, datasets, companies and research for Ethiopian
+          languages — find, compare and explore the ecosystem.
         </p>
       </motion.div>
 

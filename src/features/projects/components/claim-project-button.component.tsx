@@ -100,8 +100,8 @@ export function ClaimProjectButton({ project }: ClaimProjectButtonProps) {
               <span className="font-medium text-sm">What you need to know</span>
             </div>
             <p className="mb-3 text-muted-foreground text-sm">
-              To maintain this project on goha.et, we'll verify your
-              access to the repository. You can claim ownership if:
+              To maintain this project on goha.et, we'll verify your access to
+              the repository. You can claim ownership if:
             </p>
             <ul className="list-inside list-disc space-y-2 text-muted-foreground text-sm">
               <li>

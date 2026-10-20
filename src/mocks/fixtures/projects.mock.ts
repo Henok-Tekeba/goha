@@ -44,10 +44,14 @@ const ROLE_INDEXES = {
 
 const roleProjectId = (index: number): string => {
   const project = projectsResponse[index];
-  if (!project?.id) throw new Error(`Mock project fixture has no project at index ${index}`);
+  if (!project?.id)
+    throw new Error(`Mock project fixture has no project at index ${index}`);
   return project.id;
 };
 
 export const PROJECT_IDS = Object.fromEntries(
-  Object.entries(ROLE_INDEXES).map(([key, index]) => [key, roleProjectId(index)])
+  Object.entries(ROLE_INDEXES).map(([key, index]) => [
+    key,
+    roleProjectId(index),
+  ])
 ) as Record<keyof typeof ROLE_INDEXES, string>;
