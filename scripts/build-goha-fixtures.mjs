@@ -8,11 +8,11 @@
  * Reads goha's normalized JSON (models, datasets, companies, papers) and emits:
  *   1. src/mocks/fixtures/projects.mock.json   (Project[] in OST's exact shape)
  *   2. src/mocks/fixtures/taxonomy.mock.ts     (categories + techstacks regenerated)
- *   3. public/langs/*.svg                      (local language icons for next/image)
+ *   3. public/langs/*.svg                      (premium monogram / symbol tiles)
  *
  * Run after every scrape:  node scripts/build-goha-fixtures.mjs
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -32,33 +32,50 @@ const hash32 = (s) => {
   return h.toString(16).padStart(8, "0");
 };
 
-/* goha language codes → display names */
+/* ------------- language taxonomy (canonical names, full code coverage) ------------- */
 const LANG_NAMES = {
-  am: "Amharic",
-  om: "Afaan Oromo",
-  ti: "Tigrinya",
-  gez: "Ge'ez",
-  so: "Somali",
-  aa: "Afarar",
-  wal: "Wolayttattoo",
-  haw: "Hadiyya",
-  sid: "Sidaamu Afoo",
-  ar: "Arabic",
-  en: "English",
+  am: "Amharic", amh: "Amharic",
+  om: "Afaan Oromo", orm: "Afaan Oromo", gaz: "Afaan Oromo",
+  ti: "Tigrinya", tir: "Tigrinya",
+  gez: "Ge'ez", zgh: "Ge'ez",
+  so: "Somali", som: "Somali",
+  aa: "Afaraf", aar: "Afaraf",
+  wal: "Wolayttattoo", wol: "Wolayttattoo",
+  haw: "Hadiyya", sid: "Sidaamu Afoo",
+  en: "English", ar: "Arabic", ara: "Arabic",
 };
-const langFromCode = (c) =>
-  LANG_NAMES[c] ?? (c ? c.charAt(0).toUpperCase() + c.slice(1) : null);
+const langFromCode = (c) => LANG_NAMES[c] ?? null;
 
-/* devicon slugs for stacks that exist in devicon; everything else gets a local svg */
-const DEVICON = {
-  python: "python",
-  pytorch: "pytorch",
-  tensorflow: "tensorflow",
-  transformers: null,
-  jax: null,
-  onnx: null,
-  keras: "keras",
+/* canonical scripts/glyphs for premium monogram tiles */
+const LANG_META = {
+  Amharic: { glyph: "አ" },
+  "Afaan Oromo": { glyph: "O" },
+  Tigrinya: { glyph: "ት" },
+  "Ge'ez": { glyph: "ግ" },
+  Somali: { glyph: "S" },
+  Afaraf: { glyph: "A" },
+  Wolayttattoo: { glyph: "W" },
+  Hadiyya: { glyph: "H" },
+  "Sidaamu Afoo": { glyph: "S" },
+  English: { glyph: "E" },
+  Arabic: { glyph: "ع" },
 };
+
+/* stacks with real logos (devicon) or symbol tiles; proper display names */
+const STACKS = [
+  { tag: "pytorch", name: "PyTorch", devicon: "pytorch" },
+  { tag: "tensorflow", name: "TensorFlow", devicon: "tensorflow" },
+  { tag: "keras", name: "Keras", devicon: "keras" },
+  { tag: "transformers", name: "Transformers", symbol: "layers" },
+  { tag: "onnx", name: "ONNX", symbol: "graph" },
+  { tag: "jax", name: "JAX", symbol: "bolt" },
+  { tag: "tensorboard", name: "TensorBoard", symbol: "chart" },
+  { tag: "safetensors", name: "Safetensors", symbol: "shield" },
+  { tag: "diffusers", name: "Diffusers", symbol: "spark" },
+  { tag: "peft", name: "PEFT", symbol: "link" },
+];
+const stackByTag = new Map(STACKS.map((s) => [s.tag, s]));
+
 const devicon = (slug) =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${slug}/${slug}-original.svg`;
 
@@ -74,20 +91,13 @@ const papers = dataArr("papers.json");
 
 /* ---------------- taxonomy ---------------- */
 const catNames = [
-  "ASR",
-  "Translation",
-  "LLM",
-  "NER",
-  "Embeddings",
-  "Dataset",
-  "Company",
-  "Research",
-  "Other",
+  "ASR", "Translation", "LLM", "NER", "Embeddings",
+  "Dataset", "Company", "Research", "Other",
 ];
 const categories = catNames.map((name, i) => ({ id: id("cat", i + 1), name }));
 const catId = new Map(categories.map((c) => [c.name, c.id]));
 
-/* stack usage counts from tags (models + datasets) */
+/* usage counts (models + datasets) */
 const stackCount = new Map();
 const langCount = new Map();
 for (const it of [...models, ...datasets]) {
@@ -96,100 +106,171 @@ for (const it of [...models, ...datasets]) {
     if (low.startsWith("language:")) {
       const name = langFromCode(low.split(":")[1]);
       if (name) langCount.set(name, (langCount.get(name) || 0) + 1);
-    } else if (
-      DEVICON[low] !== undefined &&
-      !(low.startsWith("license") || low.startsWith("region"))
-    ) {
+    } else if (stackByTag.has(low)) {
       stackCount.set(low, (stackCount.get(low) || 0) + 1);
-    } else if (
-      [
-        "safetensors",
-        "text-generation",
-        "text2text-generation",
-        "token-classification",
-      ].includes(low)
-    ) {
-      // skip label-ish tags
     }
   }
 }
 
 const now = "2026-01-01T00:00:00.000Z";
-const tech = (n, name, iconUrl, type, i) => ({
-  id: id("tst", n),
-  name,
-  iconUrl,
-  type,
-  createdAt: now,
-  updatedAt: now,
-});
 
-const topLangs = [...langCount.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
-const topStacks = [...stackCount.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 6);
+const topLangs = [...langCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+const topStacks = [...stackCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6)
+  .map(([tag]) => stackByTag.get(tag));
+
+const langSlug = (name) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 const techStacks = [];
 topLangs.forEach(([name], i) =>
-  techStacks.push(
-    tech(i + 1, name, `/langs/${langSlug(name)}.svg`, "LANGUAGE", i)
-  )
+  techStacks.push({
+    id: id("tst", i + 1), name,
+    iconUrl: `/langs/${langSlug(name)}.svg`,
+    type: "LANGUAGE",
+  })
 );
-topStacks.forEach(([name], i) => {
-  const slug = DEVICON[name];
-  techStacks.push(
-    tech(
-      50 + i,
-      titleCase(name),
-      slug ? devicon(slug) : `/langs/${langSlug(titleCase(name))}.svg`,
-      "TECH",
-      i
-    )
-  );
-});
-function titleCase(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-function langSlug(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
+topStacks.forEach((s, i) =>
+  techStacks.push({
+    id: id("tst", 51 + i), name: s.name,
+    iconUrl: s.devicon ? devicon(s.devicon) : `/langs/sym-${s.symbol}.svg`,
+    type: "TECH",
+  })
+);
 
-/* ---------------- language icons (local svgs) ---------------- */
+/* ---------------- premium tiles ---------------- */
+/* gradient squircle tiles: dawn ramp, white glyph / symbol */
 mkdirSync(LANGS_OUT, { recursive: true });
+
+const tile = (inner, hue) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${hue === "blue" ? "#8ec5ff" : "#51a2ff"}"/>
+      <stop offset="0.6" stop-color="#2b7fff"/>
+      <stop offset="1" stop-color="#193cb8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="24" height="24" rx="7" fill="url(#g)"/>
+  <rect x="1" y="1" width="22" height="10" rx="6" fill="white" opacity="0.08"/>
+  ${inner}
+</svg>`;
+
+const glyphTile = (glyph) =>
+  tile(`<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="white" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`, "blue");
+
+const SYMBOLS = {
+  layers: `<path d="M12 4l7 3.5-7 3.5-7-3.5L12 4z" fill="white" opacity="0.95"/><path d="M5 12l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/><path d="M5 16l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>`,
+  graph: `<circle cx="8" cy="8" r="2.2" fill="white"/><circle cx="16.5" cy="10.5" r="2.2" fill="white" opacity="0.85"/><circle cx="10.5" cy="17" r="2.2" fill="white" opacity="0.7"/><path d="M8 8l8.5 2.5M16.5 10.5l-6 6.5M8 8l2.5 9" stroke="white" stroke-width="1.4" fill="none" opacity="0.8"/>`,
+  bolt: `<path d="M13.5 3.5L6.5 13h4l-1.5 7.5L17.5 11h-4l1.5-7.5z" fill="white"/>`,
+  chart: `<path d="M5 19V5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M5 19h14" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/><path d="M7.5 14.5l3.5-4 3 2.5 4.5-5.5" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
+  shield: `<path d="M12 3.5l6.5 2.5v5c0 4.2-2.7 7.4-6.5 9-3.8-1.6-6.5-4.8-6.5-9V6l6.5-2.5z" fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.2 12l2 2 3.8-4" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
+  spark: `<path d="M12 4l1.7 4.8L18.5 10l-4.8 1.7L12 16.5l-1.7-4.8L5.5 10l4.8-1.2L12 4z" fill="white"/><circle cx="17.5" cy="16.5" r="1.4" fill="white" opacity="0.7"/><circle cx="7" cy="16.5" r="1.1" fill="white" opacity="0.55"/>`,
+  link: `<path d="M10 14a4 4 0 015.7 0l2.3 2.3a4 4 0 01-5.7 5.7l-1-1" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 01-5.7 0L6 7.7A4 4 0 0111.7 2l1 1" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>`,
+};
+
 for (const [name] of topLangs) {
-  const glyph =
-    name === "Amharic"
-      ? "አ"
-      : name === "Tigrinya"
-        ? "ት"
-        : name === "Ge'ez"
-          ? "ግ"
-          : name === "Afaan Oromo"
-            ? "ኦ"
-            : name.charAt(0);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2b7fff"/><text x="12" y="17" font-size="13" text-anchor="middle" fill="white" font-family="monospace" font-weight="bold">${glyph}</text></svg>`;
-  writeFileSync(path.join(LANGS_OUT, `${langSlug(name)}.svg`), svg);
+  const meta = LANG_META[name] ?? { glyph: name.charAt(0).toUpperCase() };
+  writeFileSync(path.join(LANGS_OUT, `${langSlug(name)}.svg`), glyphTile(meta.glyph));
+}
+for (const s of topStacks) {
+  if (s.symbol) writeFileSync(path.join(LANGS_OUT, `sym-${s.symbol}.svg`), tile(SYMBOLS[s.symbol], "deep"));
 }
 
 /* ---------------- projects ---------------- */
 const iso = (s, fb) =>
-  s && !isNaN(new Date(s).getTime()) ? new Date(s).toISOString() : fb;
+  (s && !isNaN(new Date(s).getTime()) ? new Date(s).toISOString() : fb);
 
-function synthesizeDescription(typeLabel, d, name) {
-  if (d && d.trim() && !/^\s*\n?\s*\t/.test(d) && d.trim().length > 20)
-    return d.trim().replace(/\s+/g, " ");
-  const bits = [];
-  if (typeLabel) bits.push(typeLabel);
-  if (d?.downloads_monthly)
-    bits.push(
-      `${Intl.NumberFormat("en", { notation: "compact" }).format(d.downloads_monthly)} monthly downloads`
-    );
-  return `Part of the goha.et catalogue for Ethiopian languages — ${bits.join(" · ") || name}`;
+const nfCompact = new Intl.NumberFormat("en", { notation: "compact" });
+const nfParams = (p) =>
+  typeof p === "number" && p >= 1000
+    ? nfCompact.format(p).replace("M", "M").toUpperCase() === nfCompact.format(p)
+      ? nfCompact.format(p).toUpperCase().replace(/([0-9])\./, "$1.")
+      : nfCompact.format(p).toUpperCase()
+    : String(p);
+
+function cleanDesc(d) {
+  if (!d) return "";
+  const t = String(d).replace(/\s+/g, " ").trim();
+  return t.length > 40 ? t : "";
+}
+
+/* rich README (rendered on the detail page by OST's markdown component) */
+function readmeForModel(it, badge, langs, paramCount) {
+  const lines = [];
+  lines.push(`# ${it.name}`);
+  lines.push("");
+  lines.push(
+    `> Indexed by goha.et — the Ethiopian AI ecosystem directory.` +
+      (badge ? ` **${badge}**` : "") +
+      (langs.length ? ` · ${langs.join(", ")}` : "")
+  );
+  lines.push("");
+  lines.push("## At a glance");
+  lines.push("");
+  lines.push("| | |");
+  lines.push("|---|---|");
+  lines.push(`| Monthly downloads | **${(it.downloads_monthly ?? 0).toLocaleString("en")}** |`);
+  lines.push(`| Likes | ${(it.likes ?? 0).toLocaleString("en")} |`);
+  if (paramCount) lines.push(`| Parameters | ${nfParams(paramCount)} |`);
+  if (it.license) lines.push(`| License | \`${it.license}\` |`);
+  if (it.wer_score != null) lines.push(`| WER (reported) | ${it.wer_score} |`);
+  if (it.file_count) lines.push(`| Files | ${it.file_count} |`);
+  if (it.last_updated) lines.push(`| Last updated | ${new Date(it.last_updated).toISOString().slice(0, 10)} |`);
+  lines.push("");
+  const desc = cleanDesc(it.description);
+  if (desc) {
+    lines.push("## About");
+    lines.push("");
+    lines.push(desc);
+    lines.push("");
+  }
+  if (it.base_model) {
+    lines.push("## Lineage");
+    lines.push("");
+    lines.push(`Fine-tuned from **${it.base_model}**`);
+    lines.push("");
+  }
+  if (it.training_datasets?.length) {
+    lines.push("## Trained on");
+    lines.push("");
+    for (const d of it.training_datasets) lines.push(`- ${d.name || d}`);
+    lines.push("");
+  }
+  const evals = Array.isArray(it.eval_results)
+    ? it.eval_results
+    : it.eval_results?.eval ?? [];
+  if (evals.length) {
+    lines.push("## Evaluation");
+    lines.push("");
+    lines.push("| Metric | Value | Dataset |");
+    lines.push("|---|---|---|");
+    for (const e of evals) {
+      for (const m of e.metrics || []) {
+        const val = typeof m.value === "number"
+          ? (m.value < 1 && /^wer|cer|error/i.test(m.name || m.type || "")
+            ? `${(m.value * 100).toFixed(2)}%`
+            : String(m.value))
+          : String(m.value ?? "");
+        lines.push(`| ${m.name || m.type} | ${val}${m.verified ? " ✓" : ""} | ${e.dataset?.name || "—"} |`);
+      }
+    }
+    lines.push("");
+  }
+  if (langs.length) {
+    lines.push("## Languages");
+    lines.push("");
+    for (const l of langs) lines.push(`- ${l}`);
+    lines.push("");
+  }
+  lines.push("---");
+  lines.push("");
+  lines.push(`[Open on Hugging Face](${it.hf_url}) · [goha.et](https://goha.et)`);
+  return Buffer.from(lines.join("\n")).toString("base64");
+}
+
+function readmeSimple(title, body, link) {
+  return Buffer.from(
+    `# ${title}\n\n${body}\n\n${link ? `[Open source entry](${link}) · ` : ""}[goha.et](https://goha.et)`
+  ).toString("base64");
 }
 
 let pjtSeed = 0;
@@ -208,34 +289,35 @@ for (const src of [
       if (n && !langs.includes(n)) langs.push(n);
     }
   }
-  const stacks = (it.tags || [])
-    .map((t) => t.toLowerCase())
-    .filter((t) => DEVICON[t] !== undefined);
+  if ((it.langs || []).length) {
+    for (const l of it.langs) {
+      const n = LANG_NAMES[l] ?? titleCase(l);
+      if (n && !langs.includes(n)) langs.push(n);
+    }
+  }
 
-  const badge =
-    it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
-  const catName = catNames.includes(badge)
-    ? badge
-    : src.kind === "dataset"
-      ? "Dataset"
-      : "Other";
-  void catId;
+  const badge = it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
+  const catName = catNames.includes(badge) ? badge : src.kind === "dataset" ? "Dataset" : "Other";
 
-  const created = iso(
-    it.added_at,
-    iso(it.last_updated, "2026-01-01T00:00:00.000Z")
-  );
+  const created = iso(it.added_at, iso(it.last_updated, now));
   const updated = iso(it.last_updated, created);
   const orgName = (it.id || it.name || "").split("/")[0] || it.name;
+
+  const stackObjs = (it.tags || [])
+    .map((t) => stackByTag.get(t.toLowerCase()))
+    .filter(Boolean);
+
+  const paramCount =
+    it.param_count ??
+    (it.tags?.find?.((t) => /(\d+(\.\d+)?)([mb])\b/i.test(t))?.match?.(/(\d+(\.\d+)?)([mb])/i)?.[0] ?? null);
+  const params = paramCount ? `${String(paramCount).toUpperCase()}` : null;
 
   projects.push({
     id: id("pjt", ++pjtSeed),
     title: it.name || it.id,
-    description: synthesizeDescription(
-      it.type_label || badge,
-      it.description,
-      it.name
-    ),
+    description:
+      cleanDesc(it.description) ||
+      `${badge ? badge + " · " : ""}${[...langs].join(", ")}${it.downloads_monthly ? ` · ${nfCompact.format(it.downloads_monthly)} downloads/mo` : ""}`,
     provider: "GITHUB",
     logoUrl: null,
     published: true,
@@ -251,18 +333,12 @@ for (const src of [
     owner: { id: id("usr", hash32(orgName)), name: orgName },
     projectTechStacks: [
       ...langs.map((n) => techStacks.find((t) => t.name === n)).filter(Boolean),
-      ...stacks
-        .map((n) => techStacks.find((t) => t.name.toLowerCase() === n))
-        .filter(Boolean),
+      ...stackObjs.map((s) => techStacks.find((t) => t.name === s.name)).filter(Boolean),
     ].slice(0, 6),
-    projectCategories: [
-      { id: catId.get(catName) ?? categories.at(-1).id, name: catName },
-    ],
+    projectCategories: [{ id: catId.get(catName) ?? categories.at(-1).id, name: catName }],
     repositoryDetails: {
       name: it.name || it.id,
-      description: it.description
-        ? String(it.description).replace(/\s+/g, " ").slice(0, 240)
-        : null,
+      description: cleanDesc(it.description) ? cleanDesc(it.description).slice(0, 240) : null,
       url: it.hf_url || null,
       html_url: it.hf_url || null,
       created_at: created,
@@ -281,9 +357,9 @@ for (const src of [
       issues: [],
       issueLabels: [],
       pullRequests: [],
-      readme: Buffer.from(
-        `# ${it.name}\n\nIndexed by goha.et — the Ethiopian AI ecosystem directory.\n\n${synthesizeDescription(badge, it.description, it.name)}`
-      ).toString("base64"),
+      readme: readmeForModel(it, badge, langs, paramCount),
+      contributionFile: undefined,
+      cocFile: undefined,
     },
     createdAt: created,
     updatedAt: updated,
@@ -310,9 +386,7 @@ for (const c of companies) {
     imagesUrls: [],
     owner: { id: id("usr", hash32(c.name)), name: c.name },
     projectTechStacks: (c.langs || [])
-      .map((l) =>
-        techStacks.find((t) => t.name.toLowerCase() === l.toLowerCase())
-      )
+      .map((l) => techStacks.find((t) => t.name.toLowerCase() === l.toLowerCase()))
       .filter(Boolean),
     projectCategories: [{ id: catId.get("Company"), name: "Company" }],
     repositoryDetails: {
@@ -320,9 +394,7 @@ for (const c of companies) {
       description: c.desc || null,
       url: c.github || null,
       html_url: c.github || c.website || null,
-      created_at: c.founded
-        ? new Date(`${c.founded}-01-01`).toISOString()
-        : now,
+      created_at: c.founded ? new Date(`${c.founded}-01-01`).toISOString() : now,
       updated_at: now,
       pushed_at: now,
       stars: c.likes ?? 0,
@@ -332,13 +404,19 @@ for (const c of companies) {
       pullRequestsCount: 0,
       subscribersCount: 0,
       license: null,
-      languages: c.langs || [],
+      languages: (c.langs || []).map((l) => LANG_NAMES[l] ?? titleCase(l)),
       owner: { login: c.name, avatar_url: "" },
       contributors: [],
       issues: [],
       issueLabels: [],
       pullRequests: [],
-      readme: Buffer.from(`# ${c.name}\n\n${c.desc}`).toString("base64"),
+      readme: readmeSimple(
+        c.name,
+        [c.desc, c.founded ? `Founded in ${c.founded}.` : null, (c.langs || []).length ? `Working in: ${c.langs.map((l) => LANG_NAMES[l] ?? l).join(", ")}.` : null].filter(Boolean).join(" "),
+        c.website
+      ),
+      contributionFile: undefined,
+      cocFile: undefined,
     },
     createdAt: c.founded ? new Date(`${c.founded}-01-01`).toISOString() : now,
     updatedAt: now,
@@ -348,11 +426,11 @@ for (const c of companies) {
 /* papers */
 for (const p of papers) {
   const abs = `https://arxiv.org/abs/${p.arxiv_id}`;
+  const authorsLine = (p.authors || []).join(", ");
   projects.push({
     id: id("pjt", ++pjtSeed),
     title: p.title,
-    description:
-      (p.abstract || "").replace(/\s+/g, " ").slice(0, 400) || p.title,
+    description: cleanDesc(p.abstract).slice(0, 400) || p.title,
     provider: "GITHUB",
     logoUrl: null,
     published: true,
@@ -365,15 +443,12 @@ for (const p of papers) {
     discordUrl: null,
     websiteUrl: abs,
     imagesUrls: [],
-    owner: {
-      id: id("usr", hash32(p.authors?.[0] || "arxiv")),
-      name: p.authors?.[0] || "arXiv",
-    },
+    owner: { id: id("usr", hash32(p.authors?.[0] || "arxiv")), name: p.authors?.[0] || "arXiv" },
     projectTechStacks: [],
     projectCategories: [{ id: catId.get("Research"), name: "Research" }],
     repositoryDetails: {
       name: p.title,
-      description: (p.abstract || "").replace(/\s+/g, " ").slice(0, 240),
+      description: cleanDesc(p.abstract).slice(0, 240) || null,
       url: abs,
       html_url: abs,
       created_at: p.published_date ? iso(p.published_date, now) : now,
@@ -392,23 +467,24 @@ for (const p of papers) {
       issues: [],
       issueLabels: [],
       pullRequests: [],
-      readme: Buffer.from(`# ${p.title}\n\n${p.abstract || ""}`).toString(
-        "base64"
+      readme: readmeSimple(
+        p.title,
+        [authorsLine ? `*${authorsLine}*` : null, cleanDesc(p.abstract)].filter(Boolean).join("\n\n"),
+        abs
       ),
+      contributionFile: undefined,
+      cocFile: undefined,
     },
     createdAt: p.published_date ? iso(p.published_date, now) : now,
     updatedAt: p.published_date ? iso(p.published_date, now) : now,
   });
 }
 
-/* deterministic order assist: db.mock treats first three ids as "mine",
-   index 5 as bookmarked and index 6 as claimable – keep most interesting first */
-projects.sort(
-  (a, b) =>
-    (b.trending ? 1 : 0) - (a.trending ? 1 : 0) ||
-    b.starsOf?.() - a.starsOf?.() ||
-    0
-);
+function titleCase(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+projects.sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0));
 
 mkdirSync(FIXTURES, { recursive: true });
 writeFileSync(
@@ -439,11 +515,18 @@ const tech = (
 });
 
 export const categories: CategoryType[] = [
-${categories.map((c) => `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: "${c.name}" },`).join("\n")}
+${categories
+  .map((c) => `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: "${c.name}" },`)
+  .join("\n")}
 ];
 
 export const techStacks: TechStackType[] = [
-${techStacks.map((t, i) => `  tech(mockPublicId("tst", ${i + 1}), ${JSON.stringify(t.name)}, ${JSON.stringify(t.iconUrl)}, ${JSON.stringify(t.type)}),`).join("\n")}
+${techStacks
+  .map(
+    (t, i) =>
+      `  tech(mockPublicId("tst", ${i + 1}), ${JSON.stringify(t.name)}, ${JSON.stringify(t.iconUrl)}, ${JSON.stringify(t.type)}),`
+  )
+  .join("\n")}
 ];
 `;
 writeFileSync(path.join(FIXTURES, "taxonomy.mock.ts"), taxTs);
@@ -452,8 +535,6 @@ console.log(
   `✓ goha fixtures built:
     projects: ${projects.length} (models ${models.length} · datasets ${datasets.length} · companies ${companies.length} · papers ${papers.length})
     categories: ${categories.length} · techStacks: ${techStacks.length}
-    language icons: ${topLangs.map(([n]) => langSlug(n)).join(", ")}`
+    languages: ${topLangs.map(([n]) => n).join(", ")}
+    stacks: ${topStacks.map((s) => s.name).join(", ")}`
 );
-
-/* fix repositoryDetails.languages typing parity with their fixture (kept as array) */
-void dataArr;

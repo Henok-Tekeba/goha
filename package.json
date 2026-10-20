@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:mock": "cross-env MOCK_API_PORT=4000 NEXT_PUBLIC_API_URL=http://localhost:4000 INTERNAL_SERVER_API_URL=http://localhost:4000 NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000 NEXT_PUBLIC_API_MOCKING=enabled concurrently --kill-others-on-fail -n api,web -c magenta,cyan \"pnpm exec tsx src/mocks/api.mock.ts\" \"next dev --turbopack\"",
+    "dev:mock": "cross-env MOCK_API_PORT=4000 NEXT_PUBLIC_API_URL=http://localhost:4000 INTERNAL_SERVER_API_URL=http://localhost:4000 NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000 NEXT_PUBLIC_API_MOCKING=enabled concurrently --kill-others-on-fail -n api,web -c magenta,cyan \"pnpm exec tsx src/mocks/api.mock.ts\" \"next dev --turbopack -p 3031\"",
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
@@ -86,7 +86,12 @@
     "wrangler": "^4.123.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "msw", "workerd", "sharp"],
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "msw",
+      "workerd",
+      "sharp"
+    ],
     "overrides": {
       "body-parser@>=2.0.0 <2.3.0": "2.3.0",
       "nanoid@<3.3.18": "3.3.18",
