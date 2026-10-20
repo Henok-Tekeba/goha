@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { useMemo } from "react";
-import { FaStar } from "react-icons/fa6";
-import { RiGitForkFill } from "react-icons/ri";
-import { VscIssues } from "react-icons/vsc";
+import { FaDownload, FaStar } from "react-icons/fa6";
 import type { RepositoryWithDetails } from "@/features/projects/types/project.type";
 import {
   ProjectCard,
@@ -13,6 +11,7 @@ import {
   ProjectCardHeader,
   ProjectCardInfo,
   ProjectCardLeftGroup,
+  ProjectCardTechStack,
   ProjectCardTitle,
 } from "@/shared/components/ui/project-card";
 import { languagesToTechStacks } from "@/shared/lib/language-icons";
@@ -33,11 +32,58 @@ interface ProjectCardProps {
   repoUrl?: string;
   className?: string;
   logoUrl?: string;
+  downloadsMonthly?: number;
+  growth?: number | null;
+  sparkline?: { points: number[] } | null;
   repositoryDetails?: Pick<
     RepositoryWithDetails,
     "stars" | "forksCount" | "openIssuesCount" | "languages"
   >;
   isRepositoryLoading?: boolean;
+}
+
+/* Mini trend graph — real daily-download history from goha's snapshots */
+function CardSparkline({
+  points,
+  growth,
+}: {
+  points: number[];
+  growth?: number | null;
+}) {
+  if (!points || points.length < 2) return null;
+  const w = 46;
+  const h = 16;
+  const pad = 2;
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const range = max - min || 1;
+  const step = (w - pad * 2) / (points.length - 1);
+  const d = points
+    .map((p, i) => {
+      const x = pad + i * step;
+      const y = h - pad - ((p - min) / range) * (h - pad * 2);
+      return `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(" ");
+  const up = growth == null || growth >= 0;
+  return (
+    <svg
+      width={w}
+      height={h}
+      viewBox={`0 0 ${w} ${h}`}
+      aria-hidden="true"
+      className={up ? "text-emerald-500" : "text-red-500"}
+    >
+      <path
+        d={d}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
 export default function ProjectCardComponent({
@@ -49,6 +95,9 @@ export default function ProjectCardComponent({
   showTechStack = true,
   className = "",
   logoUrl = "",
+  downloadsMonthly = 0,
+  growth = null,
+  sparkline = null,
 
   repositoryDetails = {
     forksCount: 0,
@@ -146,23 +195,20 @@ export default function ProjectCardComponent({
               )}
 
               <div className="ml-auto flex items-center justify-between space-x-2">
-                <div className="flex items-center justify-center text-xs">
-                  <RiGitForkFill className="mr-0.5 size-3" />
+                {sparkline && sparkline.points && sparkline.points.length > 1 && (
+                  <span className="mr-1 hidden sm:inline-flex">
+                    <CardSparkline points={sparkline.points} growth={growth} />
+                  </span>
+                )}
+                <div className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
+                  <FaDownload className="mr-0.5 size-2.5 text-black/50" />
                   {isRepositoryLoading ? (
                     <Skeleton className="h-3 w-6" />
                   ) : (
-                    formatNumberShort(repositoryDetails.forksCount || 0)
+                    formatNumberShort(downloadsMonthly || 0)
                   )}
                 </div>
-                <div className="flex items-center justify-center gap-0 text-xs">
-                  <VscIssues className="mr-0.5 size-3" />
-                  {isRepositoryLoading ? (
-                    <Skeleton className="h-3 w-6" />
-                  ) : (
-                    formatNumberShort(repositoryDetails.openIssuesCount || 0)
-                  )}
-                </div>
-                <div className="flex items-center justify-center gap-0 text-xs">
+                <div className="flex items-center justify-center gap-0.5 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
                   <FaStar className="mr-0.5 size-2.5 text-primary" />
                   {isRepositoryLoading ? (
                     <Skeleton className="h-3 w-6" />

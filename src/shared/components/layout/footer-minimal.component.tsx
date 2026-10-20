@@ -39,8 +39,8 @@ export default function FooterMinimal({
             className="flex items-center transition-opacity duration-200 hover:opacity-50"
           >
             <Image
-              src="/ost-logo.svg"
-              alt="ost-logo"
+              src="/goha-logo.svg"
+              alt="goha.et logo"
               width={39}
               height={39}
               className="h-auto max-h-[39px] w-auto"

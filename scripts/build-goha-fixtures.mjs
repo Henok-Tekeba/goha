@@ -90,12 +90,23 @@ const companies = dataArr("companies.json");
 const papers = dataArr("papers.json");
 
 /* ---------------- taxonomy ---------------- */
+/* Type categories power the nav (Models/Datasets/Research/Companies);
+   task categories (ASR, LLM...) remain available in the filter UI. */
 const catNames = [
-  "ASR", "Translation", "LLM", "NER", "Embeddings",
-  "Dataset", "Company", "Research", "Other",
+  "Model", "Dataset", "Company", "Research",
+  "ASR", "Translation", "LLM", "NER", "Embeddings", "Other",
 ];
 const categories = catNames.map((name, i) => ({ id: id("cat", i + 1), name }));
 const catId = new Map(categories.map((c) => [c.name, c.id]));
+
+/* per-type icon tiles (model cards never fall back to initials) */
+const TYPE_ICONS = {
+  asr: "audio", nmt: "translation", llm: "ai", ner: "ner",
+  emb: "embedding", ds: "dataset", co: "company", paper: "research",
+};
+const KIND_ICONS = { model: "ai", dataset: "dataset", company: "company", paper: "research" };
+const typeIconFor = (it, kind) =>
+  `/types/${TYPE_ICONS[it.bc] ?? KIND_ICONS[kind] ?? "ai"}.svg`;
 
 /* usage counts (models + datasets) */
 const stackCount = new Map();
@@ -140,6 +151,8 @@ topStacks.forEach((s, i) =>
 /* ---------------- premium tiles ---------------- */
 /* gradient squircle tiles: dawn ramp, white glyph / symbol */
 mkdirSync(LANGS_OUT, { recursive: true });
+const TYPES_OUT = path.join(ROOT, "public", "types");
+mkdirSync(TYPES_OUT, { recursive: true });
 
 const tile = (inner, hue) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <defs>
@@ -153,6 +166,29 @@ const tile = (inner, hue) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0
   <rect x="1" y="1" width="22" height="10" rx="6" fill="white" opacity="0.08"/>
   ${inner}
 </svg>`;
+
+const TYPE_SYMBOLS = {
+  /* audio / ASR: waveform bars */
+  audio: `<g fill="white"><rect x="4.5" y="10" width="2.2" height="4" rx="1.1"/><rect x="8.4" y="7" width="2.2" height="10" rx="1.1"/><rect x="12.3" y="4.5" width="2.2" height="15" rx="1.1" opacity="0.95"/><rect x="16.2" y="8" width="2.2" height="8" rx="1.1" opacity="0.85"/><rect x="20" y="11" width="2.2" height="2" rx="1" opacity="0.7"/></g>`,
+  /* translation: two arrows across languages */
+  translation: `<g stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h12M13.5 5.5L17 9l-3.5 3.5"/><path d="M19 16H7M10.5 12.5L7 16l3.5 3.5"/></g>`,
+  /* ai / LLM: chip */
+  ai: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2M4 10h2M4 14h2M18 10h2M18 14h2"/></g><circle cx="12" cy="12" r="1.6" fill="white"/>`,
+  /* ner: tag */
+  ner: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"><path d="M4.5 5.5A1.5 1.5 0 016 4h5.2c.4 0 .8.16 1.06.44l7.3 7.3a1.5 1.5 0 010 2.12l-5.2 5.2a1.5 1.5 0 01-2.12 0l-7.3-7.3A1.5 1.5 0 014.5 10.7V5.5z"/></g><circle cx="8.6" cy="8.6" r="1.3" fill="white"/>`,
+  /* embeddings: dot grid */
+  embedding: `<g fill="white"><circle cx="7" cy="7" r="1.7"/><circle cx="12" cy="7" r="1.7" opacity="0.85"/><circle cx="17" cy="7" r="1.7" opacity="0.7"/><circle cx="7" cy="12" r="1.7" opacity="0.85"/><circle cx="12" cy="12" r="1.7" opacity="0.65"/><circle cx="17" cy="12" r="1.7" opacity="0.5"/><circle cx="7" cy="17" r="1.7" opacity="0.65"/><circle cx="12" cy="17" r="1.7" opacity="0.5"/><circle cx="17" cy="17" r="1.7" opacity="0.4"/></g>`,
+  /* dataset: table */
+  dataset: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="13" rx="2"/><path d="M4.5 10h15M4.5 14h15M9.75 10v8.5" opacity="0.9"/></g>`,
+  /* company: building */
+  company: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5V6.8L12 4l7 2.8v12.7"/><path d="M5 19.5h14"/><path d="M9 19.5v-4h6v4" opacity="0.9"/><path d="M9 9h.01M15 9h.01M9 12h.01M15 12h.01" stroke-width="2.2"/></g>`,
+  /* research: paper/scroll */
+  research: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h7.5L19 9v10.5a1 1 0 01-1 1H7a1 1 0 01-1-1v-14a1 1 0 011-1z"/><path d="M14 4.5V9h4.5" opacity="0.9"/><path d="M9 13h6M9 16.5h6" opacity="0.75"/></g>`,
+};
+
+for (const [key, sym] of Object.entries(TYPE_SYMBOLS)) {
+  writeFileSync(path.join(TYPES_OUT, `${key}.svg`), tile(sym, "deep"));
+}
 
 const glyphTile = (glyph) =>
   tile(`<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="white" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`, "blue");
@@ -319,9 +355,15 @@ for (const src of [
       cleanDesc(it.description) ||
       `${badge ? badge + " · " : ""}${[...langs].join(", ")}${it.downloads_monthly ? ` · ${nfCompact.format(it.downloads_monthly)} downloads/mo` : ""}`,
     provider: "GITHUB",
-    logoUrl: null,
+    logoUrl: typeIconFor(it, src.kind),
     published: true,
     trending: (it.downloads_monthly ?? 0) > 5000 || (it.likes ?? 0) > 10,
+    /* goha ecosystem metrics */
+    downloadsMonthly: it.downloads_monthly ?? 0,
+    growth: typeof it.growth === "number" ? it.growth : null,
+    sparkline: it.sparkline && Array.isArray(it.sparkline.points) && it.sparkline.points.length > 1
+      ? { points: it.sparkline.points, timestamps: it.sparkline.timestamps ?? [] }
+      : null,
     repoUrl: it.hf_url || null,
     githubUrl: null,
     gitlabUrl: null,
@@ -335,7 +377,10 @@ for (const src of [
       ...langs.map((n) => techStacks.find((t) => t.name === n)).filter(Boolean),
       ...stackObjs.map((s) => techStacks.find((t) => t.name === s.name)).filter(Boolean),
     ].slice(0, 6),
-    projectCategories: [{ id: catId.get(catName) ?? categories.at(-1).id, name: catName }],
+    projectCategories: [
+      { id: catId.get(src.kind === "dataset" ? "Dataset" : "Model") ?? categories[0].id, name: src.kind === "dataset" ? "Dataset" : "Model" },
+      { id: catId.get(catName) ?? categories.at(-1).id, name: catName },
+    ],
     repositoryDetails: {
       name: it.name || it.id,
       description: cleanDesc(it.description) ? cleanDesc(it.description).slice(0, 240) : null,
@@ -373,9 +418,10 @@ for (const c of companies) {
     title: c.name,
     description: c.desc || `${c.name} — company in the Ethiopian AI ecosystem`,
     provider: "GITHUB",
-    logoUrl: null,
+    logoUrl: "/types/company.svg",
     published: true,
     trending: Boolean(c.isNew),
+    downloadsMonthly: 0,
     repoUrl: c.github || null,
     githubUrl: c.github || null,
     gitlabUrl: null,
@@ -432,9 +478,10 @@ for (const p of papers) {
     title: p.title,
     description: cleanDesc(p.abstract).slice(0, 400) || p.title,
     provider: "GITHUB",
-    logoUrl: null,
+    logoUrl: "/types/research.svg",
     published: true,
     trending: false,
+    downloadsMonthly: 0,
     repoUrl: abs,
     githubUrl: null,
     gitlabUrl: null,

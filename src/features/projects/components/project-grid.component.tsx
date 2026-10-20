@@ -32,6 +32,9 @@ function ProjectGridItem({ project }: { project: Project }) {
       logoUrl={project.logoUrl || ""}
       repoUrl={project.repoUrl || ""}
       projectTechStacks={project.projectTechStacks}
+      downloadsMonthly={project.downloadsMonthly}
+      growth={project.growth}
+      sparkline={project.sparkline}
       repositoryDetails={repositoryDetails}
       isRepositoryLoading={isRepoLoading}
     />

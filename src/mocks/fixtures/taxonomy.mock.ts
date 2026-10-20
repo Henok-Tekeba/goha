@@ -20,15 +20,16 @@ const tech = (
 });
 
 export const categories: CategoryType[] = [
-  { id: mockPublicId("cat", 1), name: "ASR" },
-  { id: mockPublicId("cat", 2), name: "Translation" },
-  { id: mockPublicId("cat", 3), name: "LLM" },
-  { id: mockPublicId("cat", 4), name: "NER" },
-  { id: mockPublicId("cat", 5), name: "Embeddings" },
-  { id: mockPublicId("cat", 6), name: "Dataset" },
-  { id: mockPublicId("cat", 7), name: "Company" },
-  { id: mockPublicId("cat", 8), name: "Research" },
-  { id: mockPublicId("cat", 9), name: "Other" },
+  { id: mockPublicId("cat", 1), name: "Model" },
+  { id: mockPublicId("cat", 2), name: "Dataset" },
+  { id: mockPublicId("cat", 3), name: "Company" },
+  { id: mockPublicId("cat", 4), name: "Research" },
+  { id: mockPublicId("cat", 5), name: "ASR" },
+  { id: mockPublicId("cat", 6), name: "Translation" },
+  { id: mockPublicId("cat", 7), name: "LLM" },
+  { id: mockPublicId("cat", 8), name: "NER" },
+  { id: mockPublicId("cat", 9), name: "Embeddings" },
+  { id: mockPublicId("cat", 10), name: "Other" },
 ];
 
 export const techStacks: TechStackType[] = [

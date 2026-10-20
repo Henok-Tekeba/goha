@@ -123,23 +123,26 @@ export default function Header({ githubStars }: HeaderProps) {
             <div onMouseEnter={handleNavItemEnter} className="relative">
               <SearchCommand noHoverBg onOpen={handleNavLeave} />
             </div>
-            {isAuthenticated && (
-              <div onMouseEnter={handleNavItemEnter} className="relative">
-                <Link href="/dashboard/my-projects">
+            {[
+              { label: "Models", href: "/?categories=Model" },
+              { label: "Datasets", href: "/?categories=Dataset" },
+              { label: "Research", href: "/?categories=Research" },
+              { label: "Companies", href: "/?categories=Company" },
+            ].map((item) => (
+              <div key={item.href} onMouseEnter={handleNavItemEnter} className="relative">
+                <Link href={item.href}>
                   <Button
                     variant="ghost"
                     className={
-                      pathname.startsWith("/dashboard")
-                        ? "bg-accent hover:bg-accent"
-                        : undefined
+                      pathname === item.href ? "bg-accent hover:bg-accent" : undefined
                     }
                     size="sm"
                   >
-                    My Projects
+                    {item.label}
                   </Button>
                 </Link>
               </div>
-            )}
+            ))}
             <div onMouseEnter={handleNavItemEnter} className="relative">
               <GithubStarsButton stars={githubStars} />
             </div>

@@ -19,13 +19,13 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/x-icon",
       },
       {
-        src: "/ost-logo.svg",
+        src: "/goha-logo.svg",
         sizes: "192x192",
         type: "image/svg+xml",
         purpose: "any",
       },
       {
-        src: "/ost-logo.svg",
+        src: "/goha-logo.svg",
         sizes: "512x512",
         type: "image/svg+xml",
         purpose: "maskable",

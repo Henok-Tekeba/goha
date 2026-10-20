@@ -50,12 +50,11 @@ interface MobileHeaderProps {
 }
 
 const DEFAULT_LINKS: MobileNavLink[] = [
+  { label: "Models", icon: HiMiniSquare2Stack, href: "/?categories=Model" },
+  { label: "Datasets", icon: HiBookOpen, href: "/?categories=Dataset" },
+  { label: "Research", icon: HiBookOpen, href: "/?categories=Research" },
+  { label: "Companies", icon: HiMiniSquare2Stack, href: "/?categories=Company" },
   { label: "Learn", icon: HiBookOpen, href: "/learn" },
-  {
-    label: "My Projects",
-    icon: HiMiniSquare2Stack,
-    href: "/dashboard/my-projects",
-  },
 ];
 
 export function MobileHeader({ links, githubStars }: MobileHeaderProps) {

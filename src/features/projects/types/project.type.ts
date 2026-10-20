@@ -28,6 +28,10 @@ export interface Project {
   owner: ProjectOwner | null;
   repositoryDetails: RepositoryWithDetails;
   isBookmarked?: boolean;
+  /* goha.et extensions — ecosystem metrics (optional, additive) */
+  downloadsMonthly?: number;
+  growth?: number | null;
+  sparkline?: { points: number[]; timestamps?: (string | null)[] } | null;
   createdAt: Date;
   updatedAt: Date;
 }
