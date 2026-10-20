@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
-    "Legal terms and conditions governing the use of the goha.et website and services.",
+    "The terms that govern your use of goha.et — the home of the Ethiopian AI ecosystem.",
   alternates: { canonical: "/terms-and-conditions" },
 };
 
@@ -16,7 +16,7 @@ export default function TermsAndConditionsPage() {
           Terms and Conditions
         </h1>
         <p className="mt-3 text-left text-muted-foreground text-sm">
-          Legal terms governing your use of goha.et.
+          The terms that govern your use of goha.et.
         </p>
       </div>
 
@@ -24,94 +24,101 @@ export default function TermsAndConditionsPage() {
       <div className="mt-16 mb-28">
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            1. Acceptance of Terms
+            1. What goha.et is
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            By accessing or using our website, you agree to be bound by these
-            Terms. If you do not agree, you must not access or use the website.
+            goha.et (ጎሃ — &ldquo;dawn&rdquo; in Amharic) is a free,
+            non-commercial directory that indexes and organizes publicly
+            available artificial-intelligence resources for Ethiopian languages
+            — including Amharic, Afaan Oromo, Tigrinya, Ge&apos;ez and others.
+            It lists models, datasets, companies, and research papers so that
+            developers, researchers, and enthusiasts can find, compare, and
+            explore them in one place.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            2. Changes to These Terms
+            2. Acceptance of Terms
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We may modify these Terms at any time. Material changes will be
-            indicated by updating the effective date. Your continued use of the
-            website after changes become effective constitutes acceptance of the
-            updated Terms.
+            By accessing or using goha.et you agree to these Terms. If you do
+            not agree, you must not access or use the website.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            3. Eligibility and Accounts
+            3. Nature of the Data
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            You must be of legal age to form a binding contract in your
-            jurisdiction to use certain parts of the website. If you create an
-            account, you are responsible for maintaining the confidentiality of
-            your credentials and for all activities under your account.
+            Listings on goha.et are collected automatically from public sources
+            — primarily the Hugging Face Hub, GitHub, and arXiv — and are
+            indexed for discovery. Metadata such as download counts, likes,
+            licenses, and evaluation results belong to and are published by the
+            original creators. goha.et does not host model weights or datasets;
+            links take you to the original source.
+          </p>
+        </section>
+
+        <section className="my-8">
+          <h2 className="font-medium text-lg tracking-tight">4. No Warranty</h2>
+          <p className="mt-3 text-muted-foreground text-sm">
+            The website and its content are provided &ldquo;as is&rdquo; and
+            &ldquo;as available&rdquo;, without warranties of any kind, express
+            or implied — including accuracy, completeness, availability, or
+            fitness for a particular purpose. Automated collection can be
+            incomplete or outdated. Always verify a resource on its original
+            source before relying on it.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            4. Acceptable Use
+            5. Intellectual Property
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            You agree not to misuse the website, including by attempting to gain
-            unauthorized access, interfering with its operation, scraping or
-            harvesting data without permission, or engaging in any activity that
-            violates applicable laws or infringes rights of others.
+            Models, datasets, and papers listed on goha.et are the property of
+            their respective creators and are subject to their own licenses.
+            Descriptions and statistics are quoted for identification and
+            discovery purposes. If you are a rights holder and want an entry
+            corrected or removed, contact us and we will act on reasonable
+            requests promptly.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            5. User Content and Contributions
+            6. Acceptable Use
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            If you submit or post content, you represent that you have the
-            necessary rights to do so and you grant us a non-exclusive,
-            worldwide, royalty-free license to use, display, and distribute such
-            content solely for operating and improving the website and services.
+            You agree not to misuse the website: no scraping that degrades
+            service for others, no attempts to break or bypass security, no
+            misrepresentation of your affiliation with listed projects, and no
+            use of the site for unlawful purposes.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            6. Intellectual Property
+            7. Contributions
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            The website, trademarks, logos, and other materials are owned by
-            goha.et or its licensors and are protected by applicable IP laws.
-            Except as permitted by law, you may not copy, modify, distribute, or
-            create derivative works without prior written consent.
+            Corrections and additions are welcome through pull requests or
+            issues on our GitHub repository. By submitting data you confirm you
+            have the right to share it and allow goha.et to display it with
+            attribution to the original source.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            7. Third-Party Links
+            8. Non-commercial Service
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            Our website may contain links to third-party websites. We are not
-            responsible for the content, privacy policies, or practices of
-            third-party websites and you access them at your own risk.
-          </p>
-        </section>
-
-        <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">
-            8. Disclaimer of Warranties
-          </h2>
-          <p className="mt-3 text-muted-foreground text-sm">
-            The website is provided on an "AS IS" and "AS AVAILABLE" basis
-            without warranties of any kind, whether express or implied,
-            including but not limited to implied warranties of merchantability,
-            fitness for a particular purpose, and non-infringement.
+            goha.et is a community project. It does not sell listings or
+            rankings, and ranking is not influenced by payment. It is and
+            remains a non-commercial service.
           </p>
         </section>
 
@@ -120,55 +127,41 @@ export default function TermsAndConditionsPage() {
             9. Limitation of Liability
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            To the fullest extent permitted by law, goha.et will not be liable
-            for any indirect, incidental, special, consequential, or punitive
-            damages, or any loss of profits or revenues, whether incurred
-            directly or indirectly, or any loss of data, use, goodwill, or other
-            intangible losses.
+            To the maximum extent permitted by law, goha.et and its maintainers
+            are not liable for any indirect, incidental, or consequential
+            damages arising from your use of, or inability to use, the website
+            or any resource you discover through it.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            10. Indemnification
+            10. Changes to These Terms
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            You agree to indemnify and hold harmless goha.et and its affiliates
-            from and against any claims, liabilities, damages, losses, and
-            expenses, including reasonable attorneys’ fees, arising out of or in
-            any way connected with your use of the website or violation of these
-            Terms.
+            We may update these Terms as the service evolves. The effective date
+            on this page reflects the current version. Continued use of the
+            website after changes become effective constitutes acceptance of the
+            updated Terms.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            11. Termination
+            11. Governing Law
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We may suspend or terminate your access to the website at any time,
-            with or without notice, for conduct that we believe violates these
-            Terms or is otherwise harmful.
+            These Terms are governed by the laws of Ethiopia, without regard to
+            conflict-of-law rules.
           </p>
         </section>
 
         <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">
-            12. Governing Law
-          </h2>
+          <h2 className="font-medium text-lg tracking-tight">12. Contact</h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            These Terms shall be governed by and construed in accordance with
-            the laws applicable in your place of residence unless otherwise
-            required by law. Venue for any disputes shall be in a competent
-            court of such jurisdiction.
-          </p>
-        </section>
-
-        <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">13. Contact Us</h2>
-          <p className="mt-3 text-muted-foreground text-sm">
-            If you have questions about these Terms, please contact us via our
-            official channels listed on the website.
+            Questions, corrections, or takedown requests: open an issue at
+            github.com/Henok-Tekeba/goha or contact the maintainer through the
+            channels listed in the repository README.
           </p>
         </section>
       </div>

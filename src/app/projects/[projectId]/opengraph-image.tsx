@@ -41,7 +41,7 @@ export default async function Image({
       children: (
         <ProjectImageMetadata
           name="goha.et"
-          description="Discover and contribute to open-source projects that make a difference."
+          description="Discover the models, datasets and research shaping Ethiopian AI."
         />
       ),
     });

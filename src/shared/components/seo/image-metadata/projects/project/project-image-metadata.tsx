@@ -27,7 +27,7 @@ export function ProjectImageMetadata({
   const logoSize = 300;
   const summary = (() => {
     if (!description) {
-      return "Discover contributors, highlight your roadmap, and grow your open-source project with the community.";
+      return "Discover the models, datasets, companies and research built for Ethiopian languages.";
     }
     if (description.length <= 130) {
       return description;

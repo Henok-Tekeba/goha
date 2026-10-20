@@ -13,7 +13,7 @@ export default function StepTechCategoriesView() {
     <StepperWrapper className="lg:max-w-3xl">
       <StepperHeaderComponent
         title="Add technologies & categories"
-        description="Complete very detail regarding your open source project"
+        description="Complete every detail of your project entry"
         currentStep={currentStep}
         totalSteps={totalSteps}
       />

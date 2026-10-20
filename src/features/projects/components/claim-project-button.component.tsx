@@ -72,7 +72,7 @@ export function ClaimProjectButton({ project }: ClaimProjectButtonProps) {
         open={isClaimOpen}
         onOpenChange={setIsClaimOpen}
         title="Take ownership of this project"
-        description={`Take ownership of ${project.title} to help manage this project and grow the open source community.`}
+        description={`Take ownership of ${project.title} to keep the goha.et index accurate.`}
         onCancel={() => setIsClaimOpen(false)}
         cancelText="Cancel"
         onConfirm={() => void handleVerifyAndClaim()}

@@ -6,11 +6,6 @@ import { HiChevronRight } from "react-icons/hi2";
 
 import { useProfileQuery } from "@/features/profile/hooks/profile.queries";
 import { useProjectQuery } from "@/features/projects/hooks/project.queries";
-import {
-  type Chapter,
-  getHandsOnChapters,
-  getLearnChapters,
-} from "../../../../content/chapters";
 
 export default function HeaderBreadcrumb() {
   const pathname = usePathname();
@@ -27,11 +22,6 @@ export default function HeaderBreadcrumb() {
     "/profile/me/edit": () => [
       { label: "My Profile", href: "/profile/me" },
       { label: "Edit", href: "/profile/me/edit" },
-    ],
-    "/learn": () => [{ label: "Learn", href: "/learn" }],
-    "/learn/chapters": () => [
-      { label: "Learn", href: "/learn" },
-      { label: "Chapters", href: "/learn/chapters" },
     ],
   };
 
@@ -67,25 +57,6 @@ export default function HeaderBreadcrumb() {
       pathname.startsWith("/projects/create/")
     ) {
       return [{ label: "Create Project", href: pathname }];
-    }
-
-    // Handle learn chapter pages
-    if (pathname.startsWith("/learn/") && segments.length === 2) {
-      const slug = segments[1];
-      const learnChapter = getLearnChapters().find(
-        (ch: Chapter) => ch.slug === slug
-      );
-      const handsOnChapter = getHandsOnChapters().find(
-        (ch: Chapter) => ch.slug === slug
-      );
-      const chapter = learnChapter || handsOnChapter;
-
-      if (chapter) {
-        return [
-          { label: "Learn", href: "/learn" },
-          { label: chapter.title, href: pathname },
-        ];
-      }
     }
 
     if (pathname.startsWith("/profile/") && userId && userId !== "me") {

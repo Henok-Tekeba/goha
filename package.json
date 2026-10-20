@@ -16,7 +16,7 @@
     "preview": "next build && next start",
     "type-check": "tsc --noEmit",
     "prepare": "husky",
-    "worker:build": "opennextjs-cloudflare build && node scripts/copy-learn-html.js",
+    "worker:build": "opennextjs-cloudflare build",
     "worker:preview": "opennextjs-cloudflare preview",
     "worker:deploy": "opennextjs-cloudflare deploy",
     "test:mock": "tsx --test src/mocks/handlers.mock.test.ts"

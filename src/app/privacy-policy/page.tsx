@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy Policy describing how goha.et collects, uses, and protects your information.",
+    "How goha.et handles information — what we collect, what we don't, and how the directory works.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -16,20 +16,20 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="mt-3 text-left text-muted-foreground text-sm">
-          How we collect, use, and protect your information.
+          What goha.et collects, what it doesn&rsquo;t, and why.
         </p>
       </div>
 
       {/* Content */}
       <div className="mt-16 mb-28">
         <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">
-            1. Introduction
-          </h2>
+          <h2 className="font-medium text-lg tracking-tight">1. Summary</h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et ("we", "our", "us") is committed to protecting your privacy.
-            This Privacy Policy describes how we handle personal information
-            when you use our website and services.
+            goha.et is a read-only public directory. We do not require an
+            account, we do not run advertising or cross-site tracking, and we do
+            not sell data. The only personal information we ever handle is an
+            email address you knowingly give us for the newsletter — everything
+            else you do on the site stays in your own browser.
           </p>
         </section>
 
@@ -38,100 +38,93 @@ export default function PrivacyPolicyPage() {
             2. Information We Collect
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We may collect information you provide directly (such as account
-            details or content you submit) and information collected
-            automatically (such as device, usage, and cookie data).
+            <strong>Newsletter:</strong> if you subscribe, your email address is
+            stored by a Google Forms-backed mailing list used only to send
+            weekly goha.et updates. You can unsubscribe at any time.
+          </p>
+          <p className="mt-3 text-muted-foreground text-sm">
+            <strong>Your browser, not our servers:</strong> features like the
+            watchlist are stored locally in your browser (localStorage). They
+            never leave your device.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            3. How We Use Information
+            3. Information We Do Not Collect
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We use information to operate and improve our services, personalize
-            your experience, communicate with you, ensure security, and comply
-            with legal obligations.
+            We do not use advertising networks, analytics trackers, or
+            fingerprinting. We do not collect names, phone numbers, payment
+            details, or browsing profiles.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            4. Cookies and Similar Technologies
+            4. Third-party Content
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We use cookies and similar technologies to provide core
-            functionality, remember preferences, and analyze usage. You can
-            control cookies via your browser settings.
+            Listings are metadata about public resources from Hugging Face,
+            GitHub, and arXiv, collected automatically and shown for discovery.
+            Those platforms have their own privacy practices; when you follow a
+            link to them, their policies apply.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            5. Data Sharing
+            5. Hosting and Infrastructure
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We may share information with service providers who help us operate
-            the website, and as required by law. We do not sell your personal
-            information.
+            The website is hosted by Vercel, whose infrastructure may process
+            standard technical request data (IP address, user agent) to serve
+            pages and prevent abuse. The underlying data files are served from
+            GitHub.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            6. Data Retention
+            6. Children&rsquo;s Privacy
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We retain personal information only as long as necessary for the
-            purposes described in this policy or as required by law.
-          </p>
-        </section>
-
-        <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">7. Security</h2>
-          <p className="mt-3 text-muted-foreground text-sm">
-            We implement reasonable safeguards to protect information. However,
-            no method of transmission or storage is completely secure, and we
-            cannot guarantee absolute security.
-          </p>
-        </section>
-
-        <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">8. Your Rights</h2>
-          <p className="mt-3 text-muted-foreground text-sm">
-            Depending on your location, you may have rights such as access,
-            correction, deletion, and objection. To exercise rights, contact us
-            using the details provided below.
+            goha.et is a general-audience technical directory and does not
+            knowingly collect personal information from children.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            9. Children’s Privacy
+            7. Your Choices
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            Our services are not directed to children under the age of 13, and
-            we do not knowingly collect personal information from children.
+            You can clear your browser storage at any time to remove your
+            watchlist and preferences, and unsubscribe from the newsletter using
+            the link in any email. For any question about your data, contact us
+            via the GitHub repository.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            10. Changes to This Policy
+            8. Changes to This Policy
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We may update this Privacy Policy from time to time. Material
-            changes will be indicated by updating the effective date. Your
-            continued use of the website after changes become effective
-            constitutes acceptance of the updated policy.
+            If the service changes in a way that affects this policy, we will
+            update this page and the effective date below.
+          </p>
+          <p className="mt-3 text-muted-foreground text-sm">
+            Effective date: October 21, 2026.
           </p>
         </section>
 
         <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">11. Contact Us</h2>
+          <h2 className="font-medium text-lg tracking-tight">9. Contact</h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            If you have questions about this Privacy Policy, please contact us
-            via our official channels listed on the website.
+            Privacy questions or data-correction requests: open an issue at
+            github.com/Henok-Tekeba/goha or contact the maintainer through the
+            channels listed in the repository README.
           </p>
         </section>
       </div>

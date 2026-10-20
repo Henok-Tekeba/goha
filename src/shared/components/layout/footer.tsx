@@ -17,51 +17,44 @@ type FooterLink = {
 };
 
 const footerLinks: {
-  developers: FooterLink[];
-  resources: FooterLink[];
-  company: FooterLink[];
+  explore: FooterLink[];
+  community: FooterLink[];
   legal: FooterLink[];
 } = {
-  developers: [
-    // kept for typing shape, not rendered
-  ],
-  resources: [
+  explore: [
     {
-      label: "Learn",
-      href: "/learn",
-      id: "resources-learn",
+      label: "Models",
+      href: "/?categories=Model",
+      id: "explore-models",
     },
     {
-      label: "OST Linker",
-      href: EXTERNAL_LINKS.OST_Linker,
-      external: true,
-      id: "developers-ost-linker",
+      label: "Datasets",
+      href: "/?categories=Dataset",
+      id: "explore-datasets",
+    },
+    {
+      label: "Research",
+      href: "/?categories=Research",
+      id: "explore-research",
+    },
+    {
+      label: "Companies",
+      href: "/?categories=Company",
+      id: "explore-companies",
     },
   ],
-  company: [
+  community: [
     {
       label: "GitHub",
-      href: EXTERNAL_LINKS.GITHUB_ORG,
+      href: EXTERNAL_LINKS.GITHUB_REPO,
       external: true,
-      id: "company-github",
+      id: "community-github",
     },
     {
-      label: "Discord",
-      href: EXTERNAL_LINKS.DISCORD,
+      label: "Contribute data",
+      href: `${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`,
       external: true,
-      id: "company-discord",
-    },
-    {
-      label: "X.com",
-      href: EXTERNAL_LINKS.TWITTER,
-      external: true,
-      id: "company-x",
-    },
-    {
-      label: "LinkedIn",
-      href: EXTERNAL_LINKS.LINKEDIN,
-      external: true,
-      id: "company-linkedin",
+      id: "community-contribute",
     },
   ],
   legal: [
@@ -120,15 +113,9 @@ export default function Footer() {
     requestAnimationFrame(checkFor404);
   }, []);
 
-  const isLearnChapterReader =
-    pathname.startsWith("/learn/") && !pathname.startsWith("/learn/chapters");
-
-  const isLearnHubShortFooter =
-    pathname === "/learn" || pathname.startsWith("/learn/chapters");
-
   const isProfileEditPage = pathname === "/profile/me/edit";
 
-  const showShortFooter = isLearnHubShortFooter || isProfileEditPage;
+  const showShortFooter = isProfileEditPage;
 
   const hideFooter =
     is404Page ||
@@ -137,8 +124,6 @@ export default function Footer() {
     pathname.startsWith("/not-found") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/onboarding") ||
-    isLearnChapterReader ||
-    isLearnHubShortFooter ||
     isProfileEditPage;
 
   return (
@@ -176,7 +161,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  goha.et
+                  OpenSource Together
                 </a>{" "}
                 (CC BY-NC 4.0)
               </span>
@@ -184,8 +169,8 @@ export default function Footer() {
 
             {/* Right: Link sections */}
             <div className="grid w-full grid-cols-1 gap-y-8 md:w-auto md:grid-cols-3 md:gap-14 md:text-sm">
-              {renderLinkSection("Resources", footerLinks.resources)}
-              {renderLinkSection("Company", footerLinks.company)}
+              {renderLinkSection("Explore", footerLinks.explore)}
+              {renderLinkSection("Community", footerLinks.community)}
               {renderLinkSection("Legal", footerLinks.legal)}
             </div>
           </div>

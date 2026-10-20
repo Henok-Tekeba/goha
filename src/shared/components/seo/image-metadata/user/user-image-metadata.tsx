@@ -15,7 +15,7 @@ export function UserImageMetadata({
   const logoSize = 300;
   const summary = (() => {
     if (!description) {
-      return "Discover contributors, highlight your roadmap, and grow your open-source project with the community.";
+      return "Discover contributors of the Ethiopian AI ecosystem on goha.et.";
     }
     if (description.length <= 130) {
       return description;

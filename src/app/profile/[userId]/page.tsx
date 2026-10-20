@@ -54,7 +54,8 @@ export async function generateMetadata({
     console.error("generateMetadata user fetch failed:", error);
     return {
       title: "User",
-      description: "Discover open source users on goha.et.",
+      description:
+        "Discover contributors of the Ethiopian AI ecosystem on goha.et.",
     };
   }
 }
