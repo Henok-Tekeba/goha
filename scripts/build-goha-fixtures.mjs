@@ -170,22 +170,22 @@ const langSlug = (name) =>
     .replace(/(^-|-$)/g, "");
 
 const techStacks = [];
-topLangs.forEach(([name], i) =>
+for (const [i, [name]] of topLangs.entries()) {
   techStacks.push({
     id: id("tst", i + 1),
     name,
     iconUrl: `/langs/${langSlug(name)}.svg`,
     type: "LANGUAGE",
-  })
-);
-topStacks.forEach((s, i) =>
+  });
+}
+for (const [i, s] of topStacks.entries()) {
   techStacks.push({
     id: id("tst", 51 + i),
     name: s.name,
     iconUrl: s.devicon ? devicon(s.devicon) : `/langs/sym-${s.symbol}.svg`,
     type: "TECH",
-  })
-);
+  });
+}
 
 /* ---------------- premium tiles ---------------- */
 /* gradient squircle tiles: dawn ramp, white glyph / symbol */
