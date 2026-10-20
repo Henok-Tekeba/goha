@@ -1,6 +1,45 @@
 {
   "data": [
     {
+      "arxiv_id": "2610.26448v1",
+      "title": "TeleASR-Amharic: A Benchmark for Robust Amharic ASR in Realistic Telecommunication Conditions",
+      "authors": [
+        "Dagnachew Mekonnen Marilign",
+        "Enrique Molero",
+        "Abrham Haile",
+        "Louis Powell",
+        "Israel Abebe Azime"
+      ],
+      "abstract": "The real-world usability of ASR models remains challenging, particularly for low-resource languages, where existing speech resources are often collected in clean studio environments. In this work, we introduce TeleASR-Amharic, a benchmark for evaluating Amharic ASR under various acoustic and telecommunication conditions. We analyze the major degradations observed in real telecommunications recordings and develop a benchmark that covers multiple channel conditions, environmental disturbances, and telecom-domain variations. Our results show that telecommunication degradation can substantially reduce recognition performance, making even high-performing ASR models impractical under severe conditions. For example, the WER of the best-performing model increases from 0.23 to 0.79 under severe telecommunication degradation, corresponding to a relative increase of 243% in recognition errors. We further investigate the effects of different noise and channel distortions and show that scaling training data and applying carefully designed telecommunication-aware augmentation substantially improve robustness. In particular, our best training configuration achieves a 23.6% relative WER reduction under extreme noise conditions. Together with the release of our telecommunications-domain data, these findings provide a reproducible benchmark for measuring progress in Amharic ASR while highlighting open challenges in developing robust speech technologies for real-world deployment.",
+      "published_date": "2026-10-19T14:06:28Z",
+      "updated_date": "2026-10-19T14:06:28Z",
+      "url": "https://arxiv.org/abs/2610.26448v1",
+      "categories": [
+        "cs.CL",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "_type": "paper",
+      "name": "TeleASR-Amharic: A Benchmark for Robust Amharic ASR in Realistic Telecommunication Conditions",
+      "org": "Dagnachew Mekonnen Marilign, Enrique Molero, Abrham Haile, Louis Powell, Israel Abebe Azime",
+      "badge": "Paper",
+      "bc": "b-paper",
+      "desc": "The real-world usability of ASR models remains challenging, particularly for low-resource languages, where existing speech resources are often collected in clean studio environments. In this work, we introduce TeleASR-Amharic, a benchmark for evaluating Amharic ASR under various acoustic and telecommunication conditions. We analyze the major degradations observed in real telecommunications recordings and develop a benchmark that covers multiple channel conditions, environmental disturbances, and telecom-domain variations. Our results show that telecommunication degradation can substantially reduce recognition performance, making even high-performing ASR models impractical under severe conditions. For example, the WER of the best-performing model increases from 0.23 to 0.79 under severe telecommunication degradation, corresponding to a relative increase of 243% in recognition errors. We further investigate the effects of different noise and channel distortions and show that scaling training data and applying carefully designed telecommunication-aware augmentation substantially improve robustness. In particular, our best training configuration achieves a 23.6% relative WER reduction under extreme noise conditions. Together with the release of our telecommunications-domain data, these findings provide a reproducible benchmark for measuring progress in Amharic ASR while highlighting open challenges in developing robust speech technologies for real-world deployment.",
+      "dl": null,
+      "lang": null,
+      "langs": [],
+      "isNew": false,
+      "tags": [
+        "cs.CL",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "downloads_monthly": 0,
+      "likes": 0,
+      "featured": false,
+      "verified": false
+    },
+    {
       "arxiv_id": "2610.14756v1",
       "title": "Amharic-English Cross-Language Question Answering Using Statistical Machine Translation, Named Entity Recognition, and Semantic Indexing",
       "authors": [
@@ -692,40 +731,6 @@
         "cs.CL",
         "cs.AI",
         "cs.LG"
-      ],
-      "downloads_monthly": 0,
-      "likes": 0,
-      "featured": false,
-      "verified": false
-    },
-    {
-      "arxiv_id": "2203.12165v1",
-      "title": "Comprehensive Benchmark Datasets for Amharic Scene Text Detection and Recognition",
-      "authors": [
-        "Wondimu Dikubab",
-        "Dingkang Liang",
-        "Minghui Liao",
-        "Xiang Bai"
-      ],
-      "abstract": "Ethiopic/Amharic script is one of the oldest African writing systems, which serves at least 23 languages (e.g., Amharic, Tigrinya) in East Africa for more than 120 million people. The Amharic writing system, Abugida, has 282 syllables, 15 punctuation marks, and 20 numerals. The Amharic syllabic matrix is derived from 34 base graphemes/consonants by adding up to 12 appropriate diacritics or vocalic markers to the characters. The syllables with a common consonant or vocalic markers are likely to be visually similar and challenge text recognition tasks. In this work, we presented the first comprehensive public datasets named HUST-ART, HUST-AST, ABE, and Tana for Amharic script detection and recognition in the natural scene. We have also conducted extensive experiments to evaluate the performance of the state of art methods in detecting and recognizing Amharic scene text on our datasets. The evaluation results demonstrate the robustness of our datasets for benchmarking and its potential of promoting the development of robust Amharic script detection and recognition algorithms. Consequently, the outcome will benefit people in East Africa, including diplomats from several countries and international communities.",
-      "published_date": "2022-03-23T03:19:35Z",
-      "updated_date": "2022-03-23T03:19:35Z",
-      "url": "https://arxiv.org/abs/2203.12165v1",
-      "categories": [
-        "cs.CV"
-      ],
-      "_type": "paper",
-      "name": "Comprehensive Benchmark Datasets for Amharic Scene Text Detection and Recognition",
-      "org": "Wondimu Dikubab, Dingkang Liang, Minghui Liao, Xiang Bai",
-      "badge": "Paper",
-      "bc": "b-paper",
-      "desc": "Ethiopic/Amharic script is one of the oldest African writing systems, which serves at least 23 languages (e.g., Amharic, Tigrinya) in East Africa for more than 120 million people. The Amharic writing system, Abugida, has 282 syllables, 15 punctuation marks, and 20 numerals. The Amharic syllabic matrix is derived from 34 base graphemes/consonants by adding up to 12 appropriate diacritics or vocalic markers to the characters. The syllables with a common consonant or vocalic markers are likely to be visually similar and challenge text recognition tasks. In this work, we presented the first comprehensive public datasets named HUST-ART, HUST-AST, ABE, and Tana for Amharic script detection and recognition in the natural scene. We have also conducted extensive experiments to evaluate the performance of the state of art methods in detecting and recognizing Amharic scene text on our datasets. The evaluation results demonstrate the robustness of our datasets for benchmarking and its potential of promoting the development of robust Amharic script detection and recognition algorithms. Consequently, the outcome will benefit people in East Africa, including diplomats from several countries and international communities.",
-      "dl": null,
-      "lang": null,
-      "langs": [],
-      "isNew": false,
-      "tags": [
-        "cs.CV"
       ],
       "downloads_monthly": 0,
       "likes": 0,
