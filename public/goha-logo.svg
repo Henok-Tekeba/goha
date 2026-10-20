@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="50" viewBox="0 0 210 50" role="img" aria-label="goha.et">
+  <defs>
+    <linearGradient id="dawn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#193cb8"/>
+      <stop offset="0.55" stop-color="#2b7fff"/>
+      <stop offset="1" stop-color="#8ec5ff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="25" cy="22" r="13" fill="url(#dawn)"/>
+  <rect x="7" y="38" width="36" height="2.5" rx="1.25" fill="#193cb8"/>
+  <rect x="12" y="33" width="26" height="2.5" rx="1.25" fill="#51a2ff" opacity="0.55"/>
+  <text x="56" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#171717" letter-spacing="-0.8">goha<tspan fill="#2b7fff">.et</tspan></text>
+</svg>

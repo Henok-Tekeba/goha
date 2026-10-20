@@ -1,0 +1,94 @@
+"use client";
+
+import { Suspense } from "react";
+import { authKeys } from "@/features/auth/hooks/auth.keys";
+import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
+import TwoColumnLayout from "@/shared/components/layout/two-column-layout.component";
+import { ErrorState } from "@/shared/components/ui/error-state";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/shared/components/ui/tabs";
+import { useTabNavigation } from "@/shared/hooks/use-tab-navigation.hook";
+
+import GithubGraph from "../components/github-graph.component";
+import RecentProjects from "../components/pinned-projects.component";
+import ProfileExperiences from "../components/profile-experiences.component";
+import ProfileHero, {
+  ProfileMobileHero,
+} from "../components/profile-hero.component";
+import ProfileProjectsList from "../components/profile-projects-list";
+import ProfileSavedProjectsList from "../components/profile-saved-projects-list";
+import ProfileSidebar from "../components/profile-sidebar.component";
+import ProfileProjectsSkeleton from "../components/skeletons/profile-projects-skeleton.component";
+import { ProfilePullRequestsSkeleton } from "../components/skeletons/profile-pull-requests-skeleton.component";
+import SkeletonProfileView from "../components/skeletons/skeleton-profile-view.component";
+import ProfilePullRequests from "./profile-pull-requests.view";
+
+export default function ProfileView() {
+  const currentUserQuery = useCurrentUserQuery();
+  const currentUser = currentUserQuery.data;
+  const { tab, handleTabChange } = useTabNavigation("overview");
+
+  if (currentUserQuery.isLoading) return <SkeletonProfileView />;
+  if (currentUserQuery.isError || !currentUser)
+    return (
+      <ErrorState
+        message="An error has occurred while loading the profile. Please try again later."
+        queryKey={authKeys.currentUser()}
+        className="mt-20 mb-28"
+        buttonText="Back to homepage"
+        href="/"
+      />
+    );
+
+  return (
+    <TwoColumnLayout
+      sidebar={<ProfileSidebar profile={currentUser} />}
+      hero={<ProfileHero profile={currentUser} hideHeader={false} />}
+      mobileHeader={<ProfileMobileHero profile={currentUser} />}
+    >
+      <Tabs value={tab} onValueChange={handleTabChange}>
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="projects">Projects</TabsTrigger>
+          <TabsTrigger value="pull-request">Pull Requests</TabsTrigger>
+          <TabsTrigger value="saved-projects">Bookmarked</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="overview" className="mt-6">
+          <div className="mb-2 w-full">
+            <GithubGraph
+              contributionGraph={currentUser.contributionGraph}
+              contributionsCount={
+                currentUser.contributionGraph?.totalContributions || 0
+              }
+            />
+          </div>
+
+          <ProfileExperiences experiences={currentUser.userExperiences} />
+          <RecentProjects />
+        </TabsContent>
+
+        <TabsContent value="projects" className="mt-6">
+          <Suspense fallback={<ProfileProjectsSkeleton />}>
+            <ProfileProjectsList userId={currentUser.id} />
+          </Suspense>
+        </TabsContent>
+
+        <TabsContent value="pull-request" className="mt-6">
+          <Suspense fallback={<ProfilePullRequestsSkeleton />}>
+            <ProfilePullRequests />
+          </Suspense>
+        </TabsContent>
+        <TabsContent value="saved-projects" className="mt-6">
+          <Suspense fallback={<ProfileProjectsSkeleton />}>
+            <ProfileSavedProjectsList />
+          </Suspense>
+        </TabsContent>
+      </Tabs>
+    </TwoColumnLayout>
+  );
+}

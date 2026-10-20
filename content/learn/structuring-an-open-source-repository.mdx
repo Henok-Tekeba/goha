@@ -1,0 +1,220 @@
+---
+title: "Chapter 6: Structuring an Open Source Repository"
+description: "Repository structure shapes how people understand, use, and contribute to a project."
+---
+
+Repository structure shapes how people understand, use, and contribute to a project.
+
+A clear structure reduces cognitive load and makes collaboration easier.
+
+This chapter focuses on organizing a repository so that it communicates intent, clarity, and stability.
+
+## The Repository as an Interface
+
+A repository is not just a container for code.
+
+It is an interface between the project and the outside world.
+
+Visitors use it to:
+
+- Understand what the project does
+- Decide whether to trust it
+- Determine how to engage
+
+Structure influences these decisions immediately.
+
+## First Impressions Matter
+
+Most visitors will:
+
+- Skim the file tree
+- Open the README
+- Check recent activity
+
+A repository should be understandable within minutes.
+
+If structure is confusing, most users will leave silently.
+
+## Root-Level Clarity
+
+The root of the repository should answer fundamental questions.
+
+Common root-level elements include:
+
+- `README.md`
+- `LICENSE`
+- `CONTRIBUTING.md`
+- `CODE_OF_CONDUCT.md`
+- `SECURITY.md`
+- Configuration files
+
+Avoid clutter at the root.
+
+## A Common Repository Layout
+
+While layouts vary by ecosystem, a simple and common structure looks like:
+
+```
+project-name/
+├── src/
+├── tests/
+├── docs/
+├── .github/
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+└── SECURITY.md
+
+```
+
+This layout communicates intent and expectations clearly.
+
+## Source Code Organization
+
+Source code should:
+
+- Follow ecosystem conventions
+- Have predictable entry points
+- Use consistent naming
+- Group related concerns
+
+Avoid over-engineering early.
+
+Clarity is more important than abstraction.
+
+## Tests as Documentation
+
+Tests serve two purposes:
+
+- Verifying behavior
+- Documenting expected usage
+
+Readable tests:
+
+- Explain how the system works
+- Reduce ambiguity
+- Increase confidence for contributors
+
+A project without tests can still be open source, but tests greatly improve trust.
+
+## Documentation Structure
+
+Documentation should be discoverable and layered.
+
+Common approaches:
+
+- Inline comments for local clarity
+- README for high-level context
+- `/docs` for deeper explanations
+- Examples or tutorials for onboarding
+
+Avoid scattering documentation across unrelated files.
+
+## The `.github` Directory
+
+The `.github` directory defines how collaboration happens.
+
+Common contents include:
+
+- Issue templates
+- Pull request templates
+- Workflows
+- Contribution guidelines
+
+These files shape contributor behavior more than rules alone.
+
+## Issue Templates
+
+Issue templates help:
+
+- Collect useful information
+- Reduce back-and-forth
+- Guide contributors toward clarity
+
+Well-designed templates save maintainer time.
+
+## Pull Request Templates
+
+Pull request templates:
+
+- Set expectations
+- Encourage good explanations
+- Standardize review
+
+They help contributors understand what maintainers need.
+
+## Naming Conventions and Consistency
+
+Consistency matters more than perfection.
+
+Choose:
+
+- A naming style
+- A folder structure
+- Formatting rules
+
+Apply them consistently.
+
+Inconsistent projects are harder to contribute to than imperfect ones.
+
+## Configuration and Tooling
+
+Configuration files should:
+
+- Be documented
+- Have clear defaults
+- Avoid unnecessary complexity
+
+Tooling should:
+
+- Support contributors
+- Not overwhelm newcomers
+
+Every tool introduces cognitive overhead.
+
+## Version Control Hygiene
+
+Good version control practices include:
+
+- Meaningful commit messages
+- Focused commits
+- Clear branch naming
+
+Public history is part of the project’s communication.
+
+## Signals of Stability
+
+Repository structure sends signals.
+
+Stable projects often:
+
+- Change structure infrequently
+- Document changes clearly
+- Deprecate intentionally
+
+Frequent structural changes create confusion.
+
+## Avoiding Common Pitfalls
+
+Common structural mistakes include:
+
+- Deeply nested folders
+- Unclear entry points
+- Duplicated concepts
+- Outdated documentation
+- Unused files left behind
+
+Removing confusion is as valuable as adding features.
+
+## Reflection
+
+Look at a repository you admire:
+
+- How is it structured?
+- What feels intuitive?
+- What feels confusing?
+
+Structure communicates values and priorities.

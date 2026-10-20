@@ -1,187 +1,58 @@
 # goha.et — The Home of Ethiopian AI
 
-**goha.et** (ጎሃ — "dawn" in Amharic) is a curated directory and discovery platform for the Ethiopian AI ecosystem. It indexes models, datasets, companies, and research papers across Ethiopian languages (Amharic, Tigrinya, Oromo, Geez, and more) — surfacing everything in one place so developers, researchers, and enthusiasts can find, compare, and explore.
+**goha.et** (ጎሃ — "dawn" in Amharic) is a curated directory and discovery platform
+for the Ethiopian AI ecosystem — models, datasets, companies, and research papers
+for Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
 
-## Features
+## Architecture
 
-- **Browse & Search** — Full-text search and language filtering across all entities.
-- **Detail Pages** — Dedicated pages with metadata, stats, evaluations, training data, and related items.
-- **Model Comparison** — Compare up to 3 models side-by-side on downloads, likes, languages, tags, and more.
-- **Trending & Activity** — See what's gaining traction and what's new in the ecosystem.
-- **Quick Start Guides** — Curated entry points for common use cases (ASR, embeddings, text generation).
-- **Stats Dashboard** — Track the growth of the Ethiopian AI landscape over time.
-- **Dark Mode** — Full dark mode with system preference detection.
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| UI Library | React 19 |
-| Styling | Tailwind CSS v4 |
-| Icons | Lucide React |
-| Charts | Recharts |
-| Theming | next-themes |
-| Language | TypeScript |
-| Scraper | Node.js ESM |
-
-## Project Structure
+The frontend is an adaptation of [OpenSource Together](https://opensource-together.com)'s
+site (their excellent discovery UI), rendering **goha's own data**:
 
 ```
-├── src/
-│   ├── app/                  # Next.js App Router pages
-│   │   ├── page.tsx          # Home / explore
-│   │   ├── layout.tsx        # Root layout
-│   │   ├── models/[...id]    # Model detail (SSR)
-│   │   ├── datasets/[...id]  # Dataset detail (SSR)
-│   │   ├── companies/[slug]  # Company detail (SSR)
-│   │   ├── papers/[arxivId]  # Paper detail (SSR)
-│   │   ├── stats/            # Analytics dashboard
-│   │   └── docs/             # API documentation
-│   ├── components/           # React components
-│   │   ├── CardGrid.tsx      # Entity card grid with compare mode
-│   │   ├── ComparePanel.tsx  # Side-by-side comparison panel
-│   │   ├── Hero.tsx          # Search and stats hero section
-│   │   ├── ModelDetail.tsx   # Model detail UI
-│   │   ├── DatasetDetail.tsx # Dataset detail UI
-│   │   ├── CompanyDetail.tsx # Company detail UI
-│   │   └── PaperDetail.tsx   # Paper detail UI
-│   ├── lib/
-│   │   └── github.ts         # Data fetching from raw GitHub
-│   └── types.ts              # TypeScript interfaces
-├── scraper/
-│   ├── index.mjs             # Scraper (HF, GitHub, arXiv)
-│   ├── build.mjs             # Data normalization and build
-│   └── generate-feed.mjs     # Activity feed generator
-├── data/                     # Generated data files
-│   ├── models.json
-│   ├── datasets.json
-│   ├── papers.json
-│   ├── companies.json
-│   └── snapshots/            # Daily snapshots for trend analysis
-└── public/                   # Static assets
+scraper/            goha's pipeline (Hugging Face · GitHub · arXiv)
+   └─ npm start     → data/*.json (models, datasets, companies, papers, feeds)
+scripts/build-goha-fixtures.mjs   (goha data → OST data-layer contract)
+src/                OST frontend (unchanged UI, goha branding + data)
+data/               daily snapshots, served as the source of truth
 ```
 
-## Getting Started
+Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which converts
+goha's normalized JSON into the frontend's `Project` contract — so the UI is
+pixel-identical to the original design while every list, filter, and card is
+powered by goha.et data.
 
-### Prerequisites
+## Development
 
-- Node.js 20+
-- npm
-
-### Installation
+Requires Node 22+ and pnpm.
 
 ```bash
-git clone https://github.com/Henok-Tekeba/goha.git
-cd goha
-npm install
+pnpm install
+pnpm dev:mock        # frontend on :3000 + goha-data mock API on :4000
 ```
 
-### Environment Variables
+The mock backend serves goha's fixture data (generated from `data/*.json`) and
+the full OST API contract, including the demo auth session.
 
-Create a `.env.local` file:
+## Production pipeline
 
-```env
-NEXT_PUBLIC_GH_OWNER=your-github-username
-NEXT_PUBLIC_GH_REPO=goha
-NEXT_PUBLIC_GH_BRANCH=main
-```
+1. `scraper` runs daily (GitHub Actions) and commits `data/*.json`
+2. `scripts/build-goha-fixtures.mjs` regenerates the frontend data layer
+3. The app deploys on Vercel; data updates ship with the next commit
 
-### Development
+## Attribution
 
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### Build
-
-```bash
-npm run build
-npm start
-```
-
-## Data Pipeline
-
-The scraper collects and normalizes data from multiple sources:
-
-| Source | Data | API |
-|---|---|---|
-| Hugging Face | Models, datasets, spaces | `huggingface.co/api` |
-| GitHub | Repositories, organization repos | `api.github.com` |
-| arXiv | Research papers | `export.arxiv.org/api/query` |
-
-### Running the Scraper
-
-```bash
-cd scraper
-cp .env.example .env
-npm install
-npm start
-```
-
-The scraper:
-1. Searches HuggingFace for Ethiopian-language models and datasets
-2. Enriches models with detailed metadata (parameters, license, evaluation results)
-3. Searches GitHub for Ethiopian NLP repositories
-4. Queries arXiv for Ethiopian-language research papers
-5. Computes growth trends from daily snapshots
-6. Generates the activity feed and normalized JSON files under `data/`
-
-### Data Structure
-
-Each entity is normalized into a consistent `Item` format:
-
-```typescript
-interface Item {
-  name: string;
-  org: string;
-  badge: string;          // "ASR", "LLM", "Dataset", "Company", etc.
-  bc: string;             // Badge CSS class
-  _type: string;          // "model" | "dataset" | "company" | "paper"
-  dl: number | null;      // Monthly downloads
-  lang: string | null;    // Primary language
-  langs: string[];        // All languages
-  desc: string;           // Description
-  tags: string[];         // Categorization tags
-  growth: number | null;  // Download growth %
-  verdict: { label: string; icon: string; type: string };
-  // ... type-specific fields
-}
-```
-
-## Deployment
-
-Deployed on [Vercel](https://vercel.com). Pushes to `main` trigger automatic redeployment. Data files are served from the repository via `raw.githubusercontent.com`.
-
-The scraper runs manually or via GitHub Actions. Data files are committed to the repository and fetched at runtime with server-side caching.
-
-## API
-
-The frontend consumes raw JSON files from `data/`:
-
-```
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/models.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/datasets.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/papers.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/companies.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/stats.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/trending.json
-GET https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/activity_feed.json
-```
-
-## Contributing
-
-- **Add a company** — Submit a PR with a company entry in `scraper/index.mjs`
-- **Improve the scraper** — Add new data sources or enrichment logic
-- **Enhance the frontend** — Build new features, improve UI/UX, or add tests
-- **Report issues** — Open a GitHub issue for missing or incorrect data
+Frontend design & code adapted from
+[OpenSource Together](https://github.com/opensource-together/opensource-together)
+(`src/`, design system, learn content), licensed **CC BY-NC 4.0** — this
+project remains non-commercial. goha's scraper, data pipeline, and datasets are
+original work. See `LICENSE.md` for the upstream license text.
 
 ## License
 
-MIT
+- `scraper/`, `data/`, `scripts/build-goha-fixtures.mjs` — MIT (goha.et)
+- `src/` and `content/` — CC BY-NC 4.0, © OpenSource Together
 
 ---
 
-Built for the Ethiopian AI community. እንሰራለን! 🇪🇹
+እንሰራለን! 🇪🇹

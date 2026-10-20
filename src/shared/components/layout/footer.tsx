@@ -1,0 +1,196 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
+import { Separator } from "@/shared/components/ui/separator";
+import { EXTERNAL_LINKS } from "@/shared/lib/constants";
+
+type FooterLink = {
+  label: string;
+  href: string;
+  id: string;
+  external?: boolean;
+};
+
+const footerLinks: {
+  developers: FooterLink[];
+  resources: FooterLink[];
+  company: FooterLink[];
+  legal: FooterLink[];
+} = {
+  developers: [
+    // kept for typing shape, not rendered
+  ],
+  resources: [
+    {
+      label: "Learn",
+      href: "/learn",
+      id: "resources-learn",
+    },
+    {
+      label: "OST Linker",
+      href: EXTERNAL_LINKS.OST_Linker,
+      external: true,
+      id: "developers-ost-linker",
+    },
+  ],
+  company: [
+    {
+      label: "GitHub",
+      href: EXTERNAL_LINKS.GITHUB_ORG,
+      external: true,
+      id: "company-github",
+    },
+    {
+      label: "Discord",
+      href: EXTERNAL_LINKS.DISCORD,
+      external: true,
+      id: "company-discord",
+    },
+    {
+      label: "X.com",
+      href: EXTERNAL_LINKS.TWITTER,
+      external: true,
+      id: "company-x",
+    },
+    {
+      label: "LinkedIn",
+      href: EXTERNAL_LINKS.LINKEDIN,
+      external: true,
+      id: "company-linkedin",
+    },
+  ],
+  legal: [
+    {
+      label: "Terms and Conditions",
+      href: "/terms-and-conditions",
+      id: "legal-terms",
+    },
+    {
+      label: "Privacy Policy",
+      href: "/privacy-policy",
+      id: "legal-privacy",
+    },
+  ],
+};
+
+const renderLinkSection = (title: string, links: FooterLink[]) => (
+  <div>
+    <h2 className="mb-3 font-medium text-foreground text-sm md:mb-4 md:text-sm">
+      {title}
+    </h2>
+    <ul className="space-y-3 text-muted-foreground text-sm md:text-sm">
+      {links.map((link) => (
+        <li key={link.id}>
+          <Link
+            className="transition hover:text-foreground"
+            href={link.href}
+            {...(link.external && {
+              target: "_blank",
+              rel: "noopener noreferrer",
+            })}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+export default function Footer() {
+  const pathname = usePathname();
+  const [is404Page, setIs404Page] = useState(false);
+
+  useEffect(() => {
+    const checkFor404 = () => {
+      if (typeof window !== "undefined") {
+        const h1Element = document.querySelector("main h1");
+        const is404 =
+          h1Element?.textContent?.trim() === "404" ||
+          document.title.includes("404 - Page Not Found");
+        setIs404Page(is404);
+      }
+    };
+    checkFor404();
+    requestAnimationFrame(checkFor404);
+  }, []);
+
+  const isLearnChapterReader =
+    pathname.startsWith("/learn/") && !pathname.startsWith("/learn/chapters");
+
+  const isLearnHubShortFooter =
+    pathname === "/learn" || pathname.startsWith("/learn/chapters");
+
+  const isProfileEditPage = pathname === "/profile/me/edit";
+
+  const showShortFooter = isLearnHubShortFooter || isProfileEditPage;
+
+  const hideFooter =
+    is404Page ||
+    pathname.startsWith("/projects/create") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/not-found") ||
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/onboarding") ||
+    isLearnChapterReader ||
+    isLearnHubShortFooter ||
+    isProfileEditPage;
+
+  return (
+    <>
+      {showShortFooter && (
+        <div className="mx-4 mb-8 max-w-6xl md:mx-auto">
+          <FooterMinimal className="relative z-20 block w-full bg-white" />
+        </div>
+      )}
+      {!hideFooter && (
+        <footer className="mx-4 mb-8 max-w-6xl bg-white md:mx-auto">
+          <Separator className="mx-auto mb-8 w-11/12 lg:w-full" />
+          <div className="flex w-full flex-col items-start gap-10 max-md:pl-3 md:flex-row md:items-start md:justify-between md:gap-12 md:pl-0">
+            {/* Left: Logo + copyright */}
+            <div className="flex w-full flex-col items-start gap-4 md:w-auto">
+              <Link
+                href="/"
+                className="flex items-center transition-opacity duration-200 hover:opacity-50"
+              >
+                <Image
+                  src="/goha-logo.svg"
+                  alt="goha.et logo"
+                  width={126}
+                  height={30}
+                />
+              </Link>
+              <span className="text-muted-foreground text-sm">
+                © goha.et • 2026
+              </span>
+              <span className="text-muted-foreground text-xs max-w-[280px] leading-relaxed">
+                UI adapted from{" "}
+                <a
+                  className="underline underline-offset-4 transition hover:text-foreground"
+                  href="https://opensource-together.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  goha.et
+                </a>{" "}
+                (CC BY-NC 4.0)
+              </span>
+            </div>
+
+            {/* Right: Link sections */}
+            <div className="grid w-full grid-cols-1 gap-y-8 md:w-auto md:grid-cols-3 md:gap-14 md:text-sm">
+              {renderLinkSection("Resources", footerLinks.resources)}
+              {renderLinkSection("Company", footerLinks.company)}
+              {renderLinkSection("Legal", footerLinks.legal)}
+            </div>
+          </div>
+        </footer>
+      )}
+    </>
+  );
+}

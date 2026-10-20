@@ -1,0 +1,206 @@
+"use client";
+
+import React, { useState } from "react";
+import { FaReddit, FaWhatsapp } from "react-icons/fa";
+import { HiMiniCheck } from "react-icons/hi2";
+import { LuCopy } from "react-icons/lu";
+import { RiLinkedinFill, RiTwitterXFill } from "react-icons/ri";
+import { toast } from "sonner";
+
+import { Button } from "@/shared/components/ui/button";
+import { Modal } from "@/shared/components/ui/modal";
+
+interface ShareProfileModalProps {
+  url: string;
+  title?: string;
+  description?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  trigger?: React.ReactNode;
+  triggerIcon?: React.ComponentType<{ className?: string }>;
+  triggerVariant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  triggerSize?: "default" | "sm" | "lg" | "icon";
+  triggerClassName?: string;
+}
+
+interface SocialShareButton {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  href: string;
+}
+
+interface CopyButtonProps {
+  text: string;
+}
+
+function CopyButton({ text }: CopyButtonProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      toast.success("Link Copied");
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast.error("Failed to Copy Link", { description: err as string });
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopyLink}
+      className="shrink-0 origin-center rounded bg-accent p-1.5 text-muted-foreground transition-all hover:scale-[0.98] hover:bg-muted hover:text-ost-blue-three active:scale-[0.98]"
+      aria-label={copied ? "Copied!" : "Copy to clipboard"}
+      title={copied ? "Copied!" : "Copy to clipboard"}
+    >
+      {copied ? (
+        <HiMiniCheck className="h-4 w-4" />
+      ) : (
+        <LuCopy className="h-4 w-4" />
+      )}
+    </button>
+  );
+}
+
+export function ShareProfileModal({
+  url,
+  title,
+  description,
+  open,
+  onOpenChange,
+  trigger,
+  triggerIcon: TriggerIcon,
+  triggerVariant = "outline",
+  triggerSize = "icon",
+  triggerClassName,
+}: ShareProfileModalProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const modalOpen = open ?? isOpen;
+  const handleOpenChange = onOpenChange ?? setIsOpen;
+
+  const handleTriggerClick = () => {
+    handleOpenChange(true);
+  };
+
+  const shareText = "Check out my profile on goha.et!";
+
+  const socialButtons: SocialShareButton[] = [
+    {
+      name: "X.com",
+      icon: RiTwitterXFill,
+      color: "text-primary",
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(shareText)}`,
+    },
+    {
+      name: "LinkedIn",
+      icon: RiLinkedinFill,
+      color: "text-[#0A66C2]",
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    },
+    {
+      name: "Reddit",
+      icon: FaReddit,
+      color: "text-[#FF4500]",
+      href: `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "Check out this profile")}`,
+    },
+    {
+      name: "WhatsApp",
+      icon: FaWhatsapp,
+      color: "text-[#25D366]",
+      href: `https://wa.me/?text=${encodeURIComponent(`${shareText}: ${url}`)}`,
+    },
+  ];
+
+  const handleShare = (shareUrl: string) => {
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const buttonTrigger = TriggerIcon ? (
+    <Button
+      variant={triggerVariant}
+      size={triggerSize}
+      className={triggerClassName}
+      onClick={handleTriggerClick}
+    >
+      <TriggerIcon />
+    </Button>
+  ) : trigger && React.isValidElement(trigger) ? (
+    React.cloneElement(
+      trigger as React.ReactElement<{
+        onClick?: (e: React.MouseEvent) => void;
+      }>,
+      {
+        onClick: (e: React.MouseEvent) => {
+          handleTriggerClick();
+          const originalOnClick = (
+            trigger as React.ReactElement<{
+              onClick?: (e: React.MouseEvent) => void;
+            }>
+          ).props?.onClick;
+          if (originalOnClick) {
+            originalOnClick(e);
+          }
+        },
+      }
+    )
+  ) : (
+    trigger
+  );
+
+  return (
+    <>
+      {buttonTrigger}
+
+      <Modal
+        open={modalOpen}
+        onOpenChange={handleOpenChange}
+        title="Share profile"
+        description={
+          description ||
+          "Choose a platform to share this content with your friends and followers."
+        }
+        size="lg"
+        showCloseButton
+      >
+        <div className="space-y-6 py-4">
+          {/* Social sharing buttons */}
+          <div className="grid grid-cols-2 gap-3">
+            {socialButtons.map((social) => {
+              const Icon = social.icon;
+              return (
+                <Button
+                  key={social.name}
+                  variant="outline"
+                  className="flex h-auto items-center justify-start gap-2"
+                  onClick={() => handleShare(social.href)}
+                >
+                  <Icon className={`size-4 ${social.color}`} />
+                  <span className="font-medium">{social.name}</span>
+                </Button>
+              );
+            })}
+          </div>
+
+          <div
+            role="group"
+            aria-label="Profile link"
+            className="flex items-center justify-between gap-2 rounded-md bg-accent px-3 py-2 text-muted-foreground text-sm"
+          >
+            <span className="line-clamp-1 flex-1 break-all">{url}</span>
+            <CopyButton text={url} />
+          </div>
+        </div>
+      </Modal>
+    </>
+  );
+}

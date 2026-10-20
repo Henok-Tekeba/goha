@@ -1,0 +1,82 @@
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+
+import { FRONTEND_URL } from "@/config/config";
+import { getCurrentUser } from "@/features/auth/services/auth.service";
+import { getUser } from "@/features/profile/services/profile.service";
+import { PublicProfileView } from "@/features/profile/views/public-profile.view";
+import CTAFooter from "@/shared/components/layout/cta-footer";
+import { getServerApiContext } from "@/shared/lib/server-api-context";
+
+interface PublicProfilePageProps {
+  params: Promise<{
+    userId: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PublicProfilePageProps): Promise<Metadata> {
+  const { userId } = await params;
+  try {
+    const user = await getUser(userId);
+
+    const userUrl = `${FRONTEND_URL.replace(/\/$/, "")}/profile/${userId}`;
+
+    return {
+      title: `${user.name}`,
+      description: user.bio,
+      alternates: { canonical: userUrl },
+      openGraph: {
+        title: `${user.name}`,
+        description: user.bio,
+        images: [
+          {
+            url: `${userUrl}/opengraph-image`,
+            width: 1200,
+            height: 630,
+            alt: `${user.name} user preview`,
+          },
+        ],
+        url: userUrl,
+        type: "website",
+        siteName: "goha.et",
+        locale: "en_US",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${user.name}`,
+        description: user.bio,
+        images: [`${userUrl}/opengraph-image`],
+      },
+    };
+  } catch (error) {
+    console.error("generateMetadata user fetch failed:", error);
+    return {
+      title: "User",
+      description: "Discover open source users on goha.et.",
+    };
+  }
+}
+
+export default async function PublicProfilePage({
+  params,
+}: PublicProfilePageProps) {
+  const { userId } = await params;
+
+  const apiContext = await getServerApiContext();
+  const currentUser = await getCurrentUser(apiContext).catch(() => null);
+  if (currentUser && currentUser.id === userId) {
+    redirect("/profile/me");
+  }
+
+  return (
+    <>
+      <PublicProfileView userId={userId} />
+      <CTAFooter
+        imageIllustration="/illustrations/footer-profile-desktop.png"
+        imageIllustrationMobile="/illustrations/footer-profile-mobile.png"
+      />
+    </>
+  );
+}

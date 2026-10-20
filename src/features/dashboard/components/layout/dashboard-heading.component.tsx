@@ -1,0 +1,16 @@
+export default function DashboardHeading({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mb-[22px] flex flex-col gap-1.5">
+      <div className="flex items-center gap-1">
+        <h1 className="text-xl">{title}</h1>
+      </div>
+      <p className="text-black/70 text-sm">{description}</p>
+    </div>
+  );
+}

@@ -1,66 +1,135 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { FRONTEND_URL } from "@/config/config";
+
+import Footer from "@/shared/components/layout/footer";
+import Header from "@/shared/components/layout/header";
+import { Toaster } from "@/shared/components/ui/sonner";
+import { getGithubRepoStars } from "@/shared/lib/github-stars";
+
+import "../../public/fonts/font-face.css";
 import "./globals.css";
-import Providers from "@/components/Providers";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const GeistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const title = "goha.et — The home of Ethiopian AI";
-const description =
-  "Find models, datasets, companies, and research papers for Ethiopian languages.";
+const metadataImageUrl = `${FRONTEND_URL}/illustrations/ost-metadata.png`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://goha.et"),
-  title,
-  description,
+  metadataBase: new URL(FRONTEND_URL),
+  title: {
+    default: "goha.et — The home of Ethiopian AI",
+    template: "%s | goha.et",
+  },
+  description:
+    "Find models, datasets, companies, and research papers for Ethiopian languages.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  authors: [{ name: "Henok Tekeba" }],
+  creator: "goha.et",
+  publisher: "goha.et",
+  applicationName: "goha.et",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  category: "technology",
   openGraph: {
-    title,
-    description,
-    url: "https://goha.et",
+    title: "goha.et — The home of Ethiopian AI",
+    description:
+      "Find models, datasets, companies, and research papers for Ethiopian languages.",
+    images: [
+      {
+        url: metadataImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "goha.et — Find and discover the Ethiopian AI ecosystem",
+      },
+    ],
+    url: FRONTEND_URL,
     siteName: "goha.et",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/api/og", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: ["/api/og"],
+    title: "goha.et — The home of Ethiopian AI",
+    creator: "@HenokTekeba",
+    images: [metadataImageUrl],
+    description:
+      "Find models, datasets, companies, and research papers for Ethiopian languages.",
   },
-  icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  other: {
-    "theme-color": "#059669",
-  },
+  keywords: [
+    "goha.et",
+    "Ethiopian AI",
+    "Amharic AI",
+    "Amharic models",
+    "Amharic datasets",
+    "Ethiopian languages",
+    "Amharic NLP",
+    "Tigrinya",
+    "Afaan Oromo",
+    "Ge'ez",
+    "Ethiopia machine learning",
+    "AI community Ethiopia",
+  ],
 };
 
-export default function RootLayout({
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const githubStars = await getGithubRepoStars();
+
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
+      lang="en"
+      className={`${geistSans.variable} ${GeistMono.variable} antialiased`}
     >
-      <head>
-        <meta name="theme-color" content="#059669" />
-      </head>
-      <body className="min-h-full flex flex-col font-sans">
-        <Providers>{children}</Providers>
+      <body suppressHydrationWarning>
+        <Providers>
+          <Header githubStars={githubStars} />
+          {children}
+          <Footer />
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );
