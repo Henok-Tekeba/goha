@@ -16,9 +16,21 @@ const FRONTEND_ORIGIN =
 
 const app = express();
 
+/* Allow the configured frontend origin and any localhost origin — dev servers
+   drift between ports (3000, 3001, ...) when another app occupies 3000. */
 app.use(
   cors({
-    origin: FRONTEND_ORIGIN,
+    origin: (origin, callback) => {
+      if (
+        !origin ||
+        origin === FRONTEND_ORIGIN ||
+        /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+      ) {
+        callback(null, true);
+        return;
+      }
+      callback(null, false);
+    },
     credentials: true,
   })
 );
