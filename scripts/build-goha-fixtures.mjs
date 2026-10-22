@@ -194,58 +194,50 @@ const TYPES_OUT = path.join(ROOT, "public", "types");
 mkdirSync(TYPES_OUT, { recursive: true });
 
 const tile = (
-  inner,
-  hue
+  inner
 ) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${hue === "blue" ? "#8ec5ff" : "#51a2ff"}"/>
-      <stop offset="0.6" stop-color="#2b7fff"/>
-      <stop offset="1" stop-color="#193cb8"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="0" width="24" height="24" rx="7" fill="url(#g)"/>
-  <rect x="1" y="1" width="22" height="10" rx="6" fill="white" opacity="0.08"/>
+  <rect x="0" y="0" width="24" height="24" rx="7" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="23" height="23" rx="6.5" fill="none" stroke="rgba(0,0,0,0.12)"/>
   ${inner}
 </svg>`;
 
 const TYPE_SYMBOLS = {
   /* audio / ASR: waveform bars */
-  audio: `<g fill="white"><rect x="4.5" y="10" width="2.2" height="4" rx="1.1"/><rect x="8.4" y="7" width="2.2" height="10" rx="1.1"/><rect x="12.3" y="4.5" width="2.2" height="15" rx="1.1" opacity="0.95"/><rect x="16.2" y="8" width="2.2" height="8" rx="1.1" opacity="0.85"/><rect x="20" y="11" width="2.2" height="2" rx="1" opacity="0.7"/></g>`,
+  audio: `<g fill="#171717"><rect x="4.5" y="10" width="2.2" height="4" rx="1.1"/><rect x="8.4" y="7" width="2.2" height="10" rx="1.1"/><rect x="12.3" y="4.5" width="2.2" height="15" rx="1.1" opacity="0.95"/><rect x="16.2" y="8" width="2.2" height="8" rx="1.1" opacity="0.85"/><rect x="20" y="11" width="2.2" height="2" rx="1" opacity="0.7"/></g>`,
   /* translation: two arrows across languages */
-  translation: `<g stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h12M13.5 5.5L17 9l-3.5 3.5"/><path d="M19 16H7M10.5 12.5L7 16l3.5 3.5"/></g>`,
+  translation: `<g stroke="#171717" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h12M13.5 5.5L17 9l-3.5 3.5"/><path d="M19 16H7M10.5 12.5L7 16l3.5 3.5"/></g>`,
   /* ai / LLM: chip */
-  ai: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2M4 10h2M4 14h2M18 10h2M18 14h2"/></g><circle cx="12" cy="12" r="1.6" fill="white"/>`,
+  ai: `<g fill="none" stroke="#171717" stroke-width="1.9" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2.5"/><path d="M10 4v2M14 4v2M10 18v2M14 18v2M4 10h2M4 14h2M18 10h2M18 14h2"/></g><circle cx="12" cy="12" r="1.6" fill="#171717"/>`,
   /* ner: tag */
-  ner: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"><path d="M4.5 5.5A1.5 1.5 0 016 4h5.2c.4 0 .8.16 1.06.44l7.3 7.3a1.5 1.5 0 010 2.12l-5.2 5.2a1.5 1.5 0 01-2.12 0l-7.3-7.3A1.5 1.5 0 014.5 10.7V5.5z"/></g><circle cx="8.6" cy="8.6" r="1.3" fill="white"/>`,
+  ner: `<g fill="none" stroke="#171717" stroke-width="1.9" stroke-linejoin="round"><path d="M4.5 5.5A1.5 1.5 0 016 4h5.2c.4 0 .8.16 1.06.44l7.3 7.3a1.5 1.5 0 010 2.12l-5.2 5.2a1.5 1.5 0 01-2.12 0l-7.3-7.3A1.5 1.5 0 014.5 10.7V5.5z"/></g><circle cx="8.6" cy="8.6" r="1.3" fill="#171717"/>`,
   /* embeddings: dot grid */
-  embedding: `<g fill="white"><circle cx="7" cy="7" r="1.7"/><circle cx="12" cy="7" r="1.7" opacity="0.85"/><circle cx="17" cy="7" r="1.7" opacity="0.7"/><circle cx="7" cy="12" r="1.7" opacity="0.85"/><circle cx="12" cy="12" r="1.7" opacity="0.65"/><circle cx="17" cy="12" r="1.7" opacity="0.5"/><circle cx="7" cy="17" r="1.7" opacity="0.65"/><circle cx="12" cy="17" r="1.7" opacity="0.5"/><circle cx="17" cy="17" r="1.7" opacity="0.4"/></g>`,
+  embedding: `<g fill="#171717"><circle cx="7" cy="7" r="1.7"/><circle cx="12" cy="7" r="1.7" opacity="0.85"/><circle cx="17" cy="7" r="1.7" opacity="0.7"/><circle cx="7" cy="12" r="1.7" opacity="0.85"/><circle cx="12" cy="12" r="1.7" opacity="0.65"/><circle cx="17" cy="12" r="1.7" opacity="0.5"/><circle cx="7" cy="17" r="1.7" opacity="0.65"/><circle cx="12" cy="17" r="1.7" opacity="0.5"/><circle cx="17" cy="17" r="1.7" opacity="0.4"/></g>`,
   /* dataset: table */
-  dataset: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="13" rx="2"/><path d="M4.5 10h15M4.5 14h15M9.75 10v8.5" opacity="0.9"/></g>`,
+  dataset: `<g fill="none" stroke="#171717" stroke-width="1.9" stroke-linejoin="round"><rect x="4.5" y="5.5" width="15" height="13" rx="2"/><path d="M4.5 10h15M4.5 14h15M9.75 10v8.5" opacity="0.9"/></g>`,
   /* company: building */
-  company: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5V6.8L12 4l7 2.8v12.7"/><path d="M5 19.5h14"/><path d="M9 19.5v-4h6v4" opacity="0.9"/><path d="M9 9h.01M15 9h.01M9 12h.01M15 12h.01" stroke-width="2.2"/></g>`,
+  company: `<g fill="none" stroke="#171717" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5V6.8L12 4l7 2.8v12.7"/><path d="M5 19.5h14"/><path d="M9 19.5v-4h6v4" opacity="0.9"/><path d="M9 9h.01M15 9h.01M9 12h.01M15 12h.01" stroke-width="2.2"/></g>`,
   /* research: paper/scroll */
-  research: `<g fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h7.5L19 9v10.5a1 1 0 01-1 1H7a1 1 0 01-1-1v-14a1 1 0 011-1z"/><path d="M14 4.5V9h4.5" opacity="0.9"/><path d="M9 13h6M9 16.5h6" opacity="0.75"/></g>`,
+  research: `<g fill="none" stroke="#171717" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h7.5L19 9v10.5a1 1 0 01-1 1H7a1 1 0 01-1-1v-14a1 1 0 011-1z"/><path d="M14 4.5V9h4.5" opacity="0.9"/><path d="M9 13h6M9 16.5h6" opacity="0.75"/></g>`,
 };
 
 for (const [key, sym] of Object.entries(TYPE_SYMBOLS)) {
-  writeFileSync(path.join(TYPES_OUT, `${key}.svg`), tile(sym, "deep"));
+  writeFileSync(path.join(TYPES_OUT, `${key}.svg`), tile(sym));
 }
 
 const glyphTile = (glyph) =>
   tile(
-    `<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="white" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`,
+    `<text x="12" y="16.5" font-size="12.5" text-anchor="middle" fill="#171717" font-weight="700" font-family="'Noto Sans Ethiopic', ui-sans-serif, system-ui, sans-serif">${glyph}</text>`,
     "blue"
   );
 
 const SYMBOLS = {
-  layers: `<path d="M12 4l7 3.5-7 3.5-7-3.5L12 4z" fill="white" opacity="0.95"/><path d="M5 12l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/><path d="M5 16l7 3.5 7-3.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>`,
-  graph: `<circle cx="8" cy="8" r="2.2" fill="white"/><circle cx="16.5" cy="10.5" r="2.2" fill="white" opacity="0.85"/><circle cx="10.5" cy="17" r="2.2" fill="white" opacity="0.7"/><path d="M8 8l8.5 2.5M16.5 10.5l-6 6.5M8 8l2.5 9" stroke="white" stroke-width="1.4" fill="none" opacity="0.8"/>`,
-  bolt: `<path d="M13.5 3.5L6.5 13h4l-1.5 7.5L17.5 11h-4l1.5-7.5z" fill="white"/>`,
-  chart: `<path d="M5 19V5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M5 19h14" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/><path d="M7.5 14.5l3.5-4 3 2.5 4.5-5.5" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
-  shield: `<path d="M12 3.5l6.5 2.5v5c0 4.2-2.7 7.4-6.5 9-3.8-1.6-6.5-4.8-6.5-9V6l6.5-2.5z" fill="none" stroke="white" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.2 12l2 2 3.8-4" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
-  spark: `<path d="M12 4l1.7 4.8L18.5 10l-4.8 1.7L12 16.5l-1.7-4.8L5.5 10l4.8-1.2L12 4z" fill="white"/><circle cx="17.5" cy="16.5" r="1.4" fill="white" opacity="0.7"/><circle cx="7" cy="16.5" r="1.1" fill="white" opacity="0.55"/>`,
-  link: `<path d="M10 14a4 4 0 015.7 0l2.3 2.3a4 4 0 01-5.7 5.7l-1-1" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 01-5.7 0L6 7.7A4 4 0 0111.7 2l1 1" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>`,
+  layers: `<path d="M12 4l7 3.5-7 3.5-7-3.5L12 4z" fill="#171717" opacity="0.95"/><path d="M5 12l7 3.5 7-3.5" fill="none" stroke="#171717" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/><path d="M5 16l7 3.5 7-3.5" fill="none" stroke="#171717" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>`,
+  graph: `<circle cx="8" cy="8" r="2.2" fill="#171717"/><circle cx="16.5" cy="10.5" r="2.2" fill="#171717" opacity="0.85"/><circle cx="10.5" cy="17" r="2.2" fill="#171717" opacity="0.7"/><path d="M8 8l8.5 2.5M16.5 10.5l-6 6.5M8 8l2.5 9" stroke="#171717" stroke-width="1.4" fill="none" opacity="0.8"/>`,
+  bolt: `<path d="M13.5 3.5L6.5 13h4l-1.5 7.5L17.5 11h-4l1.5-7.5z" fill="#171717"/>`,
+  chart: `<path d="M5 19V5" stroke="#171717" stroke-width="1.8" stroke-linecap="round"/><path d="M5 19h14" stroke="#171717" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/><path d="M7.5 14.5l3.5-4 3 2.5 4.5-5.5" fill="none" stroke="#171717" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
+  shield: `<path d="M12 3.5l6.5 2.5v5c0 4.2-2.7 7.4-6.5 9-3.8-1.6-6.5-4.8-6.5-9V6l6.5-2.5z" fill="none" stroke="#171717" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.2 12l2 2 3.8-4" fill="none" stroke="#171717" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`,
+  spark: `<path d="M12 4l1.7 4.8L18.5 10l-4.8 1.7L12 16.5l-1.7-4.8L5.5 10l4.8-1.2L12 4z" fill="#171717"/><circle cx="17.5" cy="16.5" r="1.4" fill="#171717" opacity="0.7"/><circle cx="7" cy="16.5" r="1.1" fill="#171717" opacity="0.55"/>`,
+  link: `<path d="M10 14a4 4 0 015.7 0l2.3 2.3a4 4 0 01-5.7 5.7l-1-1" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 01-5.7 0L6 7.7A4 4 0 0111.7 2l1 1" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round"/>`,
 };
 
 for (const [name] of topLangs) {
@@ -259,7 +251,7 @@ for (const s of topStacks) {
   if (s.symbol)
     writeFileSync(
       path.join(LANGS_OUT, `sym-${s.symbol}.svg`),
-      tile(SYMBOLS[s.symbol], "deep")
+      tile(SYMBOLS[s.symbol])
     );
 }
 

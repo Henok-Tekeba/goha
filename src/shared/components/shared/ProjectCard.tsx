@@ -43,13 +43,7 @@ interface ProjectCardProps {
 }
 
 /* Mini trend graph — real daily-download history from goha's snapshots */
-function CardSparkline({
-  points,
-  growth,
-}: {
-  points: number[];
-  growth?: number | null;
-}) {
+function CardSparkline({ points }: { points: number[] }) {
   if (!points || points.length < 2) return null;
   const w = 46;
   const h = 16;
@@ -65,14 +59,13 @@ function CardSparkline({
       return `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
     })
     .join(" ");
-  const up = growth == null || growth >= 0;
   return (
     <svg
       width={w}
       height={h}
       viewBox={`0 0 ${w} ${h}`}
       aria-hidden="true"
-      className={up ? "text-emerald-500" : "text-red-500"}
+      className="text-black/45"
     >
       <path
         d={d}
@@ -199,14 +192,11 @@ export default function ProjectCardComponent({
                   sparkline.points &&
                   sparkline.points.length > 1 && (
                     <span className="mr-1 hidden sm:inline-flex">
-                      <CardSparkline
-                        points={sparkline.points}
-                        growth={growth}
-                      />
+                      <CardSparkline points={sparkline.points} />
                     </span>
                   )}
                 <div className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
-                  <FaDownload className="mr-0.5 size-2.5 text-black/50" />
+                  <FaDownload className="mr-0.5 size-2.5 text-primary" />
                   {isRepositoryLoading ? (
                     <Skeleton className="h-3 w-6" />
                   ) : (
