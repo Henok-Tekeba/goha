@@ -45,9 +45,9 @@ interface ProjectCardProps {
 /* Mini trend graph — real daily-download history from goha's snapshots */
 function CardSparkline({ points }: { points: number[] }) {
   if (!points || points.length < 2) return null;
-  const w = 46;
-  const h = 16;
-  const pad = 2;
+  const w = 120;
+  const h = 38;
+  const pad = 3;
   const min = Math.min(...points);
   const max = Math.max(...points);
   const range = max - min || 1;
@@ -65,13 +65,13 @@ function CardSparkline({ points }: { points: number[] }) {
       height={h}
       viewBox={`0 0 ${w} ${h}`}
       aria-hidden="true"
-      className="text-black/45"
+      className="text-black/50"
     >
       <path
         d={d}
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.6"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -132,6 +132,15 @@ export default function ProjectCardComponent({
               </p>
             </ProjectCardInfo>
           </ProjectCardLeftGroup>
+          {/* goha.et — daily download trend, top-right of the card */}
+          {sparkline && sparkline.points && sparkline.points.length > 1 && (
+            <span
+              className="shrink-0 self-start"
+              title="Downloads, last 7 days"
+            >
+              <CardSparkline points={sparkline.points} />
+            </span>
+          )}
         </ProjectCardHeader>
         <ProjectCardContent>
           <ProjectCardDescription>{description}</ProjectCardDescription>
@@ -188,13 +197,6 @@ export default function ProjectCardComponent({
               )}
 
               <div className="ml-auto flex items-center justify-between space-x-2">
-                {sparkline &&
-                  sparkline.points &&
-                  sparkline.points.length > 1 && (
-                    <span className="mr-1 hidden sm:inline-flex">
-                      <CardSparkline points={sparkline.points} />
-                    </span>
-                  )}
                 <div className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
                   <FaDownload className="mr-0.5 size-2.5 text-primary" />
                   {isRepositoryLoading ? (

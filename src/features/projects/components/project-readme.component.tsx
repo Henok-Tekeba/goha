@@ -1,28 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
-import { HiChevronRight } from "react-icons/hi2";
-import { RxCross2 } from "react-icons/rx";
 import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
-import { Button } from "@/shared/components/ui/button";
-import {
-  readmeFullMarkdownComponents,
-  readmePreviewMarkdownComponents,
-} from "@/shared/components/ui/markdown-components";
-import { Separator } from "@/shared/components/ui/separator";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  sheetManualCloseButtonClassName,
-} from "@/shared/components/ui/sheet";
-import { cn } from "@/shared/lib/utils";
+import { readmeFullMarkdownComponents } from "@/shared/components/ui/markdown-components";
 
 interface ProjectReadmeProps {
   readme: string;
@@ -71,52 +53,8 @@ function resolveReadmeImageUrl(
   }
 }
 
-export default function ProjectReadme({
-  readme,
-  projectTitle,
-  project,
-}: ProjectReadmeProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const previewComponents: Components = {
-    ...(readmePreviewMarkdownComponents as unknown as Components),
-    img: ({ src, alt, width, height }) => (
-      // biome-ignore lint/performance/noImgElement: required for markdown images
-      <img
-        src={resolveReadmeImageUrl(
-          typeof src === "string" ? src : undefined,
-          project?.repoUrl
-        )}
-        alt={alt}
-        width={width}
-        height={height}
-        className="my-3 inline-block h-auto max-w-full rounded border-border"
-      />
-    ),
-    picture: ({ children }) => (
-      <picture className="my-3 inline-block h-auto max-w-full rounded border-border">
-        {children}
-      </picture>
-    ),
-    source: ({ srcSet, media, ...props }) => {
-      const resolvedSrcSet = srcSet
-        ? srcSet
-            .split(",")
-            .map((src) => {
-              const parts = src.trim().split(/\s+/);
-              const url = parts[0];
-              const descriptor = parts.slice(1).join(" ");
-              const resolvedUrl = resolveReadmeImageUrl(url, project?.repoUrl);
-              return descriptor ? `${resolvedUrl} ${descriptor}` : resolvedUrl;
-            })
-            .join(", ")
-        : undefined;
-
-      return <source srcSet={resolvedSrcSet} media={media} {...props} />;
-    },
-  };
-
-  const fullComponents: Components = {
+export default function ProjectReadme({ readme, project }: ProjectReadmeProps) {
+  const components: Components = {
     ...(readmeFullMarkdownComponents as unknown as Components),
     img: ({ src, alt, width, height }) => (
       // biome-ignore lint/performance/noImgElement: required for markdown images
@@ -155,95 +93,14 @@ export default function ProjectReadme({
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <div className="relative mb-14 flex h-[322px] cursor-pointer flex-col rounded-[22px] border border-black/5 bg-white p-5 font-geist transition-colors duration-200 ease-out hover:bg-neutral-50">
-          <div className="flex-1 overflow-hidden leading-7">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-              components={previewComponents}
-            >
-              {readme}
-            </ReactMarkdown>
-          </div>
-          <div className="mt-auto">
-            <Separator className="mb-6" />
-            <span className="flex items-center font-medium text-sm">
-              View README
-              <HiChevronRight className="ml-0.5 size-4 shrink-0 text-muted-foreground" />
-            </span>
-          </div>
-        </div>
-      </SheetTrigger>
-      <SheetContent
-        responsive
-        responsiveWidth={{ desktop: "w-[580px]" }}
-        className="mt-4 mr-4 overflow-hidden rounded-t-[22px] shadow-none md:h-[97vh] md:rounded-[22px]"
+    <div className="max-w-none font-geist text-sm leading-relaxed">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+        components={components}
       >
-        <div className="flex h-full min-h-0 flex-col">
-          <SheetHeader className="sticky top-0 z-50 bg-white">
-            <div className="-mx-6">
-              <div className="px-6 pb-4">
-                <div className="flex items-center justify-between">
-                  <SheetTitle className="truncate text-left font-semibold">
-                    README - {projectTitle}
-                  </SheetTitle>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className={cn(sheetManualCloseButtonClassName)}
-                    onClick={() => setIsOpen(false)}
-                    aria-label="Close"
-                  >
-                    <RxCross2 size={12} />
-                  </Button>
-                </div>
-              </div>
-              <div className="border-muted-black-stroke border-b" />
-            </div>
-          </SheetHeader>
-          <div className="min-h-0 flex-1 overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="my-6 max-w-none font-geist text-sm leading-relaxed">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={fullComponents}
-              >
-                {readme}
-              </ReactMarkdown>
-            </div>
-          </div>
-          <div className="sticky bottom-0 z-50 bg-white">
-            <div className="-mx-6">
-              <div className="border-muted-black-stroke border-t" />
-              <div className="flex items-center justify-end px-6 pt-4">
-                {(() => {
-                  const sourceUrl = project?.repoUrl || "";
-                  const isGitHub = /github\.com/i.test(sourceUrl);
-                  const isGitLab = /gitlab\.com/i.test(sourceUrl);
-                  const label = isGitHub
-                    ? "GitHub"
-                    : isGitLab
-                      ? "GitLab"
-                      : "Repository";
-                  return (
-                    <Button variant="default" asChild>
-                      <Link
-                        href={sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View on {label}
-                      </Link>
-                    </Button>
-                  );
-                })()}
-              </div>
-            </div>
-          </div>
-        </div>
-      </SheetContent>
-    </Sheet>
+        {readme}
+      </ReactMarkdown>
+    </div>
   );
 }
