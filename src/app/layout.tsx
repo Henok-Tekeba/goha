@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
 import { FRONTEND_URL } from "@/config/config";
 
@@ -12,17 +12,19 @@ import "../../public/fonts/font-face.css";
 import "./globals.css";
 import { Providers } from "./providers";
 
-const geistSans = Geist({
+/* Self-hosted variable fonts (same files the reference serves) — no
+   Google Fonts network dependency at build time. OFL licensed. */
+const geistSans = localFont({
+  src: "../fonts/Geist-latin-var.woff2",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
   display: "swap",
 });
 
-const GeistMono = Geist_Mono({
+const GeistMono = localFont({
+  src: "../fonts/GeistMono-latin-var.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
   display: "swap",
 });
 

@@ -4,12 +4,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useMemo } from "react";
 import { HiMiniSquare2Stack } from "react-icons/hi2";
 import { useInView } from "react-intersection-observer";
-import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
 import ProjectDiscoveryHero from "@/features/projects/components/project-discovery-hero.component";
 import { Button } from "@/shared/components/ui/button";
 import { EmptyState } from "@/shared/components/ui/empty-state";
 import { ErrorState } from "@/shared/components/ui/error-state";
-import { BlurredSigninCtaGrid } from "../components/blurred-signin-cta-grid.component";
 import ProjectGrid from "../components/project-grid.component";
 import SkeletonProjectGrid from "../components/skeletons/skeleton-project-grid.component";
 import { projectKeys } from "../hooks/project.keys";
@@ -106,9 +104,6 @@ export default function HomepageView() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentUserQuery = useCurrentUserQuery();
-  const isAuthenticated = !!currentUserQuery.data;
-  const MAX_FREE_PROJECTS = 60;
 
   /** Keep discovery hero at the top on full reload and client navigation to `/`. */
   useLayoutEffect(() => {
@@ -144,37 +139,17 @@ export default function HomepageView() {
     isFetchingNextPage,
     isLoading,
     isError,
-  } = useInfiniteProjectsQuery(
-    { ...filters, published: true },
-    { maxTotalItems: isAuthenticated ? undefined : MAX_FREE_PROJECTS }
-  );
+  } = useInfiniteProjectsQuery({ ...filters, published: true });
 
   // Merge all pages of projects
-  const allProjects = data?.pages.flatMap((page) => page.data) || [];
-  const reachedFreeCap =
-    !isAuthenticated && allProjects.length >= MAX_FREE_PROJECTS;
-  const projects = reachedFreeCap
-    ? allProjects.slice(0, MAX_FREE_PROJECTS)
-    : allProjects;
+  const projects = data?.pages.flatMap((page) => page.data) || [];
 
   // Load next page on scroll
   useEffect(() => {
-    if (
-      inView &&
-      hasNextPage &&
-      !isFetchingNextPage &&
-      (isAuthenticated || !reachedFreeCap)
-    ) {
+    if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
-  }, [
-    inView,
-    hasNextPage,
-    isFetchingNextPage,
-    fetchNextPage,
-    isAuthenticated,
-    reachedFreeCap,
-  ]);
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (isLoading) {
     return (
@@ -227,7 +202,7 @@ export default function HomepageView() {
       initialFilters={filters}
     >
       <ProjectGrid projects={projects} />
-      {hasNextPage && (isAuthenticated || !reachedFreeCap) && (
+      {hasNextPage && (
         <div ref={ref}>
           {isFetchingNextPage ? (
             <div className="my-4 sm:my-5 md:my-6">
@@ -245,13 +220,6 @@ export default function HomepageView() {
             </div>
           )}
         </div>
-      )}
-      {!isAuthenticated && reachedFreeCap && (
-        <BlurredSigninCtaGrid
-          projects={projects}
-          maxShown={MAX_FREE_PROJECTS}
-          ctaHref="/auth/login"
-        />
       )}
     </HomepageLayout>
   );

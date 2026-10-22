@@ -28,9 +28,12 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+      - name: Regenerate frontend fixtures (data/*.json → src/mocks/fixtures)
+        run: node scripts/build-goha-fixtures.mjs
+
       - run: |
           git config user.name "${{ github.repository_owner }}"
           git config user.email "tekebahenok6@gmail.com"
-          git add data/
+          git add data/ src/mocks/fixtures/ public/langs/ public/types/
           git diff --quiet && git diff --staged --quiet || git commit -m "daily scrape $(date +%Y-%m-%d)"
           git push

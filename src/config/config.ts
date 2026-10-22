@@ -1,6 +1,7 @@
-const publicApiUrl = process.env.NEXT_PUBLIC_API_URL ?? "";
+const publicApiUrl = process.env.NEXT_PUBLIC_API_URL ?? "/api";
 const serverApiUrl = process.env.INTERNAL_SERVER_API_URL ?? publicApiUrl;
-const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL ?? "";
+const frontendUrl =
+  process.env.NEXT_PUBLIC_FRONTEND_URL ?? "https://goha-pink.vercel.app";
 
 const isServer = typeof window === "undefined";
 
@@ -12,19 +13,6 @@ const normalizeApiUrl = (url: string): string => {
 };
 
 const normalizedApiUrl = normalizeApiUrl(resolvedApiUrl);
-
-if (!normalizedApiUrl) {
-  const missingEnv = isServer
-    ? "INTERNAL_SERVER_API_URL"
-    : "NEXT_PUBLIC_API_URL";
-  console.warn(`⚠️ ${missingEnv} is not defined! API calls will fail.`);
-}
-
-if (!frontendUrl) {
-  console.warn(
-    "⚠️ NEXT_PUBLIC_FRONTEND_URL is not defined! Frontend will not work."
-  );
-}
 
 export const API_BASE_URL: string = normalizedApiUrl;
 export const FRONTEND_URL: string = frontendUrl;
