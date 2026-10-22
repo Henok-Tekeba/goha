@@ -1,6 +1,6 @@
 "use client";
 
-import { HiMiniExclamationTriangle, HiUsers } from "react-icons/hi2";
+import { HiMiniExclamationTriangle } from "react-icons/hi2";
 
 import TwoColumnLayout from "@/shared/components/layout/two-column-layout.component";
 import { EmptyState } from "@/shared/components/ui/empty-state";
@@ -14,15 +14,9 @@ import {
 } from "@/shared/components/ui/tabs";
 import { useTabNavigation } from "@/shared/hooks/use-tab-navigation.hook";
 
-import ContributingComponent from "../components/contributing.component";
-import ContributorsList from "../components/contributors-list.component";
-import OpenIssuesList from "../components/issues/open-issues-list";
-import RecentOpenIssues from "../components/issues/recent-opent-issues";
-import ProjectCodeOfConduct from "../components/project-code-of-conduct.component";
 import ProjectHero, {
   ProjectMobileHero,
 } from "../components/project-hero.component";
-import ProjectPullRequestList from "../components/project-pull-request-list.component";
 import ProjectReadme from "../components/project-readme.component";
 import ProjectSideBar from "../components/project-side-bar.component";
 import SkeletonProjectDetail from "../components/skeletons/skeleton-project-detail.component";
@@ -39,7 +33,7 @@ export default function ProjectDetailView({
 }: ProjectDetailViewProps) {
   const { data: project, isLoading, isError } = useProjectQuery(projectId);
   const { tab, handleTabChange } = useTabNavigation("overview");
-  const { readme, contributionFile, codeOfConduct } = useDecodedFiles(project);
+  const { readme } = useDecodedFiles(project);
 
   if (!project && isLoading) {
     return <SkeletonProjectDetail />;
@@ -59,6 +53,18 @@ export default function ProjectDetailView({
 
   if (!project) return null;
 
+  const languages: string[] = Array.isArray(
+    project.repositoryDetails?.languages
+  )
+    ? (project.repositoryDetails?.languages as string[])
+    : [];
+  const evaluations = project.evaluations ?? [];
+  const langSlug = (name: string) =>
+    name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
   return (
     <TwoColumnLayout
       sidebar={<ProjectSideBar project={project} />}
@@ -68,38 +74,21 @@ export default function ProjectDetailView({
       <Tabs value={tab} onValueChange={handleTabChange}>
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="contributing">Contributing</TabsTrigger>
-          <TabsTrigger
-            value="open-issues"
-            count={project.repositoryDetails?.openIssuesCount}
-          >
-            Open Issues
-          </TabsTrigger>
-          <TabsTrigger
-            value="pull-requests"
-            count={project.repositoryDetails?.pullRequestsCount}
-          >
-            Pull Requests
-          </TabsTrigger>
-          <TabsTrigger
-            value="contributions"
-            count={(() => {
-              const n = project.repositoryDetails?.contributors?.length ?? 0;
-              return n > 99 ? "99+" : n;
-            })()}
-          >
-            Contributors
-          </TabsTrigger>
+          {evaluations.length > 0 && (
+            <TabsTrigger value="evaluations" count={evaluations.length}>
+              Evaluations
+            </TabsTrigger>
+          )}
+          {languages.length > 0 && (
+            <TabsTrigger value="languages" count={languages.length}>
+              Languages
+            </TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="overview" className="mt-6">
           {(() => {
-            if (
-              project.imagesUrls.length === 0 &&
-              !readme &&
-              (!project.repositoryDetails?.issues ||
-                project.repositoryDetails.issues.length === 0)
-            ) {
+            if (project.imagesUrls.length === 0 && !readme) {
               return (
                 <EmptyState
                   title="No data available"
@@ -126,64 +115,83 @@ export default function ProjectDetailView({
                     }}
                   />
                 )}
-                <RecentOpenIssues
-                  issues={project.repositoryDetails?.issues || []}
-                  projectId={projectId}
-                />
               </>
             );
           })()}
         </TabsContent>
 
-        <TabsContent value="contributing" className="mt-6">
-          {(() => {
-            if (!contributionFile && !codeOfConduct) {
-              return (
-                <EmptyState
-                  title="No guidelines"
-                  description="This project does not have a CONTRIBUTING.md or Code of Conduct file."
-                  icon={HiUsers}
-                />
-              );
-            }
+        {evaluations.length > 0 && (
+          <TabsContent value="evaluations" className="mt-6">
+            <div className="flex flex-col gap-6">
+              {evaluations.map((entry, i) => (
+                <div
+                  key={i}
+                  className="rounded-[12px] border border-muted-black-stroke px-5 pt-4 pb-2"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="font-medium text-primary text-sm tracking-tight">
+                      {entry.task?.name || entry.task?.type || "Evaluation"}
+                    </h3>
+                    <span className="text-muted-foreground text-xs">
+                      {entry.dataset?.name || ""}
+                    </span>
+                  </div>
+                  <table className="mt-3 w-full text-sm">
+                    <tbody>
+                      {(entry.metrics ?? []).map((m, j) => (
+                        <tr
+                          key={j}
+                          className="border-black/5 border-b last:border-b-0"
+                        >
+                          <td className="py-2 pr-4 text-muted-foreground">
+                            {m.name || m.type || "Metric"}
+                          </td>
+                          <td className="py-2 text-right font-medium text-primary tabular-nums">
+                            {typeof m.value === "number" &&
+                            m.value < 1 &&
+                            /wer|cer|error/i.test(m.name || m.type || "")
+                              ? `${(m.value * 100).toFixed(2)}%`
+                              : String(m.value ?? "")}
+                            {m.verified ? (
+                              <span
+                                className="ml-1.5 text-black/40"
+                                title="Verified metric"
+                              >
+                                ✓
+                              </span>
+                            ) : null}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+        )}
 
-            return (
-              <>
-                {contributionFile && (
-                  <ContributingComponent contributionFile={contributionFile} />
-                )}
-                {codeOfConduct && (
-                  <ProjectCodeOfConduct
-                    codeOfConduct={codeOfConduct}
-                    projectTitle={project.title}
-                    project={{
-                      repoUrl: project.repoUrl,
-                    }}
+        {languages.length > 0 && (
+          <TabsContent value="languages" className="mt-6">
+            <div className="flex flex-wrap gap-2">
+              {languages.map((name) => (
+                <span
+                  key={name}
+                  className="inline-flex items-center gap-2 rounded-full border border-muted-black-stroke bg-white py-1 pr-3 pl-1 text-primary text-sm tracking-tight"
+                >
+                  <img
+                    src={`/langs/${langSlug(name)}.svg`}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="rounded-md"
                   />
-                )}
-              </>
-            );
-          })()}
-        </TabsContent>
-
-        <TabsContent value="open-issues" className="mt-6">
-          <OpenIssuesList
-            issues={project.repositoryDetails?.issues || []}
-            projectId={projectId}
-          />
-        </TabsContent>
-
-        <TabsContent value="pull-requests" className="mt-6">
-          <ProjectPullRequestList
-            pullRequests={project.repositoryDetails?.pullRequests || []}
-          />
-        </TabsContent>
-
-        <TabsContent value="contributions" className="mt-6">
-          <ContributorsList
-            contributors={project.repositoryDetails?.contributors || []}
-          />
-        </TabsContent>
+                  {name}
+                </span>
+              ))}
+            </div>
+          </TabsContent>
+        )}
       </Tabs>
     </TwoColumnLayout>
   );

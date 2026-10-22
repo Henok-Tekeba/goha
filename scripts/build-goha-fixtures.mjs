@@ -282,12 +282,6 @@ function readmeForModel(it, badge, langs, paramCount) {
   const lines = [];
   lines.push(`# ${it.name}`);
   lines.push("");
-  lines.push(
-    "> Indexed by goha.et — the Ethiopian AI ecosystem directory." +
-      (badge ? ` **${badge}**` : "") +
-      (langs.length ? ` · ${langs.join(", ")}` : "")
-  );
-  lines.push("");
   lines.push("## At a glance");
   lines.push("");
   lines.push("| | |");
@@ -361,9 +355,11 @@ function readmeForModel(it, badge, langs, paramCount) {
   return Buffer.from(lines.join("\n")).toString("base64");
 }
 
-function readmeSimple(title, body, link) {
+function readmeSimple(title, body, link, linkLabel) {
   return Buffer.from(
-    `# ${title}\n\n${body}\n\n${link ? `[Open source entry](${link}) · ` : ""}[goha.et](https://goha.et)`
+    `# ${title}\n\n${body}\n\n${
+      link ? `[${linkLabel || "Open original"}](${link}) · ` : ""
+    }[goha.et](https://goha.et)`
   ).toString("base64");
 }
 
@@ -426,6 +422,10 @@ for (const src of [
     trending: (it.downloads_monthly ?? 0) > 5000 || (it.likes ?? 0) > 10,
     /* goha ecosystem metrics */
     downloadsMonthly: it.downloads_monthly ?? 0,
+    evaluations:
+      src.kind === "model" && Array.isArray(it.eval_results)
+        ? it.eval_results
+        : [],
     growth: typeof it.growth === "number" ? it.growth : null,
     sparkline:
       it.sparkline &&
@@ -552,7 +552,8 @@ for (const c of companies) {
         ]
           .filter(Boolean)
           .join(" "),
-        c.website
+        c.website,
+        "Open website"
       ),
       contributionFile: undefined,
       cocFile: undefined,
@@ -615,7 +616,8 @@ for (const p of papers) {
         [authorsLine ? `*${authorsLine}*` : null, cleanDesc(p.abstract)]
           .filter(Boolean)
           .join("\n\n"),
-        abs
+        abs,
+        "Open on arXiv"
       ),
       contributionFile: undefined,
       cocFile: undefined,

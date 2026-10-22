@@ -6,6 +6,19 @@ export interface ProjectOwner {
   name: string;
 }
 
+/* goha.et — evaluation entry (from Hugging Face model cards) */
+export interface EvaluationMetric {
+  type?: string;
+  name?: string;
+  value?: number | string;
+  verified?: boolean;
+}
+export interface EvaluationEntry {
+  task?: { type?: string; name?: string };
+  dataset?: { type?: string; name?: string; config?: string; split?: string };
+  metrics?: EvaluationMetric[];
+}
+
 export interface Project {
   id?: string;
   publicId?: string;
@@ -32,6 +45,7 @@ export interface Project {
   downloadsMonthly?: number;
   growth?: number | null;
   sparkline?: { points: number[]; timestamps?: (string | null)[] } | null;
+  evaluations?: EvaluationEntry[];
   createdAt: Date;
   updatedAt: Date;
 }
