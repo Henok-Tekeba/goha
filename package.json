@@ -86,12 +86,6 @@
     "wrangler": "^4.123.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "msw",
-      "workerd",
-      "sharp"
-    ],
     "overrides": {
       "body-parser@>=2.0.0 <2.3.0": "2.3.0",
       "nanoid@<3.3.18": "3.3.18",
