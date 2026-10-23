@@ -12,7 +12,14 @@ import { asset } from "@/shared/lib/asset";
 /* Baking the base path into data-driven asset URLs (logoUrl, iconUrl)
    means consumers need no changes at all. */
 export const projects: Project[] = (rawProjects as unknown as Project[]).map(
-  (p) => ({ ...p, logoUrl: p.logoUrl ? asset(p.logoUrl) : p.logoUrl })
+  (p) => ({
+    ...p,
+    logoUrl: p.logoUrl ? asset(p.logoUrl) : p.logoUrl,
+    projectTechStacks: (p.projectTechStacks ?? []).map((t) => ({
+      ...t,
+      iconUrl: t.iconUrl ? asset(t.iconUrl) : t.iconUrl,
+    })),
+  })
 );
 export const techStacks = rawStacks.map((t) => ({
   ...t,

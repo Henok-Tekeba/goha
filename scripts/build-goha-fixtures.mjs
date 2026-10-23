@@ -196,8 +196,6 @@ mkdirSync(TYPES_OUT, { recursive: true });
 const tile = (
   inner
 ) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <rect x="0" y="0" width="24" height="24" rx="7" fill="#ffffff"/>
-  <rect x="0.5" y="0.5" width="23" height="23" rx="6.5" fill="none" stroke="rgba(0,0,0,0.12)"/>
   ${inner}
 </svg>`;
 

@@ -25,7 +25,14 @@ function fetchJson<T>(path: string): Promise<T> {
 
 export function getAllProjects(): Promise<Project[]> {
   projectsCache ??= fetchJson<Project[]>("/data/projects.json").then((list) =>
-    list.map((p) => ({ ...p, logoUrl: p.logoUrl ? asset(p.logoUrl) : p.logoUrl }))
+    list.map((p) => ({
+      ...p,
+      logoUrl: p.logoUrl ? asset(p.logoUrl) : p.logoUrl,
+      projectTechStacks: (p.projectTechStacks ?? []).map((t) => ({
+        ...t,
+        iconUrl: t.iconUrl ? asset(t.iconUrl) : t.iconUrl,
+      })),
+    }))
   );
   return projectsCache;
 }
