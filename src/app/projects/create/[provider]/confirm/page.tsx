@@ -4,6 +4,12 @@ import { notFound } from "next/navigation";
 import type { provider } from "@/features/projects/stores/project-create.store";
 import StepGitConfirmView from "@/features/projects/views/stepper-views/git/step-git-confirm.view";
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ provider: "github" }, { provider: "gitlab" }];
+}
+
 interface StepConfirmPageProps {
   params: Promise<{
     provider: string;

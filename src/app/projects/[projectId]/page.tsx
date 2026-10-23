@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { FRONTEND_URL } from "@/config/config";
 import { getProject } from "@/features/projects/services/project.service";
 import ProjectDetailView from "@/features/projects/views/project-detail.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
+import { projects } from "@/shared/lib/local-data.server";
 
 type Props = {
   params: Promise<{ projectId: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return projects
+    .filter((p) => p.id)
+    .map((p) => ({ projectId: p.id as string }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { projectId } = await params;
@@ -26,23 +35,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: project.description,
         images: [
           {
-            url: `${projectUrl}/opengraph-image`,
+            url: `${FRONTEND_URL.replace(/\/$/, "")}/illustrations/king.png`,
             width: 1200,
             height: 630,
-            alt: `${project.title} project preview`,
+            alt: `${project.title} — goha.et`,
           },
         ],
         url: projectUrl,
         type: "website",
         siteName: "goha.et",
         locale: "en_US",
-        emails: ["contact@opensourcetogether.com"],
       },
       twitter: {
         card: "summary_large_image",
         title: `${project.title}`,
         description: project.description,
-        images: [`${projectUrl}/opengraph-image`],
+        images: [`${FRONTEND_URL.replace(/\/$/, "")}/illustrations/king.png`],
       },
     };
   } catch (error) {
@@ -65,7 +73,9 @@ export default async function ProjectPage({
 
   return (
     <>
-      <ProjectDetailView projectId={projectId} />
+      <Suspense>
+        <ProjectDetailView projectId={projectId} />
+      </Suspense>
       <CTAFooter
         imageIllustration="/illustrations/winged-angel.png"
         imageIllustrationMobile="/illustrations/winged-angel-mobile.png"

@@ -1,54 +1,37 @@
 import type { Profile } from "@/features/profile/types/profile.type";
-import {
-  ApiError,
-  type ApiRequestContext,
-  apiData,
-} from "@/shared/lib/api-client";
-import { authClient } from "@/shared/lib/auth-client";
 
 import type { AuthProvider } from "../types/auth.type";
 
+/* goha.et: read-only public directory — authentication is not part of the
+   product. Sign-in surfaces keep working visually but resolve as signed-out. */
+
 export async function signInWithProvider(
-  provider: AuthProvider
+  _provider: AuthProvider
 ): Promise<void> {
-  await authClient.signIn.social({
-    provider,
-    callbackURL: `${window.location.origin}/onboarding`,
-  });
+  throw new Error("Authentication is not available on goha.et");
 }
 
 export async function linkProvider(
-  provider: AuthProvider,
-  callbackUrl?: string
+  _provider: AuthProvider,
+  _callbackURL?: string
 ): Promise<void> {
-  await authClient.linkSocial({
-    provider,
-    callbackURL: callbackUrl || `${window.location.origin}/dashboard/settings`,
-  });
+  throw new Error("Authentication is not available on goha.et");
 }
 
-export async function unlinkProvider(providerId: string): Promise<void> {
-  await authClient.unlinkAccount({ providerId });
+export async function unlinkProvider(_providerId: string): Promise<void> {
+  throw new Error("Authentication is not available on goha.et");
 }
 
 export async function signOut(): Promise<void> {
-  await authClient.signOut();
+  return;
 }
 
 export async function deleteAccount(): Promise<void> {
-  await authClient.deleteUser({
-    callbackURL: window.location.origin,
-  });
+  throw new Error("Authentication is not available on goha.et");
 }
 
 export async function getCurrentUser(
-  context: ApiRequestContext = {}
+  _context: unknown = {}
 ): Promise<Profile | null> {
-  try {
-    return await apiData<Profile>("/users/me", context);
-  } catch (error) {
-    // An anonymous session is a valid application state, not a query failure.
-    if (error instanceof ApiError && error.status === 401) return null;
-    throw error;
-  }
+  return null;
 }

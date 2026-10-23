@@ -639,6 +639,18 @@ writeFileSync(
   JSON.stringify(projects, null, 1) + "\n"
 );
 
+/* static data for GitHub Pages deployment (fetched client-side) */
+const PUBLIC_DATA = path.join(ROOT, "public", "data");
+mkdirSync(PUBLIC_DATA, { recursive: true });
+writeFileSync(
+  path.join(PUBLIC_DATA, "projects.json"),
+  JSON.stringify(projects) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "taxonomy.json"),
+  JSON.stringify({ categories, techStacks }) + "\n"
+);
+
 /* regenerate taxonomy.mock.ts with goha's categories + languages */
 const taxTs = `import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";

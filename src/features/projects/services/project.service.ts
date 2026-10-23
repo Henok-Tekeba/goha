@@ -1,9 +1,10 @@
+import type { ApiRequestContext } from "@/shared/lib/api-client";
 import {
-  type ApiRequestContext,
-  apiData,
-  apiRequest,
-  withQueryParams,
-} from "@/shared/lib/api-client";
+  emptyPaginated,
+  filterProjects,
+  paginate,
+  paramsToSearchParams,
+} from "@/shared/lib/project-filtering";
 import type {
   PaginatedResponse,
   PaginationParams,
@@ -31,130 +32,113 @@ export type UserBookmarksQueryParams = PaginationParams;
 
 export type PaginatedProjectsResponse = PaginatedResponse<Project>;
 
-export function getProjects(
+/* goha.et: read-only static data (GitHub Pages architecture) */
+const isServer = typeof window === "undefined";
+
+async function loadAll(): Promise<Project[]> {
+  if (isServer) {
+    const { getAllProjects } = await import("@/shared/lib/local-data.server");
+    return getAllProjects();
+  }
+  const { getAllProjects } = await import("@/shared/lib/local-data.client");
+  return getAllProjects();
+}
+
+export async function getProjects(
   params?: ProjectQueryParams,
-  context: ApiRequestContext = {}
+  _context: ApiRequestContext = {}
 ): Promise<PaginatedProjectsResponse> {
-  return apiRequest<PaginatedProjectsResponse>(
-    withQueryParams("/projects", params),
-    context
+  const all = await loadAll();
+  const sp = paramsToSearchParams(params as unknown as Record<string, unknown>);
+  return paginate(
+    filterProjects(sp, all),
+    params?.page ?? 1,
+    params?.per_page ?? 20
   );
 }
 
-export function getProject(
+export async function getProject(
   projectId: string,
-  context: ApiRequestContext = {}
+  _context: ApiRequestContext = {}
 ): Promise<Project> {
-  return apiData<Project>(`/projects/${projectId}`, context);
+  const all = await loadAll();
+  const project = all.find((p) => p.id === projectId);
+  if (!project) throw new Error(`Project not found: ${projectId}`);
+  return project;
 }
 
-export function getUserProjects(
-  userId: string,
-  params?: UserProjectsQueryParams,
-  context: ApiRequestContext = {}
+export async function getUserProjects(
+  _userId: string,
+  _params?: UserProjectsQueryParams,
+  _context: ApiRequestContext = {}
 ): Promise<PaginatedProjectsResponse> {
-  return apiRequest<PaginatedProjectsResponse>(
-    withQueryParams(`/users/${userId}/projects`, params),
-    context
-  );
+  return emptyPaginated<Project>();
 }
 
-export function getCurrentUserProjects(
+export async function getCurrentUserProjects(
   params?: UserProjectsQueryParams,
   context: ApiRequestContext = {}
 ): Promise<PaginatedProjectsResponse> {
   return getUserProjects("me", params, context);
 }
 
-export function getCurrentUserBookmarks(
-  params?: UserBookmarksQueryParams,
-  context: ApiRequestContext = {}
+export async function getCurrentUserBookmarks(
+  _params?: UserBookmarksQueryParams,
+  _context: ApiRequestContext = {}
 ): Promise<PaginatedProjectsResponse> {
-  return apiRequest<PaginatedProjectsResponse>(
-    withQueryParams("/users/me/bookmarks", params),
-    context
-  );
+  return emptyPaginated<Project>();
 }
 
-export function createProject(input: CreateProjectInput): Promise<Project> {
-  return apiData<Project>("/projects", {
-    method: "POST",
-    json: input,
-  });
+/* Write operations are not available on the read-only directory. */
+const readOnly = (action: string): Promise<never> =>
+  Promise.reject(
+    new Error(`${action} is not available — goha.et is a read-only directory.`)
+  );
+
+export function createProject(_input: CreateProjectInput): Promise<Project> {
+  return readOnly("Creating projects");
 }
 
 export function updateProject(
-  projectId: string,
-  input: UpdateProjectInput
+  _projectId: string,
+  _input: UpdateProjectInput
 ): Promise<Project> {
-  const {
-    logoUrl: _omitLogoUrl,
-    imagesUrls: _omitImagesUrls,
-    ...payload
-  } = input;
-
-  return apiData<Project>(`/projects/${projectId}`, {
-    method: "PATCH",
-    json: payload,
-  });
+  return readOnly("Updating projects");
 }
 
-export function deleteProject(projectId: string): Promise<void> {
-  return apiRequest<void>(`/projects/${projectId}`, {
-    method: "DELETE",
-  });
+export function deleteProject(_projectId: string): Promise<void> {
+  return readOnly("Deleting projects");
 }
 
 export function uploadProjectLogo(
-  projectId: string,
-  file: File
+  _projectId: string,
+  _file: File
 ): Promise<Project> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  return apiData<Project>(`/projects/${projectId}/logo`, {
-    method: "PATCH",
-    body: formData,
-  });
+  return readOnly("Uploading logos");
 }
 
 export function addProjectImage(
-  projectId: string,
-  file: File
+  _projectId: string,
+  _file: File
 ): Promise<Project> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  return apiData<Project>(`/projects/${projectId}/images`, {
-    method: "POST",
-    body: formData,
-  });
+  return readOnly("Uploading images");
 }
 
 export function deleteProjectImage(
-  projectId: string,
-  imageUrl: string
+  _projectId: string,
+  _imageUrl: string
 ): Promise<Project> {
-  return apiData<Project>(`/projects/${projectId}/images`, {
-    method: "DELETE",
-    json: { url: imageUrl },
-  });
+  return readOnly("Deleting images");
 }
 
-export function claimProject(projectId: string): Promise<Project> {
-  return apiData<Project>(`/projects/${projectId}/claims`, {
-    method: "POST",
-  });
+export function claimProject(_projectId: string): Promise<Project> {
+  return readOnly("Claiming projects");
 }
 
-export function addProjectBookmark(projectId: string): Promise<Project> {
-  return apiData<Project>(`/projects/${projectId}/bookmarks`, {
-    method: "POST",
-  });
+export function addProjectBookmark(_projectId: string): Promise<Project> {
+  return readOnly("Bookmarks");
 }
 
-export function deleteProjectBookmark(projectId: string): Promise<void> {
-  return apiRequest<void>(`/projects/${projectId}/bookmarks`, {
-    method: "DELETE",
-  });
+export function deleteProjectBookmark(_projectId: string): Promise<void> {
+  return readOnly("Bookmarks");
 }

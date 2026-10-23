@@ -1,4 +1,5 @@
-import { type ApiRequestContext, apiData } from "@/shared/lib/api-client";
+import type { Project } from "@/features/projects/types/project.type";
+import type { ApiRequestContext } from "@/shared/lib/api-client";
 
 export interface RepositoryDetailsResponse {
   forksCount: number;
@@ -10,12 +11,31 @@ export interface RepositoryDetailsResponse {
   pushed_at?: string | null;
 }
 
-export function getProjectRepositorySummary(
+export async function getProjectRepositorySummary(
   projectId: string,
-  context: ApiRequestContext = {}
+  _context: ApiRequestContext = {}
 ): Promise<RepositoryDetailsResponse> {
-  return apiData<RepositoryDetailsResponse>(
-    `/projects/${projectId}/repository-summary`,
-    context
-  );
+  const isServer = typeof window === "undefined";
+  const loader = isServer
+    ? import("@/shared/lib/local-data.server")
+    : import("@/shared/lib/local-data.client");
+  const { getAllProjects } = await loader;
+  const all = await getAllProjects();
+  const project = all.find((p) => p.id === projectId);
+  if (!project) throw new Error(`Project not found: ${projectId}`);
+
+  const raw = Array.isArray(project.repositoryDetails?.languages)
+    ? (project.repositoryDetails?.languages as unknown as string[])
+    : [];
+  const languages: { [language: string]: number } = {};
+  for (const lang of raw) languages[lang] = 100;
+
+  return {
+    forksCount: project.repositoryDetails?.forksCount ?? 0,
+    openIssuesCount: project.repositoryDetails?.openIssuesCount ?? 0,
+    stars: project.repositoryDetails?.stars ?? 0,
+    languages,
+  };
 }
+
+export type { Project };

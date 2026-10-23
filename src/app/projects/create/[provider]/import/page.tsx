@@ -4,6 +4,12 @@ import { notFound } from "next/navigation";
 import type { provider } from "@/features/projects/stores/project-create.store";
 import StepGitImportView from "@/features/projects/views/stepper-views/git/step-git-import.view";
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ provider: "github" }, { provider: "gitlab" }];
+}
+
 interface StepImportPageProps {
   params: Promise<{
     provider: string;

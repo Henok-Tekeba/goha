@@ -1,47 +1,33 @@
-import { type ApiRequestContext, apiData } from "@/shared/lib/api-client";
+import type { ApiRequestContext } from "@/shared/lib/api-client";
 
 import type { Profile } from "../types/profile.type";
 import type { UpdateProfileInput } from "../validations/profile.schema";
 
+/* goha.et: read-only directory — user profiles are not part of the product. */
 export function getUser(
-  userId: string,
-  context: ApiRequestContext = {}
+  _userId: string,
+  _context: ApiRequestContext = {}
 ): Promise<Profile> {
-  return apiData<Profile>(`/users/${userId}`, context);
+  return Promise.reject(new Error("Profiles are not available on goha.et"));
 }
 
 export function updateProfile(
-  userId: string,
-  input: UpdateProfileInput
+  _userId: string,
+  _input: UpdateProfileInput
 ): Promise<Profile> {
-  return apiData<Profile>(`/users/${userId}`, {
-    method: "PATCH",
-    json: input,
-  });
+  return Promise.reject(new Error("goha.et is a read-only directory"));
 }
 
 export function uploadProfileAvatar(
-  userId: string,
-  file: File
+  _userId: string,
+  _file: File
 ): Promise<Pick<Profile, "image">> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  return apiData<Pick<Profile, "image">>(`/users/${userId}/logo`, {
-    method: "PATCH",
-    body: formData,
-  });
+  return Promise.reject(new Error("goha.et is a read-only directory"));
 }
 
 export function uploadProfileBanner(
-  userId: string,
-  file: File
+  _userId: string,
+  _file: File
 ): Promise<Pick<Profile, "banner">> {
-  const formData = new FormData();
-  formData.append("file", file);
-
-  return apiData<Pick<Profile, "banner">>(`/users/${userId}/banner`, {
-    method: "PATCH",
-    body: formData,
-  });
+  return Promise.reject(new Error("goha.et is a read-only directory"));
 }

@@ -1,61 +1,9 @@
 import type { MetadataRoute } from "next";
 
-import { API_BASE_URL, FRONTEND_URL } from "@/config/config";
+import { FRONTEND_URL } from "@/config/config";
+import { projects } from "@/shared/lib/local-data.server";
 
-import type { Project } from "@/features/projects/types/project.type";
-
-interface PaginatedProjectsResponse {
-  data: Project[];
-  pagination?: {
-    currentPage: number;
-    lastPage: number;
-    perPage: number;
-    total: number;
-  };
-}
-
-async function getTrendingProjects(): Promise<Project[]> {
-  try {
-    const projects: Project[] = [];
-    let currentPage = 1;
-    let hasMorePages = true;
-
-    while (hasMorePages) {
-      const response = await fetch(
-        `${API_BASE_URL}/projects?published=true&trending=true&per_page=100&page=${currentPage}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          next: { revalidate: 3600 },
-        }
-      );
-
-      if (!response.ok) {
-        console.error(
-          `Failed to fetch trending projects for sitemap: ${response.status}`
-        );
-        break;
-      }
-
-      const data: PaginatedProjectsResponse = await response.json();
-      projects.push(...data.data);
-
-      if (data.pagination) {
-        hasMorePages = currentPage < data.pagination.lastPage;
-        currentPage++;
-      } else {
-        hasMorePages = false;
-      }
-    }
-
-    return projects;
-  } catch (error) {
-    console.error("Error fetching trending projects for sitemap:", error);
-    return [];
-  }
-}
+export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -79,19 +27,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const projects = await getTrendingProjects();
-
+  /* goha.et: the committed data IS the source — no fetches at build. */
   const projectRoutes: MetadataRoute.Sitemap = projects
-    .filter(
-      (project) => project.publicId && project.published && project.trending
-    )
+    .filter((project) => project.id && project.published)
     .map((project) => ({
-      url: `${FRONTEND_URL}/projects/${project.publicId}`,
+      url: `${FRONTEND_URL}/projects/${project.id}`,
       lastModified: project.updatedAt
         ? new Date(project.updatedAt)
         : new Date(),
       changeFrequency: "weekly" as const,
-      priority: 0.9,
+      priority: 0.7,
     }));
 
   return [...staticRoutes, ...projectRoutes];
