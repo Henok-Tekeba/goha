@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 
 export default function AuthIllustration() {
@@ -5,7 +6,7 @@ export default function AuthIllustration() {
     <div className="relative h-screen w-full md:h-full">
       {/* Mobile: background illustration as non-intrusive layer */}
       <Image
-        src="/illustrations/knight-background-mobile.png"
+        src={asset("/illustrations/knight-background-mobile.png")}
         alt=""
         aria-hidden
         priority
@@ -16,7 +17,7 @@ export default function AuthIllustration() {
       />
       {/* Desktop: cover full background */}
       <Image
-        src="/illustrations/knight-background.png"
+        src={asset("/illustrations/knight-background.png")}
         alt="Background"
         aria-hidden
         fill

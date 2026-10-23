@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/shared/lib/asset";
 import { HiMiniExclamationTriangle } from "react-icons/hi2";
 
 import TwoColumnLayout from "@/shared/components/layout/two-column-layout.component";
@@ -180,7 +181,7 @@ export default function ProjectDetailView({
                   className="inline-flex items-center gap-2 rounded-full border border-muted-black-stroke bg-white py-1 pr-3 pl-1 text-primary text-sm tracking-tight"
                 >
                   <img
-                    src={`/langs/${langSlug(name)}.svg`}
+                    src={asset(`/langs/${langSlug(name)}.svg`)}
                     alt=""
                     width={20}
                     height={20}

@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
@@ -57,7 +58,7 @@ const ProjectCardImage = React.forwardRef<
   HTMLDivElement,
   ProjectCardImageProps
 >(({ className, src, alt, ...props }, ref) => {
-  let processedSrc = "/icons/empty-project.svg";
+  let processedSrc = asset("/icons/empty-project.svg");
 
   if (typeof src === "string") {
     if (
@@ -152,7 +153,7 @@ const ProjectCardStars = React.forwardRef<
     <span className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px">
       <span className="inline-flex items-center text-[black]/50">{count}</span>
       <Image
-        src="/icons/empty-star.svg"
+        src={asset("/icons/empty-star.svg")}
         alt="emptystarIcon"
         width={13}
         height={13}
@@ -242,7 +243,7 @@ const ProjectCardViewLink = React.forwardRef<
     Voir le projet{" "}
     <Image
       className=""
-      src="/icons/right-arrow.svg"
+      src={asset("/icons/right-arrow.svg")}
       alt="arrowupright"
       width={13}
       height={13}

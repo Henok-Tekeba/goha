@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -101,7 +102,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
           href="/"
           className="flex items-center gap-2 transition-opacity duration-200 ease-out hover:opacity-50"
         >
-          <Image src="/goha-logo.svg" alt="goha.et" width={168} height={40} />
+          <Image src={asset("/goha-logo.svg")} alt="goha.et" width={168} height={40} />
         </Link>
 
         <div className="flex items-center gap-4">
@@ -126,7 +127,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                   className="inline-block w-fit shrink-0"
                 >
                   <Image
-                    src="/goha-logo.svg"
+                    src={asset("/goha-logo.svg")}
                     alt="goha.et"
                     width={168}
                     height={40}

@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -16,18 +17,18 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0a0a0a",
     icons: [
       {
-        src: "/favicon.ico",
+        src: asset("/favicon.ico"),
         sizes: "any",
         type: "image/x-icon",
       },
       {
-        src: "/goha-logo.svg",
+        src: asset("/goha-logo.svg"),
         sizes: "192x192",
         type: "image/svg+xml",
         purpose: "any",
       },
       {
-        src: "/goha-logo.svg",
+        src: asset("/goha-logo.svg"),
         sizes: "512x512",
         type: "image/svg+xml",
         purpose: "maskable",

@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 
 import { FadeIn } from "@/shared/components/motion/fade-in";
@@ -21,7 +22,7 @@ export default function ProjectDiscoveryHero({
       <FadeIn delay={0.1}>
         {/* Desktop / Tablet image */}
         <Image
-          src="/illustrations/traveler.png"
+          src={asset("/illustrations/traveler.png")}
           alt="Bible gauche"
           width={2882}
           height={800}
@@ -33,7 +34,7 @@ export default function ProjectDiscoveryHero({
         />
         {/* Mobile image (no props change, same src, tailored sizing) */}
         <Image
-          src="/illustrations/traveler-mobile.png"
+          src={asset("/illustrations/traveler-mobile.png")}
           alt="Bible gauche"
           width={402}
           height={361}

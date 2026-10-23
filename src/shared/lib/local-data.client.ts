@@ -4,6 +4,7 @@
  */
 
 import type { Project } from "@/features/projects/types/project.type";
+import { asset } from "@/shared/lib/asset";
 import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";
 
@@ -23,7 +24,9 @@ function fetchJson<T>(path: string): Promise<T> {
 }
 
 export function getAllProjects(): Promise<Project[]> {
-  projectsCache ??= fetchJson<Project[]>("/data/projects.json");
+  projectsCache ??= fetchJson<Project[]>("/data/projects.json").then((list) =>
+    list.map((p) => ({ ...p, logoUrl: p.logoUrl ? asset(p.logoUrl) : p.logoUrl }))
+  );
   return projectsCache;
 }
 
@@ -31,6 +34,12 @@ export function getTaxonomyData() {
   taxonomyCache ??= fetchJson<{
     categories: CategoryType[];
     techStacks: TechStackType[];
-  }>("/data/taxonomy.json");
+  }>("/data/taxonomy.json").then((tax) => ({
+    ...tax,
+    techStacks: tax.techStacks.map((t) => ({
+      ...t,
+      iconUrl: t.iconUrl ? asset(t.iconUrl) : t.iconUrl,
+    })),
+  }));
   return taxonomyCache;
 }

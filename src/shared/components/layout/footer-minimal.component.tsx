@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,7 +40,7 @@ export default function FooterMinimal({
             className="flex items-center transition-opacity duration-200 hover:opacity-50"
           >
             <Image
-              src="/goha-logo.svg"
+              src={asset("/goha-logo.svg")}
               alt="goha.et logo"
               width={39}
               height={39}

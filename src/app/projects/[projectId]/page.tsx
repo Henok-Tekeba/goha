@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -77,8 +78,8 @@ export default async function ProjectPage({
         <ProjectDetailView projectId={projectId} />
       </Suspense>
       <CTAFooter
-        imageIllustration="/illustrations/winged-angel.png"
-        imageIllustrationMobile="/illustrations/winged-angel-mobile.png"
+        imageIllustration={asset("/illustrations/winged-angel.png")}
+        imageIllustrationMobile={asset("/illustrations/winged-angel-mobile.png")}
       />
     </>
   );

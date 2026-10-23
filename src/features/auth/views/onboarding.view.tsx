@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -34,7 +35,7 @@ export default function OnboardingView() {
     <div className="relative flex min-h-screen flex-col overflow-hidden">
       <Link href="/" className="absolute top-12 left-1/2 z-10 -translate-x-1/2">
         <Image
-          src="/goha-logo.svg"
+          src={asset("/goha-logo.svg")}
           alt="goha.et logo"
           width={209}
           height={12}

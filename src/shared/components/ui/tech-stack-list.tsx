@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/shared/lib/asset";
 import { AnimatePresence, motion } from "motion/react";
 
 import StackLogo from "@/shared/components/ui/stack-logo";
@@ -46,7 +47,7 @@ export function TechStackList({
             >
               <StackLogo
                 name={tech.name}
-                icon={tech.iconUrl || "/icons/empty-project.svg"}
+                icon={tech.iconUrl || asset("/icons/empty-project.svg")}
                 alt={tech.name}
               />
             </motion.span>

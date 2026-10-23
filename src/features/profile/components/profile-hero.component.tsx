@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { RiLinkM } from "react-icons/ri";
@@ -47,7 +48,7 @@ export function ProfileMobileHero({
       <TooltipRoot>
         <TooltipTrigger asChild>
           <Image
-            src="/icons/early-badge.svg"
+            src={asset("/icons/early-badge.svg")}
             alt="Beta Tester"
             width={20}
             height={20}
@@ -163,7 +164,7 @@ export default function ProfileHero({
       <TooltipRoot>
         <TooltipTrigger asChild>
           <Image
-            src="/icons/early-badge.svg"
+            src={asset("/icons/early-badge.svg")}
             alt="Beta Tester"
             width={20}
             height={20}

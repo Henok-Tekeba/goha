@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import SkeletonProjectGrid from "@/features/projects/components/skeletons/skeleton-project-grid.component";
@@ -29,8 +30,8 @@ export default async function HomePage() {
         </Suspense>
       </main>
       <CTAFooter
-        imageIllustrationMobile="/illustrations/king-mobile.png"
-        imageIllustration="/illustrations/king.png"
+        imageIllustrationMobile={asset("/illustrations/king-mobile.png")}
+        imageIllustration={asset("/illustrations/king.png")}
       />
     </>
   );

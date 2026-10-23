@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import React from "react";
 
@@ -45,7 +46,7 @@ export default function BreadcrumbNavigation({
             {index < items.length - 1 && (
               <BreadcrumbSeparator>
                 <Image
-                  src="/icons/chevron.svg"
+                  src={asset("/icons/chevron.svg")}
                   alt="chevron"
                   width={5}
                   height={5}

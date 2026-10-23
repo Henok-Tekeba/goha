@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import type React from "react";
 
@@ -26,12 +27,12 @@ export type IconName = "download";
 
 const iconFiles: Record<IconName, Record<IconVariant, string | null>> = {
   download: {
-    default: "/icons/download.svg",
-    gray: "/icons/download-gray.svg",
-    white: "/icons/download-white.svg",
-    black: "/icons/download.svg",
-    filled: "/icons/download.svg",
-    outline: "/icons/download.svg",
+    default: asset("/icons/download.svg"),
+    gray: asset("/icons/download-gray.svg"),
+    white: asset("/icons/download-white.svg"),
+    black: asset("/icons/download.svg"),
+    filled: asset("/icons/download.svg"),
+    outline: asset("/icons/download.svg"),
   },
 };
 

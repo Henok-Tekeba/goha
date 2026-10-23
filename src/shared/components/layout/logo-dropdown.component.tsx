@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import { useState } from "react";
 import { RiCheckLine, RiDownloadLine, RiFileCopyLine } from "react-icons/ri";
@@ -16,7 +17,7 @@ export default function LogoDropdown() {
 
   const handleCopySvg = async () => {
     try {
-      const res = await fetch("/goha-logo.svg");
+      const res = await fetch(asset("/goha-logo.svg"));
       const text = await res.text();
       await navigator.clipboard.writeText(text);
       setCopiedSvg(true);
@@ -29,7 +30,7 @@ export default function LogoDropdown() {
 
   const handleDownloadPng = async () => {
     try {
-      const res = await fetch("/goha-logo.svg");
+      const res = await fetch(asset("/goha-logo.svg"));
       const svgText = await res.text();
 
       const img = new window.Image();
@@ -83,7 +84,7 @@ export default function LogoDropdown() {
           aria-label="goha.et Home"
         >
           <Image
-            src="/goha-logo.svg"
+            src={asset("/goha-logo.svg")}
             alt="goha.et logo"
             width={210}
             height={50}

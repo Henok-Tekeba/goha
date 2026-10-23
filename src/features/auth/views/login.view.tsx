@@ -1,5 +1,6 @@
 "use client";
 
+import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,7 +18,7 @@ export default function LoginView() {
       >
         <Image
           className="opacity-100 transition-opacity duration-200 group-hover:opacity-50"
-          src="/goha-logo.svg"
+          src={asset("/goha-logo.svg")}
           alt="goha.et logo"
           width={200}
           height={12}

@@ -1,3 +1,4 @@
+import { asset } from "@/shared/lib/asset";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ProfileView from "@/features/profile/views/profile.view";
@@ -19,8 +20,8 @@ export default function ProfilePage() {
         <ProfileView />
       </Suspense>
       <CTAFooter
-        imageIllustration="/illustrations/footer-profile-desktop.png"
-        imageIllustrationMobile="/illustrations/footer-profile-mobile.png"
+        imageIllustration={asset("/illustrations/footer-profile-desktop.png")}
+        imageIllustrationMobile={asset("/illustrations/footer-profile-mobile.png")}
       />
     </>
   );
