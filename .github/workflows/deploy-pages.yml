@@ -34,8 +34,7 @@ jobs:
       - name: Build static site
         run: pnpm build
         env:
-          NEXT_PUBLIC_BASE_PATH: /goha
-          NEXT_PUBLIC_FRONTEND_URL: https://henok-tekeba.github.io
+          NEXT_PUBLIC_FRONTEND_URL: https://goha.enoch.et
 
       - name: Prepare Pages output
         run: touch out/.nojekyll
