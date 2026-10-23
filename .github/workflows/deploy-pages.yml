@@ -9,7 +9,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  administration: write
 
 concurrency:
   group: github-pages
@@ -40,10 +39,6 @@ jobs:
 
       - name: Prepare Pages output
         run: touch out/.nojekyll
-
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
