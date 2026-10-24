@@ -252,7 +252,13 @@ export default function LeaderboardView() {
         </p>
         {data?.builtAt && (
           <p className="mt-2 text-black/40 text-xs">
-            Table built {new Date(data.builtAt).toISOString().slice(0, 10)}
+            Table built {new Date(data.builtAt).toISOString().slice(0, 10)} ·{" "}
+            <Link
+              href="/lineage"
+              className="underline underline-offset-4 hover:text-primary"
+            >
+              explore the model lineage →
+            </Link>
           </p>
         )}
       </header>

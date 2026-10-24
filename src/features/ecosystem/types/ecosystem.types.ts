@@ -214,6 +214,38 @@ export interface LanguagesPayload {
   data: LanguageRecord[];
 }
 
+/* ---------------- lineage ---------------- */
+
+export interface LineageNode {
+  id: string;
+  name: string;
+  org: string | null;
+  external: boolean;
+  downloads: number;
+  langs: string[];
+  task: string | null;
+  projectId: string | null;
+  family: string;
+  x: number;
+  y: number;
+}
+
+export interface LineageFamily {
+  family: string;
+  top: number;
+  height: number;
+  count: number;
+  models: number;
+}
+
+export interface LineagePayload {
+  nodes: LineageNode[];
+  links: { source: string; target: string }[];
+  families: LineageFamily[];
+  stats: { models: number; foundations: number; families: number };
+  builtAt: string;
+}
+
 export interface OrgRadarAxis {
   axis: string;
   label: string;

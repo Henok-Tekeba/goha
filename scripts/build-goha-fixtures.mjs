@@ -1435,6 +1435,200 @@ writeFileSync(
   JSON.stringify(paperRecords, null, 1) + "\n"
 );
 
+/* ---------- model lineage (family tree) ---------- */
+/* Every model card carries base_model, so the ecosystem can be drawn as a
+   genealogy: external foundations (Llama, Whisper, w2v-BERT…) branching into
+   Ethiopian fine-tunes, and those into further derivations. */
+const FAMILY_RULES = [
+  [/llama/i, "Llama"],
+  [/qwen/i, "Qwen"],
+  [/gemma/i, "Gemma"],
+  [/mistral|mixtral/i, "Mistral"],
+  [/gpt2|gpt-2/i, "GPT-2"],
+  [/whisper/i, "Whisper"],
+  [/w2v-bert|w2v_bert/i, "w2v-BERT"],
+  [/ethio-asr|phoneme-based/i, "Ethio-ASR"],
+  [/trocr|\bocr\b/i, "OCR"],
+  [/arctic-embed|embed/i, "Embeddings"],
+  [/chatterbox/i, "TTS"],
+  [/speecht5|vits|omnivoice|xtts|f5-tts|fish|cosyvoice|bark|tacotron/i, "TTS"],
+  [/wav2vec|w2v|hubert|data2vec|sec2sec/i, "wav2vec"],
+  [/nllb/i, "NLLB"],
+  [/t5|mt5/i, "T5"],
+  [/mms|seamless/i, "MMS"],
+  [/redjackal|vision|vl-base/i, "Vision"],
+  [/wan2|i2v|video/i, "Video"],
+  [/bert|roberta|xlm-r|afro-xlmr|distilbert|electra/i, "BERT family"],
+  [/stable.diffusion|realvis|flux|sdxl/i, "Diffusion"],
+  [/gpt|bloom|falcon|phi|deepseek/i, "Other LLM"],
+];
+const familyOf = (name) => {
+  for (const [re, family] of FAMILY_RULES) if (re.test(name)) return family;
+  return "Other";
+};
+
+const modelById = new Map(models.map((m) => [m.id, m]));
+/* base references sometimes omit the org ("Ethio-ASR-multilingual-600M") —
+   resolve bare names to the indexed id so roots don't split in two */
+const baseNameIndex = new Map();
+for (const m of models) {
+  const short = String(m.name || m.id).toLowerCase();
+  if (!baseNameIndex.has(short)) baseNameIndex.set(short, m.id);
+}
+const lineageNodes = new Map(); /* id -> node */
+const lineageLinks = [];
+
+function lineageNode(id, external) {
+  if (!lineageNodes.has(id)) {
+    const short = String(id).split("/").pop() || id;
+    const indexed = modelById.get(id);
+    lineageNodes.set(id, {
+      id,
+      name: short,
+      org: String(id).split("/")[0] || null,
+      external: Boolean(external),
+      downloads: indexed?.downloads_monthly ?? 0,
+      langs: indexed ? modelLangsOf(indexed) : [],
+      task: indexed?.type_label ?? indexed?.badge ?? null,
+      projectId: entityIdToProjectId.get(id) ?? null,
+    });
+  }
+  return lineageNodes.get(id);
+}
+
+for (const m of models) {
+  const rawBase = m.base_model
+    ? String(m.base_model)
+        .replace(/^https?:\/\/huggingface\.co\//, "")
+        .trim()
+    : null;
+  if (!rawBase) continue;
+  const base = rawBase.includes("/")
+    ? rawBase
+    : (baseNameIndex.get(rawBase.toLowerCase()) ?? rawBase);
+  lineageNode(m.id, false);
+  lineageNode(base, !modelById.has(base));
+  lineageLinks.push({ source: base, target: m.id });
+}
+
+/* depth = longest path from a root; cycle-safe */
+const parentOf = new Map();
+for (const link of lineageLinks) parentOf.set(link.target, link.source);
+const depthCache = new Map();
+function depthOf(id, seen = new Set()) {
+  if (depthCache.has(id)) return depthCache.get(id);
+  if (seen.has(id)) return 0;
+  seen.add(id);
+  const parent = parentOf.get(id);
+  const depth = parent ? depthOf(parent, seen) + 1 : 0;
+  depthCache.set(id, depth);
+  return depth;
+}
+
+const familyOfNode = (node) => {
+  /* walk to the root to name the family */
+  let cur = node;
+  const seen = new Set();
+  while (parentOf.has(cur.id) && !seen.has(cur.id)) {
+    seen.add(cur.id);
+    cur = lineageNodes.get(parentOf.get(cur.id)) ?? cur;
+  }
+  return familyOf(cur.name);
+};
+
+const nodesWithPos = [...lineageNodes.values()].map((node) => ({
+  ...node,
+  depth: depthOf(node.id),
+  family: familyOfNode(node),
+}));
+
+/* deterministic layered layout, grouped into horizontal family bands */
+const FAMILY_ORDER = [
+  "Llama",
+  "Qwen",
+  "Gemma",
+  "Mistral",
+  "GPT-2",
+  "Other LLM",
+  "BERT family",
+  "w2v-BERT",
+  "Ethio-ASR",
+  "wav2vec",
+  "Whisper",
+  "TTS",
+  "T5",
+  "NLLB",
+  "MMS",
+  "Embeddings",
+  "OCR",
+  "Vision",
+  "Video",
+  "Diffusion",
+  "Other",
+];
+const families = [...new Set(nodesWithPos.map((n) => n.family))].sort(
+  (a, b) => FAMILY_ORDER.indexOf(a) - FAMILY_ORDER.indexOf(b)
+);
+
+const COL_W = 300;
+const ROW_H = 72;
+const BAND_GAP = 56;
+let bandTop = 0;
+const familyBands = [];
+for (const family of families) {
+  const members = nodesWithPos.filter((n) => n.family === family);
+  const byDepth = new Map();
+  for (const n of members) {
+    if (!byDepth.has(n.depth)) byDepth.set(n.depth, []);
+    byDepth.get(n.depth).push(n);
+  }
+  let maxRows = 1;
+  for (const [depth, list] of byDepth) {
+    list.sort(
+      (a, b) =>
+        Number(a.external) - Number(b.external) || b.downloads - a.downloads
+    );
+    list.forEach((n, i) => {
+      n.x = depth * COL_W;
+      n.y = bandTop + i * ROW_H;
+    });
+    maxRows = Math.max(maxRows, list.length);
+  }
+  const bandHeight = maxRows * ROW_H;
+  familyBands.push({
+    family,
+    top: bandTop,
+    height: bandHeight,
+    count: members.length,
+    models: members.filter((n) => !n.external).length,
+  });
+  bandTop += bandHeight + BAND_GAP;
+}
+
+const lineage = {
+  nodes: nodesWithPos.map((n) => ({
+    id: n.id,
+    name: n.name,
+    org: n.org,
+    external: n.external,
+    downloads: n.downloads,
+    langs: n.langs,
+    task: n.task,
+    projectId: n.projectId,
+    family: n.family,
+    x: n.x,
+    y: n.y,
+  })),
+  links: lineageLinks,
+  families: familyBands,
+  stats: {
+    models: nodesWithPos.filter((n) => !n.external).length,
+    foundations: nodesWithPos.filter((n) => n.external).length,
+    families: familyBands.length,
+  },
+  builtAt: new Date(buildTime).toISOString(),
+};
+
 /* ---------- charts: growth history (from daily snapshots) ---------- */
 const SNAPSHOTS_DIR = path.join(ROOT, "data", "snapshots");
 const growth = [];
@@ -1561,6 +1755,10 @@ writeFileSync(
     "\n"
 );
 writeFileSync(
+  path.join(PUBLIC_DATA, "lineage.json"),
+  JSON.stringify(lineage) + "\n"
+);
+writeFileSync(
   path.join(PUBLIC_DATA, "top-models-history.json"),
   JSON.stringify({
     rows: topModelHistory,
@@ -1632,5 +1830,6 @@ console.log(
     languages: ${topLangs.map(([n]) => n).join(", ")}
     stacks: ${topStacks.map((s) => s.name).join(", ")}
     ecosystem: activity ${activity.length} · orgs ${orgs.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}
-    charts: growth ${growth.length} days · top models ${topModelHistory.length} days · radar tasks ${radarRows.length}`
+    charts: growth ${growth.length} days · top models ${topModelHistory.length} days · radar tasks ${radarRows.length}
+    lineage: ${lineage.stats.models} models · ${lineage.stats.foundations} foundations · ${lineage.stats.families} families`
 );

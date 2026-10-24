@@ -26,6 +26,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${FRONTEND_URL}/lineage`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${FRONTEND_URL}/activity`,
       lastModified: new Date(),
       changeFrequency: "hourly" as const,

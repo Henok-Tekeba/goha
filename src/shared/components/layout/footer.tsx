@@ -43,6 +43,11 @@ const footerLinks: {
       id: "explore-benchmarks",
     },
     {
+      label: "Model lineage",
+      href: "/lineage",
+      id: "explore-lineage",
+    },
+    {
       label: "Languages",
       href: "/lang",
       id: "explore-languages",

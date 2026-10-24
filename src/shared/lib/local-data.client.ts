@@ -70,6 +70,7 @@ import type {
   LanguageRecord,
   LanguagesPayload,
   Leaderboard,
+  LineagePayload,
   OrgRecord,
   OrgsPayload,
   PaperRecord,
@@ -141,4 +142,8 @@ export function getLanguages(): Promise<LanguageRecord[]> {
   return fetchJsonCached<LanguagesPayload>("/data/languages.json").then(
     (payload) => payload.data
   );
+}
+
+export function getLineage(): Promise<LineagePayload> {
+  return fetchJsonCached<LineagePayload>("/data/lineage.json");
 }
