@@ -44,7 +44,7 @@ export function ProjectMobileHero({ project }: ProjectHeroProps) {
   };
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-card">
       <div className="flex min-w-0 items-center gap-4">
         <Avatar
           src={logoUrlWithCacheBusting}
@@ -143,7 +143,7 @@ export default function ProjectHero({
   };
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-card">
       {!hideHeader && (
         <div>
           <div className="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">

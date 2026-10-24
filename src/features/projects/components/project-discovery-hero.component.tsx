@@ -29,7 +29,7 @@ export default function ProjectDiscoveryHero({
           priority
           fetchPriority="high"
           sizes="(max-width: 768px) 0px, (max-width: 1441px) 100vw, 1441px"
-          className="absolute bottom-6 left-1/2 z-[-1] hidden h-auto w-full max-w-[1441px] -translate-x-1/2 object-contain md:block lg:bottom-3"
+          className="absolute bottom-6 left-1/2 z-[-1] hidden h-auto w-full max-w-[1441px] -translate-x-1/2 object-contain md:block lg:bottom-3 dark:opacity-20"
         />
         {/* Mobile image (no props change, same src, tailored sizing) */}
         <Image
@@ -38,7 +38,7 @@ export default function ProjectDiscoveryHero({
           width={402}
           height={361}
           quality={100}
-          className="absolute bottom-10 left-1/2 z-[-1] h-auto w-[115%] -translate-x-1/2 object-contain sm:bottom-8 md:hidden"
+          className="absolute bottom-10 left-1/2 z-[-1] h-auto w-[115%] -translate-x-1/2 object-contain sm:bottom-8 md:hidden dark:opacity-20"
         />
       </FadeIn>
 

@@ -175,11 +175,11 @@ export default function Footer() {
     <>
       {showShortFooter && (
         <div className="mx-4 mb-8 max-w-6xl md:mx-auto">
-          <FooterMinimal className="relative z-20 block w-full bg-white" />
+          <FooterMinimal className="relative z-20 block w-full bg-card" />
         </div>
       )}
       {!hideFooter && (
-        <footer className="mx-4 mb-8 max-w-6xl bg-white md:mx-auto">
+        <footer className="mx-4 mb-8 max-w-6xl bg-card md:mx-auto">
           <Separator className="mx-auto mb-8 w-11/12 lg:w-full" />
           <div className="flex w-full flex-col items-start gap-10 max-md:pl-3 md:flex-row md:items-start md:justify-between md:gap-12 md:pl-0">
             {/* Left: Logo + copyright */}
@@ -190,6 +190,7 @@ export default function Footer() {
               >
                 <Image
                   src={asset("/goha-logo.svg")}
+                  className="dark:invert"
                   alt="goha logo"
                   width={126}
                   height={30}

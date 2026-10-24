@@ -83,7 +83,7 @@ export default function GithubGraph({ contributionGraph }: GithubGraphProps) {
       <div className="h-full w-full">
         <div>
           <h3 className="mb-2">Contribution Activity</h3>
-          <div className="flex h-[87px] w-full items-center justify-center rounded-lg border border-black/5 p-2">
+          <div className="flex h-[87px] w-full items-center justify-center rounded-lg border border-border p-2">
             <p className="text-gray-500 text-sm">
               No contribution data available
             </p>
@@ -106,7 +106,7 @@ export default function GithubGraph({ contributionGraph }: GithubGraphProps) {
 
         <div
           className={cn(
-            "w-full rounded-md border border-black/5 p-2",
+            "w-full rounded-md border border-border p-2",
             isMobileLayout &&
               "touch-pan-x overflow-x-auto overflow-y-hidden overscroll-x-contain"
           )}
@@ -163,7 +163,7 @@ export default function GithubGraph({ contributionGraph }: GithubGraphProps) {
       {tooltip && (
         <div
           ref={tooltipRef}
-          className="fixed z-50 rounded-lg border border-black/5 bg-white px-3 py-2 text-black text-sm shadow-lg"
+          className="fixed z-50 rounded-lg border border-border bg-card px-3 py-2 text-foreground text-sm shadow-lg"
           style={{
             left: tooltipPosition.x,
             top: tooltipPosition.y,

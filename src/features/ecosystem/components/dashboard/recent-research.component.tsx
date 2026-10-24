@@ -29,7 +29,7 @@ export default function RecentResearch() {
         </Link>
       </div>
 
-      <ul className="rounded-[16px] border border-muted-black-stroke bg-white">
+      <ul className="rounded-[16px] border border-muted-black-stroke bg-card">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <li
@@ -57,7 +57,7 @@ export default function RecentResearch() {
                     alt=""
                     width={16}
                     height={16}
-                    className="mt-0.5 shrink-0 opacity-60"
+                    className="mt-0.5 shrink-0 opacity-60 dark:invert"
                   />
                   <span className="min-w-0 flex-1 truncate text-[13px] text-primary">
                     {paper.title}

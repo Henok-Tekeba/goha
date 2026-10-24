@@ -133,7 +133,7 @@ export function AvatarUpload({
                 "border-2 transition-all duration-200",
                 preview || currentImageUrl
                   ? "border-transparent"
-                  : "border-black/5",
+                  : "border-border",
                 isDragActive &&
                   !isDragReject &&
                   !(preview || currentImageUrl) &&
@@ -145,11 +145,11 @@ export function AvatarUpload({
           </div>
 
           {file ? (
-            <div className="text-[calc(0.875rem+2px)] text-black/50 tracking-normal">
+            <div className="text-[calc(0.875rem+2px)] text-foreground/50 tracking-normal">
               {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
             </div>
           ) : (
-            <p className="text-[calc(0.75rem+2px)] text-black/50 tracking-normal">
+            <p className="text-[calc(0.75rem+2px)] text-foreground/50 tracking-normal">
               {subtitle}
             </p>
           )}

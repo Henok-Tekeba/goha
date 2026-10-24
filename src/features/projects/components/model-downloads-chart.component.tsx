@@ -50,7 +50,7 @@ export default function ModelDownloadsChart({
     first > 0 ? Math.round(((latest - first) / first) * 100) : null;
 
   return (
-    <div className="rounded-[18px] border border-muted-black-stroke bg-white px-5 pt-5 pb-3">
+    <div className="rounded-[18px] border border-muted-black-stroke bg-card px-5 pt-5 pb-3">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <div>
           <h3

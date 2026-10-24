@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import {
   type ChartConfig,
@@ -18,6 +19,7 @@ export default function OrgRadarChart({
   axes: OrgRadarAxis[];
   className?: string;
 }) {
+  const { resolvedTheme } = useTheme();
   const data = useMemo(
     () =>
       axes.map((a) => ({
@@ -38,7 +40,12 @@ export default function OrgRadarChart({
   } satisfies ChartConfig;
 
   return (
-    <EChartsRadarChart data={data} config={chartConfig} className={className}>
+    <EChartsRadarChart
+      key={resolvedTheme}
+      data={data}
+      config={chartConfig}
+      className={className}
+    >
       <EChartsRadarChart.PolarGrid />
       <EChartsRadarChart.PolarAngleAxis dataKey="axis" />
       <EChartsRadarChart.Tooltip />

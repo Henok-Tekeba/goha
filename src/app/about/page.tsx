@@ -54,7 +54,7 @@ export default function AboutPage() {
       <main>
         <div className="mx-auto max-w-3xl px-6">
           <header className="mb-12">
-            <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-[0.08em]">
+            <p className="mb-2 font-medium text-foreground/40 text-xs uppercase tracking-[0.08em]">
               About
             </p>
             <h1
@@ -92,7 +92,7 @@ export default function AboutPage() {
               {STEPS.map((step, index) => (
                 <li
                   key={step.title}
-                  className="flex gap-4 rounded-[14px] border border-muted-black-stroke bg-white px-4 py-3.5"
+                  className="flex gap-4 rounded-[14px] border border-muted-black-stroke bg-card px-4 py-3.5"
                 >
                   <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-secondary text-[11px] text-muted-foreground tabular-nums">
                     {index + 1}
@@ -122,7 +122,7 @@ export default function AboutPage() {
               {PRINCIPLES.map((principle) => (
                 <div
                   key={principle.title}
-                  className="rounded-[14px] border border-muted-black-stroke bg-white px-4 py-3.5"
+                  className="rounded-[14px] border border-muted-black-stroke bg-card px-4 py-3.5"
                 >
                   <p className="font-medium text-primary text-sm tracking-tight">
                     {principle.title}
@@ -170,7 +170,7 @@ export default function AboutPage() {
             </ul>
           </section>
 
-          <section className="mb-12 rounded-[18px] border border-muted-black-stroke bg-white px-5 py-4">
+          <section className="mb-12 rounded-[18px] border border-muted-black-stroke bg-card px-5 py-4">
             <h2 className="font-medium text-primary text-sm tracking-tight">
               Who built this
             </h2>

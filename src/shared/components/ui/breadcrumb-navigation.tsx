@@ -37,7 +37,7 @@ export default function BreadcrumbNavigation({
               ) : (
                 <BreadcrumbLink
                   href={item.href || ""}
-                  className="text-black/50"
+                  className="text-foreground/50"
                 >
                   {item.label}
                 </BreadcrumbLink>

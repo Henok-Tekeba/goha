@@ -6,6 +6,7 @@ import { TooltipComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Skeleton } from "@/shared/components/ui/skeleton";
@@ -49,7 +50,8 @@ function colorFor(family: string): string {
 
 function buildOption(
   nodes: LineageNode[],
-  links: { source: string; target: string }[]
+  links: { source: string; target: string }[],
+  isDark: boolean
 ) {
   const ids = new Set(nodes.map((n) => n.id));
   const filteredLinks = links.filter(
@@ -61,11 +63,13 @@ function buildOption(
     animationDuration: 500,
     animationEasing: "cubicOut" as const,
     tooltip: {
-      backgroundColor: "rgba(255,255,255,0.98)",
-      borderColor: "rgba(0,0,0,0.08)",
+      backgroundColor: isDark
+        ? "rgba(17,17,17,0.98)"
+        : "rgba(255,255,255,0.98)",
+      borderColor: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.08)",
       borderWidth: 1,
       padding: [10, 12],
-      textStyle: { color: "#171717", fontSize: 12 },
+      textStyle: { color: isDark ? "#fafafa" : "#171717", fontSize: 12 },
       extraCssText:
         "box-shadow:0 8px 28px -12px rgba(0,0,0,0.18);border-radius:12px;",
       formatter: (params: unknown) => {
@@ -106,7 +110,11 @@ function buildOption(
             Math.min(30, 9 + Math.sqrt(Math.max(0, n.downloads)) / 7)
           ),
           itemStyle: {
-            color: n.external ? "#ffffff" : colorFor(n.family),
+            color: n.external
+              ? isDark
+                ? "#0a0a0a"
+                : "#ffffff"
+              : colorFor(n.family),
             borderColor: colorFor(n.family),
             borderWidth: n.external ? 2 : 1,
           },
@@ -114,7 +122,7 @@ function buildOption(
             show: nodes.length <= 40 || n.external || n.downloads >= 300,
             position: "right" as const,
             fontSize: 10,
-            color: "#525252",
+            color: isDark ? "#a3a3a3" : "#525252",
             distance: 6,
             formatter: () =>
               n.name.length > 26 ? `${n.name.slice(0, 24)}…` : n.name,
@@ -129,11 +137,15 @@ function buildOption(
         })),
         edgeSymbol: ["none", "arrow"],
         edgeSymbolSize: 4,
-        lineStyle: { color: "#00000026", curveness: 0.12, width: 1 },
+        lineStyle: {
+          color: isDark ? "#ffffff26" : "#00000026",
+          curveness: 0.12,
+          width: 1,
+        },
         emphasis: {
           focus: "adjacency" as const,
           lineStyle: { width: 2, color: "#2b7fff", opacity: 1 },
-          itemStyle: { borderColor: "#171717" },
+          itemStyle: { borderColor: isDark ? "#fafafa" : "#171717" },
         },
       },
     ],
@@ -150,6 +162,7 @@ function escapeHtml(s: string): string {
 
 export default function LineageGraph({ className }: { className?: string }) {
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<echarts.ECharts | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -202,9 +215,10 @@ export default function LineageGraph({ className }: { className?: string }) {
   useEffect(() => {
     const chart = chartRef.current;
     if (!chart || visible.nodes.length === 0) return;
-    chart.setOption(buildOption(visible.nodes, visible.links), {
-      notMerge: true,
-    });
+    chart.setOption(
+      buildOption(visible.nodes, visible.links, resolvedTheme === "dark"),
+      { notMerge: true }
+    );
 
     const onClick = (params: unknown) => {
       const p = params as {
@@ -222,7 +236,7 @@ export default function LineageGraph({ className }: { className?: string }) {
     };
     chart.off("click");
     chart.on("click", onClick);
-  }, [visible, router]);
+  }, [visible, router, resolvedTheme]);
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
@@ -246,12 +260,12 @@ export default function LineageGraph({ className }: { className?: string }) {
               style={{ backgroundColor: colorFor(family.family) }}
             />
             {family.family}
-            <span className="text-black/30">{family.count}</span>
+            <span className="text-foreground/30">{family.count}</span>
           </button>
         ))}
       </div>
 
-      <div className="relative overflow-hidden rounded-[18px] border border-muted-black-stroke bg-white">
+      <div className="relative overflow-hidden rounded-[18px] border border-muted-black-stroke bg-card">
         <div
           ref={containerRef}
           className="h-[560px] w-full"
@@ -261,7 +275,7 @@ export default function LineageGraph({ className }: { className?: string }) {
         {isLoading && (
           <Skeleton className="pointer-events-none absolute inset-0 h-full w-full" />
         )}
-        <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-black/30">
+        <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-foreground/30">
           drag to pan · scroll to zoom · click a node
         </p>
       </div>
@@ -271,7 +285,7 @@ export default function LineageGraph({ className }: { className?: string }) {
           {payload.families.find((f) => f.family === activeFamily)?.models ?? 0}{" "}
           indexed models in the {activeFamily} family — outlined nodes are the
           foundation models they descend from.{" "}
-          <span className="text-black/40">
+          <span className="text-foreground/40">
             {payload.stats.models} models across {payload.stats.families}{" "}
             families in total.
           </span>

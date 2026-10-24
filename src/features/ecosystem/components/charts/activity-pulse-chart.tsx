@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import {
   type ChartConfig,
@@ -27,6 +28,7 @@ export default function ActivityPulseChart({
   className?: string;
   days?: number;
 }) {
+  const { resolvedTheme } = useTheme();
   const { data } = useActivityQuery();
 
   const rows = useMemo(() => {
@@ -54,6 +56,7 @@ export default function ActivityPulseChart({
 
   return (
     <EChartsBarChart
+      key={resolvedTheme}
       data={rows}
       config={chartConfig}
       xDataKey="day"

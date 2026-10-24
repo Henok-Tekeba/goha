@@ -155,7 +155,7 @@ export default function ProjectDetailView({
                       {(entry.metrics ?? []).map((m, j) => (
                         <tr
                           key={j}
-                          className="border-black/5 border-b last:border-b-0"
+                          className="border-border border-b last:border-b-0"
                         >
                           <td className="py-2 pr-4 text-muted-foreground">
                             {m.name || m.type || "Metric"}
@@ -168,7 +168,7 @@ export default function ProjectDetailView({
                               : String(m.value ?? "")}
                             {m.verified ? (
                               <span
-                                className="ml-1.5 text-black/40"
+                                className="ml-1.5 text-foreground/40"
                                 title="Verified metric"
                               >
                                 ✓
@@ -191,14 +191,14 @@ export default function ProjectDetailView({
               {languages.map((name) => (
                 <span
                   key={name}
-                  className="inline-flex items-center gap-2 rounded-full border border-muted-black-stroke bg-white py-1 pr-3 pl-1 text-primary text-sm tracking-tight"
+                  className="inline-flex items-center gap-2 rounded-full border border-muted-black-stroke bg-card py-1 pr-3 pl-1 text-primary text-sm tracking-tight"
                 >
                   <img
                     src={asset(`/langs/${langSlug(name)}.svg`)}
                     alt=""
                     width={20}
                     height={20}
-                    className="rounded-md"
+                    className="rounded-md dark:invert"
                   />
                   {name}
                 </span>

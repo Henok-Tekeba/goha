@@ -7,17 +7,20 @@ import type { ReactNode } from "react";
 
 import { OnboardingRedirect } from "@/features/auth/components/onboarding-redirect.component";
 import { MockSessionToggle } from "@/mocks/provider.mock";
+import { ThemeProvider } from "@/shared/components/theme-provider.component";
 import { getQueryClient } from "@/shared/lib/query-client";
 
 export function Providers({ children }: { children: ReactNode }) {
   const queryClient = getQueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
-      <OnboardingRedirect />
-      <ReactQueryDevtools initialIsOpen={false} />
-      <MockSessionToggle />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
+        <OnboardingRedirect />
+        <ReactQueryDevtools initialIsOpen={false} />
+        <MockSessionToggle />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

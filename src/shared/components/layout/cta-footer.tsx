@@ -25,7 +25,7 @@ export default function CTAFooter({
             fill
             quality={100}
             sizes="100vw"
-            className="object-cover object-right-top"
+            className="object-cover object-right-top dark:opacity-20"
             priority
           />
         </div>
@@ -38,7 +38,7 @@ export default function CTAFooter({
           fill
           quality={100}
           sizes="(min-width: 1280px) 1280px, 100vw"
-          className="object-cover object-right-top md:object-right"
+          className="object-cover object-right-top md:object-right dark:opacity-20"
           priority
           fetchPriority="high"
         />
@@ -53,7 +53,7 @@ export default function CTAFooter({
           <br />
           in Ethiopian AI
         </h1>
-        <p className="mt-5 max-w-[450px] px-2 text-center text-neutral-950 text-sm">
+        <p className="mt-5 max-w-[450px] px-2 text-center text-foreground text-sm">
           goha surfaces every model, dataset, company and paper built for{" "}
           <br className="hidden md:block" /> Ethiopian languages — indexed daily
           and open to everyone.

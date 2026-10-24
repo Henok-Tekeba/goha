@@ -110,6 +110,40 @@
   --sidebar-ring: var(--ost-blue-two);
 }
 
+.dark {
+  color-scheme: dark;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #111111;
+  --card-foreground: #fafafa;
+  --popover: #111111;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #171717;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #fafafa;
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  --muted-black-stroke: #ffffff1a;
+  --accent: #1f1f1f;
+  --accent-foreground: #fafafa;
+  --border: #ffffff1f;
+  --input: #ffffff1f;
+  --ring: var(--ost-blue-two);
+  --destructive: #f43f5e;
+  --destructive-foreground: #1a0509;
+  --success: #22c55e;
+  --success-foreground: #052e12;
+  --sidebar: #111111;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #fafafa;
+  --sidebar-primary-foreground: #171717;
+  --sidebar-accent: #1f1f1f;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #ffffff1f;
+  --sidebar-ring: var(--ost-blue-two);
+}
+
 /* FilterSearchBar apply CTA: slot-style roll + light blur at mid-motion */
 @keyframes filter-btn-label-roll-to-apply {
   0% {

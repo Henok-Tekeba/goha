@@ -252,7 +252,7 @@ export default function FilterSearchBarMobile({
             <button
               type="button"
               className={cn(
-                "inline-flex h-14 w-full shrink-0 items-center justify-between gap-3 rounded-full border border-black/5 bg-white pr-1.5 pl-5 font-medium text-base text-foreground tracking-tight shadow-black/3 shadow-md outline-none backdrop-blur-lg transition-all",
+                "inline-flex h-14 w-full shrink-0 items-center justify-between gap-3 rounded-full border border-border bg-card pr-1.5 pl-5 font-medium text-base text-foreground tracking-tight shadow-black/3 shadow-md outline-none backdrop-blur-lg transition-all",
                 "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
                 "disabled:pointer-events-none disabled:opacity-50"
               )}
@@ -261,7 +261,7 @@ export default function FilterSearchBarMobile({
                 Filter Projects
               </span>
               <span
-                className="flex size-10 shrink-0 items-center justify-center rounded-full bg-black text-white"
+                className="flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground text-white"
                 aria-hidden
               >
                 <HiChevronUp className="size-[18px]" strokeWidth={1.2} />
@@ -283,7 +283,7 @@ export default function FilterSearchBarMobile({
               <button
                 type="button"
                 className={cn(
-                  "shrink-0 rounded-full border border-black/5 p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none",
+                  "shrink-0 rounded-full border border-border p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none",
                   "[&_svg]:pointer-events-none [&_svg]:shrink-0"
                 )}
                 aria-label="Close"

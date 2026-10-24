@@ -26,6 +26,11 @@ export default function StackLogo({
     iconSrcToUse = `/icons/${icon}`;
   }
 
+  /* language glyph tiles are black line art — invert them on dark surfaces;
+     devicon logos are already colored and stay as-is */
+  const isGlyphTile =
+    typeof iconSrcToUse === "string" && iconSrcToUse.includes("/langs/");
+
   return (
     <div className="flex flex-wrap gap-2">
       <div className="flex items-center gap-1">
@@ -34,10 +39,10 @@ export default function StackLogo({
           alt={alt}
           width={width}
           height={height}
-          className="shrink-0"
+          className={isGlyphTile ? "shrink-0 dark:invert" : "shrink-0"}
         />
         {name && (
-          <span className="text-black/70 text-xs md:text-sm">{name}</span>
+          <span className="text-foreground/70 text-xs md:text-sm">{name}</span>
         )}
       </div>
     </div>

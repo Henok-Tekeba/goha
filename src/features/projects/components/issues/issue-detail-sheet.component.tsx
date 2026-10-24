@@ -52,7 +52,7 @@ function SheetHeaderContent({
   onClose: () => void;
 }) {
   return (
-    <SheetHeader className="sticky top-0 z-50 bg-white">
+    <SheetHeader className="sticky top-0 z-50 bg-card">
       <div className="-mx-6">
         <div className="px-6 pb-4">
           <div className="flex items-center justify-between">
@@ -251,7 +251,7 @@ export default function IssueDetailSheet({
               </div>
             </div>
           </div>
-          <div className="sticky bottom-0 z-50 bg-white">
+          <div className="sticky bottom-0 z-50 bg-card">
             <div className="-mx-6">
               <div className="border-muted-black-stroke border-t" />
               <div

@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { useTheme } from "next-themes";
 import {
   type ChartConfig,
   EChartsRadarChart,
@@ -34,6 +35,7 @@ export default function LanguageRadarChart({
 }: {
   className?: string;
 }) {
+  const { resolvedTheme } = useTheme();
   const { data, isLoading } = useQuery({
     queryKey: ["ecosystem", "language-coverage"],
     queryFn: ({ signal }) => withSignal(getLanguageCoverage(), signal),
@@ -41,6 +43,7 @@ export default function LanguageRadarChart({
 
   return (
     <EChartsRadarChart
+      key={resolvedTheme}
       data={data?.rows ?? []}
       config={buildConfig(data?.languages)}
       className={className}

@@ -38,7 +38,7 @@ function FilterItem({ label, value, isDimmed = false }: FilterItemProps) {
       <span className="font-normal text-neutral-500 text-xs">{label}</span>
       <FilterAnimatedValue
         value={value}
-        className="font-medium text-sm tracking-tight transition-colors duration-200 group-hover/trigger:text-black group-data-[state=open]/trigger:text-black"
+        className="font-medium text-sm tracking-tight transition-colors duration-200 group-hover/trigger:text-foreground group-data-[state=open]/trigger:text-foreground"
       />
     </div>
   );
@@ -420,11 +420,12 @@ export default function FilterSearchBar({
         className="hidden h-14 w-[700px] items-center justify-center md:flex [&_button]:focus-visible:border-transparent [&_button]:focus-visible:outline-none [&_button]:focus-visible:ring-0 [&_button]:focus-visible:ring-offset-0"
         role="search"
       >
-        <div className="relative flex h-full w-full items-center rounded-full border border-black/5 bg-white shadow-black/3 shadow-md backdrop-blur-lg hover:rounded-full">
+        <div className="relative flex h-full w-full items-center rounded-full border border-border bg-card shadow-black/3 shadow-md backdrop-blur-lg hover:rounded-full">
           <div
             className={cn(
               "flex h-full w-full items-center rounded-full transition-colors duration-200",
-              barMuted && "rounded-full border-black/[0.035] bg-black/[0.035]"
+              barMuted &&
+                "rounded-full border-border/[0.035] bg-foreground/[0.035]"
             )}
           >
             <div
@@ -435,7 +436,7 @@ export default function FilterSearchBar({
               <div
                 aria-hidden
                 className={cn(
-                  "pointer-events-none absolute top-0 h-full rounded-full bg-white shadow-[0_2px_10px_-3px_rgba(0,0,0,0.03),0_12px_36px_-10px_rgba(0,0,0,0.04)] transition-[opacity,transform,box-shadow] duration-200 ease-out",
+                  "pointer-events-none absolute top-0 h-full rounded-full bg-card shadow-[0_2px_10px_-3px_rgba(0,0,0,0.03),0_12px_36px_-10px_rgba(0,0,0,0.04)] transition-[opacity,transform,box-shadow] duration-200 ease-out",
                   effectiveTarget !== null ? "opacity-100" : "opacity-0"
                 )}
                 style={{
@@ -476,7 +477,7 @@ export default function FilterSearchBar({
 
               <div
                 className={cn(
-                  "z-10 mx-1 h-7 w-px shrink-0 bg-black/10 transition-opacity duration-200 ease-out",
+                  "z-10 mx-1 h-7 w-px shrink-0 bg-foreground/10 transition-opacity duration-200 ease-out",
                   effectiveTarget !== null ? "opacity-0" : "opacity-100"
                 )}
                 aria-hidden
@@ -514,7 +515,7 @@ export default function FilterSearchBar({
 
               <div
                 className={cn(
-                  "z-10 mx-1 h-7 w-px shrink-0 bg-black/10 transition-opacity duration-200 ease-out",
+                  "z-10 mx-1 h-7 w-px shrink-0 bg-foreground/10 transition-opacity duration-200 ease-out",
                   effectiveTarget !== null ? "opacity-0" : "opacity-100"
                 )}
                 aria-hidden

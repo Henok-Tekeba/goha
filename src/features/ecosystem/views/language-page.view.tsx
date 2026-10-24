@@ -24,7 +24,7 @@ function SectionHeading({
         style={{ fontFamily: "Aspekta", fontWeight: 500 }}
       >
         {title}
-        <span className="ml-2 align-middle text-black/30 text-sm tabular-nums">
+        <span className="ml-2 align-middle text-foreground/30 text-sm tabular-nums">
           {count}
         </span>
       </h2>
@@ -82,7 +82,7 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
         <div className="overflow-hidden rounded-[16px] border border-muted-black-stroke">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-muted-black-stroke border-b text-left text-black/40 text-xs">
+              <tr className="border-muted-black-stroke border-b text-left text-foreground/40 text-xs">
                 <th className="px-5 py-2.5 font-medium">Task</th>
                 <th className="px-3 py-2.5 text-right font-medium">Models</th>
                 <th className="px-3 py-2.5 text-right font-medium">Datasets</th>
@@ -95,7 +95,9 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
                 return (
                   <tr
                     key={row.task}
-                    className={total === 0 ? "bg-black/[0.015]" : undefined}
+                    className={
+                      total === 0 ? "bg-foreground/[0.015]" : undefined
+                    }
                   >
                     <td className="px-5 py-2.5 font-medium text-primary text-sm tracking-tight">
                       {row.task}
@@ -104,21 +106,21 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
                       {row.models > 0 ? (
                         row.models
                       ) : (
-                        <span className="text-black/25">—</span>
+                        <span className="text-foreground/25">—</span>
                       )}
                     </td>
                     <td className="px-3 py-2.5 text-right tabular-nums">
                       {row.datasets > 0 ? (
                         row.datasets
                       ) : (
-                        <span className="text-black/25">—</span>
+                        <span className="text-foreground/25">—</span>
                       )}
                     </td>
                     <td className="px-5 py-2.5 text-right tabular-nums">
                       {row.papers > 0 ? (
                         row.papers
                       ) : (
-                        <span className="text-black/25">—</span>
+                        <span className="text-foreground/25">—</span>
                       )}
                     </td>
                   </tr>

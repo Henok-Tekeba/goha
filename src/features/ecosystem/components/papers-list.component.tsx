@@ -54,7 +54,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
           {detailHref ? (
             <Link
               href={detailHref}
-              className="hover:underline hover:decoration-black/20"
+              className="hover:underline hover:decoration-foreground/20"
             >
               {paper.title}
             </Link>
@@ -62,7 +62,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
             paper.title
           )}
         </h3>
-        <div className="flex items-center gap-2 text-black/40 text-xs tabular-nums">
+        <div className="flex items-center gap-2 text-foreground/40 text-xs tabular-nums">
           {paper.year && <span>{paper.year}</span>}
           {paper.arxivId && (
             <span className="hidden sm:inline">
@@ -90,7 +90,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-1 text-black/40 text-xs transition-colors hover:text-primary"
+          className="mt-1 text-foreground/40 text-xs transition-colors hover:text-primary"
         >
           {expanded ? "Show less" : "Show more"}
         </button>
@@ -100,7 +100,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
         {paper.languages.slice(0, 4).map((lang) => (
           <span
             key={lang}
-            className="rounded-full bg-secondary px-2 py-0.5 text-[11px] text-black/60"
+            className="rounded-full bg-secondary px-2 py-0.5 text-[11px] text-foreground/60"
           >
             {lang}
           </span>
@@ -108,7 +108,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
         {paper.tasks.slice(0, 3).map((task) => (
           <span
             key={task}
-            className="rounded-full border border-muted-black-stroke px-2 py-0.5 text-[11px] text-black/60"
+            className="rounded-full border border-muted-black-stroke px-2 py-0.5 text-[11px] text-foreground/60"
           >
             {task}
           </span>
@@ -117,7 +117,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
           {paper.projectId && (
             <Link
               href={`/projects/${paper.projectId}`}
-              className="text-black/40 text-xs transition-colors hover:text-primary"
+              className="text-foreground/40 text-xs transition-colors hover:text-primary"
             >
               Full record →
             </Link>
@@ -127,7 +127,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
               href={paper.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-black/40 text-xs transition-colors hover:text-primary"
+              className="inline-flex items-center gap-1 text-foreground/40 text-xs transition-colors hover:text-primary"
             >
               arXiv
               <HiArrowTopRightOnSquare className="size-3" />
@@ -201,12 +201,12 @@ export default function PapersList() {
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="relative min-w-0 flex-1 md:max-w-sm">
-            <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-black/30" />
+            <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-foreground/30" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search titles, authors, abstracts…"
-              className="rounded-full bg-white pl-9"
+              className="rounded-full bg-card pl-9"
               aria-label="Search research papers"
             />
           </div>
@@ -214,7 +214,7 @@ export default function PapersList() {
             value={sort}
             onChange={(e) => setSort(e.target.value as SortKey)}
             aria-label="Sort papers"
-            className="rounded-full border border-muted-black-stroke bg-white px-3 py-2 text-muted-foreground text-xs tracking-tight"
+            className="rounded-full border border-muted-black-stroke bg-card px-3 py-2 text-muted-foreground text-xs tracking-tight"
           >
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
@@ -235,7 +235,7 @@ export default function PapersList() {
                 active={language === name}
                 onClick={() => setLanguage(language === name ? null : name)}
               >
-                {name} <span className="text-black/30">{count}</span>
+                {name} <span className="text-foreground/30">{count}</span>
               </Chip>
             ))}
           </div>
@@ -248,7 +248,7 @@ export default function PapersList() {
                 active={task === name}
                 onClick={() => setTask(task === name ? null : name)}
               >
-                {name} <span className="text-black/30">{count}</span>
+                {name} <span className="text-foreground/30">{count}</span>
               </Chip>
             ))}
           </div>

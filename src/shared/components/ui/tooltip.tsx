@@ -50,7 +50,7 @@ const tooltipVariants = cva(
       variant: {
         light:
           "border border-border bg-background text-foreground shadow-black/5 shadow-md",
-        dark: "bg-zinc-950 text-white shadow-black/5 shadow-md dark:border dark:border-border dark:bg-zinc-300 dark:text-black",
+        dark: "bg-zinc-950 text-white shadow-black/5 shadow-md dark:border dark:border-border dark:bg-zinc-300 dark:text-foreground",
       },
     },
     defaultVariants: {
@@ -72,7 +72,7 @@ function TooltipContent({
       sideOffset={sideOffset}
       className={cn(
         tooltipVariants({ variant }),
-        "max-w-xs text-black/70",
+        "max-w-xs text-foreground/70",
         className
       )}
       {...props}
@@ -97,7 +97,7 @@ function Tooltip({
     <TooltipProvider delayDuration={delayDuration}>
       <TooltipPrimitive.Root>
         <TooltipTrigger asChild>
-          <HiInformationCircle className="size-6 rounded-full p-1 text-black/70 transition-colors duration-200 hover:bg-gray-50" />
+          <HiInformationCircle className="size-6 rounded-full p-1 text-foreground/70 transition-colors duration-200 hover:bg-gray-50" />
         </TooltipTrigger>
         <TooltipContent variant={variant} side={side}>
           <p>{content}</p>

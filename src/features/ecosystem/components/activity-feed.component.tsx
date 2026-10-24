@@ -49,7 +49,7 @@ function TypeIcon({ event }: { event: ActivityEvent }) {
       alt=""
       width={32}
       height={32}
-      className="size-8 rounded-[10px]"
+      className="size-8 rounded-[10px] dark:invert"
     />
   );
 }
@@ -74,7 +74,7 @@ function EventRow({ event }: { event: ActivityEvent }) {
         <TypeIcon event={event} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-            <p className="font-medium text-primary text-sm tracking-tight group-hover:underline group-hover:decoration-black/20">
+            <p className="font-medium text-primary text-sm tracking-tight group-hover:underline group-hover:decoration-foreground/20">
               {event.title}
             </p>
             <span className="rounded-full border border-muted-black-stroke px-1.5 py-px text-[10px] text-muted-foreground uppercase tracking-wide">
@@ -87,7 +87,7 @@ function EventRow({ event }: { event: ActivityEvent }) {
             </p>
           )}
         </div>
-        <span className="shrink-0 pt-0.5 text-black/40 text-xs tabular-nums">
+        <span className="shrink-0 pt-0.5 text-foreground/40 text-xs tabular-nums">
           {event.ago}
         </span>
       </Link>
@@ -199,7 +199,7 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
       ) : (
         groups.map(([label, items]) => (
           <section key={label} aria-label={label}>
-            <h3 className="mb-2 px-2 font-medium text-black/40 text-xs uppercase tracking-wide md:px-3">
+            <h3 className="mb-2 px-2 font-medium text-foreground/40 text-xs uppercase tracking-wide md:px-3">
               {label}
             </h3>
             <ul className="rounded-[16px] border border-muted-black-stroke">

@@ -87,7 +87,7 @@ export default function ProjectMainEditForm({
                   <Input
                     {...field}
                     placeholder="Project name"
-                    className="bg-white text-primary text-sm"
+                    className="bg-card text-primary text-sm"
                   />
                 </FormControl>
                 <FormMessage />
@@ -110,7 +110,7 @@ export default function ProjectMainEditForm({
                   <Textarea
                     {...field}
                     placeholder="Project description"
-                    className="min-h-[120px] w-full resize-none bg-white text-primary text-sm"
+                    className="min-h-[120px] w-full resize-none bg-card text-primary text-sm"
                   />
                 </FormControl>
                 <FormMessage />

@@ -110,7 +110,7 @@ export function CustomCombobox({
             handleOpenChange(false);
           }}
           className={cn(
-            "cursor-pointer rounded-full border border-black/5 bg-white px-2.5 py-1 font-medium text-foreground text-xs shadow-none transition-colors",
+            "cursor-pointer rounded-full border border-border bg-card px-2.5 py-1 font-medium text-foreground text-xs shadow-none transition-colors",
             disabled ? "pointer-events-none opacity-50" : "hover:bg-muted/60"
           )}
         >
