@@ -54,6 +54,21 @@ pipeline and a careful interface on top of it.
   evaluation set** covering the supported vocabulary (`pnpm test:ask`).
   Free-form prose outside that vocabulary is the known limitation.
 
+### The Gap Report
+
+- **`/gaps`** — a data-cited report on what the ecosystem is missing: empty
+  language × task cells, the most-downloaded models with no published
+  evaluation, assets without licenses, and tasks where research exists but no
+  usable model or dataset does. Recomputed on every scrape.
+
+### Open data & about
+
+- **`/api`** — every surface is backed by a static JSON file under `/data/`;
+  the page documents each endpoint, shows `curl`/`jq` recipes and the `Project`
+  schema, with honest caveats about freshness and derived tags.
+- **`/about`** — why goha exists, how the pipeline works, the principles, what
+  it deliberately does not do, and who built it.
+
 ### Ecosystem surfaces
 
 - **`/orgs`** — 190+ organizations with aggregated public footprints
@@ -140,6 +155,9 @@ Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
 | `/orgs`, `/orgs/[slug]` | organization directory and profiles |
 | `/lang`, `/lang/[slug]` | language index, coverage and gaps |
 | `/activity` | ecosystem feed |
+| `/gaps` | the gap report — empty cells, unmeasured models, licensing |
+| `/about` | mission, pipeline, principles, non-goals |
+| `/api` | open data: endpoints, examples, schema, caveats |
 
 ### Deploy
 
