@@ -168,21 +168,18 @@ export default function LineageGraph({ className }: { className?: string }) {
 
   /* default to the family with the most indexed models — the richest tree */
   const activeFamily = useMemo(() => {
-    if (selected !== null) return selected;
-    return families[0]?.family ?? null;
+    return selected ?? families[0]?.family ?? null;
   }, [selected, families]);
 
   const visible = useMemo(() => {
-    if (!payload) return { nodes: [], links: [] };
-    if (activeFamily === null || selected === null)
-      return { nodes: payload.nodes, links: payload.links };
+    if (!payload || !activeFamily) return { nodes: [], links: [] };
     const nodes = payload.nodes.filter((n) => n.family === activeFamily);
     const ids = new Set(nodes.map((n) => n.id));
     const links = payload.links.filter(
       (l) => ids.has(l.source) && ids.has(l.target)
     );
     return { nodes, links };
-  }, [payload, activeFamily, selected]);
+  }, [payload, activeFamily]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -190,9 +187,12 @@ export default function LineageGraph({ className }: { className?: string }) {
       renderer: "canvas",
     });
     chartRef.current = chart;
+    /* the container can settle after fonts/layout — resize once painted */
+    const raf = requestAnimationFrame(() => chart.resize());
     const onResize = () => chart.resize();
     window.addEventListener("resize", onResize);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
       chart.dispose();
       chartRef.current = null;
@@ -227,31 +227,15 @@ export default function LineageGraph({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       <div className="flex flex-wrap items-center gap-1.5">
-        <button
-          type="button"
-          onClick={() => setSelected(null)}
-          aria-pressed={selected === null}
-          className={cn(
-            "rounded-full border border-muted-black-stroke px-3 py-1.5 text-xs tracking-tight transition-colors",
-            selected === null
-              ? "border-transparent bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-primary"
-          )}
-        >
-          All families
-          <span className="ml-1.5 text-black/30">
-            {payload?.nodes.length ?? 0}
-          </span>
-        </button>
         {families.map((family) => (
           <button
             key={family.family}
             type="button"
             onClick={() => setSelected(family.family)}
-            aria-pressed={selected === family.family}
+            aria-pressed={activeFamily === family.family}
             className={cn(
               "inline-flex items-center gap-1.5 rounded-full border border-muted-black-stroke px-3 py-1.5 text-xs tracking-tight transition-colors",
-              selected === family.family
+              activeFamily === family.family
                 ? "border-transparent bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:text-primary"
             )}
@@ -268,26 +252,29 @@ export default function LineageGraph({ className }: { className?: string }) {
       </div>
 
       <div className="relative overflow-hidden rounded-[18px] border border-muted-black-stroke bg-white">
-        {isLoading ? (
-          <Skeleton className="h-[560px] w-full" />
-        ) : (
-          <div
-            ref={containerRef}
-            className="h-[560px] w-full"
-            role="img"
-            aria-label="Model lineage graph"
-          />
+        <div
+          ref={containerRef}
+          className="h-[560px] w-full"
+          role="img"
+          aria-label="Model lineage graph"
+        />
+        {isLoading && (
+          <Skeleton className="pointer-events-none absolute inset-0 h-full w-full" />
         )}
         <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-black/30">
           drag to pan · scroll to zoom · click a node
         </p>
       </div>
 
-      {activeFamily && selected !== null && payload && (
+      {activeFamily && payload && (
         <p className="text-muted-foreground text-xs">
           {payload.families.find((f) => f.family === activeFamily)?.models ?? 0}{" "}
-          indexed models in the {activeFamily} family — foundations shown as
-          outlined nodes.
+          indexed models in the {activeFamily} family — outlined nodes are the
+          foundation models they descend from.{" "}
+          <span className="text-black/40">
+            {payload.stats.models} models across {payload.stats.families}{" "}
+            families in total.
+          </span>
         </p>
       )}
     </div>
