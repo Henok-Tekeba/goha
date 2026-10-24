@@ -2,7 +2,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
-import { useTheme } from "next-themes";
 import {
   type ChartConfig,
   EChartsAreaChart,
@@ -34,7 +33,6 @@ function buildConfig(
 }
 
 export default function TopModelsChart({ className }: { className?: string }) {
-  const { resolvedTheme } = useTheme();
   const { data, isLoading } = useQuery({
     queryKey: ["ecosystem", "top-models-history"],
     queryFn: ({ signal }) => withSignal(getTopModelHistory(), signal),
@@ -42,7 +40,6 @@ export default function TopModelsChart({ className }: { className?: string }) {
 
   return (
     <EChartsAreaChart
-      key={resolvedTheme}
       data={data?.rows ?? []}
       config={buildConfig(data?.series)}
       xDataKey="date"

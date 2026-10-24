@@ -54,7 +54,7 @@ export function TechStackList({
         </AnimatePresence>
       </div>
       {!techs?.length && emptyText ? (
-        <p className="text-foreground/50 text-sm">{emptyText}</p>
+        <p className="text-black/50 text-sm">{emptyText}</p>
       ) : null}
     </div>
   );

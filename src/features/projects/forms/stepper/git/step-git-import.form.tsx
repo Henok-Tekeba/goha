@@ -130,7 +130,7 @@ export default function StepGitImportForm({
       <div className="relative flex w-full">
         <div
           ref={scrollRef}
-          className={`mb-4 h-[350px] w-full rounded-md border border-border ${
+          className={`mb-4 h-[350px] w-full rounded-md border border-black/4 ${
             hasOverflow ? "overflow-y-auto" : "overflow-hidden"
           }`}
           onScroll={(e) => {
@@ -147,7 +147,7 @@ export default function StepGitImportForm({
           }}
           style={{ scrollbarWidth: "none" }}
         >
-          <div className="flex flex-col divide-y divide-border">
+          <div className="flex flex-col divide-y divide-black/4">
             {isLoading ? (
               <RepositorySkeleton />
             ) : (
@@ -159,11 +159,11 @@ export default function StepGitImportForm({
                   <div
                     key={repo.html_url}
                     className={`flex h-[64px] items-center justify-between gap-4 px-6 transition-colors ${
-                      selected ? "bg-foreground-50" : "hover:bg-gray-50"
+                      selected ? "bg-black-50" : "hover:bg-gray-50"
                     }`}
                   >
                     <div className="min-w-0">
-                      <span className="block truncate font-medium text-foreground text-sm">
+                      <span className="block truncate font-medium text-black text-sm">
                         {path}
                       </span>
                     </div>

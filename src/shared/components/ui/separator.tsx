@@ -24,7 +24,7 @@ function Separator({
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        "shrink-0 bg-foreground/5 data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
+        "shrink-0 bg-black/5 data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
         !(contentPaddingX && orientation === "horizontal") &&
           "data-[orientation=horizontal]:w-full",
         contentPaddingX === 6 &&

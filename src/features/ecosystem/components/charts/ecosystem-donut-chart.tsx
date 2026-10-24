@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useMemo } from "react";
 import {
   type ChartConfig,
@@ -37,7 +36,6 @@ export default function EcosystemDonutChart({
 }: {
   className?: string;
 }) {
-  const { resolvedTheme } = useTheme();
   const { data } = useEcosystemStatsQuery();
 
   const rows = useMemo(() => {
@@ -55,7 +53,6 @@ export default function EcosystemDonutChart({
 
   return (
     <EChartsPieChart
-      key={resolvedTheme}
       data={rows}
       config={chartConfig}
       dataKey="value"

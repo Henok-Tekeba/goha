@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/shared/lib/utils";
 
 export const sheetManualCloseButtonClassName =
-  "border border-border opacity-70 transition-opacity hover:opacity-100 focus-visible:border-transparent focus-visible:ring-0";
+  "border border-black/5 opacity-70 transition-opacity hover:opacity-100 focus-visible:border-transparent focus-visible:ring-0";
 
 const Sheet = SheetPrimitive.Root;
 

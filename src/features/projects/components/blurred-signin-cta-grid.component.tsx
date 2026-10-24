@@ -32,7 +32,7 @@ export function BlurredSigninCtaGrid({
       <div className="pointer-events-none relative z-10 hidden md:block">
         <ProjectGrid projects={desktopProjects} />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[80vh] bg-gradient-to-b from-transparent via-background/70 to-background backdrop-blur-sm md:h-[60vh]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[80vh] bg-gradient-to-b from-transparent via-white/70 to-white backdrop-blur-sm md:h-[60vh]" />
       <div className="absolute inset-x-0 bottom-30 z-20 px-4">
         <div className="b90g-white/ mx-auto max-w-xl py-5 text-center">
           <h3 className="text-balance font-medium text-xl">{message}</h3>

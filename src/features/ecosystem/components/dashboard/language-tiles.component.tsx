@@ -65,7 +65,7 @@ export default function LanguageTiles() {
             <Link
               key={tile.slug}
               href={`/lang/${tile.slug}`}
-              className="flex items-center gap-3 rounded-[16px] border border-muted-black-stroke bg-card px-4 py-3.5 transition-[box-shadow,transform] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_-14px_rgb(0_0_0/0.14)]"
+              className="flex items-center gap-3 rounded-[16px] border border-muted-black-stroke bg-white px-4 py-3.5 transition-[box-shadow,transform] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_-14px_rgb(0_0_0/0.14)]"
             >
               <span
                 className="flex size-9 shrink-0 items-center justify-center rounded-[9px] border border-muted-black-stroke text-base text-primary"

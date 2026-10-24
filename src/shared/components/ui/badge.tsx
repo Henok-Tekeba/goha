@@ -26,7 +26,7 @@ const badgeVariants = cva(
         indigo:
           "border-transparent bg-[#E0E7FF80] text-[#7C86FF] [a&]:hover:bg-[#E0E7FF80]/90",
         white:
-          "border-transparent bg-card text-neutral-500 [a&]:hover:bg-card/80",
+          "border-transparent bg-white text-neutral-500 [a&]:hover:bg-white/80",
       },
     },
     defaultVariants: {

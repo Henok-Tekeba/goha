@@ -98,7 +98,7 @@ export default function ProjectCardComponent({
       className={cn("block h-full outline-none", className)}
       aria-label={`Open ${title}${org ? ` by ${org}` : ""}`}
     >
-      <article className="flex h-full flex-col rounded-[18px] border border-muted-black-stroke bg-card px-5 pt-5 pb-4 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+      <article className="flex h-full flex-col rounded-[18px] border border-muted-black-stroke bg-white px-5 pt-5 pb-4 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
         <header className="flex items-start gap-3">
           <span className="mt-px flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-muted-black-stroke">
             <Image
@@ -106,7 +106,6 @@ export default function ProjectCardComponent({
               alt=""
               width={22}
               height={22}
-              className="dark:invert"
             />
           </span>
           <div className="min-w-0 flex-1">
@@ -133,7 +132,7 @@ export default function ProjectCardComponent({
         <footer className="mt-auto flex items-center gap-3 pt-4 text-[11px] text-muted-foreground tabular-nums">
           {downloads > 0 && (
             <span className="flex items-center gap-1">
-              <FaDownload className="size-2.5 text-foreground/30" />
+              <FaDownload className="size-2.5 text-black/30" />
               <span className="font-medium text-primary">
                 {formatNumberShort(downloads)}
               </span>
@@ -142,7 +141,7 @@ export default function ProjectCardComponent({
           )}
           {stars > 0 && (
             <span className="flex items-center gap-1">
-              <FaStar className="size-2.5 text-foreground/30" />
+              <FaStar className="size-2.5 text-black/30" />
               <span className="font-medium text-primary">
                 {formatNumberShort(stars)}
               </span>

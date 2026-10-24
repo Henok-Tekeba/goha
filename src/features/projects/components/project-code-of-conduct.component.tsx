@@ -42,7 +42,7 @@ export default function ProjectCodeOfConduct({
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <div className="relative flex h-[322px] cursor-pointer flex-col rounded-[22px] border border-border bg-card p-5 font-geist transition-colors duration-300 hover:bg-foreground/5">
+        <div className="relative flex h-[322px] cursor-pointer flex-col rounded-[22px] border border-black/5 bg-white p-5 font-geist transition-colors duration-300 hover:bg-black/5">
           <div className="flex-1 overflow-hidden leading-7">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
@@ -67,7 +67,7 @@ export default function ProjectCodeOfConduct({
         className="mt-4 mr-4 overflow-hidden rounded-t-[22px] md:h-[97vh] md:rounded-[22px]"
       >
         <div className="flex h-full min-h-0 flex-col">
-          <SheetHeader className="sticky top-0 z-50 bg-card">
+          <SheetHeader className="sticky top-0 z-50 bg-white">
             <div className="-mx-6">
               <div className="px-6 pb-4">
                 <div className="flex items-center justify-between">
@@ -99,7 +99,7 @@ export default function ProjectCodeOfConduct({
               </ReactMarkdown>
             </div>
           </div>
-          <div className="sticky bottom-0 z-50 bg-card">
+          <div className="sticky bottom-0 z-50 bg-white">
             <div className="-mx-6">
               <div className="border-muted-black-stroke border-t" />
               <div className="flex items-center justify-end px-6 pt-4">

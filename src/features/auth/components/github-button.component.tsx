@@ -33,7 +33,7 @@ export default function GitHubButton({
       {isLoading ? (
         <div
           className={`size-4 animate-spin rounded-full border-2 ${
-            isOutlineVariant ? "border-border" : "border-white"
+            isOutlineVariant ? "border-black/10" : "border-white"
           } border-t-transparent`}
         />
       ) : (

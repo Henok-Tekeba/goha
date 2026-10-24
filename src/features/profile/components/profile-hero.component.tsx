@@ -87,7 +87,7 @@ export function ProfileMobileHero({
   return (
     <div>
       <div className="relative mb-10 w-full overflow-visible rounded-lg">
-        <div className="relative w-full overflow-hidden rounded-lg border border-border">
+        <div className="relative w-full overflow-hidden rounded-lg border border-black/5">
           <Image
             src={bannerUrlWithCacheBusting || "/new_profile_banner.png"}
             alt={`${name}'s banner`}
@@ -202,7 +202,7 @@ export default function ProfileHero({
   return (
     <div>
       <div className="relative w-full overflow-visible rounded-xl">
-        <div className="relative w-full overflow-hidden rounded-xl border border-border">
+        <div className="relative w-full overflow-hidden rounded-xl border border-black/5">
           <Image
             src={bannerUrlWithCacheBusting || "/new_profile_banner.png"}
             alt={`${name}'s banner`}

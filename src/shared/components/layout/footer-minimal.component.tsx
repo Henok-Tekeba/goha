@@ -24,7 +24,7 @@ export default function FooterMinimal({
 
   return (
     <footer
-      className={cn("relative z-20 hidden w-full bg-card md:block", className)}
+      className={cn("relative z-20 hidden w-full bg-white md:block", className)}
     >
       <Separator className="w-full" />
       <div
@@ -43,7 +43,7 @@ export default function FooterMinimal({
               alt="goha logo"
               width={39}
               height={39}
-              className="h-auto max-h-[39px] w-auto dark:invert"
+              className="h-auto max-h-[39px] w-auto"
             />
           </Link>
 

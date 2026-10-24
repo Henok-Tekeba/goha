@@ -48,7 +48,7 @@ const avatarFallbackVariants = cva(
         purple: "bg-purple-500 text-white",
         pink: "bg-pink-500 text-white",
         indigo: "bg-indigo-500 text-white",
-        yellow: "bg-yellow-500 text-foreground",
+        yellow: "bg-yellow-500 text-black",
         red: "bg-red-500 text-white",
         gray: "bg-gray-500 text-white",
         orange: "bg-orange-500 text-white",

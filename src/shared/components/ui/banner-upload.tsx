@@ -141,7 +141,7 @@ export function BannerUpload({
       <div
         {...getRootProps({
           className: cn(
-            "group relative w-full overflow-hidden rounded-[20px] border border-border transition-all duration-200",
+            "group relative w-full overflow-hidden rounded-[20px] border border-black/5 transition-all duration-200",
             !disabled && "cursor-pointer",
             disabled && "cursor-not-allowed opacity-50"
           ),
@@ -161,7 +161,7 @@ export function BannerUpload({
               type="button"
               size="icon"
               variant="secondary"
-              className="pointer-events-auto size-10 rounded-full bg-foreground/60 text-white hover:bg-foreground/80"
+              className="pointer-events-auto size-10 rounded-full bg-black/60 text-white hover:bg-black/80"
               disabled={disabled}
               onClick={(e) => {
                 e.stopPropagation();
@@ -175,7 +175,7 @@ export function BannerUpload({
                 type="button"
                 size="icon"
                 variant="secondary"
-                className="pointer-events-auto size-10 rounded-full bg-foreground/60 text-white hover:bg-foreground/80"
+                className="pointer-events-auto size-10 rounded-full bg-black/60 text-white hover:bg-black/80"
                 disabled={disabled}
                 onClick={(e) => {
                   e.stopPropagation();

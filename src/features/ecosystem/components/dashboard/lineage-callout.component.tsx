@@ -6,7 +6,7 @@ export default function LineageCallout() {
   return (
     <Link
       href="/lineage"
-      className="group flex flex-col gap-4 rounded-[18px] border border-muted-black-stroke bg-card px-6 py-5 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] md:flex-row md:items-center md:justify-between"
+      className="group flex flex-col gap-4 rounded-[18px] border border-muted-black-stroke bg-white px-6 py-5 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] md:flex-row md:items-center md:justify-between"
     >
       <div className="flex items-center gap-4">
         <span

@@ -28,7 +28,7 @@ export default function ActivityPreview() {
         </Link>
       </div>
 
-      <ul className="rounded-[16px] border border-muted-black-stroke bg-card">
+      <ul className="rounded-[16px] border border-muted-black-stroke bg-white">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <li

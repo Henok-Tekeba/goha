@@ -21,7 +21,7 @@ function Stat({
   detail: string;
 }) {
   return (
-    <div className="rounded-[16px] border border-muted-black-stroke bg-card px-4 py-4">
+    <div className="rounded-[16px] border border-muted-black-stroke bg-white px-4 py-4">
       <p className="font-medium text-2xl text-primary tabular-nums">{value}</p>
       <p className="mt-0.5 text-[13px] text-primary">{label}</p>
       <p className="mt-1 text-muted-foreground text-xs leading-relaxed">
@@ -51,7 +51,7 @@ export default function GapsPage() {
       <main>
         <div className="mx-auto max-w-4xl px-6">
           <header className="mb-10">
-            <p className="mb-2 font-medium text-foreground/40 text-xs uppercase tracking-[0.08em]">
+            <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-[0.08em]">
               Gap report
             </p>
             <h1
@@ -66,7 +66,7 @@ export default function GapsPage() {
               what is publicly published, not estimates. If something is missing
               here, it is missing on Hugging Face, GitHub and arXiv too.
             </p>
-            <p className="mt-2 text-foreground/40 text-xs tabular-nums">
+            <p className="mt-2 text-black/40 text-xs tabular-nums">
               {totalLanguages} languages · {report.tasks.length} tasks ·{" "}
               {report.totalCells} cells analysed
             </p>
@@ -110,10 +110,10 @@ export default function GapsPage() {
               Models + datasets per task. A dash means nothing is indexed; a
               number in parentheses is published papers.
             </p>
-            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-card">
+            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>
-                  <tr className="border-muted-black-stroke border-b text-left text-foreground/40 text-xs">
+                  <tr className="border-muted-black-stroke border-b text-left text-black/40 text-xs">
                     <th className="px-4 py-2.5 font-medium">Language</th>
                     {report.tasks.map((task) => (
                       <th
@@ -154,12 +154,12 @@ export default function GapsPage() {
                           className="px-3 py-2.5 text-right tabular-nums"
                         >
                           {cell.assets === 0 ? (
-                            <span className="text-foreground/25">—</span>
+                            <span className="text-black/25">—</span>
                           ) : (
                             <span className="text-primary">{cell.assets}</span>
                           )}
                           {cell.papers > 0 && (
-                            <span className="ml-1 text-[10px] text-foreground/30">
+                            <span className="ml-1 text-[10px] text-black/30">
                               ({cell.papers})
                             </span>
                           )}
@@ -188,7 +188,7 @@ export default function GapsPage() {
               {[...emptyByLanguage.entries()].map(([language, data]) => (
                 <li
                   key={language}
-                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1.5 rounded-[12px] border border-muted-black-stroke bg-card px-4 py-3"
+                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1.5 rounded-[12px] border border-muted-black-stroke bg-white px-4 py-3"
                 >
                   <Link
                     href={`/lang/${data.slug}`}
@@ -200,7 +200,7 @@ export default function GapsPage() {
                     {data.tasks.map((task) => (
                       <span
                         key={task}
-                        className="rounded-full bg-secondary px-2 py-0.5 text-[11px] text-foreground/60"
+                        className="rounded-full bg-secondary px-2 py-0.5 text-[11px] text-black/60"
                       >
                         {task}
                       </span>
@@ -228,7 +228,7 @@ export default function GapsPage() {
                 {report.researchOnly.map((cell) => (
                   <li
                     key={`${cell.slug}-${cell.task}`}
-                    className="flex items-baseline justify-between gap-3 rounded-[12px] border border-muted-black-stroke bg-card px-4 py-3"
+                    className="flex items-baseline justify-between gap-3 rounded-[12px] border border-muted-black-stroke bg-white px-4 py-3"
                   >
                     <span className="text-primary text-sm">
                       {cell.language}{" "}
@@ -259,7 +259,7 @@ export default function GapsPage() {
               The most-downloaded models that publish no evaluation result.
               Usage without evidence is the ecosystem's quietest risk.
             </p>
-            <ul className="rounded-[16px] border border-muted-black-stroke bg-card">
+            <ul className="rounded-[16px] border border-muted-black-stroke bg-white">
               {report.unmeasured.map((model) => (
                 <li
                   key={model.name}
@@ -302,18 +302,16 @@ export default function GapsPage() {
                 <Link
                   key={`${asset.projectId}-${asset.name}`}
                   href={`/projects/${asset.projectId}`}
-                  className="rounded-full border border-muted-black-stroke bg-card px-3 py-1.5 text-muted-foreground text-xs transition-colors hover:text-primary"
+                  className="rounded-full border border-muted-black-stroke bg-white px-3 py-1.5 text-muted-foreground text-xs transition-colors hover:text-primary"
                 >
                   {asset.name}
-                  <span className="ml-1.5 text-foreground/30">
-                    {asset.kind}
-                  </span>
+                  <span className="ml-1.5 text-black/30">{asset.kind}</span>
                 </Link>
               ))}
             </div>
           </section>
 
-          <section className="mb-16 rounded-[18px] border border-muted-black-stroke bg-card px-5 py-4">
+          <section className="mb-16 rounded-[18px] border border-muted-black-stroke bg-white px-5 py-4">
             <h2 className="font-medium text-primary text-sm tracking-tight">
               Methodology
             </h2>

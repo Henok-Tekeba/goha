@@ -92,7 +92,7 @@ export default function ApiPage() {
       <main>
         <div className="mx-auto max-w-4xl px-6">
           <header className="mb-10">
-            <p className="mb-2 font-medium text-foreground/40 text-xs uppercase tracking-[0.08em]">
+            <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-[0.08em]">
               Open data
             </p>
             <h1
@@ -121,10 +121,10 @@ export default function ApiPage() {
             >
               Endpoints
             </h2>
-            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-card">
+            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>
-                  <tr className="border-muted-black-stroke border-b text-left text-foreground/40 text-xs">
+                  <tr className="border-muted-black-stroke border-b text-left text-black/40 text-xs">
                     <th className="px-4 py-2.5 font-medium">Path</th>
                     <th className="px-4 py-2.5 font-medium">What it holds</th>
                     <th className="px-4 py-2.5 font-medium">Shape</th>
@@ -145,7 +145,7 @@ export default function ApiPage() {
                         {endpoint.what}
                       </td>
                       <td className="px-4 py-2.5 align-top">
-                        <code className="text-[11px] text-foreground/50">
+                        <code className="text-[11px] text-black/50">
                           {endpoint.shape}
                         </code>
                       </td>
@@ -221,7 +221,7 @@ export default function ApiPage() {
 }`}</Code>
           </section>
 
-          <section className="mb-16 rounded-[18px] border border-muted-black-stroke bg-card px-5 py-4">
+          <section className="mb-16 rounded-[18px] border border-muted-black-stroke bg-white px-5 py-4">
             <h2 className="font-medium text-primary text-sm tracking-tight">
               Honest caveats
             </h2>

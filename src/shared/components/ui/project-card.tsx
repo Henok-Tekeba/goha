@@ -150,7 +150,7 @@ const ProjectCardStars = React.forwardRef<
     className={cn("flex items-end justify-center gap-1 text-sm", className)}
     {...props}
   >
-    <span className="flex items-center justify-center gap-1 rounded-[3px] border border-border px-1.5 py-px">
+    <span className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px">
       <span className="inline-flex items-center text-[black]/50">{count}</span>
       <Image
         src={asset("/icons/empty-star.svg")}
@@ -196,7 +196,7 @@ const ProjectCardDivider = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("mb-4 border-border border-t", className)}
+    className={cn("mb-4 border-black/3 border-t", className)}
     {...props}
   />
 ));
@@ -235,7 +235,7 @@ const ProjectCardViewLink = React.forwardRef<
     ref={linkRef || ref}
     href={`/projects/${projectId}`}
     className={cn(
-      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-foreground/30 text-xs tracking-tighter transition-opacity hover:opacity-80",
+      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-black/30 text-xs tracking-tighter transition-opacity hover:opacity-80",
       className
     )}
     {...props}
@@ -263,7 +263,7 @@ const ProjectCardViewText = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-foreground/30 text-xs tracking-tighter",
+      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-black/30 text-xs tracking-tighter",
       className
     )}
     {...props}

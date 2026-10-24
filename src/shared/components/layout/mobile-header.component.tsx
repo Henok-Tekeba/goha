@@ -14,7 +14,6 @@ import {
   HiOutlineChartBar,
   HiOutlineDocumentText,
   HiOutlineLanguage,
-  HiOutlineMoon,
   HiOutlineShare,
   HiOutlineSparkles,
   HiPlus,
@@ -27,7 +26,6 @@ import { toast } from "sonner";
 import { useLogoutMutation } from "@/features/auth/hooks/auth.mutations";
 import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
 import SearchCommand from "@/features/projects/components/search-command.component";
-import ThemeToggle from "@/shared/components/layout/theme-toggle.component";
 import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -99,7 +97,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
   return (
     <div className="relative sticky top-0 z-40 md:hidden">
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-background to-transparent"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white to-transparent"
         aria-hidden
       />
       <div
@@ -113,7 +111,6 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
         >
           <Image
             src={asset("/goha-logo.svg")}
-            className="dark:invert"
             alt="goha"
             width={168}
             height={40}
@@ -143,7 +140,6 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                 >
                   <Image
                     src={asset("/goha-logo.svg")}
-                    className="dark:invert"
                     alt="goha"
                     width={168}
                     height={40}
@@ -174,7 +170,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                         onClick={handleLinkClick}
                         className={`flex items-center gap-2 rounded-lg py-2 pl-2 font-medium text-sm transition hover:bg-accent ${
                           active
-                            ? "bg-accent text-foreground"
+                            ? "bg-accent text-black"
                             : "text-muted-foreground"
                         }`}
                       >
@@ -183,13 +179,6 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                       </Link>
                     );
                   })}
-                  <div className="flex items-center justify-between gap-2 rounded-lg py-1 pl-2">
-                    <span className="flex items-center gap-2 font-medium text-muted-foreground text-sm">
-                      <HiOutlineMoon className="size-4" />
-                      Theme
-                    </span>
-                    <ThemeToggle />
-                  </div>
                   <a
                     href={EXTERNAL_LINKS.GITHUB_REPO}
                     target="_blank"
@@ -226,7 +215,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                             />
                           </div>
                           <div className="flex flex-col truncate">
-                            <p className="mr-10 truncate font-medium text-foreground text-sm">
+                            <p className="mr-10 truncate font-medium text-black text-sm">
                               {currentUser?.name}
                             </p>
                             <p className="mr-10 truncate text-muted-foreground text-xs">

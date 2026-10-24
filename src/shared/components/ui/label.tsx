@@ -29,7 +29,7 @@ function Label({
       {...props}
     >
       {children}
-      {required && <span className="-ml-1 text-foreground/50">*</span>}
+      {required && <span className="-ml-1 text-black/50">*</span>}
       {tooltip && (
         <span className="-ml-1">
           <Tooltip content={tooltip} />

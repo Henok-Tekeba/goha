@@ -10,7 +10,7 @@ export default function DashboardHeading({
       <div className="flex items-center gap-1">
         <h1 className="text-xl">{title}</h1>
       </div>
-      <p className="text-foreground/70 text-sm">{description}</p>
+      <p className="text-black/70 text-sm">{description}</p>
     </div>
   );
 }

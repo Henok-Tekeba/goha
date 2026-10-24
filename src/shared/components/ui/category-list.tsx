@@ -60,7 +60,7 @@ export function CategoryList({
         </AnimatePresence>
       </div>
       {!categories?.length && emptyText ? (
-        <p className="text-foreground/50 text-sm">{emptyText}</p>
+        <p className="text-black/50 text-sm">{emptyText}</p>
       ) : null}
     </div>
   );

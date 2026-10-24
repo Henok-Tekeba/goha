@@ -59,7 +59,7 @@ export default function ContributingComponent({
       {showReadMore && (
         <>
           {!isExpanded && (
-            <div className="pointer-events-none absolute right-0 bottom-0 left-0 h-24 bg-gradient-to-t from-background/50 to-transparent" />
+            <div className="pointer-events-none absolute right-0 bottom-0 left-0 h-24 bg-gradient-to-t from-white/50 to-transparent" />
           )}
           <div className="mt-4 flex justify-center">
             <Button

@@ -2,7 +2,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
-import { useTheme } from "next-themes";
 import {
   type ChartConfig,
   EChartsAreaChart,
@@ -32,7 +31,6 @@ export default function EcosystemGrowthChart({
 }: {
   className?: string;
 }) {
-  const { resolvedTheme } = useTheme();
   const { data, isLoading } = useQuery({
     queryKey: ["ecosystem", "growth"],
     queryFn: ({ signal }) => withSignal(getGrowthHistory(), signal),
@@ -40,7 +38,6 @@ export default function EcosystemGrowthChart({
 
   return (
     <EChartsAreaChart
-      key={resolvedTheme}
       data={(data?.data ?? []) as unknown as Record<string, unknown>[]}
       config={chartConfig}
       xDataKey="date"

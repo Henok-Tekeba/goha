@@ -55,11 +55,9 @@ function ExternalRow({
         </div>
         <span className="flex shrink-0 items-center gap-2 pt-0.5">
           {meta && (
-            <span className="text-foreground/40 text-xs tabular-nums">
-              {meta}
-            </span>
+            <span className="text-black/40 text-xs tabular-nums">{meta}</span>
           )}
-          <HiArrowTopRightOnSquare className="size-3.5 text-foreground/20 transition-colors group-hover:text-primary" />
+          <HiArrowTopRightOnSquare className="size-3.5 text-black/20 transition-colors group-hover:text-primary" />
         </span>
       </a>
     </li>
@@ -72,7 +70,7 @@ function StatBox({ value, label }: { value: number; label: string }) {
       <p className="font-medium text-primary text-sm tabular-nums">
         {value.toLocaleString("en")}
       </p>
-      <p className="text-[11px] text-foreground/40">{label}</p>
+      <p className="text-[11px] text-black/40">{label}</p>
     </div>
   );
 }
@@ -198,7 +196,7 @@ export default function OrgDetailView({
               <Link
                 key={lang}
                 href={`/?techStacks=${encodeURIComponent(lang)}`}
-                className="rounded-full border border-muted-black-stroke bg-card px-2.5 py-1 text-muted-foreground text-xs transition-colors hover:text-primary"
+                className="rounded-full border border-muted-black-stroke bg-white px-2.5 py-1 text-muted-foreground text-xs transition-colors hover:text-primary"
               >
                 {lang}
               </Link>

@@ -61,7 +61,7 @@ export default function EcosystemStatsBand() {
               className="inline-flex items-center gap-2.5"
             >
               {i > 0 && (
-                <span aria-hidden className="text-foreground/20">
+                <span aria-hidden className="text-black/20">
                   ·
                 </span>
               )}
@@ -76,7 +76,7 @@ export default function EcosystemStatsBand() {
               </Link>
             </span>
           ))}
-          <span aria-hidden className="text-foreground/20">
+          <span aria-hidden className="text-black/20">
             —
           </span>
           <Freshness indexedAt={data.indexedAt} />

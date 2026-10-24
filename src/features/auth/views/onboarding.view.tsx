@@ -39,7 +39,7 @@ export default function OnboardingView() {
           alt="goha logo"
           width={209}
           height={12}
-          className="max-h-[16px] lg:max-h-[25px] dark:invert"
+          className="max-h-[16px] lg:max-h-[25px]"
         />
       </Link>
 

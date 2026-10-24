@@ -1,11 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import {
   type ChartConfig,
   EChartsBarChart,
 } from "@/components/evilcharts/charts/echarts-bar-chart";
-
 import type { LeaderboardRow } from "../../types/ecosystem.types";
 
 const chartConfig = {
@@ -25,7 +23,6 @@ export default function WerBarChart({
   rows: LeaderboardRow[];
   className?: string;
 }) {
-  const { resolvedTheme } = useTheme();
   const data = rows
     .filter((row) => row.metricType === "wer" && row.value != null)
     .slice(0, 12)
@@ -36,7 +33,6 @@ export default function WerBarChart({
 
   return (
     <EChartsBarChart
-      key={resolvedTheme}
       data={data}
       config={chartConfig}
       layout="horizontal"

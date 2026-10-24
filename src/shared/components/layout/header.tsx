@@ -9,7 +9,6 @@ import GithubStarsButton from "@/shared/components/layout/github-stars-button.co
 import HeaderBreadcrumb from "@/shared/components/layout/header-breadcrumb.component";
 import LogoDropdown from "@/shared/components/layout/logo-dropdown.component";
 import { MobileHeader } from "@/shared/components/layout/mobile-header.component";
-import ThemeToggle from "@/shared/components/layout/theme-toggle.component";
 import { asset } from "@/shared/lib/asset";
 import "@/shared/components/ui/breadcrumb-navigation";
 
@@ -83,7 +82,7 @@ export default function Header({ githubStars }: HeaderProps) {
 
       <header className="relative sticky top-0 z-40 hidden justify-between px-10 pt-4 pb-9 md:flex">
         <div
-          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-background to-transparent"
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white to-transparent"
           aria-hidden
         />
         <div
@@ -101,7 +100,6 @@ export default function Header({ githubStars }: HeaderProps) {
             >
               <Image
                 src={asset("/goha-logo.svg")}
-                className="dark:invert"
                 alt="goha logo"
                 width={210}
                 height={50}
@@ -174,7 +172,6 @@ export default function Header({ githubStars }: HeaderProps) {
             <SkeletonUserDropdown />
           ) : (
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <a
                 href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`}
                 target="_blank"

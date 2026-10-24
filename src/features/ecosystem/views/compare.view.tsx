@@ -93,7 +93,7 @@ function ModelPicker({
       <PopoverTrigger asChild>
         <button
           type="button"
-          className="flex h-11 w-full items-center justify-between gap-2 rounded-[12px] border border-muted-black-stroke bg-card px-3.5 text-left text-sm transition-colors hover:bg-secondary/50"
+          className="flex h-11 w-full items-center justify-between gap-2 rounded-[12px] border border-muted-black-stroke bg-white px-3.5 text-left text-sm transition-colors hover:bg-secondary/50"
         >
           <span className="flex min-w-0 items-center gap-2">
             <span
@@ -168,7 +168,7 @@ function SpecRow({
               : "py-2.5 pr-4 align-top text-primary text-sm tabular-nums"
           }
         >
-          {value ?? <span className="text-foreground/25">—</span>}
+          {value ?? <span className="text-black/25">—</span>}
         </td>
       ))}
     </tr>
@@ -269,7 +269,7 @@ export default function CompareView() {
           return (
             <div key={i} className="flex items-center gap-2">
               {model ? (
-                <div className="flex h-11 w-full items-center justify-between gap-2 rounded-[12px] border border-muted-black-stroke bg-card px-3.5">
+                <div className="flex h-11 w-full items-center justify-between gap-2 rounded-[12px] border border-muted-black-stroke bg-white px-3.5">
                   <span className="flex min-w-0 items-center gap-2">
                     <span
                       aria-hidden
@@ -287,7 +287,7 @@ export default function CompareView() {
                     type="button"
                     onClick={() => removeModel(model.id as string)}
                     aria-label={`Remove ${model.title}`}
-                    className="shrink-0 text-foreground/30 transition-colors hover:text-primary"
+                    className="shrink-0 text-black/30 transition-colors hover:text-primary"
                   >
                     <HiMiniXMark className="size-4" />
                   </button>
@@ -314,7 +314,7 @@ export default function CompareView() {
         />
       ) : (
         <div className="mt-8 flex flex-col gap-6">
-          <section className="rounded-[18px] border border-muted-black-stroke bg-card px-5 pt-5 pb-3">
+          <section className="rounded-[18px] border border-muted-black-stroke bg-white px-5 pt-5 pb-3">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <div>
                 <h2
@@ -369,11 +369,11 @@ export default function CompareView() {
             </EChartsAreaChart>
           </section>
 
-          <section className="overflow-x-auto rounded-[18px] border border-muted-black-stroke bg-card px-5 py-4">
+          <section className="overflow-x-auto rounded-[18px] border border-muted-black-stroke bg-white px-5 py-4">
             <table className="w-full min-w-[560px] text-left">
               <thead>
                 <tr className="border-muted-black-stroke border-b">
-                  <th className="w-36 py-2.5 pr-4 font-medium text-foreground/40 text-xs">
+                  <th className="w-36 py-2.5 pr-4 font-medium text-black/40 text-xs">
                     Spec
                   </th>
                   {selected.map((m, i) => (
@@ -464,7 +464,7 @@ export default function CompareView() {
             </table>
           </section>
 
-          <p className="flex items-center gap-1.5 text-foreground/40 text-xs">
+          <p className="flex items-center gap-1.5 text-black/40 text-xs">
             <HiOutlineCheck className="size-3.5" />
             Best monthly downloads are highlighted. Every figure comes from the
             daily scrape.
