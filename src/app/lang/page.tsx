@@ -84,6 +84,14 @@ export default function LanguagesIndexPage() {
               missing axes are the open problems in Ethiopian AI.
             </p>
             <LanguageRadarChart className="h-[420px] w-full md:h-[480px]" />
+            <p className="mt-4 text-muted-foreground text-xs">
+              <Link
+                href="/gaps"
+                className="underline underline-offset-4 transition-colors hover:text-primary"
+              >
+                Read the full gap report →
+              </Link>
+            </p>
           </section>
         </div>
       </main>

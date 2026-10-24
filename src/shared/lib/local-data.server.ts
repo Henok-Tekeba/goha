@@ -226,3 +226,125 @@ export function getLanguagePage(
     gaps,
   };
 }
+
+/* ---------------- gap report (build-time analysis) ---------------- */
+
+export interface GapCell {
+  task: string;
+  assets: number;
+  papers: number;
+}
+
+export interface GapReport {
+  tasks: string[];
+  languages: {
+    name: string;
+    slug: string;
+    glyph: string;
+    total: number;
+    cells: GapCell[];
+  }[];
+  emptyCells: { language: string; slug: string; task: string }[];
+  totalCells: number;
+  evaluation: { evaluated: number; total: number };
+  unmeasured: {
+    name: string;
+    org: string | null;
+    projectId: string | null;
+    downloads: number;
+  }[];
+  licensing: {
+    total: number;
+    examples: { name: string; projectId: string | null; kind: string }[];
+  };
+  researchOnly: { language: string; slug: string; task: string }[];
+}
+
+export function getGapReport(): GapReport {
+  const perLanguage = languages
+    .map((language) => {
+      const page = getLanguagePage(language.slug);
+      if (!page) return null;
+      const cells = TRACKED_TASKS.map((task) => {
+        const row = page.coverage.find((entry) => entry.task === task);
+        return {
+          task,
+          assets: (row?.models ?? 0) + (row?.datasets ?? 0),
+          papers: row?.papers ?? 0,
+        };
+      });
+      const total =
+        page.models.length + page.datasets.length + page.papers.length;
+      return { ...language, cells, total };
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+    .filter((entry) => entry.total > 0)
+    .sort((a, b) => b.total - a.total);
+
+  const emptyCells: GapReport["emptyCells"] = [];
+  const researchOnly: GapReport["researchOnly"] = [];
+  for (const language of perLanguage) {
+    for (const cell of language.cells) {
+      if (cell.assets === 0 && cell.papers === 0)
+        emptyCells.push({
+          language: language.name,
+          slug: language.slug,
+          task: cell.task,
+        });
+      if (cell.assets === 0 && cell.papers > 0)
+        researchOnly.push({
+          language: language.name,
+          slug: language.slug,
+          task: cell.task,
+        });
+    }
+  }
+
+  const models = projects.filter((project) =>
+    project.projectCategories?.some((category) => category.name === "Model")
+  );
+  const evaluated = models.filter(
+    (project) => (project.evaluations ?? []).length > 0
+  ).length;
+  const unmeasured = models
+    .filter((project) => (project.evaluations ?? []).length === 0)
+    .sort((a, b) => (b.downloadsMonthly ?? 0) - (a.downloadsMonthly ?? 0))
+    .slice(0, 8)
+    .map((project) => ({
+      name: project.title,
+      org: project.owner?.name ?? null,
+      projectId: project.id ?? null,
+      downloads: project.downloadsMonthly ?? 0,
+    }));
+
+  const assets = projects.filter((project) =>
+    project.projectCategories?.some(
+      (category) => category.name === "Model" || category.name === "Dataset"
+    )
+  );
+  const unlicensed = assets.filter(
+    (project) => !project.repositoryDetails?.license
+  );
+  const licensing = {
+    total: unlicensed.length,
+    examples: unlicensed.slice(0, 6).map((project) => ({
+      name: project.title,
+      projectId: project.id ?? null,
+      kind:
+        project.projectCategories?.find(
+          (category) => category.name === "Dataset"
+        )?.name ?? "Model",
+    })),
+  };
+
+  return {
+    tasks: TRACKED_TASKS,
+    languages: perLanguage,
+    emptyCells,
+    totalCells: perLanguage.length * TRACKED_TASKS.length,
+    evaluation: { evaluated, total: models.length },
+    unmeasured,
+    licensing,
+    researchOnly,
+  };
+}

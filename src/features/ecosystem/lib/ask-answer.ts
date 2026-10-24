@@ -233,6 +233,12 @@ export function buildAskAnswer(
             },
             {
               type: "benchmark",
+              title: "The full gap report",
+              subtitle: "Empty cells, unmeasured models, unclear licensing",
+              href: "/gaps",
+            },
+            {
+              type: "benchmark",
               title: "Full leaderboard",
               subtitle: "Published evaluation results",
               href: "/leaderboard",

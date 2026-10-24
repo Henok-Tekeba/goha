@@ -58,6 +58,11 @@ const footerLinks: {
       id: "explore-ask",
     },
     {
+      label: "Gap report",
+      href: "/gaps",
+      id: "explore-gaps",
+    },
+    {
       label: "Languages",
       href: "/lang",
       id: "explore-languages",
