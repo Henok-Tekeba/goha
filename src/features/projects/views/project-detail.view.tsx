@@ -13,7 +13,7 @@ import {
 } from "@/shared/components/ui/tabs";
 import { useTabNavigation } from "@/shared/hooks/use-tab-navigation.hook";
 import { asset } from "@/shared/lib/asset";
-
+import ModelDownloadsChart from "../components/model-downloads-chart.component";
 import ProjectHero, {
   ProjectMobileHero,
 } from "../components/project-hero.component";
@@ -88,7 +88,12 @@ export default function ProjectDetailView({
 
         <TabsContent value="overview" className="mt-6">
           {(() => {
-            if (project.imagesUrls.length === 0 && !readme) {
+            const trendPoints = project.sparkline?.points ?? [];
+            const hasTrend = trendPoints.length > 1;
+            const hasOverview =
+              project.imagesUrls.length > 0 || Boolean(readme) || hasTrend;
+
+            if (!hasOverview) {
               return (
                 <EmptyState
                   title="No data available"
@@ -99,7 +104,15 @@ export default function ProjectDetailView({
             }
 
             return (
-              <>
+              <div className="flex flex-col gap-6">
+                {hasTrend && (
+                  <ModelDownloadsChart
+                    points={trendPoints}
+                    timestamps={(project.sparkline?.timestamps ?? []).filter(
+                      (t): t is string => typeof t === "string"
+                    )}
+                  />
+                )}
                 {project.imagesUrls.length > 0 && (
                   <ImageSlider
                     images={project.imagesUrls}
@@ -115,7 +128,7 @@ export default function ProjectDetailView({
                     }}
                   />
                 )}
-              </>
+              </div>
             );
           })()}
         </TabsContent>
