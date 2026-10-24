@@ -67,6 +67,8 @@ import type {
   GrowthPayload,
   Insights,
   LanguageCoveragePayload,
+  LanguageRecord,
+  LanguagesPayload,
   Leaderboard,
   OrgRecord,
   OrgsPayload,
@@ -132,5 +134,11 @@ export function getTopModelHistory(): Promise<TopModelHistoryPayload> {
 export function getLanguageCoverage(): Promise<LanguageCoveragePayload> {
   return fetchJsonCached<LanguageCoveragePayload>(
     "/data/language-coverage.json"
+  );
+}
+
+export function getLanguages(): Promise<LanguageRecord[]> {
+  return fetchJsonCached<LanguagesPayload>("/data/languages.json").then(
+    (payload) => payload.data
   );
 }

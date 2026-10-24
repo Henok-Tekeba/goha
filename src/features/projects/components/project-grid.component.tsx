@@ -5,6 +5,7 @@ import type { Project } from "../types/project.type";
 
 interface ProjectGridProps {
   projects: Project[];
+  className?: string;
 }
 
 function ProjectGridItem({ project }: { project: Project }) {
@@ -46,9 +47,13 @@ function ProjectGridItem({ project }: { project: Project }) {
   );
 }
 
-export default function ProjectGrid({ projects }: ProjectGridProps) {
+export default function ProjectGrid({ projects, className }: ProjectGridProps) {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 md:gap-6.5">
+    <div
+      className={
+        className ?? "grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 md:gap-6.5"
+      }
+    >
       {projects?.map((project) => (
         <ProjectGridItem key={project.id} project={project} />
       ))}

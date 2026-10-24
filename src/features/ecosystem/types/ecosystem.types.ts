@@ -204,6 +204,16 @@ export interface LanguageCoveragePayload {
   tasks: string[];
 }
 
+export interface LanguageRecord {
+  name: string;
+  slug: string;
+  glyph: string;
+}
+
+export interface LanguagesPayload {
+  data: LanguageRecord[];
+}
+
 export interface OrgRadarAxis {
   axis: string;
   label: string;

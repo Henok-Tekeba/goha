@@ -9,6 +9,13 @@ import {
 import type { Project } from "../types/project.type";
 import { projectKeys } from "./project.keys";
 
+export function useProjectsQuery(params: ProjectQueryParams = {}) {
+  return useQuery<PaginatedProjectsResponse>({
+    queryKey: projectKeys.list(params),
+    queryFn: ({ signal }) => getProjects(params, { signal }),
+  });
+}
+
 export function useInfiniteProjectsQuery(
   params: Omit<ProjectQueryParams, "page"> = {},
   options?: {

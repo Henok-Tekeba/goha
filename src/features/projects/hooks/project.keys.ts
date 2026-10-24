@@ -3,6 +3,8 @@ import type { ProjectQueryParams } from "../services/project.service";
 export const projectKeys = {
   all: ["projects"] as const,
   lists: () => [...projectKeys.all, "list"] as const,
+  list: (params: Omit<ProjectQueryParams, "page"> & { page?: number }) =>
+    [...projectKeys.lists(), params] as const,
   infiniteList: (params: Omit<ProjectQueryParams, "page">) =>
     [...projectKeys.lists(), "infinite", params] as const,
   details: () => [...projectKeys.all, "detail"] as const,
