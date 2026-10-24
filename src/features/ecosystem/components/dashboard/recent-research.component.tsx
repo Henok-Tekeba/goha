@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { asset } from "@/shared/lib/asset";
 
 import { usePapersQuery } from "../../hooks/ecosystem.queries";
-import { PaperRow } from "../papers-list.component";
 
 export default function RecentResearch() {
   const { data, isLoading } = usePapersQuery();
@@ -29,25 +29,48 @@ export default function RecentResearch() {
         </Link>
       </div>
 
-      {isLoading ? (
-        <div className="flex flex-col gap-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-[16px] border border-muted-black-stroke px-5 py-4"
-            >
-              <Skeleton className="h-4 w-3/4" />
-              <Skeleton className="mt-2 h-3 w-1/2" />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col gap-3">
-          {papers.map((paper) => (
-            <PaperRow key={paper.slug} paper={paper} />
-          ))}
-        </div>
-      )}
+      <ul className="rounded-[16px] border border-muted-black-stroke bg-white">
+        {isLoading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <li
+                key={i}
+                className="border-muted-black-stroke border-b px-5 py-3 last:border-b-0"
+              >
+                <Skeleton className="h-4 w-2/3" />
+              </li>
+            ))
+          : papers.map((paper) => (
+              <li
+                key={paper.slug}
+                className="border-muted-black-stroke border-b last:border-b-0"
+              >
+                <Link
+                  href={
+                    paper.projectId
+                      ? `/projects/${paper.projectId}`
+                      : (paper.url ?? "/research")
+                  }
+                  className="flex items-baseline gap-3 px-5 py-3 transition-colors hover:bg-secondary/60"
+                >
+                  <Image
+                    src={asset("/types/research.svg")}
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="mt-0.5 shrink-0 opacity-60"
+                  />
+                  <span className="min-w-0 flex-1 truncate text-[13px] text-primary">
+                    {paper.title}
+                  </span>
+                  <span className="shrink-0 text-[11px] text-muted-foreground tabular-nums">
+                    {[paper.languages[0], paper.year]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </span>
+                </Link>
+              </li>
+            ))}
+      </ul>
     </section>
   );
 }
