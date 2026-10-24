@@ -53,6 +53,11 @@ const footerLinks: {
       id: "explore-compare",
     },
     {
+      label: "Ask Goha",
+      href: "/ask",
+      id: "explore-ask",
+    },
+    {
       label: "Languages",
       href: "/lang",
       id: "explore-languages",

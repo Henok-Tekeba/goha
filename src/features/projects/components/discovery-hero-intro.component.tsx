@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Link from "next/link";
 
 import HeroBadge from "@/shared/components/ui/hero-badge";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
@@ -100,6 +101,23 @@ export function DiscoveryHeroIntro({
           initialFilters={initialFilters}
         />
       </motion.div>
+
+      {/* 6 — plain-language search */}
+      <motion.p
+        className="mt-4 px-6 text-center text-muted-foreground text-xs"
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ duration: DURATION, delay: STAGGER * 5, ease }}
+      >
+        or ask in plain language —{" "}
+        <Link
+          href="/ask"
+          className="underline underline-offset-4 transition-colors hover:text-primary"
+        >
+          Ask Goha
+        </Link>
+      </motion.p>
     </>
   );
 }

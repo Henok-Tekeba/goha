@@ -1,42 +1,152 @@
 # goha.et — The Home of Ethiopian AI
 
-**goha.et** (ጎሃ — "dawn" in Amharic) is a curated directory and discovery platform
-for the Ethiopian AI ecosystem — models, datasets, companies, and research papers
-for Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
+**goha.et** (ጎሃ — "dawn" in Amharic) is a live index of the Ethiopian AI
+ecosystem — models, datasets, research papers, organizations and benchmarks for
+Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
 
-## Ecosystem surfaces
+It is a fully static site rebuilt every day from the public record: Hugging
+Face, GitHub and arXiv. No database, no backend, no API keys — just a data
+pipeline and a careful interface on top of it.
 
-Beyond the discovery grid, goha renders the data its pipeline already collects:
+---
 
-- **Stats band** — live counts + index freshness, homepage
-- **Movers** — weekly download gainers, homepage
-- **`/activity`** — every new model, dataset, paper and milestone, daily
-- **`/research`** — the paper index: search, language/task filters, abstracts
-- **`/leaderboard`** — comparative published results (ASR WER, retrieval, OCR) with CSV export; every row cites its source
-- **`/orgs`** — companies, labs and builders with full public footprints (193 profiles)
-- **`/lang/[language]`** — per-language coverage maps and gap analysis (7 languages)
+## Features
+
+### Discovery
+
+- **Landing dashboard** — ecosystem stats with freshness, weekly movers,
+  most-used models, latest research, language tiles and an activity preview.
+  The full catalogue lives behind search and filters, paginated 12 per page —
+  no endless scroll.
+- **Project cards** — type icon (waveform for speech, chip for LLMs, table for
+  datasets…), title, organization, an honest one-line description, and one
+  quiet stats row: downloads, likes, language, license.
+- **Search & filters** — language, task, sort, all reflected in the URL and
+  shareable. Model pages render their Hugging Face model card, evaluation
+  tables, declared languages and metadata.
+
+### Research
+
+- **`/research`** — every arXiv paper the sweep finds, with authors, abstracts,
+  language and task tags, search, and expandable abstracts.
+- **`/leaderboard`** — published evaluation results aggregated from model
+  cards: ASR word error rates across Amharic, Afaan Oromo, Tigrinya and Ge'ez,
+  retrieval accuracy, OCR. Every row links to its source; loss metrics and
+  incomparable numbers are filtered out. CSV export per section.
+- **`/lineage`** — the family tree of Ethiopian AI. Every model card's
+  `base_model` is resolved into a genealogy (Llama → Amharic Llama → instruct
+  tune), drawn as an interactive graph with family filters, pan/zoom and
+  click-through to each model.
+- **`/compare`** — put up to four models side by side: overlaid download
+  trajectories and a spec diff (task, languages, license, parameters, base
+  model, freshness). Shareable URLs.
+
+### Ask Goha
+
+- **`/ask`** — natural-language search over the index: *"Tigrinya speech
+  models"*, *"What's missing for Oromo?"*, *"Amharic LLMs under 2B"*.
+- Deterministic by design: a rule-based parser maps the question to language,
+  task, entity type and constraints, then answers from the structured data —
+  **no LLM, no embeddings, no API calls, no cost**. When it cannot map a
+  question it says so and shows the closest matches instead of inventing an
+  answer.
+- Accuracy is measured, not claimed: **100% field accuracy on a 48-query
+  evaluation set** covering the supported vocabulary (`pnpm test:ask`).
+  Free-form prose outside that vocabulary is the known limitation.
+
+### Ecosystem surfaces
+
+- **`/orgs`** — 190+ organizations with aggregated public footprints
+  (models, datasets, repos, spaces), curated company records, and a footprint
+  radar per profile.
+- **`/lang`** — per-language coverage maps: assets per task, plus a derived
+  **gap analysis** ("no TTS datasets for Ge'ez", "N of M models have no
+  published evaluation").
+- **`/activity`** — every new model, dataset, paper and milestone, grouped by
+  recency, with a 30-day pulse chart.
+- **`/projects/[id]`** — the full record: interactive ECharts download history,
+  model card, evaluations, languages, and a Compare link.
+
+### Visualizations
+
+Interactive Apache ECharts charts via EvilCharts-style shadcn components
+(`src/components/evilcharts/`), themed from the site's CSS tokens:
+
+| Chart | Where |
+|---|---|
+| Ecosystem growth (area + brush zoom) | `/leaderboard` |
+| ASR head-to-head (horizontal bars) | `/leaderboard` |
+| Top-model download trends (multi-series) | `/leaderboard` |
+| Language coverage radar | `/lang` |
+| Organization footprint radar | `/orgs/[slug]` |
+| Asset-type donut | `/orgs` |
+| 30-day activity pulse | `/activity` |
+| Model lineage graph | `/lineage` |
+| Download history (per model) | `/projects/[id]` |
+| Overlaid comparison chart | `/compare` |
+
+---
 
 ## Architecture
 
-The frontend is an adaptation of [OpenSource Together](https://opensource-together.com)'s
-site (their excellent discovery UI), rendering **goha's own data**:
-
 ```
-scraper/            goha's pipeline (Hugging Face · GitHub · arXiv)
-   └─ npm start     → data/*.json (models, datasets, companies, papers, feeds)
-scripts/build-goha-fixtures.mjs   (goha data → OST data-layer contract + ecosystem surfaces)
-src/                OST frontend (unchanged UI, goha branding + data)
-data/               daily snapshots, served as the source of truth
-public/data/        client-facing static JSON (projects, taxonomy, activity,
-                    stats, insights, orgs, papers, leaderboard, languages)
+scraper/                  goha's pipeline (Hugging Face · GitHub · arXiv)
+   └─ npm start           → data/*.json  (daily snapshots + current state)
+scripts/build-goha-fixtures.mjs
+   ├─ src/mocks/fixtures/  build-time joins (projects, orgs, papers, languages)
+   └─ public/data/         client-facing JSON (fetched by the browser)
+src/                      Next.js 15 app (static export)
+out/                      deployable static site (GitHub Pages)
 ```
 
-Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which converts
-goha's normalized JSON into the frontend's `Project` contract — so the UI is
-pixel-identical to the original design while every list, filter, and card is
-powered by goha.et data. The same script emits the ecosystem JSON surfaces
-above (into `public/data/`, fetched client-side, and into `src/mocks/fixtures/`
-for build-time joins like org static params).
+Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
+
+1. converts the scraped JSON into the frontend's `Project` contract
+   (the UI is adapted from [OpenSource Together](https://opensource-together.com));
+2. derives the ecosystem surfaces — activity feed, stats, movers, org
+   footprints, paper index, leaderboard, language coverage, growth history and
+   the model lineage graph — and writes them to `public/data/`;
+3. writes build-time fixtures used for static params and server-side joins.
+
+### Data files (`public/data/`)
+
+| File | Contents |
+|---|---|
+| `projects.json` | all entities in the UI contract (models, datasets, companies, papers) |
+| `taxonomy.json` | categories + tech/language stacks |
+| `stats.json` | counts, index freshness, featured model |
+| `activity.json` | recent ecosystem events |
+| `insights.json` | weekly download movers, most downloaded |
+| `orgs.json` | organization footprints and curated company records |
+| `papers.json` | research records with derived language/task tags |
+| `leaderboard.json` | normalized published evaluations by task |
+| `languages.json` | language index (name, slug, glyph) |
+| `language-coverage.json` | language × task matrix |
+| `growth.json` | daily model/dataset counts from every snapshot |
+| `top-models-history.json` | download history of the five most-used models |
+| `lineage.json` | nodes, edges, families and layout for the family tree |
+
+### Routes
+
+| Route | Purpose |
+|---|---|
+| `/` | dashboard (or paginated browse when filters are active) |
+| `/projects/[id]` | project detail |
+| `/research` | paper index |
+| `/leaderboard` | benchmarks & rankings |
+| `/lineage` | model family tree |
+| `/compare` | side-by-side model comparison |
+| `/ask` | natural-language search |
+| `/orgs`, `/orgs/[slug]` | organization directory and profiles |
+| `/lang`, `/lang/[slug]` | language index, coverage and gaps |
+| `/activity` | ecosystem feed |
+
+### Deploy
+
+- `.github/workflows/scrape.yml` — daily scrape, fixture regeneration, commit
+- `.github/workflows/deploy-pages.yml` — static build and GitHub Pages deploy
+
+---
 
 ## Development
 
@@ -44,25 +154,48 @@ Requires Node 22+ and pnpm.
 
 ```bash
 pnpm install
-pnpm dev:mock        # frontend on :3000 + goha-data mock API on :4000
+pnpm dev            # http://localhost:3000
+pnpm build          # static export → out/
+pnpm type-check
+pnpm lint
+pnpm test:ask       # Ask Goha parser evaluation (48 queries)
+pnpm test:mock      # mock API contract tests
 ```
 
-The mock backend serves goha's fixture data (generated from `data/*.json`) and
-the full OST API contract, including the demo auth session.
+The scraper can be run separately:
 
-## Production pipeline
+```bash
+cd scraper
+npm install
+npm start           # writes data/*.json (HF_TOKEN / GITHUB_TOKEN recommended)
+```
 
-1. `scraper` runs daily (GitHub Actions) and commits `data/*.json`
-2. `scripts/build-goha-fixtures.mjs` regenerates the frontend data layer
-3. The app deploys on Vercel; data updates ship with the next commit
+After scraping, regenerate the frontend data:
+
+```bash
+node scripts/build-goha-fixtures.mjs
+```
+
+---
+
+## Principles
+
+1. **Every number links to its source.** Aggregate, never invent.
+2. **Amharic is not decoration.** Languages, scripts and names are first-class.
+3. **The scraper is the product.** The UI is its surface.
+4. **No LLM required.** Ask Goha is deterministic, inspectable and free; the
+   retrieval layer is ready if a model is ever added on top.
+
+---
 
 ## Attribution
 
 Frontend design & code adapted from
 [OpenSource Together](https://github.com/opensource-together/opensource-together)
 (`src/`, design system, learn content), licensed **CC BY-NC 4.0** — this
-project remains non-commercial. goha's scraper, data pipeline, and datasets are
-original work. See `LICENSE.md` for the upstream license text.
+project remains non-commercial. goha's scraper, data pipeline, datasets and
+ecosystem surfaces are original work. See `LICENSE.md` for the upstream
+license text.
 
 ## License
 
