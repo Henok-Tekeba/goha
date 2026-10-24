@@ -42,9 +42,17 @@ function SavedProjectItem({ project }: { project: Project }) {
       projectId={projectId}
       title={project.title}
       description={project.description}
-      logoUrl={project.logoUrl || ""}
-      projectTechStacks={project.projectTechStacks}
       repoUrl={project.repoUrl || ""}
+      ownerName={project.owner?.name ?? null}
+      kindLabel={project.projectCategories?.[0]?.name ?? null}
+      taskLabel={
+        project.projectCategories && project.projectCategories.length > 1
+          ? (project.projectCategories[1]?.name ?? null)
+          : null
+      }
+      downloadsMonthly={project.downloadsMonthly}
+      growth={project.growth}
+      sparkline={project.sparkline}
       repositoryDetails={repositoryDetails}
       isRepositoryLoading={isLoading}
       className="w-full"

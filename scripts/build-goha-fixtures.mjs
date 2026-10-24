@@ -392,6 +392,26 @@ for (const src of [
       if (n && !langs.includes(n)) langs.push(n);
     }
   }
+  /* the scraper's own language confirmation (ISO codes) — often richer than tags */
+  for (const l of it.confirmed_languages || []) {
+    const n = LANG_NAMES[l];
+    if (n && !langs.includes(n)) langs.push(n);
+  }
+  /* name-based fallback — ecosystem convention puts the language in the name
+     ("hohe-asr-amharic", "whisper-small-tigrinya-r-32") */
+  if (langs.length === 0) {
+    const nm = String(it.name || it.id || "");
+    const NAME_LANGS = [
+      ["Amharic", /amharic|አማርኛ/i],
+      ["Afaan Oromo", /oromo|afaan/i],
+      ["Tigrinya", /tigrinya/i],
+      ["Ge'ez", /ge'?ez/i],
+      ["Somali", /\bsomali\b/i],
+    ];
+    for (const [n, re] of NAME_LANGS) {
+      if (re.test(nm) && !langs.includes(n)) langs.push(n);
+    }
+  }
 
   const badge =
     it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
@@ -417,12 +437,33 @@ for (const src of [
     null;
   const params = paramCount ? `${String(paramCount).toUpperCase()}` : null;
 
+  /* goha's scrape rarely captures model-card prose (HF API gives none), so
+     cards previously showed a fake "ASR · Amharic · 73k downloads/mo" line.
+     Synthesize an honest one-liner from typed metadata instead. */
+  const TASK_NOUN = {
+    ASR: "Speech recognition",
+    TTS: "Text-to-speech",
+    Translation: "Machine translation",
+    Classification: "Text classification",
+    LLM: "Language",
+    "Masked LM": "Masked language",
+    NLP: "NLP",
+    Embeddings: "Text embedding",
+    NER: "Named entity recognition",
+    "Image Generation": "Image generation",
+    Vision: "Vision",
+  };
+  const taskNoun = TASK_NOUN[badge] ?? null;
+  const kindWord = src.kind === "dataset" ? "dataset" : "model";
+  const synthesized = taskNoun
+    ? `${taskNoun} ${kindWord}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`
+    : `${titleCase(kindWord)}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`;
+  const baseNote = it.base_model ? ` Fine-tuned from ${it.base_model}.` : "";
+
   projects.push({
     id: id("pjt", ++pjtSeed),
     title: it.name || it.id,
-    description:
-      cleanDesc(it.description) ||
-      `${badge ? badge + " · " : ""}${[...langs].join(", ")}${it.downloads_monthly ? ` · ${nfCompact.format(it.downloads_monthly)} downloads/mo` : ""}`,
+    description: cleanDesc(it.description) || `${synthesized}${baseNote}`,
     provider: "GITHUB",
     logoUrl: typeIconFor(it, src.kind),
     published: true,

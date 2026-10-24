@@ -1,77 +1,96 @@
+"use client";
+
 import Link from "next/link";
-import { useMemo } from "react";
-import { FaDownload, FaStar } from "react-icons/fa6";
-import type { RepositoryWithDetails } from "@/features/projects/types/project.type";
-import {
-  ProjectCard,
-  ProjectCardContent,
-  ProjectCardDescription,
-  ProjectCardDivider,
-  ProjectCardFooter,
-  ProjectCardHeader,
-  ProjectCardInfo,
-  ProjectCardLeftGroup,
-  ProjectCardTechStack,
-  ProjectCardTitle,
-} from "@/shared/components/ui/project-card";
-import { languagesToTechStacks } from "@/shared/lib/language-icons";
-import { extractRepositoryOwner } from "@/shared/lib/utils/extract-repo-owner";
+import { HiArrowTrendingUp, HiStar } from "react-icons/hi2";
+import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
-import type { TechStackType } from "@/shared/types/tech-stack.type";
 
-import { Avatar } from "../ui/avatar";
-import { Skeleton } from "../ui/skeleton";
-import StackLogo from "../ui/stack-logo";
+/* Card identity system: every asset type gets one quiet tint, shared by the
+   monogram tile, the type chip and the trend line — so the card reads as a
+   single surface instead of a pile of detached widgets. */
+const TINTS = {
+  model: {
+    tile: "bg-blue-500/10 text-blue-600",
+    chip: "bg-blue-500/10 text-blue-700",
+    stroke: "#3b82f6",
+  },
+  dataset: {
+    tile: "bg-teal-500/10 text-teal-700",
+    chip: "bg-teal-500/10 text-teal-700",
+    stroke: "#14b8a6",
+  },
+  company: {
+    tile: "bg-amber-500/12 text-amber-700",
+    chip: "bg-amber-500/12 text-amber-700",
+    stroke: "#f59e0b",
+  },
+  research: {
+    tile: "bg-violet-500/10 text-violet-700",
+    chip: "bg-violet-500/10 text-violet-700",
+    stroke: "#8b5cf6",
+  },
+} as const;
 
-interface ProjectCardProps {
-  projectId?: string;
-  title: string;
-  description: string;
-  projectTechStacks?: TechStackType[];
-  showTechStack?: boolean;
-  repoUrl?: string;
-  className?: string;
-  logoUrl?: string;
-  downloadsMonthly?: number;
-  growth?: number | null;
-  sparkline?: { points: number[] } | null;
-  repositoryDetails?: Pick<
-    RepositoryWithDetails,
-    "stars" | "forksCount" | "openIssuesCount" | "languages"
-  >;
-  isRepositoryLoading?: boolean;
+type Kind = keyof typeof TINTS;
+
+function kindFromLabel(label?: string | null): Kind {
+  switch ((label ?? "").toLowerCase()) {
+    case "dataset":
+      return "dataset";
+    case "company":
+      return "company";
+    case "research":
+      return "research";
+    default:
+      return "model";
+  }
 }
 
-/* Mini trend graph — real daily-download history from goha's snapshots */
-function CardSparkline({ points }: { points: number[] }) {
+const LANGUAGE_SHORT: Record<string, string> = {
+  Amharic: "Amharic",
+  "Afaan Oromo": "Oromo",
+  Tigrinya: "Tigrinya",
+  "Ge'ez": "Ge'ez",
+  Somali: "Somali",
+  "Sidaamu Afoo": "Sidaama",
+  Wolayttattoo: "Wolaytta",
+  Hadiyya: "Hadiyya",
+  Afaraf: "Afar",
+  English: "English",
+};
+
+/* ---------- inline trend — part of the metric, not a floating ornament ---------- */
+function MiniTrend({ points, stroke }: { points: number[]; stroke: string }) {
   if (!points || points.length < 2) return null;
-  const w = 120;
-  const h = 38;
-  const pad = 3;
+  const w = 52;
+  const h = 20;
+  const pad = 2;
   const min = Math.min(...points);
   const max = Math.max(...points);
   const range = max - min || 1;
   const step = (w - pad * 2) / (points.length - 1);
-  const d = points
-    .map((p, i) => {
-      const x = pad + i * step;
-      const y = h - pad - ((p - min) / range) * (h - pad * 2);
-      return `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(" ");
+  const coords = points.map((p, i) => {
+    const x = pad + i * step;
+    const y = h - pad - ((p - min) / range) * (h - pad * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+  const line = coords.map((c, i) => `${i === 0 ? "M" : "L"}${c}`).join(" ");
+  const area = `${line} L ${(w - pad).toFixed(1)},${h - 1} L ${pad},${h - 1} Z`;
+
   return (
     <svg
       width={w}
       height={h}
       viewBox={`0 0 ${w} ${h}`}
       aria-hidden="true"
-      className="text-black/50"
+      className="shrink-0"
     >
+      <path d={area} fill={stroke} opacity={0.1} />
       <path
-        d={d}
+        d={line}
         fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
+        stroke={stroke}
+        strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -79,145 +98,185 @@ function CardSparkline({ points }: { points: number[] }) {
   );
 }
 
+function Monogram({
+  name,
+  tint,
+}: {
+  name: string;
+  tint: (typeof TINTS)[Kind];
+}) {
+  const initial =
+    (name || "?")
+      .replace(/[^a-zA-Z0-9]/g, "")
+      .charAt(0)
+      .toUpperCase() || "?";
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        "flex size-10 shrink-0 items-center justify-center rounded-[11px] font-semibold text-[15px]",
+        tint.tile
+      )}
+    >
+      {initial}
+    </span>
+  );
+}
+
+interface ProjectCardProps {
+  projectId?: string;
+  title: string;
+  description?: string;
+  repoUrl?: string | null;
+  logoUrl?: string | null;
+  ownerName?: string | null;
+  kindLabel?: string | null;
+  taskLabel?: string | null;
+  downloadsMonthly?: number | null;
+  growth?: number | null;
+  sparkline?: { points: number[] } | null;
+  repositoryDetails?: {
+    stars?: number | null;
+    languages?: unknown;
+    license?: string | null;
+  } | null;
+  isRepositoryLoading?: boolean;
+  className?: string;
+}
+
 export default function ProjectCardComponent({
   projectId,
   title = "",
   description = "",
   repoUrl = "",
-  projectTechStacks = [],
-  showTechStack = true,
-  className = "",
-  logoUrl = "",
+  ownerName = null,
+  kindLabel = null,
+  taskLabel = null,
   downloadsMonthly = 0,
   growth = null,
   sparkline = null,
-
-  repositoryDetails = {
-    forksCount: 0,
-    stars: 0,
-    openIssuesCount: 0,
-    languages: {},
-  },
+  repositoryDetails = null,
   isRepositoryLoading = false,
+  className,
 }: ProjectCardProps) {
-  const languagesTechStacks = useMemo(() => {
-    return languagesToTechStacks(repositoryDetails.languages);
-  }, [repositoryDetails.languages]);
+  const kind = kindFromLabel(kindLabel);
+  const tint = TINTS[kind];
 
-  const allTechStacks = useMemo(() => {
-    const stacks =
-      projectTechStacks.length > 0 ? projectTechStacks : languagesTechStacks;
+  const org =
+    ownerName ?? (repoUrl ? extractOwner(repoUrl) : null) ?? "goha.et";
 
-    return stacks.filter((tech): tech is TechStackType => Boolean(tech));
-  }, [projectTechStacks, languagesTechStacks]);
+  const languages: string[] = Array.isArray(repositoryDetails?.languages)
+    ? (repositoryDetails?.languages as string[])
+    : Object.keys(
+        (repositoryDetails?.languages as Record<string, number>) ?? {}
+      );
+  const language = languages[0]
+    ? (LANGUAGE_SHORT[languages[0]] ?? languages[0])
+    : null;
+  const license = repositoryDetails?.license ?? null;
+  const stars = repositoryDetails?.stars ?? 0;
+  const hasDownloads = (downloadsMonthly ?? 0) > 0;
+  const hasFooter =
+    hasDownloads ||
+    stars > 0 ||
+    Boolean(language) ||
+    Boolean(license) ||
+    isRepositoryLoading;
 
   return (
-    <Link href={`/projects/${projectId}`} className="block">
-      <ProjectCard className={className}>
-        <ProjectCardHeader>
-          <ProjectCardLeftGroup>
-            <Avatar
-              src={logoUrl}
-              name={title}
-              alt={title}
-              size="lg"
-              shape="soft"
-            />
-            <ProjectCardInfo>
-              <ProjectCardTitle className="text-primary">
-                {title}
-              </ProjectCardTitle>
-              <p className="-mt-1 text-muted-foreground text-sm tracking-tighter">
-                by {extractRepositoryOwner(repoUrl)}
-              </p>
-            </ProjectCardInfo>
-          </ProjectCardLeftGroup>
-          {/* goha.et — daily download trend, top-right of the card */}
-          {sparkline && sparkline.points && sparkline.points.length > 1 && (
-            <span
-              className="shrink-0 self-start"
-              title="Downloads, last 7 days"
+    <Link
+      href={`/projects/${projectId}`}
+      className={cn("block h-full outline-none", className)}
+      aria-label={`Open ${title} — ${org}`}
+    >
+      <article className="flex h-full flex-col rounded-[18px] border border-muted-black-stroke bg-white px-5 pt-5 pb-4 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <header className="flex items-start gap-3">
+          <Monogram name={org} tint={tint} />
+          <div className="min-w-0 flex-1">
+            <h3
+              className="truncate font-medium text-[15px] text-primary leading-5 tracking-[-0.01em]"
+              title={title}
             >
-              <CardSparkline points={sparkline.points} />
+              {title}
+            </h3>
+            <p className="mt-0.5 truncate text-muted-foreground text-xs">
+              {org}
+            </p>
+          </div>
+          {(taskLabel ?? kindLabel) && (
+            <span
+              className={cn(
+                "mt-0.5 shrink-0 rounded-full px-2 py-0.5 font-medium text-[10px] uppercase tracking-[0.04em]",
+                tint.chip
+              )}
+            >
+              {taskLabel ?? kindLabel}
             </span>
           )}
-        </ProjectCardHeader>
-        <ProjectCardContent>
-          <ProjectCardDescription>{description}</ProjectCardDescription>
-          <ProjectCardDivider />
-          {showTechStack && (
-            <ProjectCardFooter>
-              <div className="flex gap-2.5">
-                {allTechStacks.length > 0
-                  ? allTechStacks.slice(0, 3).map((tech, index) => (
-                      <span
-                        key={tech.id || index}
-                        className={
-                          index === 0
-                            ? "inline-flex"
-                            : index === 1
-                              ? "hidden md:inline-flex"
-                              : "hidden md:inline-flex"
-                        }
-                      >
-                        <StackLogo
-                          icon={tech.iconUrl || ""}
-                          alt={tech.name}
-                          name={tech.name}
-                        />
-                      </span>
-                    ))
-                  : isRepositoryLoading
-                    ? Array.from({ length: 3 }).map((_, idx) => (
-                        <div
-                          key={idx}
-                          className={
-                            idx === 0
-                              ? "flex items-center gap-1.5"
-                              : "hidden items-center gap-1.5 md:flex"
-                          }
-                        >
-                          <Skeleton className="size-5.5 rounded-full" />
-                          <Skeleton className="h-5.5 w-16 rounded-md" />
-                        </div>
-                      ))
-                    : null}
-              </div>
-              {/* Mobile +N when > 1 */}
-              {allTechStacks.length > 1 && (
-                <span className="ml-1 flex h-5.5 flex-shrink-0 items-center whitespace-nowrap rounded-full bg-transparent text-black/20 text-xs md:hidden">
-                  +{allTechStacks.length - 1}
-                </span>
-              )}
-              {/* Desktop +N when > 3 */}
-              {allTechStacks.length > 3 && (
-                <span className="ml-3 hidden h-5.5 flex-shrink-0 items-center whitespace-nowrap rounded-full bg-transparent text-black/20 text-xs md:flex">
-                  +{allTechStacks.length - 3}
-                </span>
-              )}
+        </header>
 
-              <div className="ml-auto flex items-center justify-between space-x-2">
-                <div className="flex items-center justify-center gap-1 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
-                  <FaDownload className="mr-0.5 size-2.5 text-primary" />
-                  {isRepositoryLoading ? (
-                    <Skeleton className="h-3 w-6" />
-                  ) : (
-                    formatNumberShort(downloadsMonthly || 0)
-                  )}
-                </div>
-                <div className="flex items-center justify-center gap-0.5 rounded-[3px] border border-[black]/10 px-1.5 py-px text-xs">
-                  <FaStar className="mr-0.5 size-2.5 text-primary" />
-                  {isRepositoryLoading ? (
-                    <Skeleton className="h-3 w-6" />
-                  ) : (
-                    formatNumberShort(repositoryDetails.stars || 0)
-                  )}
-                </div>
+        {description && (
+          <p className="mt-3 line-clamp-2 text-[13px] text-muted-foreground leading-[1.5]">
+            {description}
+          </p>
+        )}
+
+        {hasFooter && (
+          <footer className="mt-auto flex items-center gap-2 pt-4">
+            {hasDownloads ? (
+              <div className="flex min-w-0 items-center gap-2">
+                {sparkline?.points && sparkline.points.length > 1 && (
+                  <MiniTrend points={sparkline.points} stroke={tint.stroke} />
+                )}
+                <span className="text-[13px] text-primary tabular-nums">
+                  <span className="font-medium">
+                    {formatNumberShort(downloadsMonthly)}
+                  </span>
+                  <span className="ml-0.5 text-muted-foreground text-xs">
+                    /mo
+                  </span>
+                </span>
+                {typeof growth === "number" && growth > 0 && (
+                  <span className="flex items-center gap-0.5 font-medium text-[11px] text-emerald-600 tabular-nums">
+                    <HiArrowTrendingUp className="size-3" />
+                    {growth}%
+                  </span>
+                )}
               </div>
-            </ProjectCardFooter>
-          )}
-        </ProjectCardContent>
-      </ProjectCard>
+            ) : isRepositoryLoading ? (
+              <span className="h-4 w-16 animate-pulse rounded bg-black/5" />
+            ) : stars > 0 ? (
+              <span className="flex items-center gap-1 text-[13px] text-primary tabular-nums">
+                <HiStar className="size-3.5 text-black/30" />
+                {formatNumberShort(stars)}
+              </span>
+            ) : null}
+
+            <div className="ml-auto flex items-center gap-2.5 text-[11px] text-muted-foreground">
+              {hasDownloads && stars > 0 && (
+                <span className="flex items-center gap-0.5 tabular-nums">
+                  <HiStar className="size-3 text-black/25" />
+                  {formatNumberShort(stars)}
+                </span>
+              )}
+              {language && <span className="truncate">{language}</span>}
+              {license && (
+                <span className="uppercase tracking-[0.04em]">
+                  {String(license).slice(0, 8)}
+                </span>
+              )}
+            </div>
+          </footer>
+        )}
+      </article>
     </Link>
   );
+}
+
+function extractOwner(repoUrl: string): string | null {
+  const match = repoUrl
+    .replace(/^[a-zA-Z]+:\/\/[^/]+\//, "")
+    .replace(/^git@[^:]+:/, "")
+    .split("/")[0];
+  return match || null;
 }
