@@ -17,6 +17,7 @@ import SearchCommand from "@/features/projects/components/search-command.compone
 import { Button } from "@/shared/components/ui/button";
 import { SkeletonUserDropdown } from "@/shared/components/ui/skeleton-header";
 import UserDropdown from "@/shared/components/ui/user-dropdown.component";
+import { cn } from "@/shared/lib/utils";
 
 interface HeaderProps {
   githubStars: number | null;
@@ -128,14 +129,23 @@ export default function Header({ githubStars }: HeaderProps) {
               { label: "Datasets", href: "/?categories=Dataset" },
               { label: "Research", href: "/research" },
               { label: "Benchmarks", href: "/leaderboard" },
-              { label: "Languages", href: "/lang" },
+              { label: "Lineage", href: "/lineage" },
+              {
+                label: "Languages",
+                href: "/lang",
+                className: "hidden lg:block",
+              },
               { label: "Orgs", href: "/orgs" },
-              { label: "Activity", href: "/activity" },
+              {
+                label: "Activity",
+                href: "/activity",
+                className: "hidden lg:block",
+              },
             ].map((item) => (
               <div
                 key={item.href}
                 onMouseEnter={handleNavItemEnter}
-                className="relative"
+                className={cn("relative", item.className)}
               >
                 <Link href={item.href}>
                   <Button

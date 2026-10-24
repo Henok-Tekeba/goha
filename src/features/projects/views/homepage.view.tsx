@@ -6,6 +6,7 @@ import { HiMiniSquare2Stack } from "react-icons/hi2";
 
 import ActivityPreview from "@/features/ecosystem/components/dashboard/activity-preview.component";
 import LanguageTiles from "@/features/ecosystem/components/dashboard/language-tiles.component";
+import LineageCallout from "@/features/ecosystem/components/dashboard/lineage-callout.component";
 import MostUsedModels from "@/features/ecosystem/components/dashboard/most-used-models.component";
 import RecentResearch from "@/features/ecosystem/components/dashboard/recent-research.component";
 import EcosystemStatsBand from "@/features/ecosystem/components/ecosystem-stats-band.component";
@@ -226,6 +227,7 @@ function Dashboard({
     <HomepageLayout onFilterChange={onFilterChange} showStats>
       <div className="flex flex-col gap-16 md:gap-20">
         <MoversSection />
+        <LineageCallout />
         <MostUsedModels />
         <RecentResearch />
         <LanguageTiles />
