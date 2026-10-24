@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: project.description,
         images: [
           {
-            url: `${FRONTEND_URL.replace(/\/$/, "")}/illustrations/king.png`,
+            url: `${FRONTEND_URL.replace(/\/$/, "")}/og.png`,
             width: 1200,
             height: 630,
             alt: `${project.title} — goha`,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         card: "summary_large_image",
         title: `${project.title}`,
         description: project.description,
-        images: [`${FRONTEND_URL.replace(/\/$/, "")}/illustrations/king.png`],
+        images: [`${FRONTEND_URL.replace(/\/$/, "")}/og.png`],
       },
     };
   } catch (error) {

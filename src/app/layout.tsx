@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import { FRONTEND_URL } from "@/config/config";
 
@@ -28,7 +29,7 @@ const GeistMono = localFont({
   display: "swap",
 });
 
-const metadataImageUrl = `${FRONTEND_URL}/illustrations/ost-metadata.png`;
+const metadataImageUrl = `${FRONTEND_URL}/og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(FRONTEND_URL),
@@ -39,7 +40,11 @@ export const metadata: Metadata = {
   description:
     "Find models, datasets, companies, and research papers for Ethiopian languages.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   authors: [{ name: "Henok Tekeba" }],
   creator: "goha",
@@ -132,6 +137,13 @@ export default async function RootLayout({
           <Footer />
           <Toaster />
         </Providers>
+        {process.env.NEXT_PUBLIC_GOATCOUNTER_CODE ? (
+          <Script
+            data-goatcounter={`https://${process.env.NEXT_PUBLIC_GOATCOUNTER_CODE}.goatcounter.com/count`}
+            src="https://gc.zgo.at/count.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

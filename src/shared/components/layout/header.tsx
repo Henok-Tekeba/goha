@@ -17,6 +17,7 @@ import SearchCommand from "@/features/projects/components/search-command.compone
 import { Button } from "@/shared/components/ui/button";
 import { SkeletonUserDropdown } from "@/shared/components/ui/skeleton-header";
 import UserDropdown from "@/shared/components/ui/user-dropdown.component";
+import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 import { cn } from "@/shared/lib/utils";
 
 interface HeaderProps {
@@ -171,22 +172,16 @@ export default function Header({ githubStars }: HeaderProps) {
             <SkeletonUserDropdown />
           ) : (
             <div className="flex items-center gap-2">
-              <Link href="/projects/create">
+              <a
+                href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button className="pr-[14px] pl-4 has-[>svg]:pr-[14px] has-[>svg]:pl-4">
-                  Submit Project
+                  Submit a project
                   <HiPlus size={16} />
                 </Button>
-              </Link>
-              {!isAuthenticated && (
-                <Link href="/auth/login">
-                  <Button
-                    variant="outline"
-                    className="hover:scale-100 active:scale-100"
-                  >
-                    Sign In
-                  </Button>
-                </Link>
-              )}
+              </a>
               {isAuthenticated && <UserDropdown />}
             </div>
           )}

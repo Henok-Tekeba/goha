@@ -67,7 +67,6 @@ const DEFAULT_LINKS: MobileNavLink[] = [
   { label: "Languages", icon: HiOutlineLanguage, href: "/lang" },
   { label: "Organizations", icon: HiOutlineBuildingOffice2, href: "/orgs" },
   { label: "Activity", icon: HiOutlineBolt, href: "/activity" },
-  { label: "Learn", icon: HiBookOpen, href: "/learn" },
 ];
 
 export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
@@ -79,7 +78,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
   const isAuthenticated = !!currentUser;
   const isLoading = currentUserQuery.isLoading;
   const [isOpen, setIsOpen] = useState(false);
-  const resolvedLinks = links ?? (isAuthenticated ? DEFAULT_LINKS : []);
+  const resolvedLinks = links ?? DEFAULT_LINKS;
 
   const handleLogout = async () => {
     try {
@@ -150,14 +149,16 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
 
               <div className="flex flex-1 flex-col">
                 <nav className="mt-6 flex flex-col gap-3 px-4">
-                  <Link
-                    href="/projects/create"
+                  <a
+                    href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={handleLinkClick}
                     className="flex origin-center items-center gap-2 rounded-full bg-primary py-2 pl-4 font-medium text-primary-foreground text-sm transition hover:scale-[0.98]"
                   >
                     <HiPlus className="size-4" />
-                    Submit Project
-                  </Link>
+                    Submit a project
+                  </a>
                   {resolvedLinks.map((link) => {
                     const active =
                       pathname === link.href ||
@@ -194,16 +195,6 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                       </span>
                     )}
                   </a>
-                  {!isAuthenticated && (
-                    <Link
-                      href="/auth/login"
-                      onClick={handleLinkClick}
-                      className="flex items-center gap-2 rounded-full border border-border py-2 pl-4 font-medium text-secondary-foreground text-sm transition"
-                    >
-                      <HiUser className="size-4" />
-                      Sign In
-                    </Link>
-                  )}
                 </nav>
 
                 {/* User Section - Fixed at bottom */}
