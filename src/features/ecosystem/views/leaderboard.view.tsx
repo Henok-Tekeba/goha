@@ -257,7 +257,14 @@ export default function LeaderboardView() {
               href="/lineage"
               className="underline underline-offset-4 hover:text-primary"
             >
-              explore the model lineage →
+              explore the model lineage
+            </Link>{" "}
+            ·{" "}
+            <Link
+              href="/compare"
+              className="underline underline-offset-4 hover:text-primary"
+            >
+              compare models side by side
             </Link>
           </p>
         )}

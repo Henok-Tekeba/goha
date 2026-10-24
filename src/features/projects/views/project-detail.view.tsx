@@ -111,6 +111,7 @@ export default function ProjectDetailView({
                     timestamps={(project.sparkline?.timestamps ?? []).filter(
                       (t): t is string => typeof t === "string"
                     )}
+                    projectId={project.id}
                   />
                 )}
                 {project.imagesUrls.length > 0 && (

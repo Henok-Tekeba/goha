@@ -46,6 +46,8 @@ export interface Project {
   growth?: number | null;
   sparkline?: { points: number[]; timestamps?: (string | null)[] } | null;
   evaluations?: EvaluationEntry[];
+  baseModel?: string | null;
+  paramCount?: number | null;
   createdAt: Date;
   updatedAt: Date;
 }

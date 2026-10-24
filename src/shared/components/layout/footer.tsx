@@ -48,6 +48,11 @@ const footerLinks: {
       id: "explore-lineage",
     },
     {
+      label: "Compare models",
+      href: "/compare",
+      id: "explore-compare",
+    },
+    {
       label: "Languages",
       href: "/lang",
       id: "explore-languages",

@@ -474,6 +474,8 @@ for (const src of [
       src.kind === "model" && Array.isArray(it.eval_results)
         ? it.eval_results
         : [],
+    baseModel: it.base_model ?? null,
+    paramCount: paramCount ?? null,
     growth: typeof it.growth === "number" ? it.growth : null,
     sparkline:
       it.sparkline &&

@@ -29,12 +29,14 @@ function dayLabel(value: string): string {
 interface ModelDownloadsChartProps {
   points: number[];
   timestamps?: string[];
+  projectId?: string;
   className?: string;
 }
 
 export default function ModelDownloadsChart({
   points,
   timestamps = [],
+  projectId,
   className,
 }: ModelDownloadsChartProps) {
   const rows = points.map((value, i) => ({
@@ -80,6 +82,14 @@ export default function ModelDownloadsChart({
               {change >= 0 ? "+" : ""}
               {change}%
             </span>
+          )}
+          {projectId && (
+            <a
+              href={`/compare?models=${projectId}`}
+              className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+            >
+              Compare →
+            </a>
           )}
         </div>
       </div>
