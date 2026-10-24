@@ -532,7 +532,7 @@ const COMPANIES = [
 
 async function main() {
   console.log("╔══════════════════════════════════════╗");
-  console.log("║   goha.et — Scraper v2               ║");
+  console.log("║   goha — Scraper v2               ║");
   console.log("╚══════════════════════════════════════╝\n");
 
   if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true });

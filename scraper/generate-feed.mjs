@@ -189,7 +189,7 @@ function detectNewPapers(papers, existing) {
 
 async function main() {
   console.log("╔══════════════════════════════════════╗");
-  console.log("║   goha.et — Activity Feed Generator  ║");
+  console.log("║   goha — Activity Feed Generator  ║");
   console.log("╚══════════════════════════════════════╝\n");
 
   if (!existsSync(DATA_DIR)) {

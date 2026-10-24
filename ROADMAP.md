@@ -1,4 +1,4 @@
-# goha.et — Roadmap
+# goha — Roadmap
 
 > Status: directory v0 (static export, daily snapshots, one grid view).
 > Goal: become the living surface of the Ethiopian AI ecosystem — research,

@@ -501,7 +501,7 @@ function computeQuickstart(normalizedModels, normalizedDatasets) {
 /* ─── Build ─── */
 function build() {
   console.log("╔══════════════════════════════════════╗");
-  console.log("║   goha.et — Build                     ║");
+  console.log("║   goha — Build                     ║");
   console.log("╚══════════════════════════════════════╝\n");
 
   if (!existsSync(DATA_DIR)) {
