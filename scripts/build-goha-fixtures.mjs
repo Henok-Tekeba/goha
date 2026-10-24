@@ -842,6 +842,8 @@ const insights = {
    companies file (name, website, founding year) where they match */
 const normOrgKey = (s) =>
   String(s || "")
+    .trim()
+    .replace(/^https?:\/\/[^/]+\//, "")
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "");
 
@@ -994,7 +996,12 @@ for (const [key, o] of orgMap) {
     verified: Boolean(curated?.verified),
     isNew: Boolean(curated?.isNew),
     featured: Boolean(curated?.featured),
-    langs: [...o.langs].sort(),
+    langs: [
+      ...new Set([
+        ...o.langs,
+        ...(curated?.langs || []).map((l) => LANG_NAMES[l] ?? titleCase(l)),
+      ]),
+    ].sort(),
     counts: {
       models: o.models,
       datasets: o.datasets,
@@ -1008,8 +1015,69 @@ for (const [key, o] of orgMap) {
     topSpaces: o.topSpaces.sort((a, b) => b.likes - a.likes).slice(0, 4),
   });
 }
-orgs.sort((a, b) => footprintOf(b) - footprintOf(a));
-stats.counts.orgs = orgs.length;
+/* a curated company can own several handles (HF org + GitHub org) — merge
+   entries that resolve to the same organization name */
+const mergedOrgs = new Map();
+for (const org of orgs) {
+  const key = org.name.toLowerCase();
+  const existing = mergedOrgs.get(key);
+  if (!existing) {
+    mergedOrgs.set(key, { ...org });
+    continue;
+  }
+  existing.counts = {
+    models: existing.counts.models + org.counts.models,
+    datasets: existing.counts.datasets + org.counts.datasets,
+    spaces: existing.counts.spaces + org.counts.spaces,
+    repos: existing.counts.repos + org.counts.repos,
+  };
+  existing.downloadsMonthly += org.downloadsMonthly;
+  existing.likes += org.likes;
+  existing.langs = [...new Set([...existing.langs, ...org.langs])].sort();
+  existing.topModels = [...existing.topModels, ...org.topModels]
+    .sort((a, b) => b.dl - a.dl)
+    .slice(0, 5);
+  existing.topRepos = [...existing.topRepos, ...org.topRepos]
+    .sort((a, b) => b.stars - a.stars)
+    .slice(0, 6);
+  existing.topSpaces = [...existing.topSpaces, ...org.topSpaces]
+    .sort((a, b) => b.likes - a.likes)
+    .slice(0, 4);
+}
+/* curated companies are part of the ecosystem even with zero public assets —
+   make sure every one of them has a profile */
+for (const company of companies) {
+  const key = company.name.toLowerCase();
+  if (mergedOrgs.has(key)) continue;
+  mergedOrgs.set(key, {
+    slug: slugify(company.name),
+    key: normOrgKey(company.name),
+    name: company.name,
+    kind: "company",
+    desc: company.desc ?? null,
+    website: company.website ?? null,
+    github: company.github ?? null,
+    hfOrg: company.hf_org ?? null,
+    founded: company.founded ?? null,
+    verified: Boolean(company.verified),
+    isNew: Boolean(company.isNew),
+    featured: Boolean(company.featured),
+    langs: (company.langs || [])
+      .map((l) => LANG_NAMES[l] ?? titleCase(l))
+      .sort(),
+    counts: { models: 0, datasets: 0, spaces: 0, repos: 0 },
+    downloadsMonthly: 0,
+    likes: 0,
+    topModels: [],
+    topRepos: [],
+    topSpaces: [],
+  });
+}
+
+const mergedOrgList = [...mergedOrgs.values()];
+
+mergedOrgList.sort((a, b) => footprintOf(b) - footprintOf(a));
+stats.counts.orgs = mergedOrgList.length;
 
 projects.sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0));
 
@@ -1365,8 +1433,10 @@ writeFileSync(
 );
 writeFileSync(
   path.join(PUBLIC_DATA, "orgs.json"),
-  JSON.stringify({ data: orgs, builtAt: new Date(buildTime).toISOString() }) +
-    "\n"
+  JSON.stringify({
+    data: mergedOrgList,
+    builtAt: new Date(buildTime).toISOString(),
+  }) + "\n"
 );
 writeFileSync(
   path.join(PUBLIC_DATA, "papers.json"),
@@ -1383,7 +1453,7 @@ writeFileSync(
 /* build-time org fixture: static params + sitemap for org profile pages */
 writeFileSync(
   path.join(FIXTURES, "orgs.mock.json"),
-  JSON.stringify(orgs, null, 1) + "\n"
+  JSON.stringify(mergedOrgList, null, 1) + "\n"
 );
 
 /* build-time fixtures for language pages (static params + joins) */
@@ -1831,7 +1901,7 @@ console.log(
     categories: ${categories.length} · techStacks: ${techStacks.length}
     languages: ${topLangs.map(([n]) => n).join(", ")}
     stacks: ${topStacks.map((s) => s.name).join(", ")}
-    ecosystem: activity ${activity.length} · orgs ${orgs.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}
+    ecosystem: activity ${activity.length} · orgs ${mergedOrgList.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}
     charts: growth ${growth.length} days · top models ${topModelHistory.length} days · radar tasks ${radarRows.length}
     lineage: ${lineage.stats.models} models · ${lineage.stats.foundations} foundations · ${lineage.stats.families} families`
 );

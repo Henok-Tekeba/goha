@@ -1,27 +1,36 @@
 [
  {
-  "slug": "icog-labs",
-  "key": "icoglabs",
-  "name": "iCog Labs",
+  "slug": "gheero",
+  "key": "gheeroleyu",
+  "name": "Gheero",
   "kind": "company",
-  "desc": "AGI research lab working on robotics and African language NLP",
-  "website": "https://icog-labs.com",
+  "desc": "Ethiopian technology company (formerly iCog Labs) — AI education, products and data; publisher of the Leyu Amharic speech dataset",
+  "website": "https://gheero.et",
   "github": "https://github.com/iCogLabs",
-  "hfOrg": null,
+  "hfOrg": "https://huggingface.co/gheero-Leyu",
   "founded": "2013",
   "verified": true,
-  "isNew": false,
+  "isNew": true,
   "featured": false,
-  "langs": [],
+  "langs": [
+   "Amharic"
+  ],
   "counts": {
-   "models": 0,
-   "datasets": 0,
+   "models": 1,
+   "datasets": 1,
    "spaces": 0,
    "repos": 17
   },
-  "downloadsMonthly": 0,
-  "likes": 7,
-  "topModels": [],
+  "downloadsMonthly": 308,
+  "likes": 9,
+  "topModels": [
+   {
+    "name": "amharic-omnivoice-tts",
+    "id": "gheero-Leyu/amharic-omnivoice-tts",
+    "projectId": "pjt_00000000000000000000000000000015",
+    "dl": 189
+   }
+  ],
   "topRepos": [
    {
     "name": "iCogLabs/Image-Preprocessor",
@@ -305,7 +314,9 @@
   "isNew": false,
   "featured": false,
   "langs": [
-   "Amharic"
+   "Amharic",
+   "Oromo",
+   "Tigrinya"
   ],
   "counts": {
    "models": 1,
@@ -4890,41 +4901,6 @@
   "topSpaces": []
  },
  {
-  "slug": "gheero-leyu",
-  "key": "gheeroleyu",
-  "name": "gheero-Leyu",
-  "kind": "individual",
-  "desc": "Leyu Amharic - Addis Ababa Dialect Speech Corpus Dataset Description This dataset is a curated parallel speech corpus consisting of audio recordings paired with corresponding text transcripts, focused",
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Amharic"
-  ],
-  "counts": {
-   "models": 1,
-   "datasets": 1,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 308,
-  "likes": 2,
-  "topModels": [
-   {
-    "name": "amharic-omnivoice-tts",
-    "id": "gheero-Leyu/amharic-omnivoice-tts",
-    "projectId": "pjt_00000000000000000000000000000015",
-    "dl": 189
-   }
-  ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
   "slug": "chappm",
   "key": "chappm",
   "name": "chappM",
@@ -6640,17 +6616,19 @@
   "key": "addisai",
   "name": "Addis AI",
   "kind": "company",
-  "desc": "Building Aleph ፩, the first foundational LLM for Ethiopian languages",
-  "website": "https://addis.ai",
+  "desc": "Enterprise AI infrastructure for voice, chat and retrieval across African languages — Amharic and Afaan Oromo speech-to-text, text-to-speech, language models and cross-lingual RAG",
+  "website": "https://www.addisai.ch",
   "github": null,
-  "hfOrg": "https://huggingface.co/AddisAI",
+  "hfOrg": "https://huggingface.co/addisai",
   "founded": "2023",
   "verified": true,
   "isNew": true,
   "featured": true,
   "langs": [
    "Amharic",
-   "English"
+   "English",
+   "Oromo",
+   "Tigrinya"
   ],
   "counts": {
    "models": 0,
@@ -6892,6 +6870,34 @@
   },
   "downloadsMonthly": 696,
   "likes": 1,
+  "topModels": [],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
+  "slug": "hasab-ai",
+  "key": "hasabai",
+  "name": "Hasab AI",
+  "kind": "company",
+  "desc": "Amharic NLP infrastructure — translation, search, and semantic understanding",
+  "website": "https://hasabai.com",
+  "github": "",
+  "hfOrg": "",
+  "founded": "2022",
+  "verified": true,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Amharic"
+  ],
+  "counts": {
+   "models": 0,
+   "datasets": 0,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 0,
+  "likes": 0,
   "topModels": [],
   "topRepos": [],
   "topSpaces": []

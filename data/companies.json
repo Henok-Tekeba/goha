@@ -1,22 +1,22 @@
 {
   "data": [
     {
-      "name": "iCog Labs",
+      "name": "Gheero",
       "badge": "Company",
       "bc": "b-co",
-      "desc": "AGI research lab working on robotics and African language NLP",
+      "desc": "Ethiopian technology company (formerly iCog Labs) — AI education, products and data; publisher of the Leyu Amharic speech dataset",
       "langs": [
         "amharic"
       ],
-      "isNew": false,
+      "isNew": true,
       "tags": [
-        "agi",
-        "robotics",
-        "nlp"
+        "education",
+        "voice",
+        "datasets"
       ],
-      "website": "https://icog-labs.com",
+      "website": "https://gheero.et",
       "github": "https://github.com/iCogLabs",
-      "hf_org": "",
+      "hf_org": "https://huggingface.co/gheero-Leyu",
       "founded": "2013",
       "models": [],
       "verified": true,
@@ -34,19 +34,24 @@
       "name": "Addis AI",
       "badge": "Company",
       "bc": "b-co",
-      "desc": "Building Aleph ፩, the first foundational LLM for Ethiopian languages",
+      "desc": "Enterprise AI infrastructure for voice, chat and retrieval across African languages — Amharic and Afaan Oromo speech-to-text, text-to-speech, language models and cross-lingual RAG",
       "langs": [
         "amharic",
+        "oromo",
         "tigrinya"
       ],
       "isNew": true,
       "tags": [
+        "voice",
+        "asr",
+        "tts",
         "llm",
-        "research"
+        "rag",
+        "enterprise"
       ],
-      "website": "https://addis.ai",
+      "website": "https://www.addisai.ch",
       "github": "",
-      "hf_org": "https://huggingface.co/AddisAI",
+      "hf_org": "https://huggingface.co/addisai",
       "founded": "2023",
       "models": [],
       "verified": true,

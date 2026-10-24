@@ -328,9 +328,79 @@
   "updatedAt": "2026-08-31T00:25:32.000Z"
  },
  {
+  "id": "pjt_00000000000000000000000000000190",
+  "title": "Gheero",
+  "description": "Ethiopian technology company (formerly iCog Labs) — AI education, products and data; publisher of the Leyu Amharic speech dataset",
+  "provider": "GITHUB",
+  "logoUrl": "/types/company.svg",
+  "published": true,
+  "trending": true,
+  "downloadsMonthly": 0,
+  "repoUrl": "https://github.com/iCogLabs",
+  "githubUrl": "https://github.com/iCogLabs",
+  "gitlabUrl": null,
+  "twitterUrl": null,
+  "linkedinUrl": null,
+  "discordUrl": null,
+  "websiteUrl": "https://gheero.et",
+  "imagesUrls": [],
+  "owner": {
+   "id": "usr_000000000000000000000000f8487bf3",
+   "name": "Gheero"
+  },
+  "projectTechStacks": [
+   {
+    "id": "tst_00000000000000000000000000000001",
+    "name": "Amharic",
+    "iconUrl": "/langs/amharic.svg",
+    "type": "LANGUAGE"
+   }
+  ],
+  "projectCategories": [
+   {
+    "id": "cat_00000000000000000000000000000003",
+    "name": "Company"
+   }
+  ],
+  "repositoryDetails": {
+   "name": "Gheero",
+   "description": "Ethiopian technology company (formerly iCog Labs) — AI education, products and data; publisher of the Leyu Amharic speech dataset",
+   "url": "https://github.com/iCogLabs",
+   "html_url": "https://github.com/iCogLabs",
+   "created_at": "2013-01-01T00:00:00.000Z",
+   "updated_at": "2026-01-01T00:00:00.000Z",
+   "pushed_at": "2026-01-01T00:00:00.000Z",
+   "stars": 0,
+   "tags": [
+    "education",
+    "voice",
+    "datasets"
+   ],
+   "forksCount": 0,
+   "openIssuesCount": 0,
+   "pullRequestsCount": 0,
+   "subscribersCount": 0,
+   "license": null,
+   "languages": [
+    "Amharic"
+   ],
+   "owner": {
+    "login": "Gheero",
+    "avatar_url": ""
+   },
+   "contributors": [],
+   "issues": [],
+   "issueLabels": [],
+   "pullRequests": [],
+   "readme": "IyBHaGVlcm8KCkV0aGlvcGlhbiB0ZWNobm9sb2d5IGNvbXBhbnkgKGZvcm1lcmx5IGlDb2cgTGFicykg4oCUIEFJIGVkdWNhdGlvbiwgcHJvZHVjdHMgYW5kIGRhdGE7IHB1Ymxpc2hlciBvZiB0aGUgTGV5dSBBbWhhcmljIHNwZWVjaCBkYXRhc2V0IEZvdW5kZWQgaW4gMjAxMy4gV29ya2luZyBpbjogYW1oYXJpYy4KCltPcGVuIHdlYnNpdGVdKGh0dHBzOi8vZ2hlZXJvLmV0KSDCtyBbZ29oYS5ldF0oaHR0cHM6Ly9nb2hhLmV0KQ=="
+  },
+  "createdAt": "2013-01-01T00:00:00.000Z",
+  "updatedAt": "2026-01-01T00:00:00.000Z"
+ },
+ {
   "id": "pjt_00000000000000000000000000000191",
   "title": "Addis AI",
-  "description": "Building Aleph ፩, the first foundational LLM for Ethiopian languages",
+  "description": "Enterprise AI infrastructure for voice, chat and retrieval across African languages — Amharic and Afaan Oromo speech-to-text, text-to-speech, language models and cross-lingual RAG",
   "provider": "GITHUB",
   "logoUrl": "/types/company.svg",
   "published": true,
@@ -342,7 +412,7 @@
   "twitterUrl": null,
   "linkedinUrl": null,
   "discordUrl": null,
-  "websiteUrl": "https://addis.ai",
+  "websiteUrl": "https://www.addisai.ch",
   "imagesUrls": [],
   "owner": {
    "id": "usr_0000000000000000000000009d0dae92",
@@ -370,16 +440,20 @@
   ],
   "repositoryDetails": {
    "name": "Addis AI",
-   "description": "Building Aleph ፩, the first foundational LLM for Ethiopian languages",
+   "description": "Enterprise AI infrastructure for voice, chat and retrieval across African languages — Amharic and Afaan Oromo speech-to-text, text-to-speech, language models and cross-lingual RAG",
    "url": null,
-   "html_url": "https://addis.ai",
+   "html_url": "https://www.addisai.ch",
    "created_at": "2023-01-01T00:00:00.000Z",
    "updated_at": "2026-01-01T00:00:00.000Z",
    "pushed_at": "2026-01-01T00:00:00.000Z",
    "stars": 0,
    "tags": [
+    "voice",
+    "asr",
+    "tts",
     "llm",
-    "research"
+    "rag",
+    "enterprise"
    ],
    "forksCount": 0,
    "openIssuesCount": 0,
@@ -388,6 +462,7 @@
    "license": null,
    "languages": [
     "Amharic",
+    "Oromo",
     "Tigrinya"
    ],
    "owner": {
@@ -398,7 +473,7 @@
    "issues": [],
    "issueLabels": [],
    "pullRequests": [],
-   "readme": "IyBBZGRpcyBBSQoKQnVpbGRpbmcgQWxlcGgg4Y2pLCB0aGUgZmlyc3QgZm91bmRhdGlvbmFsIExMTSBmb3IgRXRoaW9waWFuIGxhbmd1YWdlcyBGb3VuZGVkIGluIDIwMjMuIFdvcmtpbmcgaW46IGFtaGFyaWMsIHRpZ3JpbnlhLgoKW09wZW4gd2Vic2l0ZV0oaHR0cHM6Ly9hZGRpcy5haSkgwrcgW2dvaGEuZXRdKGh0dHBzOi8vZ29oYS5ldCk="
+   "readme": "IyBBZGRpcyBBSQoKRW50ZXJwcmlzZSBBSSBpbmZyYXN0cnVjdHVyZSBmb3Igdm9pY2UsIGNoYXQgYW5kIHJldHJpZXZhbCBhY3Jvc3MgQWZyaWNhbiBsYW5ndWFnZXMg4oCUIEFtaGFyaWMgYW5kIEFmYWFuIE9yb21vIHNwZWVjaC10by10ZXh0LCB0ZXh0LXRvLXNwZWVjaCwgbGFuZ3VhZ2UgbW9kZWxzIGFuZCBjcm9zcy1saW5ndWFsIFJBRyBGb3VuZGVkIGluIDIwMjMuIFdvcmtpbmcgaW46IGFtaGFyaWMsIG9yb21vLCB0aWdyaW55YS4KCltPcGVuIHdlYnNpdGVdKGh0dHBzOi8vd3d3LmFkZGlzYWkuY2gpIMK3IFtnb2hhLmV0XShodHRwczovL2dvaGEuZXQp"
   },
   "createdAt": "2023-01-01T00:00:00.000Z",
   "updatedAt": "2026-01-01T00:00:00.000Z"
@@ -39826,76 +39901,6 @@
   },
   "createdAt": "2026-10-24T10:32:55.430Z",
   "updatedAt": "2026-08-12T10:39:07.000Z"
- },
- {
-  "id": "pjt_00000000000000000000000000000190",
-  "title": "iCog Labs",
-  "description": "AGI research lab working on robotics and African language NLP",
-  "provider": "GITHUB",
-  "logoUrl": "/types/company.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 0,
-  "repoUrl": "https://github.com/iCogLabs",
-  "githubUrl": "https://github.com/iCogLabs",
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://icog-labs.com",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000f20f2709",
-   "name": "iCog Labs"
-  },
-  "projectTechStacks": [
-   {
-    "id": "tst_00000000000000000000000000000001",
-    "name": "Amharic",
-    "iconUrl": "/langs/amharic.svg",
-    "type": "LANGUAGE"
-   }
-  ],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000003",
-    "name": "Company"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "iCog Labs",
-   "description": "AGI research lab working on robotics and African language NLP",
-   "url": "https://github.com/iCogLabs",
-   "html_url": "https://github.com/iCogLabs",
-   "created_at": "2013-01-01T00:00:00.000Z",
-   "updated_at": "2026-01-01T00:00:00.000Z",
-   "pushed_at": "2026-01-01T00:00:00.000Z",
-   "stars": 0,
-   "tags": [
-    "agi",
-    "robotics",
-    "nlp"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": null,
-   "languages": [
-    "Amharic"
-   ],
-   "owner": {
-    "login": "iCog Labs",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBpQ29nIExhYnMKCkFHSSByZXNlYXJjaCBsYWIgd29ya2luZyBvbiByb2JvdGljcyBhbmQgQWZyaWNhbiBsYW5ndWFnZSBOTFAgRm91bmRlZCBpbiAyMDEzLiBXb3JraW5nIGluOiBhbWhhcmljLgoKW09wZW4gd2Vic2l0ZV0oaHR0cHM6Ly9pY29nLWxhYnMuY29tKSDCtyBbZ29oYS5ldF0oaHR0cHM6Ly9nb2hhLmV0KQ=="
-  },
-  "createdAt": "2013-01-01T00:00:00.000Z",
-  "updatedAt": "2026-01-01T00:00:00.000Z"
  },
  {
   "id": "pjt_00000000000000000000000000000192",
