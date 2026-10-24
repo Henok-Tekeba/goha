@@ -1,5 +1,5 @@
 /**
- * goha.et's filter/pagination semantics — one implementation used by the
+ * goha's filter/pagination semantics — one implementation used by the
  * deployed API routes and the client-side data adapter.
  */
 import type { Project } from "@/features/projects/types/project.type";

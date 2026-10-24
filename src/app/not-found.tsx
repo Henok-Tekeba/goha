@@ -7,7 +7,7 @@ import { asset } from "@/shared/lib/asset";
 export const metadata: Metadata = {
   title: "404 - Page Not Found",
   description:
-    "The page you are looking for doesn't exist or has been moved. Return to goha.et to discover the Ethiopian AI ecosystem.",
+    "The page you are looking for doesn't exist or has been moved. Return to goha to discover the Ethiopian AI ecosystem.",
 };
 
 export default function NotFound() {

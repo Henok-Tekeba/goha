@@ -6,7 +6,7 @@ import StepSuccessView from "@/features/projects/views/stepper-views/common/step
 
 export const metadata: Metadata = {
   title: "Project created successfully",
-  description: "Project created successfully on goha.et",
+  description: "Project created successfully on goha",
 };
 
 export default function page() {

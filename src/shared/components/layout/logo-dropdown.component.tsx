@@ -81,11 +81,11 @@ export default function LogoDropdown() {
         <button
           type="button"
           className="cursor-pointer rounded-md outline-none transition-opacity duration-200 ease-out hover:opacity-50"
-          aria-label="goha.et Home"
+          aria-label="goha Home"
         >
           <Image
             src={asset("/goha-logo.svg")}
-            alt="goha.et logo"
+            alt="goha logo"
             width={210}
             height={50}
           />

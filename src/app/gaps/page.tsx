@@ -5,7 +5,7 @@ import { asset } from "@/shared/lib/asset";
 import { getGapReport } from "@/shared/lib/local-data.server";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 export const metadata: Metadata = {
-  title: "The Gap Report — what Ethiopian AI is still missing · goha.et",
+  title: "The Gap Report — what Ethiopian AI is still missing · goha",
   description:
     "A data-cited report on the open problems in Ethiopian AI: empty language × task cells, unevaluated models, unlicensed assets and research without implementations.",
   alternates: { canonical: "/gaps" },

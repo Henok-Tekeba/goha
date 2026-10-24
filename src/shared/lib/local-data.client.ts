@@ -1,5 +1,5 @@
 /**
- * Client-context access to goha.et's data on GitHub Pages:
+ * Client-context access to goha's data on GitHub Pages:
  * static JSON files under /data, fetched once and memoized.
  */
 

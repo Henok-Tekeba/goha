@@ -35,7 +35,7 @@ export async function generateMetadata({
     title: titles[provider as keyof typeof titles] || "Create Project",
     description:
       descriptions[provider as keyof typeof descriptions] ||
-      "Create Project on goha.et",
+      "Create Project on goha",
   };
 }
 

@@ -190,13 +190,13 @@ export default function Footer() {
               >
                 <Image
                   src={asset("/goha-logo.svg")}
-                  alt="goha.et logo"
+                  alt="goha logo"
                   width={126}
                   height={30}
                 />
               </Link>
               <span className="text-muted-foreground text-sm">
-                © goha.et • 2026
+                © goha • 2026
               </span>
               <span className="max-w-[280px] text-muted-foreground text-xs leading-relaxed">
                 UI adapted from{" "}

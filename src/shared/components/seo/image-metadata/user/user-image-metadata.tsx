@@ -15,7 +15,7 @@ export function UserImageMetadata({
   const logoSize = 300;
   const summary = (() => {
     if (!description) {
-      return "Discover contributors of the Ethiopian AI ecosystem on goha.et.";
+      return "Discover contributors of the Ethiopian AI ecosystem on goha.";
     }
     if (description.length <= 130) {
       return description;
@@ -38,7 +38,7 @@ export function UserImageMetadata({
       >
         <ImageMetadataContent
           title={name}
-          // subtitle="goha.et"
+          // subtitle="goha"
           description={summary}
         />
         {imageUrl ? (

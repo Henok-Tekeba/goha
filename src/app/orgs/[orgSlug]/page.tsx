@@ -25,22 +25,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!org)
     return {
       title: "Organization",
-      description: "Discover the Ethiopian AI ecosystem on goha.et.",
+      description: "Discover the Ethiopian AI ecosystem on goha.",
     };
   const orgUrl = `${FRONTEND_URL.replace(/\/$/, "")}/orgs/${org.slug}`;
   return {
-    title: `${org.name} — Ethiopian AI organization · goha.et`,
+    title: `${org.name} — Ethiopian AI organization · goha`,
     description:
       org.desc ??
-      `${org.name} — ${kindWord(org.kind)} in the Ethiopian AI ecosystem on goha.et.`,
+      `${org.name} — ${kindWord(org.kind)} in the Ethiopian AI ecosystem on goha.`,
     alternates: { canonical: `/orgs/${org.slug}` },
     openGraph: {
       title: `${org.name} — Ethiopian AI organization`,
       description:
-        org.desc ?? `${org.name} on goha.et — the home of Ethiopian AI.`,
+        org.desc ?? `${org.name} on goha — the home of Ethiopian AI.`,
       url: orgUrl,
       type: "profile",
-      siteName: "goha.et",
+      siteName: "goha",
     },
   };
 }

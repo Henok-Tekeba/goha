@@ -4,7 +4,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Research — papers on Ethiopian languages · goha.et",
+  title: "Research — papers on Ethiopian languages · goha",
   description:
     "Published research on Amharic, Afaan Oromo, Tigrinya and Ge'ez — ASR, translation, LLMs and benchmarks, swept from arXiv daily.",
   alternates: { canonical: "/research" },

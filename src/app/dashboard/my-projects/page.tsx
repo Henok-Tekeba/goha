@@ -4,7 +4,7 @@ import MyProjectsView from "@/features/dashboard/views/projects/my-projects.view
 
 export const metadata: Metadata = {
   title: "My Projects",
-  description: "Manage your projects on goha.et",
+  description: "Manage your projects on goha",
 };
 
 export default function MyProjectsPage() {

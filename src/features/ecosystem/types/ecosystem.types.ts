@@ -1,4 +1,4 @@
-/* goha.et ecosystem surfaces — activity, stats, insights, orgs, papers,
+/* goha ecosystem surfaces — activity, stats, insights, orgs, papers,
    leaderboard. Shapes mirror the JSON emitted by
    scripts/build-goha-fixtures.mjs into /public/data/*.json. */
 

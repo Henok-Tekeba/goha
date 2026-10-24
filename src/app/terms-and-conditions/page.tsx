@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
-    "The terms that govern your use of goha.et — the home of the Ethiopian AI ecosystem.",
+    "The terms that govern your use of goha — the home of the Ethiopian AI ecosystem.",
   alternates: { canonical: "/terms-and-conditions" },
 };
 
@@ -16,7 +16,7 @@ export default function TermsAndConditionsPage() {
           Terms and Conditions
         </h1>
         <p className="mt-3 text-left text-muted-foreground text-sm">
-          The terms that govern your use of goha.et.
+          The terms that govern your use of goha.
         </p>
       </div>
 
@@ -24,14 +24,14 @@ export default function TermsAndConditionsPage() {
       <div className="mt-16 mb-28">
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            1. What goha.et is
+            1. What goha is
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et (ጎሃ — &ldquo;dawn&rdquo; in Amharic) is a free,
-            non-commercial directory that indexes and organizes publicly
-            available artificial-intelligence resources for Ethiopian languages
-            — including Amharic, Afaan Oromo, Tigrinya, Ge&apos;ez and others.
-            It lists models, datasets, companies, and research papers so that
+            goha (ጎሃ — &ldquo;dawn&rdquo; in Amharic) is a free, non-commercial
+            directory that indexes and organizes publicly available
+            artificial-intelligence resources for Ethiopian languages —
+            including Amharic, Afaan Oromo, Tigrinya, Ge&apos;ez and others. It
+            lists models, datasets, companies, and research papers so that
             developers, researchers, and enthusiasts can find, compare, and
             explore them in one place.
           </p>
@@ -42,8 +42,8 @@ export default function TermsAndConditionsPage() {
             2. Acceptance of Terms
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            By accessing or using goha.et you agree to these Terms. If you do
-            not agree, you must not access or use the website.
+            By accessing or using goha you agree to these Terms. If you do not
+            agree, you must not access or use the website.
           </p>
         </section>
 
@@ -52,12 +52,12 @@ export default function TermsAndConditionsPage() {
             3. Nature of the Data
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            Listings on goha.et are collected automatically from public sources
-            — primarily the Hugging Face Hub, GitHub, and arXiv — and are
-            indexed for discovery. Metadata such as download counts, likes,
-            licenses, and evaluation results belong to and are published by the
-            original creators. goha.et does not host model weights or datasets;
-            links take you to the original source.
+            Listings on goha are collected automatically from public sources —
+            primarily the Hugging Face Hub, GitHub, and arXiv — and are indexed
+            for discovery. Metadata such as download counts, likes, licenses,
+            and evaluation results belong to and are published by the original
+            creators. goha does not host model weights or datasets; links take
+            you to the original source.
           </p>
         </section>
 
@@ -78,7 +78,7 @@ export default function TermsAndConditionsPage() {
             5. Intellectual Property
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            Models, datasets, and papers listed on goha.et are the property of
+            Models, datasets, and papers listed on goha are the property of
             their respective creators and are subject to their own licenses.
             Descriptions and statistics are quoted for identification and
             discovery purposes. If you are a rights holder and want an entry
@@ -106,7 +106,7 @@ export default function TermsAndConditionsPage() {
           <p className="mt-3 text-muted-foreground text-sm">
             Corrections and additions are welcome through pull requests or
             issues on our GitHub repository. By submitting data you confirm you
-            have the right to share it and allow goha.et to display it with
+            have the right to share it and allow goha to display it with
             attribution to the original source.
           </p>
         </section>
@@ -116,9 +116,9 @@ export default function TermsAndConditionsPage() {
             8. Non-commercial Service
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et is a community project. It does not sell listings or
-            rankings, and ranking is not influenced by payment. It is and
-            remains a non-commercial service.
+            goha is a community project. It does not sell listings or rankings,
+            and ranking is not influenced by payment. It is and remains a
+            non-commercial service.
           </p>
         </section>
 
@@ -127,10 +127,10 @@ export default function TermsAndConditionsPage() {
             9. Limitation of Liability
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            To the maximum extent permitted by law, goha.et and its maintainers
-            are not liable for any indirect, incidental, or consequential
-            damages arising from your use of, or inability to use, the website
-            or any resource you discover through it.
+            To the maximum extent permitted by law, goha and its maintainers are
+            not liable for any indirect, incidental, or consequential damages
+            arising from your use of, or inability to use, the website or any
+            resource you discover through it.
           </p>
         </section>
 

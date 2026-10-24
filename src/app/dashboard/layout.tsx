@@ -5,10 +5,10 @@ import DashboardSidebar from "@/features/dashboard/components/layout/dashboard-s
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Dashboard | goha.et",
-    default: "Dashboard | goha.et",
+    template: "%s | Dashboard | goha",
+    default: "Dashboard | goha",
   },
-  description: "Dashboard for goha.et",
+  description: "Dashboard for goha",
   robots: {
     index: false,
     follow: false,

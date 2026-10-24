@@ -92,7 +92,7 @@ export function ShareProfileModal({
     handleOpenChange(true);
   };
 
-  const shareText = "Check out my profile on goha.et!";
+  const shareText = "Check out my profile on goha!";
 
   const socialButtons: SocialShareButton[] = [
     {

@@ -36,7 +36,7 @@ export default function OnboardingView() {
       <Link href="/" className="absolute top-12 left-1/2 z-10 -translate-x-1/2">
         <Image
           src={asset("/goha-logo.svg")}
-          alt="goha.et logo"
+          alt="goha logo"
           width={209}
           height={12}
           className="max-h-[16px] lg:max-h-[25px]"

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How goha.et handles information — what we collect, what we don't, and how the directory works.",
+    "How goha handles information — what we collect, what we don't, and how the directory works.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="mt-3 text-left text-muted-foreground text-sm">
-          What goha.et collects, what it doesn&rsquo;t, and why.
+          What goha collects, what it doesn&rsquo;t, and why.
         </p>
       </div>
 
@@ -25,11 +25,11 @@ export default function PrivacyPolicyPage() {
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">1. Summary</h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et is a read-only public directory. We do not require an
-            account, we do not run advertising or cross-site tracking, and we do
-            not sell data. The only personal information we ever handle is an
-            email address you knowingly give us for the newsletter — everything
-            else you do on the site stays in your own browser.
+            goha is a read-only public directory. We do not require an account,
+            we do not run advertising or cross-site tracking, and we do not sell
+            data. The only personal information we ever handle is an email
+            address you knowingly give us for the newsletter — everything else
+            you do on the site stays in your own browser.
           </p>
         </section>
 
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
           <p className="mt-3 text-muted-foreground text-sm">
             <strong>Newsletter:</strong> if you subscribe, your email address is
             stored by a Google Forms-backed mailing list used only to send
-            weekly goha.et updates. You can unsubscribe at any time.
+            weekly goha updates. You can unsubscribe at any time.
           </p>
           <p className="mt-3 text-muted-foreground text-sm">
             <strong>Your browser, not our servers:</strong> features like the
@@ -89,7 +89,7 @@ export default function PrivacyPolicyPage() {
             6. Children&rsquo;s Privacy
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha.et is a general-audience technical directory and does not
+            goha is a general-audience technical directory and does not
             knowingly collect personal information from children.
           </p>
         </section>

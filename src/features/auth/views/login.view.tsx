@@ -18,7 +18,7 @@ export default function LoginView() {
         <Image
           className="opacity-100 transition-opacity duration-200 group-hover:opacity-50"
           src={asset("/goha-logo.svg")}
-          alt="goha.et logo"
+          alt="goha logo"
           width={200}
           height={12}
         />

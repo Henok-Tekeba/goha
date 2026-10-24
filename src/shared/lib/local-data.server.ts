@@ -1,5 +1,5 @@
 /**
- * Server/build-context access to goha.et's committed data.
+ * Server/build-context access to goha's committed data.
  * The bundler inlines the JSON — never imported by client code.
  */
 

@@ -4,7 +4,7 @@ import LoginView from "@/features/auth/views/login.view";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your account to continue using goha.et",
+  description: "Sign in to your account to continue using goha",
   robots: {
     index: false,
     follow: false,

@@ -6,7 +6,7 @@ import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
   title: "My Profile",
-  description: "My profile on goha.et",
+  description: "My profile on goha",
   robots: {
     index: false,
     follow: false,

@@ -26,7 +26,7 @@ export default function LoginForm() {
         <div className="fade-in-0 slide-in-from-bottom-1 animate-in p-4 blur-in-[10px] duration-500 ease-out">
           <div className="mb-7 text-center">
             <h1 className="mb-2 text-xl tracking-[-0.04em] sm:text-2xl">
-              Welcome to goha.et
+              Welcome to goha
             </h1>
             <p className="mt-0 text-muted-foreground text-sm">
               New here or coming back? Choose how you want to continue

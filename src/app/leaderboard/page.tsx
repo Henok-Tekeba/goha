@@ -4,7 +4,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Benchmarks & rankings — goha.et",
+  title: "Benchmarks & rankings — goha",
   description:
     "How Ethiopian-language models compare on published results: ASR word error rates, retrieval accuracy, OCR — every row cites its source.",
   alternates: { canonical: "/leaderboard" },

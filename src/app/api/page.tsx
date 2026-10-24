@@ -4,9 +4,9 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Open data & API — goha.et",
+  title: "Open data & API — goha",
   description:
-    "Every surface on goha.et is backed by a public JSON file. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
+    "Every surface on goha is backed by a public JSON file. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
   alternates: { canonical: "/api" },
 };
 
@@ -102,7 +102,7 @@ export default function ApiPage() {
               The index, as JSON
             </h1>
             <p className="mt-4 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-              Every page on goha.et is rendered from static JSON files under{" "}
+              Every page on goha is rendered from static JSON files under{" "}
               <code className="rounded bg-secondary px-1 py-0.5 text-[11px]">
                 /data/
               </code>
@@ -168,12 +168,12 @@ export default function ApiPage() {
               Read the freshness of the index:
             </p>
             <Code>
-              {"curl -s https://goha.et/data/stats.json | jq .counts"}
+              {"curl -s https://goha.enoch.et/data/stats.json | jq .counts"}
             </Code>
             <p className="mt-5 mb-3 text-muted-foreground text-xs">
               Filter Amharic speech models with jq:
             </p>
-            <Code>{`curl -s https://goha.et/data/projects.json \\
+            <Code>{`curl -s https://goha.enoch.et/data/projects.json \\
   | jq '[.[] | select(
       (.projectCategories[1].name // "") == "ASR"
       and ((.repositoryDetails.languages // []) | index("Amharic"))
@@ -181,7 +181,7 @@ export default function ApiPage() {
             <p className="mt-5 mb-3 text-muted-foreground text-xs">
               Pull published ASR results as CSV:
             </p>
-            <Code>{`curl -s https://goha.et/data/leaderboard.json \\
+            <Code>{`curl -s https://goha.enoch.et/data/leaderboard.json \\
   | jq -r '.sections[] | select(.task=="ASR")
       | .rows[] | [.model, .org, .metric, .display, .dataset]
       | @csv'`}</Code>

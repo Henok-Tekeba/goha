@@ -4,7 +4,7 @@ import StepProjectDetailsView from "@/features/projects/views/stepper-views/comm
 
 export const metadata: Metadata = {
   title: "Describe your project",
-  description: "Describe your project on goha.et",
+  description: "Describe your project on goha",
 };
 
 export default function page() {

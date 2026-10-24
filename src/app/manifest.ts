@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "goha.et",
+    name: "goha",
     short_name: "goha",
     description:
       "Find models, datasets, companies, and research papers for Ethiopian languages.",

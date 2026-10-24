@@ -1,7 +1,7 @@
 const publicApiUrl = process.env.NEXT_PUBLIC_API_URL ?? "/api";
 const serverApiUrl = process.env.INTERNAL_SERVER_API_URL ?? publicApiUrl;
 const frontendUrl =
-  process.env.NEXT_PUBLIC_FRONTEND_URL ?? "https://goha-pink.vercel.app";
+  process.env.NEXT_PUBLIC_FRONTEND_URL ?? "https://goha.enoch.et";
 
 const isServer = typeof window === "undefined";
 

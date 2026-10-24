@@ -40,7 +40,7 @@ export default function FooterMinimal({
           >
             <Image
               src={asset("/goha-logo.svg")}
-              alt="goha.et logo"
+              alt="goha logo"
               width={39}
               height={39}
               className="h-auto max-h-[39px] w-auto"
@@ -61,7 +61,7 @@ export default function FooterMinimal({
         </div>
 
         <div className="flex items-center gap-4 text-xs md:text-sm">
-          <span className="text-muted-foreground">© goha.et • 2026</span>
+          <span className="text-muted-foreground">© goha • 2026</span>
           <span className="text-muted-foreground">
             UI adapted from{" "}
             <Link
@@ -70,7 +70,7 @@ export default function FooterMinimal({
               target="_blank"
               rel="noopener noreferrer"
             >
-              goha.et
+              goha
             </Link>{" "}
             (CC BY-NC 4.0)
           </span>

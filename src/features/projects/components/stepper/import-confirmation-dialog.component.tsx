@@ -47,7 +47,7 @@ export function ProjectImportationConfirmDialog({
               <p className="text-muted-foreground text-sm">
                 <strong>{projectTitle}</strong> will be created and added to
                 your <strong>dashboard</strong>. You’ll be able to publish it
-                later to make it visible on goha.et.
+                later to make it visible on goha.
               </p>
             </div>
           </AlertDialogDescription>

@@ -32,7 +32,7 @@ export type UserBookmarksQueryParams = PaginationParams;
 
 export type PaginatedProjectsResponse = PaginatedResponse<Project>;
 
-/* goha.et: read-only static data (GitHub Pages architecture) */
+/* goha: read-only static data (GitHub Pages architecture) */
 const isServer = typeof window === "undefined";
 
 async function loadAll(): Promise<Project[]> {
@@ -92,7 +92,7 @@ export async function getCurrentUserBookmarks(
 /* Write operations are not available on the read-only directory. */
 const readOnly = (action: string): Promise<never> =>
   Promise.reject(
-    new Error(`${action} is not available — goha.et is a read-only directory.`)
+    new Error(`${action} is not available — goha is a read-only directory.`)
   );
 
 export function createProject(_input: CreateProjectInput): Promise<Project> {

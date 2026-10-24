@@ -112,7 +112,7 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
         >
           <Image
             src={asset("/goha-logo.svg")}
-            alt="goha.et"
+            alt="goha"
             width={168}
             height={40}
           />
@@ -136,12 +136,12 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                 <Link
                   href="/"
                   onClick={handleLinkClick}
-                  aria-label="goha.et Home"
+                  aria-label="goha Home"
                   className="inline-block w-fit shrink-0"
                 >
                   <Image
                     src={asset("/goha-logo.svg")}
-                    alt="goha.et"
+                    alt="goha"
                     width={168}
                     height={40}
                   />

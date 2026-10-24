@@ -18,8 +18,8 @@ export default function GithubStarsButton({ stars }: GithubStarsButtonProps) {
         rel="noopener noreferrer"
         aria-label={
           stars == null
-            ? "Star goha.et on GitHub"
-            : `Star goha.et on GitHub (${stars} stars)`
+            ? "Star goha on GitHub"
+            : `Star goha on GitHub (${stars} stars)`
         }
       >
         <RiGithubFill className="size-4.5" />

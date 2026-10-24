@@ -52,7 +52,7 @@ export default function OnboardingForm({ user }: { user: Profile }) {
         userName: user.name,
         values,
       });
-      toast.success("Profile completed. Welcome to goha.et 🎉!");
+      toast.success("Profile completed. Welcome to goha 🎉!");
       router.push("/");
     } catch (error) {
       toast.error(

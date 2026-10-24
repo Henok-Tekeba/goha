@@ -6,7 +6,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "goha.et — Find and discover the Ethiopian AI ecosystem",
+  title: "goha — Find and discover the Ethiopian AI ecosystem",
   description:
     "Find models, datasets, companies, and research papers for Ethiopian languages.",
   alternates: { canonical: "/" },

@@ -87,7 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  /* goha.et: the committed data IS the source — no fetches at build. */
+  /* goha: the committed data IS the source — no fetches at build. */
   const projectRoutes: MetadataRoute.Sitemap = projects
     .filter((project) => project.id && project.published)
     .map((project) => ({

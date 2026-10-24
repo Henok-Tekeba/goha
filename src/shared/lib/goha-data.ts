@@ -1,5 +1,5 @@
 /**
- * goha.et data module for the deployed API routes.
+ * goha data module for the deployed API routes.
  * The committed fixture file IS the pipeline output:
  *   scraper → data/*.json → scripts/build-goha-fixtures.mjs → projects.mock.json
  */

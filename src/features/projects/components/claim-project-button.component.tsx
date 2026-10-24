@@ -72,7 +72,7 @@ export function ClaimProjectButton({ project }: ClaimProjectButtonProps) {
         open={isClaimOpen}
         onOpenChange={setIsClaimOpen}
         title="Take ownership of this project"
-        description={`Take ownership of ${project.title} to keep the goha.et index accurate.`}
+        description={`Take ownership of ${project.title} to keep the goha index accurate.`}
         onCancel={() => setIsClaimOpen(false)}
         cancelText="Cancel"
         onConfirm={() => void handleVerifyAndClaim()}
@@ -100,8 +100,8 @@ export function ClaimProjectButton({ project }: ClaimProjectButtonProps) {
               <span className="font-medium text-sm">What you need to know</span>
             </div>
             <p className="mb-3 text-muted-foreground text-sm">
-              To maintain this project on goha.et, we'll verify your access to
-              the repository. You can claim ownership if:
+              To maintain this project on goha, we'll verify your access to the
+              repository. You can claim ownership if:
             </p>
             <ul className="list-inside list-disc space-y-2 text-muted-foreground text-sm">
               <li>

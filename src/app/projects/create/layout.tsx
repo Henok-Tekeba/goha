@@ -10,7 +10,7 @@ interface ProjectCreateLayoutProps {
 
 export const metadata: Metadata = {
   title: "Create Project",
-  description: "Create a new project on goha.et",
+  description: "Create a new project on goha",
   robots: {
     index: false,
     follow: false,

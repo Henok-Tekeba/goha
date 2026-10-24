@@ -1,6 +1,8 @@
-# goha.et — The Home of Ethiopian AI
+# goha — The Home of Ethiopian AI
 
-**goha.et** (ጎሃ — "dawn" in Amharic) is a live index of the Ethiopian AI
+**Live at [goha.enoch.et](https://goha.enoch.et)**
+
+**goha** (ጎሃ — "dawn" in Amharic) is a live index of the Ethiopian AI
 ecosystem — models, datasets, research papers, organizations and benchmarks for
 Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
 
@@ -217,7 +219,7 @@ license text.
 
 ## License
 
-- `scraper/`, `data/`, `scripts/build-goha-fixtures.mjs` — MIT (goha.et)
+- `scraper/`, `data/`, `scripts/build-goha-fixtures.mjs` — MIT (goha)
 - `src/` and `content/` — CC BY-NC 4.0, © OpenSource Together
 
 ---

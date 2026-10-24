@@ -38,12 +38,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             url: `${FRONTEND_URL.replace(/\/$/, "")}/illustrations/king.png`,
             width: 1200,
             height: 630,
-            alt: `${project.title} — goha.et`,
+            alt: `${project.title} — goha`,
           },
         ],
         url: projectUrl,
         type: "website",
-        siteName: "goha.et",
+        siteName: "goha",
         locale: "en_US",
       },
       twitter: {
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     console.error("generateMetadata project fetch failed:", error);
     return {
       title: "Project",
-      description: "Discover the Ethiopian AI ecosystem on goha.et.",
+      description: "Discover the Ethiopian AI ecosystem on goha.",
     };
   }
 }

@@ -2,7 +2,7 @@
 /**
  * build-goha-fixtures.mjs
  *
- * Bridges goha.et's data pipeline into OST's data layer:
+ * Bridges goha's data pipeline into OST's data layer:
  *   scraper → data/*.json  →  this script  →  src/mocks/fixtures/*  →  OST UI
  *
  * Reads goha's normalized JSON (models, datasets, companies, papers) and emits:
@@ -354,7 +354,7 @@ function readmeForModel(it, badge, langs, paramCount) {
   lines.push("---");
   lines.push("");
   lines.push(
-    `[Open on Hugging Face](${it.hf_url}) · [goha.et](https://goha.et)`
+    `[Open on Hugging Face](${it.hf_url}) · [goha.enoch.et](https://goha.enoch.et)`
   );
   return Buffer.from(lines.join("\n")).toString("base64");
 }
@@ -363,7 +363,7 @@ function readmeSimple(title, body, link, linkLabel) {
   return Buffer.from(
     `# ${title}\n\n${body}\n\n${
       link ? `[${linkLabel || "Open original"}](${link}) · ` : ""
-    }[goha.et](https://goha.et)`
+    }[goha.enoch.et](https://goha.enoch.et)`
   ).toString("base64");
 }
 

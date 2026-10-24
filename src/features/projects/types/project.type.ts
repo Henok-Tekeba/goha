@@ -6,7 +6,7 @@ export interface ProjectOwner {
   name: string;
 }
 
-/* goha.et — evaluation entry (from Hugging Face model cards) */
+/* goha — evaluation entry (from Hugging Face model cards) */
 export interface EvaluationMetric {
   type?: string;
   name?: string;
@@ -41,7 +41,7 @@ export interface Project {
   owner: ProjectOwner | null;
   repositoryDetails: RepositoryWithDetails;
   isBookmarked?: boolean;
-  /* goha.et extensions — ecosystem metrics (optional, additive) */
+  /* goha extensions — ecosystem metrics (optional, additive) */
   downloadsMonthly?: number;
   growth?: number | null;
   sparkline?: { points: number[]; timestamps?: (string | null)[] } | null;
