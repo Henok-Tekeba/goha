@@ -1,11 +1,10 @@
-import { asset } from "@/shared/lib/asset";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-
 import { FRONTEND_URL } from "@/config/config";
 import { getProject } from "@/features/projects/services/project.service";
 import ProjectDetailView from "@/features/projects/views/project-detail.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
+import { asset } from "@/shared/lib/asset";
 import { projects } from "@/shared/lib/local-data.server";
 
 type Props = {
@@ -79,7 +78,9 @@ export default async function ProjectPage({
       </Suspense>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}
-        imageIllustrationMobile={asset("/illustrations/winged-angel-mobile.png")}
+        imageIllustrationMobile={asset(
+          "/illustrations/winged-angel-mobile.png"
+        )}
       />
     </>
   );

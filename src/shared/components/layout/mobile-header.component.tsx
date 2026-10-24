@@ -1,4 +1,3 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -10,6 +9,11 @@ import {
   HiMiniBars3,
   HiMiniPencilSquare,
   HiMiniSquare2Stack,
+  HiOutlineBolt,
+  HiOutlineBuildingOffice2,
+  HiOutlineChartBar,
+  HiOutlineDocumentText,
+  HiOutlineLanguage,
   HiPlus,
   HiStar,
   HiUser,
@@ -35,6 +39,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/shared/components/ui/sheet";
+import { asset } from "@/shared/lib/asset";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 import { getErrorMessage } from "@/shared/lib/get-error-message";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
@@ -53,12 +58,11 @@ interface MobileHeaderProps {
 const DEFAULT_LINKS: MobileNavLink[] = [
   { label: "Models", icon: HiMiniSquare2Stack, href: "/?categories=Model" },
   { label: "Datasets", icon: HiBookOpen, href: "/?categories=Dataset" },
-  { label: "Research", icon: HiBookOpen, href: "/?categories=Research" },
-  {
-    label: "Companies",
-    icon: HiMiniSquare2Stack,
-    href: "/?categories=Company",
-  },
+  { label: "Research", icon: HiOutlineDocumentText, href: "/research" },
+  { label: "Benchmarks", icon: HiOutlineChartBar, href: "/leaderboard" },
+  { label: "Languages", icon: HiOutlineLanguage, href: "/lang" },
+  { label: "Organizations", icon: HiOutlineBuildingOffice2, href: "/orgs" },
+  { label: "Activity", icon: HiOutlineBolt, href: "/activity" },
   { label: "Learn", icon: HiBookOpen, href: "/learn" },
 ];
 
@@ -102,7 +106,12 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
           href="/"
           className="flex items-center gap-2 transition-opacity duration-200 ease-out hover:opacity-50"
         >
-          <Image src={asset("/goha-logo.svg")} alt="goha.et" width={168} height={40} />
+          <Image
+            src={asset("/goha-logo.svg")}
+            alt="goha.et"
+            width={168}
+            height={40}
+          />
         </Link>
 
         <div className="flex items-center gap-4">

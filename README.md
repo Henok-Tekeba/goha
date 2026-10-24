@@ -4,6 +4,18 @@
 for the Ethiopian AI ecosystem — models, datasets, companies, and research papers
 for Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
 
+## Ecosystem surfaces
+
+Beyond the discovery grid, goha renders the data its pipeline already collects:
+
+- **Stats band** — live counts + index freshness, homepage
+- **Movers** — weekly download gainers, homepage
+- **`/activity`** — every new model, dataset, paper and milestone, daily
+- **`/research`** — the paper index: search, language/task filters, abstracts
+- **`/leaderboard`** — comparative published results (ASR WER, retrieval, OCR) with CSV export; every row cites its source
+- **`/orgs`** — companies, labs and builders with full public footprints (193 profiles)
+- **`/lang/[language]`** — per-language coverage maps and gap analysis (7 languages)
+
 ## Architecture
 
 The frontend is an adaptation of [OpenSource Together](https://opensource-together.com)'s
@@ -12,15 +24,19 @@ site (their excellent discovery UI), rendering **goha's own data**:
 ```
 scraper/            goha's pipeline (Hugging Face · GitHub · arXiv)
    └─ npm start     → data/*.json (models, datasets, companies, papers, feeds)
-scripts/build-goha-fixtures.mjs   (goha data → OST data-layer contract)
+scripts/build-goha-fixtures.mjs   (goha data → OST data-layer contract + ecosystem surfaces)
 src/                OST frontend (unchanged UI, goha branding + data)
 data/               daily snapshots, served as the source of truth
+public/data/        client-facing static JSON (projects, taxonomy, activity,
+                    stats, insights, orgs, papers, leaderboard, languages)
 ```
 
 Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which converts
 goha's normalized JSON into the frontend's `Project` contract — so the UI is
 pixel-identical to the original design while every list, filter, and card is
-powered by goha.et data.
+powered by goha.et data. The same script emits the ecosystem JSON surfaces
+above (into `public/data/`, fetched client-side, and into `src/mocks/fixtures/`
+for build-time joins like org static params).
 
 ## Development
 

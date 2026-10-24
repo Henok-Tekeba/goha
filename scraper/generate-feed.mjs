@@ -1,5 +1,11 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -50,7 +56,9 @@ function detectMilestones(models, snapshots) {
   for (const model of models) {
     const id = model.id || model.name;
     const currentDl = model.downloads_monthly || model.dl || 0;
-    const snaps = (byModel[id] || []).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const snaps = (byModel[id] || []).sort(
+      (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+    );
 
     // Previous snapshot value (snaps[1] is the second-newest = previous period)
     const prevDl = snaps.length > 1 ? snaps[1].downloads : 0;
@@ -86,13 +94,17 @@ function detectTrending(models, snapshots) {
   for (const model of models) {
     const id = model.id || model.name;
     const currentDl = model.downloads_monthly || model.dl || 0;
-    const snaps = (byModel[id] || []).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const snaps = (byModel[id] || []).sort(
+      (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+    );
 
     if (snaps.length < 2) continue;
 
     // Compare current with snapshot from ~1 week ago
     const oneWeekAgo = Date.now() - SEVEN_DAYS;
-    const prevSnap = snaps.find((s) => new Date(s.timestamp).getTime() <= oneWeekAgo) || snaps[1];
+    const prevSnap =
+      snaps.find((s) => new Date(s.timestamp).getTime() <= oneWeekAgo) ||
+      snaps[1];
     const prevDl = prevSnap.downloads || 0;
 
     if (prevDl > 0) {
@@ -104,7 +116,11 @@ function detectTrending(models, snapshots) {
           description: `${model.name} grew from ${fmtDownloads(prevDl)} to ${fmtDownloads(currentDl)} downloads/month.`,
           entity_id: id,
           entity_type: "model",
-          metadata: { growth: Math.round(growth), previous: prevDl, current: currentDl },
+          metadata: {
+            growth: Math.round(growth),
+            previous: prevDl,
+            current: currentDl,
+          },
           created_at: now(),
         });
       }
@@ -128,7 +144,10 @@ function detectNew(items, type, label) {
         description: item.description || item.desc || "",
         entity_id: item.id || item.name,
         entity_type: type,
-        metadata: { name: item.name, author: item.org || item.author_name || "" },
+        metadata: {
+          name: item.name,
+          author: item.org || item.author_name || "",
+        },
         created_at: published,
       });
     }
@@ -140,17 +159,26 @@ function detectNew(items, type, label) {
 
 function detectNewPapers(papers, existing) {
   const entries = [];
-  const existingIds = new Set(existing.filter((e) => e.type === "new_paper").map((e) => e.entity_id));
+  const existingIds = new Set(
+    existing.filter((e) => e.type === "new_paper").map((e) => e.entity_id)
+  );
 
   for (const paper of papers) {
     if (existingIds.has(paper.arxiv_id)) continue;
     entries.push({
       type: "new_paper",
       title: `New paper: ${paper.title}`,
-      description: (paper.authors || []).slice(0, 3).join(", ") + " — " + (paper.abstract || "").slice(0, 120),
+      description:
+        (paper.authors || []).slice(0, 3).join(", ") +
+        " — " +
+        (paper.abstract || "").slice(0, 120),
       entity_id: paper.arxiv_id,
       entity_type: "paper",
-      metadata: { title: paper.title, authors: paper.authors, categories: paper.categories },
+      metadata: {
+        title: paper.title,
+        authors: paper.authors,
+        categories: paper.categories,
+      },
       created_at: paper.published_date || now(),
     });
   }
@@ -187,7 +215,12 @@ async function main() {
       const snap = readJSON(SNAPSHOT_DIR, file);
       if (!snap || !snap.models) continue;
       for (const m of snap.models) {
-        snapshots.push({ model_id: m.id, downloads: m.downloads, likes: m.likes, timestamp: snap.date });
+        snapshots.push({
+          model_id: m.id,
+          downloads: m.downloads,
+          likes: m.likes,
+          timestamp: snap.date,
+        });
       }
     }
   }
@@ -226,7 +259,10 @@ async function main() {
   }
 
   // Assign IDs and save
-  let nextId = existingFeed.length > 0 ? Math.max(...existingFeed.map((e) => e.id || 0)) + 1 : 1;
+  const nextId =
+    existingFeed.length > 0
+      ? Math.max(...existingFeed.map((e) => e.id || 0)) + 1
+      : 1;
   const withIds = newEntries.map((e, i) => ({ id: nextId + i, ...e }));
 
   const updated = [...existingFeed, ...withIds];
@@ -235,10 +271,15 @@ async function main() {
   console.log(`  Generated ${newEntries.length} new entries:\n`);
   for (const e of withIds) {
     const icon =
-      e.type === "new_model" ? "🟢" :
-      e.type === "new_dataset" ? "📊" :
-      e.type === "new_paper" ? "📄" :
-      e.type === "trending" ? "📈" : "🏆";
+      e.type === "new_model"
+        ? "🟢"
+        : e.type === "new_dataset"
+          ? "📊"
+          : e.type === "new_paper"
+            ? "📄"
+            : e.type === "trending"
+              ? "📈"
+              : "🏆";
     console.log(`  ${icon} [${e.type}] ${e.title}`);
     console.log(`     ${e.description.slice(0, 80)}`);
     console.log();

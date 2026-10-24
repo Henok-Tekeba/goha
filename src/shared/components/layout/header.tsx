@@ -1,16 +1,15 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { HiPlus } from "react-icons/hi2";
-
 import GithubStarsButton from "@/shared/components/layout/github-stars-button.component";
 import HeaderBreadcrumb from "@/shared/components/layout/header-breadcrumb.component";
 import LogoDropdown from "@/shared/components/layout/logo-dropdown.component";
 import { MobileHeader } from "@/shared/components/layout/mobile-header.component";
+import { asset } from "@/shared/lib/asset";
 import "@/shared/components/ui/breadcrumb-navigation";
 
 import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
@@ -127,8 +126,11 @@ export default function Header({ githubStars }: HeaderProps) {
             {[
               { label: "Models", href: "/?categories=Model" },
               { label: "Datasets", href: "/?categories=Dataset" },
-              { label: "Research", href: "/?categories=Research" },
-              { label: "Companies", href: "/?categories=Company" },
+              { label: "Research", href: "/research" },
+              { label: "Benchmarks", href: "/leaderboard" },
+              { label: "Languages", href: "/lang" },
+              { label: "Orgs", href: "/orgs" },
+              { label: "Activity", href: "/activity" },
             ].map((item) => (
               <div
                 key={item.href}

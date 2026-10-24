@@ -10,7 +10,10 @@
       "!dist",
       "!build",
       "!**/src/generated",
-      "!src/mocks/fixtures/projects.mock.json"
+      "!data",
+      "!public/data",
+      "!src/mocks/fixtures/projects.mock.json",
+      "!src/mocks/fixtures/orgs.mock.json"
     ]
   },
   "formatter": {

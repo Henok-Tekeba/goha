@@ -1,8 +1,6 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import { HiMiniExclamationTriangle } from "react-icons/hi2";
-
 import TwoColumnLayout from "@/shared/components/layout/two-column-layout.component";
 import { EmptyState } from "@/shared/components/ui/empty-state";
 import { ErrorState } from "@/shared/components/ui/error-state";
@@ -14,6 +12,7 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { useTabNavigation } from "@/shared/hooks/use-tab-navigation.hook";
+import { asset } from "@/shared/lib/asset";
 
 import ProjectHero, {
   ProjectMobileHero,

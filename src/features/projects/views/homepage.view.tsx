@@ -4,6 +4,9 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useMemo } from "react";
 import { HiMiniSquare2Stack } from "react-icons/hi2";
 import { useInView } from "react-intersection-observer";
+
+import EcosystemStatsBand from "@/features/ecosystem/components/ecosystem-stats-band.component";
+import MoversSection from "@/features/ecosystem/components/movers-section.component";
 import ProjectDiscoveryHero from "@/features/projects/components/project-discovery-hero.component";
 import { Button } from "@/shared/components/ui/button";
 import { EmptyState } from "@/shared/components/ui/empty-state";
@@ -35,8 +38,14 @@ function HomepageLayout({
           isLoading={isLoading}
           initialFilters={initialFilters}
         />
+        <EcosystemStatsBand />
       </div>
-      <div className="mx-6 mb-20 max-w-6xl md:mb-36 lg:mx-auto">{children}</div>
+      <div className="mx-6 mb-20 max-w-6xl md:mb-36 lg:mx-auto">
+        <div className="mb-14 md:mb-20">
+          <MoversSection />
+        </div>
+        {children}
+      </div>
     </>
   );
 }

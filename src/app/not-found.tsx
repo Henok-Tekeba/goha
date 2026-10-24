@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-import { asset } from "@/shared/lib/asset";
-
 import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
 import { Button } from "@/shared/components/ui/button";
+import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
   title: "404 - Page Not Found",
@@ -17,7 +15,9 @@ export default function NotFound() {
     <div className="flex min-h-[calc(100vh-4rem)] flex-col md:min-h-[calc(100vh-5rem)]">
       <main
         className="flex flex-1 flex-col items-center justify-center bg-center bg-cover bg-no-repeat text-center"
-        style={{ backgroundImage: `url(${asset("/illustrations/lost-man-404.png")})` }}
+        style={{
+          backgroundImage: `url(${asset("/illustrations/lost-man-404.png")})`,
+        }}
       >
         <div className="z-10">
           <h1 className="font-medium text-6xl">404</h1>

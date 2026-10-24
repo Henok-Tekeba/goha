@@ -1,13 +1,12 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
 import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
 import { Separator } from "@/shared/components/ui/separator";
+import { asset } from "@/shared/lib/asset";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 
 type FooterLink = {
@@ -35,13 +34,28 @@ const footerLinks: {
     },
     {
       label: "Research",
-      href: "/?categories=Research",
+      href: "/research",
       id: "explore-research",
     },
     {
-      label: "Companies",
-      href: "/?categories=Company",
-      id: "explore-companies",
+      label: "Benchmarks",
+      href: "/leaderboard",
+      id: "explore-benchmarks",
+    },
+    {
+      label: "Languages",
+      href: "/lang",
+      id: "explore-languages",
+    },
+    {
+      label: "Activity feed",
+      href: "/activity",
+      id: "explore-activity",
+    },
+    {
+      label: "Organizations",
+      href: "/orgs",
+      id: "explore-orgs",
     },
   ],
   community: [

@@ -36,14 +36,34 @@ export const techStacks: TechStackType[] = [
   tech(mockPublicId("tst", 1), "Amharic", "/langs/amharic.svg", "LANGUAGE"),
   tech(mockPublicId("tst", 2), "English", "/langs/english.svg", "LANGUAGE"),
   tech(mockPublicId("tst", 3), "Tigrinya", "/langs/tigrinya.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 4), "Afaan Oromo", "/langs/afaan-oromo.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 5), "Sidaamu Afoo", "/langs/sidaamu-afoo.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 6), "Wolayttattoo", "/langs/wolayttattoo.svg", "LANGUAGE"),
+  tech(
+    mockPublicId("tst", 4),
+    "Afaan Oromo",
+    "/langs/afaan-oromo.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    mockPublicId("tst", 5),
+    "Sidaamu Afoo",
+    "/langs/sidaamu-afoo.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    mockPublicId("tst", 6),
+    "Wolayttattoo",
+    "/langs/wolayttattoo.svg",
+    "LANGUAGE"
+  ),
   tech(mockPublicId("tst", 7), "Somali", "/langs/somali.svg", "LANGUAGE"),
   tech(mockPublicId("tst", 8), "Safetensors", "/langs/sym-shield.svg", "TECH"),
   tech(mockPublicId("tst", 9), "Transformers", "/langs/sym-layers.svg", "TECH"),
   tech(mockPublicId("tst", 10), "TensorBoard", "/langs/sym-chart.svg", "TECH"),
-  tech(mockPublicId("tst", 11), "PyTorch", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg", "TECH"),
+  tech(
+    mockPublicId("tst", 11),
+    "PyTorch",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+    "TECH"
+  ),
   tech(mockPublicId("tst", 12), "PEFT", "/langs/sym-link.svg", "TECH"),
   tech(mockPublicId("tst", 13), "Diffusers", "/langs/sym-spark.svg", "TECH"),
 ];

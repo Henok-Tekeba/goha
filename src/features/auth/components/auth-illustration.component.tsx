@@ -1,5 +1,5 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
+import { asset } from "@/shared/lib/asset";
 
 export default function AuthIllustration() {
   return (

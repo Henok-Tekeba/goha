@@ -1,5 +1,5 @@
-import { asset } from "@/shared/lib/asset";
 import type { MetadataRoute } from "next";
+import { asset } from "@/shared/lib/asset";
 
 export const dynamic = "force-static";
 

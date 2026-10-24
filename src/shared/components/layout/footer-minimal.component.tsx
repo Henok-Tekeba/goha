@@ -1,8 +1,7 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
-
 import { Separator } from "@/shared/components/ui/separator";
+import { asset } from "@/shared/lib/asset";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 import { cn } from "@/shared/lib/utils";
 

@@ -15,12 +15,18 @@ let taxonomyCache: Promise<{
   categories: CategoryType[];
   techStacks: TechStackType[];
 }> | null = null;
+const jsonCache = new Map<string, Promise<unknown>>();
 
 function fetchJson<T>(path: string): Promise<T> {
   return fetch(`${BASE}${path}`).then((res) => {
     if (!res.ok) throw new Error(`Failed to load ${path} (${res.status})`);
     return res.json() as Promise<T>;
   });
+}
+
+function fetchJsonCached<T>(path: string): Promise<T> {
+  if (!jsonCache.has(path)) jsonCache.set(path, fetchJson<T>(path));
+  return jsonCache.get(path) as Promise<T>;
 }
 
 export function getAllProjects(): Promise<Project[]> {
@@ -49,4 +55,61 @@ export function getTaxonomyData() {
     })),
   }));
   return taxonomyCache;
+}
+
+/* ---------------- ecosystem surfaces (fetched client-side) ---------------- */
+
+import type {
+  ActivityEvent,
+  ActivityEventType,
+  ActivityPayload,
+  EcosystemStats,
+  Insights,
+  Leaderboard,
+  OrgRecord,
+  OrgsPayload,
+  PaperRecord,
+  PapersPayload,
+} from "@/features/ecosystem/types/ecosystem.types";
+
+export function getEcosystemStats(): Promise<EcosystemStats> {
+  return fetchJsonCached<EcosystemStats>("/data/stats.json");
+}
+
+export function getActivityEvents(): Promise<ActivityEvent[]> {
+  return fetchJsonCached<ActivityPayload>("/data/activity.json").then(
+    (payload) => payload.data
+  );
+}
+
+export function getActivityEventsByType(
+  type: ActivityEventType
+): Promise<ActivityEvent[]> {
+  return getActivityEvents().then((events) =>
+    events.filter((event) => event.type === type)
+  );
+}
+
+export function getInsights(): Promise<Insights> {
+  return fetchJsonCached<Insights>("/data/insights.json");
+}
+
+export function getOrgs(): Promise<OrgRecord[]> {
+  return fetchJsonCached<OrgsPayload>("/data/orgs.json").then(
+    (payload) => payload.data
+  );
+}
+
+export function getOrgBySlug(slug: string): Promise<OrgRecord | undefined> {
+  return getOrgs().then((orgs) => orgs.find((org) => org.slug === slug));
+}
+
+export function getPapers(): Promise<PaperRecord[]> {
+  return fetchJsonCached<PapersPayload>("/data/papers.json").then(
+    (payload) => payload.data
+  );
+}
+
+export function getLeaderboard(): Promise<Leaderboard> {
+  return fetchJsonCached<Leaderboard>("/data/leaderboard.json");
 }

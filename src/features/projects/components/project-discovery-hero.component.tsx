@@ -1,7 +1,6 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
-
 import { FadeIn } from "@/shared/components/motion/fade-in";
+import { asset } from "@/shared/lib/asset";
 
 import type { ProjectFilters } from "../types/project-filters.type";
 import { DiscoveryHeroIntro } from "./discovery-hero-intro.component";

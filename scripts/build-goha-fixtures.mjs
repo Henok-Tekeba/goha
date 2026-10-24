@@ -361,6 +361,9 @@ function readmeSimple(title, body, link, linkLabel) {
   ).toString("base64");
 }
 
+/* entity ids → fixture project ids, so every ecosystem surface
+   (activity feed, leaderboard, org pages) deep-links into detail pages */
+const entityIdToProjectId = new Map();
 let pjtSeed = 0;
 const projects = [];
 
@@ -488,6 +491,7 @@ for (const src of [
     createdAt: created,
     updatedAt: updated,
   });
+  entityIdToProjectId.set(it.id, projects.at(-1).id);
 }
 
 /* companies */
@@ -559,6 +563,7 @@ for (const c of companies) {
     createdAt: c.founded ? new Date(`${c.founded}-01-01`).toISOString() : now,
     updatedAt: now,
   });
+  entityIdToProjectId.set(`company:${c.name}`, projects.at(-1).id);
 }
 
 /* papers */
@@ -623,11 +628,339 @@ for (const p of papers) {
     createdAt: p.published_date ? iso(p.published_date, now) : now,
     updatedAt: p.published_date ? iso(p.published_date, now) : now,
   });
+  entityIdToProjectId.set(`paper:${p.arxiv_id}`, projects.at(-1).id);
 }
 
 function titleCase(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
+/* ---------------- ecosystem surfaces ----------------
+   goha's committed data carries more than the grid shows: an activity
+   feed, aggregate stats, weekly movers, org footprints, published
+   evaluations and paper records. These emits surface all of it. */
+
+const slugify = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+const fmtAgo = (at, ref) => {
+  const t = new Date(at).getTime();
+  if (!t) return "";
+  const mins = Math.max(1, Math.round((ref - t) / 60000));
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.round(hours / 24);
+  if (days < 30) return `${days}d ago`;
+  const months = Math.round(days / 30);
+  if (months < 12) return `${months}mo ago`;
+  return `${Math.round(months / 12)}y ago`;
+};
+
+const buildTime = Date.now();
+
+/* ---------- activity feed ---------- */
+const ACTIVITY_URL = {
+  model: (id) => `https://huggingface.co/${id}`,
+  dataset: (id) => `https://huggingface.co/datasets/${id}`,
+  space: (id) => `https://huggingface.co/spaces/${id}`,
+  paper: (id) => `https://arxiv.org/abs/${id}`,
+  repo: (id) => `https://github.com/${id}`,
+};
+const ACTIVITY_TYPE_LABEL = {
+  new_model: "Model",
+  new_dataset: "Dataset",
+  new_paper: "Research",
+  milestone: "Milestone",
+  trending: "Momentum",
+};
+
+const activityRaw = JSON.parse(
+  readFileSync(DATA("activity_feed.json"), "utf8")
+);
+const activity = (Array.isArray(activityRaw) ? activityRaw : [])
+  .map((e, i) => {
+    const type = e.type || "new_model";
+    const entityUrl = (ACTIVITY_URL[e.entity_type] ?? ACTIVITY_URL.model)(
+      e.entity_id || ""
+    );
+    return {
+      id: e.id ?? i,
+      type,
+      label: ACTIVITY_TYPE_LABEL[type] ?? "Update",
+      title:
+        type === "new_model"
+          ? `New model: ${e.metadata?.name ?? e.entity_id}`
+          : type === "new_dataset"
+            ? `New dataset: ${e.metadata?.name ?? e.entity_id}`
+            : type === "new_paper"
+              ? `New paper: ${String(e.message || "").replace(/^New paper: /, "")}`
+              : e.message || e.title || type,
+      detail: ["milestone", "trending"].includes(type)
+        ? String(e.message || "")
+        : null,
+      entityId: e.entity_id ?? null,
+      entityType: e.entity_type ?? null,
+      projectId:
+        (type === "new_paper"
+          ? entityIdToProjectId.get(`paper:${e.entity_id}`)
+          : entityIdToProjectId.get(e.entity_id)) ?? null,
+      url: entityUrl,
+      at: e.created_at ?? null,
+      ago: e.created_at ? fmtAgo(e.created_at, buildTime) : null,
+    };
+  })
+  .sort((a, b) => new Date(b.at) - new Date(a.at))
+  .slice(0, 140);
+
+/* ---------- aggregate stats ---------- */
+const spaces = dataArr("spaces.json");
+const repos = dataArr("repos.json");
+
+const allLangs = new Set();
+for (const it of [...models, ...datasets]) {
+  for (const t of it.tags || []) {
+    if (t.toLowerCase().startsWith("language:")) {
+      const n = langFromCode(t.toLowerCase().split(":")[1]);
+      if (n) allLangs.add(n);
+    }
+  }
+  for (const l of it.langs || []) {
+    const n = LANG_NAMES[l];
+    if (n) allLangs.add(n);
+  }
+}
+
+const stats = {
+  counts: {
+    models: models.length,
+    datasets: datasets.length,
+    papers: papers.length,
+    companies: companies.length,
+    spaces: spaces.length,
+    repos: repos.length,
+    languages: allLangs.size,
+    orgs: 0 /* filled after the org aggregation below */,
+  },
+  indexedAt: new Date(buildTime).toISOString(),
+  featured: (() => {
+    const top = [...models].sort(
+      (a, b) => (b.downloads_monthly ?? 0) - (a.downloads_monthly ?? 0)
+    )[0];
+    return top
+      ? {
+          name: top.name,
+          org: (top.id || "").split("/")[0] || null,
+          downloads: top.downloads_monthly ?? 0,
+        }
+      : null;
+  })(),
+};
+
+/* ---------- insights (weekly movers) ---------- */
+const insightsRaw = JSON.parse(
+  readFileSync(DATA("stats_insights.json"), "utf8")
+);
+const insights = {
+  topGainers: (insightsRaw.topGainers || []).slice(0, 12).map((g) => ({
+    id: g.id,
+    name: g.name,
+    org: g.org,
+    growth: g.growth,
+    gain: g.gain,
+    start: g.start,
+    end: g.end,
+    projectId: entityIdToProjectId.get(g.id) ?? null,
+  })),
+  mostDownloaded: [...models]
+    .sort((a, b) => (b.downloads_monthly ?? 0) - (a.downloads_monthly ?? 0))
+    .slice(0, 10)
+    .map((m) => ({
+      id: m.id,
+      name: m.name,
+      org: (m.id || "").split("/")[0] || null,
+      dl: m.downloads_monthly ?? 0,
+      projectId: entityIdToProjectId.get(m.id) ?? null,
+    })),
+  builtAt: new Date(buildTime).toISOString(),
+};
+
+/* ---------- org directory ---------- */
+/* footprints aggregated from every entity type, merged with the curated
+   companies file (name, website, founding year) where they match */
+const normOrgKey = (s) =>
+  String(s || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+const orgMap = new Map();
+function ensureOrg(key, displayName) {
+  if (!orgMap.has(key))
+    orgMap.set(key, {
+      displayName: null,
+      models: 0,
+      datasets: 0,
+      spaces: 0,
+      repos: 0,
+      downloads: 0,
+      likes: 0,
+      langs: new Set(),
+      urls: new Set(),
+      descriptions: new Map(),
+      topModels: [],
+      topRepos: [],
+      topSpaces: [],
+    });
+  const o = orgMap.get(key);
+  o.displayName ??= displayName || null;
+  return o;
+}
+function noteLangs(o, it) {
+  for (const t of it.tags || []) {
+    if (String(t).toLowerCase().startsWith("language:")) {
+      const n = langFromCode(String(t).toLowerCase().split(":")[1]);
+      if (n) o.langs.add(n);
+    }
+  }
+  for (const l of it.langs || []) {
+    const n = LANG_NAMES[l];
+    if (n) o.langs.add(n);
+  }
+}
+function noteDescription(o, d) {
+  const clean = cleanDesc(d);
+  if (clean) o.descriptions.set(clean, (o.descriptions.get(clean) || 0) + 1);
+}
+function orgFromName(idOrName) {
+  const first = String(idOrName || "").split("/")[0];
+  return first || idOrName;
+}
+
+for (const m of models) {
+  const o = ensureOrg(normOrgKey(orgFromName(m.id)), orgFromName(m.id));
+  o.models += 1;
+  o.downloads += m.downloads_monthly ?? 0;
+  o.likes += m.likes ?? 0;
+  noteLangs(o, m);
+  noteDescription(o, m.description);
+  if (m.hf_url) o.urls.add(m.hf_url);
+  o.topModels.push({
+    name: m.name,
+    id: m.id,
+    projectId: entityIdToProjectId.get(m.id) ?? null,
+    dl: m.downloads_monthly ?? 0,
+  });
+}
+for (const d of datasets) {
+  const o = ensureOrg(normOrgKey(orgFromName(d.id)), orgFromName(d.id));
+  o.datasets += 1;
+  o.downloads += d.downloads_monthly ?? 0;
+  o.likes += d.likes ?? 0;
+  noteLangs(o, d);
+  noteDescription(o, d.description);
+  if (d.hf_url) o.urls.add(d.hf_url);
+}
+for (const s of spaces) {
+  const spaceOrg = s.org || s.author || "";
+  if (!spaceOrg) continue;
+  const o = ensureOrg(normOrgKey(spaceOrg), spaceOrg);
+  o.spaces += 1;
+  o.likes += s.likes ?? 0;
+  noteDescription(o, s.desc);
+  if (s.url) o.urls.add(s.url);
+  o.topSpaces.push({
+    name: s.name,
+    url: s.url ?? null,
+    likes: s.likes ?? 0,
+  });
+}
+for (const r of repos) {
+  const repoOwner = orgFromName(r.full_name);
+  if (!repoOwner) continue;
+  const o = ensureOrg(normOrgKey(repoOwner), repoOwner);
+  o.repos += 1;
+  o.likes += r.stars ?? 0;
+  noteDescription(o, r.description);
+  if (r.url) o.urls.add(r.url);
+  o.topRepos.push({
+    name: r.full_name,
+    url: r.url ?? null,
+    stars: r.stars ?? 0,
+    desc: cleanDesc(r.description) || null,
+  });
+}
+
+/* curated company data joins by normalized key (hf org, github or name) */
+const curatedByKey = new Map();
+for (const c of companies) {
+  for (const k of [c.hf_org, c.github, c.name]) {
+    const nk = normOrgKey(k);
+    if (nk && !curatedByKey.has(nk)) curatedByKey.set(nk, c);
+  }
+}
+
+const footprintOf = (c) =>
+  c.counts.models +
+  c.counts.datasets * 0.5 +
+  c.counts.repos * 2 +
+  c.counts.spaces * 0.5;
+
+const usedSlugs = new Set();
+const orgs = [];
+for (const [key, o] of orgMap) {
+  const footprint = footprintOf({
+    counts: {
+      models: o.models,
+      datasets: o.datasets,
+      repos: o.repos,
+      spaces: o.spaces,
+    },
+  });
+  if (footprint < 1) continue;
+  const curated = curatedByKey.get(key) ?? null;
+  const descriptions = [...o.descriptions.entries()].sort(
+    (a, b) => b[1] - a[1]
+  );
+  const name = curated?.name || o.displayName || key;
+  let slug = slugify(name) || slugify(key);
+  while (usedSlugs.has(slug)) slug = `${slug}-2`;
+  usedSlugs.add(slug);
+  orgs.push({
+    slug,
+    key,
+    name,
+    kind: curated
+      ? "company"
+      : o.repos > 0 && o.models === 0 && o.datasets === 0
+        ? "lab"
+        : "individual",
+    desc: curated?.desc || descriptions[0]?.[0]?.slice(0, 200) || null,
+    website: curated?.website || null,
+    github: curated?.github || null,
+    hfOrg: curated?.hf_org || null,
+    founded: curated?.founded || null,
+    verified: Boolean(curated?.verified),
+    isNew: Boolean(curated?.isNew),
+    featured: Boolean(curated?.featured),
+    langs: [...o.langs].sort(),
+    counts: {
+      models: o.models,
+      datasets: o.datasets,
+      spaces: o.spaces,
+      repos: o.repos,
+    },
+    downloadsMonthly: o.downloads,
+    likes: o.likes,
+    topModels: o.topModels.sort((a, b) => b.dl - a.dl).slice(0, 5),
+    topRepos: o.topRepos.sort((a, b) => b.stars - a.stars).slice(0, 6),
+    topSpaces: o.topSpaces.sort((a, b) => b.likes - a.likes).slice(0, 4),
+  });
+}
+orgs.sort((a, b) => footprintOf(b) - footprintOf(a));
+stats.counts.orgs = orgs.length;
 
 projects.sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0));
 
@@ -647,6 +980,412 @@ writeFileSync(
 writeFileSync(
   path.join(PUBLIC_DATA, "taxonomy.json"),
   JSON.stringify({ categories, techStacks }) + "\n"
+);
+
+/* ---------- papers (research hub) ---------- */
+const LANG_KEYWORDS = [
+  ["Amharic", /amharic|አማርኛ/i],
+  ["Afaan Oromo", /oromo|afaan/i],
+  ["Tigrinya", /tigrinya|ትግር/i],
+  ["Ge'ez", /ge'?ez|ethiopic/i],
+  ["Somali", /\bsomali\b/i],
+  ["Afaraf", /\bafar\b/i],
+  ["Wolayttattoo", /wolaytt/i],
+  ["Sidaamu Afoo", /sidamo/i],
+  ["Hadiyya", /hadiyy|had.iya/i],
+  ["English", /\benglish\b/i],
+];
+const TASK_KEYWORDS = [
+  ["ASR", /\basr\b|speech (recognition|to text)|automatic speech recognition/i],
+  ["TTS", /text.to.speech|\btts\b|speech synthesis/i],
+  ["Translation", /\bnmt\b|machine translation|translat/i],
+  ["LLM", /large language model|\bllm\b|language model/i],
+  ["NER", /named entity|\bner\b/i],
+  ["Embeddings", /embedding|representation learning/i],
+  ["Benchmark", /\bbenchmark/i],
+];
+
+const paperSlugSeen = new Map();
+const paperRecords = papers.map((p) => {
+  const text = `${p.title} ${p.abstract || ""}`;
+  const languages = LANG_KEYWORDS.filter(([, re]) => re.test(text)).map(
+    ([n]) => n
+  );
+  const tasks = TASK_KEYWORDS.filter(([, re]) => re.test(text)).map(([n]) => n);
+  let slug = slugify(p.title) || slugify(p.arxiv_id) || "paper";
+  if (paperSlugSeen.has(slug)) {
+    const n = paperSlugSeen.get(slug) + 1;
+    paperSlugSeen.set(slug, n);
+    slug = `${slug}-${n}`;
+  } else paperSlugSeen.set(slug, 0);
+
+  const published = iso(p.published_date, null);
+  return {
+    slug,
+    arxivId: p.arxiv_id ?? null,
+    title: p.title,
+    authors: p.authors || [],
+    abstract: cleanDesc(p.abstract) || null,
+    published,
+    year: published ? new Date(published).getUTCFullYear() : null,
+    url: p.url || (p.arxiv_id ? `https://arxiv.org/abs/${p.arxiv_id}` : null),
+    categories: (p.categories || []).slice(0, 8),
+    languages,
+    tasks,
+    projectId: p.arxiv_id
+      ? (entityIdToProjectId.get(`paper:${p.arxiv_id}`) ?? null)
+      : null,
+  };
+});
+paperRecords.sort(
+  (a, b) => new Date(b.published ?? 0) - new Date(a.published ?? 0)
+);
+
+/* ---------- leaderboard (published evaluations) ---------- */
+/* Only aggregates numbers that models publish about themselves
+   (HF model-card eval tables). Every row cites its source. */
+const PERCENT_METRIC =
+  /wer|cer|eer|error|accura|precision|recall|\bf1\b|\bndcg\b|\bmap\b|\bmrr\b/i;
+const SKIP_METRIC = /loss|sparsity|active|size|memory|latency/i;
+const LOWER_IS_BETTER = /wer|cer|eer|error/i;
+const TASK_SECTIONS = [
+  {
+    type: "automatic-speech-recognition",
+    task: "ASR",
+    name: "Automatic Speech Recognition",
+    primary: "wer",
+  },
+  {
+    type: "text-to-speech",
+    task: "TTS",
+    name: "Text-to-Speech",
+    primary: "mos",
+  },
+  {
+    type: "translation",
+    task: "Translation",
+    name: "Translation",
+    primary: "bleu",
+  },
+  {
+    type: "text-generation",
+    task: "LLM",
+    name: "Language Modeling",
+    primary: null,
+  },
+  {
+    type: "text-classification",
+    task: "Classification",
+    name: "Text Classification",
+    primary: "accuracy",
+  },
+  {
+    type: "token-classification",
+    task: "NER",
+    name: "Named Entity Recognition",
+    primary: "f1",
+  },
+  {
+    type: "information-retrieval",
+    task: "Retrieval",
+    name: "Information Retrieval",
+    primary: "accuracy",
+  },
+  {
+    type: "zero-shot-classification",
+    task: "Classification",
+    name: "Zero-shot Classification",
+    primary: "accuracy",
+  },
+  {
+    type: "question-answering",
+    task: "QA",
+    name: "Question Answering",
+    primary: "f1",
+  },
+  {
+    type: "feature-extraction",
+    task: "Embeddings",
+    name: "Feature Extraction",
+    primary: null,
+  },
+];
+const ASR_META = TASK_SECTIONS[0];
+const DATASET_CONFIG_LANG = {
+  am_et: "Amharic",
+  tir_et: "Tigrinya",
+  orm: "Afaan Oromo",
+};
+
+function modelLangsOf(it) {
+  const out = [];
+  for (const t of it.tags || []) {
+    if (String(t).toLowerCase().startsWith("language:")) {
+      const n = langFromCode(String(t).toLowerCase().split(":")[1]);
+      if (n && !out.includes(n)) out.push(n);
+    }
+  }
+  for (const l of it.langs || []) {
+    const n = LANG_NAMES[l];
+    if (n && !out.includes(n)) out.push(n);
+  }
+  /* model names carry the language in ecosystem convention:
+     "hohe-asr-amharic", "whisper-small-tigrinya-r-32" */
+  if (out.length === 0) {
+    const name = String(it.name || it.id || "");
+    for (const [n, re] of LANG_KEYWORDS) {
+      if (re.test(name) && !out.includes(n)) out.push(n);
+    }
+  }
+  return out;
+}
+
+function normalizeMetric(type, value) {
+  if (value == null) return { value: null, display: "" };
+  /* model cards report numbers inconsistently — wer_score arrives as a string,
+     fractions (<1) and percents (>=1) are both common */
+  let num =
+    typeof value === "number" ? value : Number.parseFloat(String(value));
+  if (isNaN(num)) return { value: null, display: "" };
+  const lowerName = String(type || "").toLowerCase();
+  if (PERCENT_METRIC.test(lowerName) && num > 0 && num < 1) num *= 100;
+  return {
+    value: num,
+    display: PERCENT_METRIC.test(lowerName)
+      ? `${num.toFixed(2)}%`
+      : String(Math.round(num * 1000) / 1000),
+  };
+}
+
+const sectionByKey = new Map();
+const rowSeen = new Set();
+
+function ensureSection(taskMeta) {
+  if (!sectionByKey.has(taskMeta.type)) {
+    sectionByKey.set(taskMeta.type, {
+      id: taskMeta.type,
+      task: taskMeta.task,
+      name: taskMeta.name,
+      primary: taskMeta.primary,
+      rows: [],
+    });
+  }
+  return sectionByKey.get(taskMeta.type);
+}
+
+function pushRow(taskMeta, row) {
+  ensureSection(taskMeta).rows.push(row);
+}
+
+for (const m of models) {
+  const evals = Array.isArray(m.eval_results) ? m.eval_results : [];
+  const langs = modelLangsOf(m);
+  let hasWerRow = false;
+
+  for (const e of evals) {
+    const taskType = e.task?.type || "other";
+    const taskMeta = TASK_SECTIONS.find((t) => t.type === taskType) ?? {
+      type: taskType,
+      task: "Other",
+      name: e.task?.name || taskType,
+      primary: null,
+    };
+    const datasetTokens = [
+      e.dataset?.name || e.dataset?.type || null,
+      e.dataset?.config ? `(${e.dataset.config})` : null,
+      e.dataset?.split ? `· ${e.dataset.split}` : null,
+    ].filter(
+      (token) =>
+        token && !/^unknown$/i.test(String(token).replace(/[()·\s]/g, ""))
+    );
+    const datasetDisplay = datasetTokens.join(" ") || null;
+    const rowLangs = langs.length
+      ? langs
+      : [DATASET_CONFIG_LANG[e.dataset?.config]].filter(Boolean);
+
+    for (const metric of e.metrics || []) {
+      if (metric.value == null) continue;
+      if (SKIP_METRIC.test(String(metric.type || "")))
+        continue; /* losses & footprint metrics are leaderboard noise */
+      if (!metric.type) continue;
+      const { value, display } = normalizeMetric(metric.type, metric.value);
+      if (value == null) continue;
+      const dedupeKey = `${m.id}|${taskType}|${datasetDisplay}|${metric.type}|${value.toFixed(2)}`;
+      if (rowSeen.has(dedupeKey)) continue;
+      rowSeen.add(dedupeKey);
+      if (metric.type === "wer") hasWerRow = true;
+      pushRow(taskMeta, {
+        model: m.name,
+        org: orgFromName(m.id),
+        projectId: entityIdToProjectId.get(m.id) ?? null,
+        languages: rowLangs,
+        dataset: datasetDisplay || null,
+        metric: String(metric.name || metric.type || "Metric").replace(
+          /\s*\(.*\)\s*$/,
+          ""
+        ),
+        metricType: String(metric.type || "").toLowerCase(),
+        value,
+        display,
+        verified: Boolean(metric.verified),
+        downloads: m.downloads_monthly ?? 0,
+        likes: m.likes ?? 0,
+        source: m.hf_url || null,
+      });
+    }
+  }
+
+  /* a reported WER without a structured eval table */
+  if (m.wer_score != null && !hasWerRow) {
+    const { value, display } = normalizeMetric("wer", m.wer_score);
+    pushRow(ASR_META, {
+      model: m.name,
+      org: orgFromName(m.id),
+      projectId: entityIdToProjectId.get(m.id) ?? null,
+      languages: langs,
+      dataset: "reported",
+      metric: "WER (reported)",
+      metricType: "wer",
+      value,
+      display,
+      verified: false,
+      downloads: m.downloads_monthly ?? 0,
+      likes: m.likes ?? 0,
+      source: m.hf_url || null,
+    });
+  }
+}
+
+/* per section: if the primary metric is well-represented (>= 3 rows),
+   show only that metric — comparing WER against CER in one table is noise.
+   Sort rows best-first and cap the table. */
+const leaderboardSections = [...sectionByKey.values()]
+  .map((section) => {
+    let rows = section.rows;
+    if (section.primary) {
+      const primaryRows = rows.filter((r) => r.metricType === section.primary);
+      if (primaryRows.length >= 3) rows = primaryRows;
+    }
+    rows = rows
+      .slice()
+      .sort((a, b) => {
+        if (a.metricType !== b.metricType)
+          return a.metricType.localeCompare(b.metricType);
+        if (LOWER_IS_BETTER.test(a.metricType)) return a.value - b.value;
+        return b.value - a.value;
+      })
+      .slice(0, 15);
+    const langs = new Set();
+    for (const r of rows) for (const l of r.languages) langs.add(l);
+    return {
+      id: section.id,
+      task: section.task,
+      name: section.name,
+      lowerIsBetter: LOWER_IS_BETTER.test(rows[0]?.metricType ?? ""),
+      languages: [...langs].sort(),
+      rows,
+    };
+  })
+  .filter((section) => section.rows.length >= 2)
+  .sort((a, b) => {
+    const priority = (t) =>
+      t === "ASR" ? 0 : t === "TTS" ? 1 : t === "Retrieval" ? 2 : 3;
+    return priority(a.task) - priority(b.task) || b.rows.length - a.rows.length;
+  });
+
+const leaderboard = {
+  builtAt: new Date(buildTime).toISOString(),
+  sections: leaderboardSections,
+};
+
+/* ---------- writes ---------- */
+writeFileSync(
+  path.join(PUBLIC_DATA, "activity.json"),
+  JSON.stringify({
+    data: activity,
+    builtAt: new Date(buildTime).toISOString(),
+  }) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "stats.json"),
+  JSON.stringify(stats) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "insights.json"),
+  JSON.stringify(insights) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "orgs.json"),
+  JSON.stringify({ data: orgs, builtAt: new Date(buildTime).toISOString() }) +
+    "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "papers.json"),
+  JSON.stringify({
+    data: paperRecords,
+    builtAt: new Date(buildTime).toISOString(),
+  }) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "leaderboard.json"),
+  JSON.stringify(leaderboard) + "\n"
+);
+
+/* build-time org fixture: static params + sitemap for org profile pages */
+writeFileSync(
+  path.join(FIXTURES, "orgs.mock.json"),
+  JSON.stringify(orgs, null, 1) + "\n"
+);
+
+/* build-time fixtures for language pages (static params + joins) */
+const languageGlyph = {
+  Amharic: "አ",
+  "Afaan Oromo": "O",
+  Tigrinya: "ት",
+  "Ge'ez": "ግ",
+  Somali: "S",
+  Afaraf: "A",
+  Wolayttattoo: "W",
+  Hadiyya: "H",
+  "Sidaamu Afoo": "S",
+  English: "E",
+  Arabic: "ع",
+};
+const LANGUAGE_ORDER = [
+  "Amharic",
+  "Afaan Oromo",
+  "Tigrinya",
+  "Ge'ez",
+  "Somali",
+  "Afaraf",
+  "Wolayttattoo",
+  "Hadiyya",
+  "Sidaamu Afoo",
+  "English",
+  "Arabic",
+];
+const languagesList = [...allLangs]
+  .sort((a, b) => {
+    const ia = LANGUAGE_ORDER.indexOf(a);
+    const ib = LANGUAGE_ORDER.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  })
+  .map((name) => ({
+    name,
+    slug: langSlug(name),
+    glyph: languageGlyph[name] ?? name.charAt(0).toUpperCase(),
+  }));
+writeFileSync(
+  path.join(PUBLIC_DATA, "languages.json"),
+  JSON.stringify({ data: languagesList }) + "\n"
+);
+writeFileSync(
+  path.join(FIXTURES, "languages.mock.json"),
+  JSON.stringify(languagesList, null, 1) + "\n"
+);
+writeFileSync(
+  path.join(FIXTURES, "papers.mock.json"),
+  JSON.stringify(paperRecords, null, 1) + "\n"
 );
 
 /* regenerate taxonomy.mock.ts with goha's categories + languages */
@@ -696,5 +1435,6 @@ console.log(
     projects: ${projects.length} (models ${models.length} · datasets ${datasets.length} · companies ${companies.length} · papers ${papers.length})
     categories: ${categories.length} · techStacks: ${techStacks.length}
     languages: ${topLangs.map(([n]) => n).join(", ")}
-    stacks: ${topStacks.map((s) => s.name).join(", ")}`
+    stacks: ${topStacks.map((s) => s.name).join(", ")}
+    ecosystem: activity ${activity.length} · orgs ${orgs.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}`
 );

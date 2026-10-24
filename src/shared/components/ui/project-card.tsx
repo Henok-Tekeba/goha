@@ -1,7 +1,7 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import { asset } from "@/shared/lib/asset";
 
 import { cn } from "@/shared/lib/utils";
 import type { TechStackType } from "@/shared/types/tech-stack.type";

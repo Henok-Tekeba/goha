@@ -1,10 +1,9 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
-
 import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
+import { asset } from "@/shared/lib/asset";
 
 import AuthIllustration from "../components/auth-illustration.component";
 import LoginForm from "../components/login-form.component";

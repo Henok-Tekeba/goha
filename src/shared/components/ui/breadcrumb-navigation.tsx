@@ -1,6 +1,6 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import React from "react";
+import { asset } from "@/shared/lib/asset";
 
 import {
   Breadcrumb,

@@ -1,11 +1,11 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
+import { asset } from "@/shared/lib/asset";
 
 import AuthIllustration from "../components/auth-illustration.component";
 import OnboardingForm from "../components/onboarding-form.component";

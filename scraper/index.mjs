@@ -1,6 +1,6 @@
-import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
-import { join, dirname } from "node:path";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 
@@ -8,7 +8,14 @@ dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const SEARCH_TERMS = ["amharic", "oromo", "tigrinya", "geez", "ethiopian", "ethiopia"];
+const SEARCH_TERMS = [
+  "amharic",
+  "oromo",
+  "tigrinya",
+  "geez",
+  "ethiopian",
+  "ethiopia",
+];
 const GH_ORGS = ["EthioNLP", "iCogLabs", "hasab-ai"];
 const HF_API = "https://huggingface.co/api";
 const GH_API = "https://api.github.com";
@@ -37,32 +44,51 @@ async function fetchJSON(url, retries = 3, extraHeaders = {}) {
   return JSON.parse(text);
 }
 
-const hfHeaders = process.env.HF_TOKEN ? { Authorization: `Bearer ${process.env.HF_TOKEN}` } : {};
-const ghHeaders = process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {};
+const hfHeaders = process.env.HF_TOKEN
+  ? { Authorization: `Bearer ${process.env.HF_TOKEN}` }
+  : {};
+const ghHeaders = process.env.GITHUB_TOKEN
+  ? { Authorization: `token ${process.env.GITHUB_TOKEN}` }
+  : {};
 
-function fetchHF(url, retries) { return fetchJSON(url, retries, hfHeaders); }
-function fetchHFPage(url, retries) { return fetchPage(url, retries, hfHeaders); }
-function fetchGH(url, retries) { return fetchJSON(url, retries, ghHeaders); }
+function fetchHF(url, retries) {
+  return fetchJSON(url, retries, hfHeaders);
+}
+function fetchHFPage(url, retries) {
+  return fetchPage(url, retries, hfHeaders);
+}
+function fetchGH(url, retries) {
+  return fetchJSON(url, retries, ghHeaders);
+}
 
 /* ─── Type inference ─── */
 
-function inferType(pipelineTag = '', tags = [], modelId = '') {
-  const all = [pipelineTag, ...tags, modelId].map(t => (t || '').toLowerCase())
-  const has = (...terms) => terms.some(t => all.some(s => new RegExp(`(?:^|[\\-_/])${t}(?:[\\-_/]|$)`).test(s)))
+function inferType(pipelineTag = "", tags = [], modelId = "") {
+  const all = [pipelineTag, ...tags, modelId].map((t) =>
+    (t || "").toLowerCase()
+  );
+  const has = (...terms) =>
+    terms.some((t) =>
+      all.some((s) => new RegExp(`(?:^|[\\-_/])${t}(?:[\\-_/]|$)`).test(s))
+    );
 
-  if (has('automatic-speech-recognition', 'asr', 'speech-recognition')) return 'ASR'
-  if (has('text-to-speech', 'tts')) return 'TTS'
-  if (has('translation', 'nmt', 'machine-translation')) return 'Translation'
-  if (has('text-generation', 'causal-lm', 'language-model')) return 'LLM'
-  if (has('token-classification', 'ner', 'named-entity')) return 'NER'
-  if (has('feature-extraction', 'sentence-similarity', 'embedding', 'reranker')) return 'Embeddings'
-  if (has('fill-mask', 'masked-lm')) return 'Masked LM'
-  if (has('text-classification', 'sentiment')) return 'Classification'
-  if (has('image-classification', 'object-detection', 'vision')) return 'Vision'
-  if (has('stable-diffusion', 'diffusion', 'lora', 'flux')) return 'Image Generation'
-  if (has('question-answering')) return 'QA'
-  if (has('summarization')) return 'Summarization'
-  return 'NLP'
+  if (has("automatic-speech-recognition", "asr", "speech-recognition"))
+    return "ASR";
+  if (has("text-to-speech", "tts")) return "TTS";
+  if (has("translation", "nmt", "machine-translation")) return "Translation";
+  if (has("text-generation", "causal-lm", "language-model")) return "LLM";
+  if (has("token-classification", "ner", "named-entity")) return "NER";
+  if (has("feature-extraction", "sentence-similarity", "embedding", "reranker"))
+    return "Embeddings";
+  if (has("fill-mask", "masked-lm")) return "Masked LM";
+  if (has("text-classification", "sentiment")) return "Classification";
+  if (has("image-classification", "object-detection", "vision"))
+    return "Vision";
+  if (has("stable-diffusion", "diffusion", "lora", "flux"))
+    return "Image Generation";
+  if (has("question-answering")) return "QA";
+  if (has("summarization")) return "Summarization";
+  return "NLP";
 }
 
 /* ─── Helpers ─── */
@@ -88,10 +114,17 @@ function mapModel(raw, type) {
     type,
     pipeline_tag: raw.pipeline_tag || null,
     type_label: inferType(raw.pipeline_tag, tags, raw.id),
-    languages: Array.isArray(raw.language) ? raw.language : raw.language ? [raw.language] : [],
+    languages: Array.isArray(raw.language)
+      ? raw.language
+      : raw.language
+        ? [raw.language]
+        : [],
     author_name: raw.author || raw.user?.fullname || "",
     author_hf: raw.author || "",
-    hf_url: type === "dataset" ? `https://huggingface.co/datasets/${id}` : `https://huggingface.co/${id}`,
+    hf_url:
+      type === "dataset"
+        ? `https://huggingface.co/datasets/${id}`
+        : `https://huggingface.co/${id}`,
     downloads_monthly: raw.downloads || 0,
     likes: raw.likes || 0,
     last_updated: raw.lastModified || raw.updatedAt || null,
@@ -107,7 +140,9 @@ async function searchHuggingFace(term, type) {
   const url = `${HF_API}${endpoint}?search=${encodeURIComponent(term)}&limit=50&full=true&sort=downloads`;
   const data = await fetchHF(url);
   if (!Array.isArray(data)) return [];
-  return data.map((item) => mapModel(item, type === "spaces" ? "space" : "model"));
+  return data.map((item) =>
+    mapModel(item, type === "spaces" ? "space" : "model")
+  );
 }
 
 async function searchDatasets(term) {
@@ -179,7 +214,7 @@ async function enrichModelDetails(model) {
     }
 
     // Extract training_datasets
-    let rawDatasets = info.cardData?.datasets;
+    const rawDatasets = info.cardData?.datasets;
     if (typeof rawDatasets === "string") {
       training_datasets = [rawDatasets];
     } else if (Array.isArray(rawDatasets)) {
@@ -187,7 +222,7 @@ async function enrichModelDetails(model) {
     }
 
     // Extract confirmed_languages
-    let rawLanguages = info.cardData?.language;
+    const rawLanguages = info.cardData?.language;
     if (typeof rawLanguages === "string") {
       confirmed_languages = [rawLanguages];
     } else if (Array.isArray(rawLanguages)) {
@@ -199,7 +234,9 @@ async function enrichModelDetails(model) {
       file_count = info.siblings.length;
     }
   } catch (err) {
-    console.error(`    [ERROR] Fetching HF model info for ${modelId}: ${err.message}`);
+    console.error(
+      `    [ERROR] Fetching HF model info for ${modelId}: ${err.message}`
+    );
   }
 
   // 2. Fetch README
@@ -296,27 +333,35 @@ async function fetchOrgRepos(org) {
 /* ─── arXiv ─── */
 
 const ARXIV_QUERIES = [
-  'ti:amharic',
-  'ti:tigrinya',
+  "ti:amharic",
+  "ti:tigrinya",
   'ti:"afaan oromo"',
   'ti:"ge\'ez"',
-  'abs:amharic+AND+abs:speech',
-  'abs:amharic+AND+abs:translation',
+  "abs:amharic+AND+abs:speech",
+  "abs:amharic+AND+abs:translation",
   'abs:amharic+AND+abs:"language model"',
-  'abs:tigrinya+AND+abs:NLP',
+  "abs:tigrinya+AND+abs:NLP",
   'abs:"low-resource"+AND+abs:amharic',
   'abs:"ethiopian language"',
   'abs:"ethiopian nlp"',
 ];
 
 function isRelevantPaper(title, abstract) {
-  const keywords = ['amharic', 'tigrinya', 'oromo', 'ethiopian', "ge'ez", 'geez', 'afaan'];
+  const keywords = [
+    "amharic",
+    "tigrinya",
+    "oromo",
+    "ethiopian",
+    "ge'ez",
+    "geez",
+    "afaan",
+  ];
   const text = `${title} ${abstract}`.toLowerCase();
-  return keywords.some(kw => text.includes(kw));
+  return keywords.some((kw) => text.includes(kw));
 }
 
 async function searchArxiv() {
-  const { XMLParser } = await import('fast-xml-parser');
+  const { XMLParser } = await import("fast-xml-parser");
   const parser = new XMLParser({ ignoreAttributes: false });
   const allPapers = [];
   const seen = new Set();
@@ -333,28 +378,41 @@ async function searchArxiv() {
     let kept = 0;
 
     for (const entry of items) {
-      const id = (entry.id || '').trim();
-      const arxivId = id.replace(/.*\/abs\/(\S+).*/, '$1') || id;
+      const id = (entry.id || "").trim();
+      const arxivId = id.replace(/.*\/abs\/(\S+).*/, "$1") || id;
       if (seen.has(arxivId)) continue;
       seen.add(arxivId);
 
-      const title = (entry.title || '').replace(/\s+/g, ' ').trim();
-      const summary = (entry.summary || '').replace(/\s+/g, ' ').trim();
+      const title = (entry.title || "").replace(/\s+/g, " ").trim();
+      const summary = (entry.summary || "").replace(/\s+/g, " ").trim();
       if (!isRelevantPaper(title, summary)) continue;
 
-      const authors = (entry.author ? (Array.isArray(entry.author) ? entry.author : [entry.author]) : [])
-        .map(a => (a.name || '').trim()).filter(Boolean);
+      const authors = (
+        entry.author
+          ? Array.isArray(entry.author)
+            ? entry.author
+            : [entry.author]
+          : []
+      )
+        .map((a) => (a.name || "").trim())
+        .filter(Boolean);
 
-      const cats = entry.category ? (Array.isArray(entry.category) ? entry.category : [entry.category]) : [];
-      const categories = cats.map(c => (typeof c === 'string' ? c : c['@_term'] || '').trim()).filter(Boolean);
+      const cats = entry.category
+        ? Array.isArray(entry.category)
+          ? entry.category
+          : [entry.category]
+        : [];
+      const categories = cats
+        .map((c) => (typeof c === "string" ? c : c["@_term"] || "").trim())
+        .filter(Boolean);
 
       allPapers.push({
         arxiv_id: arxivId,
         title,
         authors,
         abstract: summary,
-        published_date: entry.published || '',
-        updated_date: entry.updated || '',
+        published_date: entry.published || "",
+        updated_date: entry.updated || "",
         url: `https://arxiv.org/abs/${arxivId}`,
         categories,
       });
@@ -370,20 +428,35 @@ async function searchArxiv() {
 /* ─── Relevance filter ─── */
 
 function isRelevant(model) {
-  const id = (model.id || '').toLowerCase()
-  const tags = (model.tags || []).map(t => t.toLowerCase())
+  const id = (model.id || "").toLowerCase();
+  const tags = (model.tags || []).map((t) => t.toLowerCase());
 
   // Exclude GGUF quantizations (re-uploads of other people's models)
-  if (id.includes('gguf') || tags.includes('gguf')) return false
+  if (id.includes("gguf") || tags.includes("gguf")) return false;
 
   // Keep only models with explicit Ethiopian connection in tags or id
-  const ethiopianTags = ['am', 'ti', 'om', 'so', 'gz', 'amharic', 'tigrinya',
-    'oromo', 'afaan', 'geez', 'somali', 'ethiopian', 'ethiopia', 'wolaytta', 'sidama']
-  const hasEthiopianTag = ethiopianTags.some(et =>
-    tags.includes(et) || id.includes(et)
-  )
+  const ethiopianTags = [
+    "am",
+    "ti",
+    "om",
+    "so",
+    "gz",
+    "amharic",
+    "tigrinya",
+    "oromo",
+    "afaan",
+    "geez",
+    "somali",
+    "ethiopian",
+    "ethiopia",
+    "wolaytta",
+    "sidama",
+  ];
+  const hasEthiopianTag = ethiopianTags.some(
+    (et) => tags.includes(et) || id.includes(et)
+  );
 
-  return hasEthiopianTag
+  return hasEthiopianTag;
 }
 
 /* ─── Companies (hardcoded until a company scraper exists) ─── */
@@ -476,7 +549,9 @@ async function main() {
     try {
       const models = await searchHuggingFace(term, "models");
       const relevant = models.filter(isRelevant);
-      console.log(`    ${models.length} models for "${term}"  (${models.length - relevant.length} filtered)`);
+      console.log(
+        `    ${models.length} models for "${term}"  (${models.length - relevant.length} filtered)`
+      );
       allModels.push(...relevant);
     } catch (err) {
       console.error(`  [ERROR] HF models "${term}": ${err.message}`);
@@ -484,7 +559,9 @@ async function main() {
     try {
       const datasets = await searchDatasets(term);
       const relevant = datasets.filter(isRelevant);
-      console.log(`    ${datasets.length} datasets for "${term}"  (${datasets.length - relevant.length} filtered)`);
+      console.log(
+        `    ${datasets.length} datasets for "${term}"  (${datasets.length - relevant.length} filtered)`
+      );
       allDatasets.push(...relevant);
     } catch (err) {
       console.error(`  [ERROR] HF datasets "${term}": ${err.message}`);
@@ -503,9 +580,13 @@ async function main() {
   const dedupedDatasets = deduplicate(allDatasets);
   const dedupedSpaces = deduplicate(allSpaces);
 
-  console.log(`\n  Deduped: ${dedupedModels.length} models, ${dedupedDatasets.length} datasets, ${dedupedSpaces.length} spaces`);
+  console.log(
+    `\n  Deduped: ${dedupedModels.length} models, ${dedupedDatasets.length} datasets, ${dedupedSpaces.length} spaces`
+  );
 
-  console.log(`\n  Enriching ${dedupedModels.length} models from HuggingFace API...`);
+  console.log(
+    `\n  Enriching ${dedupedModels.length} models from HuggingFace API...`
+  );
   const enrichedModels = [];
   for (const m of dedupedModels) {
     const enriched = await enrichModelDetails(m);
@@ -572,7 +653,9 @@ async function main() {
     },
   };
   writeFileSync(join(DATA_DIR, "db.json"), JSON.stringify(db, null, 2));
-  console.log(`  ✓ db.json  (${enrichedModels.length} models, ${dedupedDatasets.length} datasets, ${dedupedPapers.length} papers)`);
+  console.log(
+    `  ✓ db.json  (${enrichedModels.length} models, ${dedupedDatasets.length} datasets, ${dedupedPapers.length} papers)`
+  );
 
   /* ── 5. Write today's snapshot (never overwrite) ── */
   const today = new Date().toISOString().split("T")[0];
@@ -588,13 +671,20 @@ async function main() {
       downloads: d.downloads_monthly ?? 0,
     })),
   };
-  writeFileSync(join(snapshotsDir, `${today}.json`), JSON.stringify(snapshot, null, 2));
-  console.log(`  ✓ snapshots/${today}.json  (${snapshot.models.length} models, ${snapshot.datasets.length} datasets)`);
+  writeFileSync(
+    join(snapshotsDir, `${today}.json`),
+    JSON.stringify(snapshot, null, 2)
+  );
+  console.log(
+    `  ✓ snapshots/${today}.json  (${snapshot.models.length} models, ${snapshot.datasets.length} datasets)`
+  );
 
   /* ── 6. Regenerate activity feed ── */
   console.log("Running feed generator...");
   try {
-    execSync("node " + join(__dirname, "generate-feed.mjs"), { stdio: "inherit" });
+    execSync("node " + join(__dirname, "generate-feed.mjs"), {
+      stdio: "inherit",
+    });
   } catch (e) {
     console.error("Feed generation failed:", e.message);
   }

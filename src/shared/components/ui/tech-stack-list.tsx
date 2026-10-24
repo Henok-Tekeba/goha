@@ -1,9 +1,8 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import { AnimatePresence, motion } from "motion/react";
-
 import StackLogo from "@/shared/components/ui/stack-logo";
+import { asset } from "@/shared/lib/asset";
 import {
   badgeItemAppearAnimate,
   badgeItemAppearInitial,

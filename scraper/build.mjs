@@ -1,5 +1,11 @@
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -9,45 +15,58 @@ const SNAPSHOT_DIR = join(DATA_DIR, "snapshots");
 /* ─── Read JSON helper ─── */
 function readJSON(filepath) {
   if (!existsSync(filepath)) return null;
-  try { return JSON.parse(readFileSync(filepath, "utf-8")); } catch { return null; }
+  try {
+    return JSON.parse(readFileSync(filepath, "utf-8"));
+  } catch {
+    return null;
+  }
 }
 
 /* ─── Type inference ─── */
-function inferType(pipelineTag = '', tags = [], modelId = '') {
-  const all = [pipelineTag, ...tags, modelId].map(t => (t || '').toLowerCase());
-  const has = (...terms) => terms.some(t => all.some(s => new RegExp(`(?:^|[\\-_/])${t}(?:[\\-_/]|$)`).test(s)));
-  if (has('automatic-speech-recognition', 'asr', 'speech-recognition')) return 'ASR';
-  if (has('text-to-speech', 'tts')) return 'TTS';
-  if (has('translation', 'nmt', 'machine-translation')) return 'Translation';
-  if (has('text-generation', 'causal-lm', 'language-model')) return 'LLM';
-  if (has('token-classification', 'ner', 'named-entity')) return 'NER';
-  if (has('feature-extraction', 'sentence-similarity', 'embedding', 'reranker')) return 'Embeddings';
-  if (has('fill-mask', 'masked-lm')) return 'Masked LM';
-  if (has('text-classification', 'sentiment')) return 'Classification';
-  if (has('image-classification', 'object-detection', 'vision')) return 'Vision';
-  if (has('stable-diffusion', 'diffusion', 'lora', 'flux')) return 'Image Generation';
-  if (has('question-answering')) return 'QA';
-  if (has('summarization')) return 'Summarization';
-  return 'NLP';
+function inferType(pipelineTag = "", tags = [], modelId = "") {
+  const all = [pipelineTag, ...tags, modelId].map((t) =>
+    (t || "").toLowerCase()
+  );
+  const has = (...terms) =>
+    terms.some((t) =>
+      all.some((s) => new RegExp(`(?:^|[\\-_/])${t}(?:[\\-_/]|$)`).test(s))
+    );
+  if (has("automatic-speech-recognition", "asr", "speech-recognition"))
+    return "ASR";
+  if (has("text-to-speech", "tts")) return "TTS";
+  if (has("translation", "nmt", "machine-translation")) return "Translation";
+  if (has("text-generation", "causal-lm", "language-model")) return "LLM";
+  if (has("token-classification", "ner", "named-entity")) return "NER";
+  if (has("feature-extraction", "sentence-similarity", "embedding", "reranker"))
+    return "Embeddings";
+  if (has("fill-mask", "masked-lm")) return "Masked LM";
+  if (has("text-classification", "sentiment")) return "Classification";
+  if (has("image-classification", "object-detection", "vision"))
+    return "Vision";
+  if (has("stable-diffusion", "diffusion", "lora", "flux"))
+    return "Image Generation";
+  if (has("question-answering")) return "QA";
+  if (has("summarization")) return "Summarization";
+  return "NLP";
 }
 
 function mapTypeToBadge(type) {
   const MAP = {
-    'ASR': { badge: 'ASR', bc: 'b-asr' },
-    'TTS': { badge: 'TTS', bc: 'b-asr' },
-    'Translation': { badge: 'Translation', bc: 'b-nmt' },
-    'LLM': { badge: 'LLM', bc: 'b-llm' },
-    'NER': { badge: 'NER', bc: 'b-ner' },
-    'Embeddings': { badge: 'Embeddings', bc: 'b-emb' },
-    'Masked LM': { badge: 'Masked LM', bc: 'b-default' },
-    'Classification': { badge: 'Classification', bc: 'b-default' },
-    'Vision': { badge: 'Vision', bc: 'b-default' },
-    'Image Generation': { badge: 'Image Gen', bc: 'b-default' },
-    'QA': { badge: 'QA', bc: 'b-default' },
-    'Summarization': { badge: 'Summarization', bc: 'b-default' },
-    'NLP': { badge: 'Model', bc: 'b-default' },
+    ASR: { badge: "ASR", bc: "b-asr" },
+    TTS: { badge: "TTS", bc: "b-asr" },
+    Translation: { badge: "Translation", bc: "b-nmt" },
+    LLM: { badge: "LLM", bc: "b-llm" },
+    NER: { badge: "NER", bc: "b-ner" },
+    Embeddings: { badge: "Embeddings", bc: "b-emb" },
+    "Masked LM": { badge: "Masked LM", bc: "b-default" },
+    Classification: { badge: "Classification", bc: "b-default" },
+    Vision: { badge: "Vision", bc: "b-default" },
+    "Image Generation": { badge: "Image Gen", bc: "b-default" },
+    QA: { badge: "QA", bc: "b-default" },
+    Summarization: { badge: "Summarization", bc: "b-default" },
+    NLP: { badge: "Model", bc: "b-default" },
   };
-  return MAP[type] || { badge: 'Model', bc: 'b-default' };
+  return MAP[type] || { badge: "Model", bc: "b-default" };
 }
 
 function inferBadge(raw) {
@@ -57,17 +76,27 @@ function inferBadge(raw) {
 }
 
 const LANG_MAP = {
-  amharic: "AM", oromo: "OM", "afaan oromo": "OM", tigrinya: "TI",
-  geez: "GZ", somali: "SO", afar: "AA", sidama: "SID",
+  amharic: "AM",
+  oromo: "OM",
+  "afaan oromo": "OM",
+  tigrinya: "TI",
+  geez: "GZ",
+  somali: "SO",
+  afar: "AA",
+  sidama: "SID",
   english: "EN",
 };
 
 function codeLang(raw) {
-  return LANG_MAP[raw?.toLowerCase()] || raw?.toUpperCase()?.slice(0, 2) || null;
+  return (
+    LANG_MAP[raw?.toLowerCase()] || raw?.toUpperCase()?.slice(0, 2) || null
+  );
 }
 
 function extractLang(rawLangs, tags) {
-  const langs = (rawLangs || []).map((l) => l.trim().toLowerCase()).filter(Boolean);
+  const langs = (rawLangs || [])
+    .map((l) => l.trim().toLowerCase())
+    .filter(Boolean);
   if (!langs.length) {
     for (const t of tags || []) {
       const m = t.match(/^language:(.+)/);
@@ -82,7 +111,12 @@ function extractLang(rawLangs, tags) {
   const unique = [...new Set(codes)];
   return {
     langs: unique,
-    lang: unique.length === 1 ? unique[0] : (unique.length > 1 ? unique.join("\u00B7") : null),
+    lang:
+      unique.length === 1
+        ? unique[0]
+        : unique.length > 1
+          ? unique.join("\u00B7")
+          : null,
   };
 }
 
@@ -94,93 +128,136 @@ function normalizeModel(raw) {
     ...raw,
     _type: "model",
     org: raw.author_name || raw.author_hf || raw.author || "",
-    badge, bc,
+    badge,
+    bc,
     dl: raw.downloads_monthly ?? 0,
-    lang, langs,
+    lang,
+    langs,
     isNew: !!raw.is_new,
     desc: raw.description || "",
     downloads_monthly: raw.downloads_monthly ?? 0,
     likes: raw.likes ?? 0,
     featured: (raw.likes || 0) > 20,
     verified: true,
-    is_new: undefined, languages: undefined,
-    author_name: undefined, author_hf: undefined, author: undefined,
+    is_new: undefined,
+    languages: undefined,
+    author_name: undefined,
+    author_hf: undefined,
+    author: undefined,
   };
 }
 
 function normalizeDataset(raw) {
   const { lang, langs } = extractLang(raw.languages, raw.tags);
   return {
-    ...raw, _type: "dataset",
+    ...raw,
+    _type: "dataset",
     org: raw.author_name || raw.author_hf || "",
-    badge: "Dataset", bc: "b-ds",
+    badge: "Dataset",
+    bc: "b-ds",
     hf_url: raw.id ? `https://huggingface.co/datasets/${raw.id}` : raw.hf_url,
-    dl: raw.downloads_monthly ?? 0, lang, langs,
-    isNew: !!raw.is_new, desc: raw.description || "",
+    dl: raw.downloads_monthly ?? 0,
+    lang,
+    langs,
+    isNew: !!raw.is_new,
+    desc: raw.description || "",
     downloads_monthly: raw.downloads_monthly ?? 0,
-    likes: raw.likes ?? 0, featured: (raw.likes || 0) > 10,
+    likes: raw.likes ?? 0,
+    featured: (raw.likes || 0) > 10,
     verified: true,
-    is_new: undefined, languages: undefined,
-    author_name: undefined, author_hf: undefined,
+    is_new: undefined,
+    languages: undefined,
+    author_name: undefined,
+    author_hf: undefined,
   };
 }
 
 function normalizePaper(raw) {
   return {
-    ...raw, _type: "paper",
+    ...raw,
+    _type: "paper",
     name: raw.title || raw.name || "",
     org: (raw.authors || []).join(", ") || raw.org || "",
-    badge: "Paper", bc: "b-paper",
+    badge: "Paper",
+    bc: "b-paper",
     desc: raw.abstract || raw.desc || "",
-    dl: null, lang: null, langs: [],
-    isNew: false, tags: raw.categories || [],
-    downloads_monthly: 0, likes: 0,
-    featured: false, verified: false,
+    dl: null,
+    lang: null,
+    langs: [],
+    isNew: false,
+    tags: raw.categories || [],
+    downloads_monthly: 0,
+    likes: 0,
+    featured: false,
+    verified: false,
   };
 }
 
 function normalizeCompany(raw) {
   return {
-    ...raw, _type: "company",
+    ...raw,
+    _type: "company",
     org: raw.hq || raw.org || "",
-    badge: "Company", bc: "b-co",
-    dl: null, lang: null, langs: raw.langs || [],
+    badge: "Company",
+    bc: "b-co",
+    dl: null,
+    lang: null,
+    langs: raw.langs || [],
     isNew: !!raw.is_new || !!raw.isNew,
     desc: raw.desc || raw.description || "",
     tags: raw.tags || [],
-    website: raw.website || "", github: raw.github || "",
-    hf_org: raw.hf_org || "", founded: raw.founded || "",
+    website: raw.website || "",
+    github: raw.github || "",
+    hf_org: raw.hf_org || "",
+    founded: raw.founded || "",
     models: Array.isArray(raw.models) ? raw.models : [],
-    models_count: 0, related_models: [],
-    downloads_monthly: 0, likes: 0,
-    featured: !!raw.featured, verified: !!raw.verified,
+    models_count: 0,
+    related_models: [],
+    downloads_monthly: 0,
+    likes: 0,
+    featured: !!raw.featured,
+    verified: !!raw.verified,
   };
 }
 
 function normalizeSpace(raw) {
   return {
-    ...raw, _type: "space",
+    ...raw,
+    _type: "space",
     org: raw.author || "",
-    badge: "Space", bc: "b-space",
-    dl: null, lang: null, langs: [],
-    isNew: false, desc: "",
+    badge: "Space",
+    bc: "b-space",
+    dl: null,
+    lang: null,
+    langs: [],
+    isNew: false,
+    desc: "",
     tags: [raw.sdk || ""].filter(Boolean),
-    downloads_monthly: 0, likes: raw.likes ?? 0,
-    featured: false, verified: false,
+    downloads_monthly: 0,
+    likes: raw.likes ?? 0,
+    featured: false,
+    verified: false,
   };
 }
 
 function normalizeRepo(raw) {
   return {
-    ...raw, _type: "repo",
+    ...raw,
+    _type: "repo",
     name: raw.full_name || raw.name || "",
     org: raw.owner || "",
-    badge: "Repo", bc: "b-repo",
-    dl: null, lang: null, langs: [],
-    isNew: false, desc: raw.description || "",
+    badge: "Repo",
+    bc: "b-repo",
+    dl: null,
+    lang: null,
+    langs: [],
+    isNew: false,
+    desc: raw.description || "",
     tags: raw.topics || [],
-    downloads_monthly: 0, likes: raw.stars ?? 0,
-    featured: false, verified: false,
+    downloads_monthly: 0,
+    likes: raw.stars ?? 0,
+    featured: false,
+    verified: false,
     added_at: raw.last_commit || null,
   };
 }
@@ -202,15 +279,25 @@ function timeAgo(dateString) {
 }
 
 function normalizeFeedEntry(raw) {
-  const FEED_ICONS = { new_model: "new_model", new_dataset: "new_dataset", new_paper: "new_paper", trending: "trending", milestone: "milestone" };
+  const FEED_ICONS = {
+    new_model: "new_model",
+    new_dataset: "new_dataset",
+    new_paper: "new_paper",
+    trending: "trending",
+    milestone: "milestone",
+  };
   return {
-    id: raw.id, type: raw.type,
+    id: raw.id,
+    type: raw.type,
     icon: FEED_ICONS[raw.type] || "new",
     message: raw.title || "",
     ago: timeAgo(raw.created_at),
-    title: raw.title, description: raw.description,
-    entity_id: raw.entity_id, entity_type: raw.entity_type,
-    created_at: raw.created_at, metadata: raw.metadata || {},
+    title: raw.title,
+    description: raw.description,
+    entity_id: raw.entity_id,
+    entity_type: raw.entity_type,
+    created_at: raw.created_at,
+    metadata: raw.metadata || {},
   };
 }
 
@@ -218,11 +305,14 @@ function normalizeFeedEntry(raw) {
 function getGrowth(modelId, snapshots) {
   if (snapshots.length < 2) return null;
   const oldest = snapshots[0].models?.find((m) => m.id === modelId);
-  const newest = snapshots[snapshots.length - 1].models?.find((m) => m.id === modelId);
+  const newest = snapshots[snapshots.length - 1].models?.find(
+    (m) => m.id === modelId
+  );
   if (!oldest || !newest) return null;
   if (oldest.downloads === 0) return null;
   if (newest.downloads < 50) return null;
-  const growth = ((newest.downloads - oldest.downloads) / oldest.downloads) * 100;
+  const growth =
+    ((newest.downloads - oldest.downloads) / oldest.downloads) * 100;
   if (Math.abs(growth) < 5) return null;
   return Math.round(growth);
 }
@@ -233,7 +323,10 @@ function getSparkline(id, snapshots) {
   const timestamps = [];
   for (const snap of snapshots) {
     const entry = snap.models?.find((m) => m.id === id);
-    if (entry) { points.push(entry.downloads); timestamps.push(snap.date || null); }
+    if (entry) {
+      points.push(entry.downloads);
+      timestamps.push(snap.date || null);
+    }
   }
   if (points.length < 2) return null;
   return { points, timestamps };
@@ -243,16 +336,39 @@ function getSparkline(id, snapshots) {
 function computeTrending(normalizedModels, snapshots) {
   const withGrowth = [...normalizedModels]
     .filter((m) => m.dl >= 50)
-    .map((m) => ({ name: m.name, org: m.org, badge: m.badge, growth: getGrowth(m.id, snapshots), dl: m.dl, lang: m.lang, desc: m.desc, id: m.id, isNew: !!m.isNew, added_at: m.added_at }))
+    .map((m) => ({
+      name: m.name,
+      org: m.org,
+      badge: m.badge,
+      growth: getGrowth(m.id, snapshots),
+      dl: m.dl,
+      lang: m.lang,
+      desc: m.desc,
+      id: m.id,
+      isNew: !!m.isNew,
+      added_at: m.added_at,
+    }))
     .filter((m) => m.growth !== null)
     .sort((a, b) => b.growth - a.growth)
     .slice(0, 6);
-  if (withGrowth.length >= 3) return { items: withGrowth, label: "Trending This Week" };
+  if (withGrowth.length >= 3)
+    return { items: withGrowth, label: "Trending This Week" };
   const topByDl = [...normalizedModels]
     .filter((m) => m.dl >= 50)
     .sort((a, b) => (b.dl || 0) - (a.dl || 0))
     .slice(0, 6)
-    .map((m) => ({ name: m.name, org: m.org, badge: m.badge, growth: null, dl: m.dl, lang: m.lang, desc: m.desc, id: m.id, isNew: !!m.isNew, added_at: m.added_at }));
+    .map((m) => ({
+      name: m.name,
+      org: m.org,
+      badge: m.badge,
+      growth: null,
+      dl: m.dl,
+      lang: m.lang,
+      desc: m.desc,
+      id: m.id,
+      isNew: !!m.isNew,
+      added_at: m.added_at,
+    }));
   return { items: topByDl, label: "Most Downloaded" };
 }
 
@@ -265,23 +381,48 @@ function computeVerdicts(allModels, allDatasets) {
   for (const m of all) {
     if (m.dl != null && m.dl >= 200) {
       const badge = m.badge || "Model";
-      if (!bestByBadge[badge] || m.dl > bestByBadge[badge].dl) bestByBadge[badge] = m;
+      if (!bestByBadge[badge] || m.dl > bestByBadge[badge].dl)
+        bestByBadge[badge] = m;
     }
   }
-  let maxGrowth = -Infinity;
+  let maxGrowth = Number.NEGATIVE_INFINITY;
   for (const m of all) {
-    if (m.growth != null && m.growth > maxGrowth && m.dl != null && m.dl > 0) maxGrowth = m.growth;
+    if (m.growth != null && m.growth > maxGrowth && m.dl != null && m.dl > 0)
+      maxGrowth = m.growth;
   }
   for (const m of all) {
-    const isRecent = m.isNew || (m.added_at && (now - new Date(m.added_at).getTime()) < SEVEN_DAYS);
+    const isRecent =
+      m.isNew ||
+      (m.added_at && now - new Date(m.added_at).getTime() < SEVEN_DAYS);
     if (isRecent && m.dl != null && m.dl > 0) {
       m.verdict = { label: "New", icon: "new", type: "new" };
     } else if (bestByBadge[m.badge] && bestByBadge[m.badge] === m) {
       m.verdict = { label: `Best ${m.badge}`, icon: "best", type: "best" };
-    } else if (m.growth != null && m.growth === maxGrowth && maxGrowth > 15 && m.dl != null && m.dl > 0) {
-      m.verdict = { label: "Fastest growing", icon: "growing", type: "growing" };
-    } else if (m.likes != null && m.likes > 0 && m.dl != null && m.dl > 0 && (m.likes / m.dl) > 0.03 && m.dl < 500) {
-      m.verdict = { label: "Underrated", icon: "underrated", type: "underrated" };
+    } else if (
+      m.growth != null &&
+      m.growth === maxGrowth &&
+      maxGrowth > 15 &&
+      m.dl != null &&
+      m.dl > 0
+    ) {
+      m.verdict = {
+        label: "Fastest growing",
+        icon: "growing",
+        type: "growing",
+      };
+    } else if (
+      m.likes != null &&
+      m.likes > 0 &&
+      m.dl != null &&
+      m.dl > 0 &&
+      m.likes / m.dl > 0.03 &&
+      m.dl < 500
+    ) {
+      m.verdict = {
+        label: "Underrated",
+        icon: "underrated",
+        type: "underrated",
+      };
     }
   }
 }
@@ -290,12 +431,70 @@ function computeVerdicts(allModels, allDatasets) {
 function computeQuickstart(normalizedModels, normalizedDatasets) {
   const all = [...normalizedModels, ...normalizedDatasets];
   const guides = [];
-  const amharicEmbed = all.filter(m => (m.badge === "Embed" || m.badge === "Model") && (m.langs || []).includes("AM")).sort((a, b) => (b.dl || 0) - (a.dl || 0)).slice(0, 3);
-  if (amharicEmbed.length) guides.push({ id: "amharic-embed", title: "Building for Amharic?", description: "Start with embeddings \u2014 the foundation for search, classification, and more.", items: amharicEmbed.map(m => ({ name: m.name, org: m.org, badge: m.badge, bc: m.bc, dl: m.dl, lang: m.lang, verdict: m.verdict })) });
-  const asrModels = all.filter(m => m.badge === "ASR").sort((a, b) => (b.dl || 0) - (a.dl || 0)).slice(0, 3);
-  if (asrModels.length) guides.push({ id: "speech-to-text", title: "Need speech-to-text?", description: "Production-ready ASR models for Amharic, Oromo, Tigrinya and more.", items: asrModels.map(m => ({ name: m.name, org: m.org, badge: m.badge, bc: m.bc, dl: m.dl, lang: m.lang, verdict: m.verdict })) });
-  const topAll = [...normalizedModels].filter(m => m.dl != null).sort((a, b) => (b.dl || 0) - (a.dl || 0)).slice(0, 3);
-  if (topAll.length) guides.push({ id: "top-downloads", title: "New to Ethiopian AI?", description: "The models with the most community traction \u2014 start here.", items: topAll.map(m => ({ name: m.name, org: m.org, badge: m.badge, bc: m.bc, dl: m.dl, lang: m.lang, verdict: m.verdict })) });
+  const amharicEmbed = all
+    .filter(
+      (m) =>
+        (m.badge === "Embed" || m.badge === "Model") &&
+        (m.langs || []).includes("AM")
+    )
+    .sort((a, b) => (b.dl || 0) - (a.dl || 0))
+    .slice(0, 3);
+  if (amharicEmbed.length)
+    guides.push({
+      id: "amharic-embed",
+      title: "Building for Amharic?",
+      description:
+        "Start with embeddings \u2014 the foundation for search, classification, and more.",
+      items: amharicEmbed.map((m) => ({
+        name: m.name,
+        org: m.org,
+        badge: m.badge,
+        bc: m.bc,
+        dl: m.dl,
+        lang: m.lang,
+        verdict: m.verdict,
+      })),
+    });
+  const asrModels = all
+    .filter((m) => m.badge === "ASR")
+    .sort((a, b) => (b.dl || 0) - (a.dl || 0))
+    .slice(0, 3);
+  if (asrModels.length)
+    guides.push({
+      id: "speech-to-text",
+      title: "Need speech-to-text?",
+      description:
+        "Production-ready ASR models for Amharic, Oromo, Tigrinya and more.",
+      items: asrModels.map((m) => ({
+        name: m.name,
+        org: m.org,
+        badge: m.badge,
+        bc: m.bc,
+        dl: m.dl,
+        lang: m.lang,
+        verdict: m.verdict,
+      })),
+    });
+  const topAll = [...normalizedModels]
+    .filter((m) => m.dl != null)
+    .sort((a, b) => (b.dl || 0) - (a.dl || 0))
+    .slice(0, 3);
+  if (topAll.length)
+    guides.push({
+      id: "top-downloads",
+      title: "New to Ethiopian AI?",
+      description:
+        "The models with the most community traction \u2014 start here.",
+      items: topAll.map((m) => ({
+        name: m.name,
+        org: m.org,
+        badge: m.badge,
+        bc: m.bc,
+        dl: m.dl,
+        lang: m.lang,
+        verdict: m.verdict,
+      })),
+    });
   return { guides };
 }
 
@@ -305,10 +504,16 @@ function build() {
   console.log("║   goha.et — Build                     ║");
   console.log("╚══════════════════════════════════════╝\n");
 
-  if (!existsSync(DATA_DIR)) { console.error("data/ directory not found"); process.exit(1); }
+  if (!existsSync(DATA_DIR)) {
+    console.error("data/ directory not found");
+    process.exit(1);
+  }
 
   const raw = readJSON(join(DATA_DIR, "db.json"));
-  if (!raw) { console.error("data/db.json not found"); process.exit(1); }
+  if (!raw) {
+    console.error("data/db.json not found");
+    process.exit(1);
+  }
 
   /* Normalize all entities */
   const normalizedModels = (raw.models || []).map(normalizeModel);
@@ -318,20 +523,33 @@ function build() {
   const normalizedPapers = (raw.papers || []).map(normalizePaper);
   const normalizedCompanies = (raw.companies || []).map(normalizeCompany);
 
-  console.log(`  Raw:    ${raw.models?.length || 0} models, ${raw.datasets?.length || 0} datasets, ${raw.papers?.length || 0} papers`);
+  console.log(
+    `  Raw:    ${raw.models?.length || 0} models, ${raw.datasets?.length || 0} datasets, ${raw.papers?.length || 0} papers`
+  );
 
   /* Attach related models to companies */
-  const hfSlug = (url) => { if (!url) return ""; const m = String(url).match(/huggingface\.co\/([^/?#]+)/i); return m ? m[1].toLowerCase() : ""; };
+  const hfSlug = (url) => {
+    if (!url) return "";
+    const m = String(url).match(/huggingface\.co\/([^/?#]+)/i);
+    return m ? m[1].toLowerCase() : "";
+  };
   for (const c of normalizedCompanies) {
     const needles = new Set();
-    const slug = hfSlug(c.hf_org); if (slug) needles.add(slug);
+    const slug = hfSlug(c.hf_org);
+    if (slug) needles.add(slug);
     if (c.name) needles.add(c.name.toLowerCase().replace(/\s+/g, "-"));
     if (c.name) needles.add(c.name.toLowerCase());
     const matched = normalizedModels.filter((m) => {
       const a = String(m.author_hf || "").toLowerCase();
       const o = String(m.org || "").toLowerCase();
       if (!a && !o) return false;
-      for (const n of needles) { if (!n) continue; if (a === n || a.startsWith(n + "/") || a.includes("/" + n)) return true; if (o === n.replace(/-/g, " ") || o.includes(n.replace(/-/g, " "))) return true; }
+      for (const n of needles) {
+        if (!n) continue;
+        if (a === n || a.startsWith(n + "/") || a.includes("/" + n))
+          return true;
+        if (o === n.replace(/-/g, " ") || o.includes(n.replace(/-/g, " ")))
+          return true;
+      }
       return false;
     });
     c.related_models = matched.map((m) => m.id || m.name);
@@ -342,7 +560,10 @@ function build() {
   /* Load snapshots */
   const snapshots = [];
   if (existsSync(SNAPSHOT_DIR)) {
-    const files = readdirSync(SNAPSHOT_DIR).filter((f) => f.endsWith(".json")).sort().slice(-7);
+    const files = readdirSync(SNAPSHOT_DIR)
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .slice(-7);
     for (const f of files) {
       const s = readJSON(join(SNAPSHOT_DIR, f));
       if (s) snapshots.push(s);
@@ -351,18 +572,40 @@ function build() {
   console.log(`  Snapshots: ${snapshots.length} files`);
 
   /* Attach growth + sparkline */
-  for (const m of normalizedModels) { if (m.id) { m.growth = getGrowth(m.id, snapshots); m.sparkline = getSparkline(m.id, snapshots); } }
-  for (const d of normalizedDatasets) { if (d.id) { d.growth = getGrowth(d.id, snapshots); d.sparkline = getSparkline(d.id, snapshots); } }
+  for (const m of normalizedModels) {
+    if (m.id) {
+      m.growth = getGrowth(m.id, snapshots);
+      m.sparkline = getSparkline(m.id, snapshots);
+    }
+  }
+  for (const d of normalizedDatasets) {
+    if (d.id) {
+      d.growth = getGrowth(d.id, snapshots);
+      d.sparkline = getSparkline(d.id, snapshots);
+    }
+  }
 
   /* Cleanup: filter GGUF, orphaned papers */
   let before = normalizedModels.length;
-  const cleanedModels = normalizedModels.filter((m) => { const id = (m.id || '').toLowerCase(); const tags = (m.tags || []).map(t => t.toLowerCase()); return !(id.includes('gguf') || tags.includes('gguf')); });
+  const cleanedModels = normalizedModels.filter((m) => {
+    const id = (m.id || "").toLowerCase();
+    const tags = (m.tags || []).map((t) => t.toLowerCase());
+    return !(id.includes("gguf") || tags.includes("gguf"));
+  });
   console.log(`  GGUF filter: ${before} -> ${cleanedModels.length} models`);
   before = normalizedDatasets.length;
-  const cleanedDatasets = normalizedDatasets.filter((d) => { const id = (d.id || '').toLowerCase(); const tags = (d.tags || []).map(t => t.toLowerCase()); return !(id.includes('gguf') || tags.includes('gguf')); });
+  const cleanedDatasets = normalizedDatasets.filter((d) => {
+    const id = (d.id || "").toLowerCase();
+    const tags = (d.tags || []).map((t) => t.toLowerCase());
+    return !(id.includes("gguf") || tags.includes("gguf"));
+  });
   console.log(`  GGUF filter: ${before} -> ${cleanedDatasets.length} datasets`);
-  const ethKeywords = ['amharic', 'tigrinya', 'oromo', 'ethiopian', 'geez'];
-  const cleanedPapers = normalizedPapers.filter((p) => { const title = (p.title || '').toLowerCase(); const abst = (p.abstract || p.desc || '').toLowerCase(); return ethKeywords.some(kw => title.includes(kw) || abst.includes(kw)); });
+  const ethKeywords = ["amharic", "tigrinya", "oromo", "ethiopian", "geez"];
+  const cleanedPapers = normalizedPapers.filter((p) => {
+    const title = (p.title || "").toLowerCase();
+    const abst = (p.abstract || p.desc || "").toLowerCase();
+    return ethKeywords.some((kw) => title.includes(kw) || abst.includes(kw));
+  });
 
   /* Verdicts */
   computeVerdicts(cleanedModels, cleanedDatasets);
@@ -374,7 +617,9 @@ function build() {
   const quickstart = computeQuickstart(cleanedModels, cleanedDatasets);
 
   /* Stats */
-  const topModel = [...cleanedModels].sort((a, b) => (b.dl || 0) - (a.dl || 0))[0];
+  const topModel = [...cleanedModels].sort(
+    (a, b) => (b.dl || 0) - (a.dl || 0)
+  )[0];
   const stats = {
     models: cleanedModels.length,
     datasets: cleanedDatasets.length,
@@ -384,12 +629,22 @@ function build() {
     spaces: normalizedSpaces.length,
     repos: normalizedRepos.length,
     languages: 6,
-    indexed: raw.meta?.last_updated ? timeAgo(raw.meta.last_updated) : "just now",
-    featured: topModel ? { downloads: topModel.dl || 0, name: topModel.name, lang: (topModel.lang || topModel.langs?.[0] || "") } : { downloads: 0, name: "", lang: "" },
+    indexed: raw.meta?.last_updated
+      ? timeAgo(raw.meta.last_updated)
+      : "just now",
+    featured: topModel
+      ? {
+          downloads: topModel.dl || 0,
+          name: topModel.name,
+          lang: topModel.lang || topModel.langs?.[0] || "",
+        }
+      : { downloads: 0, name: "", lang: "" },
   };
 
   /* MX (max downloads across models + datasets) */
-  const allDls = [...cleanedModels, ...cleanedDatasets].map((d) => d.dl).filter(Boolean);
+  const allDls = [...cleanedModels, ...cleanedDatasets]
+    .map((d) => d.dl)
+    .filter(Boolean);
   const MX = allDls.length ? Math.max(...allDls, 100) : 2341;
 
   /* Activity feed */
@@ -413,24 +668,48 @@ function build() {
   };
 
   /* Write individual files for frontend */
-  const writeJSON = (name, data) => writeFileSync(join(DATA_DIR, name), JSON.stringify(data, null, 2));
+  const writeJSON = (name, data) =>
+    writeFileSync(join(DATA_DIR, name), JSON.stringify(data, null, 2));
 
   writeJSON("stats.json", { data: stats, total: 1, page: 1, limit: 1 });
-  writeJSON("models.json", { data: cleanedModels, total: cleanedModels.length, page: 1, limit: cleanedModels.length });
-  writeJSON("datasets.json", { data: cleanedDatasets, total: cleanedDatasets.length, page: 1, limit: cleanedDatasets.length });
-  writeJSON("papers.json", { data: cleanedPapers, total: cleanedPapers.length, page: 1, limit: cleanedPapers.length });
-  writeJSON("companies.json", { data: normalizedCompanies, total: normalizedCompanies.length, page: 1, limit: normalizedCompanies.length });
+  writeJSON("models.json", {
+    data: cleanedModels,
+    total: cleanedModels.length,
+    page: 1,
+    limit: cleanedModels.length,
+  });
+  writeJSON("datasets.json", {
+    data: cleanedDatasets,
+    total: cleanedDatasets.length,
+    page: 1,
+    limit: cleanedDatasets.length,
+  });
+  writeJSON("papers.json", {
+    data: cleanedPapers,
+    total: cleanedPapers.length,
+    page: 1,
+    limit: cleanedPapers.length,
+  });
+  writeJSON("companies.json", {
+    data: normalizedCompanies,
+    total: normalizedCompanies.length,
+    page: 1,
+    limit: normalizedCompanies.length,
+  });
   writeJSON("trending.json", trending);
   writeJSON("quickstart.json", quickstart);
   writeJSON("activity_feed.json", activityFeed);
 
   /* Stats history from snapshots */
-  const statsHistory = snapshots.map(snap => {
+  const statsHistory = snapshots.map((snap) => {
     const totalModels = snap.models?.length || 0;
     const totalDatasets = snap.datasets?.length || 0;
-    const totalModelDownloads = snap.models?.reduce((sum, m) => sum + (m.downloads || 0), 0) || 0;
-    const totalLikes = snap.models?.reduce((sum, m) => sum + (m.likes || 0), 0) || 0;
-    const totalDatasetDownloads = snap.datasets?.reduce((sum, d) => sum + (d.downloads || 0), 0) || 0;
+    const totalModelDownloads =
+      snap.models?.reduce((sum, m) => sum + (m.downloads || 0), 0) || 0;
+    const totalLikes =
+      snap.models?.reduce((sum, m) => sum + (m.likes || 0), 0) || 0;
+    const totalDatasetDownloads =
+      snap.datasets?.reduce((sum, d) => sum + (d.downloads || 0), 0) || 0;
     return {
       date: snap.date,
       models: totalModels,
@@ -446,8 +725,8 @@ function build() {
   if (snapshots.length >= 2) {
     const first = snapshots[0];
     const last = snapshots[snapshots.length - 1];
-    const firstModelMap = new Map(first.models.map(m => [m.id, m]));
-    const firstDatasetMap = new Map(first.datasets.map(d => [d.id, d]));
+    const firstModelMap = new Map(first.models.map((m) => [m.id, m]));
+    const firstDatasetMap = new Map(first.datasets.map((d) => [d.id, d]));
 
     const topGainers = [];
     for (const m of last.models) {
@@ -455,11 +734,12 @@ function build() {
       if (!old) continue;
       const gain = m.downloads - old.downloads;
       if (gain <= 0) continue;
-      const pct = old.downloads > 0 ? Math.round((gain / old.downloads) * 100) : 0;
+      const pct =
+        old.downloads > 0 ? Math.round((gain / old.downloads) * 100) : 0;
       topGainers.push({
         id: m.id,
-        name: m.id.split('/').pop(),
-        org: m.id.split('/')[0],
+        name: m.id.split("/").pop(),
+        org: m.id.split("/")[0],
         gain,
         growth: pct,
         start: old.downloads,
@@ -475,12 +755,20 @@ function build() {
       if (!old) continue;
       for (const mil of milestones) {
         if (old.downloads < mil && m.downloads >= mil) {
-          crossed.push({ id: m.id, milestone: mil, downloads: m.downloads, date: last.date });
+          crossed.push({
+            id: m.id,
+            milestone: mil,
+            downloads: m.downloads,
+            date: last.date,
+          });
         }
       }
     }
 
-    writeJSON("stats_insights.json", { topGainers: topGainers.slice(0, 20), milestones: crossed });
+    writeJSON("stats_insights.json", {
+      topGainers: topGainers.slice(0, 20),
+      milestones: crossed,
+    });
   } else {
     writeJSON("stats_insights.json", { topGainers: [], milestones: [] });
   }
@@ -489,7 +777,8 @@ function build() {
   const modelSnapshots = {};
   for (const snap of snapshots) {
     for (const m of snap.models || []) {
-      if (!modelSnapshots[m.id]) modelSnapshots[m.id] = { dates: [], downloads: [], likes: [] };
+      if (!modelSnapshots[m.id])
+        modelSnapshots[m.id] = { dates: [], downloads: [], likes: [] };
       modelSnapshots[m.id].dates.push(snap.date);
       modelSnapshots[m.id].downloads.push(m.downloads);
       modelSnapshots[m.id].likes.push(m.likes);
@@ -501,14 +790,15 @@ function build() {
   const datasetSnapshots = {};
   for (const snap of snapshots) {
     for (const d of snap.datasets || []) {
-      if (!datasetSnapshots[d.id]) datasetSnapshots[d.id] = { dates: [], downloads: [] };
+      if (!datasetSnapshots[d.id])
+        datasetSnapshots[d.id] = { dates: [], downloads: [] };
       datasetSnapshots[d.id].dates.push(snap.date);
       datasetSnapshots[d.id].downloads.push(d.downloads);
     }
   }
   writeJSON("dataset_snapshots.json", datasetSnapshots);
 
-  console.log(`\n  Built:`);
+  console.log("\n  Built:");
   console.log(`  Models:       ${cleanedModels.length}`);
   console.log(`  Datasets:     ${cleanedDatasets.length}`);
   console.log(`  Papers:       ${cleanedPapers.length}`);
@@ -517,7 +807,9 @@ function build() {
   console.log(`  Repos:        ${normalizedRepos.length}`);
   console.log(`  Feed:         ${activityFeed.length}`);
   console.log(`  MX (max dl):  ${MX}`);
-  console.log(`\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json, stats_history.json, model_snapshots.json, dataset_snapshots.json`);
+  console.log(
+    "\n  Written: build-db.json, stats.json, models.json, datasets.json, papers.json, companies.json, trending.json, quickstart.json, activity_feed.json, stats_history.json, model_snapshots.json, dataset_snapshots.json"
+  );
 }
 
 build();

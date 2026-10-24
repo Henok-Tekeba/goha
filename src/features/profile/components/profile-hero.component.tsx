@@ -1,10 +1,7 @@
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import Link from "next/link";
 import { RiLinkM } from "react-icons/ri";
-
 import { FRONTEND_URL } from "@/config/config";
-
 import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
 import { ShareProfileModal } from "@/shared/components/ui/share-profile-modal.component";
@@ -14,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/shared/components/ui/tooltip";
 import { useCacheBustingImage } from "@/shared/hooks/use-cache-busting-image.hook";
+import { asset } from "@/shared/lib/asset";
 
 import type { Profile } from "../types/profile.type";
 

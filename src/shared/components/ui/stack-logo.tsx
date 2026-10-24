@@ -29,7 +29,13 @@ export default function StackLogo({
   return (
     <div className="flex flex-wrap gap-2">
       <div className="flex items-center gap-1">
-        <Image src={iconSrcToUse} alt={alt} width={width} height={height} className="shrink-0" />
+        <Image
+          src={iconSrcToUse}
+          alt={alt}
+          width={width}
+          height={height}
+          className="shrink-0"
+        />
         {name && (
           <span className="text-black/70 text-xs md:text-sm">{name}</span>
         )}

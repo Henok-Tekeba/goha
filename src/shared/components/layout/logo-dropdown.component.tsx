@@ -1,6 +1,5 @@
 "use client";
 
-import { asset } from "@/shared/lib/asset";
 import Image from "next/image";
 import { useState } from "react";
 import { RiCheckLine, RiDownloadLine, RiFileCopyLine } from "react-icons/ri";
@@ -11,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
+import { asset } from "@/shared/lib/asset";
 
 export default function LogoDropdown() {
   const [copiedSvg, setCopiedSvg] = useState(false);

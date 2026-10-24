@@ -1,9 +1,9 @@
-import { asset } from "@/shared/lib/asset";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import SkeletonProjectGrid from "@/features/projects/components/skeletons/skeleton-project-grid.component";
 import HomepageViews from "@/features/projects/views/homepage.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
+import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
   title: "goha.et — Find and discover the Ethiopian AI ecosystem",
