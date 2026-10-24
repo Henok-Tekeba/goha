@@ -13,18 +13,13 @@ export default function ActivityPreview() {
   return (
     <section aria-labelledby="activity-preview-heading">
       <div className="mb-4 flex items-baseline justify-between gap-4">
-        <div>
-          <h2
-            id="activity-preview-heading"
-            className="text-lg text-primary tracking-[-0.03em] md:text-xl"
-            style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-          >
-            Today in Ethiopian AI
-          </h2>
-          <p className="mt-1 text-muted-foreground text-sm">
-            What the daily scrape just picked up.
-          </p>
-        </div>
+        <h2
+          id="activity-preview-heading"
+          className="text-lg text-primary tracking-[-0.03em] md:text-xl"
+          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+        >
+          Today in Ethiopian AI
+        </h2>
         <Link
           href="/activity"
           className="shrink-0 text-muted-foreground text-xs tracking-tight transition-colors hover:text-primary"

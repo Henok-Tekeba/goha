@@ -38,18 +38,13 @@ export default function LanguageTiles() {
   return (
     <section aria-labelledby="languages-heading">
       <div className="mb-4 flex items-baseline justify-between gap-4">
-        <div>
-          <h2
-            id="languages-heading"
-            className="text-lg text-primary tracking-[-0.03em] md:text-xl"
-            style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-          >
-            Browse by language
-          </h2>
-          <p className="mt-1 text-muted-foreground text-sm">
-            Coverage maps and open gaps for each language.
-          </p>
-        </div>
+        <h2
+          id="languages-heading"
+          className="text-lg text-primary tracking-[-0.03em] md:text-xl"
+          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+        >
+          Browse by language
+        </h2>
         <Link
           href="/lang"
           className="shrink-0 text-muted-foreground text-xs tracking-tight transition-colors hover:text-primary"

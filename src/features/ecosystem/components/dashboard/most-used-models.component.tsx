@@ -22,26 +22,23 @@ export default function MostUsedModels() {
       .slice(0, COUNT);
   }, [data]);
 
+  const totalModels = data?.pagination?.total;
+
   return (
     <section aria-labelledby="most-used-heading">
       <div className="mb-4 flex items-baseline justify-between gap-4">
-        <div>
-          <h2
-            id="most-used-heading"
-            className="text-lg text-primary tracking-[-0.03em] md:text-xl"
-            style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-          >
-            Most used models
-          </h2>
-          <p className="mt-1 text-muted-foreground text-sm">
-            The models the community actually downloads.
-          </p>
-        </div>
+        <h2
+          id="most-used-heading"
+          className="text-lg text-primary tracking-[-0.03em] md:text-xl"
+          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+        >
+          Most used models
+        </h2>
         <Link
           href="/?categories=Model"
           className="shrink-0 text-muted-foreground text-xs tracking-tight transition-colors hover:text-primary"
         >
-          Browse all 190 models →
+          Browse all{totalModels ? ` ${totalModels}` : ""} models →
         </Link>
       </div>
 

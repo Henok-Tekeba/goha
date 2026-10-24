@@ -14,23 +14,18 @@ export default function RecentResearch() {
   return (
     <section aria-labelledby="recent-research-heading">
       <div className="mb-4 flex items-baseline justify-between gap-4">
-        <div>
-          <h2
-            id="recent-research-heading"
-            className="text-lg text-primary tracking-[-0.03em] md:text-xl"
-            style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-          >
-            Latest research
-          </h2>
-          <p className="mt-1 text-muted-foreground text-sm">
-            New papers on Ethiopian languages, swept from arXiv.
-          </p>
-        </div>
+        <h2
+          id="recent-research-heading"
+          className="text-lg text-primary tracking-[-0.03em] md:text-xl"
+          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+        >
+          Latest research
+        </h2>
         <Link
           href="/research"
           className="shrink-0 text-muted-foreground text-xs tracking-tight transition-colors hover:text-primary"
         >
-          Research hub →
+          All research →
         </Link>
       </div>
 
