@@ -91,6 +91,16 @@ const footerLinks: {
       external: true,
       id: "community-contribute",
     },
+    {
+      label: "About goha",
+      href: "/about",
+      id: "community-about",
+    },
+    {
+      label: "Open data / API",
+      href: "/api",
+      id: "community-api",
+    },
   ],
   legal: [
     {
