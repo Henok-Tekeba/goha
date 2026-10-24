@@ -169,3 +169,44 @@ export interface Leaderboard {
   builtAt: string;
   sections: LeaderboardSection[];
 }
+
+/* ---------------- charts ---------------- */
+
+export interface GrowthPoint {
+  date: string;
+  models: number;
+  datasets: number;
+  downloads: number;
+}
+
+export interface GrowthPayload {
+  data: GrowthPoint[];
+  builtAt: string;
+}
+
+export interface TopModelSeries {
+  id: string;
+  name: string;
+  org: string | null;
+  projectId: string | null;
+  dl: number;
+}
+
+export interface TopModelHistoryPayload {
+  rows: Record<string, unknown>[];
+  series: TopModelSeries[];
+  builtAt: string;
+}
+
+export interface LanguageCoveragePayload {
+  rows: Record<string, number | string>[];
+  languages: string[];
+  tasks: string[];
+}
+
+export interface OrgRadarAxis {
+  axis: string;
+  label: string;
+  value: number /* raw count */;
+  max: number /* ecosystem max, for normalization */;
+}

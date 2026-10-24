@@ -64,12 +64,15 @@ import type {
   ActivityEventType,
   ActivityPayload,
   EcosystemStats,
+  GrowthPayload,
   Insights,
+  LanguageCoveragePayload,
   Leaderboard,
   OrgRecord,
   OrgsPayload,
   PaperRecord,
   PapersPayload,
+  TopModelHistoryPayload,
 } from "@/features/ecosystem/types/ecosystem.types";
 
 export function getEcosystemStats(): Promise<EcosystemStats> {
@@ -112,4 +115,22 @@ export function getPapers(): Promise<PaperRecord[]> {
 
 export function getLeaderboard(): Promise<Leaderboard> {
   return fetchJsonCached<Leaderboard>("/data/leaderboard.json");
+}
+
+/* ---------------- chart data ---------------- */
+
+export function getGrowthHistory(): Promise<GrowthPayload> {
+  return fetchJsonCached<GrowthPayload>("/data/growth.json");
+}
+
+export function getTopModelHistory(): Promise<TopModelHistoryPayload> {
+  return fetchJsonCached<TopModelHistoryPayload>(
+    "/data/top-models-history.json"
+  );
+}
+
+export function getLanguageCoverage(): Promise<LanguageCoveragePayload> {
+  return fetchJsonCached<LanguageCoveragePayload>(
+    "/data/language-coverage.json"
+  );
 }

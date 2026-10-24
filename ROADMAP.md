@@ -107,6 +107,29 @@ The scraper already gathers more than the UI shows. Ship the missing views.
 
 ---
 
+## Data visualizations (shadcn + EvilCharts ECharts) ✅ SHIPPED
+
+Interactive Apache ECharts visualizations via EvilCharts' shadcn-style
+components (`src/components/evilcharts/`), themed from the site's CSS tokens:
+
+- **Ecosystem growth** — smooth area chart of indexed models + datasets over
+  121 daily snapshots, with the brush dataZoom footer (drag to focus any
+  window; drag the plot to pan). Leaderboard page.
+- **ASR head-to-head** — horizontal bar chart of published word error rates,
+  best at the top, hover-to-dim comparison. Above the ASR table.
+- **Who is being used** — stroke-only multi-series trend for the five
+  most-used models, brush-zoomable. Leaderboard page.
+- **Language coverage radar** — all languages × six tracked tasks in one
+  radial comparison; click to isolate a language; empty axes = open problems.
+  `/lang` index.
+- **Org footprint radar** — an org's publishing shape per channel, normalized
+  against ecosystem maxima. Org profile pages.
+- **Last-30-days pulse** — daily event-count bars with max-highlight.
+  Activity page.
+- **What's in the index** — donut of the five asset types. Organizations page.
+
+---
+
 ## Sequencing
 
 | Phase | Items | Outcome |

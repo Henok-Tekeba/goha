@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { HiArrowTopRightOnSquare, HiMiniCheckBadge } from "react-icons/hi2";
 
+import OrgRadarChart from "@/features/ecosystem/components/charts/org-radar-chart";
+import type { OrgRadarAxis } from "@/features/ecosystem/types/ecosystem.types";
 import ProjectGrid from "@/features/projects/components/project-grid.component";
 import type { Project } from "@/features/projects/types/project.type";
 import {
@@ -18,6 +20,7 @@ import type { OrgRecord } from "../types/ecosystem.types";
 interface OrgDetailViewProps {
   org: OrgRecord;
   projects: Project[];
+  axes: OrgRadarAxis[];
 }
 
 function ExternalRow({
@@ -78,7 +81,11 @@ const kindLabel: Record<OrgRecord["kind"], string> = {
   individual: "Builder",
 };
 
-export default function OrgDetailView({ org, projects }: OrgDetailViewProps) {
+export default function OrgDetailView({
+  org,
+  projects,
+  axes,
+}: OrgDetailViewProps) {
   const models = projects.filter((p) =>
     p.projectCategories?.some((c) => c.name === "Model")
   );
@@ -160,14 +167,27 @@ export default function OrgDetailView({ org, projects }: OrgDetailViewProps) {
           </p>
         )}
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          <StatBox value={org.counts.models} label="models" />
-          <StatBox value={org.counts.datasets} label="datasets" />
-          <StatBox value={org.counts.repos} label="repos" />
-          <StatBox value={org.counts.spaces} label="spaces" />
-          {org.downloadsMonthly > 0 && (
-            <StatBox value={org.downloadsMonthly} label="downloads/mo" />
-          )}
+        <div className="mt-5 grid grid-cols-1 items-center gap-4 md:grid-cols-[auto_auto]">
+          <div className="flex flex-wrap gap-2">
+            <StatBox value={org.counts.models} label="models" />
+            <StatBox value={org.counts.datasets} label="datasets" />
+            <StatBox value={org.counts.repos} label="repos" />
+            <StatBox value={org.counts.spaces} label="spaces" />
+            {org.downloadsMonthly > 0 && (
+              <StatBox value={org.downloadsMonthly} label="downloads/mo" />
+            )}
+          </div>
+          <div className="flex items-center gap-4">
+            <OrgRadarChart
+              axes={axes}
+              className="h-44 w-44 shrink-0 md:h-48 md:w-48"
+            />
+            <p className="hidden max-w-[220px] text-muted-foreground text-xs leading-relaxed md:block">
+              Footprint shape — each axis normalized against the ecosystem-wide
+              maximum. A fuller polygon means this org publishes across every
+              channel.
+            </p>
+          </div>
         </div>
 
         {org.langs.length > 0 && (

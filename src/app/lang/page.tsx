@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LanguageRadarChart from "@/features/ecosystem/components/charts/language-radar-chart";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 import { getLanguagePage, languages } from "@/shared/lib/local-data.server";
@@ -69,6 +70,21 @@ export default function LanguagesIndexPage() {
               </Link>
             ))}
           </div>
+
+          <section className="mt-12" aria-label="Coverage comparison">
+            <h2
+              className="mb-1 text-lg text-primary tracking-[-0.03em] md:text-xl"
+              style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+            >
+              The gaps, side by side
+            </h2>
+            <p className="mb-4 max-w-2xl text-muted-foreground text-xs leading-relaxed">
+              Every language&apos;s coverage across the six tracked tasks —
+              models plus datasets indexed. Click a language to isolate it; the
+              missing axes are the open problems in Ethiopian AI.
+            </p>
+            <LanguageRadarChart className="h-[420px] w-full md:h-[480px]" />
+          </section>
         </div>
       </main>
       <CTAFooter

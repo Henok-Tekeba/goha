@@ -9,6 +9,9 @@ import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
+import EcosystemGrowthChart from "../components/charts/ecosystem-growth-chart";
+import TopModelsChart from "../components/charts/top-models-chart";
+import WerBarChart from "../components/charts/wer-bar-chart";
 import { useLeaderboardQuery } from "../hooks/ecosystem.queries";
 import type {
   LeaderboardRow,
@@ -278,9 +281,60 @@ export default function LeaderboardView() {
         />
       ) : (
         <div className="flex flex-col gap-6">
+          {/* pulse — ecosystem growth */}
+          <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2
+                className="text-base text-primary tracking-[-0.02em] md:text-lg"
+                style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+              >
+                Ecosystem growth
+              </h2>
+            </div>
+            <p className="mt-1 text-muted-foreground text-xs">
+              Everything the daily scrape has indexed — models and datasets,
+              June to today.
+            </p>
+            <EcosystemGrowthChart className="mt-2 h-72 w-full md:h-80" />
+          </section>
+
           {data.sections.map((section) => (
-            <SectionTable key={section.id} section={section} />
+            <div key={section.id} className="flex flex-col gap-3">
+              {section.task === "ASR" && (
+                <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
+                  <h2
+                    className="text-base text-primary tracking-[-0.02em] md:text-lg"
+                    style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+                  >
+                    {section.name} — head to head
+                  </h2>
+                  <p className="mt-1 text-muted-foreground text-xs">
+                    Published word error rates, best at the top.
+                  </p>
+                  <WerBarChart
+                    rows={section.rows}
+                    className="mt-2 h-[380px] w-full md:h-[420px]"
+                  />
+                </section>
+              )}
+              <SectionTable section={section} />
+            </div>
           ))}
+
+          {/* traction — top models download trend */}
+          <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
+            <h2
+              className="text-base text-primary tracking-[-0.02em] md:text-lg"
+              style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+            >
+              Who is being used
+            </h2>
+            <p className="mt-1 text-muted-foreground text-xs">
+              Monthly download trend for the five most-used models — drag the
+              brush or the plot to focus on a window.
+            </p>
+            <TopModelsChart className="mt-2 h-72 w-full md:h-80" />
+          </section>
         </div>
       )}
     </div>

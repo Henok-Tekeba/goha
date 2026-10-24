@@ -12,7 +12,13 @@
  *
  * Run after every scrape:  node scripts/build-goha-fixtures.mjs
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -1388,6 +1394,154 @@ writeFileSync(
   JSON.stringify(paperRecords, null, 1) + "\n"
 );
 
+/* ---------- charts: growth history (from daily snapshots) ---------- */
+const SNAPSHOTS_DIR = path.join(ROOT, "data", "snapshots");
+const growth = [];
+if (existsSync(SNAPSHOTS_DIR)) {
+  const snapshotFiles = readdirSync(SNAPSHOTS_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .sort();
+  for (const file of snapshotFiles) {
+    try {
+      const snap = JSON.parse(
+        readFileSync(path.join(SNAPSHOTS_DIR, file), "utf8")
+      );
+      const snapModels = Array.isArray(snap.models) ? snap.models : [];
+      const snapDatasets = Array.isArray(snap.datasets) ? snap.datasets : [];
+      growth.push({
+        date: snap.date ?? file.replace(/\.json$/, ""),
+        models: snapModels.length,
+        datasets: snapDatasets.length,
+        downloads: snapModels.reduce(
+          (sum, m) => sum + (m.downloads ?? m.downloads_monthly ?? 0),
+          0
+        ),
+      });
+    } catch {
+      /* skip malformed snapshots */
+    }
+  }
+}
+
+/* ---------- charts: top models download history ---------- */
+const modelSnapshots = existsSync(DATA("model_snapshots.json"))
+  ? JSON.parse(readFileSync(DATA("model_snapshots.json"), "utf8"))
+  : {};
+const TOP_MODEL_COUNT = 5;
+const topModels = [...models]
+  .sort((a, b) => (b.downloads_monthly ?? 0) - (a.downloads_monthly ?? 0))
+  .filter((m) => modelSnapshots[m.id])
+  .slice(0, TOP_MODEL_COUNT);
+
+const dateSet = new Set();
+for (const m of topModels)
+  for (const d of modelSnapshots[m.id].dates ?? []) dateSet.add(d);
+const topModelHistory = [...dateSet].sort().map((date) => {
+  const row = { date };
+  for (const m of topModels) {
+    const snap = modelSnapshots[m.id];
+    const i = (snap.dates ?? []).indexOf(date);
+    row[m.id] = i >= 0 ? ((snap.downloads ?? [])[i] ?? null) : null;
+  }
+  return row;
+});
+
+/* ---------- charts: language × task coverage (radar) ---------- */
+const RADAR_LANGS = [
+  "Amharic",
+  "Afaan Oromo",
+  "Tigrinya",
+  "Ge'ez",
+  "Somali",
+  "English",
+];
+const RADAR_TASKS = ["ASR", "TTS", "Translation", "LLM", "NER", "Embeddings"];
+
+function radarTaskOfAsset(it, kind) {
+  if (kind === "model") {
+    const badge = (it.type_label || it.badge || "").toLowerCase();
+    if (/speech|asr/.test(badge)) return "ASR";
+    if (/tts|text.to.speech/.test(badge)) return "TTS";
+    if (/translat/.test(badge)) return "Translation";
+    if (/llm|generation|gpt|llama/.test(badge)) return "LLM";
+    if (/ner|token/.test(badge)) return "NER";
+    if (/embed|feature|sentence/.test(badge)) return "Embeddings";
+    return null;
+  }
+  const tags = (it.tags || []).map((t) => String(t).toLowerCase());
+  if (tags.some((t) => t.includes("text-to-speech"))) return "TTS";
+  if (
+    tags.some(
+      (t) => t.includes("speech-recognition") || t.includes("automatic-speech")
+    )
+  )
+    return "ASR";
+  if (tags.some((t) => t.includes("translation"))) return "Translation";
+  if (tags.some((t) => t.includes("text-generation"))) return "LLM";
+  if (
+    tags.some(
+      (t) => t.includes("token-classification") || t.includes("named-entity")
+    )
+  )
+    return "NER";
+  if (
+    tags.some(
+      (t) => t.includes("embedding") || t.includes("feature-extraction")
+    )
+  )
+    return "Embeddings";
+  return null;
+}
+
+const radarRows = RADAR_TASKS.map((task) => {
+  const row = { task };
+  for (const lang of RADAR_LANGS) {
+    const matchesLang = (it) =>
+      (it.tags || []).some(
+        (t) =>
+          String(t).toLowerCase().startsWith("language:") &&
+          langFromCode(String(t).toLowerCase().split(":")[1]) === lang
+      ) || (it.langs || []).some((l) => LANG_NAMES[l] === lang);
+    row[lang] =
+      models.filter(
+        (m) => matchesLang(m) && radarTaskOfAsset(m, "model") === task
+      ).length +
+      datasets.filter(
+        (d) => matchesLang(d) && radarTaskOfAsset(d, "dataset") === task
+      ).length;
+  }
+  return row;
+});
+
+/* chart data (fetched client-side) */
+writeFileSync(
+  path.join(PUBLIC_DATA, "growth.json"),
+  JSON.stringify({ data: growth, builtAt: new Date(buildTime).toISOString() }) +
+    "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "top-models-history.json"),
+  JSON.stringify({
+    rows: topModelHistory,
+    series: topModels.map((m) => ({
+      id: m.id,
+      name: m.name,
+      org: orgFromName(m.id),
+      projectId: entityIdToProjectId.get(m.id) ?? null,
+      dl: m.downloads_monthly ?? 0,
+    })),
+    builtAt: new Date(buildTime).toISOString(),
+  }) + "\n"
+);
+writeFileSync(
+  path.join(PUBLIC_DATA, "language-coverage.json"),
+  JSON.stringify({
+    rows: radarRows,
+    languages: RADAR_LANGS,
+    tasks: RADAR_TASKS,
+  }) + "\n"
+);
+
 /* regenerate taxonomy.mock.ts with goha's categories + languages */
 const taxTs = `import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";
@@ -1436,5 +1590,6 @@ console.log(
     categories: ${categories.length} · techStacks: ${techStacks.length}
     languages: ${topLangs.map(([n]) => n).join(", ")}
     stacks: ${topStacks.map((s) => s.name).join(", ")}
-    ecosystem: activity ${activity.length} · orgs ${orgs.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}`
+    ecosystem: activity ${activity.length} · orgs ${orgs.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}
+    charts: growth ${growth.length} days · top models ${topModelHistory.length} days · radar tasks ${radarRows.length}`
 );

@@ -59,10 +59,25 @@ export default async function OrgPage({ params }: Props) {
   if (!org) return null;
   const projects = getOrgProjects(org);
 
+  /* ecosystem max per axis — the reference for the footprint radar */
+  const axes = (
+    [
+      { axis: "models", label: "Models", value: org.counts.models },
+      { axis: "datasets", label: "Datasets", value: org.counts.datasets },
+      { axis: "repos", label: "Repos", value: org.counts.repos },
+      { axis: "spaces", label: "Spaces", value: org.counts.spaces },
+    ] as const
+  ).map(({ axis, label, value }) => ({
+    axis,
+    label,
+    value,
+    max: Math.max(1, ...orgs.map((o) => o.counts[axis] ?? 0)),
+  }));
+
   return (
     <>
       <main>
-        <OrgDetailView org={org} projects={projects} />
+        <OrgDetailView org={org} projects={projects} axes={axes} />
       </main>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}
