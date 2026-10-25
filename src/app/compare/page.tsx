@@ -5,13 +5,14 @@ import CompareView, {
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 import { projects } from "@/shared/lib/local-data.server";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Compare Ethiopian AI models",
   description:
     "Put Ethiopian models side by side: download trajectories, task, languages, license, size and lineage.",
-  alternates: { canonical: "/compare" },
-};
+  path: "/compare",
+});
 
 function compareModels(): CompareModel[] {
   return projects

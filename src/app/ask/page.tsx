@@ -9,13 +9,14 @@ import AskView from "@/features/ecosystem/views/ask.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 import { orgs, projects } from "@/shared/lib/local-data.server";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Ask — natural-language search for Ethiopian AI",
   description:
     "Ask about Ethiopian AI in plain language: models, datasets, papers, organizations, gaps and benchmarks — answered from the index, with sources.",
-  alternates: { canonical: "/ask" },
-};
+  path: "/ask",
+});
 
 function askProjects(): AskProject[] {
   return projects

@@ -146,6 +146,8 @@ export interface LeaderboardRow {
   projectId: string | null;
   languages: string[];
   dataset: string | null;
+  embeddingDim: number | null;
+  evaluationSource: string | null;
   metric: string;
   metricType: string;
   value: number | null;

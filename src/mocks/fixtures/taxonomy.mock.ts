@@ -65,8 +65,8 @@ export const techStacks: TechStackType[] = [
   ),
   tech(
     "tst_00000000000000000000000000000006",
-    "Wolayttattoo",
-    "/langs/wolayttattoo.svg",
+    "Wolaytta",
+    "/langs/wolaytta.svg",
     "LANGUAGE"
   ),
   tech(

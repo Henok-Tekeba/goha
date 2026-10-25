@@ -54,7 +54,7 @@ const LANGUAGE_SHORT: Record<string, string> = {
   "Ge'ez": "Ge'ez",
   Somali: "Somali",
   "Sidaamu Afoo": "Sidaama",
-  Wolayttattoo: "Wolaytta",
+  Wolaytta: "Wolaytta",
   English: "English",
 };
 

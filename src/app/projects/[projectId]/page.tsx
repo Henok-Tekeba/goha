@@ -4,8 +4,9 @@ import { FRONTEND_URL } from "@/config/config";
 import { getProject } from "@/features/projects/services/project.service";
 import ProjectDetailView from "@/features/projects/views/project-detail.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
+import LegacyRedirect from "@/shared/components/legacy-redirect.component";
 import { asset } from "@/shared/lib/asset";
-import { projects } from "@/shared/lib/local-data.server";
+import { legacyProjectIds, projects } from "@/shared/lib/local-data.server";
 
 type Props = {
   params: Promise<{ projectId: string }>;
@@ -14,13 +15,26 @@ type Props = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return projects
+  const current = projects
     .filter((p) => p.id)
     .map((p) => ({ projectId: p.id as string }));
+  const legacy = Object.keys(legacyProjectIds).map((projectId) => ({
+    projectId,
+  }));
+  return [...current, ...legacy];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { projectId } = await params;
+  const legacyTarget = legacyProjectIds[projectId];
+  if (legacyTarget) {
+    return {
+      title: "Project moved",
+      description: "This goha project has a stable new address.",
+      alternates: { canonical: `/projects/${legacyTarget}` },
+      robots: { index: false, follow: true },
+    };
+  }
   try {
     const project = await getProject(projectId);
 
@@ -70,6 +84,16 @@ export default async function ProjectPage({
   }>;
 }) {
   const { projectId } = await params;
+  const legacyTarget = legacyProjectIds[projectId];
+
+  if (legacyTarget) {
+    return (
+      <LegacyRedirect
+        href={`/projects/${legacyTarget}`}
+        label="the current project page"
+      />
+    );
+  }
 
   return (
     <>

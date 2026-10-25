@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About — the home of Ethiopian AI",
   description:
     "Why goha exists, how the index is built, what it covers and what it deliberately does not do.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const STEPS = [
   {

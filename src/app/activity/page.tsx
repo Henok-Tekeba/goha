@@ -3,13 +3,14 @@ import { getPublicActivityPayload } from "@/features/ecosystem/lib/public-data.s
 import ActivityView from "@/features/ecosystem/views/activity.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Today in Ethiopian AI",
   description:
     "Recent model, dataset, paper and milestone events in the Ethiopian AI ecosystem, as the daily scrape picks them up.",
-  alternates: { canonical: "/activity" },
-};
+  path: "/activity",
+});
 
 export default function ActivityPage() {
   const payload = getPublicActivityPayload();

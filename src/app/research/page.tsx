@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import ResearchView from "@/features/ecosystem/views/research.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Research — papers on Ethiopian languages",
   description:
     "Published research on Amharic, Afaan Oromo, Tigrinya and Ge'ez — ASR, translation, LLMs and benchmarks, swept from arXiv daily.",
-  alternates: { canonical: "/research" },
-};
+  path: "/research",
+});
 
 export default function ResearchPage() {
   return (

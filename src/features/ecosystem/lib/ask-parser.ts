@@ -33,7 +33,7 @@ const LANGUAGE_ALIASES: [string, RegExp[]][] = [
   ["Ge'ez", [/\bge'?ez\b/, /ግዕዝ/]],
   ["Somali", [/\bsomali\b/]],
   ["Sidaamu Afoo", [/\bsidaam/]],
-  ["Wolayttattoo", [/\bwolayt/]],
+  ["Wolaytta", [/\bwolayt/]],
   ["Afaraf", [/\bafar\b/]],
   ["English", [/\benglish\b/]],
 ];

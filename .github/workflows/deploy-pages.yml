@@ -52,3 +52,20 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Smoke test the live site
+        run: node scripts/smoke-test.mjs
+        env:
+          SMOKE_BASE_URL: https://goha.enoch.et
+          SMOKE_RETRIES: 24
+          SMOKE_RETRY_MS: 5000

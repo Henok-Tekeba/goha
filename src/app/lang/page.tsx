@@ -9,13 +9,14 @@ import {
   getLanguagePage,
   languages,
 } from "@/shared/lib/local-data.server";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Languages — Ethiopian AI by language",
   description:
-    "Coverage maps and gap analysis for Amharic, Afaan Oromo, Tigrinya, Ge'ez, Somali, Wolayttattoo, Sidaamu Afoo and English — what exists, and what's still missing.",
-  alternates: { canonical: "/lang" },
-};
+    "Coverage maps and gap analysis for Amharic, Afaan Oromo, Tigrinya, Ge'ez, Somali, Wolaytta, Sidaamu Afoo and English — what exists, and what's still missing.",
+  path: "/lang",
+});
 
 export default function LanguagesIndexPage() {
   const summary = getLanguageCoverageSummary();

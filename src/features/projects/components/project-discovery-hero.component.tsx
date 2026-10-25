@@ -22,7 +22,7 @@ export default function ProjectDiscoveryHero({
         {/* Desktop / Tablet image */}
         <Image
           src={asset("/illustrations/traveler.png")}
-          alt="Bible gauche"
+          alt=""
           width={2882}
           height={800}
           quality={100}
@@ -34,7 +34,7 @@ export default function ProjectDiscoveryHero({
         {/* Mobile image (no props change, same src, tailored sizing) */}
         <Image
           src={asset("/illustrations/traveler-mobile.png")}
-          alt="Bible gauche"
+          alt=""
           width={402}
           height={361}
           quality={100}

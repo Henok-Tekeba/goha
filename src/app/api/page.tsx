@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Open data & API",
   description:
     "Data-backed surfaces on goha are built from public JSON files. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
-  alternates: { canonical: "/api" },
-};
+  path: "/api",
+});
 
 const ENDPOINTS: { path: string; what: string; shape: string }[] = [
   {

@@ -137,7 +137,7 @@ const CASES: Case[] = [
     tasks: ["ASR"],
     entities: ["dataset"],
   },
-  { q: "Wolaytta models", languages: ["Wolayttattoo"] },
+  { q: "Wolaytta models", languages: ["Wolaytta"] },
   { q: "Sidaama speech", languages: ["Sidaamu Afoo"], tasks: ["ASR"] },
   { q: "Amharic benchmarks", languages: ["Amharic"], entities: ["benchmark"] },
   { q: "compare Amharic models", languages: ["Amharic"], entities: ["model"] },

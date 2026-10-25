@@ -3,13 +3,14 @@ import OrgsView from "@/features/ecosystem/views/orgs.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 import { orgs } from "@/shared/lib/local-data.server";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Publishers — who is publishing Ethiopian AI",
   description:
     "Companies, labs and individual publishers with public models, datasets, repositories or spaces in the index, plus curated company records.",
-  alternates: { canonical: "/orgs" },
-};
+  path: "/orgs",
+});
 
 export default function OrgsPage() {
   return (

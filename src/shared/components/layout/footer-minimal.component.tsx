@@ -20,7 +20,7 @@ export default function FooterMinimal({
       name: "LinkedIn",
       href: EXTERNAL_LINKS.LINKEDIN,
     },
-  ];
+  ].filter((link) => link.href);
 
   return (
     <footer

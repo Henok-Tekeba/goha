@@ -22,7 +22,7 @@ function MoverCard({ gainer }: { gainer: InsightGainer }) {
           title="7-day download growth"
         >
           <FaArrowTrendUp className="size-3" />
-          {gainer.growth >= 100 ? `${gainer.growth}%` : `+${gainer.growth}%`}
+          {gainer.growth > 0 ? `+${gainer.growth}%` : `${gainer.growth}%`}
         </span>
         <span className="ml-auto text-muted-foreground text-xs tabular-nums">
           {formatNumberShort(gainer.start)} → {formatNumberShort(gainer.end)}

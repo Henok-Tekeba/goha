@@ -7,13 +7,14 @@ import {
 import LeaderboardView from "@/features/ecosystem/views/leaderboard.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Benchmarks & rankings",
   description:
     "How Ethiopian-language models compare on published results: ASR word error rates, retrieval accuracy, OCR — every row cites its source.",
-  alternates: { canonical: "/leaderboard" },
-};
+  path: "/leaderboard",
+});
 
 export default function LeaderboardPage() {
   return (

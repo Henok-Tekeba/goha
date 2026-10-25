@@ -4,13 +4,15 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import ShareButton from "@/shared/components/share/share-button.component";
 import { asset } from "@/shared/lib/asset";
 import { getGapReport } from "@/shared/lib/local-data.server";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
-export const metadata: Metadata = {
+
+export const metadata: Metadata = pageMetadata({
   title: "The Gap Report — what Ethiopian AI is still missing",
   description:
     "A data-cited report on the open problems in Ethiopian AI: empty language × task cells, unevaluated models, unlicensed assets and research without implementations.",
-  alternates: { canonical: "/gaps" },
-};
+  path: "/gaps",
+});
 
 function Stat({
   value,

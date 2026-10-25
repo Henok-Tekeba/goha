@@ -7,6 +7,12 @@ import ProjectGrid from "@/features/projects/components/project-grid.component";
 import ShareButton from "@/shared/components/share/share-button.component";
 import type { LanguagePageData } from "@/shared/lib/local-data.server";
 
+const LANGUAGE_SCOPE: Record<string, string> = {
+  geez: "Ge'ez here means models, datasets and papers whose metadata or name declares Ge'ez or the Ethiopic script; it often appears alongside Amharic and Tigrinya.",
+  english:
+    "English here means resources published in English or paired with an Ethiopian language; it is not a claim that they are English-only or that English is an Ethiopian language.",
+};
+
 function SectionHeading({
   title,
   count,
@@ -81,10 +87,12 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
           declares {name}, and papers whose derived language tags match.
           Multi-language items appear on each language page; items with no
           recognized language tag are not counted here.
-          {data.slug === "english"
-            ? " English is included because many Ethiopian datasets and parallel corpora are published in English or pair English with an Ethiopian language. This page lists items that declare English themselves; it is not a claim that they are English-only or Ethiopian-language resources."
-            : ""}
         </p>
+        {LANGUAGE_SCOPE[data.slug] && (
+          <p className="mt-2 max-w-3xl text-muted-foreground text-xs leading-relaxed">
+            {LANGUAGE_SCOPE[data.slug]}
+          </p>
+        )}
       </header>
 
       {/* coverage matrix */}

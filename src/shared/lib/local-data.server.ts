@@ -9,6 +9,7 @@ import type {
 } from "@/features/ecosystem/types/ecosystem.types";
 import type { Project } from "@/features/projects/types/project.type";
 import rawLanguages from "@/mocks/fixtures/languages.mock.json";
+import rawLegacyProjectIds from "@/mocks/fixtures/legacy-project-ids.json";
 import rawOrgs from "@/mocks/fixtures/orgs.mock.json";
 import rawPapers from "@/mocks/fixtures/papers.mock.json";
 import rawProjects from "@/mocks/fixtures/projects.mock.json";
@@ -48,6 +49,9 @@ export async function getTaxonomyData() {
 /* ---------------- ecosystem surfaces (build-time) ---------------- */
 
 export const orgs: OrgRecord[] = rawOrgs as unknown as OrgRecord[];
+
+export const legacyProjectIds: Record<string, string> =
+  rawLegacyProjectIds as Record<string, string>;
 
 export function getOrgBySlug(slug: string): OrgRecord | undefined {
   return orgs.find((org) => org.slug === slug);

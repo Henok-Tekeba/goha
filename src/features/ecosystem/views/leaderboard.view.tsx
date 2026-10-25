@@ -33,25 +33,30 @@ function exportCsv(group: LeaderboardGroup) {
     "rank",
     "model",
     "org",
-    "languages",
-    "dataset",
+    "language",
+    "evaluated_on",
+    "embedding_dim",
     "metric",
     "value",
     "verified",
     "downloads",
+    "evaluation_source",
     "source",
   ];
-  const lines = group.rows.map((row, i) =>
+  const rows = [...group.rows, ...group.unrankedRows];
+  const lines = rows.map((row, i) =>
     [
-      i + 1,
+      i < group.rows.length ? i + 1 : "",
       row.model,
       row.org,
-      row.languages.join(";"),
-      row.dataset,
+      group.language ?? row.languages.join(";"),
+      row.dataset ?? "not stated",
+      row.embeddingDim ?? "",
       row.metric,
       row.display,
       row.verified ? "yes" : "no",
       row.downloads,
+      row.evaluationSource,
       row.source,
     ]
       .map(csvEscape)
@@ -68,15 +73,153 @@ function exportCsv(group: LeaderboardGroup) {
   URL.revokeObjectURL(url);
 }
 
+function EvaluatedOnLink({ row }: { row: LeaderboardRow }) {
+  const href = row.evaluationSource ?? row.source;
+  const label = row.dataset ?? "not stated";
+  if (!href) return <span className="text-muted-foreground">{label}</span>;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground underline underline-offset-4 hover:text-primary"
+      title={`Open evaluation source for ${row.model}`}
+    >
+      {label}
+    </a>
+  );
+}
+
+function MobileRows({
+  rows,
+  ranked,
+  showDim,
+}: {
+  rows: LeaderboardRow[];
+  ranked: boolean;
+  showDim: boolean;
+}) {
+  return (
+    <div className="mt-3 flex flex-col divide-y divide-muted-black-stroke rounded-[14px] border border-muted-black-stroke md:hidden">
+      {rows.map((row, i) => (
+        <div
+          key={`${row.model}-${row.embeddingDim ?? ""}-${i}`}
+          className="px-3 py-2.5"
+        >
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="min-w-0">
+              <span className="block truncate font-medium text-primary text-sm">
+                {ranked ? `${i + 1}. ` : ""}
+                {row.model}
+              </span>
+              <span className="block truncate text-muted-foreground text-xs">
+                {row.org}
+                {row.languages.length
+                  ? ` · ${row.languages.slice(0, 2).join(", ")}`
+                  : ""}
+                {showDim && row.embeddingDim ? ` · ${row.embeddingDim}d` : ""}
+              </span>
+            </span>
+            <span className="shrink-0 text-right">
+              <span className="block font-medium text-primary text-sm tabular-nums">
+                {row.display}
+              </span>
+              <span className="block text-[11px] text-muted-foreground">
+                {row.metric}
+              </span>
+            </span>
+          </div>
+          <div className="mt-1 flex items-center justify-between gap-3 text-muted-foreground text-xs">
+            <span className="min-w-0 truncate">
+              <span className="mr-1">Evaluated on</span>
+              <EvaluatedOnLink row={row} />
+            </span>
+            <span className="flex shrink-0 items-center gap-3">
+              {row.downloads > 0 && (
+                <span className="inline-flex items-center gap-1 tabular-nums">
+                  <FaDownload className="size-2.5" />
+                  {formatNumberShort(row.downloads)}
+                </span>
+              )}
+              {row.source && (
+                <a
+                  href={row.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open source for ${row.model}`}
+                  className="inline-flex text-muted-foreground hover:text-primary"
+                >
+                  <HiArrowTopRightOnSquare className="size-4" />
+                </a>
+              )}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RowsTable({
+  rows,
+  ranked,
+  showDim,
+}: {
+  rows: LeaderboardRow[];
+  ranked: boolean;
+  showDim: boolean;
+}) {
+  return (
+    <div className="mt-3 hidden overflow-x-auto md:block">
+      <table className="w-full min-w-[720px] text-sm">
+        <thead>
+          <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">
+            <th className="py-2 pr-3 font-medium">#</th>
+            <th className="py-2 pr-3 font-medium">Model</th>
+            <th className="py-2 pr-3 font-medium">Language</th>
+            <th className="py-2 pr-3 font-medium">Evaluated on</th>
+            {showDim && (
+              <th className="py-2 pr-3 text-right font-medium">Dim</th>
+            )}
+            <th className="py-2 pr-3 text-right font-medium">Result</th>
+            <th className="hidden py-2 pr-3 text-right font-medium sm:table-cell">
+              Downloads
+            </th>
+            <th className="py-2 text-right font-medium">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <LeaderboardRowView
+              key={`${row.model}-${row.embeddingDim ?? ""}-${i}`}
+              row={row}
+              rank={ranked ? i + 1 : null}
+              showDim={showDim}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function SectionTable({ group }: { group: LeaderboardGroup }) {
   const [language, setLanguage] = useState<string | null>(null);
 
   const rows = useMemo(
     () =>
-      language
-        ? group.rows.filter((r) => r.languages.includes(language))
-        : group.rows,
+      group.rows.filter((row) => !language || row.languages.includes(language)),
     [group, language]
+  );
+  const unrankedRows = useMemo(
+    () =>
+      group.unrankedRows.filter(
+        (row) => !language || row.languages.includes(language)
+      ),
+    [group, language]
+  );
+  const showDim = [...rows, ...unrankedRows].some(
+    (row) => row.embeddingDim != null
   );
 
   return (
@@ -124,90 +267,31 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
       </div>
       <p className="mt-1 text-muted-foreground text-xs">
         {group.lowerIsBetter ? "Lower is better ·" : "Higher is better ·"}{" "}
-        {rows.length} entr{rows.length === 1 ? "y" : "ies"} — as published by
-        the model authors
+        {rows.length} ranked
+        {unrankedRows.length ? ` · ${unrankedRows.length} not ranked` : ""} — as
+        published by the model authors
       </p>
 
-      <div className="mt-3 flex flex-col divide-y divide-muted-black-stroke rounded-[14px] border border-muted-black-stroke md:hidden">
-        {rows.map((row, i) => (
-          <div key={`${row.model}-${i}`} className="px-3 py-2.5">
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="min-w-0">
-                <span className="block truncate font-medium text-primary text-sm">
-                  {i + 1}. {row.model}
-                </span>
-                <span className="block truncate text-muted-foreground text-xs">
-                  {row.org}
-                  {row.languages.length
-                    ? ` · ${row.languages.slice(0, 2).join(", ")}`
-                    : ""}
-                </span>
-              </span>
-              <span className="shrink-0 text-right">
-                <span className="block font-medium text-primary text-sm tabular-nums">
-                  {row.display}
-                </span>
-                <span className="block text-[11px] text-muted-foreground">
-                  {row.metric}
-                </span>
-              </span>
-            </div>
-            <div className="mt-1 flex items-center justify-between gap-3 text-muted-foreground text-xs">
-              <span className="truncate">
-                {row.dataset ?? "No test set reported"}
-              </span>
-              <span className="flex shrink-0 items-center gap-3">
-                {row.downloads > 0 && (
-                  <span className="inline-flex items-center gap-1 tabular-nums">
-                    <FaDownload className="size-2.5" />
-                    {formatNumberShort(row.downloads)}
-                  </span>
-                )}
-                {row.source && (
-                  <a
-                    href={row.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Open source for ${row.model}`}
-                    className="inline-flex text-muted-foreground hover:text-primary"
-                  >
-                    <HiArrowTopRightOnSquare className="size-4" />
-                  </a>
-                )}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
+      {rows.length > 0 && (
+        <>
+          <MobileRows rows={rows} ranked showDim={showDim} />
+          <RowsTable rows={rows} ranked showDim={showDim} />
+        </>
+      )}
 
-      <div className="mt-3 hidden overflow-x-auto md:block">
-        <table className="w-full min-w-[640px] text-sm">
-          <thead>
-            <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">
-              <th className="py-2 pr-3 font-medium">#</th>
-              <th className="py-2 pr-3 font-medium">Model</th>
-              <th className="py-2 pr-3 font-medium">Language</th>
-              <th className="hidden py-2 pr-3 font-medium md:table-cell">
-                Dataset
-              </th>
-              <th className="py-2 pr-3 text-right font-medium">Result</th>
-              <th className="hidden py-2 pr-3 text-right font-medium sm:table-cell">
-                Downloads
-              </th>
-              <th className="py-2 text-right font-medium">Source</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, i) => (
-              <LeaderboardRowView
-                key={`${row.model}-${i}`}
-                row={row}
-                rank={i + 1}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {unrankedRows.length > 0 && (
+        <div className="mt-5 rounded-[14px] border border-muted-black-stroke border-dashed px-3 py-3">
+          <h3 className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+            Not ranked — test set not stated
+          </h3>
+          <p className="mt-1 text-muted-foreground text-xs">
+            These results are shown for transparency but cannot be compared
+            without an evaluation set.
+          </p>
+          <MobileRows rows={unrankedRows} ranked={false} showDim={showDim} />
+          <RowsTable rows={unrankedRows} ranked={false} showDim={showDim} />
+        </div>
+      )}
     </section>
   );
 }
@@ -215,9 +299,11 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
 function LeaderboardRowView({
   row,
   rank,
+  showDim,
 }: {
   row: LeaderboardRow;
-  rank: number;
+  rank: number | null;
+  showDim: boolean;
 }) {
   const external = !row.projectId;
   const modelHref = row.projectId
@@ -226,7 +312,7 @@ function LeaderboardRowView({
   return (
     <tr className="border-muted-black-stroke border-b last:border-b-0">
       <td className="py-2.5 pr-3 text-muted-foreground text-xs tabular-nums">
-        {rank}
+        {rank ?? "—"}
       </td>
       <td className="max-w-[220px] py-2.5 pr-3">
         <Link
@@ -246,14 +332,16 @@ function LeaderboardRowView({
       <td className="py-2.5 pr-3 text-muted-foreground text-xs">
         {row.languages.slice(0, 2).join(", ") || "—"}
       </td>
-      <td className="hidden max-w-[200px] py-2.5 pr-3 md:table-cell">
-        <span
-          className="block truncate text-muted-foreground text-xs"
-          title={row.dataset ?? ""}
-        >
-          {row.dataset ?? "—"}
+      <td className="max-w-[200px] py-2.5 pr-3">
+        <span className="block truncate text-xs">
+          <EvaluatedOnLink row={row} />
         </span>
       </td>
+      {showDim && (
+        <td className="py-2.5 pr-3 text-right text-muted-foreground text-xs tabular-nums">
+          {row.embeddingDim ?? "—"}
+        </td>
+      )}
       <td className="whitespace-nowrap py-2.5 pr-3 text-right">
         <span className="font-medium text-primary text-sm tabular-nums">
           {row.display}
@@ -306,8 +394,9 @@ export default function LeaderboardView({
     () => groupLeaderboardSections(leaderboard.sections),
     [leaderboard]
   );
-  const asrWerGroup = groups.find(
-    (group) => group.task === "ASR" && /wer/i.test(group.metric)
+  const asrWerGroups = groups.filter(
+    (group) =>
+      group.task === "ASR" && /wer/i.test(group.metric) && group.rows.length > 1
   );
 
   return (
@@ -381,23 +470,27 @@ export default function LeaderboardView({
             />
           </section>
 
-          {asrWerGroup && (
-            <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
+          {asrWerGroups.map((group) => (
+            <section
+              key={`chart-${group.id}`}
+              className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5"
+            >
               <h2
                 className="text-base text-primary tracking-[-0.02em] md:text-lg"
                 style={{ fontFamily: "Aspekta", fontWeight: 500 }}
               >
-                {asrWerGroup.sectionName} — head to head
+                {group.language ?? "ASR"} — head to head
               </h2>
               <p className="mt-1 text-muted-foreground text-xs">
-                Published {asrWerGroup.metric}, best at the top.
+                Published {group.metric}, best at the top. Test set:{" "}
+                {group.testSet ?? "not stated"}.
               </p>
               <WerBarChart
-                rows={asrWerGroup.rows}
+                rows={group.rows}
                 className="mt-2 h-[380px] w-full md:h-[420px]"
               />
             </section>
-          )}
+          ))}
           {groups.map((group) => (
             <SectionTable key={group.id} group={group} />
           ))}

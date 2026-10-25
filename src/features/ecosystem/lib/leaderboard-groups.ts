@@ -10,13 +10,16 @@ export interface LeaderboardGroup {
   label: string;
   metric: string;
   testSet: string | null;
+  language: string | null;
   lowerIsBetter: boolean;
   languages: string[];
   rows: LeaderboardRow[];
+  unrankedRows: LeaderboardRow[];
 }
 
 const LOWER_IS_BETTER =
   /(wer|cer|error rate|loss|latency|perplexity|distance|rmse|mae)/i;
+const DIMENSION_ONLY = /^dim(?:ension)?[\s_:/-]*\d{2,5}$/i;
 
 /**
  * Direction belongs to the metric, not the section. A section can mix
@@ -26,9 +29,13 @@ export function isLowerBetterMetric(metric: string): boolean {
   return LOWER_IS_BETTER.test(metric);
 }
 
-function normalizeTestSet(dataset: string | null): string | null {
+/** Missing datasets, "reported" and bare embedding dimensions are not test
+    sets. ASR rows without one are shown outside the ranking. */
+export function normalizeTestSet(dataset: string | null): string | null {
   const value = (dataset ?? "").trim();
-  if (!value || /^reported$/i.test(value)) return null;
+  if (!value || /^reported$/i.test(value) || DIMENSION_ONLY.test(value)) {
+    return null;
+  }
   return value;
 }
 
@@ -50,9 +57,22 @@ function sortRows(rows: LeaderboardRow[], lowerIsBetter: boolean): void {
   });
 }
 
+function dedupeRows(rows: LeaderboardRow[]): LeaderboardRow[] {
+  const deduped = new Map<string, LeaderboardRow>();
+  for (const row of rows) {
+    const key = `${row.model}|${row.metric}|${row.dataset ?? ""}|${row.embeddingDim ?? ""}|${row.value}`;
+    const previous = deduped.get(key);
+    if (!previous || row.downloads > previous.downloads) {
+      deduped.set(key, row);
+    }
+  }
+  return [...deduped.values()];
+}
+
 /**
- * One table per task + metric + test set. Groups with fewer than two rows are
- * hidden: a one-row "ranking" is not a ranking.
+ * One table per task + metric + test set. ASR is split by language, and rows
+ * with no stated test set are kept out of the ranking. Embedding dimension is
+ * metadata, not a test set, so IR dim variants share a group.
  */
 export function groupLeaderboardSections(
   sections: LeaderboardSection[]
@@ -63,43 +83,60 @@ export function groupLeaderboardSections(
   for (const section of sections) {
     for (const row of section.rows) {
       const testSet = normalizeTestSet(row.dataset);
-      const key = `${section.task}\u0000${row.metric}\u0000${testSet ?? ""}`;
+      const isAsr = section.task === "ASR";
+      const language = isAsr
+        ? ([...row.languages].sort()[0] ?? "Unspecified")
+        : null;
+      const key = `${section.task}\u0000${row.metric}\u0000${testSet ?? ""}\u0000${language ?? ""}`;
       let group = groups.get(key);
 
       if (!group) {
         const baseId = slugify(
-          `${section.task}-${row.metric}-${testSet ?? ""}-${section.name}`
+          `${section.task}-${row.metric}-${testSet ?? ""}-${language ?? ""}-${section.name}`
         );
         const seen = seenIds.get(baseId) ?? 0;
         seenIds.set(baseId, seen + 1);
+        const labelParts = [section.name, row.metric];
+        if (language) labelParts.push(language);
+        if (testSet) labelParts.push(testSet);
 
         group = {
           id: seen === 0 ? baseId : `${baseId}-${seen + 1}`,
           task: section.task,
           sectionName: section.name,
-          label: `${section.name} — ${row.metric}${
-            testSet ? ` · ${testSet}` : ""
-          }`,
+          label: labelParts.join(" · "),
           metric: row.metric,
           testSet,
+          language,
           lowerIsBetter: isLowerBetterMetric(row.metric),
           languages: [],
           rows: [],
+          unrankedRows: [],
         };
         groups.set(key, group);
       }
 
-      group.rows.push(row);
+      if (isAsr && !testSet) group.unrankedRows.push(row);
+      else group.rows.push(row);
     }
   }
 
   return [...groups.values()]
     .map((group) => {
+      group.rows = dedupeRows(group.rows);
+      group.unrankedRows = dedupeRows(group.unrankedRows);
       sortRows(group.rows, group.lowerIsBetter);
+      sortRows(group.unrankedRows, group.lowerIsBetter);
       group.languages = [
-        ...new Set(group.rows.flatMap((row) => row.languages)),
+        ...new Set(
+          [...group.rows, ...group.unrankedRows].flatMap((row) => row.languages)
+        ),
       ].sort();
       return group;
     })
-    .filter((group) => group.rows.length > 1);
+    .filter((group) =>
+      group.task === "ASR"
+        ? group.rows.length + group.unrankedRows.length > 0
+        : group.rows.length > 1
+    );
 }

@@ -17,13 +17,13 @@ export default function GithubStarsButton({ stars }: GithubStarsButtonProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={
-          stars == null
+          stars == null || stars === 0
             ? "Star goha on GitHub"
             : `Star goha on GitHub (${stars} stars)`
         }
       >
         <RiGithubFill className="size-4.5" />
-        {stars != null && (
+        {stars != null && stars > 0 && (
           <span className="flex items-center gap-0.5 tabular-nums">
             <HiStar className="size-3.5" />
             {formatNumberShort(stars)}

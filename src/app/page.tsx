@@ -4,13 +4,14 @@ import HomepageViews from "@/features/projects/views/homepage.view";
 import HomepageDashboard from "@/features/projects/views/homepage-dashboard.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "goha — Find and discover the Ethiopian AI ecosystem",
   description:
     "Find models, datasets, companies, and research papers for Ethiopian languages.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
 
 export default async function HomePage() {
   const dashboardData = await getHomepageDashboardData();

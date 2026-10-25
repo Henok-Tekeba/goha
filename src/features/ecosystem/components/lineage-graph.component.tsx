@@ -45,6 +45,11 @@ function colorFor(family: string): string {
   return FAMILY_COLORS[family] ?? "#737373";
 }
 
+function familyLabel(family: string | null): string {
+  if (!family) return "selected";
+  return /family$/i.test(family) ? family : `${family} family`;
+}
+
 function buildOption(
   nodes: LineageNode[],
   links: { source: string; target: string }[]
@@ -261,7 +266,7 @@ export default function LineageGraph({
           ref={containerRef}
           className="h-[560px] w-full"
           role="img"
-          aria-label={`Model lineage graph for the ${activeFamily ?? "selected"} family`}
+          aria-label={`Model lineage graph for the ${familyLabel(activeFamily)}`}
         />
         <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-muted-foreground">
           drag to pan · scroll to zoom · click a node
@@ -271,8 +276,8 @@ export default function LineageGraph({
       {activeFamily && payload && (
         <p className="text-muted-foreground text-xs">
           {payload.families.find((f) => f.family === activeFamily)?.models ?? 0}{" "}
-          indexed models in the {activeFamily} family — outlined nodes are the
-          foundation models they descend from.{" "}
+          indexed models in the {familyLabel(activeFamily)} — outlined nodes are
+          the foundation models they descend from.{" "}
           <span className="text-muted-foreground">
             {payload.stats.models} models across {payload.stats.families}{" "}
             families in total.
@@ -283,13 +288,14 @@ export default function LineageGraph({
       {activeFamily && (
         <details className="rounded-[16px] border border-muted-black-stroke bg-white px-4 py-3">
           <summary className="cursor-pointer select-none font-medium text-primary text-sm">
-            Data table — {activeFamily} family ({visible.nodes.length} nodes)
+            Data table — {familyLabel(activeFamily)} ({visible.nodes.length}{" "}
+            nodes)
           </summary>
           <div className="mt-3 overflow-x-auto">
             <table className="w-full min-w-[640px] text-left text-sm">
               <caption className="sr-only">
-                Lineage nodes in the {activeFamily} family, with their task,
-                languages and source.
+                Lineage nodes in the {familyLabel(activeFamily)}, with their
+                task, languages and source.
               </caption>
               <thead>
                 <tr className="border-muted-black-stroke border-b text-muted-foreground text-xs">

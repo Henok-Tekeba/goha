@@ -22,6 +22,8 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { projectIdForSource } from "./project-id.mjs";
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = (f) => path.join(ROOT, "data", f);
 const FIXTURES = path.join(ROOT, "src", "mocks", "fixtures");
@@ -48,7 +50,7 @@ const CANONICAL_LANGUAGES = [
   { name: "Tigrinya", slug: "tigrinya", glyph: "ት" },
   { name: "Ge'ez", slug: "geez", glyph: "ግ" },
   { name: "Somali", slug: "somali", glyph: "S" },
-  { name: "Wolayttattoo", slug: "wolayttattoo", glyph: "W" },
+  { name: "Wolaytta", slug: "wolaytta", glyph: "W" },
   { name: "Sidaamu Afoo", slug: "sidaamu-afoo", glyph: "S" },
   { name: "English", slug: "english", glyph: "E" },
 ];
@@ -83,10 +85,10 @@ const LANG_NAMES = {
   aar: "Afaraf",
   afar: "Afaraf",
   afaraf: "Afaraf",
-  wal: "Wolayttattoo",
-  wol: "Wolayttattoo",
-  wolaytta: "Wolayttattoo",
-  wolayttattoo: "Wolayttattoo",
+  wal: "Wolaytta",
+  wol: "Wolaytta",
+  wolaytta: "Wolaytta",
+  wolayttattoo: "Wolaytta",
   haw: "Hadiyya",
   hadiyya: "Hadiyya",
   sid: "Sidaamu Afoo",
@@ -404,7 +406,6 @@ function readmeSimple(title, body, link, linkLabel) {
 /* entity ids → fixture project ids, so every ecosystem surface
    (activity feed, leaderboard, org pages) deep-links into detail pages */
 const entityIdToProjectId = new Map();
-let pjtSeed = 0;
 const projects = [];
 
 /* models + datasets */
@@ -497,9 +498,12 @@ for (const src of [
     ? `${taskNoun} ${kindWord}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`
     : `${titleCase(kindWord)}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`;
   const baseNote = it.base_model ? ` Fine-tuned from ${it.base_model}.` : "";
+  const sourceId = `${src.kind === "dataset" ? "hf-dataset" : "hf"}:${it.id}`;
+  const projectId = projectIdForSource(sourceId);
 
   projects.push({
-    id: id("pjt", ++pjtSeed),
+    id: projectId,
+    sourceId,
     title: it.name || it.id,
     description: cleanDesc(it.description) || `${synthesized}${baseNote}`,
     provider: "GITHUB",
@@ -578,13 +582,16 @@ for (const src of [
     createdAt: created,
     updatedAt: updated,
   });
-  entityIdToProjectId.set(it.id, projects.at(-1).id);
+  entityIdToProjectId.set(it.id, projectId);
 }
 
 /* companies */
 for (const c of companies) {
+  const sourceId = `company:${c.name}`;
+  const projectId = projectIdForSource(sourceId);
   projects.push({
-    id: id("pjt", ++pjtSeed),
+    id: projectId,
+    sourceId,
     title: c.name,
     description: c.desc || `${c.name} — company in the Ethiopian AI ecosystem`,
     provider: "GITHUB",
@@ -652,15 +659,18 @@ for (const c of companies) {
     createdAt: c.founded ? new Date(`${c.founded}-01-01`).toISOString() : now,
     updatedAt: now,
   });
-  entityIdToProjectId.set(`company:${c.name}`, projects.at(-1).id);
+  entityIdToProjectId.set(`company:${c.name}`, projectId);
 }
 
 /* papers */
 for (const p of papers) {
   const abs = `https://arxiv.org/abs/${p.arxiv_id}`;
   const authorsLine = (p.authors || []).join(", ");
+  const sourceId = `arxiv:${p.arxiv_id}`;
+  const projectId = projectIdForSource(sourceId);
   projects.push({
-    id: id("pjt", ++pjtSeed),
+    id: projectId,
+    sourceId,
     title: p.title,
     description: cleanDesc(p.abstract).slice(0, 400) || p.title,
     provider: "GITHUB",
@@ -717,7 +727,7 @@ for (const p of papers) {
     createdAt: p.published_date ? iso(p.published_date, now) : now,
     updatedAt: p.published_date ? iso(p.published_date, now) : now,
   });
-  entityIdToProjectId.set(`paper:${p.arxiv_id}`, projects.at(-1).id);
+  entityIdToProjectId.set(`paper:${p.arxiv_id}`, projectId);
 }
 
 function titleCase(s) {
@@ -1138,7 +1148,7 @@ const LANG_KEYWORDS = [
   ["Ge'ez", /ge'?ez|ethiopic/i],
   ["Somali", /\bsomali\b/i],
   ["Afaraf", /\bafar\b/i],
-  ["Wolayttattoo", /wolaytt/i],
+  ["Wolaytta", /wolaytt/i],
   ["Sidaamu Afoo", /sidamo/i],
   ["Hadiyya", /hadiyy|had.iya/i],
   ["English", /\benglish\b/i],
@@ -1305,6 +1315,26 @@ function normalizeMetric(type, value) {
   };
 }
 
+function embeddingDimOf(dataset) {
+  const text = `${dataset?.name ?? ""} ${dataset?.type ?? ""}`;
+  const match = text.match(/dim(?:ension)?[\s_:/-]*(\d{2,5})/i);
+  if (!match) return null;
+  const dim = Number(match[1]);
+  return Number.isFinite(dim) ? dim : null;
+}
+
+function isAsrModel(model) {
+  const tags = (model.tags || []).map((tag) => String(tag).toLowerCase());
+  const base = String(model.base_model || "").toLowerCase();
+  return (
+    model.pipeline_tag === "automatic-speech-recognition" ||
+    /\basr\b/i.test(String(model.type_label || model.badge || "")) ||
+    tags.includes("automatic-speech-recognition") ||
+    tags.includes("asr") ||
+    /whisper|wav2vec|w2v|hubert|wavlm|data2vec/.test(base)
+  );
+}
+
 const sectionByKey = new Map();
 const rowSeen = new Set();
 
@@ -1346,7 +1376,10 @@ for (const m of models) {
       (token) =>
         token && !/^unknown$/i.test(String(token).replace(/[()·\s]/g, ""))
     );
-    const datasetDisplay = datasetTokens.join(" ") || null;
+    const embeddingDim = embeddingDimOf(e.dataset);
+    const datasetDisplay = embeddingDim
+      ? null
+      : datasetTokens.join(" ") || null;
     const rowLangs = langs.length
       ? langs
       : [DATASET_CONFIG_LANG[e.dataset?.config]].filter(Boolean);
@@ -1358,7 +1391,7 @@ for (const m of models) {
       if (!metric.type) continue;
       const { value, display } = normalizeMetric(metric.type, metric.value);
       if (value == null) continue;
-      const dedupeKey = `${m.id}|${taskType}|${datasetDisplay}|${metric.type}|${value.toFixed(2)}`;
+      const dedupeKey = `${m.id}|${taskType}|${datasetDisplay}|${embeddingDim ?? ""}|${metric.type}|${value.toFixed(2)}`;
       if (rowSeen.has(dedupeKey)) continue;
       rowSeen.add(dedupeKey);
       if (metric.type === "wer") hasWerRow = true;
@@ -1368,6 +1401,8 @@ for (const m of models) {
         projectId: entityIdToProjectId.get(m.id) ?? null,
         languages: rowLangs,
         dataset: datasetDisplay || null,
+        embeddingDim,
+        evaluationSource: m.hf_url || null,
         metric: String(metric.name || metric.type || "Metric").replace(
           /\s*\(.*\)\s*$/,
           ""
@@ -1383,15 +1418,18 @@ for (const m of models) {
     }
   }
 
-  /* a reported WER without a structured eval table */
-  if (m.wer_score != null && !hasWerRow) {
+  /* a reported WER without a structured eval table — only for actual ASR
+     models; T5/mT5 translation cards sometimes carry a wer_score by mistake */
+  if (m.wer_score != null && !hasWerRow && isAsrModel(m)) {
     const { value, display } = normalizeMetric("wer", m.wer_score);
     pushRow(ASR_META, {
       model: m.name,
       org: orgFromName(m.id),
       projectId: entityIdToProjectId.get(m.id) ?? null,
       languages: langs,
-      dataset: "reported",
+      dataset: null,
+      embeddingDim: null,
+      evaluationSource: m.hf_url || null,
       metric: "WER (reported)",
       metricType: "wer",
       value,

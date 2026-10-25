@@ -124,6 +124,8 @@ src/                      Next.js 15 app (static export)
 out/                      deployable static site (GitHub Pages)
 ```
 
+Project ids are derived from the upstream source id (for example `hf:owner/name`), so they survive scrape reordering. Legacy ids are kept as static redirects.
+
 Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
 
 1. converts the scraped JSON into the frontend's `Project` contract
@@ -205,8 +207,10 @@ pnpm build          # static export → out/
 pnpm type-check
 pnpm lint
 pnpm test:ask       # Ask Goha parser evaluation (48 queries)
+pnpm test:ids      # project ids are source-derived and stable across scrapes
 pnpm test:counts    # homepage tiles, radar and gap-report count reconciliation
 pnpm test:mock      # mock API contract tests
+pnpm smoke:live    # post-deploy smoke test against https://goha.enoch.et
 ```
 
 The scraper can be run separately:

@@ -21,6 +21,7 @@ export interface EvaluationEntry {
 
 export interface Project {
   id?: string;
+  sourceId?: string;
   publicId?: string;
   title: string;
   imagesUrls: string[];

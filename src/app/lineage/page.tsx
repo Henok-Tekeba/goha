@@ -7,19 +7,20 @@ import {
 import LineageView from "@/features/ecosystem/views/lineage.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
+import { pageMetadata } from "@/shared/lib/page-metadata";
 
 export function generateMetadata(): Metadata {
   const lineage = getPublicLineage();
   const stats = getPublicStats();
 
-  return {
+  return pageMetadata({
     title: "Model lineage — the family tree of Ethiopian AI",
     description: buildLineageDescription(
       lineage.stats.models,
       stats.counts.models
     ),
-    alternates: { canonical: "/lineage" },
-  };
+    path: "/lineage",
+  });
 }
 
 export default function LineagePage() {

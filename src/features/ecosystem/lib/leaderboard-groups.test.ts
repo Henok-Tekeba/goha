@@ -32,17 +32,21 @@ test("real leaderboard groups by task, metric and test set", () => {
   assert.ok(groups.length > 0);
 
   for (const group of groups) {
-    assert.ok(
-      group.rows.length > 1,
-      `${group.label} should have been hidden (single entry)`
-    );
+    if (group.task !== "ASR") {
+      assert.ok(
+        group.rows.length > 1,
+        `${group.label} should have been hidden (single entry)`
+      );
+    }
 
-    const datasets = new Set(group.rows.map((row) => row.dataset ?? ""));
-    assert.equal(
-      datasets.size,
-      1,
-      `${group.label} mixes test sets: ${[...datasets].join(", ")}`
-    );
+    if (group.rows.length > 0) {
+      const datasets = new Set(group.rows.map((row) => row.dataset ?? ""));
+      assert.equal(
+        datasets.size,
+        1,
+        `${group.label} mixes test sets: ${[...datasets].join(", ")}`
+      );
+    }
     assert.ok(
       group.rows.every((row) => row.metric === group.metric),
       `${group.label} mixes metrics`
@@ -74,18 +78,35 @@ test("real leaderboard groups by task, metric and test set", () => {
   }
 
   const asrGroups = groups.filter((group) => group.task === "ASR");
-  assert.equal(asrGroups.length, 1);
-  assert.equal(asrGroups[0].metric, "WER (reported)");
-  assert.ok(asrGroups[0].rows.length > 1);
-  assert.equal(asrGroups[0].lowerIsBetter, true);
-  const asrKeys = asrGroups[0].rows.map(
-    (row) => `${row.model}|${row.metric}|${row.dataset ?? ""}|${row.value}`
-  );
-  assert.equal(
-    new Set(asrKeys).size,
-    asrKeys.length,
-    "the ASR group should not contain duplicate results"
-  );
+  assert.ok(asrGroups.length >= 2);
+  for (const group of asrGroups) {
+    assert.ok(group.language, `${group.label} has no language`);
+    assert.ok(
+      [...group.rows, ...group.unrankedRows].every((row) =>
+        row.languages.includes(group.language as string)
+      ),
+      `${group.label} mixes languages`
+    );
+    assert.ok(
+      ![...group.rows, ...group.unrankedRows].some((row) =>
+        /t5|mt5|sec2sec/i.test(row.model)
+      ),
+      `${group.label} contains a non-ASR T5/sec2sec model`
+    );
+    assert.ok(
+      group.unrankedRows.every((row) => row.dataset == null),
+      `${group.label} ranks a row without a test set`
+    );
+    const keys = [...group.rows, ...group.unrankedRows].map(
+      (row) =>
+        `${row.model}|${row.metric}|${row.dataset ?? ""}|${row.embeddingDim ?? ""}|${row.value}`
+    );
+    assert.equal(
+      new Set(keys).size,
+      keys.length,
+      `${group.label} contains duplicate results`
+    );
+  }
 
   const ocrGroups = groups.filter(
     (group) => group.sectionName === "Tigrinya OCR"
@@ -104,6 +125,18 @@ test("real leaderboard groups by task, metric and test set", () => {
   const retrievalGroups = groups.filter((group) => group.task === "Retrieval");
   assert.ok(retrievalGroups.length >= 1);
   assert.ok(retrievalGroups.every((group) => !group.lowerIsBetter));
+  assert.ok(
+    retrievalGroups.every(
+      (group) => !/^dim[\s_:/-]*\d+$/i.test(group.testSet ?? "")
+    ),
+    "embedding dimensions must not be used as test sets"
+  );
+  assert.ok(
+    retrievalGroups.some((group) =>
+      group.rows.some((row) => row.embeddingDim != null)
+    ),
+    "IR dim variants should expose an embedding dimension"
+  );
 
   assert.ok(
     !groups.some((group) => /Dot |Mrr|Ndcg/i.test(group.metric)),
@@ -123,6 +156,8 @@ test("a mixed section is split and then single-entry groups are hidden", () => {
     projectId: null,
     languages: ["Amharic"],
     dataset,
+    embeddingDim: null,
+    evaluationSource: null,
     metric,
     metricType: "",
     value,
