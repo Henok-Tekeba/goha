@@ -1,7 +1,6 @@
 import type {
   LanguageCoveragePayload,
   Leaderboard,
-  OrgRecord,
   PaperRecord,
 } from "../types/ecosystem.types";
 import type { ParsedAskQuery } from "./ask-parser";
@@ -13,7 +12,7 @@ export interface AskProject {
   owner: { name: string } | null;
   downloadsMonthly?: number;
   paramCount?: number | null;
-  evaluations?: unknown[];
+  evaluationCount: number;
   projectCategories?: { name: string }[];
   projectTechStacks?: { name: string; type?: string }[];
   repositoryDetails?: {
@@ -21,6 +20,15 @@ export interface AskProject {
     license?: string | null;
   };
   updatedAt: string;
+}
+
+export interface AskOrg {
+  name: string;
+  slug: string;
+  kind: "company" | "lab" | "individual";
+  desc: string | null;
+  langs: string[];
+  counts: { models: number; datasets: number };
 }
 
 export interface AskItem {
@@ -48,7 +56,7 @@ export interface AskAnswer {
 export interface AskData {
   projects: AskProject[];
   papers: PaperRecord[];
-  orgs: OrgRecord[];
+  orgs: AskOrg[];
   leaderboard: Leaderboard | null;
   coverage: LanguageCoveragePayload | null;
 }
@@ -162,7 +170,7 @@ function paperItem(paper: PaperRecord): AskItem {
   };
 }
 
-function orgItem(org: OrgRecord): AskItem {
+function orgItem(org: AskOrg): AskItem {
   return {
     type: "org",
     title: org.name,
@@ -219,9 +227,7 @@ export function buildAskAnswer(
     );
     const models = langProjects.filter((p) => kindOf(p) === "model");
     const datasets = langProjects.filter((p) => kindOf(p) === "dataset");
-    const unevaluated = models.filter(
-      (m) => (m.evaluations ?? []).length === 0
-    ).length;
+    const unevaluated = models.filter((m) => m.evaluationCount === 0).length;
 
     const parts: string[] = [];
     if (zeros.length) parts.push(`nothing is indexed for ${zeros.join(", ")}`);

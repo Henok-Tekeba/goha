@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
   trailingSlash: true,
+  productionBrowserSourceMaps: true,
   basePath,
   devIndicators: false,
   images: {

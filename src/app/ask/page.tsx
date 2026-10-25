@@ -31,7 +31,7 @@ function askProjects(): AskProject[] {
       owner: project.owner ? { name: project.owner.name } : null,
       downloadsMonthly: project.downloadsMonthly ?? 0,
       paramCount: project.paramCount ?? null,
-      evaluations: project.evaluations ?? [],
+      evaluationCount: (project.evaluations ?? []).length,
       projectCategories: (project.projectCategories ?? []).map((category) => ({
         name: category.name,
       })),
@@ -50,7 +50,14 @@ function askProjects(): AskProject[] {
 const askData: AskData = {
   projects: askProjects(),
   papers: getPublicPapers(),
-  orgs,
+  orgs: orgs.map((org) => ({
+    name: org.name,
+    slug: org.slug,
+    kind: org.kind,
+    desc: org.desc,
+    langs: org.langs,
+    counts: { models: org.counts.models, datasets: org.counts.datasets },
+  })),
   leaderboard: getPublicLeaderboard(),
   coverage: getPublicLanguageCoverage(),
 };
