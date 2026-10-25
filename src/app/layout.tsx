@@ -19,14 +19,14 @@ const geistSans = localFont({
   src: "../fonts/Geist-latin-var.woff2",
   variable: "--font-geist-sans",
   weight: "100 900",
-  display: "swap",
+  display: "optional",
 });
 
 const GeistMono = localFont({
   src: "../fonts/GeistMono-latin-var.woff2",
   variable: "--font-geist-mono",
   weight: "100 900",
-  display: "swap",
+  display: "optional",
 });
 
 const metadataImageUrl = `${FRONTEND_URL}/og.png`;
