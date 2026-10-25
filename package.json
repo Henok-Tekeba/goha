@@ -20,7 +20,8 @@
     "worker:preview": "opennextjs-cloudflare preview",
     "worker:deploy": "opennextjs-cloudflare deploy",
     "test:mock": "tsx --test src/mocks/handlers.mock.test.ts",
-    "test:ask": "tsx src/features/ecosystem/lib/ask-parser.eval.ts"
+    "test:ask": "tsx src/features/ecosystem/lib/ask-parser.eval.ts",
+    "test:leaderboard": "tsx --test src/features/ecosystem/lib/leaderboard-groups.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

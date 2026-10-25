@@ -14,17 +14,18 @@ import EcosystemGrowthChart from "../components/charts/ecosystem-growth-chart";
 import TopModelsChart from "../components/charts/top-models-chart";
 import WerBarChart from "../components/charts/wer-bar-chart";
 import { useLeaderboardQuery } from "../hooks/ecosystem.queries";
-import type {
-  LeaderboardRow,
-  LeaderboardSection,
-} from "../types/ecosystem.types";
+import {
+  groupLeaderboardSections,
+  type LeaderboardGroup,
+} from "../lib/leaderboard-groups";
+import type { LeaderboardRow } from "../types/ecosystem.types";
 
 function csvEscape(value: string | number | null): string {
   const s = String(value ?? "");
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
-function exportCsv(section: LeaderboardSection) {
+function exportCsv(group: LeaderboardGroup) {
   const header = [
     "rank",
     "model",
@@ -37,7 +38,7 @@ function exportCsv(section: LeaderboardSection) {
     "downloads",
     "source",
   ];
-  const lines = section.rows.map((row, i) =>
+  const lines = group.rows.map((row, i) =>
     [
       i + 1,
       row.model,
@@ -59,39 +60,39 @@ function exportCsv(section: LeaderboardSection) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `goha-leaderboard-${section.id}.csv`;
+  a.download = `goha-leaderboard-${group.id}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }
 
-function SectionTable({ section }: { section: LeaderboardSection }) {
+function SectionTable({ group }: { group: LeaderboardGroup }) {
   const [language, setLanguage] = useState<string | null>(null);
 
   const rows = useMemo(
     () =>
       language
-        ? section.rows.filter((r) => r.languages.includes(language))
-        : section.rows,
-    [section, language]
+        ? group.rows.filter((r) => r.languages.includes(language))
+        : group.rows,
+    [group, language]
   );
 
   return (
     <section
       className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5"
-      aria-labelledby={`lb-${section.id}`}
+      aria-labelledby={`lb-${group.id}`}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
         <h2
-          id={`lb-${section.id}`}
+          id={`lb-${group.id}`}
           className="text-base text-primary tracking-[-0.02em] md:text-lg"
           style={{ fontFamily: "Aspekta", fontWeight: 500 }}
         >
-          {section.name}
+          {group.label}
         </h2>
         <div className="flex items-center gap-2">
-          {section.languages.length > 1 && (
+          {group.languages.length > 1 && (
             <div className="flex flex-wrap items-center gap-1">
-              {section.languages.map((lang) => (
+              {group.languages.map((lang) => (
                 <button
                   key={lang}
                   type="button"
@@ -111,7 +112,7 @@ function SectionTable({ section }: { section: LeaderboardSection }) {
           )}
           <button
             type="button"
-            onClick={() => exportCsv(section)}
+            onClick={() => exportCsv(group)}
             className="rounded-full border border-muted-black-stroke px-2.5 py-0.5 text-[11px] text-muted-foreground transition-colors hover:text-primary"
           >
             Export CSV
@@ -119,7 +120,7 @@ function SectionTable({ section }: { section: LeaderboardSection }) {
         </div>
       </div>
       <p className="mt-1 text-muted-foreground text-xs">
-        {section.lowerIsBetter ? "Lower is better ·" : "Higher is better ·"}{" "}
+        {group.lowerIsBetter ? "Lower is better ·" : "Higher is better ·"}{" "}
         {rows.length} entr{rows.length === 1 ? "y" : "ies"} — as published by
         the model authors
       </p>
@@ -235,6 +236,13 @@ function LeaderboardRowView({
 
 export default function LeaderboardView() {
   const { data, isLoading, isError } = useLeaderboardQuery();
+  const groups = useMemo(
+    () => (data ? groupLeaderboardSections(data.sections) : []),
+    [data]
+  );
+  const asrWerGroup = groups.find(
+    (group) => group.task === "ASR" && /wer/i.test(group.metric)
+  );
 
   return (
     <div className="mx-auto max-w-5xl px-6">
@@ -294,7 +302,7 @@ export default function LeaderboardView() {
             </div>
           ))}
         </div>
-      ) : isError || !data || data.sections.length === 0 ? (
+      ) : isError || !data || groups.length === 0 ? (
         <EmptyState
           title="No published results yet"
           description="Once models publish evaluation tables, they rank here."
@@ -319,27 +327,25 @@ export default function LeaderboardView() {
             <EcosystemGrowthChart className="mt-2 h-72 w-full md:h-80" />
           </section>
 
-          {data.sections.map((section) => (
-            <div key={section.id} className="flex flex-col gap-3">
-              {section.task === "ASR" && (
-                <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
-                  <h2
-                    className="text-base text-primary tracking-[-0.02em] md:text-lg"
-                    style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-                  >
-                    {section.name} — head to head
-                  </h2>
-                  <p className="mt-1 text-muted-foreground text-xs">
-                    Published word error rates, best at the top.
-                  </p>
-                  <WerBarChart
-                    rows={section.rows}
-                    className="mt-2 h-[380px] w-full md:h-[420px]"
-                  />
-                </section>
-              )}
-              <SectionTable section={section} />
-            </div>
+          {asrWerGroup && (
+            <section className="rounded-[20px] border border-muted-black-stroke px-4 py-4 md:px-6 md:py-5">
+              <h2
+                className="text-base text-primary tracking-[-0.02em] md:text-lg"
+                style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+              >
+                {asrWerGroup.sectionName} — head to head
+              </h2>
+              <p className="mt-1 text-muted-foreground text-xs">
+                Published {asrWerGroup.metric}, best at the top.
+              </p>
+              <WerBarChart
+                rows={asrWerGroup.rows}
+                className="mt-2 h-[380px] w-full md:h-[420px]"
+              />
+            </section>
+          )}
+          {groups.map((group) => (
+            <SectionTable key={group.id} group={group} />
           ))}
 
           {/* traction — top models download trend */}
