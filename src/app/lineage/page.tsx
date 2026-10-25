@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildLineageDescription } from "@/features/ecosystem/lib/lineage-copy";
 import {
   getPublicLineage,
   getPublicStats,
@@ -7,12 +8,19 @@ import LineageView from "@/features/ecosystem/views/lineage.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
-export const metadata: Metadata = {
-  title: "Model lineage — the family tree of Ethiopian AI",
-  description:
-    "Every Ethiopian model traces back to a foundation model. Explore the genealogy of Llama, Whisper, w2v-BERT and BERT descendants across the ecosystem.",
-  alternates: { canonical: "/lineage" },
-};
+export function generateMetadata(): Metadata {
+  const lineage = getPublicLineage();
+  const stats = getPublicStats();
+
+  return {
+    title: "Model lineage — the family tree of Ethiopian AI",
+    description: buildLineageDescription(
+      lineage.stats.models,
+      stats.counts.models
+    ),
+    alternates: { canonical: "/lineage" },
+  };
+}
 
 export default function LineagePage() {
   const lineage = getPublicLineage();

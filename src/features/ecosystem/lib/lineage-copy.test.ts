@@ -4,7 +4,10 @@ import test from "node:test";
 import lineageJson from "../../../../public/data/lineage.json";
 import statsJson from "../../../../public/data/stats.json";
 import type { EcosystemStats, LineagePayload } from "../types/ecosystem.types";
-import { buildLineageCoverageCopy } from "./lineage-copy";
+import {
+  buildLineageCoverageCopy,
+  buildLineageDescription,
+} from "./lineage-copy";
 
 test("lineage copy uses the live model and total counts", () => {
   const lineage = lineageJson as unknown as LineagePayload;
@@ -20,4 +23,11 @@ test("lineage copy uses the live model and total counts", () => {
   );
   assert.doesNotMatch(copy, /every/i);
   assert.ok(lineage.stats.models <= stats.counts.models);
+
+  const description = buildLineageDescription(
+    lineage.stats.models,
+    stats.counts.models
+  );
+  assert.match(description, /^\d+ of \d+ models declare a base_model/);
+  assert.doesNotMatch(description, /every/i);
 });
