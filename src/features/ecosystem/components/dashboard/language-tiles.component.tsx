@@ -24,6 +24,10 @@ export default function LanguageTiles({
           All languages →
         </Link>
       </div>
+      <p className="-mt-2 mb-4 text-muted-foreground text-xs leading-relaxed">
+        Models and datasets whose language metadata or name declares a language.
+        Items tagged with more than one language appear under each language.
+      </p>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
         {languages.map((language) => (

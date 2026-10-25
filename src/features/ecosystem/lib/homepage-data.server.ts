@@ -9,6 +9,7 @@
 import type { Project } from "@/features/projects/types/project.type";
 import {
   getAllProjects,
+  getLanguagePage,
   languages as languageIndex,
 } from "@/shared/lib/local-data.server";
 
@@ -22,7 +23,6 @@ import type {
 import {
   getPublicActivity,
   getPublicInsights,
-  getPublicLanguageCoverage,
   getPublicPapers,
   getPublicStats,
 } from "./public-data.server";
@@ -47,7 +47,6 @@ export async function getHomepageDashboardData(): Promise<HomepageDashboardData>
   const insights = getPublicInsights();
   const activity = getPublicActivity();
   const papers = getPublicPapers();
-  const coverage = getPublicLanguageCoverage();
 
   const allProjects = await getAllProjects();
   const models = allProjects.filter((project) =>
@@ -57,19 +56,17 @@ export async function getHomepageDashboardData(): Promise<HomepageDashboardData>
     .sort((a, b) => (b.downloadsMonthly ?? 0) - (a.downloadsMonthly ?? 0))
     .slice(0, MODELS_COUNT);
 
-  const languageTotals = new Map<string, number>();
-  for (const row of coverage.rows) {
-    for (const [key, value] of Object.entries(row)) {
-      if (key === "task" || typeof value !== "number") continue;
-      languageTotals.set(key, (languageTotals.get(key) ?? 0) + value);
-    }
-  }
-
+  /* A language tile counts every unique model or dataset whose language
+     metadata names that language. Multi-language items appear under each
+     language, so the tiles are not a partition of all assets. */
   const languages = languageIndex
-    .map((language) => ({
-      ...language,
-      total: languageTotals.get(language.name) ?? 0,
-    }))
+    .map((language) => {
+      const page = getLanguagePage(language.slug);
+      return {
+        ...language,
+        total: (page?.models.length ?? 0) + (page?.datasets.length ?? 0),
+      };
+    })
     .filter((language) => language.total > 0)
     .sort((a, b) => b.total - a.total);
 

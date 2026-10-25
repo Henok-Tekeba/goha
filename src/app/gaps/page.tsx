@@ -62,10 +62,11 @@ export default function GapsPage() {
               What Ethiopian AI is still missing
             </h1>
             <p className="mt-4 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-              Every claim on this page is derived from the index — the same
-              daily scrape that powers the rest of goha. Numbers are counts of
-              what is publicly published, not estimates. If something is missing
-              here, it is missing on Hugging Face, GitHub and arXiv too.
+              Every number on this page is derived from the index — the same
+              daily scrape that powers the rest of goha. Counts describe what
+              the index has indexed, not estimates. A blank cell means no
+              matching model, dataset or paper was found; it is a gap in the
+              index as much as a signal about the ecosystem.
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
               <p className="text-muted-foreground text-xs tabular-nums">
@@ -97,11 +98,15 @@ export default function GapsPage() {
             <Stat
               value={`${report.licensing.total}`}
               label="unlicensed assets"
-              detail="models and datasets that declare no license — unclear for reuse."
+              detail={`of ${report.licensing.assets} models and datasets declare no license — unclear for reuse.`}
             />
             <Stat
               value={`${researchOnlyCount}`}
-              label="research-only cells"
+              label={
+                researchOnlyCount === 1
+                  ? "research-only cell"
+                  : "research-only cells"
+              }
               detail="tasks with published papers but no model or dataset to use."
             />
           </section>
@@ -301,9 +306,10 @@ export default function GapsPage() {
               Unclear licensing
             </h2>
             <p className="mb-4 text-muted-foreground text-xs">
-              {report.licensing.total} assets declare no license. For companies
-              building on public models, that is a legal grey zone — reuse is
-              technically possible, commercially risky.
+              {report.licensing.total} of {report.licensing.assets} models and
+              datasets declare no license. For companies building on public
+              models, that is a legal grey zone — reuse is technically possible,
+              commercially risky.
             </p>
             <div className="flex flex-wrap gap-1.5">
               {report.licensing.examples.map((asset) => (
@@ -326,12 +332,16 @@ export default function GapsPage() {
               Methodology
             </h2>
             <p className="mt-2 max-w-3xl text-muted-foreground text-xs leading-relaxed">
-              Languages and tasks are the ones the index tracks (ASR, TTS,
-              translation, LLM, NER, embeddings). A cell counts a model or
-              dataset when the asset declares the language and task in its
-              metadata. Papers are matched by their derived language/task tags.
-              "No evaluation" means the model card publishes no metrics table.
-              "No license" means the card declares none. Everything is
+              The report tracks {totalLanguages} languages (
+              {report.languages.map((language) => language.name).join(", ")}) ×{" "}
+              {report.tasks.length} tasks (ASR, TTS, translation, LLM, NER,
+              embeddings). A cell counts a model or dataset when the asset
+              declares the language and task in its metadata or name. Papers are
+              matched by their derived language/task tags.{" "}
+              {report.untagged.assets} assets and {report.untagged.papers}{" "}
+              papers carry no recognized language tag and appear in no language
+              cell. "No evaluation" means the model card publishes no metrics
+              table. "No license" means the card declares none. Everything is
               recomputed on every daily scrape — numbers here move as the
               ecosystem moves.
             </p>

@@ -1,15 +1,13 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import { GraphChart } from "echarts/charts";
 import { TooltipComponent } from "echarts/components";
 import * as echarts from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { Skeleton } from "@/shared/components/ui/skeleton";
-import { getLineage } from "@/shared/lib/local-data.client";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
@@ -148,18 +146,17 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-export default function LineageGraph({ className }: { className?: string }) {
+export default function LineageGraph({
+  payload,
+  className,
+}: {
+  payload: LineagePayload;
+  className?: string;
+}) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<echarts.ECharts | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["ecosystem", "lineage"],
-    queryFn: ({ signal }) => withSignal(getLineage(), signal),
-  });
-
-  const payload = data as LineagePayload | undefined;
 
   const families = useMemo(() => {
     const list = payload?.families ?? [];
@@ -264,11 +261,8 @@ export default function LineageGraph({ className }: { className?: string }) {
           ref={containerRef}
           className="h-[560px] w-full"
           role="img"
-          aria-label="Model lineage graph"
+          aria-label={`Model lineage graph for the ${activeFamily ?? "selected"} family`}
         />
-        {isLoading && (
-          <Skeleton className="pointer-events-none absolute inset-0 h-full w-full" />
-        )}
         <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-muted-foreground">
           drag to pan · scroll to zoom · click a node
         </p>
@@ -285,12 +279,81 @@ export default function LineageGraph({ className }: { className?: string }) {
           </span>
         </p>
       )}
+
+      {activeFamily && (
+        <details className="rounded-[16px] border border-muted-black-stroke bg-white px-4 py-3">
+          <summary className="cursor-pointer select-none font-medium text-primary text-sm">
+            Data table — {activeFamily} family ({visible.nodes.length} nodes)
+          </summary>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <caption className="sr-only">
+                Lineage nodes in the {activeFamily} family, with their task,
+                languages and source.
+              </caption>
+              <thead>
+                <tr className="border-muted-black-stroke border-b text-muted-foreground text-xs">
+                  <th className="py-2 pr-3 font-medium">Model</th>
+                  <th className="py-2 pr-3 font-medium">Publisher</th>
+                  <th className="py-2 pr-3 font-medium">Task</th>
+                  <th className="py-2 pr-3 font-medium">Languages</th>
+                  <th className="py-2 pr-3 text-right font-medium">
+                    Downloads
+                  </th>
+                  <th className="py-2 text-right font-medium">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...visible.nodes]
+                  .sort((a, b) => b.downloads - a.downloads)
+                  .map((node) => (
+                    <tr
+                      key={node.id}
+                      className="border-muted-black-stroke border-b last:border-b-0"
+                    >
+                      <td className="py-2 pr-3 text-primary">{node.name}</td>
+                      <td className="py-2 pr-3 text-muted-foreground text-xs">
+                        {node.org ?? "—"}
+                      </td>
+                      <td className="py-2 pr-3 text-muted-foreground text-xs">
+                        {node.task ?? "—"}
+                      </td>
+                      <td className="py-2 pr-3 text-muted-foreground text-xs">
+                        {node.langs.slice(0, 3).join(", ") || "—"}
+                      </td>
+                      <td className="py-2 pr-3 text-right text-muted-foreground text-xs tabular-nums">
+                        {node.downloads > 0
+                          ? formatNumberShort(node.downloads)
+                          : "—"}
+                      </td>
+                      <td className="py-2 text-right text-xs">
+                        {node.projectId ? (
+                          <Link
+                            href={`/projects/${node.projectId}`}
+                            className="text-primary underline underline-offset-4"
+                          >
+                            goha
+                          </Link>
+                        ) : node.external ? (
+                          <a
+                            href={`https://huggingface.co/${node.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary underline underline-offset-4"
+                          >
+                            Hugging Face
+                          </a>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
     </div>
   );
-}
-
-/* the loader memoizes one same-origin fetch; the signal is intentionally
-   not wired (same rationale as the ecosystem hooks) */
-function withSignal<T>(promise: Promise<T>, _signal?: AbortSignal): Promise<T> {
-  return promise;
 }

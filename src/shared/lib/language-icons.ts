@@ -79,12 +79,16 @@ export function getLanguageIcon(languageName: string): string | null {
 }
 
 /**
- * Convert repository languages object to tech stack format
+ * Convert repository languages (GitHub map or goha array) to tech stacks.
  */
-export function languagesToTechStacks(languages: Record<string, number>) {
+export function languagesToTechStacks(
+  languages: Record<string, number> | string[]
+) {
   if (!languages || typeof languages !== "object") return [];
 
-  return Object.keys(languages)
+  const names = Array.isArray(languages) ? languages : Object.keys(languages);
+
+  return names
     .filter((langName) => !LANGUAGE_BLACKLIST.has(langName.toLowerCase()))
     .slice(0, 10)
     .map((langName) => ({

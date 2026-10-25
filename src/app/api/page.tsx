@@ -6,7 +6,7 @@ import { asset } from "@/shared/lib/asset";
 export const metadata: Metadata = {
   title: "Open data & API",
   description:
-    "Every surface on goha is backed by a public JSON file. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
+    "Data-backed surfaces on goha are built from public JSON files. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
   alternates: { canonical: "/api" },
 };
 
@@ -28,7 +28,7 @@ const ENDPOINTS: { path: string; what: string; shape: string }[] = [
   },
   {
     path: "/data/leaderboard.json",
-    what: "Published evaluations normalized per task, best first.",
+    what: "Published evaluations normalized per task. Sections may mix metrics and test sets; the UI groups by task, metric and test set before ranking.",
     shape: "{ sections: Section[] }",
   },
   {
@@ -102,14 +102,16 @@ export default function ApiPage() {
               The index, as JSON
             </h1>
             <p className="mt-4 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-              Every page on goha is rendered from static JSON files under{" "}
+              Data-backed pages on goha are rendered from generated static JSON
+              under{" "}
               <code className="rounded bg-secondary px-1 py-0.5 text-[11px]">
                 /data/
               </code>
-              . There is no API key, no auth and no rate limit — the same files
-              the site fetches are the ones you can read. They are rebuilt by
-              the daily scrape, so everything here is a snapshot, not a live
-              stream.
+              . Some pages also read build-time fixtures generated from the same
+              source, so not every page fetches these files at runtime. The
+              exported site has no API key, auth or rate limit. Files are
+              rebuilt by the daily scrape, so everything here is a snapshot, not
+              a live stream.
             </p>
           </header>
 
@@ -196,9 +198,9 @@ export default function ApiPage() {
               The Project shape
             </h2>
             <p className="mb-3 text-muted-foreground text-xs">
-              <code className="text-[11px]">projects.json</code> is the one
-              contract everything else renders from. The goha-specific fields
-              are additive to the original open-source schema:
+              <code className="text-[11px]">projects.json</code> is the main
+              contract for directory entities. The goha-specific fields are
+              additive to the original open-source schema:
             </p>
             <Code>{`{
   "id": "pjt_…",
@@ -212,7 +214,7 @@ export default function ApiPage() {
     "languages": ["Amharic"],
     "readme": "<base64 model card>"
   },
-  "downloadsMonthly": 73007,
+  "downloadsMonthly": 73898,
   "growth": 30,
   "sparkline": { "points": [ … ], "timestamps": [ … ] },
   "evaluations": [ … ],      // published metric tables
@@ -244,9 +246,19 @@ export default function ApiPage() {
                 headers before relying on it.
               </li>
               <li>
-                The data is public ecosystem data aggregated under MIT; the
-                upstream model cards keep their own licenses — always check the
-                asset itself before reuse.
+                goha&apos;s scraper, data pipeline and generated data are
+                released under the{" "}
+                <a
+                  href="https://github.com/Henok-Tekeba/goha/blob/main/LICENSE-MIT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4"
+                >
+                  MIT license
+                </a>
+                ; the UI code adapted from OpenSource Together remains CC BY-NC
+                4.0. Upstream model cards keep their own licenses — always check
+                the asset itself before reuse.
               </li>
             </ul>
           </section>

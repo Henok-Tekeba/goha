@@ -8,6 +8,7 @@ import { EmptyState } from "@/shared/components/ui/empty-state";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { asset } from "@/shared/lib/asset";
 import { cn } from "@/shared/lib/utils";
+import { formatTimeAgo } from "@/shared/lib/utils/format-time-ago";
 
 import { useActivityQuery } from "../hooks/ecosystem.queries";
 import type {
@@ -62,8 +63,19 @@ function isExternal(event: ActivityEvent): boolean {
   return !event.projectId;
 }
 
-function EventRow({ event }: { event: ActivityEvent }) {
+function EventRow({
+  event,
+  mounted,
+}: {
+  event: ActivityEvent;
+  mounted: boolean;
+}) {
   const external = isExternal(event);
+  const when = event.at
+    ? mounted
+      ? formatTimeAgo(event.at)
+      : event.at.slice(0, 10)
+    : "";
   return (
     <li className="border-muted-black-stroke border-b last:border-b-0">
       <Link
@@ -88,7 +100,7 @@ function EventRow({ event }: { event: ActivityEvent }) {
           )}
         </div>
         <span className="shrink-0 pt-0.5 text-muted-foreground text-xs tabular-nums">
-          {event.ago}
+          {when}
         </span>
       </Link>
     </li>
@@ -199,12 +211,16 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
       ) : (
         groups.map(([label, items]) => (
           <section key={label} aria-label={label}>
-            <h3 className="mb-2 px-2 font-medium text-muted-foreground text-xs uppercase tracking-wide md:px-3">
+            <h2 className="mb-2 px-2 font-medium text-muted-foreground text-xs uppercase tracking-wide md:px-3">
               {label}
-            </h3>
+            </h2>
             <ul className="rounded-[16px] border border-muted-black-stroke">
               {items.map((event) => (
-                <EventRow key={`${event.type}-${event.id}`} event={event} />
+                <EventRow
+                  key={`${event.type}-${event.id}`}
+                  event={event}
+                  mounted={mounted}
+                />
               ))}
             </ul>
           </section>

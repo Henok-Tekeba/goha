@@ -76,7 +76,7 @@ test("real leaderboard groups by task, metric and test set", () => {
   const asrGroups = groups.filter((group) => group.task === "ASR");
   assert.equal(asrGroups.length, 1);
   assert.equal(asrGroups[0].metric, "WER (reported)");
-  assert.equal(asrGroups[0].rows.length, 11);
+  assert.equal(asrGroups[0].rows.length, 10);
   assert.equal(asrGroups[0].lowerIsBetter, true);
 
   const ocrGroups = groups.filter(

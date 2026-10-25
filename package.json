@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:mock": "cross-env MOCK_API_PORT=4000 NEXT_PUBLIC_API_URL=http://localhost:4000 INTERNAL_SERVER_API_URL=http://localhost:4000 NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000 NEXT_PUBLIC_API_MOCKING=enabled concurrently --kill-others-on-fail -n api,web -c magenta,cyan \"pnpm exec tsx src/mocks/api.mock.ts\" \"next dev --turbopack -p 3031\"",
-    "build": "next build",
+    "build": "pnpm test:counts && next build",
     "start": "next start",
     "lint": "biome check .",
     "lint:write": "biome check --write .",
@@ -21,6 +21,7 @@
     "worker:deploy": "opennextjs-cloudflare deploy",
     "test:mock": "tsx --test src/mocks/handlers.mock.test.ts",
     "test:ask": "tsx src/features/ecosystem/lib/ask-parser.eval.ts",
+    "test:counts": "tsx --test src/features/ecosystem/lib/count-consistency.test.ts",
     "test:leaderboard": "tsx --test src/features/ecosystem/lib/leaderboard-groups.test.ts",
     "test:copy": "tsx --test src/features/ecosystem/lib/lineage-copy.test.ts src/shared/lib/format-count.test.ts",
     "test:activity": "tsx --test src/features/ecosystem/lib/activity-pulse.test.ts"

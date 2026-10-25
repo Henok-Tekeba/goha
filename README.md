@@ -2,13 +2,15 @@
 
 **Live at [goha.enoch.et](https://goha.enoch.et)**
 
-**goha** (ጎሃ — "dawn" in Amharic) is a live index of the Ethiopian AI
+**goha** (ጎሃ) is a live index of the Ethiopian AI
 ecosystem — models, datasets, research papers, organizations and benchmarks for
 Amharic, Afaan Oromo, Tigrinya, Ge'ez and more.
 
 It is a fully static site rebuilt every day from the public record: Hugging
-Face, GitHub and arXiv. No database, no backend, no API keys — just a data
-pipeline and a careful interface on top of it.
+Face, GitHub and arXiv. The exported site has no database, backend or API keys —
+just a data pipeline and a careful interface on top of it. The daily scrape
+workflow itself uses Hugging Face and GitHub tokens stored as repository
+secrets.
 
 ---
 
@@ -51,10 +53,13 @@ pipeline and a careful interface on top of it.
   task, entity type and constraints, then answers from the structured data —
   **no LLM, no embeddings, no API calls, no cost**. When it cannot map a
   question it says so and shows the closest matches instead of inventing an
-  answer.
-- Accuracy is measured, not claimed: **100% field accuracy on a 48-query
-  evaluation set** covering the supported vocabulary (`pnpm test:ask`).
-  Free-form prose outside that vocabulary is the known limitation.
+  answer. Result rows link to entities; aggregate answers link to the relevant
+  language or gap view.
+- Accuracy is measured, not claimed: **100% field accuracy on a 48-query parser
+  evaluation** covering the supported vocabulary (`pnpm test:ask`). Field
+  accuracy is not answer correctness; aggregate counts and link targets are
+  outside that evaluation. Free-form prose outside the vocabulary is the known
+  limitation.
 
 ### The Gap Report
 
@@ -78,9 +83,12 @@ pipeline and a careful interface on top of it.
   radar per profile.
 - **`/lang`** — per-language coverage maps: assets per task, plus a derived
   **gap analysis** ("no TTS datasets for Ge'ez", "N of M models have no
-  published evaluation").
-- **`/activity`** — every new model, dataset, paper and milestone, grouped by
-  recency, with a 30-day pulse chart.
+  published evaluation"). One canonical language set (including Ge'ez) powers
+  the language pages, homepage tiles, radar and gap report. Items with no
+  recognized language tag are reported on `/gaps`.
+- **`/activity`** — recent model, dataset, paper and milestone events, grouped
+  by recency, with a 30-day pulse chart. It is a rolling feed, not a complete
+  inventory of every indexed item.
 - **`/projects/[id]`** — the full record: interactive ECharts download history,
   model card, evaluations, languages, and a Compare link.
 
@@ -197,6 +205,7 @@ pnpm build          # static export → out/
 pnpm type-check
 pnpm lint
 pnpm test:ask       # Ask Goha parser evaluation (48 queries)
+pnpm test:counts    # homepage tiles, radar and gap-report count reconciliation
 pnpm test:mock      # mock API contract tests
 ```
 
@@ -218,7 +227,8 @@ node scripts/build-goha-fixtures.mjs
 
 ## Principles
 
-1. **Every number links to its source.** Aggregate, never invent.
+1. **Every table row cites its source.** Aggregate counts link to their
+   methodology; no number is invented.
 2. **Amharic is not decoration.** Languages, scripts and names are first-class.
 3. **The scraper is the product.** The UI is its surface.
 4. **No LLM required.** Ask Goha is deterministic, inspectable and free; the
@@ -237,8 +247,12 @@ license text.
 
 ## License
 
-- `scraper/`, `data/`, `scripts/build-goha-fixtures.mjs` — MIT (goha)
-- `src/` and `content/` — CC BY-NC 4.0, © OpenSource Together
+- `scraper/`, `data/`, `scripts/` and the generated JSON snapshots — MIT
+  (goha). See [`LICENSE-MIT`](LICENSE-MIT).
+- `src/` and `content/` — CC BY-NC 4.0, © OpenSource Together. See
+  [`LICENSE.md`](LICENSE.md).
+- Upstream models, datasets and papers keep their own licenses; the index does
+  not relicense them.
 
 ---
 

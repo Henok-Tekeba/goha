@@ -17,7 +17,7 @@ const STEPS = [
   },
   {
     title: "Normalize into one contract",
-    body: "Everything becomes a single Project shape — title, owner, task, languages, downloads, license, model card, evaluations, lineage. The same record powers every page.",
+    body: "Directory entities — models, datasets, companies and papers — share one Project contract: title, owner, task, languages, downloads, license, model card and evaluations. Ecosystem surfaces such as orgs, the leaderboard and the family tree have their own JSON shapes.",
   },
   {
     title: "Derive the ecosystem surfaces",
@@ -25,14 +25,14 @@ const STEPS = [
   },
   {
     title: "Export a static site",
-    body: "The build emits plain JSON and HTML. No database, no server, no API keys — the index is files, deployed to GitHub Pages and refreshed by the daily commit.",
+    body: "The build emits plain JSON and HTML. The exported site has no database, server or API keys. The daily scrape workflow itself uses Hugging Face and GitHub tokens, stored as repository secrets.",
   },
 ];
 
 const PRINCIPLES = [
   {
-    title: "Every number links to its source",
-    body: "Benchmarks cite the model card they came from. Nothing is estimated, inferred beyond published metadata, or invented to look complete.",
+    title: "Every table row cites its source",
+    body: "Benchmark rows link to the model card they came from. Aggregate counts link to their methodology; no number is invented to look complete.",
   },
   {
     title: "Amharic is not decoration",
@@ -44,7 +44,7 @@ const PRINCIPLES = [
   },
   {
     title: "No LLM required",
-    body: "Ask Goha answers from structured data with a deterministic parser. It is inspectable, free and never fabricates an answer.",
+    body: "Ask Goha answers from structured data with a deterministic parser. Its 48-query evaluation measures parser field accuracy, not answer correctness — the limitation is documented on the Ask page.",
   },
 ];
 
@@ -64,10 +64,10 @@ export default function AboutPage() {
               An index built in the open
             </h1>
             <p className="mt-5 text-muted-foreground text-sm leading-relaxed">
-              goha (ጎሃ — “dawn” in Amharic) exists because the Ethiopian AI
-              ecosystem was visible everywhere and legible nowhere. Models were
-              scattered across Hugging Face, datasets across GitHub, research
-              across arXiv — and nobody could answer a simple question:{" "}
+              goha (ጎሃ) exists because the Ethiopian AI ecosystem was visible
+              everywhere and legible nowhere. Models were scattered across
+              Hugging Face, datasets across GitHub, research across arXiv — and
+              nobody could answer a simple question:{" "}
               <span className="text-primary">
                 what exists for Amharic, Afaan Oromo, Tigrinya and Ge'ez, and
                 what is missing?
@@ -207,7 +207,16 @@ export default function AboutPage() {
               >
                 github.com/Henok-Tekeba/goha
               </a>{" "}
-              · Data: MIT · UI: CC BY-NC 4.0
+              · Data and pipeline:{" "}
+              <a
+                href="https://github.com/Henok-Tekeba/goha/blob/main/LICENSE-MIT"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-primary"
+              >
+                MIT
+              </a>{" "}
+              · UI: CC BY-NC 4.0
             </p>
           </section>
 

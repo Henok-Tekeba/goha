@@ -6,7 +6,7 @@ import { asset } from "@/shared/lib/asset";
 export const metadata: Metadata = {
   title: "Today in Ethiopian AI",
   description:
-    "Every new model, dataset, paper and milestone in the Ethiopian AI ecosystem, as the daily scrape picks it up.",
+    "Recent model, dataset, paper and milestone events in the Ethiopian AI ecosystem, as the daily scrape picks them up.",
   alternates: { canonical: "/activity" },
 };
 

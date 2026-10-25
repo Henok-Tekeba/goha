@@ -130,7 +130,7 @@ export default function OrgDetailView({
               {org.verified && (
                 <HiMiniCheckBadge
                   className="size-5 text-ost-blue-three"
-                  title="Verified organization (curated in goha)"
+                  title="Curated by goha — hand-checked record, not an external certification"
                 />
               )}
             </div>
@@ -139,6 +139,11 @@ export default function OrgDetailView({
               {org.founded ? ` · founded ${org.founded}` : ""} · part of the
               Ethiopian AI ecosystem
             </p>
+            {org.verified && (
+              <p className="mt-1 text-muted-foreground text-xs">
+                Curated by goha — hand-checked, not externally certified.
+              </p>
+            )}
           </div>
           <div className="flex flex-wrap gap-2">
             <ShareButton

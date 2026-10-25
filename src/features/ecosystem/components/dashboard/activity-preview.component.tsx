@@ -43,7 +43,13 @@ export default function ActivityPreview({
                 {event.title}
               </span>
               <span className="shrink-0 text-[11px] text-muted-foreground tabular-nums">
-                {event.ago}
+                {event.at
+                  ? new Intl.DateTimeFormat("en", {
+                      month: "short",
+                      day: "numeric",
+                      timeZone: "UTC",
+                    }).format(new Date(event.at))
+                  : event.ago}
               </span>
             </Link>
           </li>

@@ -45,8 +45,9 @@ export interface SubmissionType {
 
 const SUBMITTER_FIELD: SubmissionField = {
   name: "submitter",
-  label: "Credit (optional)",
-  placeholder: "Your name or handle",
+  label: "Your name or handle (optional)",
+  placeholder: "For follow-up questions",
+  hint: "Used to ask follow-up questions about this submission, not displayed as a credit.",
 };
 
 export const SUBMISSION_TYPES: SubmissionType[] = [

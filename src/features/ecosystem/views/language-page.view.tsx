@@ -65,8 +65,8 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
             <p className="mt-0.5 text-muted-foreground text-sm">
               {models.length} model{models.length === 1 ? "" : "s"} ·{" "}
               {datasets.length} dataset{datasets.length === 1 ? "" : "s"} ·{" "}
-              {papers.length} paper{papers.length === 1 ? "" : "s"} — everything
-              indexed for {name}
+              {papers.length} paper{papers.length === 1 ? "" : "s"} — indexed
+              with {name} in their language metadata
             </p>
           </div>
           <ShareButton
@@ -76,6 +76,15 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
             text={`${name} AI — ${models.length} models, ${datasets.length} datasets and ${papers.length} papers, in one place.`}
           />
         </div>
+        <p className="mt-4 max-w-3xl text-muted-foreground text-xs leading-relaxed">
+          Counts include models and datasets whose language metadata or name
+          declares {name}, and papers whose derived language tags match.
+          Multi-language items appear on each language page; items with no
+          recognized language tag are not counted here.
+          {data.slug === "english"
+            ? " English is included because many Ethiopian datasets and parallel corpora are published in English or pair English with an Ethiopian language. This page lists items that declare English themselves; it is not a claim that they are English-only or Ethiopian-language resources."
+            : ""}
+        </p>
       </header>
 
       {/* coverage matrix */}

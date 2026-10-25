@@ -80,6 +80,46 @@ export const languages: { name: string; slug: string; glyph: string }[] =
 
 const papersList: PaperRecord[] = rawPapers as unknown as PaperRecord[];
 
+/** goha fixtures store languages as string[]; the original type allowed the
+    GitHub map form too, so reads remain union-safe. */
+function languageNamesOf(project: Project): string[] {
+  const langs = project.repositoryDetails?.languages;
+  return Array.isArray(langs) ? (langs as string[]) : Object.keys(langs ?? {});
+}
+
+function projectLanguages(project: Project): Set<string> {
+  return new Set([
+    ...languageNamesOf(project),
+    ...(project.projectTechStacks ?? [])
+      .filter((stack) => stack.type === "LANGUAGE")
+      .map((stack) => stack.name),
+  ]);
+}
+
+export function getLanguageCoverageSummary() {
+  const canonical = new Set(languages.map((language) => language.name));
+  const assets = projects.filter((project) =>
+    project.projectCategories?.some(
+      (category) => category.name === "Model" || category.name === "Dataset"
+    )
+  );
+  const taggedAssets = assets.filter((project) =>
+    [...projectLanguages(project)].some((name) => canonical.has(name))
+  ).length;
+  const taggedPapers = papersList.filter((paper) =>
+    paper.languages.some((name) => canonical.has(name))
+  ).length;
+
+  return {
+    assets: assets.length,
+    taggedAssets,
+    untaggedAssets: assets.length - taggedAssets,
+    papers: papersList.length,
+    taggedPapers,
+    untaggedPapers: papersList.length - taggedPapers,
+  };
+}
+
 function paperTaskOf(paper: PaperRecord): string | null {
   if (paper.tasks.includes("ASR")) return "ASR";
   if (paper.tasks.includes("TTS")) return "TTS";
@@ -158,16 +198,8 @@ export function getLanguagePage(
 
   /* goha fixtures store languages as string[]; the OST type allows the
      GitHub map form — handle both, mirroring project-detail.view */
-  const matchesProject = (project: Project) => {
-    const langs = project.repositoryDetails?.languages;
-    const langNames = Array.isArray(langs)
-      ? (langs as string[])
-      : Object.keys(langs ?? {});
-    return (
-      langNames.includes(name) ||
-      (project.projectTechStacks ?? []).some((t) => t.name === name)
-    );
-  };
+  const matchesProject = (project: Project) =>
+    projectLanguages(project).has(name);
 
   const models = projects.filter(
     (p) =>
@@ -255,8 +287,10 @@ export interface GapReport {
   }[];
   licensing: {
     total: number;
+    assets: number;
     examples: { name: string; projectId: string | null; kind: string }[];
   };
+  untagged: { assets: number; papers: number };
   researchOnly: { language: string; slug: string; task: string }[];
 }
 
@@ -278,7 +312,6 @@ export function getGapReport(): GapReport {
       return { ...language, cells, total };
     })
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
-    .filter((entry) => entry.total > 0)
     .sort((a, b) => b.total - a.total);
 
   const emptyCells: GapReport["emptyCells"] = [];
@@ -325,8 +358,10 @@ export function getGapReport(): GapReport {
   const unlicensed = assets.filter(
     (project) => !project.repositoryDetails?.license
   );
+  const coverageSummary = getLanguageCoverageSummary();
   const licensing = {
     total: unlicensed.length,
+    assets: assets.length,
     examples: unlicensed.slice(0, 6).map((project) => ({
       name: project.title,
       projectId: project.id ?? null,
@@ -345,6 +380,10 @@ export function getGapReport(): GapReport {
     evaluation: { evaluated, total: models.length },
     unmeasured,
     licensing,
+    untagged: {
+      assets: coverageSummary.untaggedAssets,
+      papers: coverageSummary.untaggedPapers,
+    },
     researchOnly,
   };
 }

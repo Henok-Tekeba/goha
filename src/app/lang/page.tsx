@@ -3,29 +3,32 @@ import Link from "next/link";
 import LanguageRadarChart from "@/features/ecosystem/components/charts/language-radar-chart";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
-import { getLanguagePage, languages } from "@/shared/lib/local-data.server";
+import {
+  getLanguageCoverageSummary,
+  getLanguagePage,
+  languages,
+} from "@/shared/lib/local-data.server";
 
 export const metadata: Metadata = {
   title: "Languages — Ethiopian AI by language",
   description:
-    "Coverage maps and gap analysis for Amharic, Afaan Oromo, Tigrinya, Ge'ez and more — what exists, and what's still missing.",
+    "Coverage maps and gap analysis for Amharic, Afaan Oromo, Tigrinya, Ge'ez, Somali, Wolayttattoo, Sidaamu Afoo and English — what exists, and what's still missing.",
   alternates: { canonical: "/lang" },
 };
 
 export default function LanguagesIndexPage() {
-  const rows = languages
-    .map((language) => {
-      const page = getLanguagePage(language.slug);
-      return page
-        ? {
-            ...language,
-            models: page.models.length,
-            datasets: page.datasets.length,
-            papers: page.papers.length,
-          }
-        : { ...language, models: 0, datasets: 0, papers: 0 };
-    })
-    .filter((row) => row.models + row.datasets + row.papers > 0);
+  const summary = getLanguageCoverageSummary();
+  const rows = languages.map((language) => {
+    const page = getLanguagePage(language.slug);
+    return page
+      ? {
+          ...language,
+          models: page.models.length,
+          datasets: page.datasets.length,
+          papers: page.papers.length,
+        }
+      : { ...language, models: 0, datasets: 0, papers: 0 };
+  });
 
   return (
     <>
@@ -40,8 +43,12 @@ export default function LanguagesIndexPage() {
             </h1>
             <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
               Each language gets a coverage map — models, datasets, research —
-              and the gaps that are still open. The honest picture of where
-              Ethiopian AI stands.
+              and the gaps that are still open. Counts cover models and datasets
+              whose language metadata or name declares the language, plus papers
+              whose derived language tags match; items tagged with more than one
+              language appear under each language. {summary.untaggedAssets}{" "}
+              assets and {summary.untaggedPapers} papers have no recognized
+              language tag and are not counted here.
             </p>
           </header>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -79,8 +86,9 @@ export default function LanguagesIndexPage() {
               The gaps, side by side
             </h2>
             <p className="mb-4 max-w-2xl text-muted-foreground text-xs leading-relaxed">
-              Every language&apos;s coverage across the six tracked tasks —
-              models plus datasets indexed. Click a language to isolate it; the
+              Coverage across the six tracked tasks for every language in the
+              index — models plus datasets, counted from the same language
+              records as the cards above. Click a language to isolate it; the
               missing axes are the open problems in Ethiopian AI.
             </p>
             <LanguageRadarChart className="h-[420px] w-full md:h-[480px]" />

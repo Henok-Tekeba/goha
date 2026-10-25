@@ -115,9 +115,11 @@ export type IssueLabels = {
   color: string;
 };
 
-export type RepositoryLanguages = {
-  [language: string]: number;
-};
+export type RepositoryLanguages =
+  | string[]
+  | {
+      [language: string]: number;
+    };
 
 export type RepositoryOwner = {
   login: string;

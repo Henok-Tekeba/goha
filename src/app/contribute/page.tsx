@@ -6,7 +6,7 @@ import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 
 const CONTRIBUTE_URL = `${FRONTEND_URL.replace(/\/$/, "")}/contribute`;
 const CONTRIBUTE_DESCRIPTION =
-  "Submit a model, dataset, paper, organization or benchmark to goha. Corrections and feedback are welcome too — everything is reviewed and added to the open index.";
+  "Submit a model, dataset, paper, organization or benchmark to goha. Corrections and feedback are welcome too — every issue is reviewed manually before anything is indexed.";
 
 export const metadata: Metadata = {
   title: "Contribute data — put Ethiopian AI on the map",
@@ -63,19 +63,43 @@ export default function ContributePage() {
           <ContributionForm />
         </div>
 
-        <p className="mt-4 text-[11px] text-muted-foreground">
-          Public GitHub issue · reviewed by a maintainer · added to an upcoming
-          daily build.
+        <p className="mt-4 text-[13px] text-muted-foreground">
+          Public GitHub issue · manually reviewed by a maintainer · indexed only
+          after review. There is no automatic ingestion pipeline yet.
         </p>
 
-        <div className="my-16 flex flex-wrap gap-x-6 gap-y-3 border-muted-black-stroke border-t pt-6 text-xs">
+        <div className="my-16 flex flex-wrap gap-x-6 gap-y-3 border-muted-black-stroke border-t pt-6 text-sm">
           <a
             href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues?q=label%3Agoha-submit`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
           >
-            Submission queue →
+            Submission queue (models, datasets, papers, orgs) →
+          </a>
+          <a
+            href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues?q=label%3Agoha-benchmark`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+          >
+            Benchmark queue →
+          </a>
+          <a
+            href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues?q=label%3Agoha-correction`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+          >
+            Corrections queue →
+          </a>
+          <a
+            href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues?q=label%3Afeedback`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
+          >
+            Feedback queue →
           </a>
           <a
             href={EXTERNAL_LINKS.GITHUB_REPO}

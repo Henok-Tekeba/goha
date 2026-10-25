@@ -89,7 +89,7 @@ export default function ContributionForm() {
               aria-selected={active}
               onClick={() => setKind(option.value)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[13px] transition-colors",
+                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors",
                 active
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-muted-black-stroke bg-white text-muted-foreground hover:border-black/20 hover:text-primary"
@@ -139,14 +139,14 @@ export default function ContributionForm() {
               />
             )}
             {field.hint && (
-              <p className="text-[11px] text-muted-foreground">{field.hint}</p>
+              <p className="text-muted-foreground text-xs">{field.hint}</p>
             )}
           </div>
         ))}
       </div>
 
       <div className="mt-6 flex flex-col gap-3 border-muted-black-stroke border-t pt-5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="text-[12px] text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           {isComplete ? (
             <span>
               Opens a{" "}
@@ -194,10 +194,10 @@ export default function ContributionForm() {
       </div>
 
       <details className="group mt-4 rounded-[14px] border border-muted-black-stroke bg-secondary/40 px-4 py-3">
-        <summary className="cursor-pointer select-none text-[12px] text-muted-foreground transition-colors hover:text-primary">
+        <summary className="cursor-pointer select-none text-muted-foreground text-sm transition-colors hover:text-primary">
           Preview issue
         </summary>
-        <pre className="mt-3 max-h-64 overflow-auto whitespace-pre-wrap break-words text-[11px] text-black/60 leading-relaxed">
+        <pre className="mt-3 max-h-64 overflow-auto whitespace-pre-wrap break-words text-black/60 text-xs leading-relaxed">
           {preview}
         </pre>
       </details>

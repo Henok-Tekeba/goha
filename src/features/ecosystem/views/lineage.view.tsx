@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import LineageGraph from "../components/lineage-graph.component";
 import { buildLineageCoverageCopy } from "../lib/lineage-copy";
+import type { LineagePayload } from "../types/ecosystem.types";
 
 interface LineageViewProps {
   stats: {
@@ -10,9 +11,14 @@ interface LineageViewProps {
     families: number;
   };
   totalModels: number;
+  lineage: LineagePayload;
 }
 
-export default function LineageView({ stats, totalModels }: LineageViewProps) {
+export default function LineageView({
+  stats,
+  totalModels,
+  lineage,
+}: LineageViewProps) {
   return (
     <div className="mx-auto max-w-6xl px-6">
       <header className="mb-8">
@@ -40,7 +46,7 @@ export default function LineageView({ stats, totalModels }: LineageViewProps) {
         </p>
       </header>
 
-      <LineageGraph />
+      <LineageGraph payload={lineage} />
 
       <section className="mt-10 rounded-[18px] border border-muted-black-stroke px-5 py-4">
         <h2 className="font-medium text-primary text-sm tracking-tight">

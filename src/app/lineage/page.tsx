@@ -29,7 +29,11 @@ export default function LineagePage() {
   return (
     <>
       <main>
-        <LineageView stats={lineage.stats} totalModels={stats.counts.models} />
+        <LineageView
+          stats={lineage.stats}
+          totalModels={stats.counts.models}
+          lineage={lineage}
+        />
       </main>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}

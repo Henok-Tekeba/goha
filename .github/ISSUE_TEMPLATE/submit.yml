@@ -1,5 +1,5 @@
 name: Submit data
-description: Add a model, dataset, paper, organization or benchmark to goha
+description: Add a model, dataset, paper or organization to goha
 title: "[Submission] "
 labels: ["goha-submit"]
 body:
@@ -18,7 +18,6 @@ body:
         - Dataset
         - Research paper
         - Organization
-        - Benchmark / evaluation result
     validations:
       required: true
   - type: input
@@ -60,14 +59,14 @@ body:
   - type: input
     id: source
     attributes:
-      label: Source for a benchmark result
-      description: Required when submitting a benchmark. Link to the model card, paper or leaderboard.
+      label: Source
+      description: For benchmark results, use the guided Benchmarks tab at https://goha.enoch.et/contribute/ so the issue gets the right label.
       placeholder: https://...
   - type: input
     id: submitter
     attributes:
       label: Your name or handle
-      description: Optional — so we can credit you.
+      description: Optional — for follow-up questions about this submission.
   - type: textarea
     id: notes
     attributes:

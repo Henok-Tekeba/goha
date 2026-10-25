@@ -39,44 +39,91 @@ const hash32 = (s) => {
 };
 
 /* ------------- language taxonomy (canonical names, full code coverage) ------------- */
+/* One canonical set powers the homepage tiles, /lang pages, the radar and the
+   gap report. Keep aliases here so ISO codes, English names and casing all
+   normalize to the same display name before any count is computed. */
+const CANONICAL_LANGUAGES = [
+  { name: "Amharic", slug: "amharic", glyph: "አ" },
+  { name: "Afaan Oromo", slug: "afaan-oromo", glyph: "O" },
+  { name: "Tigrinya", slug: "tigrinya", glyph: "ት" },
+  { name: "Ge'ez", slug: "geez", glyph: "ግ" },
+  { name: "Somali", slug: "somali", glyph: "S" },
+  { name: "Wolayttattoo", slug: "wolayttattoo", glyph: "W" },
+  { name: "Sidaamu Afoo", slug: "sidaamu-afoo", glyph: "S" },
+  { name: "English", slug: "english", glyph: "E" },
+];
+const CANONICAL_LANGUAGE_NAMES = new Set(
+  CANONICAL_LANGUAGES.map((language) => language.name)
+);
+
 const LANG_NAMES = {
   am: "Amharic",
   amh: "Amharic",
+  amharic: "Amharic",
+  "afaan oromo": "Afaan Oromo",
+  "afan oromo": "Afaan Oromo",
   om: "Afaan Oromo",
   orm: "Afaan Oromo",
+  oro: "Afaan Oromo",
+  or: "Afaan Oromo",
   gaz: "Afaan Oromo",
+  oromo: "Afaan Oromo",
   ti: "Tigrinya",
   tir: "Tigrinya",
+  tig: "Tigrinya",
+  tigrinya: "Tigrinya",
   gez: "Ge'ez",
   zgh: "Ge'ez",
+  geez: "Ge'ez",
+  "ge'ez": "Ge'ez",
   so: "Somali",
   som: "Somali",
+  somali: "Somali",
   aa: "Afaraf",
   aar: "Afaraf",
+  afar: "Afaraf",
+  afaraf: "Afaraf",
   wal: "Wolayttattoo",
   wol: "Wolayttattoo",
+  wolaytta: "Wolayttattoo",
+  wolayttattoo: "Wolayttattoo",
   haw: "Hadiyya",
+  hadiyya: "Hadiyya",
   sid: "Sidaamu Afoo",
+  sidama: "Sidaamu Afoo",
+  sidamo: "Sidaamu Afoo",
+  sidaamu: "Sidaamu Afoo",
+  "sidaamu afoo": "Sidaamu Afoo",
   en: "English",
+  eng: "English",
+  english: "English",
   ar: "Arabic",
   ara: "Arabic",
+  arabic: "Arabic",
+  fr: "French",
+  fra: "French",
+  fre: "French",
+  french: "French",
+  zh: "Chinese",
+  zho: "Chinese",
+  chi: "Chinese",
+  chinese: "Chinese",
+  mul: "Multilingual",
+  mu: "Multilingual",
+  multilingual: "Multilingual",
 };
-const langFromCode = (c) => LANG_NAMES[c] ?? null;
+const languageName = (value) => {
+  const key = String(value ?? "")
+    .trim()
+    .toLowerCase();
+  return LANG_NAMES[key] ?? null;
+};
+const langFromCode = (c) => languageName(c);
 
 /* canonical scripts/glyphs for premium monogram tiles */
-const LANG_META = {
-  Amharic: { glyph: "አ" },
-  "Afaan Oromo": { glyph: "O" },
-  Tigrinya: { glyph: "ት" },
-  "Ge'ez": { glyph: "ግ" },
-  Somali: { glyph: "S" },
-  Afaraf: { glyph: "A" },
-  Wolayttattoo: { glyph: "W" },
-  Hadiyya: { glyph: "H" },
-  "Sidaamu Afoo": { glyph: "S" },
-  English: { glyph: "E" },
-  Arabic: { glyph: "ع" },
-};
+const LANG_META = Object.fromEntries(
+  CANONICAL_LANGUAGES.map(({ name, glyph }) => [name, { glyph }])
+);
 
 /* stacks with real logos (devicon) or symbol tiles; proper display names */
 const STACKS = [
@@ -146,14 +193,10 @@ const typeIconFor = (it, kind) =>
 
 /* usage counts (models + datasets) */
 const stackCount = new Map();
-const langCount = new Map();
 for (const it of [...models, ...datasets]) {
   for (const t of it.tags || []) {
     const low = t.toLowerCase();
-    if (low.startsWith("language:")) {
-      const name = langFromCode(low.split(":")[1]);
-      if (name) langCount.set(name, (langCount.get(name) || 0) + 1);
-    } else if (stackByTag.has(low)) {
+    if (!low.startsWith("language:") && stackByTag.has(low)) {
       stackCount.set(low, (stackCount.get(low) || 0) + 1);
     }
   }
@@ -161,26 +204,17 @@ for (const it of [...models, ...datasets]) {
 
 const now = "2026-01-01T00:00:00.000Z";
 
-const topLangs = [...langCount.entries()]
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
 const topStacks = [...stackCount.entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 6)
   .map(([tag]) => stackByTag.get(tag));
 
-const langSlug = (name) =>
-  name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-
 const techStacks = [];
-for (const [i, [name]] of topLangs.entries()) {
+for (const [i, language] of CANONICAL_LANGUAGES.entries()) {
   techStacks.push({
     id: id("tst", i + 1),
-    name,
-    iconUrl: `/langs/${langSlug(name)}.svg`,
+    name: language.name,
+    iconUrl: `/langs/${language.slug}.svg`,
     type: "LANGUAGE",
   });
 }
@@ -244,10 +278,10 @@ const SYMBOLS = {
   link: `<path d="M10 14a4 4 0 015.7 0l2.3 2.3a4 4 0 01-5.7 5.7l-1-1" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 01-5.7 0L6 7.7A4 4 0 0111.7 2l1 1" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round"/>`,
 };
 
-for (const [name] of topLangs) {
-  const meta = LANG_META[name] ?? { glyph: name.charAt(0).toUpperCase() };
+for (const language of CANONICAL_LANGUAGES) {
+  const meta = LANG_META[language.name] ?? { glyph: language.glyph };
   writeFileSync(
-    path.join(LANGS_OUT, `${langSlug(name)}.svg`),
+    path.join(LANGS_OUT, `${language.slug}.svg`),
     glyphTile(meta.glyph)
   );
 }
@@ -380,26 +414,23 @@ for (const src of [
 ]) {
   const it = src.it;
   const langs = [];
+  const addLanguage = (value) => {
+    const name = languageName(value);
+    if (name && !langs.includes(name)) langs.push(name);
+  };
   for (const t of it.tags || []) {
-    if (t.toLowerCase().startsWith("language:")) {
-      const n = langFromCode(t.toLowerCase().split(":")[1]);
-      if (n && !langs.includes(n)) langs.push(n);
+    if (String(t).toLowerCase().startsWith("language:")) {
+      addLanguage(String(t).toLowerCase().split(":")[1]);
     }
   }
-  if ((it.langs || []).length) {
-    for (const l of it.langs) {
-      const n = LANG_NAMES[l] ?? titleCase(l);
-      if (n && !langs.includes(n)) langs.push(n);
-    }
-  }
+  for (const l of it.langs || []) addLanguage(l);
   /* the scraper's own language confirmation (ISO codes) — often richer than tags */
-  for (const l of it.confirmed_languages || []) {
-    const n = LANG_NAMES[l];
-    if (n && !langs.includes(n)) langs.push(n);
-  }
+  for (const l of it.confirmed_languages || []) addLanguage(l);
   /* name-based fallback — ecosystem convention puts the language in the name
-     ("hohe-asr-amharic", "whisper-small-tigrinya-r-32") */
-  if (langs.length === 0) {
+     ("hohe-asr-amharic", "whisper-small-tigrinya-r-32"). Run this even when
+     other metadata exists: a card tagged "multilingual" should still count as
+     Amharic when its name declares Amharic. */
+  {
     const nm = String(it.name || it.id || "");
     const NAME_LANGS = [
       ["Amharic", /amharic|አማርኛ/i],
@@ -412,6 +443,13 @@ for (const src of [
       if (re.test(nm) && !langs.includes(n)) langs.push(n);
     }
   }
+  /* canonical languages first so cards and filters show an Ethiopian
+     language rather than "Multilingual" */
+  langs.sort(
+    (a, b) =>
+      Number(!CANONICAL_LANGUAGE_NAMES.has(a)) -
+      Number(!CANONICAL_LANGUAGE_NAMES.has(b))
+  );
 
   const badge =
     it.type_label || it.badge || (src.kind === "dataset" ? "Dataset" : "Other");
@@ -586,7 +624,7 @@ for (const c of companies) {
       pullRequestsCount: 0,
       subscribersCount: 0,
       license: null,
-      languages: (c.langs || []).map((l) => LANG_NAMES[l] ?? titleCase(l)),
+      languages: (c.langs || []).map((l) => languageName(l) ?? titleCase(l)),
       owner: { login: c.name, avatar_url: "" },
       contributors: [],
       issues: [],
@@ -598,7 +636,9 @@ for (const c of companies) {
           c.desc,
           c.founded ? `Founded in ${c.founded}.` : null,
           (c.langs || []).length
-            ? `Working in: ${c.langs.map((l) => LANG_NAMES[l] ?? l).join(", ")}.`
+            ? `Working in: ${c.langs
+                .map((l) => languageName(l) ?? l)
+                .join(", ")}.`
             : null,
         ]
           .filter(Boolean)
@@ -709,7 +749,12 @@ const fmtAgo = (at, ref) => {
   return `${Math.round(months / 12)}y ago`;
 };
 
-const buildTime = Date.now();
+/* A fixture rebuild is not a scrape. When rebuilding the committed snapshot
+   without new data, set GOHA_BUILD_TIME to the snapshot's indexedAt so
+   freshness labels do not claim a newer scrape than the data. */
+const buildTime = process.env.GOHA_BUILD_TIME
+  ? new Date(process.env.GOHA_BUILD_TIME).getTime()
+  : Date.now();
 
 /* ---------- activity feed ---------- */
 const ACTIVITY_URL = {
@@ -769,20 +814,6 @@ const activity = (Array.isArray(activityRaw) ? activityRaw : [])
 const spaces = dataArr("spaces.json");
 const repos = dataArr("repos.json");
 
-const allLangs = new Set();
-for (const it of [...models, ...datasets]) {
-  for (const t of it.tags || []) {
-    if (t.toLowerCase().startsWith("language:")) {
-      const n = langFromCode(t.toLowerCase().split(":")[1]);
-      if (n) allLangs.add(n);
-    }
-  }
-  for (const l of it.langs || []) {
-    const n = LANG_NAMES[l];
-    if (n) allLangs.add(n);
-  }
-}
-
 const stats = {
   counts: {
     models: models.length,
@@ -791,7 +822,7 @@ const stats = {
     companies: companies.length,
     spaces: spaces.length,
     repos: repos.length,
-    languages: allLangs.size,
+    languages: CANONICAL_LANGUAGES.length,
     orgs: 0 /* filled after the org aggregation below */,
   },
   indexedAt: new Date(buildTime).toISOString(),
@@ -877,7 +908,7 @@ function noteLangs(o, it) {
     }
   }
   for (const l of it.langs || []) {
-    const n = LANG_NAMES[l];
+    const n = languageName(l);
     if (n) o.langs.add(n);
   }
 }
@@ -999,7 +1030,7 @@ for (const [key, o] of orgMap) {
     langs: [
       ...new Set([
         ...o.langs,
-        ...(curated?.langs || []).map((l) => LANG_NAMES[l] ?? titleCase(l)),
+        ...(curated?.langs || []).map((l) => languageName(l) ?? titleCase(l)),
       ]),
     ].sort(),
     counts: {
@@ -1063,7 +1094,7 @@ for (const company of companies) {
     isNew: Boolean(company.isNew),
     featured: Boolean(company.featured),
     langs: (company.langs || [])
-      .map((l) => LANG_NAMES[l] ?? titleCase(l))
+      .map((l) => languageName(l) ?? titleCase(l))
       .sort(),
     counts: { models: 0, datasets: 0, spaces: 0, repos: 0 },
     downloadsMonthly: 0,
@@ -1243,7 +1274,7 @@ function modelLangsOf(it) {
     }
   }
   for (const l of it.langs || []) {
-    const n = LANG_NAMES[l];
+    const n = languageName(l);
     if (n && !out.includes(n)) out.push(n);
   }
   /* model names carry the language in ecosystem convention:
@@ -1383,8 +1414,17 @@ const leaderboardSections = [...sectionByKey.values()]
       const primaryRows = rows.filter((r) => r.metricType === section.primary);
       if (primaryRows.length >= 3) rows = primaryRows;
     }
-    rows = rows
-      .slice()
+    /* the same model+metric+test-set+value can be scraped twice under
+       different org handles; keep the row with the stronger footprint */
+    const deduped = new Map();
+    for (const row of rows) {
+      const key = `${row.model}|${row.metric}|${row.dataset ?? ""}|${row.value}`;
+      const previous = deduped.get(key);
+      if (!previous || row.downloads > previous.downloads) {
+        deduped.set(key, row);
+      }
+    }
+    rows = [...deduped.values()]
       .sort((a, b) => {
         if (a.metricType !== b.metricType)
           return a.metricType.localeCompare(b.metricType);
@@ -1457,54 +1497,22 @@ writeFileSync(
 );
 
 /* build-time fixtures for language pages (static params + joins) */
-const languageGlyph = {
-  Amharic: "አ",
-  "Afaan Oromo": "O",
-  Tigrinya: "ት",
-  "Ge'ez": "ግ",
-  Somali: "S",
-  Afaraf: "A",
-  Wolayttattoo: "W",
-  Hadiyya: "H",
-  "Sidaamu Afoo": "S",
-  English: "E",
-  Arabic: "ع",
-};
-const LANGUAGE_ORDER = [
-  "Amharic",
-  "Afaan Oromo",
-  "Tigrinya",
-  "Ge'ez",
-  "Somali",
-  "Afaraf",
-  "Wolayttattoo",
-  "Hadiyya",
-  "Sidaamu Afoo",
-  "English",
-  "Arabic",
-];
-const languagesList = [...allLangs]
-  .sort((a, b) => {
-    const ia = LANGUAGE_ORDER.indexOf(a);
-    const ib = LANGUAGE_ORDER.indexOf(b);
-    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
-  })
-  .map((name) => ({
-    name,
-    slug: langSlug(name),
-    glyph: languageGlyph[name] ?? name.charAt(0).toUpperCase(),
-  }));
+const languagesList = CANONICAL_LANGUAGES.map(({ name, slug, glyph }) => ({
+  name,
+  slug,
+  glyph,
+}));
 writeFileSync(
   path.join(PUBLIC_DATA, "languages.json"),
   JSON.stringify({ data: languagesList }) + "\n"
 );
 writeFileSync(
   path.join(FIXTURES, "languages.mock.json"),
-  JSON.stringify(languagesList, null, 1) + "\n"
+  JSON.stringify(languagesList, null, 2) + "\n"
 );
 writeFileSync(
   path.join(FIXTURES, "papers.mock.json"),
-  JSON.stringify(paperRecords, null, 1) + "\n"
+  JSON.stringify(paperRecords, null, 2) + "\n"
 );
 
 /* ---------- model lineage (family tree) ---------- */
@@ -1754,32 +1762,36 @@ const topModelHistory = [...dateSet].sort().map((date) => {
 });
 
 /* ---------- charts: language × task coverage (radar) ---------- */
-const RADAR_LANGS = [
-  "Amharic",
-  "Afaan Oromo",
-  "Tigrinya",
-  "Ge'ez",
-  "Somali",
-  "English",
-];
+/* The radar is derived from the same normalized Project fixtures as /lang and
+   the gap report, so a language total here cannot drift from a language page. */
+const RADAR_LANGS = CANONICAL_LANGUAGES.map((language) => language.name);
 const RADAR_TASKS = ["ASR", "TTS", "Translation", "LLM", "NER", "Embeddings"];
 
-function radarTaskOfAsset(it, kind) {
-  if (kind === "model") {
-    const badge = (it.type_label || it.badge || "").toLowerCase();
-    if (/speech|asr/.test(badge)) return "ASR";
-    if (/tts|text.to.speech/.test(badge)) return "TTS";
-    if (/translat/.test(badge)) return "Translation";
-    if (/llm|generation|gpt|llama/.test(badge)) return "LLM";
-    if (/ner|token/.test(badge)) return "NER";
-    if (/embed|feature|sentence/.test(badge)) return "Embeddings";
-    return null;
+function languagesOfProject(project) {
+  const raw = project.repositoryDetails?.languages;
+  const declared = Array.isArray(raw) ? raw : Object.keys(raw ?? {});
+  const stacks = (project.projectTechStacks ?? [])
+    .filter((stack) => stack.type === "LANGUAGE")
+    .map((stack) => stack.name);
+  return new Set([...declared, ...stacks]);
+}
+
+function taskOfProject(project) {
+  const categories = (project.projectCategories ?? []).map((c) => c.name);
+  if (categories.includes("Model")) {
+    const task = RADAR_TASKS.find((name) => categories.includes(name));
+    return task ?? "Other";
   }
-  const tags = (it.tags || []).map((t) => String(t).toLowerCase());
+  if (!categories.includes("Dataset")) return null;
+  const tags = (project.repositoryDetails?.tags ?? []).map((t) =>
+    String(t).toLowerCase()
+  );
   if (tags.some((t) => t.includes("text-to-speech"))) return "TTS";
   if (
     tags.some(
-      (t) => t.includes("speech-recognition") || t.includes("automatic-speech")
+      (t) =>
+        t.includes("automatic-speech-recognition") ||
+        t.includes("speech-recognition")
     )
   )
     return "ASR";
@@ -1797,25 +1809,21 @@ function radarTaskOfAsset(it, kind) {
     )
   )
     return "Embeddings";
-  return null;
+  return "Other";
 }
+
+const languageAssets = projects.filter((project) => {
+  const categories = (project.projectCategories ?? []).map((c) => c.name);
+  return categories.includes("Model") || categories.includes("Dataset");
+});
 
 const radarRows = RADAR_TASKS.map((task) => {
   const row = { task };
   for (const lang of RADAR_LANGS) {
-    const matchesLang = (it) =>
-      (it.tags || []).some(
-        (t) =>
-          String(t).toLowerCase().startsWith("language:") &&
-          langFromCode(String(t).toLowerCase().split(":")[1]) === lang
-      ) || (it.langs || []).some((l) => LANG_NAMES[l] === lang);
-    row[lang] =
-      models.filter(
-        (m) => matchesLang(m) && radarTaskOfAsset(m, "model") === task
-      ).length +
-      datasets.filter(
-        (d) => matchesLang(d) && radarTaskOfAsset(d, "dataset") === task
-      ).length;
+    row[lang] = languageAssets.filter(
+      (project) =>
+        languagesOfProject(project).has(lang) && taskOfProject(project) === task
+    ).length;
   }
   return row;
 });
@@ -1854,6 +1862,18 @@ writeFileSync(
 );
 
 /* regenerate taxonomy.mock.ts with goha's categories + languages */
+const techStackLines = techStacks.map((t) => {
+  const args = [
+    JSON.stringify(t.id),
+    JSON.stringify(t.name),
+    JSON.stringify(t.iconUrl),
+    JSON.stringify(t.type),
+  ];
+  const oneLine = `  tech(${args.join(", ")}),`;
+  if (oneLine.length <= 80) return oneLine;
+  return `  tech(\n${args.map((arg) => `    ${arg}`).join(",\n")}\n  ),`;
+});
+
 const taxTs = `import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";
 
@@ -1885,12 +1905,7 @@ ${categories
 ];
 
 export const techStacks: TechStackType[] = [
-${techStacks
-  .map(
-    (t, i) =>
-      `  tech(mockPublicId("tst", ${i + 1}), ${JSON.stringify(t.name)}, ${JSON.stringify(t.iconUrl)}, ${JSON.stringify(t.type)}),`
-  )
-  .join("\n")}
+${techStackLines.join("\n")}
 ];
 `;
 writeFileSync(path.join(FIXTURES, "taxonomy.mock.ts"), taxTs);
@@ -1899,7 +1914,7 @@ console.log(
   `✓ goha fixtures built:
     projects: ${projects.length} (models ${models.length} · datasets ${datasets.length} · companies ${companies.length} · papers ${papers.length})
     categories: ${categories.length} · techStacks: ${techStacks.length}
-    languages: ${topLangs.map(([n]) => n).join(", ")}
+    languages: ${languagesList.map((language) => language.name).join(", ")}
     stacks: ${topStacks.map((s) => s.name).join(", ")}
     ecosystem: activity ${activity.length} · orgs ${mergedOrgList.length} · papers ${paperRecords.length} · leaderboard sections ${leaderboardSections.length}
     charts: growth ${growth.length} days · top models ${topModelHistory.length} days · radar tasks ${radarRows.length}

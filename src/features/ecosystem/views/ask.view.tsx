@@ -145,9 +145,15 @@ export default function AskView() {
           Ask Goha
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-          Ask about the ecosystem in plain language. Answers come straight from
-          the index — every number links to the model, paper or organization it
-          came from. No chatbot, no invented facts.
+          Ask about the ecosystem in plain language. Answers are composed from
+          the index with a deterministic parser — result rows link to the model,
+          paper or organization, and aggregate answers link to the relevant
+          language or gap view. No chatbot is involved.
+        </p>
+        <p className="mt-2 max-w-2xl text-muted-foreground text-xs leading-relaxed">
+          The 48-query evaluation measures parser fields (language, task,
+          entity, sort, constraints), not whether every answer count or link is
+          correct.
         </p>
       </header>
 

@@ -45,13 +45,20 @@ test("keeps the project catalogue valid and reasonably small", () => {
     projectsResponse.length
   );
   assert.equal(
-    new Set(projectsResponse.map((project) => project.repoUrl)).size,
-    projectsResponse.length
+    new Set(
+      projectsResponse
+        .map((project) => project.repoUrl)
+        .filter((url): url is string => Boolean(url))
+    ).size,
+    projectsResponse.filter((project) => Boolean(project.repoUrl)).length
   );
 
   for (const project of projectsResponse) {
     assert.match(project.id ?? "", /^pjt_[a-f0-9]{32}$/);
-    assert.ok(project.repoUrl?.startsWith("https://github.com/"));
+    assert.ok(
+      project.repoUrl === null || /^https:\/\//.test(project.repoUrl),
+      `${project.title} has an invalid repoUrl`
+    );
     assert.ok(project.repositoryDetails.contributors.length <= 8);
     assert.ok(project.repositoryDetails.issues.length <= 6);
     assert.ok(project.repositoryDetails.pullRequests.length <= 6);
@@ -105,7 +112,7 @@ test("serves the project catalogue through list and detail routes", async () => 
   assert.ok(list.data.some((project) => project.id === fixture.id));
   assert.equal(detailResponse.status, 200);
   assert.equal(detail.data.repoUrl, fixture.repoUrl);
-  assert.ok(detail.data.repositoryDetails.contributors.length > 0);
+  assert.ok(Array.isArray(detail.data.repositoryDetails.contributors));
 });
 
 test("returns current-user repositories including organization-owned repos", async () => {

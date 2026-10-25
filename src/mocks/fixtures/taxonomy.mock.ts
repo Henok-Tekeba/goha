@@ -33,37 +33,88 @@ export const categories: CategoryType[] = [
 ];
 
 export const techStacks: TechStackType[] = [
-  tech(mockPublicId("tst", 1), "Amharic", "/langs/amharic.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 2), "English", "/langs/english.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 3), "Tigrinya", "/langs/tigrinya.svg", "LANGUAGE"),
   tech(
-    mockPublicId("tst", 4),
+    "tst_00000000000000000000000000000001",
+    "Amharic",
+    "/langs/amharic.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    "tst_00000000000000000000000000000002",
     "Afaan Oromo",
     "/langs/afaan-oromo.svg",
     "LANGUAGE"
   ),
   tech(
-    mockPublicId("tst", 5),
+    "tst_00000000000000000000000000000003",
+    "Tigrinya",
+    "/langs/tigrinya.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    "tst_00000000000000000000000000000004",
+    "Ge'ez",
+    "/langs/geez.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    "tst_00000000000000000000000000000005",
+    "Somali",
+    "/langs/somali.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    "tst_00000000000000000000000000000006",
+    "Wolayttattoo",
+    "/langs/wolayttattoo.svg",
+    "LANGUAGE"
+  ),
+  tech(
+    "tst_00000000000000000000000000000007",
     "Sidaamu Afoo",
     "/langs/sidaamu-afoo.svg",
     "LANGUAGE"
   ),
   tech(
-    mockPublicId("tst", 6),
-    "Wolayttattoo",
-    "/langs/wolayttattoo.svg",
+    "tst_00000000000000000000000000000008",
+    "English",
+    "/langs/english.svg",
     "LANGUAGE"
   ),
-  tech(mockPublicId("tst", 7), "Somali", "/langs/somali.svg", "LANGUAGE"),
-  tech(mockPublicId("tst", 8), "Safetensors", "/langs/sym-shield.svg", "TECH"),
-  tech(mockPublicId("tst", 9), "Transformers", "/langs/sym-layers.svg", "TECH"),
-  tech(mockPublicId("tst", 10), "TensorBoard", "/langs/sym-chart.svg", "TECH"),
   tech(
-    mockPublicId("tst", 11),
+    "tst_00000000000000000000000000000033",
+    "Safetensors",
+    "/langs/sym-shield.svg",
+    "TECH"
+  ),
+  tech(
+    "tst_00000000000000000000000000000034",
+    "Transformers",
+    "/langs/sym-layers.svg",
+    "TECH"
+  ),
+  tech(
+    "tst_00000000000000000000000000000035",
+    "TensorBoard",
+    "/langs/sym-chart.svg",
+    "TECH"
+  ),
+  tech(
+    "tst_00000000000000000000000000000036",
     "PyTorch",
     "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "TECH"
   ),
-  tech(mockPublicId("tst", 12), "PEFT", "/langs/sym-link.svg", "TECH"),
-  tech(mockPublicId("tst", 13), "Diffusers", "/langs/sym-spark.svg", "TECH"),
+  tech(
+    "tst_00000000000000000000000000000037",
+    "PEFT",
+    "/langs/sym-link.svg",
+    "TECH"
+  ),
+  tech(
+    "tst_00000000000000000000000000000038",
+    "Diffusers",
+    "/langs/sym-spark.svg",
+    "TECH"
+  ),
 ];

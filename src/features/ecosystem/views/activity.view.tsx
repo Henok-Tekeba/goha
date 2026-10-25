@@ -15,9 +15,9 @@ export default function ActivityView() {
           Today in Ethiopian AI
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-          Every new model, dataset, paper and milestone the daily scrape picks
-          up across Hugging Face and arXiv — the ecosystem as it happens, not a
-          quarterly report.
+          Recent model, dataset, paper and milestone events the daily scrape
+          picks up across Hugging Face and arXiv — a rolling feed of what the
+          index saw, not a complete inventory.
         </p>
         <div className="mt-6 rounded-[20px] border border-muted-black-stroke px-4 py-4">
           <p className="mb-2 font-medium text-muted-foreground text-xs uppercase tracking-wide">

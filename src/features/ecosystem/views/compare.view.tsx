@@ -258,8 +258,13 @@ export default function CompareView() {
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
           Put Ethiopian models side by side — download trajectories over the
-          last snapshots, plus the specs that matter: task, languages, license,
-          size and lineage. Pick up to four.
+          last snapshots, plus the specs the model cards publish: task,
+          languages, license and, when available, size and lineage. Pick up to
+          four.
+        </p>
+        <p className="mt-2 max-w-2xl text-muted-foreground text-xs leading-relaxed">
+          Parameters and base model are shown only when declared on the model
+          card; a dash means the field was not published, not that it is zero.
         </p>
       </header>
 

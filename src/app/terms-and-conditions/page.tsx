@@ -27,13 +27,12 @@ export default function TermsAndConditionsPage() {
             1. What goha is
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            goha (ጎሃ — &ldquo;dawn&rdquo; in Amharic) is a free, non-commercial
-            directory that indexes and organizes publicly available
-            artificial-intelligence resources for Ethiopian languages —
-            including Amharic, Afaan Oromo, Tigrinya, Ge&apos;ez and others. It
-            lists models, datasets, companies, and research papers so that
-            developers, researchers, and enthusiasts can find, compare, and
-            explore them in one place.
+            goha (ጎሃ) is a free, non-commercial directory that indexes and
+            organizes publicly available artificial-intelligence resources for
+            Ethiopian languages — including Amharic, Afaan Oromo, Tigrinya,
+            Ge&apos;ez and others. It lists models, datasets, companies, and
+            research papers so that developers, researchers, and enthusiasts can
+            find, compare, and explore them in one place.
           </p>
         </section>
 

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   return {
     title: `${language.name} AI — models, datasets & research`,
-    description: `Everything indexed for ${language.name}: models, datasets and research papers, with a coverage map and the gaps still open.`,
+    description: `Models, datasets and research papers indexed with ${language.name} in their language metadata, with a coverage map and the gaps still open.`,
     alternates: { canonical: `/lang/${language.slug}` },
   };
 }

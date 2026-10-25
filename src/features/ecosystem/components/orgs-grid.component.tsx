@@ -4,12 +4,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { EmptyState } from "@/shared/components/ui/empty-state";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { formatCount } from "@/shared/lib/format-count";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
-import { useOrgsQuery } from "../hooks/ecosystem.queries";
 import type { OrgRecord } from "../types/ecosystem.types";
 
 const KIND_LABEL = {
@@ -26,6 +24,12 @@ function initials(name: string): string {
     .map((part) => part.charAt(0).toUpperCase())
     .join("");
 }
+
+const KIND_FILTER_LABEL = {
+  company: "Companies",
+  lab: "Labs",
+  individual: "Individuals",
+} as const;
 
 function OrgCard({ org }: { org: OrgRecord }) {
   const total =
@@ -53,7 +57,7 @@ function OrgCard({ org }: { org: OrgRecord }) {
             {org.verified && (
               <span
                 className="shrink-0 text-ost-blue-three"
-                title="Curated — verified organization"
+                title="Curated by goha — hand-checked record, not an external certification"
               >
                 ✓
               </span>
@@ -95,20 +99,20 @@ function OrgCard({ org }: { org: OrgRecord }) {
   );
 }
 
-export default function OrgsGrid() {
-  const { data, isLoading, isError } = useOrgsQuery();
+export default function OrgsGrid({ orgs }: { orgs: OrgRecord[] }) {
+  const data = orgs;
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState<OrgRecord["kind"] | "all">("all");
 
   const kinds = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const org of data ?? [])
+    for (const org of data)
       counts.set(org.kind, (counts.get(org.kind) ?? 0) + 1);
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [data]);
 
   const filtered = useMemo(() => {
-    let list = data ?? [];
+    let list = data;
     if (query.trim()) {
       const q = query.toLowerCase();
       list = list.filter(
@@ -120,15 +124,6 @@ export default function OrgsGrid() {
     if (kind !== "all") list = list.filter((o) => o.kind === kind);
     return list;
   }, [data, query, kind]);
-
-  if (isError)
-    return (
-      <EmptyState
-        title="Couldn't load publishers"
-        description="The publisher index failed to load. Please try again later."
-        className="my-16"
-      />
-    );
 
   return (
     <div className="flex flex-col gap-5">
@@ -169,38 +164,17 @@ export default function OrgsGrid() {
                   : "text-muted-foreground hover:text-primary"
               )}
             >
-              {k === "individual" ? "Individuals" : `${k}s`}{" "}
+              {KIND_FILTER_LABEL[k as OrgRecord["kind"]]}{" "}
               <span className="text-muted-foreground">{count}</span>
             </button>
           ))}
         </div>
-        {!isLoading && (
-          <span className="ml-auto text-muted-foreground text-xs tabular-nums">
-            {filtered.length} publisher{filtered.length === 1 ? "" : "s"}
-          </span>
-        )}
+        <span className="ml-auto text-muted-foreground text-xs tabular-nums">
+          {filtered.length} publisher{filtered.length === 1 ? "" : "s"}
+        </span>
       </div>
 
-      {isLoading ? (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-[20px] border border-muted-black-stroke px-5 py-4"
-            >
-              <div className="flex items-center gap-3">
-                <Skeleton className="size-11 rounded-[12px]" />
-                <div className="flex-1">
-                  <Skeleton className="h-4 w-2/3" />
-                  <Skeleton className="mt-1.5 h-3 w-1/3" />
-                </div>
-              </div>
-              <Skeleton className="mt-3 h-3 w-full" />
-              <Skeleton className="mt-1.5 h-3 w-4/5" />
-            </div>
-          ))}
-        </div>
-      ) : filtered.length === 0 ? (
+      {filtered.length === 0 ? (
         <EmptyState
           title="No publishers match"
           description="Try clearing the search or filters."
