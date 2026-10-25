@@ -3,8 +3,16 @@
 import ActivityPulseChart from "@/features/ecosystem/components/charts/activity-pulse-chart";
 
 import ActivityFeed from "../components/activity-feed.component";
+import type { ActivityEvent } from "../types/ecosystem.types";
 
-export default function ActivityView() {
+export default function ActivityView({
+  events,
+  builtAt,
+}: {
+  events: ActivityEvent[];
+  builtAt: string;
+}) {
+  const builtDate = new Date(builtAt).toISOString().slice(0, 10);
   return (
     <div className="mx-auto max-w-3xl px-6">
       <header className="mb-8">
@@ -19,14 +27,22 @@ export default function ActivityView() {
           picks up across Hugging Face and arXiv — a rolling feed of what the
           index saw, not a complete inventory.
         </p>
+        <p className="mt-2 text-muted-foreground text-xs">
+          Feed built {builtDate} · relative times are measured from that
+          snapshot.
+        </p>
         <div className="mt-6 rounded-[20px] border border-muted-black-stroke px-4 py-4">
           <p className="mb-2 font-medium text-muted-foreground text-xs uppercase tracking-wide">
             Last 30 days
           </p>
-          <ActivityPulseChart className="h-40 w-full md:h-44" />
+          <ActivityPulseChart
+            events={events}
+            builtAt={builtAt}
+            className="h-40 w-full md:h-44"
+          />
         </div>
       </header>
-      <ActivityFeed />
+      <ActivityFeed events={events} builtAt={builtAt} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getPublicActivityPayload } from "@/features/ecosystem/lib/public-data.server";
 import ActivityView from "@/features/ecosystem/views/activity.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
@@ -11,10 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default function ActivityPage() {
+  const payload = getPublicActivityPayload();
   return (
     <>
       <main>
-        <ActivityView />
+        <ActivityView events={payload.data} builtAt={payload.builtAt} />
       </main>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}

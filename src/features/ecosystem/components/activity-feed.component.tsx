@@ -2,15 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FaArrowTrendUp, FaTrophy } from "react-icons/fa6";
 import { EmptyState } from "@/shared/components/ui/empty-state";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { asset } from "@/shared/lib/asset";
 import { cn } from "@/shared/lib/utils";
-import { formatTimeAgo } from "@/shared/lib/utils/format-time-ago";
 
-import { useActivityQuery } from "../hooks/ecosystem.queries";
 import type {
   ActivityEvent,
   ActivityEventType,
@@ -63,19 +60,9 @@ function isExternal(event: ActivityEvent): boolean {
   return !event.projectId;
 }
 
-function EventRow({
-  event,
-  mounted,
-}: {
-  event: ActivityEvent;
-  mounted: boolean;
-}) {
+function EventRow({ event }: { event: ActivityEvent }) {
   const external = isExternal(event);
-  const when = event.at
-    ? mounted
-      ? formatTimeAgo(event.at)
-      : event.at.slice(0, 10)
-    : "";
+  const when = event.ago ?? (event.at ? event.at.slice(0, 10) : "");
   return (
     <li className="border-muted-black-stroke border-b last:border-b-0">
       <Link
@@ -120,30 +107,32 @@ function groupOf(event: ActivityEvent, now: number): string {
 
 const GROUP_ORDER = ["Last 48 hours", "This week", "This month", "Earlier"];
 
-export default function ActivityFeed({ limit }: { limit?: number }) {
-  const { data, isLoading, isError } = useActivityQuery();
+export default function ActivityFeed({
+  events,
+  builtAt,
+  limit,
+}: {
+  events: ActivityEvent[];
+  builtAt: string;
+  limit?: number;
+}) {
   const [filter, setFilter] = useState<ActivityEventType | "all">("all");
-  /* Grouping depends on the client clock — render one flat group during
-     prerender/hydration, regroup once mounted to avoid mismatches. */
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
-  const events = useMemo(() => {
-    const list = data ?? [];
-    return limit ? list.slice(0, limit) : list;
-  }, [data, limit]);
+  const visible = useMemo(
+    () => (limit ? events.slice(0, limit) : events),
+    [events, limit]
+  );
 
   const filtered = useMemo(
     () =>
       filter === "all"
-        ? events
-        : events.filter((event) => event.type === filter),
-    [events, filter]
+        ? visible
+        : visible.filter((event) => event.type === filter),
+    [visible, filter]
   );
 
   const groups = useMemo(() => {
-    if (!mounted) return [["Recent events", filtered] as const];
-    const now = Date.now();
+    const now = new Date(builtAt).getTime();
     const map = new Map<string, ActivityEvent[]>();
     for (const event of filtered) {
       const key = groupOf(event, now);
@@ -153,21 +142,12 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
     return GROUP_ORDER.filter((key) => map.has(key)).map(
       (key) => [key, map.get(key) as ActivityEvent[]] as const
     );
-  }, [filtered, mounted]);
+  }, [filtered, builtAt]);
 
   const availableTypes = useMemo(() => {
-    const types = new Set((data ?? []).map((event) => event.type));
+    const types = new Set(events.map((event) => event.type));
     return TYPE_FILTERS.filter((f) => f.id === "all" || types.has(f.id));
-  }, [data]);
-
-  if (isError)
-    return (
-      <EmptyState
-        title="Couldn't load the feed"
-        description="The activity feed failed to load. Please try again later."
-        className="my-16"
-      />
-    );
+  }, [events]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -190,19 +170,7 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
         ))}
       </div>
 
-      {isLoading ? (
-        <div className="flex flex-col gap-3 rounded-[16px] border border-muted-black-stroke p-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-3 px-1">
-              <Skeleton className="size-8 rounded-[10px]" />
-              <div className="flex-1">
-                <Skeleton className="h-4 w-2/3" />
-                <Skeleton className="mt-1.5 h-3 w-1/4" />
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : groups.length === 0 ? (
+      {groups.length === 0 ? (
         <EmptyState
           title="Nothing here yet"
           description="No events for this filter — the ecosystem will catch up."
@@ -216,11 +184,7 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
             </h2>
             <ul className="rounded-[16px] border border-muted-black-stroke">
               {items.map((event) => (
-                <EventRow
-                  key={`${event.type}-${event.id}`}
-                  event={event}
-                  mounted={mounted}
-                />
+                <EventRow key={`${event.type}-${event.id}`} event={event} />
               ))}
             </ul>
           </section>

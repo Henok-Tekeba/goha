@@ -6,8 +6,8 @@ import {
   EChartsBarChart,
 } from "@/components/evilcharts/charts/echarts-bar-chart";
 
-import { useActivityQuery } from "../../hooks/ecosystem.queries";
 import { buildActivityPulseRows } from "../../lib/activity-pulse";
+import type { ActivityEvent } from "../../types/ecosystem.types";
 
 const chartConfig = {
   events: {
@@ -20,16 +20,19 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function ActivityPulseChart({
+  events,
+  builtAt,
   className,
   days = 30,
 }: {
+  events: ActivityEvent[];
+  builtAt: string;
   className?: string;
   days?: number;
 }) {
-  const { data } = useActivityQuery();
   const rows = useMemo(
-    () => buildActivityPulseRows(data ?? [], new Date(), days),
-    [data, days]
+    () => buildActivityPulseRows(events, new Date(builtAt), days),
+    [events, builtAt, days]
   );
 
   return (

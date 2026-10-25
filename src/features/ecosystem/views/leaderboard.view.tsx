@@ -6,19 +6,22 @@ import { FaDownload } from "react-icons/fa6";
 import { HiArrowTopRightOnSquare, HiCheck } from "react-icons/hi2";
 import ShareButton from "@/shared/components/share/share-button.component";
 import { EmptyState } from "@/shared/components/ui/empty-state";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
 import EcosystemGrowthChart from "../components/charts/ecosystem-growth-chart";
 import TopModelsChart from "../components/charts/top-models-chart";
 import WerBarChart from "../components/charts/wer-bar-chart";
-import { useLeaderboardQuery } from "../hooks/ecosystem.queries";
 import {
   groupLeaderboardSections,
   type LeaderboardGroup,
 } from "../lib/leaderboard-groups";
-import type { LeaderboardRow } from "../types/ecosystem.types";
+import type {
+  GrowthPayload,
+  Leaderboard,
+  LeaderboardRow,
+  TopModelHistoryPayload,
+} from "../types/ecosystem.types";
 
 function csvEscape(value: string | number | null): string {
   const s = String(value ?? "");
@@ -125,7 +128,59 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
         the model authors
       </p>
 
-      <div className="mt-3 overflow-x-auto">
+      <div className="mt-3 flex flex-col divide-y divide-muted-black-stroke rounded-[14px] border border-muted-black-stroke md:hidden">
+        {rows.map((row, i) => (
+          <div key={`${row.model}-${i}`} className="px-3 py-2.5">
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="min-w-0">
+                <span className="block truncate font-medium text-primary text-sm">
+                  {i + 1}. {row.model}
+                </span>
+                <span className="block truncate text-muted-foreground text-xs">
+                  {row.org}
+                  {row.languages.length
+                    ? ` · ${row.languages.slice(0, 2).join(", ")}`
+                    : ""}
+                </span>
+              </span>
+              <span className="shrink-0 text-right">
+                <span className="block font-medium text-primary text-sm tabular-nums">
+                  {row.display}
+                </span>
+                <span className="block text-[11px] text-muted-foreground">
+                  {row.metric}
+                </span>
+              </span>
+            </div>
+            <div className="mt-1 flex items-center justify-between gap-3 text-muted-foreground text-xs">
+              <span className="truncate">
+                {row.dataset ?? "No test set reported"}
+              </span>
+              <span className="flex shrink-0 items-center gap-3">
+                {row.downloads > 0 && (
+                  <span className="inline-flex items-center gap-1 tabular-nums">
+                    <FaDownload className="size-2.5" />
+                    {formatNumberShort(row.downloads)}
+                  </span>
+                )}
+                {row.source && (
+                  <a
+                    href={row.source}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open source for ${row.model}`}
+                    className="inline-flex text-muted-foreground hover:text-primary"
+                  >
+                    <HiArrowTopRightOnSquare className="size-4" />
+                  </a>
+                )}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-3 hidden overflow-x-auto md:block">
         <table className="w-full min-w-[640px] text-sm">
           <thead>
             <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">
@@ -238,11 +293,18 @@ function LeaderboardRowView({
   );
 }
 
-export default function LeaderboardView() {
-  const { data, isLoading, isError } = useLeaderboardQuery();
+export default function LeaderboardView({
+  leaderboard,
+  growth,
+  topModels,
+}: {
+  leaderboard: Leaderboard;
+  growth: GrowthPayload;
+  topModels: TopModelHistoryPayload;
+}) {
   const groups = useMemo(
-    () => (data ? groupLeaderboardSections(data.sections) : []),
-    [data]
+    () => groupLeaderboardSections(leaderboard.sections),
+    [leaderboard]
   );
   const asrWerGroup = groups.find(
     (group) => group.task === "ASR" && /wer/i.test(group.metric)
@@ -270,9 +332,10 @@ export default function LeaderboardView() {
           goha only normalizes formats; every row cites its source on Hugging
           Face. New results appear as the daily scrape picks them up.
         </p>
-        {data?.builtAt && (
+        {leaderboard.builtAt && (
           <p className="mt-2 text-muted-foreground text-xs">
-            Table built {new Date(data.builtAt).toISOString().slice(0, 10)} ·{" "}
+            Table built{" "}
+            {new Date(leaderboard.builtAt).toISOString().slice(0, 10)} ·{" "}
             <Link
               href="/lineage"
               className="underline underline-offset-4 hover:text-primary"
@@ -290,23 +353,7 @@ export default function LeaderboardView() {
         )}
       </header>
 
-      {isLoading ? (
-        <div className="flex flex-col gap-6">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-[20px] border border-muted-black-stroke p-6"
-            >
-              <Skeleton className="h-6 w-48" />
-              <div className="mt-4 flex flex-col gap-2">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Skeleton key={j} className="h-8 w-full" />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : isError || !data || groups.length === 0 ? (
+      {groups.length === 0 ? (
         <EmptyState
           title="No published results yet"
           description="Once models publish evaluation tables, they rank here."
@@ -328,7 +375,10 @@ export default function LeaderboardView() {
               Everything the daily scrape has indexed — models and datasets,
               June to today.
             </p>
-            <EcosystemGrowthChart className="mt-2 h-72 w-full md:h-80" />
+            <EcosystemGrowthChart
+              data={growth.data}
+              className="mt-2 h-72 w-full md:h-80"
+            />
           </section>
 
           {asrWerGroup && (
@@ -364,7 +414,10 @@ export default function LeaderboardView() {
               Monthly download trend for the five most-used models — drag the
               brush or the plot to focus on a window.
             </p>
-            <TopModelsChart className="mt-2 h-72 w-full md:h-80" />
+            <TopModelsChart
+              payload={topModels}
+              className="mt-2 h-72 w-full md:h-80"
+            />
           </section>
         </div>
       )}

@@ -1,5 +1,3 @@
-import type { Project } from "@/features/projects/types/project.type";
-
 import type {
   LanguageCoveragePayload,
   Leaderboard,
@@ -7,6 +5,23 @@ import type {
   PaperRecord,
 } from "../types/ecosystem.types";
 import type { AskEntity, ParsedAskQuery } from "./ask-parser";
+
+export interface AskProject {
+  id?: string;
+  title: string;
+  description: string;
+  owner: { name: string } | null;
+  downloadsMonthly?: number;
+  paramCount?: number | null;
+  evaluations?: unknown[];
+  projectCategories?: { name: string }[];
+  projectTechStacks?: { name: string; type?: string }[];
+  repositoryDetails?: {
+    languages?: string[] | Record<string, number>;
+    license?: string | null;
+  };
+  updatedAt: string;
+}
 
 export interface AskItem {
   type: "model" | "dataset" | "paper" | "org" | "benchmark";
@@ -31,7 +46,7 @@ export interface AskAnswer {
 }
 
 export interface AskData {
-  projects: Project[];
+  projects: AskProject[];
   papers: PaperRecord[];
   orgs: OrgRecord[];
   leaderboard: Leaderboard | null;
@@ -47,15 +62,15 @@ const KIND: Record<string, "model" | "dataset" | "company" | "research"> = {
 
 const TRACKED_TASKS = ["ASR", "TTS", "Translation", "LLM", "NER", "Embeddings"];
 
-function kindOf(project: Project) {
+function kindOf(project: AskProject) {
   return KIND[project.projectCategories?.[0]?.name ?? ""] ?? null;
 }
 
-function taskOf(project: Project): string | null {
+function taskOf(project: AskProject): string | null {
   return project.projectCategories?.[1]?.name ?? null;
 }
 
-function languagesOf(project: Project): string[] {
+function languagesOf(project: AskProject): string[] {
   const langs = project.repositoryDetails?.languages;
   const list = Array.isArray(langs)
     ? (langs as string[])
@@ -66,13 +81,18 @@ function languagesOf(project: Project): string[] {
   return [...new Set([...list, ...fromStacks])];
 }
 
-function matchesLanguage(project: Project, language: string): boolean {
-  if (languagesOf(project).includes(language)) return true;
+function matchesLanguage(project: AskProject, language: string): boolean {
+  const languages = languagesOf(project);
+  if (languages.length > 0) return languages.includes(language);
+  /* only fall back to the title when the card declares no language at all */
   return project.title.toLowerCase().includes(language.toLowerCase());
 }
 
-function matchesTask(project: Project, task: string): boolean {
-  if (taskOf(project) === task) return true;
+function matchesTask(project: AskProject, task: string): boolean {
+  const declared = taskOf(project);
+  if (declared === task) return true;
+  /* an explicit non-Other task should not be overridden by title keywords */
+  if (declared && declared !== "Other") return false;
   const title = project.title.toLowerCase();
   switch (task) {
     case "ASR":
@@ -100,7 +120,7 @@ function matchesKeywords(haystack: string, keywords: string[]): boolean {
   return keywords.some((keyword) => text.includes(keyword));
 }
 
-function projectItem(project: Project): AskItem {
+function projectItem(project: AskProject): AskItem {
   const task = taskOf(project);
   const language = languagesOf(project)[0];
   return {
@@ -361,7 +381,7 @@ export function buildAskAnswer(
       (a, b) => (b.downloadsMonthly ?? 0) - (a.downloadsMonthly ?? 0)
     );
   } else if (query.sort === "newest") {
-    const byNewest = (a: Project, b: Project) =>
+    const byNewest = (a: AskProject, b: AskProject) =>
       new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
     models.sort(byNewest);
     datasets.sort(byNewest);

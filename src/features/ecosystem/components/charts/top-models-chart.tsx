@@ -1,13 +1,12 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
 import {
   type ChartConfig,
   EChartsAreaChart,
 } from "@/components/evilcharts/charts/echarts-area-chart";
 
-import { getTopModelHistory } from "@/shared/lib/local-data.client";
+import type { TopModelHistoryPayload } from "../../types/ecosystem.types";
 
 /* per-series stroke palette — the OST blue ramp, darkened per rank */
 const RANK_COLORS: { light: string; dark: string }[] = [
@@ -32,20 +31,20 @@ function buildConfig(
   return config as ChartConfig;
 }
 
-export default function TopModelsChart({ className }: { className?: string }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ["ecosystem", "top-models-history"],
-    queryFn: ({ signal }) => withSignal(getTopModelHistory(), signal),
-  });
-
+export default function TopModelsChart({
+  payload,
+  className,
+}: {
+  payload: TopModelHistoryPayload;
+  className?: string;
+}) {
   return (
     <EChartsAreaChart
-      data={data?.rows ?? []}
-      config={buildConfig(data?.series)}
+      data={payload.rows}
+      config={buildConfig(payload.series)}
       xDataKey="date"
       curveType="smooth"
       className={className}
-      isLoading={isLoading}
     >
       <EChartsAreaChart.Grid />
       <EChartsAreaChart.XAxis
@@ -66,7 +65,7 @@ export default function TopModelsChart({ className }: { className?: string }) {
       />
       <EChartsAreaChart.Legend isClickable />
       <EChartsAreaChart.Tooltip />
-      {data?.series.map((s) => (
+      {payload.series.map((s) => (
         <EChartsAreaChart.Area
           key={s.id}
           dataKey={s.id}
@@ -79,10 +78,4 @@ export default function TopModelsChart({ className }: { className?: string }) {
       ))}
     </EChartsAreaChart>
   );
-}
-
-/* Same rationale as the ecosystem hooks: the loader memoizes a single
-   same-origin JSON fetch, so the AbortSignal is intentionally not wired. */
-function withSignal<T>(promise: Promise<T>, _signal?: AbortSignal): Promise<T> {
-  return promise;
 }

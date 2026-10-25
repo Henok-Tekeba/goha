@@ -123,7 +123,25 @@ export default function ApiPage() {
             >
               Endpoints
             </h2>
-            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white">
+            <div className="flex flex-col gap-2 md:hidden">
+              {ENDPOINTS.map((endpoint) => (
+                <div
+                  key={endpoint.path}
+                  className="rounded-[14px] border border-muted-black-stroke bg-white px-4 py-3"
+                >
+                  <code className="break-all text-primary text-xs">
+                    {endpoint.path}
+                  </code>
+                  <p className="mt-1 text-muted-foreground text-xs leading-relaxed">
+                    {endpoint.what}
+                  </p>
+                  <code className="mt-2 inline-block rounded bg-secondary px-1.5 py-0.5 text-[11px] text-muted-foreground">
+                    {endpoint.shape}
+                  </code>
+                </div>
+              ))}
+            </div>
+            <div className="hidden overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white md:block">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">

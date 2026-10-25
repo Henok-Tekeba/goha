@@ -1,15 +1,13 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { HiMiniXMark, HiOutlineCheck, HiOutlineLink } from "react-icons/hi2";
 
 import {
   type ChartConfig,
   EChartsAreaChart,
 } from "@/components/evilcharts/charts/echarts-area-chart";
-import { useProjectsQuery } from "@/features/projects/hooks/project.queries";
-import type { Project } from "@/features/projects/types/project.type";
 import { Button } from "@/shared/components/ui/button";
 import {
   Command,
@@ -31,6 +29,24 @@ import { formatTimeAgo } from "@/shared/lib/utils/format-time-ago";
 const MAX_MODELS = 4;
 const SERIES_COLORS = ["#2b7fff", "#0d9488", "#d97706", "#7c3aed"];
 
+export interface CompareModel {
+  id: string;
+  title: string;
+  owner: { name: string } | null;
+  downloadsMonthly: number;
+  sparkline: { points: number[]; timestamps?: (string | null)[] } | null;
+  projectCategories: { name: string }[];
+  paramCount: number | null;
+  baseModel: string | null;
+  repositoryDetails: {
+    languages: string[] | Record<string, number>;
+    license: string | null;
+    stars: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
 const LANGUAGE_SHORT: Record<string, string> = {
   Amharic: "Amharic",
   "Afaan Oromo": "Oromo",
@@ -42,12 +58,12 @@ const LANGUAGE_SHORT: Record<string, string> = {
   English: "English",
 };
 
-function taskOf(project: Project): string | null {
+function taskOf(project: CompareModel): string | null {
   const cats = project.projectCategories ?? [];
   return cats.length > 1 ? (cats[1]?.name ?? null) : null;
 }
 
-function languagesOf(project: Project): string[] {
+function languagesOf(project: CompareModel): string[] {
   const langs = project.repositoryDetails?.languages;
   const list = Array.isArray(langs)
     ? (langs as string[])
@@ -55,7 +71,7 @@ function languagesOf(project: Project): string[] {
   return list.map((l) => LANGUAGE_SHORT[l] ?? l);
 }
 
-function buildChartConfig(models: Project[]): ChartConfig {
+function buildChartConfig(models: CompareModel[]): ChartConfig {
   const config: Record<string, unknown> = {};
   models.forEach((m, i) => {
     const color = SERIES_COLORS[i % SERIES_COLORS.length];
@@ -67,25 +83,21 @@ function buildChartConfig(models: Project[]): ChartConfig {
   return config as ChartConfig;
 }
 
-function useModelSearch() {
-  const { data } = useProjectsQuery({ categories: "Model", per_page: 250 });
-  return data?.data ?? [];
-}
-
 function ModelPicker({
+  models,
   label,
   selected,
   onSelect,
   exclude,
   index,
 }: {
+  models: CompareModel[];
   label: string;
-  selected: Project[];
+  selected: CompareModel[];
   onSelect: (id: string) => void;
   exclude: string[];
   index: number;
 }) {
-  const models = useModelSearch();
   const [open, setOpen] = useState(false);
 
   return (
@@ -175,29 +187,37 @@ function SpecRow({
   );
 }
 
-export default function CompareView() {
+export default function CompareView({ models }: { models: CompareModel[] }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const allModels = useModelSearch();
+  const allModels = models;
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setSearch(window.location.search);
+    const onPop = () => setSearch(window.location.search);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   const ids = useMemo(() => {
-    const raw = searchParams.get("models") ?? "";
+    const raw = new URLSearchParams(search).get("models") ?? "";
     return raw.split(",").filter(Boolean).slice(0, MAX_MODELS);
-  }, [searchParams]);
+  }, [search]);
 
   const selected = useMemo(
     () =>
       ids
         .map((id) => allModels.find((m) => m.id === id))
-        .filter((m): m is Project => Boolean(m)),
+        .filter((m): m is CompareModel => Boolean(m)),
     [ids, allModels]
   );
 
   const setIds = (next: string[]) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
     if (next.length) params.set("models", next.join(","));
     else params.delete("models");
     const qs = params.toString();
+    setSearch(qs ? `?${qs}` : "");
     router.replace(`/compare${qs ? `?${qs}` : ""}`, { scroll: false });
   };
 
@@ -299,6 +319,7 @@ export default function CompareView() {
                 </div>
               ) : (
                 <ModelPicker
+                  models={models}
                   label={`Model ${i + 1}`}
                   selected={selected}
                   onSelect={addModel}
@@ -372,6 +393,56 @@ export default function CompareView() {
                 </EChartsAreaChart.Area>
               ))}
             </EChartsAreaChart>
+            <details className="mt-3 rounded-[12px] border border-muted-black-stroke px-3 py-2">
+              <summary className="cursor-pointer select-none text-muted-foreground text-xs">
+                Data table — daily downloads
+              </summary>
+              <div className="mt-2 overflow-x-auto">
+                <table className="w-full min-w-[420px] text-left text-xs">
+                  <caption className="sr-only">
+                    Daily downloads for the selected models.
+                  </caption>
+                  <thead>
+                    <tr className="border-muted-black-stroke border-b text-muted-foreground">
+                      <th className="py-1.5 pr-3 font-medium">Date</th>
+                      {selected.map((m) => (
+                        <th
+                          key={m.id}
+                          className="py-1.5 pr-3 text-right font-medium"
+                        >
+                          {m.title}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {chart.rows.map((row) => (
+                      <tr
+                        key={String(row.date)}
+                        className="border-muted-black-stroke border-b last:border-b-0"
+                      >
+                        <td className="py-1.5 pr-3 text-muted-foreground tabular-nums">
+                          {String(row.date)}
+                        </td>
+                        {selected.map((m) => {
+                          const value = row[m.id as string];
+                          return (
+                            <td
+                              key={m.id}
+                              className="py-1.5 pr-3 text-right text-primary tabular-nums"
+                            >
+                              {typeof value === "number"
+                                ? value.toLocaleString("en")
+                                : "—"}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
           </section>
 
           <section className="overflow-x-auto rounded-[18px] border border-muted-black-stroke bg-white px-5 py-4">

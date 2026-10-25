@@ -142,18 +142,22 @@ export function LegendOverlay({
           <div
             key={key}
             className={`flex items-center gap-1.5 transition-opacity ${
-              !isSelected ? "opacity-30" : ""
-            } ${isClickable ? "cursor-pointer" : ""}`}
+              isClickable ? "cursor-pointer" : ""
+            }`}
             onClick={() => {
               if (isClickable) onToggle(key);
             }}
           >
-            <LegendIndicator
-              variant={variant}
-              dataKey={key}
-              colorsCount={colorsCount}
-            />
-            {item?.label}
+            <span className={!isSelected ? "opacity-30" : ""}>
+              <LegendIndicator
+                variant={variant}
+                dataKey={key}
+                colorsCount={colorsCount}
+              />
+            </span>
+            <span className={!isSelected ? "text-muted-foreground" : ""}>
+              {item?.label}
+            </span>
           </div>
         );
       })}

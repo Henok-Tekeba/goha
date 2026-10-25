@@ -1,22 +1,14 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { HiArrowLongRight, HiMagnifyingGlass } from "react-icons/hi2";
 import { asset } from "@/shared/lib/asset";
-import {
-  getAllProjects,
-  getLanguageCoverage,
-  getLeaderboard,
-  getOrgs,
-  getPapers,
-} from "@/shared/lib/local-data.client";
 import { cn } from "@/shared/lib/utils";
 
-import { type AskItem, buildAskAnswer } from "../lib/ask-answer";
+import { type AskData, type AskItem, buildAskAnswer } from "../lib/ask-answer";
 import { parseAskQuery } from "../lib/ask-parser";
 
 const EXAMPLES = [
@@ -35,26 +27,6 @@ const TYPE_ICON: Record<AskItem["type"], string> = {
   org: "/types/company.svg",
   benchmark: "/types/audio.svg",
 };
-
-function useAskData() {
-  return useQuery({
-    queryKey: ["ecosystem", "ask-data"],
-    queryFn: () =>
-      Promise.all([
-        getAllProjects(),
-        getPapers(),
-        getOrgs(),
-        getLeaderboard(),
-        getLanguageCoverage(),
-      ]).then(([projects, papers, orgs, leaderboard, coverage]) => ({
-        projects,
-        papers,
-        orgs,
-        leaderboard,
-        coverage,
-      })),
-  });
-}
 
 function ResultRow({ item }: { item: AskItem }) {
   const className =
@@ -101,19 +73,21 @@ function ResultRow({ item }: { item: AskItem }) {
   );
 }
 
-export default function AskView() {
+export default function AskView({ data }: { data: AskData }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const initial = searchParams.get("q") ?? "";
-  const [input, setInput] = useState(initial);
-  const [submitted, setSubmitted] = useState(initial);
+  const [input, setInput] = useState("");
+  const [submitted, setSubmitted] = useState("");
 
   useEffect(() => {
-    setInput(searchParams.get("q") ?? "");
-    setSubmitted(searchParams.get("q") ?? "");
-  }, [searchParams]);
-
-  const { data, isLoading } = useAskData();
+    const apply = () => {
+      const q = new URLSearchParams(window.location.search).get("q") ?? "";
+      setInput(q);
+      setSubmitted(q);
+    };
+    apply();
+    window.addEventListener("popstate", apply);
+    return () => window.removeEventListener("popstate", apply);
+  }, []);
 
   const parsed = useMemo(
     () => (submitted ? parseAskQuery(submitted) : null),
@@ -121,14 +95,14 @@ export default function AskView() {
   );
 
   const answer = useMemo(() => {
-    if (!parsed || !data) return null;
+    if (!parsed) return null;
     return buildAskAnswer(parsed, data);
   }, [parsed, data]);
 
   const submit = (value: string) => {
     const q = value.trim();
     setSubmitted(q);
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
     if (q) params.set("q", q);
     else params.delete("q");
     const qs = params.toString();
@@ -203,10 +177,6 @@ export default function AskView() {
           </button>
         ))}
       </div>
-
-      {isLoading && submitted && (
-        <div className="mt-8 h-24 animate-pulse rounded-[18px] border border-muted-black-stroke" />
-      )}
 
       {answer && (
         <section className="mt-8" aria-live="polite">

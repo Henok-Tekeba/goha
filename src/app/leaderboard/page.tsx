@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+import {
+  getPublicGrowth,
+  getPublicLeaderboard,
+  getPublicTopModels,
+} from "@/features/ecosystem/lib/public-data.server";
 import LeaderboardView from "@/features/ecosystem/views/leaderboard.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
@@ -14,7 +19,11 @@ export default function LeaderboardPage() {
   return (
     <>
       <main>
-        <LeaderboardView />
+        <LeaderboardView
+          leaderboard={getPublicLeaderboard()}
+          growth={getPublicGrowth()}
+          topModels={getPublicTopModels()}
+        />
       </main>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}

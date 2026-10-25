@@ -1,13 +1,12 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
 import {
   type ChartConfig,
   EChartsAreaChart,
 } from "@/components/evilcharts/charts/echarts-area-chart";
 
-import { getGrowthHistory } from "@/shared/lib/local-data.client";
+import type { GrowthPoint } from "../../types/ecosystem.types";
 
 const chartConfig = {
   models: {
@@ -27,23 +26,19 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function EcosystemGrowthChart({
+  data,
   className,
 }: {
+  data: GrowthPoint[];
   className?: string;
 }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ["ecosystem", "growth"],
-    queryFn: ({ signal }) => withSignal(getGrowthHistory(), signal),
-  });
-
   return (
     <EChartsAreaChart
-      data={(data?.data ?? []) as unknown as Record<string, unknown>[]}
+      data={data as unknown as Record<string, unknown>[]}
       config={chartConfig}
       xDataKey="date"
       curveType="smooth"
       className={className}
-      isLoading={isLoading}
       defaultSelectedDataKey={null}
     >
       <EChartsAreaChart.Grid />
@@ -75,10 +70,4 @@ export default function EcosystemGrowthChart({
       </EChartsAreaChart.Area>
     </EChartsAreaChart>
   );
-}
-
-/* Same rationale as the ecosystem hooks: the loader memoizes a single
-   same-origin JSON fetch, so the AbortSignal is intentionally not wired. */
-function withSignal<T>(promise: Promise<T>, _signal?: AbortSignal): Promise<T> {
-  return promise;
 }

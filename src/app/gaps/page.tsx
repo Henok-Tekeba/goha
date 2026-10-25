@@ -123,7 +123,53 @@ export default function GapsPage() {
               Models + datasets per task. A dash means nothing is indexed; a
               number in parentheses is published papers.
             </p>
-            <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white">
+            <div className="flex flex-col gap-2 md:hidden">
+              {report.languages.map((language) => (
+                <div
+                  key={language.slug}
+                  className="rounded-[14px] border border-muted-black-stroke bg-white px-4 py-3"
+                >
+                  <Link
+                    href={`/lang/${language.slug}`}
+                    className="inline-flex items-center gap-2 text-primary text-sm hover:underline"
+                  >
+                    <span
+                      aria-hidden
+                      className="flex size-6 items-center justify-center rounded-[6px] border border-muted-black-stroke text-[11px]"
+                      style={{
+                        fontFamily: "'Noto Sans Ethiopic', sans-serif",
+                      }}
+                    >
+                      {language.glyph}
+                    </span>
+                    {language.name}
+                  </Link>
+                  <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
+                    {language.cells.map((cell) => (
+                      <div
+                        key={cell.task}
+                        className="flex items-baseline justify-between gap-2"
+                      >
+                        <dt className="text-muted-foreground">{cell.task}</dt>
+                        <dd className="tabular-nums">
+                          {cell.assets === 0 ? (
+                            <span className="text-muted-foreground">—</span>
+                          ) : (
+                            <span className="text-primary">{cell.assets}</span>
+                          )}
+                          {cell.papers > 0 && (
+                            <span className="ml-1 text-[11px] text-muted-foreground">
+                              ({cell.papers})
+                            </span>
+                          )}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ))}
+            </div>
+            <div className="hidden overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white md:block">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">

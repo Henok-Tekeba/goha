@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LanguageRadarChart from "@/features/ecosystem/components/charts/language-radar-chart";
+import { getPublicLanguageCoverage } from "@/features/ecosystem/lib/public-data.server";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 import {
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 
 export default function LanguagesIndexPage() {
   const summary = getLanguageCoverageSummary();
+  const coverage = getPublicLanguageCoverage();
   const rows = languages.map((language) => {
     const page = getLanguagePage(language.slug);
     return page
@@ -91,7 +93,10 @@ export default function LanguagesIndexPage() {
               records as the cards above. Click a language to isolate it; the
               missing axes are the open problems in Ethiopian AI.
             </p>
-            <LanguageRadarChart className="h-[420px] w-full md:h-[480px]" />
+            <LanguageRadarChart
+              coverage={coverage}
+              className="h-[420px] w-full md:h-[480px]"
+            />
             <p className="mt-4 text-muted-foreground text-xs">
               <Link
                 href="/gaps"

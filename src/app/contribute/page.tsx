@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { FRONTEND_URL } from "@/config/config";
 import ContributionForm from "@/features/contribute/components/contribution-form.component";
+import { getPublicStats } from "@/features/ecosystem/lib/public-data.server";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 
 const CONTRIBUTE_URL = `${FRONTEND_URL.replace(/\/$/, "")}/contribute`;
@@ -36,6 +37,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContributePage() {
+  const stats = getPublicStats();
+  const snapshot = new Date(stats.indexedAt).toISOString().slice(0, 10);
   return (
     <main>
       <div className="mx-auto max-w-4xl px-6">
@@ -65,7 +68,8 @@ export default function ContributePage() {
 
         <p className="mt-4 text-[13px] text-muted-foreground">
           Public GitHub issue · manually reviewed by a maintainer · indexed only
-          after review. There is no automatic ingestion pipeline yet.
+          after review. There is no automatic ingestion pipeline yet. Current
+          index snapshot: {snapshot}.
         </p>
 
         <div className="my-16 flex flex-wrap gap-x-6 gap-y-3 border-muted-black-stroke border-t pt-6 text-sm">

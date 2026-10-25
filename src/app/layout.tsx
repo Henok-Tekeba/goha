@@ -130,6 +130,15 @@ export default async function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${GeistMono.variable} antialiased`}
     >
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/Aspekta-500.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body suppressHydrationWarning>
         <Providers>
           <Header githubStars={githubStars} />

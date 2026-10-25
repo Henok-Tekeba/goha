@@ -1,12 +1,11 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import {
   type ChartConfig,
   EChartsRadarChart,
 } from "@/components/evilcharts/charts/echarts-radar-chart";
 
-import { getLanguageCoverage } from "@/shared/lib/local-data.client";
+import type { LanguageCoveragePayload } from "../../types/ecosystem.types";
 
 const RADAR_COLORS: { light: string; dark: string }[] = [
   { light: "#2b7fff", dark: "#51a2ff" },
@@ -30,21 +29,17 @@ function buildConfig(languages: string[] | undefined): ChartConfig {
 }
 
 export default function LanguageRadarChart({
+  coverage,
   className,
 }: {
+  coverage: LanguageCoveragePayload;
   className?: string;
 }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ["ecosystem", "language-coverage"],
-    queryFn: ({ signal }) => withSignal(getLanguageCoverage(), signal),
-  });
-
   return (
     <EChartsRadarChart
-      data={data?.rows ?? []}
-      config={buildConfig(data?.languages)}
+      data={coverage.rows}
+      config={buildConfig(coverage.languages)}
       className={className}
-      isLoading={isLoading}
       defaultSelectedDataKey="Amharic"
     >
       <EChartsRadarChart.PolarGrid />
@@ -55,7 +50,7 @@ export default function LanguageRadarChart({
         align="center"
         verticalAlign="bottom"
       />
-      {data?.languages.map((lang) => (
+      {coverage.languages.map((lang) => (
         <EChartsRadarChart.Radar
           key={lang}
           dataKey={lang}
@@ -66,10 +61,4 @@ export default function LanguageRadarChart({
       ))}
     </EChartsRadarChart>
   );
-}
-
-/* Same rationale as the ecosystem hooks: the loader memoizes a single
-   same-origin JSON fetch, so the AbortSignal is intentionally not wired. */
-function withSignal<T>(promise: Promise<T>, _signal?: AbortSignal): Promise<T> {
-  return promise;
 }
