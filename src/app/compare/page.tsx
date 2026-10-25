@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import CompareSkeleton from "@/features/ecosystem/components/skeletons/compare-skeleton.component";
 import CompareView from "@/features/ecosystem/views/compare.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
@@ -15,7 +16,7 @@ export default function ComparePage() {
   return (
     <>
       <main>
-        <Suspense>
+        <Suspense fallback={<CompareSkeleton />}>
           <CompareView />
         </Suspense>
       </main>

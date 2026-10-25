@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import AskSkeleton from "@/features/ecosystem/components/skeletons/ask-skeleton.component";
 import AskView from "@/features/ecosystem/views/ask.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
@@ -15,7 +16,7 @@ export default function AskPage() {
   return (
     <>
       <main>
-        <Suspense>
+        <Suspense fallback={<AskSkeleton />}>
           <AskView />
         </Suspense>
       </main>
