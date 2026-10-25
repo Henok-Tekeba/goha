@@ -55,7 +55,7 @@ async function backfill(file, endpoint) {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  writeFileSync(filePath, JSON.stringify(payload) + "\n");
+  writeFileSync(filePath, JSON.stringify(payload, null, 2) + "\n");
   console.log(`${file}: ${updated}/${items.length} updated`);
 }
 
