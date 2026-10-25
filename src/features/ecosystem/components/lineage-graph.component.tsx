@@ -246,7 +246,15 @@ export default function LineageGraph({ className }: { className?: string }) {
               style={{ backgroundColor: colorFor(family.family) }}
             />
             {family.family}
-            <span className="text-muted-foreground">{family.count}</span>
+            <span
+              className={
+                activeFamily === family.family
+                  ? "text-primary-foreground/70"
+                  : "text-muted-foreground"
+              }
+            >
+              {family.count}
+            </span>
           </button>
         ))}
       </div>
