@@ -80,13 +80,15 @@ test("real leaderboard groups by task, metric and test set", () => {
   const asrGroups = groups.filter((group) => group.task === "ASR");
   assert.ok(asrGroups.length >= 2);
   for (const group of asrGroups) {
-    assert.ok(group.language, `${group.label} has no language`);
-    assert.ok(
-      [...group.rows, ...group.unrankedRows].every((row) =>
-        row.languages.includes(group.language as string)
-      ),
-      `${group.label} mixes languages`
-    );
+    if (group.rows.length > 0) {
+      assert.ok(group.language, `${group.label} has no language`);
+      assert.ok(
+        group.rows.every((row) =>
+          row.languages.includes(group.language as string)
+        ),
+        `${group.label} mixes languages`
+      );
+    }
     assert.ok(
       ![...group.rows, ...group.unrankedRows].some((row) =>
         /t5|mt5|sec2sec/i.test(row.model)

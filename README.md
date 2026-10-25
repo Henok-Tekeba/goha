@@ -124,7 +124,7 @@ src/                      Next.js 15 app (static export)
 out/                      deployable static site (GitHub Pages)
 ```
 
-Project ids are derived from the upstream source id (for example `hf:owner/name`), so they survive scrape reordering. Legacy ids are kept as static redirects.
+Project ids are derived from the upstream source id (for example `hf:owner/name`), so they survive scrape reordering. Legacy ids are kept as static redirects. If a Hugging Face repository is renamed or transferred, add the old source id to the new one in `src/mocks/fixtures/project-source-aliases.json` — the build then carries the previous project id forward as a redirect. The committed `project-id-history.json` lets the live smoke test fail if an id disappears while its source still exists.
 
 Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
 

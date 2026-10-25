@@ -65,7 +65,7 @@ export default function CTAFooter({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Star on Github
+              Star goha on GitHub
               <HiStar size={16} />
             </Link>
           </Button>
@@ -75,7 +75,7 @@ export default function CTAFooter({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Follow
+              Follow @HenokTekeba on X
               <RiTwitterXFill size={16} aria-hidden />
             </Link>
           </Button>

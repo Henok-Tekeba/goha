@@ -12,3 +12,20 @@ export function projectIdForSource(sourceId) {
     .slice(0, 32);
   return `pjt_${digest}`;
 }
+
+/**
+ * Resolve Hugging Face renames/transfers through an explicit alias map,
+ * for example {"hf:old-owner/name": "hf:new-owner/name"}.
+ * Chains are followed; cycles are treated as terminal.
+ */
+export function resolveSourceAlias(sourceId, aliases) {
+  let current = String(sourceId);
+  const seen = new Set();
+
+  while (aliases?.[current] && !seen.has(current)) {
+    seen.add(current);
+    current = String(aliases[current]);
+  }
+
+  return current;
+}

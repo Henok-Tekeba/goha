@@ -22,12 +22,15 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { projectIdForSource } from "./project-id.mjs";
+import { projectIdForSource, resolveSourceAlias } from "./project-id.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = (f) => path.join(ROOT, "data", f);
 const FIXTURES = path.join(ROOT, "src", "mocks", "fixtures");
 const LANGS_OUT = path.join(ROOT, "public", "langs");
+const SOURCE_ALIASES = JSON.parse(
+  readFileSync(path.join(FIXTURES, "project-source-aliases.json"), "utf8")
+);
 
 const hex32 = (n) => n.toString(16).padStart(32, "0").slice(-32);
 const id = (prefix, n) => `${prefix}_${hex32(n)}`;
@@ -498,7 +501,10 @@ for (const src of [
     ? `${taskNoun} ${kindWord}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`
     : `${titleCase(kindWord)}${langs.length ? ` for ${langs.slice(0, 3).join(", ")}` : ""}.`;
   const baseNote = it.base_model ? ` Fine-tuned from ${it.base_model}.` : "";
-  const sourceId = `${src.kind === "dataset" ? "hf-dataset" : "hf"}:${it.id}`;
+  const sourceId = resolveSourceAlias(
+    `${src.kind === "dataset" ? "hf-dataset" : "hf"}:${it.id}`,
+    SOURCE_ALIASES
+  );
   const projectId = projectIdForSource(sourceId);
 
   projects.push({
@@ -587,7 +593,7 @@ for (const src of [
 
 /* companies */
 for (const c of companies) {
-  const sourceId = `company:${c.name}`;
+  const sourceId = resolveSourceAlias(`company:${c.name}`, SOURCE_ALIASES);
   const projectId = projectIdForSource(sourceId);
   projects.push({
     id: projectId,
@@ -666,7 +672,7 @@ for (const c of companies) {
 for (const p of papers) {
   const abs = `https://arxiv.org/abs/${p.arxiv_id}`;
   const authorsLine = (p.authors || []).join(", ");
-  const sourceId = `arxiv:${p.arxiv_id}`;
+  const sourceId = resolveSourceAlias(`arxiv:${p.arxiv_id}`, SOURCE_ALIASES);
   const projectId = projectIdForSource(sourceId);
   projects.push({
     id: projectId,
@@ -1122,6 +1128,48 @@ stats.counts.orgs = mergedOrgList.length;
 
 projects.sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0));
 
+/* ---------- id continuity ---------- */
+/* A rename is not detectable from the new scrape alone. When the alias map is
+   updated, carry the previous project id forward as a static redirect. */
+const legacyPath = path.join(FIXTURES, "legacy-project-ids.json");
+const previousProjectsPath = path.join(FIXTURES, "projects.mock.json");
+const legacyIds = existsSync(legacyPath)
+  ? JSON.parse(readFileSync(legacyPath, "utf8"))
+  : {};
+const previousProjects = existsSync(previousProjectsPath)
+  ? JSON.parse(readFileSync(previousProjectsPath, "utf8"))
+  : [];
+const currentIdBySource = new Map(
+  projects.map((project) => [project.sourceId, project.id])
+);
+for (const previous of previousProjects) {
+  if (!previous?.id || !previous?.sourceId) continue;
+  const resolvedSource = resolveSourceAlias(previous.sourceId, SOURCE_ALIASES);
+  const currentId = currentIdBySource.get(resolvedSource);
+  if (currentId && currentId !== previous.id) {
+    legacyIds[previous.id] = currentId;
+  }
+}
+const sortedLegacyIds = Object.fromEntries(
+  Object.entries(legacyIds).sort(([a], [b]) => a.localeCompare(b))
+);
+writeFileSync(legacyPath, JSON.stringify(sortedLegacyIds, null, 2) + "\n");
+
+/* Keep a small daily history so the live smoke test can detect id drift. */
+const historyPath = path.join(FIXTURES, "project-id-history.json");
+const history = existsSync(historyPath)
+  ? JSON.parse(readFileSync(historyPath, "utf8"))
+  : {};
+const snapshotDate = new Date(buildTime).toISOString().slice(0, 10);
+history[snapshotDate] = Object.fromEntries(
+  projects.map((project) => [project.id, project.sourceId])
+);
+const historyDates = Object.keys(history).sort().slice(-30);
+const trimmedHistory = Object.fromEntries(
+  historyDates.map((date) => [date, history[date]])
+);
+writeFileSync(historyPath, JSON.stringify(trimmedHistory, null, 2) + "\n");
+
 mkdirSync(FIXTURES, { recursive: true });
 writeFileSync(
   path.join(FIXTURES, "projects.mock.json"),
@@ -1323,15 +1371,28 @@ function embeddingDimOf(dataset) {
   return Number.isFinite(dim) ? dim : null;
 }
 
+function datasetSourceUrl(dataset) {
+  const type = String(dataset?.type || "").trim();
+  /* HF eval datasets look like "google/fleurs" or "org/name"; dimensions and
+     internal names like "dev-ir" do not have their own dataset page. */
+  if (/^[^/\s]+\/[^/\s]+$/.test(type) && !/^dim/i.test(type)) {
+    return `https://huggingface.co/datasets/${type}`;
+  }
+  return null;
+}
+
 function isAsrModel(model) {
+  /* Use Hugging Face's own task declaration. Do not guess from model names or
+     base models: a T5 translation card can carry a stray wer_score, and a
+     whimsically named ASR card should still be found through its metadata. */
+  if (model.pipeline_tag) {
+    return model.pipeline_tag === "automatic-speech-recognition";
+  }
   const tags = (model.tags || []).map((tag) => String(tag).toLowerCase());
-  const base = String(model.base_model || "").toLowerCase();
   return (
-    model.pipeline_tag === "automatic-speech-recognition" ||
-    /\basr\b/i.test(String(model.type_label || model.badge || "")) ||
+    /^ASR$/i.test(String(model.type_label || model.badge || "")) ||
     tags.includes("automatic-speech-recognition") ||
-    tags.includes("asr") ||
-    /whisper|wav2vec|w2v|hubert|wavlm|data2vec/.test(base)
+    tags.includes("asr")
   );
 }
 
@@ -1402,7 +1463,7 @@ for (const m of models) {
         languages: rowLangs,
         dataset: datasetDisplay || null,
         embeddingDim,
-        evaluationSource: m.hf_url || null,
+        evaluationSource: datasetSourceUrl(e.dataset) ?? m.hf_url ?? null,
         metric: String(metric.name || metric.type || "Metric").replace(
           /\s*\(.*\)\s*$/,
           ""

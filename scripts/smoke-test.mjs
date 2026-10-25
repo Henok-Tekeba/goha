@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 import { projectIdForSource } from "./project-id.mjs";
 
@@ -154,6 +154,42 @@ async function main() {
   const legacy = JSON.parse(
     readFileSync("src/mocks/fixtures/legacy-project-ids.json", "utf8")
   );
+  const historyPath = "src/mocks/fixtures/project-id-history.json";
+  if (existsSync(historyPath)) {
+    const history = JSON.parse(readFileSync(historyPath, "utf8"));
+    const dates = Object.keys(history).sort();
+    const previousDate = dates.at(-2);
+    if (previousDate) {
+      const currentById = new Map(
+        projects.map((project) => [project.id, project.sourceId])
+      );
+      const currentSources = new Set(
+        projects.map((project) => project.sourceId)
+      );
+      let carried = 0;
+      for (const [id, sourceId] of Object.entries(history[previousDate])) {
+        if (currentById.has(id)) continue;
+        assert.ok(
+          !currentSources.has(sourceId),
+          `${sourceId} still exists but its id changed from ${id}`
+        );
+        if (legacy[id]) {
+          const redirect = await fetchText(`/projects/${id}/`);
+          assert.ok(
+            redirect.includes(legacy[id]),
+            `legacy id ${id} no longer redirects`
+          );
+          carried += 1;
+        }
+      }
+      console.log(
+        `✓ ${Object.keys(history[previousDate]).length} ids from ${previousDate} still resolve${carried ? ` (${carried} via redirect)` : ""}`
+      );
+    } else {
+      console.log("• id history has one day; cross-day check starts tomorrow");
+    }
+  }
+
   const [legacyId, currentId] = Object.entries(legacy)[0] ?? [];
   assert.ok(legacyId && currentId, "legacy project mapping is empty");
   const legacyHtml = await fetchText(`/projects/${legacyId}/`);
@@ -195,6 +231,12 @@ async function main() {
       );
     }
   }
+  const fleurs = asr.rows.find((row) => /FLEURS/i.test(row.dataset ?? ""));
+  assert.ok(fleurs, "ASR FLEURS row is missing");
+  assert.ok(
+    /\/datasets\//.test(fleurs.evaluationSource ?? ""),
+    "FLEURS row does not link to the evaluation dataset"
+  );
   const leaderboardText = stripHtml(html.get("/leaderboard/"));
   for (const language of new Set(asr.rows.map((row) => row.languages[0]))) {
     assert.ok(

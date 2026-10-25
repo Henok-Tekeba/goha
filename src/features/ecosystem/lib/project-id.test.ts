@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { projectIdForSource } from "../../../../scripts/project-id.mjs";
+import {
+  projectIdForSource,
+  resolveSourceAlias,
+} from "../../../../scripts/project-id.mjs";
 import projectsJson from "../../../../src/mocks/fixtures/projects.mock.json";
 
 interface FixtureProject {
@@ -36,6 +39,25 @@ test("ids stay stable when two scrapes return the same records in a different or
   );
 
   assert.deepEqual(first, second);
+});
+
+test("source aliases resolve renames and transfers", () => {
+  const aliases = {
+    "hf:old-owner/name": "hf:new-owner/name",
+    "hf:new-owner/name": "hf:final-owner/name",
+  };
+  assert.equal(
+    resolveSourceAlias("hf:old-owner/name", aliases),
+    "hf:final-owner/name"
+  );
+  assert.equal(
+    projectIdForSource(resolveSourceAlias("hf:old-owner/name", aliases)),
+    projectIdForSource("hf:final-owner/name")
+  );
+  assert.equal(
+    resolveSourceAlias("hf:unrelated/name", aliases),
+    "hf:unrelated/name"
+  );
 });
 
 test("committed projects use their source-derived id", () => {

@@ -84,21 +84,26 @@ export function groupLeaderboardSections(
     for (const row of section.rows) {
       const testSet = normalizeTestSet(row.dataset);
       const isAsr = section.task === "ASR";
-      const language = isAsr
-        ? ([...row.languages].sort()[0] ?? "Unspecified")
-        : null;
-      const key = `${section.task}\u0000${row.metric}\u0000${testSet ?? ""}\u0000${language ?? ""}`;
+      const unrankedAsr = isAsr && !testSet;
+      const language =
+        isAsr && !unrankedAsr
+          ? ([...row.languages].sort()[0] ?? "Unspecified")
+          : null;
+      const key = `${section.task}\u0000${row.metric}\u0000${testSet ?? ""}\u0000${unrankedAsr ? "unranked" : (language ?? "")}`;
       let group = groups.get(key);
 
       if (!group) {
         const baseId = slugify(
-          `${section.task}-${row.metric}-${testSet ?? ""}-${language ?? ""}-${section.name}`
+          `${section.task}-${row.metric}-${testSet ?? ""}-${unrankedAsr ? "unranked" : (language ?? "")}-${section.name}`
         );
         const seen = seenIds.get(baseId) ?? 0;
         seenIds.set(baseId, seen + 1);
         const labelParts = [section.name, row.metric];
-        if (language) labelParts.push(language);
-        if (testSet) labelParts.push(testSet);
+        if (unrankedAsr) labelParts.push("test set not stated");
+        else {
+          if (language) labelParts.push(language);
+          if (testSet) labelParts.push(testSet);
+        }
 
         group = {
           id: seen === 0 ? baseId : `${baseId}-${seen + 1}`,
@@ -116,7 +121,7 @@ export function groupLeaderboardSections(
         groups.set(key, group);
       }
 
-      if (isAsr && !testSet) group.unrankedRows.push(row);
+      if (unrankedAsr) group.unrankedRows.push(row);
       else group.rows.push(row);
     }
   }
