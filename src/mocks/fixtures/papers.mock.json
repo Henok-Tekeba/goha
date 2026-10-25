@@ -16,9 +16,17 @@
     "published": "2026-10-19T19:40:15.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2610.27205v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001d7"
   },
   {
@@ -36,65 +44,131 @@
     "published": "2026-10-19T14:06:28.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2610.26448v1",
-    "categories": ["cs.CL", "cs.SD", "eess.AS"],
-    "languages": ["Amharic"],
-    "tasks": ["ASR", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.SD",
+      "eess.AS"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "ASR",
+      "Benchmark"
+    ],
     "projectId": "pjt_00000000000000000000000000000194"
   },
   {
     "slug": "language-is-a-security-surface-for-agent-guards",
     "arxivId": "2610.22244v1",
     "title": "Language Is a Security Surface for Agent Guards",
-    "authors": ["Hasan Demirkiran", "Jens Ernstberger"],
+    "authors": [
+      "Hasan Demirkiran",
+      "Jens Ernstberger"
+    ],
     "abstract": "Step-level guards decide, before each tool call, whether an agent's next action is safe given the user's request and the trajectory so far. Users write those requests in many languages, while guard prompts and the benchmarks on which purpose-built guards are trained and evaluated are English. We ask whether a guard's verdict depends on the language of the request. We build LinguaGuardBench from the 1,220 labelled steps of TS-Bench AgentDojo-Traj: we translate only the user instruction into German, French, Turkish, Swahili and Amharic, and keep every tool call, observation and label byte-identical, so any change in a verdict is attributable to language alone. Six English rewordings and a whitespace placebo serve as controls, and managed guards are run three times to measure their noise. Across 19 guards, from frontier APIs to 4B open models and four purpose-built agent guards, most open, small and purpose-built guards change verdicts under translation beyond their own noise floor, and the effect grows with the rarity of the language: among the nine guards below 13B parameters, the mean placebo-adjusted flip rate rises from +1.5 pp on French to +4.4 pp on Amharic. Purpose-built guards are the most sensitive. The direction of the damage tends to follow guard size: open guards of 12-30B parameters block more benign steps (up to +5.0 pp false positives), and every significant loss of recall is in a guard below 10B (up to -7.4 pp). Frontier guards shift by at most about one point; the strongest, Gemini 3.8 Flash, returns identical verdicts with and without the request. The damage is concentrated in a few instructions and, in a post-hoc analysis, falls on steps where the agent's reasoning restates the English request, consistent with guards reacting to inconsistency between channels. English paraphrase moves every guard less than translation does. We release the benchmark and all 489k verdicts.",
     "published": "2026-10-15T17:19:40.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2610.22244v1",
-    "categories": ["cs.CR", "cs.AI", "cs.CL", "cs.LG"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "Benchmark"],
+    "categories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001bb"
   },
   {
     "slug": "amharic-english-cross-language-question-answering-using-statistical-machine-translation-named-entity-recognition-and-semantic-indexing",
     "arxivId": "2610.14756v1",
     "title": "Amharic-English Cross-Language Question Answering Using Statistical Machine Translation, Named Entity Recognition, and Semantic Indexing",
-    "authors": ["Emebet Bekele", "Fekade Getahun"],
+    "authors": [
+      "Emebet Bekele",
+      "Fekade Getahun"
+    ],
     "abstract": "The predominance of English-language Web content creates an information-access barrier for speakers of low-resource languages such as Amharic. This paper presents the design, imple-mentation, and evaluation of a bidirectional Amharic-English cross-language question answering (CLQA) system that allows a user to formulate a natural-language question in either Amharic or English and retrieve an answer from documents written in the other language. The system integrates a statistical machine translation (SMT) component for query translation, a maximum-entropy named entity recognition (NER) component for Amharic text processing, semantic-based indexing, question analysis, passage retrieval, and answer extraction. A domain-diverse Amharic-English parallel corpus was used to train the SMT component, while monolingual cor-pora supported language modeling. Documents were normalized, tokenized, stemmed, indexed, and semantically enriched before retrieval. The original evaluation used precision and recall as the principal effectiveness measures. For Amharic-to-English retrieval, the system achieved 72% precision and 79% recall; for English-to-Amharic retrieval, it achieved 65% precision and 70% recall. These findings show that a modular translation-and-retrieval architecture can provide useful cross-language access even under low-resource conditions. This revised article preserves the original experimental claims while situating them in the context of subsequent multilingual transformer and Amharic QA research.",
     "published": "2026-10-10T09:25:01.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2610.14756v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "NER"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "NER"
+    ],
     "projectId": "pjt_00000000000000000000000000000195"
   },
   {
     "slug": "offline-ai-modules-voice-first-offline-architecture-hardware-reference-stack-quantization-and-benchmarking",
     "arxivId": "2610.07026v1",
     "title": "Offline AI Modules: Voice-First Offline Architecture, Hardware Reference Stack, Quantization and Benchmarking",
-    "authors": ["Sunday Afariogun", "Odunolaoluwa Jenrola", "Zeinab Nezami"],
+    "authors": [
+      "Sunday Afariogun",
+      "Odunolaoluwa Jenrola",
+      "Zeinab Nezami"
+    ],
     "abstract": "The Offline AI Modules workstream enables practical, low-power, and community-accessible deployment of voice-first AI systems that operate fully offline. Designed for African language communities where speech is the dominant mode of interaction and internet connectivity is unreliable or absent, the workstream delivers three reinforcing components: a modular voice-first offline architecture, a low-cost hardware reference bill of materials, and a reproducible quantization and a reproducible quantization and benchmarking pipeline for instruction-tuned language models in the 2-5B parameter class. This paper presents the first end-to-end benchmark evaluation of the stack across two hardware tiers: an NVIDIA Jetson Orin NX (TierB) and a Raspberry Pi5 (TierA). Three instruction-tuned models are evaluated across four quantization formats, assessed for deployment metrics (decode throughput, chat latency, memory, power) and multilingual quality (topic classification accuracy on MasakhaNEWS across English, Hausa, Igbo, Nigerian Pidgin, and Yoruba; per-language perplexity drift). Speech recognition is evaluated using Ethio-ASR on Amharic and Oromo across both tiers. The principal finding is that Q4_K_M quantization represents the best size-to-quality trade-off for deployment on both tiers: gemma-4-E2B-it achieves 28.8t/s decode throughput and 89.2% topic classification accuracy at Q4_K_M on TierB, while all three models run within the 16GB memory budget on TierA.",
     "published": "2026-10-04T17:16:45.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2610.07026v1",
-    "categories": ["cs.AI", "cs.NI", "eess.SY"],
-    "languages": ["Amharic", "Afaan Oromo", "English"],
-    "tasks": ["ASR", "LLM", "Benchmark"],
+    "categories": [
+      "cs.AI",
+      "cs.NI",
+      "eess.SY"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "English"
+    ],
+    "tasks": [
+      "ASR",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001b3"
   },
   {
     "slug": "how-many-labels-does-a-language-need-annotation-budgets-and-cross-lingual-pooling-for-african-language-text-classification",
     "arxivId": "2609.37882v1",
     "title": "How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language Text Classification",
-    "authors": ["Bhanu Prakash Vangala", "Sowmya Guda", "Navya Vangala"],
+    "authors": [
+      "Bhanu Prakash Vangala",
+      "Sowmya Guda",
+      "Navya Vangala"
+    ],
     "abstract": "Every text classifier for an African language begins with a budgeting question: how many labelled examples are needed, and can labels from other African languages stand in for them? We answer both questions empirically for 28 language-task pairs, news topic classification in 16 languages (MasakhaNEWS) and tweet sentiment in 12 languages (AfriSenti), using a character n-gram linear model that trains in seconds on two CPU cores with no pretrained weights and no accelerator. Monolingual learning curves at budgets from 25 to several thousand labels show that topic classification reaches 90\\% of its full-data macro-F1 with about 400 labels in the median language, while sentiment is still improving at the full training size in 11 of 12 languages and needs thousands of labels. Pooling the full training data of the other languages in the benchmark is worth a great deal at small budgets and nothing at large ones: at 25 target labels it adds 0.20 macro-F1 on average for news (up to 0.43 for Lingala) and 0.08 for sentiment, the gain decays to zero by 800 labels, and at full size pooling hurts in 9 of 16 and 8 of 12 languages. Twenty-five target labels plus pooled data match what 100 to 400 monolingual labels achieve for most news languages. A complete zero-shot transfer matrix shows that transfer without any target labels recovers a median of only 13\\% (news) and 4\\% (sentiment) of the gap between a majority-class predictor and the in-language model, with the exceptions explained by shared script (Amharic and Tigrinya), shared lexicon (English and Nigerian Pidgin, the Arabic dialects), or a shared label prior rather than by language family. We release code that regenerates every number from the public benchmark files and translate the results into concrete annotation guidance for teams building African-language classifiers without GPUs.",
     "published": "2026-09-29T15:54:30.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2609.37882v1",
-    "categories": ["cs.CL", "cs.LG"],
-    "languages": ["Amharic", "Tigrinya", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001bc"
   },
   {
@@ -122,23 +196,44 @@
     "published": "2026-08-11T17:05:26.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2608.11146v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001bd"
   },
   {
     "slug": "adage-a-language-agnostic-pipeline-for-analogical-reasoning-evaluation",
     "arxivId": "2607.23058v1",
     "title": "ADAGE: A Language-Agnostic Pipeline for Analogical Reasoning Evaluation",
-    "authors": ["Ahmed Haj Ahmed", "Alvin Grissom"],
+    "authors": [
+      "Ahmed Haj Ahmed",
+      "Alvin Grissom"
+    ],
     "abstract": "Multilingual reasoning evaluation overwhelmingly relies on translating English benchmarks, a practice that introduces linguistic artifacts and fails to test culturally-grounded reasoning. We introduce ADAGE (Analogical Difficulty-by-design Assessment for Grounded Evaluation), a language-agnostic pipeline that combines native-speaker curation with LLM-assisted generation to construct challenging, translation-free benchmarks for abstract analogical reasoning. We validate ADAGE by constructing benchmarks for Arabic, Amharic, and Japanese. Evaluating 14 open-weight models, we find a consistent cultural reasoning gap: models that perform well on English proverb reasoning struggle substantially on all three native benchmarks, with accuracy dropping by 12--52 percentage points relative to English. We release the pipeline, all three benchmarks, and the full evaluation suite.",
     "published": "2026-07-25T05:58:00.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2607.23058v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001be"
   },
   {
@@ -154,37 +249,69 @@
     "published": "2026-07-16T17:08:28.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2607.15209v3",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Tigrinya", "Ge'ez"],
-    "tasks": ["LLM", "NER", "Embeddings"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya",
+      "Ge'ez"
+    ],
+    "tasks": [
+      "LLM",
+      "NER",
+      "Embeddings"
+    ],
     "projectId": "pjt_00000000000000000000000000000196"
   },
   {
     "slug": "when-audit-quality-fails-to-predict-downstream-utility-a-counterfactual-study-of-synthetic-data-selectors-for-low-resource-african-nlp",
     "arxivId": "2609.18960v1",
     "title": "When Audit Quality Fails to Predict Downstream Utility: A Counterfactual Study of Synthetic-Data Selectors for Low-Resource African NLP",
-    "authors": ["Son Ha Xuan", "Phat T. Tran-Truong", "Xuan-Bach Le"],
+    "authors": [
+      "Son Ha Xuan",
+      "Phat T. Tran-Truong",
+      "Xuan-Bach Le"
+    ],
     "abstract": "Quality-aware synthetic-data selection rests on a proxy: examples that an LLM judge rates as good should also help a downstream model learn. In a controlled replay in low-resource African-language classification, we show that this proxy breaks. Across four languages (Amharic, Hausa, Swahili, Yoruba), two classification tasks (MasakhaNEWS, AfriSenti), and five matched-budget selectors, audit rankings and downstream rankings diverge. Within each cell, the Spearman between judged label correctness and Macro-F1 across selectors has mean $ρ{=}0.04$ (median $0.00$), showing that the mismatch is not an aggregation artifact. \\method{}-V2, our counterfactual audit framework, produces the cleanest selected pool on three audit channels at once: highest judged label correctness ($0.904$ vs.\\ $0.767$ for naive, a $17.9\\%$ relative gain), lowest shortcut score, and a hard-reject rate of $0.162$ vs.\\ $0.486$ for naive. AlpaGasus nevertheless leads downstream Macro-F1 ($0.202$ vs.\\ $0.163$ for \\method{}-V2), and the inversion persists on the five non-degenerate cells. The lesson is methodological: in this controlled setting, audit quality is a property of the selected pool, not a guarantee of downstream utility. Synthetic-data evaluation should therefore report audit and downstream metrics on the same retained sets. We release the audit tables, per-selector retained pools, and a claim ledger that links every reported number to its source row.",
     "published": "2026-07-15T16:06:34.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2609.18960v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001d8"
   },
   {
     "slug": "the-african-language-tax-quantifying-the-cost-latency-and-context-penalty-of-tokenizing-african-languages-in-frontier-llms",
     "arxivId": "2606.24460v1",
     "title": "The African Language Tax: Quantifying the Cost, Latency, and Context Penalty of Tokenizing African Languages in Frontier LLMs",
-    "authors": ["Olaoye Anthony Somide"],
+    "authors": [
+      "Olaoye Anthony Somide"
+    ],
     "abstract": "Commercial large language models bill, scale latency, and budget context per token. Yet tokenizers assign more subword tokens to the same meaning in some languages than in others, so speakers of languages with high token-fertility pay a structural penalty before a model is ever invoked. This penalty is documented for multilingual settings in general, but it has not been measured systematically for African languages at the level of enterprise deployment economics and cognitive context capacity. We measure it across 20 African languages spanning five language families and three scripts (Latin, Ge'ez/Ethiopic, N'Ko; 19 appear in the primary FLORES-200+ corpus, with Nigerian Pidgin measured via MAFAND-MT only), using parallel corpora so that the language effect is isolated from content. Across 11 frontier and open tokenizers on FLORES-200+, every African language carries a tokenization premium above English (median 1.88x on GPT-5 / o200k_base, up to 8.92x for N'Ko); the penalty is largest for Ethiopic and N'Ko scripts (reaching 7-9x) and is near-invariant across corpora (FLORES vs SIB-200 Pearson r = 0.9998). Translated into deployment terms, this results in up to 8.9x inference cost and an equivalent generation-latency multiplier (N'Ko vs English on GPT-5; 7.4x for Amharic), and as little as 11% of English's effective context window. The best currently available tokenizer for African languages, Gemma 4, reduces the mean premium from 3.31x (cl100k_base) to 2.38x, but no tokenizer eliminates the penalty. We release an open measurement tool (afri-fertility), a public leaderboard, a results dataset, and mitigation guidance for African builders. The penalty falls hardest on the languages whose speakers can least afford it, a digital divide encoded directly into the subword vocabulary.",
     "published": "2026-06-23T11:47:03.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2606.24460v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "Ge'ez", "English"],
-    "tasks": ["Translation", "LLM"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001bf"
   },
   {
@@ -211,9 +338,17 @@
     "published": "2026-05-28T10:36:32.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2605.29741v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c0"
   },
   {
@@ -229,9 +364,18 @@
     "published": "2026-05-24T07:50:03.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2605.24919v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["LLM", "Embeddings", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "LLM",
+      "Embeddings",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001cc"
   },
   {
@@ -247,22 +391,40 @@
     "published": "2026-05-23T12:44:30.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2605.24556v1",
-    "categories": ["cs.IR", "cs.CL", "cs.LG"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM", "Embeddings", "Benchmark"],
+    "categories": [
+      "cs.IR",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM",
+      "Embeddings",
+      "Benchmark"
+    ],
     "projectId": "pjt_00000000000000000000000000000197"
   },
   {
     "slug": "adapting-trocr-for-printed-tigrinya-text-recognition-word-aware-loss-weighting-for-cross-script-transfer-learning",
     "arxivId": "2604.20813v1",
     "title": "Adapting TrOCR for Printed Tigrinya Text Recognition: Word-Aware Loss Weighting for Cross-Script Transfer Learning",
-    "authors": ["Yonatan Haile Medhanie", "Yuanhua Ni"],
+    "authors": [
+      "Yonatan Haile Medhanie",
+      "Yuanhua Ni"
+    ],
     "abstract": "Transformer-based OCR models have shown strong performance on Latin and CJK scripts, but their application to African syllabic writing systems remains limited. We present the first adaptation of TrOCR for printed Tigrinya using the Ge'ez script. Starting from a pre-trained model, we extend the byte-level BPE tokenizer to cover 230 Ge'ez characters and introduce Word-Aware Loss Weighting to resolve systematic word-boundary failures that arise when applying Latin-centric BPE conventions to a new script. The unmodified model produces no usable output on Ge'ez text. After adaptation, the TrOCR-Printed variant achieves 0.22% Character Error Rate and 97.20% exact match accuracy on a held-out test set of 5,000 synthetic images from the GLOCR dataset. An ablation study confirms that Word-Aware Loss Weighting is the critical component, reducing CER by two orders of magnitude compared to vocabulary extension alone. The full pipeline trains in under three hours on a single 8 GB consumer GPU. All code, model weights, and evaluation scripts are publicly released.",
     "published": "2026-04-22T17:43:50.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2604.20813v1",
-    "categories": ["cs.CV"],
-    "languages": ["Tigrinya", "Ge'ez"],
+    "categories": [
+      "cs.CV"
+    ],
+    "languages": [
+      "Tigrinya",
+      "Ge'ez"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001a8"
   },
@@ -293,23 +455,46 @@
     "published": "2026-03-24T18:55:45.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2603.23654v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya", "Wolayttattoo"],
-    "tasks": ["ASR"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya",
+      "Wolayttattoo"
+    ],
+    "tasks": [
+      "ASR"
+    ],
     "projectId": "pjt_000000000000000000000000000001b4"
   },
   {
     "slug": "lgse-lexically-grounded-subword-embedding-initialization-for-low-resource-language-adaptation",
     "arxivId": "2603.22629v1",
     "title": "LGSE: Lexically Grounded Subword Embedding Initialization for Low-Resource Language Adaptation",
-    "authors": ["Hailay Teklehaymanot", "Dren Fazlija", "Wolfgang Nejdl"],
+    "authors": [
+      "Hailay Teklehaymanot",
+      "Dren Fazlija",
+      "Wolfgang Nejdl"
+    ],
     "abstract": "Adapting pretrained language models to low-resource, morphologically rich languages remains a significant challenge. Existing vocabulary expansion methods typically rely on arbitrarily segmented subword units, resulting in fragmented lexical representations and loss of critical morphological information. To address this limitation, we propose the Lexically Grounded Subword Embedding Initialization (LGSE) framework, which introduces morphologically informed segmentation for initializing embeddings of novel tokens. Instead of using random vectors or arbitrary subwords, LGSE decomposes words into their constituent morphemes and constructs semantically coherent embeddings by averaging pretrained subword or FastText-based morpheme representations. When a token cannot be segmented into meaningful morphemes, its embedding is constructed using character n-gram representations to capture structural information. During Language-Adaptive Pretraining, we apply a regularization term that penalizes large deviations of newly introduced embeddings from their initialized values, preserving alignment with the original pretrained embedding space while enabling adaptation to the target language. To isolate the effect of initialization, we retain the original pre-trained model vocabulary and tokenizer and update only the new embeddings during adaptation. We evaluate LGSE on three NLP tasks: Question Answering, Named Entity Recognition, and Text Classification, in two morphologically rich, low-resource languages: Amharic and Tigrinya, where morphological segmentation resources are available. Experimental results show that LGSE consistently outperforms baseline methods across all tasks, demonstrating the effectiveness of morphologically grounded embedding initialization for improving representation quality in underrepresented languages. Project resources are available in the GitHub link.",
     "published": "2026-03-23T23:07:16.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2603.22629v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "Tigrinya"],
-    "tasks": ["LLM", "NER", "Embeddings"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya"
+    ],
+    "tasks": [
+      "LLM",
+      "NER",
+      "Embeddings"
+    ],
     "projectId": "pjt_000000000000000000000000000001cd"
   },
   {
@@ -327,9 +512,16 @@
     "published": "2026-03-16T06:17:22.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2603.14873v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001c1"
   },
   {
@@ -349,23 +541,43 @@
     "published": "2026-02-11T10:45:46.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2602.10732v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c2"
   },
   {
     "slug": "amharicir-instr-a-two-dataset-resource-for-neural-retrieval-and-instruction-tuning",
     "arxivId": "2602.09914v1",
     "title": "AmharicIR+Instr: A Two-Dataset Resource for Neural Retrieval and Instruction Tuning",
-    "authors": ["Tilahun Yeshambel", "Moncef Garouani", "Josiane Mothe"],
+    "authors": [
+      "Tilahun Yeshambel",
+      "Moncef Garouani",
+      "Josiane Mothe"
+    ],
     "abstract": "Neural retrieval and GPT-style generative models rely on large, high-quality supervised data, which is still scarce for low-resource languages such as Amharic. We release an Amharic data resource consisting of two datasets that supports research on (i) neural retrieval-ranking and (ii) instruction-following text generation. The retrieval-ranking dataset contains 1,091 manually verified query-positive-negative document triplets drawn from diverse Amharic sources and constructed to support contrastive training and benchmarking of neural retrievers (e.g., DPR, ColBERT-style late interaction and SPLADE-style sparse neural retrieval). Triplets are created through a combination of expert-curated queries, web-derived queries, and LLM-assisted generation, with positive/negative documents selected from the web or synthesized by LLMs and then validated by native speakers. The instruction prompt-response dataset comprises 6,285 Amharic prompt-response pairs spanning multiple domains and instruction types, generated with several LLMs and refined through manual review and correction for grammaticality, relevance, fluency, and factual plausibility. We release both datasets with standardized splits and formats (CSV,JSON,JSONL) to enable reproducible work on Amharic retrieval, ranking, and generative modelling. These datasets also come with a methodology that can be generalized to other low-resource languages.",
     "published": "2026-02-10T15:45:20.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2602.09914v1",
-    "categories": ["cs.CL", "cs.IR"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.IR"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001d9"
   },
   {
@@ -381,9 +593,17 @@
     "published": "2026-02-10T03:23:59.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2602.09373v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Somali", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Somali",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001c3"
   },
   {
@@ -403,9 +623,16 @@
     "published": "2026-02-02T20:28:19.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2602.02774v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_00000000000000000000000000000198"
   },
   {
@@ -424,23 +651,41 @@
     "published": "2026-01-19T17:51:00.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2601.13262v2",
-    "categories": ["cs.AI", "cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.AI",
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001ce"
   },
   {
     "slug": "tigrinya-number-verbalization-rules-algorithm-and-implementation",
     "arxivId": "2601.03403v1",
     "title": "Tigrinya Number Verbalization: Rules, Algorithm, and Implementation",
-    "authors": ["Fitsum Gaim", "Issayas Tesfamariam"],
+    "authors": [
+      "Fitsum Gaim",
+      "Issayas Tesfamariam"
+    ],
     "abstract": "We present a systematic formalization of Tigrinya cardinal and ordinal number verbalization, addressing a gap in computational resources for the language. This work documents the canonical rules governing the expression of numerical values in spoken Tigrinya, including the conjunction system, scale words, and special cases for dates, times, and currency. We provide a formal algorithm for number-to-word conversion and release an open-source implementation. Evaluation of frontier large language models (LLMs) reveals significant gaps in their ability to accurately verbalize Tigrinya numbers, underscoring the need for explicit rule documentation. This work serves language modeling, speech synthesis, and accessibility applications targeting Tigrinya-speaking communities.",
     "published": "2026-01-06T20:45:54.000Z",
     "year": 2026,
     "url": "https://arxiv.org/abs/2601.03403v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Tigrinya"],
-    "tasks": ["TTS", "LLM"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Tigrinya"
+    ],
+    "tasks": [
+      "TTS",
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001a9"
   },
   {
@@ -460,9 +705,16 @@
     "published": "2025-12-01T11:27:13.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2512.01557v3",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001cf"
   },
   {
@@ -483,23 +735,42 @@
     "published": "2025-11-05T21:51:30.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2511.03880v1",
-    "categories": ["cs.CL", "cs.CY"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya"],
-    "tasks": ["Translation", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.CY"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya"
+    ],
+    "tasks": [
+      "Translation",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c4"
   },
   {
     "slug": "cross-lingual-summarization-as-a-black-box-watermark-removal-attack",
     "arxivId": "2510.24789v2",
     "title": "Cross-Lingual Summarization as a Black-Box Watermark Removal Attack",
-    "authors": ["Gokul Ganesan"],
+    "authors": [
+      "Gokul Ganesan"
+    ],
     "abstract": "Watermarking has been proposed as a lightweight mechanism to identify AI-generated text, with schemes typically relying on perturbations to token distributions. While prior work shows that paraphrasing can weaken such signals, these attacks remain partially detectable or degrade text quality. We demonstrate that cross-lingual summarization attacks (CLSA) -- translation to a pivot language followed by summarization and optional back-translation -- constitute a qualitatively stronger attack vector. By forcing a semantic bottleneck across languages, CLSA systematically destroys token-level statistical biases while preserving semantic fidelity. In experiments across multiple watermarking schemes (KGW, SIR, XSIR, Unigram) and five languages (Amharic, Chinese, Hindi, Spanish, Swahili), we show that CLSA reduces watermark detection accuracy more effectively than monolingual paraphrase at similar quality levels. Our results highlight an underexplored vulnerability that challenges the practicality of watermarking for provenance or regulation. We argue that robust provenance solutions must move beyond distributional watermarking and incorporate cryptographic or model-attestation approaches. On 300 held-out samples per language, CLSA consistently drives detection toward chance while preserving task utility. Concretely, for XSIR (explicitly designed for cross-lingual robustness), AUROC with paraphrasing is $0.827$, with Cross-Lingual Watermark Removal Attacks (CWRA) [He et al., 2024] using Chinese as the pivot, it is $0.823$, whereas CLSA drives it down to $0.53$ (near chance). Results highlight a practical, low-cost removal pathway that crosses languages and compresses content without visible artifacts.",
     "published": "2025-10-27T06:55:52.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2510.24789v2",
-    "categories": ["cs.CL", "cs.CR"],
-    "languages": ["Amharic"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL",
+      "cs.CR"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001c5"
   },
   {
@@ -515,8 +786,15 @@
     "published": "2025-09-24T17:33:47.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2509.20341v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "Tigrinya", "Ge'ez"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya",
+      "Ge'ez"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001b1"
   },
@@ -535,8 +813,15 @@
     "published": "2025-09-24T15:35:01.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2509.20245v1",
-    "categories": ["cs.HC", "cs.IR", "cs.SI"],
-    "languages": ["Amharic", "Tigrinya"],
+    "categories": [
+      "cs.HC",
+      "cs.IR",
+      "cs.SI"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001da"
   },
@@ -553,23 +838,45 @@
     "published": "2025-09-24T15:02:57.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2509.20209v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Tigrinya", "English"],
-    "tasks": ["Translation", "Embeddings", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Tigrinya",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "Embeddings",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001aa"
   },
   {
     "slug": "natural-language-processing-for-tigrinya-current-state-and-future-directions",
     "arxivId": "2507.17974v3",
     "title": "Natural Language Processing for Tigrinya: Current State and Future Directions",
-    "authors": ["Fitsum Gaim", "Jong C. Park"],
+    "authors": [
+      "Fitsum Gaim",
+      "Jong C. Park"
+    ],
     "abstract": "Despite being spoken by millions of people, Tigrinya remains severely underrepresented in Natural Language Processing (NLP) research. This work presents a comprehensive survey of NLP research for Tigrinya, analyzing over 50 studies from 2011 to 2025. We systematically review the current state of computational resources, models, and applications across fifteen downstream tasks, including morphological processing, part-of-speech tagging, named entity recognition, machine translation, question-answering, speech recognition, and synthesis. Our analysis reveals a clear trajectory from foundational, rule-based systems to modern neural architectures, with progress consistently driven by milestones in resource creation. We identify key challenges rooted in Tigrinya's morphological properties and resource scarcity, and highlight promising research directions, including morphology-aware modeling, cross-lingual transfer, and community-centered resource development. This work serves both as a reference for researchers and as a roadmap for advancing Tigrinya NLP. An anthology of surveyed studies and resources is publicly available.",
     "published": "2025-07-23T22:45:30.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2507.17974v3",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Tigrinya"],
-    "tasks": ["ASR", "Translation", "NER"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Tigrinya"
+    ],
+    "tasks": [
+      "ASR",
+      "Translation",
+      "NER"
+    ],
     "projectId": "pjt_000000000000000000000000000001ab"
   },
   {
@@ -587,8 +894,14 @@
     "published": "2025-07-21T19:11:31.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2507.16011v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Tigrinya", "English"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya",
+      "English"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001db"
   },
@@ -606,9 +919,18 @@
     "published": "2025-07-21T12:38:07.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2507.15557v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c6"
   },
   {
@@ -628,9 +950,17 @@
     "published": "2025-07-20T22:35:08.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2507.15142v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic", "Ge'ez"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001b2"
   },
   {
@@ -650,8 +980,13 @@
     "published": "2025-06-04T01:47:24.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2506.03484v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001b5"
   },
@@ -671,9 +1006,16 @@
     "published": "2025-06-02T21:39:40.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2506.02280v3",
-    "categories": ["cs.AI"],
-    "languages": ["Amharic", "Ge'ez"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001d0"
   },
   {
@@ -689,9 +1031,20 @@
     "published": "2025-05-25T23:06:20.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2505.19356v2",
-    "categories": ["cs.IR", "cs.AI", "cs.CL", "cs.LG"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM", "Embeddings", "Benchmark"],
+    "categories": [
+      "cs.IR",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM",
+      "Embeddings",
+      "Benchmark"
+    ],
     "projectId": "pjt_00000000000000000000000000000199"
   },
   {
@@ -708,9 +1061,17 @@
     "published": "2025-04-11T13:56:44.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2504.08543v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001d1"
   },
   {
@@ -727,8 +1088,13 @@
     "published": "2025-03-24T11:26:40.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2503.18570v1",
-    "categories": ["cs.IR", "cs.CL"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.IR",
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_0000000000000000000000000000019a"
   },
@@ -756,9 +1122,16 @@
     "published": "2025-03-24T09:39:41.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2503.18485v2",
-    "categories": ["cs.CL", "cs.LG"],
-    "languages": ["Amharic"],
-    "tasks": ["ASR"],
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "ASR"
+    ],
     "projectId": "pjt_0000000000000000000000000000019b"
   },
   {
@@ -778,9 +1151,14 @@
     "published": "2025-03-24T00:34:36.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2503.18253v2",
-    "categories": ["cs.CL"],
+    "categories": [
+      "cs.CL"
+    ],
     "languages": [],
-    "tasks": ["LLM", "Benchmark"],
+    "tasks": [
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001dc"
   },
   {
@@ -800,9 +1178,17 @@
     "published": "2025-03-12T01:01:30.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2503.10688v3",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c7"
   },
   {
@@ -818,9 +1204,17 @@
     "published": "2025-02-04T06:27:39.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2502.02047v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["Translation", "Embeddings", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Translation",
+      "Embeddings",
+      "Benchmark"
+    ],
     "projectId": "pjt_0000000000000000000000000000019c"
   },
   {
@@ -849,9 +1243,18 @@
     "published": "2025-01-10T22:49:29.000Z",
     "year": 2025,
     "url": "https://arxiv.org/abs/2501.06374v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c8"
   },
   {
@@ -872,9 +1275,19 @@
     "published": "2024-12-17T07:42:39.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2412.17837v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya", "Somali", "English"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya",
+      "Somali",
+      "English"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001d2"
   },
   {
@@ -893,9 +1306,20 @@
     "published": "2024-12-16T23:50:21.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2412.12417v1",
-    "categories": ["cs.CL", "cs.AI", "cs.LG"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001c9"
   },
   {
@@ -922,8 +1346,13 @@
     "published": "2024-12-16T12:08:59.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2412.11691v1",
-    "categories": ["cs.CL", "cs.AI"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001b6"
   },
@@ -931,27 +1360,48 @@
     "slug": "what-are-the-limits-of-cross-lingual-dense-passage-retrieval-for-low-resource-languages",
     "arxivId": "2408.11942v1",
     "title": "What are the limits of cross-lingual dense passage retrieval for low-resource languages?",
-    "authors": ["Jie Wu", "Zhaochun Ren", "Suzan Verberne"],
+    "authors": [
+      "Jie Wu",
+      "Zhaochun Ren",
+      "Suzan Verberne"
+    ],
     "abstract": "In this paper, we analyze the capabilities of the multi-lingual Dense Passage Retriever (mDPR) for extremely low-resource languages. In the Cross-lingual Open-Retrieval Answer Generation (CORA) pipeline, mDPR achieves success on multilingual open QA benchmarks across 26 languages, of which 9 were unseen during training. These results are promising for Question Answering (QA) for low-resource languages. We focus on two extremely low-resource languages for which mDPR performs poorly: Amharic and Khmer. We collect and curate datasets to train mDPR models using Translation Language Modeling (TLM) and question--passage alignment. We also investigate the effect of our extension on the language distribution in the retrieval results. Our results on the MKQA and AmQA datasets show that language alignment brings improvements to mDPR for the low-resource languages, but the improvements are modest and the results remain low. We conclude that fulfilling CORA's promise to enable multilingual open QA in extremely low-resource settings is challenging because the model, the data, and the evaluation approach are intertwined. Hence, all three need attention in follow-up work. We release our code for reproducibility and future work: https://anonymous.4open.science/r/Question-Answering-for-Low-Resource-Languages-B13C/",
     "published": "2024-08-21T18:51:46.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2408.11942v1",
-    "categories": ["cs.IR"],
-    "languages": ["Amharic"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.IR"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001ca"
   },
   {
     "slug": "hate-speech-detection-and-classification-in-amharic-text-with-deep-learning",
     "arxivId": "2408.03849v1",
     "title": "Hate Speech Detection and Classification in Amharic Text with Deep Learning",
-    "authors": ["Samuel Minale Gashe", "Seid Muhie Yimam", "Yaregal Assabie"],
+    "authors": [
+      "Samuel Minale Gashe",
+      "Seid Muhie Yimam",
+      "Yaregal Assabie"
+    ],
     "abstract": "Hate speech is a growing problem on social media. It can seriously impact society, especially in countries like Ethiopia, where it can trigger conflicts among diverse ethnic and religious groups. While hate speech detection in resource rich languages are progressing, for low resource languages such as Amharic are lacking. To address this gap, we develop Amharic hate speech data and SBi-LSTM deep learning model that can detect and classify text into four categories of hate speech: racial, religious, gender, and non-hate speech. We have annotated 5k Amharic social media post and comment data into four categories. The data is annotated using a custom annotation tool by a total of 100 native Amharic speakers. The model achieves a 94.8 F1-score performance. Future improvements will include expanding the dataset and develop state-of-the art models. Keywords: Amharic hate speech detection, classification, Amharic dataset, Deep Learning, SBi-LSTM",
     "published": "2024-08-07T15:46:45.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2408.03849v1",
-    "categories": ["cs.CL", "cs.LG"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_0000000000000000000000000000019d"
   },
@@ -959,27 +1409,47 @@
     "slug": "low-resourced-languages-and-online-knowledge-repositories-a-need-finding-study",
     "arxivId": "2405.16669v1",
     "title": "Low-resourced Languages and Online Knowledge Repositories: A Need-Finding Study",
-    "authors": ["Hellina Hailu Nigatu", "John Canny", "Sarah E. Chasins"],
+    "authors": [
+      "Hellina Hailu Nigatu",
+      "John Canny",
+      "Sarah E. Chasins"
+    ],
     "abstract": "Online Knowledge Repositories (OKRs) like Wikipedia offer communities a way to share and preserve information about themselves and their ways of living. However, for communities with low-resourced languages -- including most African communities -- the quality and volume of content available are often inadequate. One reason for this lack of adequate content could be that many OKRs embody Western ways of knowledge preservation and sharing, requiring many low-resourced language communities to adapt to new interactions. To understand the challenges faced by low-resourced language contributors on the popular OKR Wikipedia, we conducted (1) a thematic analysis of Wikipedia forum discussions and (2) a contextual inquiry study with 14 novice contributors. We focused on three Ethiopian languages: Afan Oromo, Amharic, and Tigrinya. Our analysis revealed several recurring themes; for example, contributors struggle to find resources to corroborate their articles in low-resourced languages, and language technology support, like translation systems and spellcheck, result in several errors that waste contributors' time. We hope our study will support designers in making online knowledge repositories accessible to low-resourced language speakers.",
     "published": "2024-05-26T19:20:26.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2405.16669v1",
-    "categories": ["cs.HC", "cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.HC",
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001cb"
   },
   {
     "slug": "i-searched-for-a-religious-song-in-amharic-and-got-sexual-content-instead-investigating-online-harm-in-low-resourced-languages-on-youtube",
     "arxivId": "2405.16656v1",
     "title": "\"I Searched for a Religious Song in Amharic and Got Sexual Content Instead\": Investigating Online Harm in Low-Resourced Languages on YouTube",
-    "authors": ["Hellina Hailu Nigatu", "Inioluwa Deborah Raji"],
+    "authors": [
+      "Hellina Hailu Nigatu",
+      "Inioluwa Deborah Raji"
+    ],
     "abstract": "Online social media platforms such as YouTube have a wide, global reach. However, little is known about the experience of low-resourced language speakers on such platforms; especially in how they experience and navigate harmful content. To better understand this, we (1) conducted semi-structured interviews (n=15) and (2) analyzed search results (n=9313), recommendations (n=3336), channels (n=120) and comments (n=406) of policy-violating sexual content on YouTube focusing on the Amharic language. Our findings reveal that -- although Amharic-speaking YouTube users find the platform crucial for several aspects of their lives -- participants reported unplanned exposure to policy-violating sexual content when searching for benign, popular queries. Furthermore, malicious content creators seem to exploit under-performing language technologies and content moderation to further target vulnerable groups of speakers, including migrant domestic workers, diaspora, and local Ethiopians. Overall, our study sheds light on how failures in low-resourced language technology may lead to exposure to harmful content and suggests implications for stakeholders in minimizing harm. Content Warning: This paper includes discussions of NSFW topics and harmful content (hate, abuse, sexual harassment, self-harm, misinformation). The authors do not support the creation or distribution of harmful content.",
     "published": "2024-05-26T18:18:11.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2405.16656v1",
-    "categories": ["cs.HC"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.HC"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_0000000000000000000000000000019e"
   },
@@ -998,23 +1468,43 @@
     "published": "2024-04-26T07:07:43.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2404.17194v1",
-    "categories": ["cs.CL"],
-    "languages": ["Tigrinya"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Tigrinya"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001ac"
   },
   {
     "slug": "semantically-corrected-amharic-automatic-speech-recognition",
     "arxivId": "2404.13362v1",
     "title": "Semantically Corrected Amharic Automatic Speech Recognition",
-    "authors": ["Samuael Adnew", "Paul Pu Liang"],
+    "authors": [
+      "Samuael Adnew",
+      "Paul Pu Liang"
+    ],
     "abstract": "Automatic Speech Recognition (ASR) can play a crucial role in enhancing the accessibility of spoken languages worldwide. In this paper, we build a set of ASR tools for Amharic, a language spoken by more than 50 million people primarily in eastern Africa. Amharic is written in the Ge'ez script, a sequence of graphemes with spacings denoting word boundaries. This makes computational processing of Amharic challenging since the location of spacings can significantly impact the meaning of formed sentences. We find that existing benchmarks for Amharic ASR do not account for these spacings and only measure individual grapheme error rates, leading to significantly inflated measurements of in-the-wild performance. In this paper, we first release corrected transcriptions of existing Amharic ASR test datasets, enabling the community to accurately evaluate progress. Furthermore, we introduce a post-processing approach using a transformer encoder-decoder architecture to organize raw ASR outputs into a grammatically complete and semantically meaningful Amharic sentence. Through experiments on the corrected test dataset, our model enhances the semantic correctness of Amharic speech recognition systems, achieving a Character Error Rate (CER) of 5.5\\% and a Word Error Rate (WER) of 23.3\\%.",
     "published": "2024-04-20T12:08:00.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2404.13362v1",
-    "categories": ["cs.CL", "cs.AI", "cs.LG", "eess.AS"],
-    "languages": ["Amharic", "Ge'ez"],
-    "tasks": ["ASR", "Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG",
+      "eess.AS"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez"
+    ],
+    "tasks": [
+      "ASR",
+      "Benchmark"
+    ],
     "projectId": "pjt_0000000000000000000000000000019f"
   },
   {
@@ -1032,9 +1522,15 @@
     "published": "2024-04-18T09:52:50.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2404.12042v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001b7"
   },
   {
@@ -1051,9 +1547,14 @@
     "published": "2024-03-28T12:26:45.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2403.19365v1",
-    "categories": ["cs.CL"],
+    "categories": [
+      "cs.CL"
+    ],
     "languages": [],
-    "tasks": ["Translation", "Benchmark"],
+    "tasks": [
+      "Translation",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001dd"
   },
   {
@@ -1079,7 +1580,9 @@
     "published": "2024-03-20T16:43:42.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2403.13737v4",
-    "categories": ["cs.CL"],
+    "categories": [
+      "cs.CL"
+    ],
     "languages": [
       "Amharic",
       "Afaan Oromo",
@@ -1088,21 +1591,35 @@
       "Somali",
       "English"
     ],
-    "tasks": ["LLM", "Benchmark"],
+    "tasks": [
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001d3"
   },
   {
     "slug": "amharic-llama-and-llava-multimodal-llms-for-low-resource-languages",
     "arxivId": "2403.06354v1",
     "title": "Amharic LLaMA and LLaVA: Multimodal LLMs for Low Resource Languages",
-    "authors": ["Michael Andersland"],
+    "authors": [
+      "Michael Andersland"
+    ],
     "abstract": "Large Language Models (LLMs) like GPT-4 and LLaMA have shown incredible proficiency at natural language processing tasks and have even begun to excel at tasks across other modalities such as vision and audio. Despite their success, LLMs often struggle to perform well on low-resource languages because there is so little training data available. This shortcoming is especially prevalent with open source models. In this work, we explore training LLaMA-2 to speak Amharic, a language which is spoken by over 50 million people world wide, but has orders of magnitude less data available than languages like English. We employ methods previously used for training LLMs on other languages with data scarcity, and use open source translation models to perform data augmentation and grow our dataset from millions of tokens to billions. We further enhance the capabilities of our model by connecting an image encoder and training on a translated visual instruction tuning dataset in the same manner as LLaVA, resulting in a multimodal Amharic LLM that can understand images along with text. We introduce an Amharic version of a popular benchmarking dataset to evaluate our work. Our models and dataset are open sourced and available on GitHub.",
     "published": "2024-03-11T01:04:36.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2403.06354v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation", "LLM", "Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation",
+      "LLM",
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001a0"
   },
   {
@@ -1124,22 +1641,39 @@
     "published": "2024-02-12T19:25:11.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2402.08015v5",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001a1"
   },
   {
     "slug": "deep-learning-based-amharic-chatbot-for-faqs-in-universities",
     "arxivId": "2402.01720v4",
     "title": "Deep Learning Based Amharic Chatbot for FAQs in Universities",
-    "authors": ["Goitom Ybrah Hailu", "Hadush Hailu", "Shishay Welay"],
+    "authors": [
+      "Goitom Ybrah Hailu",
+      "Hadush Hailu",
+      "Shishay Welay"
+    ],
     "abstract": "University students often spend a considerable amount of time seeking answers to common questions from administrators or teachers. This can become tedious for both parties, leading to a need for a solution. In response, this paper proposes a chatbot model that utilizes natural language processing and deep learning techniques to answer frequently asked questions (FAQs) in the Amharic language. Chatbots are computer programs that simulate human conversation through the use of artificial intelligence (AI), acting as a virtual assistant to handle questions and other tasks. The proposed chatbot program employs tokenization, normalization, stop word removal, and stemming to analyze and categorize Amharic input sentences. Three machine learning model algorithms were used to classify tokens and retrieve appropriate responses: Support Vector Machine (SVM), Multinomial Naïve Bayes, and deep neural networks implemented through TensorFlow, Keras, and NLTK. The deep learning model achieved the best results with 91.55% accuracy and a validation loss of 0.3548 using an Adam optimizer and SoftMax activation function. The chatbot model was integrated with Facebook Messenger and deployed on a Heroku server for 24-hour accessibility. The experimental results demonstrate that the chatbot framework achieved its objectives and effectively addressed challenges such as Amharic Fidel variation, morphological variation, and lexical gaps. Future research could explore the integration of Amharic WordNet to narrow the lexical gap and support more complex questions.",
     "published": "2024-01-26T18:37:21.000Z",
     "year": 2024,
     "url": "https://arxiv.org/abs/2402.01720v4",
-    "categories": ["cs.CY", "cs.AI", "cs.CL", "cs.LG"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.CY",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001a2"
   },
@@ -1162,8 +1696,16 @@
     "published": "2023-07-20T12:24:23.000Z",
     "year": 2023,
     "url": "https://arxiv.org/abs/2307.10814v1",
-    "categories": ["cs.CL", "cs.NE", "cs.SD", "eess.AS"],
-    "languages": ["Amharic", "English"],
+    "categories": [
+      "cs.CL",
+      "cs.NE",
+      "cs.SD",
+      "eess.AS"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001a3"
   },
@@ -1187,8 +1729,14 @@
     "published": "2023-04-13T22:26:10.000Z",
     "year": 2023,
     "url": "https://arxiv.org/abs/2304.06845v2",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001d4"
   },
@@ -1209,8 +1757,15 @@
     "published": "2023-03-25T09:04:29.000Z",
     "year": 2023,
     "url": "https://arxiv.org/abs/2303.14406v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya", "Wolayttattoo"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya",
+      "Wolayttattoo"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001d5"
   },
@@ -1218,13 +1773,24 @@
     "slug": "amqa-amharic-question-answering-dataset",
     "arxivId": "2303.03290v2",
     "title": "AmQA: Amharic Question Answering Dataset",
-    "authors": ["Tilahun Abedissa", "Ricardo Usbeck", "Yaregal Assabie"],
+    "authors": [
+      "Tilahun Abedissa",
+      "Ricardo Usbeck",
+      "Yaregal Assabie"
+    ],
     "abstract": "Question Answering (QA) returns concise answers or answer lists from natural language text given a context document. Many resources go into curating QA datasets to advance robust models' development. There is a surge of QA datasets for languages like English, however, this is not true for Amharic. Amharic, the official language of Ethiopia, is the second most spoken Semitic language in the world. There is no published or publicly available Amharic QA dataset. Hence, to foster the research in Amharic QA, we present the first Amharic QA (AmQA) dataset. We crowdsourced 2628 question-answer pairs over 378 Wikipedia articles. Additionally, we run an XLMR Large-based baseline model to spark open-domain QA research interest. The best-performing baseline achieves an F-score of 69.58 and 71.74 in reader-retriever QA and reading comprehension settings respectively.",
     "published": "2023-03-06T17:06:50.000Z",
     "year": 2023,
     "url": "https://arxiv.org/abs/2303.03290v2",
-    "categories": ["cs.CL", "cs.AI", "cs.IR"],
-    "languages": ["Amharic", "English"],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.IR"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001a4"
   },
@@ -1264,9 +1830,17 @@
     "published": "2023-02-17T15:40:12.000Z",
     "year": 2023,
     "url": "https://arxiv.org/abs/2302.08956v5",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Afaan Oromo", "Tigrinya"],
-    "tasks": ["Benchmark"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Afaan Oromo",
+      "Tigrinya"
+    ],
+    "tasks": [
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001d6"
   },
   {
@@ -1287,9 +1861,16 @@
     "published": "2022-10-27T07:18:53.000Z",
     "year": 2022,
     "url": "https://arxiv.org/abs/2210.15224v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001a5"
   },
   {
@@ -1307,8 +1888,12 @@
     "published": "2022-10-01T13:16:18.000Z",
     "year": 2022,
     "url": "https://arxiv.org/abs/2210.00275v1",
-    "categories": ["cs.CV"],
-    "languages": ["Amharic"],
+    "categories": [
+      "cs.CV"
+    ],
+    "languages": [
+      "Amharic"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001a6"
   },
@@ -1316,14 +1901,26 @@
     "slug": "anec-an-amharic-named-entity-corpus-and-transformer-based-recognizer",
     "arxivId": "2207.00785v1",
     "title": "ANEC: An Amharic Named Entity Corpus and Transformer Based Recognizer",
-    "authors": ["Ebrahim Chekol Jibril", "A. Cüneyd Tantğ"],
+    "authors": [
+      "Ebrahim Chekol Jibril",
+      "A. Cüneyd Tantğ"
+    ],
     "abstract": "Named Entity Recognition is an information extraction task that serves as a preprocessing step for other natural language processing tasks, such as machine translation, information retrieval, and question answering. Named entity recognition enables the identification of proper names as well as temporal and numeric expressions in an open domain text. For Semitic languages such as Arabic, Amharic, and Hebrew, the named entity recognition task is more challenging due to the heavily inflected structure of these languages. In this paper, we present an Amharic named entity recognition system based on bidirectional long short-term memory with a conditional random fields layer. We annotate a new Amharic named entity recognition dataset (8,070 sentences, which has 182,691 tokens) and apply Synthetic Minority Over-sampling Technique to our dataset to mitigate the imbalanced classification problem. Our named entity recognition system achieves an F_1 score of 93%, which is the new state-of-the-art result for Amharic named entity recognition.",
     "published": "2022-07-02T09:50:37.000Z",
     "year": 2022,
     "url": "https://arxiv.org/abs/2207.00785v1",
-    "categories": ["cs.CL", "cs.AI", "cs.LG"],
-    "languages": ["Amharic"],
-    "tasks": ["Translation", "NER"],
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic"
+    ],
+    "tasks": [
+      "Translation",
+      "NER"
+    ],
     "projectId": "pjt_000000000000000000000000000001a7"
   },
   {
@@ -1342,36 +1939,62 @@
     "published": "2022-01-07T23:50:34.000Z",
     "year": 2022,
     "url": "https://arxiv.org/abs/2201.02710v1",
-    "categories": ["cs.CL", "cs.SD", "eess.AS"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Benchmark"],
+    "categories": [
+      "cs.CL",
+      "cs.SD",
+      "eess.AS"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Benchmark"
+    ],
     "projectId": "pjt_000000000000000000000000000001b8"
   },
   {
     "slug": "an-exploration-of-data-augmentation-techniques-for-improving-english-to-tigrinya-translation",
     "arxivId": "2103.16789v2",
     "title": "An Exploration of Data Augmentation Techniques for Improving English to Tigrinya Translation",
-    "authors": ["Lidia Kidane", "Sachin Kumar", "Yulia Tsvetkov"],
+    "authors": [
+      "Lidia Kidane",
+      "Sachin Kumar",
+      "Yulia Tsvetkov"
+    ],
     "abstract": "It has been shown that the performance of neural machine translation (NMT) drops starkly in low-resource conditions, often requiring large amounts of auxiliary data to achieve competitive results. An effective method of generating auxiliary data is back-translation of target language sentences. In this work, we present a case study of Tigrinya where we investigate several back-translation methods to generate synthetic source sentences. We find that in low-resource conditions, back-translation by pivoting through a higher-resource language related to the target language proves most effective resulting in substantial improvements over baselines.",
     "published": "2021-03-31T03:31:09.000Z",
     "year": 2021,
     "url": "https://arxiv.org/abs/2103.16789v2",
-    "categories": ["cs.CL"],
-    "languages": ["Tigrinya", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Tigrinya",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001ad"
   },
   {
     "slug": "the-effects-of-having-lists-of-synonyms-on-the-performance-of-afaan-oromo-text-retrieval-system",
     "arxivId": "2103.02900v1",
     "title": "The effects of having lists of synonyms on the performance of Afaan Oromo Text Retrieval system",
-    "authors": ["Isayas Wakgari Kelbessa"],
+    "authors": [
+      "Isayas Wakgari Kelbessa"
+    ],
     "abstract": "Obtaining relevant information from a collection of informational resources in Afaan Oromo is very important for Afaan Oromo speakers, developing a system that help users of Afaan Oromo is mandatory. That is why this study is envisioned to make possible retrieval of Afaan Oromo text documents by applying techniques of modern information retrieval system. In the developed Afaan Oromo prototype, Probabilistic approach was used as an information retrieval models and precision and recall measurement were used as the performance measurement or evaluation technique. Apache Solr was also used as an environmental programming language to achieve the evaluation goal. Afaan Oromo text retrieval is evaluated using 158 documents and 13 arbitrarily selected queries that can determine the effectiveness of retrieval using the precision-recall. The average result obtained by our evaluation before the addition of synonymy was 72.91% precision and 86.8% recall respectively. After the addition of synonymy, the value was changed to 71.39% average precision and 90.5% average recall. The F-measure for the evaluation before synonymy addition was 79.25% and after addition changed to 79.82%. The addition of synonymy improves the system performance by 0.57%. The study therefore, experimentally proves that the addition of the thesaurus system can improve the system performance. Spellchecking, pagination, hit highlighting and autosuggestion is also possible in the developed prototype for Afaan Oromo.",
     "published": "2021-03-04T09:04:36.000Z",
     "year": 2021,
     "url": "https://arxiv.org/abs/2103.02900v1",
-    "categories": ["cs.IR"],
-    "languages": ["Afaan Oromo"],
+    "categories": [
+      "cs.IR"
+    ],
+    "languages": [
+      "Afaan Oromo"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001b0"
   },
@@ -1379,55 +2002,102 @@
     "slug": "transferring-monolingual-model-to-low-resource-language-the-case-of-tigrinya",
     "arxivId": "2006.07698v2",
     "title": "Transferring Monolingual Model to Low-Resource Language: The Case of Tigrinya",
-    "authors": ["Abrhalei Tela", "Abraham Woubie", "Ville Hautamaki"],
+    "authors": [
+      "Abrhalei Tela",
+      "Abraham Woubie",
+      "Ville Hautamaki"
+    ],
     "abstract": "In recent years, transformer models have achieved great success in natural language processing (NLP) tasks. Most of the current state-of-the-art NLP results are achieved by using monolingual transformer models, where the model is pre-trained using a single language unlabelled text corpus. Then, the model is fine-tuned to the specific downstream task. However, the cost of pre-training a new transformer model is high for most languages. In this work, we propose a cost-effective transfer learning method to adopt a strong source language model, trained from a large monolingual corpus to a low-resource language. Thus, using XLNet language model, we demonstrate competitive performance with mBERT and a pre-trained target language model on the cross-lingual sentiment (CLS) dataset and on a new sentiment analysis dataset for low-resourced language Tigrinya. With only 10k examples of the given Tigrinya sentiment analysis dataset, English XLNet has achieved 78.88% F1-Score outperforming BERT and mBERT by 10% and 7%, respectively. More interestingly, fine-tuning (English) XLNet model on the CLS dataset has promising results compared to mBERT and even outperformed mBERT for one dataset of the Japanese language.",
     "published": "2020-06-13T18:53:22.000Z",
     "year": 2020,
     "url": "https://arxiv.org/abs/2006.07698v2",
-    "categories": ["cs.CL", "cs.LG"],
-    "languages": ["Tigrinya", "English"],
-    "tasks": ["LLM"],
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Tigrinya",
+      "English"
+    ],
+    "tasks": [
+      "LLM"
+    ],
     "projectId": "pjt_000000000000000000000000000001ae"
   },
   {
     "slug": "tigrinya-neural-machine-translation-with-transfer-learning-for-humanitarian-response",
     "arxivId": "2003.11523v1",
     "title": "Tigrinya Neural Machine Translation with Transfer Learning for Humanitarian Response",
-    "authors": ["Alp Öktem", "Mirko Plitt", "Grace Tang"],
+    "authors": [
+      "Alp Öktem",
+      "Mirko Plitt",
+      "Grace Tang"
+    ],
     "abstract": "We report our experiments in building a domain-specific Tigrinya-to-English neural machine translation system. We use transfer learning from other Ge'ez script languages and report an improvement of 1.3 BLEU points over a classic neural baseline. We publish our development pipeline as an open-source library and also provide a demonstration application.",
     "published": "2020-03-09T10:34:25.000Z",
     "year": 2020,
     "url": "https://arxiv.org/abs/2003.11523v1",
-    "categories": ["cs.CL"],
-    "languages": ["Tigrinya", "Ge'ez", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Tigrinya",
+      "Ge'ez",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001af"
   },
   {
     "slug": "machine-learning-approaches-for-amharic-parts-of-speech-tagging",
     "arxivId": "2001.03324v1",
     "title": "Machine Learning Approaches for Amharic Parts-of-speech Tagging",
-    "authors": ["Ibrahim Gashaw", "H L. Shashirekha"],
+    "authors": [
+      "Ibrahim Gashaw",
+      "H L. Shashirekha"
+    ],
     "abstract": "Part-of-speech (POS) tagging is considered as one of the basic but necessary tools which are required for many Natural Language Processing (NLP) applications such as word sense disambiguation, information retrieval, information processing, parsing, question answering, and machine translation. Performance of the current POS taggers in Amharic is not as good as that of the contemporary POS taggers available for English and other European languages. The aim of this work is to improve POS tagging performance for the Amharic language, which was never above 91%. Usage of morphological knowledge, an extension of the existing annotated data, feature extraction, parameter tuning by applying grid search and the tagging algorithms have been examined and obtained significant performance difference from the previous works. We have used three different datasets for POS experiments.",
     "published": "2020-01-10T06:40:49.000Z",
     "year": 2020,
     "url": "https://arxiv.org/abs/2001.03324v1",
-    "categories": ["cs.CL", "cs.IR", "cs.LG"],
-    "languages": ["Amharic", "English"],
-    "tasks": ["Translation"],
+    "categories": [
+      "cs.CL",
+      "cs.IR",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic",
+      "English"
+    ],
+    "tasks": [
+      "Translation"
+    ],
     "projectId": "pjt_000000000000000000000000000001b9"
   },
   {
     "slug": "analysis-of-the-ethiopic-twitter-dataset-for-abusive-speech-in-amharic",
     "arxivId": "1912.04419v1",
     "title": "Analysis of the Ethiopic Twitter Dataset for Abusive Speech in Amharic",
-    "authors": ["Seid Muhie Yimam", "Abinew Ali Ayele", "Chris Biemann"],
+    "authors": [
+      "Seid Muhie Yimam",
+      "Abinew Ali Ayele",
+      "Chris Biemann"
+    ],
     "abstract": "In this paper, we present an analysis of the first Ethiopic Twitter Dataset for the Amharic language targeted for recognizing abusive speech. The dataset has been collected since 2014 that is written in Fidel script. Since several languages can be written using the Fidel script, we have used the existing Amharic, Tigrinya and Ge'ez corpora to retain only the Amharic tweets. We have analyzed the tweets for abusive speech content with the following targets: Analyze the distribution and tendency of abusive speech content over time and compare the abusive speech content between a Twitter and general reference Amharic corpus.",
     "published": "2019-12-09T23:18:13.000Z",
     "year": 2019,
     "url": "https://arxiv.org/abs/1912.04419v1",
-    "categories": ["cs.CL", "cs.SI"],
-    "languages": ["Amharic", "Tigrinya", "Ge'ez"],
+    "categories": [
+      "cs.CL",
+      "cs.SI"
+    ],
+    "languages": [
+      "Amharic",
+      "Tigrinya",
+      "Ge'ez"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001ba"
   },
@@ -1435,13 +2105,21 @@
     "slug": "application-of-the-double-metaphone-algorithm-to-amharic-orthography",
     "arxivId": "cs/0408052v1",
     "title": "Application of the Double Metaphone Algorithm to Amharic Orthography",
-    "authors": ["Daniel Yacob"],
+    "authors": [
+      "Daniel Yacob"
+    ],
     "abstract": "The Metaphone algorithm applies the phonetic encoding of orthographic sequences to simplify words prior to comparison. While Metaphone has been highly successful for the English language, for which it was designed, it may not be applied directly to Ethiopian languages. The paper details how the principles of Metaphone can be applied to Ethiopic script and uses Amharic as a case study. Match results improve as specific considerations are made for Amharic writing practices. Results are shown to improve further when common errors from Amharic input methods are considered.",
     "published": "2004-08-22T19:32:48.000Z",
     "year": 2004,
     "url": "https://arxiv.org/abs/cs/0408052v1",
-    "categories": ["cs.CL"],
-    "languages": ["Amharic", "Ge'ez", "English"],
+    "categories": [
+      "cs.CL"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez",
+      "English"
+    ],
     "tasks": [],
     "projectId": "pjt_000000000000000000000000000001de"
   }
