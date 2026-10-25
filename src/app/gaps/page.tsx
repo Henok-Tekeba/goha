@@ -52,7 +52,7 @@ export default function GapsPage() {
       <main>
         <div className="mx-auto max-w-4xl px-6">
           <header className="mb-10">
-            <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-[0.08em]">
+            <p className="mb-2 font-medium text-muted-foreground text-xs uppercase tracking-[0.08em]">
               Gap report
             </p>
             <h1
@@ -68,7 +68,7 @@ export default function GapsPage() {
               here, it is missing on Hugging Face, GitHub and arXiv too.
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-black/40 text-xs tabular-nums">
+              <p className="text-muted-foreground text-xs tabular-nums">
                 {totalLanguages} languages · {report.tasks.length} tasks ·{" "}
                 {report.totalCells} cells analysed
               </p>
@@ -121,7 +121,7 @@ export default function GapsPage() {
             <div className="overflow-x-auto rounded-[16px] border border-muted-black-stroke bg-white">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>
-                  <tr className="border-muted-black-stroke border-b text-left text-black/40 text-xs">
+                  <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">
                     <th className="px-4 py-2.5 font-medium">Language</th>
                     {report.tasks.map((task) => (
                       <th
@@ -162,12 +162,12 @@ export default function GapsPage() {
                           className="px-3 py-2.5 text-right tabular-nums"
                         >
                           {cell.assets === 0 ? (
-                            <span className="text-black/25">—</span>
+                            <span className="text-muted-foreground">—</span>
                           ) : (
                             <span className="text-primary">{cell.assets}</span>
                           )}
                           {cell.papers > 0 && (
-                            <span className="ml-1 text-[10px] text-black/30">
+                            <span className="ml-1 text-[10px] text-muted-foreground">
                               ({cell.papers})
                             </span>
                           )}
@@ -313,7 +313,9 @@ export default function GapsPage() {
                   className="rounded-full border border-muted-black-stroke bg-white px-3 py-1.5 text-muted-foreground text-xs transition-colors hover:text-primary"
                 >
                   {asset.name}
-                  <span className="ml-1.5 text-black/30">{asset.kind}</span>
+                  <span className="ml-1.5 text-muted-foreground">
+                    {asset.kind}
+                  </span>
                 </Link>
               ))}
             </div>

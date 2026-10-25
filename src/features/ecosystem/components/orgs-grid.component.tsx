@@ -58,7 +58,7 @@ function OrgCard({ org }: { org: OrgRecord }) {
                 ✓
               </span>
             )}
-            <HiArrowTopRightOnSquare className="ml-auto hidden size-3.5 shrink-0 text-black/20 transition-colors group-hover:text-primary md:block" />
+            <HiArrowTopRightOnSquare className="ml-auto hidden size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary md:block" />
           </div>
           <p className="truncate text-muted-foreground text-xs">
             {KIND_LABEL[org.kind]}
@@ -71,7 +71,7 @@ function OrgCard({ org }: { org: OrgRecord }) {
           {org.desc}
         </p>
       )}
-      <div className="mt-3.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-black/50 tabular-nums">
+      <div className="mt-3.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground tabular-nums">
         {org.counts.models > 0 && (
           <span>{formatCount(org.counts.models, "model")}</span>
         )}
@@ -89,7 +89,7 @@ function OrgCard({ org }: { org: OrgRecord }) {
             {formatNumberShort(org.downloadsMonthly)}/mo
           </span>
         )}
-        {total === 0 && <span className="text-black/30">—</span>}
+        {total === 0 && <span className="text-muted-foreground">—</span>}
       </div>
     </Link>
   );
@@ -138,7 +138,7 @@ export default function OrgsGrid() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search publishers…"
           aria-label="Search publishers"
-          className="h-9 min-w-0 flex-1 rounded-full border border-muted-black-stroke bg-white px-4 text-primary text-sm outline-none transition-shadow placeholder:text-black/30 focus:ring-2 focus:ring-ost-blue-two/40 md:max-w-xs"
+          className="h-9 min-w-0 flex-1 rounded-full border border-muted-black-stroke bg-white px-4 text-primary text-sm outline-none transition-shadow placeholder:text-muted-foreground focus:ring-2 focus:ring-ost-blue-two/40 md:max-w-xs"
         />
         <div className="flex flex-wrap items-center gap-1.5">
           <button
@@ -170,7 +170,7 @@ export default function OrgsGrid() {
               )}
             >
               {k === "individual" ? "Individuals" : `${k}s`}{" "}
-              <span className="text-black/30">{count}</span>
+              <span className="text-muted-foreground">{count}</span>
             </button>
           ))}
         </div>

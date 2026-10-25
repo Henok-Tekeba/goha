@@ -28,7 +28,7 @@ export default function EcosystemStatsBand({
       {counts.map((count, i) => (
         <span key={count.label} className="inline-flex items-center gap-2.5">
           {i > 0 && (
-            <span aria-hidden className="text-black/20">
+            <span aria-hidden className="text-muted-foreground">
               ·
             </span>
           )}
@@ -43,7 +43,7 @@ export default function EcosystemStatsBand({
           </Link>
         </span>
       ))}
-      <span aria-hidden className="text-black/20">
+      <span aria-hidden className="text-muted-foreground">
         —
       </span>
       <Freshness indexedAt={stats.indexedAt} />

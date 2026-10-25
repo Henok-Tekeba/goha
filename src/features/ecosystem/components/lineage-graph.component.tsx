@@ -246,7 +246,7 @@ export default function LineageGraph({ className }: { className?: string }) {
               style={{ backgroundColor: colorFor(family.family) }}
             />
             {family.family}
-            <span className="text-black/30">{family.count}</span>
+            <span className="text-muted-foreground">{family.count}</span>
           </button>
         ))}
       </div>
@@ -261,7 +261,7 @@ export default function LineageGraph({ className }: { className?: string }) {
         {isLoading && (
           <Skeleton className="pointer-events-none absolute inset-0 h-full w-full" />
         )}
-        <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-black/30">
+        <p className="pointer-events-none absolute right-4 bottom-3 text-[10px] text-muted-foreground">
           drag to pan · scroll to zoom · click a node
         </p>
       </div>
@@ -271,7 +271,7 @@ export default function LineageGraph({ className }: { className?: string }) {
           {payload.families.find((f) => f.family === activeFamily)?.models ?? 0}{" "}
           indexed models in the {activeFamily} family — outlined nodes are the
           foundation models they descend from.{" "}
-          <span className="text-black/40">
+          <span className="text-muted-foreground">
             {payload.stats.models} models across {payload.stats.families}{" "}
             families in total.
           </span>

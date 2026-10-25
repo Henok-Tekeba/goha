@@ -168,7 +168,7 @@ export default function ProjectDetailView({
                               : String(m.value ?? "")}
                             {m.verified ? (
                               <span
-                                className="ml-1.5 text-black/40"
+                                className="ml-1.5 text-muted-foreground"
                                 title="Verified metric"
                               >
                                 ✓

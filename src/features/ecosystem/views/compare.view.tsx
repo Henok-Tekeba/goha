@@ -168,7 +168,7 @@ function SpecRow({
               : "py-2.5 pr-4 align-top text-primary text-sm tabular-nums"
           }
         >
-          {value ?? <span className="text-black/25">—</span>}
+          {value ?? <span className="text-muted-foreground">—</span>}
         </td>
       ))}
     </tr>
@@ -287,7 +287,7 @@ export default function CompareView() {
                     type="button"
                     onClick={() => removeModel(model.id as string)}
                     aria-label={`Remove ${model.title}`}
-                    className="shrink-0 text-black/30 transition-colors hover:text-primary"
+                    className="shrink-0 text-muted-foreground transition-colors hover:text-primary"
                   >
                     <HiMiniXMark className="size-4" />
                   </button>
@@ -373,7 +373,7 @@ export default function CompareView() {
             <table className="w-full min-w-[560px] text-left">
               <thead>
                 <tr className="border-muted-black-stroke border-b">
-                  <th className="w-36 py-2.5 pr-4 font-medium text-black/40 text-xs">
+                  <th className="w-36 py-2.5 pr-4 font-medium text-muted-foreground text-xs">
                     Spec
                   </th>
                   {selected.map((m, i) => (
@@ -464,7 +464,7 @@ export default function CompareView() {
             </table>
           </section>
 
-          <p className="flex items-center gap-1.5 text-black/40 text-xs">
+          <p className="flex items-center gap-1.5 text-muted-foreground text-xs">
             <HiOutlineCheck className="size-3.5" />
             Best monthly downloads are highlighted. Every figure comes from the
             daily scrape.

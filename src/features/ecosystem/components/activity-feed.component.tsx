@@ -87,7 +87,7 @@ function EventRow({ event }: { event: ActivityEvent }) {
             </p>
           )}
         </div>
-        <span className="shrink-0 pt-0.5 text-black/40 text-xs tabular-nums">
+        <span className="shrink-0 pt-0.5 text-muted-foreground text-xs tabular-nums">
           {event.ago}
         </span>
       </Link>
@@ -199,7 +199,7 @@ export default function ActivityFeed({ limit }: { limit?: number }) {
       ) : (
         groups.map(([label, items]) => (
           <section key={label} aria-label={label}>
-            <h3 className="mb-2 px-2 font-medium text-black/40 text-xs uppercase tracking-wide md:px-3">
+            <h3 className="mb-2 px-2 font-medium text-muted-foreground text-xs uppercase tracking-wide md:px-3">
               {label}
             </h3>
             <ul className="rounded-[16px] border border-muted-black-stroke">

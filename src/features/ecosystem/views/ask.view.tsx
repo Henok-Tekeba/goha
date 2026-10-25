@@ -78,7 +78,7 @@ function ResultRow({ item }: { item: AskItem }) {
         </span>
       </span>
       {item.meta && (
-        <span className="shrink-0 pt-0.5 text-[11px] text-black/30 tabular-nums">
+        <span className="shrink-0 pt-0.5 text-[11px] text-muted-foreground tabular-nums">
           {item.meta}
         </span>
       )}
@@ -159,13 +159,13 @@ export default function AskView() {
         className="flex items-center gap-2"
       >
         <div className="relative flex-1">
-          <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-black/30" />
+          <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="e.g. Which Tigrinya speech models exist?"
             aria-label="Ask Goha"
-            className="h-12 w-full rounded-full border border-muted-black-stroke bg-white pr-4 pl-11 text-primary text-sm outline-none transition-shadow placeholder:text-black/30 focus:ring-2 focus:ring-ost-blue-two/40"
+            className="h-12 w-full rounded-full border border-muted-black-stroke bg-white pr-4 pl-11 text-primary text-sm outline-none transition-shadow placeholder:text-muted-foreground focus:ring-2 focus:ring-ost-blue-two/40"
           />
         </div>
         <button
@@ -220,7 +220,7 @@ export default function AskView() {
             <div className="mt-5 flex flex-col gap-5">
               {answer.groups.map((group) => (
                 <div key={group.label}>
-                  <h3 className="mb-1.5 px-3 font-medium text-black/40 text-xs uppercase tracking-wide">
+                  <h3 className="mb-1.5 px-3 font-medium text-muted-foreground text-xs uppercase tracking-wide">
                     {group.label}
                   </h3>
                   <div className="rounded-[16px] border border-muted-black-stroke bg-white py-1.5">
@@ -235,7 +235,7 @@ export default function AskView() {
 
           {answer.suggestions.length > 0 && (
             <div className="mt-5">
-              <h3 className="mb-1.5 px-3 font-medium text-black/40 text-xs uppercase tracking-wide">
+              <h3 className="mb-1.5 px-3 font-medium text-muted-foreground text-xs uppercase tracking-wide">
                 Try next
               </h3>
               <div className="flex flex-wrap gap-1.5">

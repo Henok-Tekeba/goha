@@ -132,7 +132,7 @@ export default function ProjectCardComponent({
         <footer className="mt-auto flex items-center gap-3 pt-4 text-[11px] text-muted-foreground tabular-nums">
           {downloads > 0 && (
             <span className="flex items-center gap-1">
-              <FaDownload className="size-2.5 text-black/30" />
+              <FaDownload className="size-2.5 text-muted-foreground" />
               <span className="font-medium text-primary">
                 {formatNumberShort(downloads)}
               </span>
@@ -141,7 +141,7 @@ export default function ProjectCardComponent({
           )}
           {stars > 0 && (
             <span className="flex items-center gap-1">
-              <FaStar className="size-2.5 text-black/30" />
+              <FaStar className="size-2.5 text-muted-foreground" />
               <span className="font-medium text-primary">
                 {formatNumberShort(stars)}
               </span>

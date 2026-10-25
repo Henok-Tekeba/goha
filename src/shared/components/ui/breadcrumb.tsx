@@ -51,7 +51,7 @@ const BreadcrumbLink = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        "font-normal text-black/20 transition-colors hover:text-black/40",
+        "font-normal text-muted-foreground transition-colors hover:text-muted-foreground",
         className
       )}
       {...props}
@@ -81,7 +81,7 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn("text-black/20", className)}
+    className={cn("text-muted-foreground", className)}
     {...props}
   >
     {children || "/"}

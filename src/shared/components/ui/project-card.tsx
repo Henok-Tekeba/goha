@@ -235,7 +235,7 @@ const ProjectCardViewLink = React.forwardRef<
     ref={linkRef || ref}
     href={`/projects/${projectId}`}
     className={cn(
-      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-black/30 text-xs tracking-tighter transition-opacity hover:opacity-80",
+      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-muted-foreground text-xs tracking-tighter transition-opacity hover:opacity-80",
       className
     )}
     {...props}
@@ -263,7 +263,7 @@ const ProjectCardViewText = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-black/30 text-xs tracking-tighter",
+      "ml-auto flex flex-shrink-0 items-center gap-1 pt-1 font-medium text-muted-foreground text-xs tracking-tighter",
       className
     )}
     {...props}

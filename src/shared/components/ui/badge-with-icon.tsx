@@ -11,7 +11,7 @@ const badgeWithIconVariants = cva(
     variants: {
       variant: {
         success:
-          "border-transparent bg-success/10 text-success [a&]:hover:bg-success/20",
+          "border-transparent bg-success/10 text-success-strong [a&]:hover:bg-success/20",
         info: "border-transparent bg-ost-blue-three/10 text-ost-blue-three [a&]:hover:bg-ost-blue-three/20",
         danger:
           "border-transparent bg-destructive/10 text-destructive [a&]:hover:bg-destructive/20",

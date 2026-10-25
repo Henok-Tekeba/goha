@@ -51,6 +51,7 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-success-strong: var(--success-strong);
 
   /* Softer elevation than Tailwind defaults — menus, popovers, dialogs */
   --shadow-2xs: 0 1px rgb(0 0 0 / 0.025);
@@ -91,6 +92,7 @@
   --destructive-foreground: #fcebf1;
   --success: #05df72; /* Success color */
   --success-foreground: #f0fdf4;
+  --success-strong: #15803d; /* Accessible success text on light green */
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   /* Focus / keyboard ring — matches choose-method selected outline (ost-blue-two) */

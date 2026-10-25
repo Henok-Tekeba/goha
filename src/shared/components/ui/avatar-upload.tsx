@@ -145,11 +145,11 @@ export function AvatarUpload({
           </div>
 
           {file ? (
-            <div className="text-[calc(0.875rem+2px)] text-black/50 tracking-normal">
+            <div className="text-[calc(0.875rem+2px)] text-muted-foreground tracking-normal">
               {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
             </div>
           ) : (
-            <p className="text-[calc(0.75rem+2px)] text-black/50 tracking-normal">
+            <p className="text-[calc(0.75rem+2px)] text-muted-foreground tracking-normal">
               {subtitle}
             </p>
           )}

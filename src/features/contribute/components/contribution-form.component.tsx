@@ -139,7 +139,7 @@ export default function ContributionForm() {
               />
             )}
             {field.hint && (
-              <p className="text-[11px] text-black/40">{field.hint}</p>
+              <p className="text-[11px] text-muted-foreground">{field.hint}</p>
             )}
           </div>
         ))}

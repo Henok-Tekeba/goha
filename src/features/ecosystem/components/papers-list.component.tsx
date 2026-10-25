@@ -62,7 +62,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
             paper.title
           )}
         </h3>
-        <div className="flex items-center gap-2 text-black/40 text-xs tabular-nums">
+        <div className="flex items-center gap-2 text-muted-foreground text-xs tabular-nums">
           {paper.year && <span>{paper.year}</span>}
           {paper.arxivId && (
             <span className="hidden sm:inline">
@@ -90,7 +90,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-1 text-black/40 text-xs transition-colors hover:text-primary"
+          className="mt-1 text-muted-foreground text-xs transition-colors hover:text-primary"
         >
           {expanded ? "Show less" : "Show more"}
         </button>
@@ -117,7 +117,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
           {paper.projectId && (
             <Link
               href={`/projects/${paper.projectId}`}
-              className="text-black/40 text-xs transition-colors hover:text-primary"
+              className="text-muted-foreground text-xs transition-colors hover:text-primary"
             >
               Full record →
             </Link>
@@ -127,7 +127,7 @@ export function PaperRow({ paper }: { paper: PaperRecord }) {
               href={paper.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-black/40 text-xs transition-colors hover:text-primary"
+              className="inline-flex items-center gap-1 text-muted-foreground text-xs transition-colors hover:text-primary"
             >
               arXiv
               <HiArrowTopRightOnSquare className="size-3" />
@@ -201,7 +201,7 @@ export default function PapersList() {
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="relative min-w-0 flex-1 md:max-w-sm">
-            <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-black/30" />
+            <HiMagnifyingGlass className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -235,7 +235,7 @@ export default function PapersList() {
                 active={language === name}
                 onClick={() => setLanguage(language === name ? null : name)}
               >
-                {name} <span className="text-black/30">{count}</span>
+                {name} <span className="text-muted-foreground">{count}</span>
               </Chip>
             ))}
           </div>
@@ -248,7 +248,7 @@ export default function PapersList() {
                 active={task === name}
                 onClick={() => setTask(task === name ? null : name)}
               >
-                {name} <span className="text-black/30">{count}</span>
+                {name} <span className="text-muted-foreground">{count}</span>
               </Chip>
             ))}
           </div>

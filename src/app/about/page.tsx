@@ -54,7 +54,7 @@ export default function AboutPage() {
       <main>
         <div className="mx-auto max-w-3xl px-6">
           <header className="mb-12">
-            <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-[0.08em]">
+            <p className="mb-2 font-medium text-muted-foreground text-xs uppercase tracking-[0.08em]">
               About
             </p>
             <h1

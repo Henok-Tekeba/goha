@@ -128,7 +128,7 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[640px] text-sm">
           <thead>
-            <tr className="border-muted-black-stroke border-b text-left text-black/40 text-xs">
+            <tr className="border-muted-black-stroke border-b text-left text-muted-foreground text-xs">
               <th className="py-2 pr-3 font-medium">#</th>
               <th className="py-2 pr-3 font-medium">Model</th>
               <th className="py-2 pr-3 font-medium">Language</th>
@@ -170,7 +170,9 @@ function LeaderboardRowView({
     : (row.source ?? "#");
   return (
     <tr className="border-muted-black-stroke border-b last:border-b-0">
-      <td className="py-2.5 pr-3 text-black/40 text-xs tabular-nums">{rank}</td>
+      <td className="py-2.5 pr-3 text-muted-foreground text-xs tabular-nums">
+        {rank}
+      </td>
       <td className="max-w-[220px] py-2.5 pr-3">
         <Link
           href={modelHref}
@@ -203,13 +205,15 @@ function LeaderboardRowView({
         </span>
         {row.verified && (
           <span
-            className="ml-1.5 text-black/40"
+            className="ml-1.5 text-muted-foreground"
             title="Verified metric (reported by Hugging Face)"
           >
             <HiCheck className="inline size-3.5" />
           </span>
         )}
-        <span className="block text-[10px] text-black/30">{row.metric}</span>
+        <span className="block text-[10px] text-muted-foreground">
+          {row.metric}
+        </span>
       </td>
       <td className="hidden py-2.5 pr-3 text-right text-muted-foreground text-xs tabular-nums sm:table-cell">
         <span className="inline-flex items-center gap-1">
@@ -224,7 +228,7 @@ function LeaderboardRowView({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open source for ${row.model}`}
-            className="inline-flex text-black/30 transition-colors hover:text-primary"
+            className="inline-flex text-muted-foreground transition-colors hover:text-primary"
           >
             <HiArrowTopRightOnSquare className="size-4" />
           </a>
@@ -267,7 +271,7 @@ export default function LeaderboardView() {
           Face. New results appear as the daily scrape picks them up.
         </p>
         {data?.builtAt && (
-          <p className="mt-2 text-black/40 text-xs">
+          <p className="mt-2 text-muted-foreground text-xs">
             Table built {new Date(data.builtAt).toISOString().slice(0, 10)} ·{" "}
             <Link
               href="/lineage"

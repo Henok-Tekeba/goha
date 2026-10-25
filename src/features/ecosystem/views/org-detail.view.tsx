@@ -56,9 +56,11 @@ function ExternalRow({
         </div>
         <span className="flex shrink-0 items-center gap-2 pt-0.5">
           {meta && (
-            <span className="text-black/40 text-xs tabular-nums">{meta}</span>
+            <span className="text-muted-foreground text-xs tabular-nums">
+              {meta}
+            </span>
           )}
-          <HiArrowTopRightOnSquare className="size-3.5 text-black/20 transition-colors group-hover:text-primary" />
+          <HiArrowTopRightOnSquare className="size-3.5 text-muted-foreground transition-colors group-hover:text-primary" />
         </span>
       </a>
     </li>
@@ -79,7 +81,7 @@ function StatBox({
       <p className="font-medium text-primary text-sm tabular-nums">
         {value.toLocaleString("en")}
       </p>
-      <p className="text-[11px] text-black/40">
+      <p className="text-[11px] text-muted-foreground">
         {value === 1 ? singular : plural}
       </p>
     </div>

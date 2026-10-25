@@ -18,7 +18,7 @@ function MoverCard({ gainer }: { gainer: InsightGainer }) {
     >
       <div className="flex items-center gap-2">
         <span
-          className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success text-xs tabular-nums"
+          className="inline-flex items-center gap-1 rounded-full bg-success/10 px-2 py-0.5 text-success-strong text-xs tabular-nums"
           title="7-day download growth"
         >
           <FaArrowTrendUp className="size-3" />
