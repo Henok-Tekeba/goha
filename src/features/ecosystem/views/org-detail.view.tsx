@@ -65,13 +65,23 @@ function ExternalRow({
   );
 }
 
-function StatBox({ value, label }: { value: number; label: string }) {
+function StatBox({
+  value,
+  singular,
+  plural,
+}: {
+  value: number;
+  singular: string;
+  plural: string;
+}) {
   return (
     <div className="min-w-[72px] rounded-[12px] border border-muted-black-stroke px-3 py-2.5 text-center">
       <p className="font-medium text-primary text-sm tabular-nums">
         {value.toLocaleString("en")}
       </p>
-      <p className="text-[11px] text-black/40">{label}</p>
+      <p className="text-[11px] text-black/40">
+        {value === 1 ? singular : plural}
+      </p>
     </div>
   );
 }
@@ -79,7 +89,7 @@ function StatBox({ value, label }: { value: number; label: string }) {
 const kindLabel: Record<OrgRecord["kind"], string> = {
   company: "Company",
   lab: "Lab",
-  individual: "Builder",
+  individual: "Publisher",
 };
 
 export default function OrgDetailView({
@@ -178,12 +188,28 @@ export default function OrgDetailView({
 
         <div className="mt-5 grid grid-cols-1 items-center gap-4 md:grid-cols-[auto_auto]">
           <div className="flex flex-wrap gap-2">
-            <StatBox value={org.counts.models} label="models" />
-            <StatBox value={org.counts.datasets} label="datasets" />
-            <StatBox value={org.counts.repos} label="repos" />
-            <StatBox value={org.counts.spaces} label="spaces" />
+            <StatBox
+              value={org.counts.models}
+              singular="model"
+              plural="models"
+            />
+            <StatBox
+              value={org.counts.datasets}
+              singular="dataset"
+              plural="datasets"
+            />
+            <StatBox value={org.counts.repos} singular="repo" plural="repos" />
+            <StatBox
+              value={org.counts.spaces}
+              singular="space"
+              plural="spaces"
+            />
             {org.downloadsMonthly > 0 && (
-              <StatBox value={org.downloadsMonthly} label="downloads/mo" />
+              <StatBox
+                value={org.downloadsMonthly}
+                singular="download/mo"
+                plural="downloads/mo"
+              />
             )}
           </div>
           <div className="flex items-center gap-4">

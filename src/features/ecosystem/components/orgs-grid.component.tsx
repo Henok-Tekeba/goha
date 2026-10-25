@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { EmptyState } from "@/shared/components/ui/empty-state";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import { formatCount } from "@/shared/lib/format-count";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
@@ -14,7 +15,7 @@ import type { OrgRecord } from "../types/ecosystem.types";
 const KIND_LABEL = {
   company: "Company",
   lab: "Lab",
-  individual: "Builder",
+  individual: "Publisher",
 } as const;
 
 function initials(name: string): string {
@@ -71,10 +72,18 @@ function OrgCard({ org }: { org: OrgRecord }) {
         </p>
       )}
       <div className="mt-3.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-black/50 tabular-nums">
-        {org.counts.models > 0 && <span>{org.counts.models} models</span>}
-        {org.counts.datasets > 0 && <span>{org.counts.datasets} datasets</span>}
-        {org.counts.repos > 0 && <span>{org.counts.repos} repos</span>}
-        {org.counts.spaces > 0 && <span>{org.counts.spaces} spaces</span>}
+        {org.counts.models > 0 && (
+          <span>{formatCount(org.counts.models, "model")}</span>
+        )}
+        {org.counts.datasets > 0 && (
+          <span>{formatCount(org.counts.datasets, "dataset")}</span>
+        )}
+        {org.counts.repos > 0 && (
+          <span>{formatCount(org.counts.repos, "repo")}</span>
+        )}
+        {org.counts.spaces > 0 && (
+          <span>{formatCount(org.counts.spaces, "space")}</span>
+        )}
         {org.downloadsMonthly > 0 && (
           <span className="ml-auto">
             {formatNumberShort(org.downloadsMonthly)}/mo
@@ -115,8 +124,8 @@ export default function OrgsGrid() {
   if (isError)
     return (
       <EmptyState
-        title="Couldn't load organizations"
-        description="The org index failed to load. Please try again later."
+        title="Couldn't load publishers"
+        description="The publisher index failed to load. Please try again later."
         className="my-16"
       />
     );
@@ -127,8 +136,8 @@ export default function OrgsGrid() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search organizations…"
-          aria-label="Search organizations"
+          placeholder="Search publishers…"
+          aria-label="Search publishers"
           className="h-9 min-w-0 flex-1 rounded-full border border-muted-black-stroke bg-white px-4 text-primary text-sm outline-none transition-shadow placeholder:text-black/30 focus:ring-2 focus:ring-ost-blue-two/40 md:max-w-xs"
         />
         <div className="flex flex-wrap items-center gap-1.5">
@@ -160,14 +169,14 @@ export default function OrgsGrid() {
                   : "text-muted-foreground hover:text-primary"
               )}
             >
-              {k === "individual" ? "Builders" : `${k}s`}{" "}
+              {k === "individual" ? "Individuals" : `${k}s`}{" "}
               <span className="text-black/30">{count}</span>
             </button>
           ))}
         </div>
         {!isLoading && (
           <span className="ml-auto text-muted-foreground text-xs tabular-nums">
-            {filtered.length} org{filtered.length === 1 ? "" : "s"}
+            {filtered.length} publisher{filtered.length === 1 ? "" : "s"}
           </span>
         )}
       </div>
@@ -193,7 +202,7 @@ export default function OrgsGrid() {
         </div>
       ) : filtered.length === 0 ? (
         <EmptyState
-          title="No organizations match"
+          title="No publishers match"
           description="Try clearing the search or filters."
           className="my-16"
         />

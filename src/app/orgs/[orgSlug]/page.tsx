@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   const orgUrl = `${FRONTEND_URL.replace(/\/$/, "")}/orgs/${org.slug}`;
   return {
-    title: `${org.name} — Ethiopian AI organization · goha`,
+    title: `${org.name} — Ethiopian AI publisher · goha`,
     description:
       org.desc ??
       `${org.name} — ${kindWord(org.kind)} in the Ethiopian AI ecosystem on goha.`,
@@ -50,7 +50,7 @@ function kindWord(kind: string): string {
     ? "an AI company"
     : kind === "lab"
       ? "a research lab"
-      : "an independent builder";
+      : "an independent publisher";
 }
 
 export default async function OrgPage({ params }: Props) {

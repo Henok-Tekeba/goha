@@ -21,7 +21,8 @@
     "worker:deploy": "opennextjs-cloudflare deploy",
     "test:mock": "tsx --test src/mocks/handlers.mock.test.ts",
     "test:ask": "tsx src/features/ecosystem/lib/ask-parser.eval.ts",
-    "test:leaderboard": "tsx --test src/features/ecosystem/lib/leaderboard-groups.test.ts"
+    "test:leaderboard": "tsx --test src/features/ecosystem/lib/leaderboard-groups.test.ts",
+    "test:copy": "tsx --test src/features/ecosystem/lib/lineage-copy.test.ts src/shared/lib/format-count.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

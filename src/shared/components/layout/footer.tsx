@@ -73,7 +73,7 @@ const footerLinks: {
       id: "explore-activity",
     },
     {
-      label: "Organizations",
+      label: "Publishers",
       href: "/orgs",
       id: "explore-orgs",
     },

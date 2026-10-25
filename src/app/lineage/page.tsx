@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import {
+  getPublicLineage,
+  getPublicStats,
+} from "@/features/ecosystem/lib/public-data.server";
 import LineageView from "@/features/ecosystem/views/lineage.view";
 import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
@@ -11,10 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function LineagePage() {
+  const lineage = getPublicLineage();
+  const stats = getPublicStats();
+
   return (
     <>
       <main>
-        <LineageView />
+        <LineageView stats={lineage.stats} totalModels={stats.counts.models} />
       </main>
       <CTAFooter
         imageIllustration={asset("/illustrations/winged-angel.png")}

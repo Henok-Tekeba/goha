@@ -64,7 +64,7 @@ const DEFAULT_LINKS: MobileNavLink[] = [
   { label: "Lineage", icon: HiOutlineShare, href: "/lineage" },
   { label: "Ask Goha", icon: HiOutlineSparkles, href: "/ask" },
   { label: "Languages", icon: HiOutlineLanguage, href: "/lang" },
-  { label: "Organizations", icon: HiOutlineBuildingOffice2, href: "/orgs" },
+  { label: "Publishers", icon: HiOutlineBuildingOffice2, href: "/orgs" },
   { label: "Activity", icon: HiOutlineBolt, href: "/activity" },
 ];
 

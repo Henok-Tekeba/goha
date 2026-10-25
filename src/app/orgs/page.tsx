@@ -4,9 +4,9 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Organizations — who is building Ethiopian AI · goha",
+  title: "Publishers — who is publishing Ethiopian AI · goha",
   description:
-    "Companies, labs and independent researchers building Ethiopian AI, with their full public footprint across Hugging Face and GitHub.",
+    "Companies, labs and individual publishers with public models, datasets, repositories or spaces in the index, plus curated company records.",
   alternates: { canonical: "/orgs" },
 };
 

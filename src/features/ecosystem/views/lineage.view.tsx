@@ -1,16 +1,18 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { getLineage } from "@/shared/lib/local-data.client";
+
 import LineageGraph from "../components/lineage-graph.component";
+import { buildLineageCoverageCopy } from "../lib/lineage-copy";
 
-export default function LineageView() {
-  const { data } = useQuery({
-    queryKey: ["ecosystem", "lineage-page"],
-    queryFn: () => getLineage(),
-  });
+interface LineageViewProps {
+  stats: {
+    models: number;
+    foundations: number;
+    families: number;
+  };
+  totalModels: number;
+}
 
+export default function LineageView({ stats, totalModels }: LineageViewProps) {
   return (
     <div className="mx-auto max-w-6xl px-6">
       <header className="mb-8">
@@ -24,20 +26,18 @@ export default function LineageView() {
           The family tree of Ethiopian AI
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-          Every Ethiopian model is a descendant of a foundation model — a
-          Whisper, a Llama, a w2v-BERT. This is the genealogy, drawn from the{" "}
+          {buildLineageCoverageCopy(stats.models, totalModels)} This is their
+          genealogy, drawn from the{" "}
           <code className="rounded bg-secondary px-1 py-0.5 text-[11px]">
             base_model
           </code>{" "}
           each author declared on Hugging Face. Pick a family to follow a
           lineage; outlined nodes are the foundations themselves.
         </p>
-        {data && (
-          <p className="mt-3 text-muted-foreground text-xs tabular-nums">
-            {data.stats.models} models · {data.stats.foundations} foundations ·{" "}
-            {data.stats.families} families
-          </p>
-        )}
+        <p className="mt-3 text-muted-foreground text-xs tabular-nums">
+          {stats.models} models · {stats.foundations} foundations ·{" "}
+          {stats.families} families
+        </p>
       </header>
 
       <LineageGraph />
@@ -52,8 +52,8 @@ export default function LineageView() {
           names to their indexed ids, and lays the graph out as a layered DAG —
           roots on the left, derivations to the right. A model can be both a
           child and a parent (for example, an Amharic Llama that is then
-          instruction-tuned), which is how real lineages appear. Nothing is
-          inferred beyond what authors publish.
+          instruction-tuned), which is how real lineages appear. Family labels
+          are derived from the published base_model names.
         </p>
         <p className="mt-2 text-muted-foreground text-xs">
           Missing something?{" "}

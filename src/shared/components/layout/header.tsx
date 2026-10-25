@@ -135,7 +135,7 @@ export default function Header({ githubStars }: HeaderProps) {
                 href: "/lang",
                 className: "hidden lg:block",
               },
-              { label: "Orgs", href: "/orgs" },
+              { label: "Publishers", href: "/orgs" },
               {
                 label: "Activity",
                 href: "/activity",
