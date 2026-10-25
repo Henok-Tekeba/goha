@@ -4,7 +4,7 @@ import type {
   OrgRecord,
   PaperRecord,
 } from "../types/ecosystem.types";
-import type { AskEntity, ParsedAskQuery } from "./ask-parser";
+import type { ParsedAskQuery } from "./ask-parser";
 
 export interface AskProject {
   id?: string;
