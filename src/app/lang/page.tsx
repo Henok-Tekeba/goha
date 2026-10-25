@@ -6,7 +6,7 @@ import { asset } from "@/shared/lib/asset";
 import { getLanguagePage, languages } from "@/shared/lib/local-data.server";
 
 export const metadata: Metadata = {
-  title: "Languages — Ethiopian AI by language · goha",
+  title: "Languages — Ethiopian AI by language",
   description:
     "Coverage maps and gap analysis for Amharic, Afaan Oromo, Tigrinya, Ge'ez and more — what exists, and what's still missing.",
   alternates: { canonical: "/lang" },

@@ -5,7 +5,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Ask Goha — natural-language search for Ethiopian AI · goha",
+  title: "Ask — natural-language search for Ethiopian AI",
   description:
     "Ask about Ethiopian AI in plain language: models, datasets, papers, organizations, gaps and benchmarks — answered from the index, with sources.",
   alternates: { canonical: "/ask" },

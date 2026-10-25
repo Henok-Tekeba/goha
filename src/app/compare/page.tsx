@@ -5,7 +5,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Compare Ethiopian AI models — goha",
+  title: "Compare Ethiopian AI models",
   description:
     "Put Ethiopian models side by side: download trajectories, task, languages, license, size and lineage.",
   alternates: { canonical: "/compare" },

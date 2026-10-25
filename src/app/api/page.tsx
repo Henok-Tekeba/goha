@@ -4,7 +4,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Open data & API — goha",
+  title: "Open data & API",
   description:
     "Every surface on goha is backed by a public JSON file. No key, no auth, rebuilt daily from Hugging Face, GitHub and arXiv.",
   alternates: { canonical: "/api" },

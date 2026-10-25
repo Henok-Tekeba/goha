@@ -4,7 +4,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Publishers — who is publishing Ethiopian AI · goha",
+  title: "Publishers — who is publishing Ethiopian AI",
   description:
     "Companies, labs and individual publishers with public models, datasets, repositories or spaces in the index, plus curated company records.",
   alternates: { canonical: "/orgs" },

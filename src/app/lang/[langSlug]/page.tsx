@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: "Discover the Ethiopian AI ecosystem on goha.",
     };
   return {
-    title: `${language.name} AI — models, datasets & research · goha`,
+    title: `${language.name} AI — models, datasets & research`,
     description: `Everything indexed for ${language.name}: models, datasets and research papers, with a coverage map and the gaps still open.`,
     alternates: { canonical: `/lang/${language.slug}` },
   };

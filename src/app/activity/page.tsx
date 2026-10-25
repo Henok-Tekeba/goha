@@ -4,7 +4,7 @@ import CTAFooter from "@/shared/components/layout/cta-footer";
 import { asset } from "@/shared/lib/asset";
 
 export const metadata: Metadata = {
-  title: "Today in Ethiopian AI — goha",
+  title: "Today in Ethiopian AI",
   description:
     "Every new model, dataset, paper and milestone in the Ethiopian AI ecosystem, as the daily scrape picks it up.",
   alternates: { canonical: "/activity" },

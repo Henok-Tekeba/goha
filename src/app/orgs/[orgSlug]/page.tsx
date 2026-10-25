@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   const orgUrl = `${FRONTEND_URL.replace(/\/$/, "")}/orgs/${org.slug}`;
   return {
-    title: `${org.name} — Ethiopian AI publisher · goha`,
+    title: `${org.name} — Ethiopian AI publisher`,
     description:
       org.desc ??
       `${org.name} — ${kindWord(org.kind)} in the Ethiopian AI ecosystem on goha.`,
