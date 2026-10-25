@@ -14,7 +14,6 @@ import {
   HiOutlineChartBar,
   HiOutlineDocumentText,
   HiOutlineLanguage,
-  HiOutlineMegaphone,
   HiOutlineShare,
   HiOutlineSparkles,
   HiPlus,
@@ -67,7 +66,6 @@ const DEFAULT_LINKS: MobileNavLink[] = [
   { label: "Languages", icon: HiOutlineLanguage, href: "/lang" },
   { label: "Organizations", icon: HiOutlineBuildingOffice2, href: "/orgs" },
   { label: "Activity", icon: HiOutlineBolt, href: "/activity" },
-  { label: "Creator kit", icon: HiOutlineMegaphone, href: "/creators" },
 ];
 
 export function MobileHeader({ links, githubStars }: MobileHeaderProps) {

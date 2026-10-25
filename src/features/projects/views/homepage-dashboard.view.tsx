@@ -59,12 +59,6 @@ export default function HomepageDashboard({
                 text="The home of Ethiopian AI — models, datasets and research in one open index."
                 label="Share"
               />
-              <Link
-                href="/creators"
-                className="text-muted-foreground text-xs underline underline-offset-4 transition-colors hover:text-primary"
-              >
-                Creator kit →
-              </Link>
             </div>
           </section>
         </div>

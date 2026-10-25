@@ -91,11 +91,6 @@ const footerLinks: {
       id: "community-contribute",
     },
     {
-      label: "Creator kit",
-      href: "/creators",
-      id: "community-creators",
-    },
-    {
       label: "Send feedback",
       href: "/contribute?type=feedback#form-heading",
       id: "community-feedback",
@@ -175,8 +170,6 @@ export default function Footer() {
     is404Page ||
     pathname.startsWith("/projects/create") ||
     pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/contribute") ||
-    pathname.startsWith("/creators") ||
     pathname.startsWith("/not-found") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/onboarding") ||

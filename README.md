@@ -177,7 +177,7 @@ submissions land in the right queue:
 - `feedback` — product feedback
 
 The form and issue templates live in `src/features/contribute/` and
-`.github/ISSUE_TEMPLATE/`. `/creators` holds the ready-to-post creator kit.
+`.github/ISSUE_TEMPLATE/`.
 
 ### Deploy
 

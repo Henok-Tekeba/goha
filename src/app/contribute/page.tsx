@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { FRONTEND_URL } from "@/config/config";
 import ContributionForm from "@/features/contribute/components/contribution-form.component";
@@ -72,12 +71,6 @@ export default function ContributePage() {
           >
             Submission queue →
           </a>
-          <Link
-            href="/creators"
-            className="text-muted-foreground underline underline-offset-4 transition-colors hover:text-primary"
-          >
-            Creator kit →
-          </Link>
           <a
             href={EXTERNAL_LINKS.GITHUB_REPO}
             target="_blank"
