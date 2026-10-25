@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   productionBrowserSourceMaps: true,
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) config.devtool = "nosources-source-map";
+    return config;
+  },
   basePath,
   devIndicators: false,
   images: {
