@@ -7,6 +7,7 @@ import {
 } from "@/components/evilcharts/charts/echarts-bar-chart";
 
 import { useActivityQuery } from "../../hooks/ecosystem.queries";
+import { buildActivityPulseRows } from "../../lib/activity-pulse";
 
 const chartConfig = {
   events: {
@@ -18,8 +19,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const DAY_MS = 24 * 60 * 60 * 1000;
-
 export default function ActivityPulseChart({
   className,
   days = 30,
@@ -28,41 +27,22 @@ export default function ActivityPulseChart({
   days?: number;
 }) {
   const { data } = useActivityQuery();
-
-  const rows = useMemo(() => {
-    const now = Date.now();
-    const buckets = new Map<string, number>();
-    const fmt = new Intl.DateTimeFormat("en", {
-      month: "short",
-      day: "numeric",
-    });
-    for (let i = days - 1; i >= 0; i--) {
-      const dayStart = new Date(
-        Math.floor((now - i * DAY_MS) / DAY_MS) * DAY_MS
-      );
-      buckets.set(fmt.format(dayStart), 0);
-    }
-    for (const event of data ?? []) {
-      if (!event.at) continue;
-      const age = now - new Date(event.at).getTime();
-      if (age > days * DAY_MS) continue;
-      const key = fmt.format(new Date(event.at));
-      buckets.set(key, (buckets.get(key) ?? 0) + 1);
-    }
-    return [...buckets.entries()].map(([day, events]) => ({ day, events }));
-  }, [data, days]);
+  const rows = useMemo(
+    () => buildActivityPulseRows(data ?? [], new Date(), days),
+    [data, days]
+  );
 
   return (
     <EChartsBarChart
       data={rows}
       config={chartConfig}
-      xDataKey="day"
+      xDataKey="label"
       className={className}
       enableMaxValueHighlight
     >
       <EChartsBarChart.Grid />
       <EChartsBarChart.XAxis
-        dataKey="day"
+        dataKey="label"
         tickFormatter={(value, index) => (index % 5 === 0 ? value : "")}
         hideDots
       />

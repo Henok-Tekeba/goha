@@ -16,8 +16,8 @@ export default function ActivityView() {
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
           Every new model, dataset, paper and milestone the daily scrape picks
-          up across Hugging Face, GitHub and arXiv — the ecosystem as it
-          happens, not a quarterly report.
+          up across Hugging Face and arXiv — the ecosystem as it happens, not a
+          quarterly report.
         </p>
         <div className="mt-6 rounded-[20px] border border-muted-black-stroke px-4 py-4">
           <p className="mb-2 font-medium text-black/40 text-xs uppercase tracking-wide">
