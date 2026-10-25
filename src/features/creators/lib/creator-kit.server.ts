@@ -10,7 +10,6 @@ import { getGapReport, getLanguagePage } from "@/shared/lib/local-data.server";
 export interface CreatorPost {
   id: string;
   label: string;
-  description: string;
   text: string;
   path: string;
 }
@@ -19,8 +18,6 @@ export interface CreatorLink {
   id: string;
   label: string;
   href: string;
-  description: string;
-  shareText: string;
 }
 
 export interface CreatorKit {
@@ -122,16 +119,12 @@ export function getCreatorKit(): CreatorKit {
     {
       id: "weekly",
       label: "Weekly pulse",
-      description:
-        "A ready-to-post roundup of the index — counts, the biggest mover and the latest paper.",
       text: weeklyPost,
       path: "/",
     },
     {
       id: "gaps",
       label: "Gap report",
-      description:
-        "The most shareable angle: what is still missing, with numbers people can verify.",
       text: gapPost,
       path: "/gaps",
     },
@@ -140,8 +133,6 @@ export function getCreatorKit(): CreatorKit {
           {
             id: "language",
             label: `${languagePage.name} spotlight`,
-            description:
-              "A focused language post for communities that care about one language.",
             text: languagePost,
             path: `/lang/${languagePage.slug}`,
           },
@@ -152,8 +143,6 @@ export function getCreatorKit(): CreatorKit {
           {
             id: "benchmarks",
             label: "Benchmark board",
-            description:
-              "A compact leaderboard post for researchers and model builders.",
             text: benchmarkPost,
             path: "/leaderboard",
           },
@@ -162,59 +151,11 @@ export function getCreatorKit(): CreatorKit {
   ];
 
   const links: CreatorLink[] = [
-    {
-      id: "home",
-      label: "The index",
-      href: "/",
-      description: "The full dashboard: stats, movers, research and languages.",
-      shareText:
-        "The home of Ethiopian AI — models, datasets and research in one open index.",
-    },
-    {
-      id: "gaps",
-      label: "Gap report",
-      href: "/gaps",
-      description:
-        "A data-cited page on the empty cells, unmeasured models and licensing gaps.",
-      shareText:
-        "A data-cited look at what Ethiopian AI is still missing — and what to build next.",
-    },
-    {
-      id: "leaderboard",
-      label: "Benchmarks",
-      href: "/leaderboard",
-      description:
-        "Published evaluations, normalized by task, with links to the source.",
-      shareText:
-        "Ethiopian AI benchmarks in one place — compare ASR, TTS, LLM and translation results.",
-    },
-    {
-      id: "languages",
-      label: "Languages",
-      href: "/lang",
-      description:
-        "Coverage by language and task, from Amharic to Wolayttattoo.",
-      shareText:
-        "See what exists for each Ethiopian language — models, datasets and papers.",
-    },
-    {
-      id: "lineage",
-      label: "Model lineage",
-      href: "/lineage",
-      description:
-        "The family tree of Ethiopian AI: Llama, Whisper, w2v-BERT and their descendants.",
-      shareText:
-        "Every model has ancestors. Explore the family tree of Ethiopian AI.",
-    },
-    {
-      id: "activity",
-      label: "Activity feed",
-      href: "/activity",
-      description:
-        "New models, datasets, papers and milestones as the daily scrape finds them.",
-      shareText:
-        "Today in Ethiopian AI — the latest models, datasets and papers in one feed.",
-    },
+    { id: "gaps", label: "Gap report", href: "/gaps" },
+    { id: "leaderboard", label: "Benchmarks", href: "/leaderboard" },
+    { id: "languages", label: "Languages", href: "/lang" },
+    { id: "lineage", label: "Model lineage", href: "/lineage" },
+    { id: "activity", label: "Activity", href: "/activity" },
   ];
 
   return { oneLiner, posts, links };

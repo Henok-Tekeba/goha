@@ -5,23 +5,15 @@ import type { CreatorPost } from "../lib/creator-kit.server";
 
 export default function CreatorPostCard({ post }: { post: CreatorPost }) {
   return (
-    <article className="flex flex-col rounded-[18px] border border-muted-black-stroke bg-white px-5 py-5">
-      <div>
-        <h3
-          className="text-[15px] text-primary tracking-[-0.01em]"
-          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-        >
-          {post.label}
-        </h3>
-        <p className="mt-1 text-muted-foreground text-xs leading-relaxed">
-          {post.description}
-        </p>
-      </div>
-      <pre className="mt-4 flex-1 whitespace-pre-wrap break-words rounded-[12px] bg-secondary/50 px-4 py-3 font-sans text-[12px] text-black/70 leading-relaxed">
+    <article className="flex flex-col rounded-[18px] border border-muted-black-stroke bg-white px-6 py-6">
+      <h3 className="font-medium text-primary text-sm tracking-tight">
+        {post.label}
+      </h3>
+      <pre className="mt-5 flex-1 whitespace-pre-wrap break-words font-sans text-[12px] text-black/70 leading-[1.7]">
         {post.text}
       </pre>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <CopyButton text={post.text} label="Copy post" />
+      <div className="mt-6 flex gap-2">
+        <CopyButton text={post.text} label="Copy" />
         <ShareButton
           path={post.path}
           title={post.label}

@@ -48,11 +48,6 @@ export default function HomepageDashboard({
               >
                 Missing something?
               </h2>
-              <p className="mt-1 max-w-xl text-muted-foreground text-sm leading-relaxed">
-                Models, datasets, papers, organizations and corrections are all
-                welcome. Submissions take under a minute and are reviewed for an
-                upcoming daily build.
-              </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Button asChild size="sm">

@@ -175,6 +175,8 @@ export default function Footer() {
     is404Page ||
     pathname.startsWith("/projects/create") ||
     pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/contribute") ||
+    pathname.startsWith("/creators") ||
     pathname.startsWith("/not-found") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/onboarding") ||

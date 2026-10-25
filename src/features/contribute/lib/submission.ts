@@ -36,7 +36,6 @@ export interface SubmissionField {
 export interface SubmissionType {
   value: SubmissionKind;
   label: string;
-  description: string;
   issueLabel: string;
   titlePrefix: string;
   actionLabel: string;
@@ -46,27 +45,14 @@ export interface SubmissionType {
 
 const SUBMITTER_FIELD: SubmissionField = {
   name: "submitter",
-  label: "Your name or handle",
-  placeholder: "Optional — so we can credit you",
-  hint: "We'll mention you when the entry is added.",
+  label: "Credit (optional)",
+  placeholder: "Your name or handle",
 };
-
-const NOTES_FIELD: SubmissionField = {
-  name: "notes",
-  label: "Anything else?",
-  placeholder: "Optional context, caveats or links",
-  textarea: true,
-  full: true,
-};
-
-const SUBMITTER_AND_NOTES = [SUBMITTER_FIELD, NOTES_FIELD];
 
 export const SUBMISSION_TYPES: SubmissionType[] = [
   {
     value: "model",
     label: "Model",
-    description:
-      "A model, fine-tune or checkpoint for an Ethiopian language — Hugging Face, GitHub or a hosted API.",
     issueLabel: "goha-submit",
     titlePrefix: "Model",
     actionLabel: "Open model issue",
@@ -101,31 +87,18 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
         placeholder: "ASR, LLM, Translation, NER",
       },
       {
-        name: "license",
-        label: "License",
-        placeholder: "apache-2.0, mit, CC BY 4.0…",
-      },
-      {
-        name: "downloads",
-        label: "Monthly downloads",
-        placeholder: "e.g. 1200",
-        inputMode: "numeric",
-      },
-      {
         name: "description",
-        label: "What does it do?",
-        placeholder: "One or two sentences a creator could quote.",
+        label: "Description",
+        placeholder: "One sentence a creator could quote.",
         textarea: true,
         full: true,
       },
-      ...SUBMITTER_AND_NOTES,
+      SUBMITTER_FIELD,
     ],
   },
   {
     value: "dataset",
     label: "Dataset",
-    description:
-      "A speech corpus, text collection, parallel corpus or evaluation set.",
     issueLabel: "goha-submit",
     titlePrefix: "Dataset",
     actionLabel: "Open dataset issue",
@@ -160,25 +133,18 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
         placeholder: "ASR, TTS, LLM, Benchmark",
       },
       {
-        name: "license",
-        label: "License",
-        placeholder: "CC BY 4.0, MIT…",
-      },
-      {
         name: "description",
-        label: "What is in it?",
-        placeholder: "Hours, rows, speakers, domains — whatever matters.",
+        label: "Description",
+        placeholder: "Hours, rows, speakers — one line.",
         textarea: true,
         full: true,
       },
-      ...SUBMITTER_AND_NOTES,
+      SUBMITTER_FIELD,
     ],
   },
   {
     value: "paper",
     label: "Research",
-    description:
-      "A paper, benchmark or technical report about Ethiopian languages or AI.",
     issueLabel: "goha-submit",
     titlePrefix: "Paper",
     actionLabel: "Open paper issue",
@@ -203,12 +169,6 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
         placeholder: "Comma-separated",
       },
       {
-        name: "year",
-        label: "Year",
-        placeholder: "e.g. 2026",
-        inputMode: "numeric",
-      },
-      {
         name: "languages",
         label: "Languages",
         placeholder: "Amharic, Tigrinya",
@@ -220,19 +180,17 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
       },
       {
         name: "description",
-        label: "Why does it matter?",
-        placeholder: "A short summary for the research index.",
+        label: "Description",
+        placeholder: "One sentence summary.",
         textarea: true,
         full: true,
       },
-      ...SUBMITTER_AND_NOTES,
+      SUBMITTER_FIELD,
     ],
   },
   {
     value: "org",
     label: "Organization",
-    description:
-      "A company, lab, community or independent builder working on Ethiopian AI.",
     issueLabel: "goha-submit",
     titlePrefix: "Organization",
     actionLabel: "Open organization issue",
@@ -253,40 +211,26 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
       {
         name: "orgKind",
         label: "Type",
-        placeholder: "company, research lab or individual",
-      },
-      {
-        name: "github",
-        label: "GitHub org",
-        placeholder: "https://github.com/...",
-        inputMode: "url",
-      },
-      {
-        name: "hfOrg",
-        label: "Hugging Face org",
-        placeholder: "https://huggingface.co/...",
-        inputMode: "url",
+        placeholder: "company, lab or individual",
       },
       {
         name: "languages",
-        label: "Languages they work on",
+        label: "Languages",
         placeholder: "Amharic, Afaan Oromo",
       },
       {
         name: "description",
-        label: "What do they do?",
-        placeholder: "One or two sentences.",
+        label: "Description",
+        placeholder: "One sentence.",
         textarea: true,
         full: true,
       },
-      ...SUBMITTER_AND_NOTES,
+      SUBMITTER_FIELD,
     ],
   },
   {
     value: "benchmark",
     label: "Benchmark",
-    description:
-      "A published evaluation result — WER, BLEU, accuracy, latency or anything measurable.",
     issueLabel: "goha-benchmark",
     titlePrefix: "Benchmark",
     actionLabel: "Open benchmark issue",
@@ -334,26 +278,12 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
         label: "Languages",
         placeholder: "Amharic",
       },
-      {
-        name: "tasks",
-        label: "Task",
-        placeholder: "ASR, TTS, Translation",
-      },
-      {
-        name: "description",
-        label: "Context",
-        placeholder: "Test set size, decoding setup, caveats…",
-        textarea: true,
-        full: true,
-      },
-      ...SUBMITTER_AND_NOTES,
+      SUBMITTER_FIELD,
     ],
   },
   {
     value: "correction",
     label: "Correction",
-    description:
-      "Something on a goha page is wrong — a license, owner, language tag or number.",
     issueLabel: "goha-correction",
     titlePrefix: "Correction",
     actionLabel: "Open correction issue",
@@ -399,7 +329,6 @@ export const SUBMISSION_TYPES: SubmissionType[] = [
   {
     value: "feedback",
     label: "Feedback",
-    description: "Tell us what works, what's confusing, or what you want next.",
     issueLabel: "feedback",
     titlePrefix: "Feedback",
     actionLabel: "Open feedback issue",

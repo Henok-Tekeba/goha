@@ -102,10 +102,6 @@ export default function ContributionForm() {
         })}
       </div>
 
-      <p className="mt-4 max-w-2xl text-muted-foreground text-sm leading-relaxed">
-        {type.description}
-      </p>
-
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {type.fields.map((field) => (
           <div
@@ -154,8 +150,7 @@ export default function ContributionForm() {
           {isComplete ? (
             <span>
               Opens a{" "}
-              <strong className="text-primary">public GitHub issue</strong> with
-              the details filled in.
+              <strong className="text-primary">public GitHub issue</strong>.
             </span>
           ) : (
             <span>
@@ -200,7 +195,7 @@ export default function ContributionForm() {
 
       <details className="group mt-4 rounded-[14px] border border-muted-black-stroke bg-secondary/40 px-4 py-3">
         <summary className="cursor-pointer select-none text-[12px] text-muted-foreground transition-colors hover:text-primary">
-          Preview what will be posted
+          Preview issue
         </summary>
         <pre className="mt-3 max-h-64 overflow-auto whitespace-pre-wrap break-words text-[11px] text-black/60 leading-relaxed">
           {preview}
