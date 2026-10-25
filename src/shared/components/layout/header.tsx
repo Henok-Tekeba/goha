@@ -17,7 +17,6 @@ import SearchCommand from "@/features/projects/components/search-command.compone
 import { Button } from "@/shared/components/ui/button";
 import { SkeletonUserDropdown } from "@/shared/components/ui/skeleton-header";
 import UserDropdown from "@/shared/components/ui/user-dropdown.component";
-import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 import { cn } from "@/shared/lib/utils";
 
 interface HeaderProps {
@@ -168,23 +167,19 @@ export default function Header({ githubStars }: HeaderProps) {
             </div>
           </div>
 
-          {isLoading ? (
-            <SkeletonUserDropdown />
-          ) : (
-            <div className="flex items-center gap-2">
-              <a
-                href={`${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="pr-[14px] pl-4 has-[>svg]:pr-[14px] has-[>svg]:pl-4">
-                  Submit a project
-                  <HiPlus size={16} />
-                </Button>
-              </a>
-              {isAuthenticated && <UserDropdown />}
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            <Link href="/contribute">
+              <Button className="pr-[14px] pl-4 has-[>svg]:pr-[14px] has-[>svg]:pl-4">
+                Contribute
+                <HiPlus size={16} />
+              </Button>
+            </Link>
+            {isLoading ? (
+              <SkeletonUserDropdown />
+            ) : (
+              isAuthenticated && <UserDropdown />
+            )}
+          </div>
         </nav>
       </header>
     </>

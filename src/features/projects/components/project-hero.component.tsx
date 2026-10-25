@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
+import ShareButton from "@/shared/components/share/share-button.component";
 import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
 import { Modal } from "@/shared/components/ui/modal";
@@ -61,7 +62,12 @@ export function ProjectMobileHero({ project }: ProjectHeroProps) {
       <p className="mt-4 mb-8 line-clamp-5 break-words font-normal text-sm tracking-normal">
         {description}
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <ShareButton
+          path={`/projects/${id}`}
+          title={title}
+          text={description}
+        />
         {published ? (
           <>
             <BookmarkButton projectId={id} isBookmarked={isBookmarked} />
@@ -161,6 +167,11 @@ export default function ProjectHero({
             </div>
 
             <div className="flex items-center gap-2">
+              <ShareButton
+                path={`/projects/${id}`}
+                title={title}
+                text={description}
+              />
               {published ? (
                 <>
                   <BookmarkButton projectId={id} isBookmarked={isBookmarked} />

@@ -214,6 +214,11 @@ export interface LanguagesPayload {
   data: LanguageRecord[];
 }
 
+/** Language index entry enriched with its total indexed assets. */
+export interface LanguageTile extends LanguageRecord {
+  total: number;
+}
+
 /* ---------------- lineage ---------------- */
 
 export interface LineageNode {

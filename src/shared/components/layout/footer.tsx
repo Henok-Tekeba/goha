@@ -87,9 +87,18 @@ const footerLinks: {
     },
     {
       label: "Contribute data",
-      href: `${EXTERNAL_LINKS.GITHUB_REPO}/issues/new`,
-      external: true,
+      href: "/contribute",
       id: "community-contribute",
+    },
+    {
+      label: "Creator kit",
+      href: "/creators",
+      id: "community-creators",
+    },
+    {
+      label: "Send feedback",
+      href: "/contribute?type=feedback#form-heading",
+      id: "community-feedback",
     },
     {
       label: "About goha",

@@ -1,0 +1,75 @@
+name: Submit data
+description: Add a model, dataset, paper, organization or benchmark to goha
+title: "[Submission] "
+labels: ["goha-submit"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The fastest path is the guided form at **https://goha.enoch.et/contribute/** — it fills this issue for you.
+
+        If you are opening the issue manually, please include a public link and enough detail to verify the entry.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you submitting?
+      options:
+        - Model
+        - Dataset
+        - Research paper
+        - Organization
+        - Benchmark / evaluation result
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The model, dataset, paper, organization or benchmark name.
+      placeholder: e.g. Llama-3.2-1B-Amharic-Instruct
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Public URL
+      description: Hugging Face, GitHub, arXiv, the organization website or the benchmark source.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: One or two sentences a creator could quote.
+      placeholder: What is it, and why does it matter?
+    validations:
+      required: true
+  - type: input
+    id: languages
+    attributes:
+      label: Languages
+      description: Comma-separated.
+      placeholder: Amharic, Afaan Oromo, Tigrinya
+  - type: input
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Comma-separated.
+      placeholder: ASR, LLM, Translation, NER
+  - type: input
+    id: source
+    attributes:
+      label: Source for a benchmark result
+      description: Required when submitting a benchmark. Link to the model card, paper or leaderboard.
+      placeholder: https://...
+  - type: input
+    id: submitter
+    attributes:
+      label: Your name or handle
+      description: Optional — so we can credit you.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Caveats, related links or context for the reviewer.

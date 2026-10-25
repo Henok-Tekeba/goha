@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo } from "react";
 import {
   HiArrowDownTray,
@@ -148,6 +149,18 @@ export default function ProjectSideBar({ project }: ProjectSideBarProps) {
         source={project}
         emptyText="No links added"
       />
+
+      <div className="rounded-[12px] border border-muted-black-stroke bg-secondary/40 px-4 py-3">
+        <p className="text-[12px] text-muted-foreground">
+          Spotted an error or a missing detail?
+        </p>
+        <Link
+          href="/contribute?type=correction"
+          className="mt-1 inline-flex text-primary text-xs underline underline-offset-4"
+        >
+          Suggest an edit →
+        </Link>
+      </div>
     </div>
   );
 }

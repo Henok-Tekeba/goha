@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FaDownload } from "react-icons/fa6";
 import { HiArrowTopRightOnSquare, HiCheck } from "react-icons/hi2";
+import ShareButton from "@/shared/components/share/share-button.component";
 import { EmptyState } from "@/shared/components/ui/empty-state";
 import { Skeleton } from "@/shared/components/ui/skeleton";
 import { cn } from "@/shared/lib/utils";
@@ -238,12 +239,19 @@ export default function LeaderboardView() {
   return (
     <div className="mx-auto max-w-5xl px-6">
       <header className="mb-8">
-        <h1
-          className="text-3xl text-primary tracking-[-0.03em] md:text-4xl"
-          style={{ fontFamily: "Aspekta", fontWeight: 500 }}
-        >
-          Benchmarks & rankings
-        </h1>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1
+            className="text-3xl text-primary tracking-[-0.03em] md:text-4xl"
+            style={{ fontFamily: "Aspekta", fontWeight: 500 }}
+          >
+            Benchmarks & rankings
+          </h1>
+          <ShareButton
+            path="/leaderboard"
+            title="Ethiopian AI benchmarks & rankings"
+            text="Published evaluations for Ethiopian-language models — ASR, TTS, retrieval and more, with sources."
+          />
+        </div>
         <p className="mt-3 max-w-2xl text-muted-foreground text-sm leading-relaxed">
           How Ethiopian-language models compare on the numbers their authors
           published — ASR word error rates, retrieval accuracy, OCR and more.

@@ -125,6 +125,10 @@ Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
    the model lineage graph — and writes them to `public/data/`;
 3. writes build-time fixtures used for static params and server-side joins.
 
+The landing dashboard (`/`) is prerendered from those files at build time, so
+its content is in the initial HTML. Only the filter bar and the filtered browse
+view are client-side.
+
 ### Data files (`public/data/`)
 
 | File | Contents |
@@ -160,6 +164,20 @@ Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
 | `/gaps` | the gap report — empty cells, unmeasured models, licensing |
 | `/about` | mission, pipeline, principles, non-goals |
 | `/api` | open data: endpoints, examples, schema, caveats |
+
+### Community submissions
+
+`/contribute` turns a guided form into a prefilled GitHub issue (with a
+machine-readable JSON block). Create these labels in the repository so
+submissions land in the right queue:
+
+- `goha-submit` — models, datasets, papers and organizations
+- `goha-correction` — data corrections
+- `goha-benchmark` — evaluation results
+- `feedback` — product feedback
+
+The form and issue templates live in `src/features/contribute/` and
+`.github/ISSUE_TEMPLATE/`. `/creators` holds the ready-to-post creator kit.
 
 ### Deploy
 

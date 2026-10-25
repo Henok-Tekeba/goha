@@ -7,6 +7,7 @@ import OrgRadarChart from "@/features/ecosystem/components/charts/org-radar-char
 import type { OrgRadarAxis } from "@/features/ecosystem/types/ecosystem.types";
 import ProjectGrid from "@/features/projects/components/project-grid.component";
 import type { Project } from "@/features/projects/types/project.type";
+import ShareButton from "@/shared/components/share/share-button.component";
 import {
   Tabs,
   TabsContent,
@@ -128,6 +129,14 @@ export default function OrgDetailView({
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <ShareButton
+              path={`/orgs/${org.slug}`}
+              title={org.name}
+              text={
+                org.desc ??
+                `${org.name} — an organization in the Ethiopian AI ecosystem.`
+              }
+            />
             {org.website && (
               <a
                 href={org.website}

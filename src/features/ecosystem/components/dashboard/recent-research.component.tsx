@@ -1,16 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { asset } from "@/shared/lib/asset";
 
-import { usePapersQuery } from "../../hooks/ecosystem.queries";
+import type { PaperRecord } from "../../types/ecosystem.types";
 
-export default function RecentResearch() {
-  const { data, isLoading } = usePapersQuery();
-  const papers = (data ?? []).slice(0, 4);
-
+export default function RecentResearch({ papers }: { papers: PaperRecord[] }) {
   return (
     <section aria-labelledby="recent-research-heading">
       <div className="mb-4 flex items-baseline justify-between gap-4">
@@ -30,46 +24,35 @@ export default function RecentResearch() {
       </div>
 
       <ul className="rounded-[16px] border border-muted-black-stroke bg-white">
-        {isLoading
-          ? Array.from({ length: 4 }).map((_, i) => (
-              <li
-                key={i}
-                className="border-muted-black-stroke border-b px-5 py-3 last:border-b-0"
-              >
-                <Skeleton className="h-4 w-2/3" />
-              </li>
-            ))
-          : papers.map((paper) => (
-              <li
-                key={paper.slug}
-                className="border-muted-black-stroke border-b last:border-b-0"
-              >
-                <Link
-                  href={
-                    paper.projectId
-                      ? `/projects/${paper.projectId}`
-                      : (paper.url ?? "/research")
-                  }
-                  className="flex items-baseline gap-3 px-5 py-3 transition-colors hover:bg-secondary/60"
-                >
-                  <Image
-                    src={asset("/types/research.svg")}
-                    alt=""
-                    width={16}
-                    height={16}
-                    className="mt-0.5 shrink-0 opacity-60"
-                  />
-                  <span className="min-w-0 flex-1 truncate text-[13px] text-primary">
-                    {paper.title}
-                  </span>
-                  <span className="shrink-0 text-[11px] text-muted-foreground tabular-nums">
-                    {[paper.languages[0], paper.year]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </span>
-                </Link>
-              </li>
-            ))}
+        {papers.map((paper) => (
+          <li
+            key={paper.slug}
+            className="border-muted-black-stroke border-b last:border-b-0"
+          >
+            <Link
+              href={
+                paper.projectId
+                  ? `/projects/${paper.projectId}`
+                  : (paper.url ?? "/research")
+              }
+              className="flex items-baseline gap-3 px-5 py-3 transition-colors hover:bg-secondary/60"
+            >
+              <Image
+                src={asset("/types/research.svg")}
+                alt=""
+                width={16}
+                height={16}
+                className="mt-0.5 shrink-0 opacity-60"
+              />
+              <span className="min-w-0 flex-1 truncate text-[13px] text-primary">
+                {paper.title}
+              </span>
+              <span className="shrink-0 text-[11px] text-muted-foreground tabular-nums">
+                {[paper.languages[0], paper.year].filter(Boolean).join(" · ")}
+              </span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </section>
   );

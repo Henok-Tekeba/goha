@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTAFooter from "@/shared/components/layout/cta-footer";
+import ShareButton from "@/shared/components/share/share-button.component";
 import { asset } from "@/shared/lib/asset";
 import { getGapReport } from "@/shared/lib/local-data.server";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
@@ -66,10 +67,17 @@ export default function GapsPage() {
               what is publicly published, not estimates. If something is missing
               here, it is missing on Hugging Face, GitHub and arXiv too.
             </p>
-            <p className="mt-2 text-black/40 text-xs tabular-nums">
-              {totalLanguages} languages · {report.tasks.length} tasks ·{" "}
-              {report.totalCells} cells analysed
-            </p>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-black/40 text-xs tabular-nums">
+                {totalLanguages} languages · {report.tasks.length} tasks ·{" "}
+                {report.totalCells} cells analysed
+              </p>
+              <ShareButton
+                path="/gaps"
+                title="The Gap Report"
+                text={`${emptyCount} of ${report.totalCells} language × task combinations in Ethiopian AI have no model, dataset or paper.`}
+              />
+            </div>
           </header>
 
           <section
@@ -340,6 +348,10 @@ export default function GapsPage() {
               ·{" "}
               <Link href="/ask" className="underline underline-offset-4">
                 ask about a specific gap
+              </Link>{" "}
+              ·{" "}
+              <Link href="/contribute" className="underline underline-offset-4">
+                submit the missing data
               </Link>
             </p>
           </section>

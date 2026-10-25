@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { PaperRow } from "@/features/ecosystem/components/papers-list.component";
 import ProjectGrid from "@/features/projects/components/project-grid.component";
+import ShareButton from "@/shared/components/share/share-button.component";
 import type { LanguagePageData } from "@/shared/lib/local-data.server";
 
 function SectionHeading({
@@ -68,6 +69,12 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
               indexed for {name}
             </p>
           </div>
+          <ShareButton
+            className="ml-auto"
+            path={`/lang/${data.slug}`}
+            title={`${name} AI`}
+            text={`${name} AI — ${models.length} models, ${datasets.length} datasets and ${papers.length} papers, in one place.`}
+          />
         </div>
       </header>
 
@@ -152,6 +159,20 @@ export default function LanguagePageView({ data }: { data: LanguagePageData }) {
               </li>
             ))}
           </ul>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link
+              href="/contribute"
+              className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-primary-foreground text-xs"
+            >
+              Submit a {name} model or dataset
+            </Link>
+            <Link
+              href="/contribute?type=correction"
+              className="inline-flex items-center rounded-full border border-muted-black-stroke px-4 py-2 text-primary text-xs"
+            >
+              Report an error
+            </Link>
+          </div>
         </section>
       )}
 

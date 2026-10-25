@@ -1,0 +1,43 @@
+name: Correction
+description: Report a wrong license, owner, language tag or number on a goha page
+title: "[Correction] "
+labels: ["goha-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for keeping the index accurate. The guided form at **https://goha.enoch.et/contribute/** can build this issue for you.
+  - type: input
+    id: page
+    attributes:
+      label: goha page URL
+      placeholder: https://goha.enoch.et/projects/...
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is wrong?
+      description: Describe the current, incorrect value.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say?
+      description: The corrected value.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A link that proves the correction.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: submitter
+    attributes:
+      label: Your name or handle
+      description: Optional — so we can credit you.

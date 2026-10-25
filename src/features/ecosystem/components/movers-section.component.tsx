@@ -1,11 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
-import { Skeleton } from "@/shared/components/ui/skeleton";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
-import { useInsightsQuery } from "../hooks/ecosystem.queries";
 import type { InsightGainer } from "../types/ecosystem.types";
 
 function MoverCard({ gainer }: { gainer: InsightGainer }) {
@@ -44,11 +40,8 @@ function MoverCard({ gainer }: { gainer: InsightGainer }) {
   );
 }
 
-export default function MoversSection() {
-  const { data, isLoading } = useInsightsQuery();
-  const movers = data?.topGainers?.slice(0, 6) ?? [];
-
-  if (!isLoading && movers.length === 0) return null;
+export default function MoversSection({ movers }: { movers: InsightGainer[] }) {
+  if (movers.length === 0) return null;
 
   return (
     <section
@@ -71,23 +64,9 @@ export default function MoversSection() {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-        {isLoading
-          ? Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="rounded-[16px] border border-muted-black-stroke px-4 py-3.5"
-              >
-                <div className="flex items-center justify-between">
-                  <Skeleton className="h-5 w-16 rounded-full" />
-                  <Skeleton className="h-4 w-20" />
-                </div>
-                <Skeleton className="mt-3 h-4 w-3/4" />
-                <Skeleton className="mt-2 h-3 w-1/3" />
-              </div>
-            ))
-          : movers.map((gainer) => (
-              <MoverCard key={gainer.id} gainer={gainer} />
-            ))}
+        {movers.map((gainer) => (
+          <MoverCard key={gainer.id} gainer={gainer} />
+        ))}
       </div>
     </section>
   );

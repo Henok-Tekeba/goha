@@ -1,6 +1,5 @@
 import ProjectCard from "@/shared/components/shared/ProjectCard";
 
-import { useProjectRepositorySummary } from "../../../shared/hooks/use-git-repo-summary.hook";
 import type { Project } from "../types/project.type";
 
 interface ProjectGridProps {
@@ -9,19 +8,11 @@ interface ProjectGridProps {
 }
 
 function ProjectGridItem({ project }: { project: Project }) {
-  const { data: repoSummary, isLoading: isRepoLoading } =
-    useProjectRepositorySummary(project.id);
-
   const repositoryDetails = {
-    languages:
-      repoSummary?.languages ?? project.repositoryDetails?.languages ?? {},
-    forksCount:
-      repoSummary?.forksCount ?? project.repositoryDetails?.forksCount ?? 0,
-    stars: repoSummary?.stars ?? project.repositoryDetails?.stars ?? 0,
-    openIssuesCount:
-      repoSummary?.openIssuesCount ??
-      project.repositoryDetails?.openIssuesCount ??
-      0,
+    languages: project.repositoryDetails?.languages ?? {},
+    forksCount: project.repositoryDetails?.forksCount ?? 0,
+    stars: project.repositoryDetails?.stars ?? 0,
+    openIssuesCount: project.repositoryDetails?.openIssuesCount ?? 0,
   };
 
   return (
@@ -42,7 +33,6 @@ function ProjectGridItem({ project }: { project: Project }) {
       growth={project.growth}
       sparkline={project.sparkline}
       repositoryDetails={repositoryDetails}
-      isRepositoryLoading={isRepoLoading}
     />
   );
 }

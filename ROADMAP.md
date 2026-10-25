@@ -71,8 +71,9 @@ The scraper already gathers more than the UI shows. Ship the missing views.
 - The cmdk command palette exists — upgrade it to search abstracts + descriptions with embeddings, not just name matching.
 - Client-side option: precompute embeddings at fixture build, ship a compact vector blob, cosine in a worker. Works on static hosting.
 
-### 2.6 Submit-a-project flow
-- Works with static architecture: "Submit" button → prefilled GitHub Issue template → scraper reads the `goha-submit` label on the next daily run → entity appears with a community-submitted badge.
+### 2.6 Submit-a-project flow — frontend shipped
+- `/contribute` turns a guided form into a prefilled GitHub issue with a machine-readable JSON block; issue templates cover manual submissions.
+- Remaining: scraper ingestion of approved `goha-submit` issues + a community-submitted badge.
 - Zero backend, real community loop.
 
 ---

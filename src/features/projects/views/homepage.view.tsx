@@ -1,44 +1,50 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useLayoutEffect, useMemo } from "react";
+import { type ReactNode, Suspense, useLayoutEffect, useMemo } from "react";
 import { HiMiniSquare2Stack } from "react-icons/hi2";
 
-import ActivityPreview from "@/features/ecosystem/components/dashboard/activity-preview.component";
-import LanguageTiles from "@/features/ecosystem/components/dashboard/language-tiles.component";
-import LineageCallout from "@/features/ecosystem/components/dashboard/lineage-callout.component";
-import MostUsedModels from "@/features/ecosystem/components/dashboard/most-used-models.component";
-import RecentResearch from "@/features/ecosystem/components/dashboard/recent-research.component";
-import EcosystemStatsBand from "@/features/ecosystem/components/ecosystem-stats-band.component";
-import MoversSection from "@/features/ecosystem/components/movers-section.component";
-import ProjectDiscoveryHero from "@/features/projects/components/project-discovery-hero.component";
 import { Button } from "@/shared/components/ui/button";
 import { DataTablePagination } from "@/shared/components/ui/data-table-pagination.component";
 import { EmptyState } from "@/shared/components/ui/empty-state";
 import { ErrorState } from "@/shared/components/ui/error-state";
+
+import ProjectDiscoveryHero from "../components/project-discovery-hero.component";
 import ProjectGrid from "../components/project-grid.component";
 import SkeletonProjectGrid from "../components/skeletons/skeleton-project-grid.component";
 import { projectKeys } from "../hooks/project.keys";
 import { useProjectsQuery } from "../hooks/project.queries";
+import {
+  filtersToURLParams,
+  parseFiltersFromURL,
+} from "../lib/project-filters-url";
 import type { ProjectFilters } from "../types/project-filters.type";
 
 const PAGE_SIZE = 12;
 
-interface HomepageLayoutProps {
-  children: React.ReactNode;
+/* Query params that mean "show browse results". Tracking params such as
+   ?ref=telegram must not replace the dashboard. */
+const BROWSE_PARAMS = [
+  "categories",
+  "techStacks",
+  "orderBy",
+  "orderDirection",
+  "page",
+] as const;
+
+interface BrowseLayoutProps {
+  children: ReactNode;
   onFilterChange?: (filters: ProjectFilters) => void;
   isLoading?: boolean;
   initialFilters?: ProjectFilters;
-  showStats?: boolean;
 }
 
-function HomepageLayout({
+function BrowseLayout({
   children,
   onFilterChange,
   isLoading,
   initialFilters,
-  showStats = true,
-}: HomepageLayoutProps) {
+}: BrowseLayoutProps) {
   return (
     <>
       <div className="flex flex-col items-center">
@@ -47,66 +53,10 @@ function HomepageLayout({
           isLoading={isLoading}
           initialFilters={initialFilters}
         />
-        {showStats && <EcosystemStatsBand />}
       </div>
       <div className="mx-6 mb-20 max-w-6xl md:mb-36 lg:mx-auto">{children}</div>
     </>
   );
-}
-
-/**
- * Converts URL search params to ProjectFilters
- */
-function parseFiltersFromURL(searchParams: URLSearchParams): ProjectFilters {
-  const techStacksParam = searchParams.get("techStacks");
-  const categoriesParam = searchParams.get("categories");
-  const orderByParam = searchParams.get("orderBy");
-  const orderDirectionParam = searchParams.get("orderDirection");
-
-  const validOrderBy: ProjectFilters["orderBy"] =
-    orderByParam === "createdAt" ||
-    orderByParam === "title" ||
-    orderByParam === "trending"
-      ? orderByParam
-      : "trending";
-
-  const validOrderDirection: ProjectFilters["orderDirection"] =
-    orderDirectionParam === "asc" || orderDirectionParam === "desc"
-      ? orderDirectionParam
-      : "desc";
-
-  return {
-    techStacks: techStacksParam
-      ? techStacksParam.split(",").filter(Boolean)
-      : [],
-    categories: categoriesParam
-      ? categoriesParam.split(",").filter(Boolean)
-      : [],
-    orderBy: validOrderBy,
-    orderDirection: validOrderDirection,
-  };
-}
-
-function filtersToURLParams(filters: ProjectFilters): URLSearchParams {
-  const params = new URLSearchParams();
-
-  if (filters.techStacks.length > 0) {
-    params.set("techStacks", filters.techStacks.join(","));
-  }
-
-  if (filters.categories.length > 0) {
-    params.set("categories", filters.categories.join(","));
-  }
-
-  if (filters.orderBy !== "trending") {
-    params.set("orderBy", filters.orderBy);
-  }
-
-  if (filters.orderDirection !== "desc") {
-    params.set("orderDirection", filters.orderDirection);
-  }
-
-  return params;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -133,30 +83,28 @@ function BrowseResults({
 
   if (isLoading) {
     return (
-      <HomepageLayout
+      <BrowseLayout
         onFilterChange={onFilterChange}
         isLoading
         initialFilters={filters}
-        showStats={false}
       >
         <SkeletonProjectGrid />
-      </HomepageLayout>
+      </BrowseLayout>
     );
   }
 
   if (isError) {
     return (
-      <HomepageLayout
+      <BrowseLayout
         onFilterChange={onFilterChange}
         isLoading={false}
         initialFilters={filters}
-        showStats={false}
       >
         <ErrorState
           message="An error has occurred while loading the projects. Please try again later."
           queryKey={projectKeys.lists()}
         />
-      </HomepageLayout>
+      </BrowseLayout>
     );
   }
 
@@ -165,11 +113,10 @@ function BrowseResults({
 
   if (projects.length === 0) {
     return (
-      <HomepageLayout
+      <BrowseLayout
         onFilterChange={onFilterChange}
         isLoading={false}
         initialFilters={filters}
-        showStats={false}
       >
         <EmptyState
           title="Nothing matches these filters"
@@ -182,16 +129,15 @@ function BrowseResults({
             Clear filters
           </Button>
         </div>
-      </HomepageLayout>
+      </BrowseLayout>
     );
   }
 
   return (
-    <HomepageLayout
+    <BrowseLayout
       onFilterChange={onFilterChange}
       isLoading={false}
       initialFilters={filters}
-      showStats={false}
     >
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <p className="text-muted-foreground text-sm tabular-nums">
@@ -210,50 +156,18 @@ function BrowseResults({
           showFirstLast={false}
         />
       )}
-    </HomepageLayout>
+    </BrowseLayout>
   );
 }
 
 /* ------------------------------------------------------------------------- */
-/* Dashboard — the default landing experience                                 */
+/* Mode switch — dashboard by default, client-rendered browse for filters     */
 /* ------------------------------------------------------------------------- */
 
-function Dashboard({
-  onFilterChange,
-}: {
-  onFilterChange: (filters: ProjectFilters) => void;
-}) {
-  return (
-    <HomepageLayout onFilterChange={onFilterChange} showStats>
-      <div className="flex flex-col gap-16 md:gap-20">
-        <MoversSection />
-        <LineageCallout />
-        <MostUsedModels />
-        <RecentResearch />
-        <LanguageTiles />
-        <ActivityPreview />
-      </div>
-    </HomepageLayout>
-  );
-}
-
-/* ------------------------------------------------------------------------- */
-
-export default function HomepageView() {
+function HomepageMode({ dashboard }: { dashboard: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  /** Keep discovery hero at the top on full reload and client navigation to `/`. */
-  useLayoutEffect(() => {
-    const previousRestoration = history.scrollRestoration;
-    history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
-
-    return () => {
-      history.scrollRestoration = previousRestoration;
-    };
-  }, []);
 
   const filters = useMemo(
     () => parseFiltersFromURL(searchParams),
@@ -261,7 +175,7 @@ export default function HomepageView() {
   );
 
   const isBrowsing = useMemo(
-    () => Array.from(searchParams.keys()).length > 0,
+    () => BROWSE_PARAMS.some((key) => searchParams.has(key)),
     [searchParams]
   );
 
@@ -290,5 +204,28 @@ export default function HomepageView() {
     );
   }
 
-  return <Dashboard onFilterChange={handleFilterChange} />;
+  return <>{dashboard}</>;
+}
+
+export default function HomepageView({ dashboard }: { dashboard: ReactNode }) {
+  /** Keep discovery hero at the top on full reload and client navigation to `/`. */
+  useLayoutEffect(() => {
+    const previousRestoration = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    return () => {
+      history.scrollRestoration = previousRestoration;
+    };
+  }, []);
+
+  /* The prerendered dashboard doubles as the fallback: `useSearchParams`
+     bails out of static rendering, so without it the HTML would only have
+     skeletons. On the client the same dashboard is reused when no filters
+     are active. */
+  return (
+    <Suspense fallback={dashboard}>
+      <HomepageMode dashboard={dashboard} />
+    </Suspense>
+  );
 }
