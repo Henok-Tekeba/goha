@@ -53,6 +53,10 @@ export default function ContributePage() {
             Model, dataset, paper, organization, benchmark, correction or
             feedback. It opens a GitHub issue in under a minute.
           </p>
+          <p className="mt-3 max-w-xl text-primary text-sm leading-relaxed">
+            Every entry helps the next builder find what already exists — and
+            helps Ethiopian AI get the visibility it deserves.
+          </p>
         </header>
 
         <ContributionForm />
