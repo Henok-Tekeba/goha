@@ -92,7 +92,7 @@ const footerLinks: {
     },
     {
       label: "Send feedback",
-      href: "/contribute?type=feedback#form-heading",
+      href: "/contribute?type=feedback#contribute-form",
       id: "community-feedback",
     },
     {

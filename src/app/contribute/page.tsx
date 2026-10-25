@@ -59,7 +59,9 @@ export default function ContributePage() {
           </p>
         </header>
 
-        <ContributionForm />
+        <div id="contribute-form" className="scroll-mt-28">
+          <ContributionForm />
+        </div>
 
         <p className="mt-4 text-[11px] text-black/40">
           Public GitHub issue · reviewed by a maintainer · added to an upcoming
