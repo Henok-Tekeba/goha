@@ -44,9 +44,10 @@ function exportCsv(group: LeaderboardGroup) {
     "source",
   ];
   const rows = [...group.rows, ...group.unrankedRows];
+  const showRank = group.rows.length > 1;
   const lines = rows.map((row, i) =>
     [
-      i < group.rows.length ? i + 1 : "",
+      showRank && i < group.rows.length ? i + 1 : "",
       row.model,
       row.org,
       group.language ?? row.languages.join(";"),
@@ -75,18 +76,31 @@ function exportCsv(group: LeaderboardGroup) {
 
 function EvaluatedOnLink({ row }: { row: LeaderboardRow }) {
   const href = row.evaluationSource ?? row.source;
-  const label = row.dataset ?? "not stated";
-  if (!href) return <span className="text-muted-foreground">{label}</span>;
+  const isModelCard = row.evaluationSourceKind === "model-card";
+  const label = isModelCard ? "model card" : (row.dataset ?? "not stated");
+  const lead = isModelCard ? "Reported in" : "Evaluated on";
+  const detail = isModelCard && row.dataset ? ` · ${row.dataset}` : "";
+  if (!href)
+    return (
+      <span className="text-muted-foreground">
+        {lead} {label}
+        {detail}
+      </span>
+    );
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-muted-foreground underline underline-offset-4 hover:text-primary"
-      title={`Open evaluation source for ${row.model}`}
-    >
-      {label}
-    </a>
+    <span className="text-muted-foreground">
+      {lead}{" "}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-4 hover:text-primary"
+        title={`Open evaluation source for ${row.model}`}
+      >
+        {label}
+      </a>
+      {detail}
+    </span>
   );
 }
 
@@ -94,10 +108,12 @@ function MobileRows({
   rows,
   ranked,
   showDim,
+  showRank,
 }: {
   rows: LeaderboardRow[];
   ranked: boolean;
   showDim: boolean;
+  showRank: boolean;
 }) {
   return (
     <div className="mt-3 flex flex-col divide-y divide-muted-black-stroke rounded-[14px] border border-muted-black-stroke md:hidden">
@@ -109,7 +125,7 @@ function MobileRows({
           <div className="flex items-baseline justify-between gap-3">
             <span className="min-w-0">
               <span className="block truncate font-medium text-primary text-sm">
-                {ranked ? `${i + 1}. ` : ""}
+                {ranked && showRank ? `${i + 1}. ` : ""}
                 {row.model}
               </span>
               <span className="block truncate text-muted-foreground text-xs">
@@ -131,7 +147,6 @@ function MobileRows({
           </div>
           <div className="mt-1 flex items-center justify-between gap-3 text-muted-foreground text-xs">
             <span className="min-w-0 truncate">
-              <span className="mr-1">Evaluated on</span>
               <EvaluatedOnLink row={row} />
             </span>
             <span className="flex shrink-0 items-center gap-3">
@@ -164,10 +179,12 @@ function RowsTable({
   rows,
   ranked,
   showDim,
+  showRank,
 }: {
   rows: LeaderboardRow[];
   ranked: boolean;
   showDim: boolean;
+  showRank: boolean;
 }) {
   return (
     <div className="mt-3 hidden overflow-x-auto md:block">
@@ -193,7 +210,7 @@ function RowsTable({
             <LeaderboardRowView
               key={`${row.model}-${row.embeddingDim ?? ""}-${i}`}
               row={row}
-              rank={ranked ? i + 1 : null}
+              rank={ranked && showRank ? i + 1 : null}
               showDim={showDim}
             />
           ))}
@@ -221,6 +238,7 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
   const showDim = [...rows, ...unrankedRows].some(
     (row) => row.embeddingDim != null
   );
+  const showRank = rows.length > 1;
 
   return (
     <section
@@ -267,15 +285,20 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
       </div>
       <p className="mt-1 text-muted-foreground text-xs">
         {group.lowerIsBetter ? "Lower is better ·" : "Higher is better ·"}{" "}
-        {rows.length} ranked
+        {rows.length} {rows.length === 1 ? "result" : "ranked"}
         {unrankedRows.length ? ` · ${unrankedRows.length} not ranked` : ""} — as
         published by the model authors
       </p>
 
       {rows.length > 0 && (
         <>
-          <MobileRows rows={rows} ranked showDim={showDim} />
-          <RowsTable rows={rows} ranked showDim={showDim} />
+          <MobileRows
+            rows={rows}
+            ranked
+            showDim={showDim}
+            showRank={showRank}
+          />
+          <RowsTable rows={rows} ranked showDim={showDim} showRank={showRank} />
         </>
       )}
 
@@ -288,8 +311,18 @@ function SectionTable({ group }: { group: LeaderboardGroup }) {
             These results are shown for transparency but cannot be compared
             without an evaluation set.
           </p>
-          <MobileRows rows={unrankedRows} ranked={false} showDim={showDim} />
-          <RowsTable rows={unrankedRows} ranked={false} showDim={showDim} />
+          <MobileRows
+            rows={unrankedRows}
+            ranked={false}
+            showDim={showDim}
+            showRank={false}
+          />
+          <RowsTable
+            rows={unrankedRows}
+            ranked={false}
+            showDim={showDim}
+            showRank={false}
+          />
         </div>
       )}
     </section>

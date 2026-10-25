@@ -1,12 +1,12 @@
 /**
  * goha data module for the deployed API routes.
  * The committed fixture file IS the pipeline output:
- *   scraper → data/*.json → scripts/build-goha-fixtures.mjs → projects.mock.json
+ *   scraper → data/*.json → scripts/build-goha-fixtures.mjs → data/projects.mock.json
  */
 
+import rawProjects from "@data/projects.mock.json";
+import { categories, techStacks } from "@data/taxonomy.mock";
 import type { Project } from "@/features/projects/types/project.type";
-import rawProjects from "@/mocks/fixtures/projects.mock.json";
-import { categories, techStacks } from "@/mocks/fixtures/taxonomy.mock";
 
 export const projects = rawProjects as unknown as Project[];
 export { categories, techStacks };

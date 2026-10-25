@@ -118,13 +118,13 @@ Interactive Apache ECharts charts via EvilCharts-style shadcn components
 scraper/                  goha's pipeline (Hugging Face · GitHub · arXiv)
    └─ npm start           → data/*.json  (daily snapshots + current state)
 scripts/build-goha-fixtures.mjs
-   ├─ src/mocks/fixtures/  build-time joins (projects, orgs, papers, languages)
+   ├─ data/*.mock.*        build-time joins (projects, orgs, papers, languages)
    └─ public/data/         client-facing JSON (fetched by the browser)
 src/                      Next.js 15 app (static export)
 out/                      deployable static site (GitHub Pages)
 ```
 
-Project ids are derived from the upstream source id (for example `hf:owner/name`), so they survive scrape reordering. Legacy ids are kept as static redirects. If a Hugging Face repository is renamed or transferred, add the old source id to the new one in `src/mocks/fixtures/project-source-aliases.json` — the build then carries the previous project id forward as a redirect. The committed `project-id-history.json` lets the live smoke test fail if an id disappears while its source still exists.
+Project ids are derived from the upstream source id (for example `hf:owner/name`), so they survive scrape reordering. Legacy ids are kept as static redirects. If a Hugging Face repository is renamed or transferred, add the old source id to the new one in `data/project-source-aliases.json` — the build then carries the previous project id forward as a redirect. Hugging Face's internal `_id` is stored on each asset; when it matches after a rename, the alias is recorded automatically. The committed `project-id-history.json` lets the live smoke test fail if an id disappears while its source still exists. Each build also writes `data/project-diff.json`; the daily scrape opens a GitHub issue when a record disappears without an alias or legacy redirect.
 
 Every scrape ends with `node scripts/build-goha-fixtures.mjs`, which:
 
@@ -211,6 +211,8 @@ pnpm test:ids      # project ids are source-derived and stable across scrapes
 pnpm test:counts    # homepage tiles, radar and gap-report count reconciliation
 pnpm test:mock      # mock API contract tests
 pnpm smoke:live    # post-deploy smoke test against https://goha.enoch.et
+pnpm report:contradictions  # CSV of type_label ↔ base_model contradictions
+pnpm backfill:hf-ids        # one-off HF internal-id backfill for the current snapshot
 ```
 
 The scraper can be run separately:

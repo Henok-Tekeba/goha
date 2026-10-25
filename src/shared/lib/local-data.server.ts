@@ -3,20 +3,17 @@
  * The bundler inlines the JSON — never imported by client code.
  */
 
+import rawLanguages from "@data/languages.mock.json";
+import rawLegacyProjectIds from "@data/legacy-project-ids.json";
+import rawOrgs from "@data/orgs.mock.json";
+import rawPapers from "@data/papers.mock.json";
+import rawProjects from "@data/projects.mock.json";
+import { categories, techStacks as rawStacks } from "@data/taxonomy.mock";
 import type {
   OrgRecord,
   PaperRecord,
 } from "@/features/ecosystem/types/ecosystem.types";
 import type { Project } from "@/features/projects/types/project.type";
-import rawLanguages from "@/mocks/fixtures/languages.mock.json";
-import rawLegacyProjectIds from "@/mocks/fixtures/legacy-project-ids.json";
-import rawOrgs from "@/mocks/fixtures/orgs.mock.json";
-import rawPapers from "@/mocks/fixtures/papers.mock.json";
-import rawProjects from "@/mocks/fixtures/projects.mock.json";
-import {
-  categories,
-  techStacks as rawStacks,
-} from "@/mocks/fixtures/taxonomy.mock";
 
 import { asset } from "@/shared/lib/asset";
 

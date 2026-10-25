@@ -3,11 +3,11 @@
  * build-goha-fixtures.mjs
  *
  * Bridges goha's data pipeline into OST's data layer:
- *   scraper → data/*.json  →  this script  →  src/mocks/fixtures/*  →  OST UI
+ *   scraper → data/*.json  →  this script  →  data/*.mock.*  →  OST UI
  *
  * Reads goha's normalized JSON (models, datasets, companies, papers) and emits:
- *   1. src/mocks/fixtures/projects.mock.json   (Project[] in OST's exact shape)
- *   2. src/mocks/fixtures/taxonomy.mock.ts     (categories + techstacks regenerated)
+ *   1. data/projects.mock.json   (Project[] in OST's exact shape)
+ *   2. data/taxonomy.mock.ts     (categories + techstacks regenerated)
  *   3. public/langs/*.svg                      (premium monogram / symbol tiles)
  *
  * Run after every scrape:  node scripts/build-goha-fixtures.mjs
@@ -22,11 +22,13 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { isAsrModel } from "./model-classification.mjs";
+import { diffProjects } from "./project-diff.mjs";
 import { projectIdForSource, resolveSourceAlias } from "./project-id.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = (f) => path.join(ROOT, "data", f);
-const FIXTURES = path.join(ROOT, "src", "mocks", "fixtures");
+const FIXTURES = path.join(ROOT, "data");
 const LANGS_OUT = path.join(ROOT, "public", "langs");
 const SOURCE_ALIASES = JSON.parse(
   readFileSync(path.join(FIXTURES, "project-source-aliases.json"), "utf8")
@@ -510,6 +512,8 @@ for (const src of [
   projects.push({
     id: projectId,
     sourceId,
+    hfInternalId: it.hf_internal_id ?? null,
+    hfSha: it.hf_sha ?? null,
     title: it.name || it.id,
     description: cleanDesc(it.description) || `${synthesized}${baseNote}`,
     provider: "GITHUB",
@@ -1139,21 +1143,35 @@ const legacyIds = existsSync(legacyPath)
 const previousProjects = existsSync(previousProjectsPath)
   ? JSON.parse(readFileSync(previousProjectsPath, "utf8"))
   : [];
-const currentIdBySource = new Map(
-  projects.map((project) => [project.sourceId, project.id])
+const aliasPath = path.join(FIXTURES, "project-source-aliases.json");
+const { aliasesAdded, disappeared } = diffProjects(
+  previousProjects,
+  projects,
+  SOURCE_ALIASES,
+  legacyIds
 );
-for (const previous of previousProjects) {
-  if (!previous?.id || !previous?.sourceId) continue;
-  const resolvedSource = resolveSourceAlias(previous.sourceId, SOURCE_ALIASES);
-  const currentId = currentIdBySource.get(resolvedSource);
-  if (currentId && currentId !== previous.id) {
-    legacyIds[previous.id] = currentId;
-  }
-}
+const sortedAliases = Object.fromEntries(
+  Object.entries(SOURCE_ALIASES).sort(([a], [b]) => a.localeCompare(b))
+);
+writeFileSync(aliasPath, JSON.stringify(sortedAliases, null, 2) + "\n");
 const sortedLegacyIds = Object.fromEntries(
   Object.entries(legacyIds).sort(([a], [b]) => a.localeCompare(b))
 );
 writeFileSync(legacyPath, JSON.stringify(sortedLegacyIds, null, 2) + "\n");
+writeFileSync(
+  path.join(FIXTURES, "project-diff.json"),
+  JSON.stringify(
+    {
+      generatedAt: new Date(buildTime).toISOString(),
+      previousCount: previousProjects.length,
+      currentCount: projects.length,
+      aliasesAdded,
+      disappeared,
+    },
+    null,
+    2
+  ) + "\n"
+);
 
 /* Keep a small daily history so the live smoke test can detect id drift. */
 const historyPath = path.join(FIXTURES, "project-id-history.json");
@@ -1381,21 +1399,6 @@ function datasetSourceUrl(dataset) {
   return null;
 }
 
-function isAsrModel(model) {
-  /* Use Hugging Face's own task declaration. Do not guess from model names or
-     base models: a T5 translation card can carry a stray wer_score, and a
-     whimsically named ASR card should still be found through its metadata. */
-  if (model.pipeline_tag) {
-    return model.pipeline_tag === "automatic-speech-recognition";
-  }
-  const tags = (model.tags || []).map((tag) => String(tag).toLowerCase());
-  return (
-    /^ASR$/i.test(String(model.type_label || model.badge || "")) ||
-    tags.includes("automatic-speech-recognition") ||
-    tags.includes("asr")
-  );
-}
-
 const sectionByKey = new Map();
 const rowSeen = new Set();
 
@@ -1464,6 +1467,9 @@ for (const m of models) {
         dataset: datasetDisplay || null,
         embeddingDim,
         evaluationSource: datasetSourceUrl(e.dataset) ?? m.hf_url ?? null,
+        evaluationSourceKind: datasetSourceUrl(e.dataset)
+          ? "dataset"
+          : "model-card",
         metric: String(metric.name || metric.type || "Metric").replace(
           /\s*\(.*\)\s*$/,
           ""
@@ -1491,6 +1497,7 @@ for (const m of models) {
       dataset: null,
       embeddingDim: null,
       evaluationSource: m.hf_url || null,
+      evaluationSourceKind: "model-card",
       metric: "WER (reported)",
       metricType: "wer",
       value,
@@ -1976,7 +1983,7 @@ const techStackLines = techStacks.map((t) => {
 const taxTs = `import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";
 
-import { mockPublicId } from "../public-id.mock";
+import { mockPublicId } from "@/mocks/public-id.mock";
 
 const now = new Date("2026-01-01T00:00:00.000Z").toISOString();
 

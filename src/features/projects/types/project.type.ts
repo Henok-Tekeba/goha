@@ -22,6 +22,8 @@ export interface EvaluationEntry {
 export interface Project {
   id?: string;
   sourceId?: string;
+  hfInternalId?: string | null;
+  hfSha?: string | null;
   publicId?: string;
   title: string;
   imagesUrls: string[];

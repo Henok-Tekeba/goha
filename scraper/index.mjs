@@ -110,6 +110,8 @@ function mapModel(raw, type) {
   const tags = raw.tags || [];
   return {
     id,
+    hf_internal_id: raw._id ?? null,
+    hf_sha: raw.sha ?? null,
     name: raw.id?.split("/")[1] || raw.id || "",
     type,
     pipeline_tag: raw.pipeline_tag || null,
@@ -260,6 +262,8 @@ async function enrichModelDetails(model) {
 
   return {
     ...model,
+    hf_internal_id: info?._id ?? model.hf_internal_id ?? null,
+    hf_sha: info?.sha ?? model.hf_sha ?? null,
     license,
     base_model,
     eval_results,

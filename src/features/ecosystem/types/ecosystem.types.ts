@@ -148,6 +148,7 @@ export interface LeaderboardRow {
   dataset: string | null;
   embeddingDim: number | null;
   evaluationSource: string | null;
+  evaluationSourceKind: "dataset" | "model-card";
   metric: string;
   metricType: string;
   value: number | null;

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import rawOrgs from "@/mocks/fixtures/orgs.mock.json";
-import rawPapers from "@/mocks/fixtures/papers.mock.json";
+import rawOrgs from "@data/orgs.mock.json";
+import rawPapers from "@data/papers.mock.json";
 import {
   getGapReport,
   getLanguageCoverageSummary,

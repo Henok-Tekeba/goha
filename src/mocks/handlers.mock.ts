@@ -1,16 +1,14 @@
+import { projectsResponse } from "@data/projects.mock";
+import { categories, techStacks } from "@data/taxonomy.mock";
+import { pullRequests, userRepositories } from "@data/user.mock";
 import { HttpResponse, http } from "msw";
-
 import type {
   PullRequestProviderData,
   PullRequestsResponse,
   UserPullRequest,
 } from "@/features/profile/types/profile.pull-request.type";
 import type { Project } from "@/features/projects/types/project.type";
-
 import { db } from "./db.mock";
-import { projectsResponse } from "./fixtures/projects.mock";
-import { categories, techStacks } from "./fixtures/taxonomy.mock";
-import { pullRequests, userRepositories } from "./fixtures/user.mock";
 import { mockPublicId } from "./public-id.mock";
 import {
   isAuthenticated,

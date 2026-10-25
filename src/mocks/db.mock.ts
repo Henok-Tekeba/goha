@@ -1,7 +1,6 @@
+import { PROJECT_IDS, projectsResponse } from "@data/projects.mock";
+import { currentUser, users } from "@data/user.mock";
 import type { Project } from "@/features/projects/types/project.type";
-
-import { PROJECT_IDS, projectsResponse } from "./fixtures/projects.mock";
-import { currentUser, users } from "./fixtures/user.mock";
 
 const currentUserProjectIds = [
   PROJECT_IDS.mistralCommon,

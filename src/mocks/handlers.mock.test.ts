@@ -2,18 +2,16 @@ import assert from "node:assert/strict";
 import { existsSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { after, before, beforeEach, test } from "node:test";
+import { PROJECT_IDS, projectsResponse } from "@data/projects.mock";
+import { categories, techStacks } from "@data/taxonomy.mock";
+import { currentUser } from "@data/user.mock";
 import { setupServer } from "msw/node";
-
 import type { PullRequestsResponse } from "@/features/profile/types/profile.pull-request.type";
 import type { Project } from "@/features/projects/types/project.type";
 import { transformProjectForPublishedToggle } from "@/features/projects/validations/publish-toggle.validation";
 import { extractRepositoryPath } from "@/shared/lib/utils/extract-repo-owner";
 import type { GitUserRepositoriesResponse } from "@/shared/types/git-repository.type";
-
 import { db } from "./db.mock";
-import { PROJECT_IDS, projectsResponse } from "./fixtures/projects.mock";
-import { categories, techStacks } from "./fixtures/taxonomy.mock";
-import { currentUser } from "./fixtures/user.mock";
 import { handlers } from "./handlers.mock";
 import { resetMockUploads } from "./uploads.mock";
 
@@ -80,9 +78,7 @@ test("keeps the project catalogue valid and reasonably small", () => {
     );
   }
 
-  const snapshot = statSync(
-    join(process.cwd(), "src/mocks/fixtures/projects.mock.json")
-  );
+  const snapshot = statSync(join(process.cwd(), "data/projects.mock.json"));
   assert.ok(snapshot.size <= 5 * 1024 * 1024);
 
   for (const project of projectsResponse) {

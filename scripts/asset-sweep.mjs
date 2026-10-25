@@ -8,7 +8,7 @@ import { execSync } from "node:child_process";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const files = execSync(
-  `grep -rl '"/illustrations/\\|"/icons/\\|"/goha-logo\\|"/langs/\\|"/types/' src --include="*.tsx" --include="*.ts" | grep -v "fixtures/"`
+  `grep -rl '"/illustrations/\\|"/icons/\\|"/goha-logo\\|"/langs/\\|"/types/' src --include="*.tsx" --include="*.ts" | grep -v "data/"`
 )
   .toString()
   .trim()

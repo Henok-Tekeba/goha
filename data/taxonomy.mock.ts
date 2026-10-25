@@ -1,7 +1,7 @@
 import type { CategoryType } from "@/shared/types/category.type";
 import type { TechStackType } from "@/shared/types/tech-stack.type";
 
-import { mockPublicId } from "../public-id.mock";
+import { mockPublicId } from "@/mocks/public-id.mock";
 
 const now = new Date("2026-01-01T00:00:00.000Z").toISOString();
 

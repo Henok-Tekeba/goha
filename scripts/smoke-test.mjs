@@ -149,12 +149,21 @@ async function main() {
     projects.map((project) => project.id).sort(),
     "project ids changed between two reads"
   );
-  console.log(`✓ ${projects.length} project ids are source-derived and stable`);
+  const hfProjects = projects.filter((project) =>
+    String(project.sourceId).startsWith("hf")
+  );
+  assert.ok(
+    hfProjects.some((project) => project.hfInternalId),
+    "no Hugging Face internal ids were stored"
+  );
+  console.log(
+    `✓ ${projects.length} project ids are source-derived and stable; HF internal ids stored`
+  );
 
   const legacy = JSON.parse(
-    readFileSync("src/mocks/fixtures/legacy-project-ids.json", "utf8")
+    readFileSync("data/legacy-project-ids.json", "utf8")
   );
-  const historyPath = "src/mocks/fixtures/project-id-history.json";
+  const historyPath = "data/project-id-history.json";
   if (existsSync(historyPath)) {
     const history = JSON.parse(readFileSync(historyPath, "utf8"));
     const dates = Object.keys(history).sort();

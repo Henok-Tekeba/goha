@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
+import projectsJson from "@data/projects.mock.json";
+import { diffProjects } from "../../../../scripts/project-diff.mjs";
 import {
   projectIdForSource,
   resolveSourceAlias,
 } from "../../../../scripts/project-id.mjs";
-import projectsJson from "../../../../src/mocks/fixtures/projects.mock.json";
 
 interface FixtureProject {
   id?: string;
@@ -57,6 +57,44 @@ test("source aliases resolve renames and transfers", () => {
   assert.equal(
     resolveSourceAlias("hf:unrelated/name", aliases),
     "hf:unrelated/name"
+  );
+});
+
+test("daily diff survives renames and reports removals", () => {
+  const previous = [
+    {
+      id: "pjt_old_renamed",
+      sourceId: "hf:old/name",
+      hfInternalId: "internal-1",
+      title: "Renamed",
+    },
+    {
+      id: "pjt_old_removed",
+      sourceId: "hf:old/removed",
+      hfInternalId: null,
+      title: "Removed",
+    },
+  ];
+  const current = [
+    {
+      id: "pjt_new_renamed",
+      sourceId: "hf:new/name",
+      hfInternalId: "internal-1",
+      title: "Renamed",
+    },
+  ];
+  const aliases: Record<string, string> = {};
+  const legacy: Record<string, string> = {};
+  const result = diffProjects(previous, current, aliases, legacy);
+
+  assert.deepEqual(result.aliasesAdded, [
+    { oldSourceId: "hf:old/name", newSourceId: "hf:new/name" },
+  ]);
+  assert.equal(aliases["hf:old/name"], "hf:new/name");
+  assert.equal(legacy.pjt_old_renamed, "pjt_new_renamed");
+  assert.deepEqual(
+    result.disappeared.map((item) => item.sourceId),
+    ["hf:old/removed"]
   );
 });
 

@@ -160,6 +160,7 @@ test("a mixed section is split and then single-entry groups are hidden", () => {
     dataset,
     embeddingDim: null,
     evaluationSource: null,
+    evaluationSourceKind: "model-card",
     metric,
     metricType: "",
     value,
