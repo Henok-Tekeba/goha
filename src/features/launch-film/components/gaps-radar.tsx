@@ -113,7 +113,7 @@ export function GapsRadar({ t }: { t: number }) {
           {[
             "No speech recognition for Somali",
             "No text-to-speech for Ge'ez",
-          ].map((line, i) => (
+          ].map((line) => (
             <div key={line} className="flex items-center gap-2.5">
               <span
                 className="size-1.5 shrink-0 rounded-full"
