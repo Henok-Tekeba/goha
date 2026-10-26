@@ -71,7 +71,11 @@ export default function Header({ githubStars }: HeaderProps) {
     }));
   };
 
-  if (pathname.startsWith("/auth") || pathname.startsWith("/onboarding")) {
+  if (
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/onboarding") ||
+    pathname.startsWith("/launch-film")
+  ) {
     return null;
   }
 

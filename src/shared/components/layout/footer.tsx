@@ -173,6 +173,7 @@ export default function Footer() {
     pathname.startsWith("/not-found") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/onboarding") ||
+    pathname.startsWith("/launch-film") ||
     isProfileEditPage;
 
   return (
