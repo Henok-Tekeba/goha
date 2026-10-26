@@ -1,25 +1,27 @@
 "use client";
 
 import { C, easeOutBack, easeOutCubic, easeOutQuint, seg } from "../lib/film";
-import { SourceFragments } from "./source-fragments";
+import { FragmentTrajectories, SourceFragments } from "./source-fragments";
 import { WipeLine } from "./wipe-line";
 
 /**
- * Scene 2 — 00:02–00:04 — The reveal.
- * The scattered fragments assemble into a clean left-hand index; connector
- * strokes draw in; the goha ጎሃ wordmark lands as the first major payoff.
- * Disorder becoming structure — no explosion, no magic.
+ * Scene 2 — 00:03.6–00:07.2 — The reveal.
+ * The scattered fragments assemble into a clean left-hand index (their flight
+ * paths draw as they move); connector strokes and the rail settle; the
+ * goha ጎሃ wordmark lands as the first major payoff. Disorder becoming
+ * structure — no explosion, no magic.
  */
 export function SceneReveal({ t }: { t: number }) {
-  const railP = easeOutCubic(seg(t, 2.42, 2.85));
-  const railDots = seg(t, 2.5, 3.0);
+  const railP = easeOutCubic(seg(t, 4.35, 4.95));
+  const railDots = seg(t, 4.5, 5.05);
 
   /* One restrained ring pulse at the moment of assembly. */
-  const ringP = seg(t, 2.0, 2.55);
+  const ringP = seg(t, 3.62, 4.35);
 
   return (
     <div className="absolute inset-0">
       <SourceFragments t={t} />
+      <FragmentTrajectories t={t} />
 
       {/* Index rail + slot dots */}
       <svg
@@ -30,7 +32,7 @@ export function SceneReveal({ t }: { t: number }) {
         aria-hidden
       >
         <path
-          d="M 250 300 V 726"
+          d="M 250 286 V 852"
           stroke={C.line}
           strokeWidth={1.5}
           fill="none"
@@ -38,14 +40,14 @@ export function SceneReveal({ t }: { t: number }) {
           strokeDasharray={1}
           strokeDashoffset={1 - railP}
         />
-        {[330, 452, 574, 696].map((y, i) => (
+        {[316, 438, 560, 682, 804].map((y, i) => (
           <circle
             key={y}
             cx={250}
             cy={y}
             r={3.5}
             fill={C.accent}
-            opacity={railDots > i * 0.22 ? 0.9 : 0}
+            opacity={railDots > i * 0.18 ? 0.9 : 0}
           />
         ))}
 
@@ -53,8 +55,8 @@ export function SceneReveal({ t }: { t: number }) {
         {ringP > 0 && ringP < 1 && (
           <circle
             cx={430}
-            cy={513}
-            r={40 + 210 * easeOutCubic(ringP)}
+            cy={560}
+            r={40 + 200 * easeOutCubic(ringP)}
             fill="none"
             stroke={C.accent}
             strokeWidth={2}
@@ -72,7 +74,7 @@ export function SceneReveal({ t }: { t: number }) {
           transform: "translate(-50%, -50%)",
         }}
       >
-        {/* Logo mark: circle + two bars, inverted for the dark stage */}
+        {/* Logo mark: circle + two bars, in the brand's own light-theme colors */}
         <svg
           width={120}
           height={104}
@@ -81,9 +83,9 @@ export function SceneReveal({ t }: { t: number }) {
           aria-hidden
         >
           {(() => {
-            const circleP = easeOutBack(seg(t, 2.3, 2.62));
-            const bar1P = easeOutQuint(seg(t, 2.5, 2.8));
-            const bar2P = easeOutQuint(seg(t, 2.58, 2.88));
+            const circleP = easeOutBack(seg(t, 4.5, 4.85), 1.15);
+            const bar1P = easeOutQuint(seg(t, 4.68, 5.02));
+            const bar2P = easeOutQuint(seg(t, 4.76, 5.1));
             return (
               <>
                 <circle
@@ -118,8 +120,8 @@ export function SceneReveal({ t }: { t: number }) {
         <div className="relative mt-2 flex items-baseline justify-center gap-8">
           <WipeLine
             t={t}
-            start={2.55}
-            end={3.05}
+            start={4.9}
+            end={5.55}
             size={148}
             weight={750}
             tracking="-0.045em"
@@ -129,8 +131,8 @@ export function SceneReveal({ t }: { t: number }) {
           </WipeLine>
           <WipeLine
             t={t}
-            start={2.72}
-            end={3.22}
+            start={5.08}
+            end={5.72}
             size={126}
             weight={700}
             mode="relative"
@@ -144,7 +146,7 @@ export function SceneReveal({ t }: { t: number }) {
         <div
           className="mx-auto mt-8 h-px"
           style={{
-            width: 440 * easeOutCubic(seg(t, 3.12, 3.5)),
+            width: 440 * easeOutCubic(seg(t, 5.55, 5.95)),
             background: C.line,
           }}
         />
@@ -152,12 +154,26 @@ export function SceneReveal({ t }: { t: number }) {
           className="mt-6 text-center font-medium text-[26px] tracking-[0.1em]"
           style={{
             color: C.dim,
-            opacity: seg(t, 3.25, 3.7),
-            transform: `translateY(${(1 - easeOutQuint(seg(t, 3.25, 3.7))) * 12}px)`,
+            opacity: seg(t, 5.7, 6.15),
+            transform: `translateY(${(1 - easeOutQuint(seg(t, 5.7, 6.15))) * 12}px)`,
           }}
         >
           The Ethiopian AI Index
         </div>
+      </div>
+
+      {/* Factual anchor line */}
+      <div
+        className="absolute text-center text-[18px]"
+        style={{
+          left: "50%",
+          top: 946,
+          transform: "translateX(-50%)",
+          color: C.dim,
+          opacity: seg(t, 5.95, 6.55),
+        }}
+      >
+        A live index, rebuilt every day.
       </div>
     </div>
   );

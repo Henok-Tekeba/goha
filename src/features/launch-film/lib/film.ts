@@ -3,7 +3,7 @@
  * Every scene derives its motion from the single clock that reads `t` (seconds).
  */
 
-export const FILM_DURATION = 15;
+export const FILM_DURATION = 24;
 export const STAGE_W = 1920;
 export const STAGE_H = 1080;
 
@@ -40,13 +40,16 @@ export type SceneWindow = {
 };
 
 export const SCENES: SceneWindow[] = [
-  { id: "problem", label: "The problem", start: 0, end: 2 },
-  { id: "reveal", label: "The reveal", start: 2, end: 4 },
-  { id: "stats", label: "The ecosystem", start: 4, end: 7 },
-  { id: "capabilities", label: "Capabilities", start: 7, end: 10 },
-  { id: "open-data", label: "Open data", start: 10, end: 12 },
-  { id: "finale", label: "goha", start: 12, end: 15 },
+  { id: "problem", label: "The problem", start: 0, end: 3.6 },
+  { id: "reveal", label: "The reveal", start: 3.6, end: 7.2 },
+  { id: "stats", label: "The ecosystem", start: 7.2, end: 12 },
+  { id: "capabilities", label: "Capabilities", start: 12, end: 16.6 },
+  { id: "open-data", label: "Open data", start: 16.6, end: 19.8 },
+  { id: "finale", label: "goha", start: 19.8, end: 24 },
 ];
+
+/** When the scattered fragments begin flying into the index (Scene 2). */
+export const ASSEMBLE_AT = 3.7;
 
 export function activeScene(t: number): string {
   for (const scene of SCENES) {

@@ -57,7 +57,7 @@ export function CoverageMatrix({ t }: { t: number }) {
             top: headerY,
             width: CELL,
             color: C.ink,
-            opacity: seg(t, 9.02, 9.18),
+            opacity: seg(t, 15.25, 15.45),
             fontFamily:
               "'Noto Sans Ethiopic', 'Kefa', 'Nyala', 'Ebrima', sans-serif",
           }}
@@ -76,7 +76,7 @@ export function CoverageMatrix({ t }: { t: number }) {
               top: originY + r * STEP,
               width: originX - 260,
               height: CELL,
-              opacity: seg(t, 9.02 + r * 0.03, 9.2 + r * 0.03),
+              opacity: seg(t, 15.25 + r * 0.03, 15.45 + r * 0.03),
             }}
           >
             <span className="text-[17px]" style={{ color: C.ink }}>
@@ -86,10 +86,10 @@ export function CoverageMatrix({ t }: { t: number }) {
 
           {row.filled.map((filled, c) => {
             const idx = r * LANG_COLS.length + c;
-            const p = seg(t, 9.08 + idx * 0.012, 9.3 + idx * 0.012);
+            const p = seg(t, 15.3 + idx * 0.014, 15.54 + idx * 0.014);
             const key = `${r}-${c}`;
             const pulse = PULSE_CELLS.has(key);
-            const pulseP = seg(t, 9.58, 9.95);
+            const pulseP = seg(t, 16.05, 16.45);
 
             if (filled) {
               if (p <= 0) return null;
@@ -119,8 +119,8 @@ export function CoverageMatrix({ t }: { t: number }) {
                     top: originY + r * STEP,
                     width: CELL,
                     height: CELL,
-                    border: `1px solid ${pulse ? "rgba(43,127,255,0.45)" : "rgba(0,0,0,0.16)"}`,
-                    opacity: 0.5 + (pulse ? 0.5 * seg(t, 9.3, 9.5) : 0),
+                    border: `1px solid ${pulse ? "rgba(43,127,255,0.4)" : "rgba(0,0,0,0.16)"}`,
+                    opacity: 0.5 + (pulse ? 0.5 * seg(t, 15.5, 15.75) : 0),
                   }}
                 />
                 {pulse && pulseP > 0 && pulseP < 1 && (
@@ -146,7 +146,7 @@ export function CoverageMatrix({ t }: { t: number }) {
       {/* The headline number of the gap report */}
       <div
         className="absolute flex flex-col"
-        style={{ left: 1260, top: 400, opacity: seg(t, 9.35, 9.6) }}
+        style={{ left: 1260, top: 330, opacity: seg(t, 15.6, 15.85) }}
       >
         <div className="flex items-baseline gap-3">
           <span
@@ -170,6 +170,39 @@ export function CoverageMatrix({ t }: { t: number }) {
         </div>
         <div className="mt-2 text-[17px]" style={{ color: "rgba(0,0,0,0.45)" }}>
           language × task
+        </div>
+
+        {/* Second real gap: unevaluated models */}
+        <div
+          className="mt-10 h-px"
+          style={{
+            width: 260,
+            background: C.line,
+            opacity: seg(t, 15.9, 16.1),
+          }}
+        />
+        <div
+          className="mt-6 flex items-baseline gap-3"
+          style={{ opacity: seg(t, 15.95, 16.2) }}
+        >
+          <span
+            className="font-extrabold text-[64px] leading-none"
+            style={{ color: C.ink, letterSpacing: "-0.03em" }}
+          >
+            170
+          </span>
+          <span
+            className="font-bold text-[24px] leading-none"
+            style={{ color: C.dim }}
+          >
+            /188
+          </span>
+        </div>
+        <div
+          className="mt-3 text-[17px]"
+          style={{ color: C.dim, opacity: seg(t, 16.05, 16.3) }}
+        >
+          models publish no evaluation
         </div>
       </div>
     </div>

@@ -9,15 +9,15 @@ import { SvgLineageGraph } from "./svg-lineage-graph";
 const BEAT_NUMERALS = ["፩", "፪", "፫"];
 
 const BEATS = [
-  { start: 7, end: 8, caption: "Compare models" },
-  { start: 8, end: 9, caption: "Trace model lineage" },
-  { start: 9, end: 10, caption: "See what's missing" },
+  { start: 12.0, end: 13.533, caption: "Compare models" },
+  { start: 13.533, end: 15.067, caption: "Trace model lineage" },
+  { start: 15.067, end: 16.6, caption: "See what's missing" },
 ] as const;
 
 /** Shared caption treatment for the three beats, bottom-center. */
 function BeatCaption({ t, beat }: { t: number; beat: (typeof BEATS)[number] }) {
   const index = BEATS.indexOf(beat);
-  const p = easeOutQuint(seg(t, beat.start + 0.06, beat.start + 0.34));
+  const p = easeOutQuint(seg(t, beat.start + 0.1, beat.start + 0.42));
   if (p <= 0) return null;
   return (
     <div
@@ -81,12 +81,45 @@ const COMPARE_CARDS = [
   },
 ] as const;
 
+function Row({
+  label,
+  t,
+  delay,
+  children,
+}: {
+  label: string;
+  t: number;
+  delay: number;
+  children: ReactNode;
+}) {
+  const p = seg(t, delay, delay + 0.3);
+  if (p <= 0) return null;
+  return (
+    <div
+      className="flex items-center justify-between gap-4"
+      style={{
+        opacity: Math.min(1, p * 2),
+        transform: `translateX(${(1 - p) * -8}px)`,
+      }}
+    >
+      <span
+        className="font-medium text-[14px] tracking-[0.03em]"
+        style={{ color: "rgba(0,0,0,0.45)" }}
+      >
+        {label}
+      </span>
+      <span className="flex min-w-0 items-center">{children}</span>
+    </div>
+  );
+}
+
 function CompareBeat({ t }: { t: number }) {
   return (
     <div className="absolute inset-0">
       {COMPARE_CARDS.map((card, i) => {
-        const p = easeOutQuint(seg(t, 7.02 + i * 0.09, 7.32 + i * 0.09));
+        const p = easeOutQuint(seg(t, 12.1 + i * 0.14, 12.7 + i * 0.14));
         if (p <= 0) return null;
+        const rowDelay = 12.4 + i * 0.14;
         return (
           <div
             key={card.name}
@@ -120,7 +153,7 @@ function CompareBeat({ t }: { t: number }) {
               />
 
               <div className="mt-5 space-y-4">
-                <Row label="Language">
+                <Row label="Language" t={t} delay={rowDelay}>
                   <span
                     className="mr-2 text-[18px] leading-none"
                     style={{
@@ -135,7 +168,7 @@ function CompareBeat({ t }: { t: number }) {
                     {card.lang}
                   </span>
                 </Row>
-                <Row label="Size">
+                <Row label="Size" t={t} delay={rowDelay + 0.1}>
                   <span
                     className="text-[18px]"
                     style={{ color: C.ink, fontVariantNumeric: "tabular-nums" }}
@@ -143,7 +176,7 @@ function CompareBeat({ t }: { t: number }) {
                     {card.size}
                   </span>
                 </Row>
-                <Row label="Eval">
+                <Row label="Eval" t={t} delay={rowDelay + 0.2}>
                   <span
                     className="whitespace-nowrap rounded-full px-3.5 py-1.5 text-[15px] leading-none"
                     style={{
@@ -162,7 +195,7 @@ function CompareBeat({ t }: { t: number }) {
 
       {/* Comparison highlight sweeping across the trio */}
       {(() => {
-        const sweep = easeInOutCubic(seg(t, 7.42, 7.98));
+        const sweep = easeInOutCubic(seg(t, 12.85, 13.45));
         if (sweep <= 0 || sweep >= 1) return null;
         return (
           <div
@@ -180,20 +213,6 @@ function CompareBeat({ t }: { t: number }) {
       })()}
 
       <BeatCaption t={t} beat={BEATS[0]} />
-    </div>
-  );
-}
-
-function Row({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="flex items-center justify-between gap-4">
-      <span
-        className="font-medium text-[14px] tracking-[0.03em]"
-        style={{ color: "rgba(0,0,0,0.45)" }}
-      >
-        {label}
-      </span>
-      <span className="flex min-w-0 items-center">{children}</span>
     </div>
   );
 }
@@ -217,12 +236,12 @@ function GapsBeat({ t }: { t: number }) {
 }
 
 /**
- * Scene 4 — 00:07–00:10 — Three capabilities, one-second beats.
- * Compare → lineage → gaps, each a self-contained micro-scene with a short
+ * Scene 4 — 00:12–00:16.6 — Three capabilities, unhurried beats.
+ * Compare → lineage → gaps, each a self-contained micro-scene with a soft
  * crossfade.
  */
 export function SceneCapabilities({ t }: { t: number }) {
-  const fade = 0.15;
+  const fade = 0.3;
   return (
     <div className="absolute inset-0">
       {BEATS.map((beat, i) => {

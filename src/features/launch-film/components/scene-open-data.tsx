@@ -34,11 +34,14 @@ const REUSE_NODES = [
 ];
 
 /**
- * Scene 5 — 00:10–00:12 — Open data.
- * A real record, rendered as inspectable JSON, wired by drawn connectors to
- * the three things you can do with it: research it, build on it, reuse it.
+ * Scene 5 — 00:16.6–00:19.8 — Open data.
+ * A real record, rendered as inspectable JSON with a blinking cursor, wired
+ * by drawn connectors to the three things you can do with it: research it,
+ * build on it, reuse it.
  */
 export function SceneOpenData({ t }: { t: number }) {
+  const cursorOn = t >= 18.15 && ((t - 18.15) * 1.2) % 1 < 0.62;
+
   return (
     <div className="absolute inset-0">
       {/* Code panel */}
@@ -51,6 +54,9 @@ export function SceneOpenData({ t }: { t: number }) {
           height: 380,
           background: C.panel,
           border: `1px solid ${C.panelLine}`,
+          opacity: seg(t, 16.75, 17.05),
+          transform: `translateY(${(1 - easeOutQuint(seg(t, 16.75, 17.05))) * 20}px)`,
+          willChange: "transform, opacity",
         }}
       >
         <div
@@ -72,8 +78,9 @@ export function SceneOpenData({ t }: { t: number }) {
           }}
         >
           {CODE_LINES.map((line, i) => {
-            const p = easeOutQuint(seg(t, 10.12 + i * 0.13, 10.4 + i * 0.13));
+            const p = easeOutQuint(seg(t, 17.05 + i * 0.16, 17.33 + i * 0.16));
             if (p <= 0) return null;
+            const isLast = i === CODE_LINES.length - 1;
             return (
               <div
                 key={i}
@@ -88,6 +95,12 @@ export function SceneOpenData({ t }: { t: number }) {
                     {part.text}
                   </span>
                 ))}
+                {isLast && cursorOn && (
+                  <span
+                    className="ml-1 inline-block h-[26px] w-[2px] translate-y-[6px]"
+                    style={{ background: C.accent }}
+                  />
+                )}
               </div>
             );
           })}
@@ -103,7 +116,7 @@ export function SceneOpenData({ t }: { t: number }) {
         aria-hidden
       >
         {REUSE_NODES.map((node, i) => {
-          const p = easeOutQuint(seg(t, 10.95 + i * 0.1, 11.32 + i * 0.1));
+          const p = easeOutQuint(seg(t, 18.05 + i * 0.09, 18.4 + i * 0.09));
           if (p <= 0) return null;
           return (
             <path
@@ -123,10 +136,10 @@ export function SceneOpenData({ t }: { t: number }) {
       </svg>
 
       {REUSE_NODES.map((node, i) => {
-        const p = seg(t, 11.08 + i * 0.12, 11.38 + i * 0.12);
+        const p = seg(t, 18.2 + i * 0.11, 18.5 + i * 0.11);
         if (p <= 0) return null;
         const Icon = node.icon;
-        const s = 0.7 + 0.3 * easeOutBack(p);
+        const s = 0.7 + 0.3 * easeOutBack(p, 1.15);
         return (
           <div
             key={node.label}
@@ -155,7 +168,7 @@ export function SceneOpenData({ t }: { t: number }) {
         );
       })}
 
-      <WipeLine t={t} start={11.2} end={11.78} size={76} x="50%" y={872}>
+      <WipeLine t={t} start={18.8} end={19.4} size={76} x="50%" y={872}>
         Open data. Traceable sources.
       </WipeLine>
 
@@ -164,7 +177,7 @@ export function SceneOpenData({ t }: { t: number }) {
         style={{ left: "50%", top: 940, transform: "translateX(-50%)" }}
       >
         {["Search", "Compare", "Reuse"].map((word, i) => {
-          const p = seg(t, 11.5 + i * 0.1, 11.72 + i * 0.1);
+          const p = seg(t, 19.05 + i * 0.09, 19.27 + i * 0.09);
           if (p <= 0) return null;
           return (
             <span

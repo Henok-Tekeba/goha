@@ -174,7 +174,7 @@ view are client-side.
 | `/gaps` | the gap report — empty cells, unmeasured models, licensing |
 | `/about` | mission, pipeline, principles, non-goals |
 | `/api` | open data: endpoints, examples, schema, caveats |
-| `/launch-film` | 15-second screen-recordable launch film (see [LAUNCH-FILM.md](LAUNCH-FILM.md)) |
+| `/launch-film` | 24-second screen-recordable launch film (see [LAUNCH-FILM.md](LAUNCH-FILM.md)) |
 
 ### Community submissions
 

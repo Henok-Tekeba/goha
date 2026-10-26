@@ -15,7 +15,7 @@ export function SceneFrame({
   start,
   end,
   children,
-  fade = 0.24,
+  fade = 0.55,
 }: {
   t: number;
   start: number;

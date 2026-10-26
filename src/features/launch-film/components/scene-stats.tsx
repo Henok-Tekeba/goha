@@ -11,6 +11,16 @@ const STATS = [
   { value: 193, label: "Organizations", x: 1600 },
 ] as const;
 
+/* 478 records = 188 models + 211 datasets + 75 papers + 4 companies. */
+const SPLIT = [
+  { value: 188, label: "188 models", color: C.accent },
+  { value: 211, label: "211 datasets", color: "#3F3F46" },
+  { value: 75, label: "75 papers", color: "#A1A1AA" },
+  { value: 4, label: "4 companies", color: "#E4E4E7" },
+] as const;
+
+const SPLIT_W = 1240;
+
 /* The canonical language set, in the index's own order. */
 const LANGUAGES = [
   { glyph: "አ", name: "Amharic" },
@@ -24,10 +34,10 @@ const LANGUAGES = [
 ] as const;
 
 /**
- * Scene 3 — 00:04–00:07 — The ecosystem, quantified.
- * Four staggered count-ups, the 478 total, then the eight language chips.
- * A quiet hairline grid and two traveling markers give the flat composition
- * depth without decoration.
+ * Scene 3 — 00:07.2–00:12 — The ecosystem, quantified.
+ * Four unhurried count-ups, the 478 total with a real composition bar, then
+ * the eight language chips. A quiet hairline grid and two traveling markers
+ * give the flat composition depth without decoration.
  */
 export function SceneStats({ t }: { t: number }) {
   return (
@@ -52,17 +62,17 @@ export function SceneStats({ t }: { t: number }) {
             pathLength={1}
             strokeDasharray={1}
             strokeDashoffset={
-              1 - Math.max(0, Math.min(1, (t - 4.05 - i * 0.045) / 0.42))
+              1 - Math.max(0, Math.min(1, (t - 7.35 - i * 0.04) / 0.55))
             }
           />
         ))}
         {/* Two traveling markers, ping-ponging along the outer rails */}
         {[240, 1680].map((x, i) => {
-          if (t < 4.3 || t > 6.9) return null;
-          const span = 6.9 - 4.3;
+          if (t < 7.5 || t > 11.5) return null;
+          const span = 11.5 - 7.5;
           const phase = i === 0 ? 0 : 0.5;
           const raw = Math.abs(
-            (((((t - 4.3) / span + phase) % 1) + 1) % 1) * 2 - 1
+            (((((t - 7.5) / span + phase) % 1) + 1) % 1) * 2 - 1
           );
           return (
             <circle
@@ -79,9 +89,9 @@ export function SceneStats({ t }: { t: number }) {
 
       {/* Four big statistics, staggered */}
       {STATS.map((s, i) => {
-        const start = 4.25 + i * 0.28;
+        const start = 7.55 + i * 0.5;
         const p = seg(t, start, start + 0.05);
-        const under = Math.min(1, seg(t, start + 0.62, start + 0.92));
+        const under = Math.min(1, seg(t, start + 0.72, start + 1.02));
         return (
           <div
             key={s.label}
@@ -97,7 +107,7 @@ export function SceneStats({ t }: { t: number }) {
               t={t}
               target={s.value}
               start={start}
-              duration={0.92}
+              duration={1.05}
               className="font-extrabold text-[148px] leading-none"
               style={{ color: C.ink, letterSpacing: "-0.03em" }}
             />
@@ -124,28 +134,28 @@ export function SceneStats({ t }: { t: number }) {
         className="absolute h-px"
         style={{
           left: "50%",
-          top: 640,
+          top: 620,
           width: 1240,
           background: C.line,
-          transform: `translateX(-50%) scaleX(${Math.min(1, seg(t, 5.45, 5.78))})`,
+          transform: `translateX(-50%) scaleX(${Math.min(1, seg(t, 10.35, 10.65))})`,
         }}
       />
 
-      {/* Total + language chips */}
+      {/* Total + real composition bar */}
       <div
         className="absolute flex items-baseline justify-center gap-6"
         style={{
           left: "50%",
-          top: 692,
+          top: 662,
           transform: "translateX(-50%)",
-          opacity: seg(t, 5.62, 5.85),
+          opacity: seg(t, 10.42, 10.62),
         }}
       >
         <AnimatedNumber
           t={t}
           target={478}
-          start={5.7}
-          duration={0.6}
+          start={10.5}
+          duration={0.55}
           className="font-extrabold text-[84px] leading-none"
           style={{ color: C.ink, letterSpacing: "-0.03em" }}
         />
@@ -157,14 +167,74 @@ export function SceneStats({ t }: { t: number }) {
         </span>
       </div>
 
+      {/* Composition bar: models / datasets / papers / companies */}
+      <div
+        className="absolute"
+        style={{
+          left: "50%",
+          top: 782,
+          width: SPLIT_W,
+          transform: "translateX(-50%)",
+          opacity: seg(t, 10.95, 11.1),
+        }}
+      >
+        <div className="flex h-1.5 w-full overflow-hidden rounded-full">
+          {SPLIT.map((part, i) => {
+            const p = Math.min(1, seg(t, 11.0 + i * 0.07, 11.3 + i * 0.07));
+            const width = (part.value / 478) * SPLIT_W;
+            return (
+              <div
+                key={part.label}
+                style={{
+                  width,
+                  background: part.color,
+                  transformOrigin: "left center",
+                  transform: `scaleX(${p})`,
+                }}
+              />
+            );
+          })}
+        </div>
+        {/* Segment labels; the companies sliver is labeled after the bar */}
+        <div className="relative h-8">
+          {SPLIT.map((part, i) => {
+            const p = seg(t, 11.32 + i * 0.06, 11.52 + i * 0.06);
+            if (p <= 0) return null;
+            const width = (part.value / 478) * SPLIT_W;
+            const center =
+              SPLIT.slice(0, i).reduce(
+                (acc, prev) => acc + (prev.value / 478) * SPLIT_W,
+                0
+              ) +
+              width / 2;
+            const offBar = width < 90;
+            return (
+              <span
+                key={part.label}
+                className="absolute whitespace-nowrap text-[15px]"
+                style={{
+                  left: offBar ? SPLIT_W + 14 : center,
+                  top: 10,
+                  transform: `translate(${offBar ? 0 : "-50%"}, ${(1 - p) * 8}px)`,
+                  color: C.dim,
+                  opacity: Math.min(1, p * 2),
+                }}
+              >
+                {part.label}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
       <div
         className="absolute font-medium text-[20px] tracking-[0.06em]"
         style={{
           left: "50%",
-          top: 818,
+          top: 862,
           transform: "translateX(-50%)",
           color: C.dim,
-          opacity: seg(t, 5.95, 6.2),
+          opacity: seg(t, 11.3, 11.55),
         }}
       >
         8 Languages
@@ -172,10 +242,10 @@ export function SceneStats({ t }: { t: number }) {
 
       <div
         className="absolute flex flex-nowrap justify-center"
-        style={{ left: "50%", top: 866, transform: "translateX(-50%)" }}
+        style={{ left: "50%", top: 906, transform: "translateX(-50%)" }}
       >
         {LANGUAGES.map((lang, i) => {
-          const p = seg(t, 6.05 + i * 0.075, 6.33 + i * 0.075);
+          const p = seg(t, 11.3 + i * 0.055, 11.58 + i * 0.055);
           if (p <= 0) return null;
           return (
             <div

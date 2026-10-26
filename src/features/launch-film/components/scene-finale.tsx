@@ -14,18 +14,39 @@ const NODES = [
 ];
 
 /**
- * Scene 6 — 00:12–00:15 — The final brand lockup.
- * goha ጎሃ, the thesis line, and the URL — held long enough to read and to
- * screenshot. One drawn underline, one pulsing node, nothing else.
+ * Scene 6 — 00:19.8–00:24 — The final brand lockup.
+ * goha ጎሃ over a giant faint Ethiopic watermark, the thesis line, and the
+ * URL — held long enough to read and to screenshot. One drawn underline,
+ * one pulsing node, nothing else.
  */
 export function SceneFinale({ t }: { t: number }) {
-  const markP = easeOutBack(seg(t, 12.12, 12.45));
-  const bar1P = easeOutQuint(seg(t, 12.3, 12.62));
-  const bar2P = easeOutQuint(seg(t, 12.38, 12.7));
-  const accentPulse = seg(t, 13.7, 14.5);
+  const markP = easeOutBack(seg(t, 19.95, 20.35), 1.15);
+  const bar1P = easeOutQuint(seg(t, 20.15, 20.5));
+  const bar2P = easeOutQuint(seg(t, 20.23, 20.58));
+  const accentPulse = seg(t, 22.2, 23.0);
+  const watermarkP = seg(t, 20.5, 21.3);
 
   return (
     <div className="absolute inset-0">
+      {/* Giant faint Ethiopic watermark behind the lockup */}
+      <div
+        className="absolute text-center"
+        style={{
+          left: "50%",
+          top: 430,
+          fontSize: 620,
+          lineHeight: 1,
+          fontFamily:
+            "'Noto Sans Ethiopic', 'Kefa', 'Nyala', 'Ebrima', sans-serif",
+          color: C.ink,
+          opacity: 0.035 * watermarkP,
+          transform: `translate(-50%, -50%) scale(${1 + 0.03 * seg(t, 20.5, 24)})`,
+          willChange: "transform, opacity",
+        }}
+      >
+        ጎሃ
+      </div>
+
       {/* Constellation */}
       <svg
         className="absolute"
@@ -35,7 +56,7 @@ export function SceneFinale({ t }: { t: number }) {
         aria-hidden
       >
         {NODES.map((node, i) => {
-          const p = easeOutQuint(seg(t, 12.5 + i * 0.09, 12.95 + i * 0.09));
+          const p = easeOutQuint(seg(t, 20.3 + i * 0.09, 20.75 + i * 0.09));
           if (p <= 0) return null;
           return (
             <line
@@ -53,7 +74,7 @@ export function SceneFinale({ t }: { t: number }) {
           );
         })}
         {NODES.map((node, i) => {
-          const p = seg(t, 12.55 + i * 0.09, 12.8 + i * 0.09);
+          const p = seg(t, 20.42 + i * 0.09, 20.67 + i * 0.09);
           if (p <= 0) return null;
           const pulse = node.accent && accentPulse > 0 && accentPulse < 1;
           return (
@@ -122,8 +143,8 @@ export function SceneFinale({ t }: { t: number }) {
         <div className="flex items-baseline justify-center gap-9">
           <WipeLine
             t={t}
-            start={12.38}
-            end={12.95}
+            start={20.35}
+            end={21.0}
             size={150}
             weight={750}
             tracking="-0.045em"
@@ -133,8 +154,8 @@ export function SceneFinale({ t }: { t: number }) {
           </WipeLine>
           <WipeLine
             t={t}
-            start={12.56}
-            end={13.1}
+            start={20.55}
+            end={21.2}
             size={128}
             weight={700}
             mode="relative"
@@ -151,22 +172,22 @@ export function SceneFinale({ t }: { t: number }) {
         style={{
           left: "50%",
           top: 668,
-          transform: `translate(-50%, ${(1 - easeOutQuint(seg(t, 12.98, 13.42))) * 14}px)`,
-          opacity: seg(t, 12.98, 13.32),
+          transform: `translate(-50%, ${(1 - easeOutQuint(seg(t, 21.1, 21.55))) * 14}px)`,
+          opacity: seg(t, 21.1, 21.44),
           color: C.ink,
         }}
       >
         Making Ethiopian AI legible.
       </div>
 
-      {/* URL + drawn underline — visible from 13.1s, holds to the end */}
+      {/* URL + drawn underline — visible from ~21.6s, holds to the end */}
       <div
         className="absolute text-center font-semibold text-[31px]"
         style={{
           left: "50%",
           top: 788,
           transform: "translateX(-50%)",
-          opacity: seg(t, 13.1, 13.42),
+          opacity: seg(t, 21.35, 21.68),
           color: C.ink,
           letterSpacing: "0.02em",
         }}
@@ -180,7 +201,7 @@ export function SceneFinale({ t }: { t: number }) {
           top: 838,
           width: 236,
           background: C.accent,
-          transform: `translateX(-50%) scaleX(${easeOutQuint(seg(t, 13.28, 13.82))})`,
+          transform: `translateX(-50%) scaleX(${easeOutQuint(seg(t, 21.55, 22.1))})`,
           transformOrigin: "center",
         }}
       />

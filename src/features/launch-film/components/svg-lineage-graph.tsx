@@ -9,6 +9,8 @@ type NodeDef = {
   label: string;
   /** Foundation models are quieter; derivatives carry the accent dot. */
   foundation?: boolean;
+  /** Declared language of the derived model (real, from the index). */
+  glyph?: string;
   appearAt: number;
 };
 
@@ -26,31 +28,49 @@ type EdgeDef = {
  *   facebook/w2v-bert-2.0 → badrex/Ethio-ASR-amharic, badrex/Ethio-ASR-oromo
  */
 const NODES: NodeDef[] = [
-  { x: 170, y: 140, label: "whisper-small", foundation: true, appearAt: 8.42 },
-  { x: 610, y: 140, label: "whisper-amharic-small-v2", appearAt: 8.6 },
-  { x: 170, y: 300, label: "w2v-bert-2.0", foundation: true, appearAt: 8.48 },
-  { x: 610, y: 252, label: "Ethio-ASR-amharic", appearAt: 8.68 },
-  { x: 610, y: 356, label: "Ethio-ASR-oromo", appearAt: 8.76 },
+  { x: 170, y: 140, label: "whisper-small", foundation: true, appearAt: 13.9 },
+  {
+    x: 610,
+    y: 140,
+    label: "whisper-amharic-small-v2",
+    glyph: "አ",
+    appearAt: 14.0,
+  },
+  { x: 170, y: 300, label: "w2v-bert-2.0", foundation: true, appearAt: 13.99 },
+  { x: 610, y: 252, label: "Ethio-ASR-amharic", glyph: "አ", appearAt: 14.09 },
+  { x: 610, y: 356, label: "Ethio-ASR-oromo", glyph: "O", appearAt: 14.16 },
   {
     x: 170,
     y: 462,
     label: "Llama-3.2-1B-Instruct",
     foundation: true,
-    appearAt: 8.54,
+    appearAt: 14.07,
   },
-  { x: 610, y: 462, label: "Llama-3.2-1B-Amharic", appearAt: 8.84 },
-  { x: 1010, y: 462, label: "Llama-3.2-1B-Amharic-Instruct", appearAt: 8.94 },
+  {
+    x: 610,
+    y: 462,
+    label: "Llama-3.2-1B-Amharic",
+    glyph: "አ",
+    appearAt: 14.17,
+  },
+  {
+    x: 1010,
+    y: 462,
+    label: "Llama-3.2-1B-Amharic-Instruct",
+    glyph: "አ",
+    appearAt: 14.27,
+  },
 ];
 
 const EDGES: EdgeDef[] = [
-  { from: 0, to: 1, drawAt: 8.12 },
-  { from: 2, to: 3, drawAt: 8.22 },
-  { from: 2, to: 4, drawAt: 8.3 },
-  { from: 5, to: 6, drawAt: 8.38 },
-  { from: 6, to: 7, drawAt: 8.46 },
+  { from: 0, to: 1, drawAt: 13.75 },
+  { from: 2, to: 3, drawAt: 13.84 },
+  { from: 2, to: 4, drawAt: 13.93 },
+  { from: 5, to: 6, drawAt: 14.02 },
+  { from: 6, to: 7, drawAt: 14.11 },
 ];
 
-const NODE_W = 264;
+const NODE_W = 300;
 const NODE_H = 52;
 
 function edgePath(from: NodeDef, to: NodeDef) {
@@ -75,14 +95,14 @@ export function SvgLineageGraph({ t }: { t: number }) {
   return (
     <svg
       className="absolute"
-      style={{ left: 400, top: 250 }}
-      width={1120}
+      style={{ left: 360, top: 250 }}
+      width={1200}
       height={540}
-      viewBox="0 0 1120 540"
+      viewBox="0 0 1200 540"
       aria-hidden
     >
       {EDGES.map((edge, i) => {
-        const p = seg(t, edge.drawAt, edge.drawAt + 0.38);
+        const p = seg(t, edge.drawAt, edge.drawAt + 0.4);
         if (p <= 0) return null;
         return (
           <path
@@ -101,10 +121,10 @@ export function SvgLineageGraph({ t }: { t: number }) {
       })}
 
       {NODES.map((node, i) => {
-        const pop = seg(t, node.appearAt, node.appearAt + 0.3);
-        if (pop <= 0) return null;
-        const s = nodeScale(pop);
-        const opacity = Math.min(1, pop * 2.5);
+        const p = seg(t, node.appearAt, node.appearAt + 0.3);
+        if (p <= 0) return null;
+        const s = nodeScale(p);
+        const opacity = Math.min(1, p * 2.5);
         return (
           <g
             key={i}
@@ -127,15 +147,27 @@ export function SvgLineageGraph({ t }: { t: number }) {
               <circle cx={-NODE_W / 2 + 20} cy={0} r={4} fill={C.accent} />
             )}
             <text
-              x={node.foundation ? 0 : 10}
+              x={node.foundation || node.glyph ? 0 : 10}
               y={5.5}
               textAnchor="middle"
-              fontSize={16.5}
+              fontSize={16}
               fontWeight={node.foundation ? 500 : 600}
               fill={node.foundation ? C.dim : C.ink}
             >
               {node.label}
             </text>
+            {node.glyph && (
+              <text
+                x={NODE_W / 2 - 22}
+                y={6}
+                textAnchor="middle"
+                fontSize={16}
+                fill={C.dim}
+                fontFamily="'Noto Sans Ethiopic', 'Kefa', 'Nyala', 'Ebrima', sans-serif"
+              >
+                {node.glyph}
+              </text>
+            )}
           </g>
         );
       })}

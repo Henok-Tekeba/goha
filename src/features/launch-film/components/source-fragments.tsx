@@ -6,14 +6,23 @@ import {
   LuBuilding2,
   LuDatabase,
   LuFileText,
+  LuTrophy,
 } from "react-icons/lu";
 
-import { C, easeOutQuint, lerp, STAGE_H, STAGE_W, seg } from "../lib/film";
+import {
+  ASSEMBLE_AT,
+  C,
+  easeOutQuint,
+  lerp,
+  STAGE_H,
+  STAGE_W,
+  seg,
+} from "../lib/film";
 
 export type IconType = ComponentType<{ size?: number; color?: string }>;
 
 /**
- * The four source fragments are shared by Scene 1 (scattered) and Scene 2
+ * The five source fragments are shared by Scene 1 (scattered) and Scene 2
  * (assembled) so the transition is one continuous interpolation — the same
  * nodes move from disorder into a clean index. No invented stats: the labels
  * name exactly what goha indexes and where it comes from.
@@ -35,9 +44,9 @@ export const SOURCE_FRAGMENTS: SourceFragment[] = [
     label: "Models",
     sub: "Hugging Face",
     icon: LuAudioWaveform,
-    scatter: { x: 640, y: 340, r: -4 },
+    scatter: { x: 620, y: 330, r: -4 },
     enterFrom: { x: -320, y: -260 },
-    slot: { x: 430, y: 330 },
+    slot: { x: 430, y: 316 },
     phase: 0.4,
   },
   {
@@ -45,30 +54,40 @@ export const SOURCE_FRAGMENTS: SourceFragment[] = [
     label: "Datasets",
     sub: "GitHub + Hugging Face",
     icon: LuDatabase,
-    scatter: { x: 1170, y: 300, r: 3 },
+    scatter: { x: 1190, y: 295, r: 3 },
     enterFrom: { x: 360, y: -240 },
-    slot: { x: 430, y: 452 },
-    phase: 1.7,
+    slot: { x: 430, y: 438 },
+    phase: 1.6,
+  },
+  {
+    id: "benchmarks",
+    label: "Benchmarks",
+    sub: "Published evaluations",
+    icon: LuTrophy,
+    scatter: { x: 950, y: 218, r: 2.5 },
+    enterFrom: { x: 60, y: -320 },
+    slot: { x: 430, y: 560 },
+    phase: 2.8,
   },
   {
     id: "research",
     label: "Research",
     sub: "arXiv",
     icon: LuFileText,
-    scatter: { x: 660, y: 700, r: 3.5 },
+    scatter: { x: 640, y: 700, r: 3.5 },
     enterFrom: { x: -340, y: 300 },
-    slot: { x: 430, y: 574 },
-    phase: 2.9,
+    slot: { x: 430, y: 682 },
+    phase: 3.9,
   },
   {
     id: "orgs",
     label: "Organizations",
     sub: "The public record",
     icon: LuBuilding2,
-    scatter: { x: 1150, y: 690, r: -3 },
+    scatter: { x: 1170, y: 695, r: -3 },
     enterFrom: { x: 340, y: 320 },
-    slot: { x: 430, y: 696 },
-    phase: 4.1,
+    slot: { x: 430, y: 804 },
+    phase: 5.0,
   },
 ];
 
@@ -76,12 +95,13 @@ const CARD_W = 340;
 const CARD_H = 96;
 
 /**
- * Renders the four cards.
- *   t < 2            — scattered pose (Scene 1), gentle idle drift
- *   t >= 2 (Scene 2) — continuous interpolation into the aligned index slots
+ * Renders the five cards.
+ *   t < ASSEMBLE_AT  — scattered pose (Scene 1), gentle idle drift
+ *   t >= ASSEMBLE_AT — continuous interpolation into the aligned index slots
+ * The same function is rendered by both scenes, so the crossfade is
+ * pixel-identical — no handoff, no flash.
  */
 export function SourceFragments({ t }: { t: number }) {
-  const assembled = t >= 2;
   return (
     <>
       {SOURCE_FRAGMENTS.map((f, i) => {
@@ -91,22 +111,23 @@ export function SourceFragments({ t }: { t: number }) {
         let scale = 1;
         let opacity = 1;
 
-        if (!assembled) {
-          const p = easeOutQuint(seg(t, 0.14 + i * 0.13, 0.64 + i * 0.13));
+        if (t < ASSEMBLE_AT) {
+          const p = easeOutQuint(seg(t, 0.2 + i * 0.18, 0.8 + i * 0.18));
           x = lerp(f.scatter.x + f.enterFrom.x, f.scatter.x, p);
           y = lerp(f.scatter.y + f.enterFrom.y, f.scatter.y, p);
           rot = lerp(f.scatter.r * 2.2, f.scatter.r, p);
           opacity = Math.min(1, p * 2.2);
           /* Deterministic idle drift — a fixed phase per card. */
-          x += Math.sin(t * 1.6 + f.phase) * 3;
-          y += Math.cos(t * 1.35 + f.phase) * 2.4;
+          x += Math.sin(t * 1.1 + f.phase) * 3;
+          y += Math.cos(t * 0.9 + f.phase) * 2.4;
         } else {
-          const p = easeOutQuint(seg(t, 2.05 + i * 0.07, 2.78 + i * 0.07));
+          const p = easeOutQuint(
+            seg(t, ASSEMBLE_AT + 0.05 + i * 0.09, ASSEMBLE_AT + 0.85 + i * 0.09)
+          );
           x = lerp(f.scatter.x, f.slot.x, p);
           y = lerp(f.scatter.y, f.slot.y, p);
           rot = lerp(f.scatter.r, 0, p);
-          /* Scale stays 1 — Scene 1's cards are at scale 1, and these are the
-             same nodes, so the handoff at t=2.0 must be pixel-identical. */
+          /* Scale stays 1 — these are the same nodes at every t. */
           scale = 1;
         }
 
@@ -160,6 +181,45 @@ export function SourceFragments({ t }: { t: number }) {
   );
 }
 
+/** Curved flight trajectories from scatter pose to index slot. */
+export function FragmentTrajectories({ t }: { t: number }) {
+  return (
+    <svg
+      className="absolute"
+      width={STAGE_W}
+      height={STAGE_H}
+      viewBox={`0 0 ${STAGE_W} ${STAGE_H}`}
+      aria-hidden
+    >
+      {SOURCE_FRAGMENTS.map((f, i) => {
+        const p = seg(
+          t,
+          ASSEMBLE_AT + 0.1 + i * 0.09,
+          ASSEMBLE_AT + 0.8 + i * 0.09
+        );
+        const out = 1 - seg(t, ASSEMBLE_AT + 1.05, ASSEMBLE_AT + 1.45);
+        if (p <= 0 || out <= 0) return null;
+        const cx = (f.scatter.x + f.slot.x) / 2;
+        const cy = (f.scatter.y + f.slot.y) / 2 - 130;
+        return (
+          <path
+            key={f.id}
+            d={`M ${f.scatter.x} ${f.scatter.y} Q ${cx} ${cy}, ${f.slot.x} ${f.slot.y}`}
+            fill="none"
+            stroke={C.accent}
+            strokeWidth={1.2}
+            strokeLinecap="round"
+            opacity={0.5 * out}
+            pathLength={1}
+            strokeDasharray={1}
+            strokeDashoffset={1 - p}
+          />
+        );
+      })}
+    </svg>
+  );
+}
+
 /** Small disconnected nodes + dashed paths that never complete (Scene 1). */
 export function ScatteredNodes({ t }: { t: number }) {
   const dots: Array<[number, number]> = [
@@ -180,15 +240,14 @@ export function ScatteredNodes({ t }: { t: number }) {
   return (
     <svg
       className="absolute"
-      style={{ left: 0, top: 0 }}
       width={STAGE_W}
       height={STAGE_H}
       viewBox={`0 0 ${STAGE_W} ${STAGE_H}`}
       aria-hidden
     >
       {paths.map((d, i) => {
-        const p = seg(t, 0.7 + i * 0.1, 1.2 + i * 0.1);
-        const out = 1 - seg(t, 1.35 + i * 0.08, 1.8 + i * 0.08);
+        const p = seg(t, 1.0 + i * 0.12, 1.55 + i * 0.12);
+        const out = 1 - seg(t, 1.9 + i * 0.1, 2.35 + i * 0.1);
         if (p <= 0 || out <= 0) return null;
         return (
           <path
@@ -205,8 +264,8 @@ export function ScatteredNodes({ t }: { t: number }) {
         );
       })}
       {dots.map(([cx, cy], i) => {
-        const p = seg(t, 0.55 + i * 0.06, 0.85 + i * 0.06);
-        const out = 1 - seg(t, 1.55, 1.95);
+        const p = seg(t, 0.9 + i * 0.07, 1.2 + i * 0.07);
+        const out = 1 - seg(t, 2.1, 2.5);
         if (p <= 0 || out <= 0) return null;
         const s = 0.4 + 0.6 * p;
         return (
@@ -216,7 +275,7 @@ export function ScatteredNodes({ t }: { t: number }) {
             cy={cy}
             r={4.5}
             fill={C.ink}
-            opacity={0.55 * out}
+            opacity={0.4 * out}
             transform={`translate(${cx * (1 - s)} ${cy * (1 - s)}) scale(${s})`}
           />
         );

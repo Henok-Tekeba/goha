@@ -23,29 +23,33 @@ import { type FilmCue, useFilmClock } from "./lib/use-film-clock";
 
 /* Sound cues — all synthesized, optional, and driven by the master clock. */
 const SOUND_CUES: FilmCue[] = [
-  { t: 0.18, kind: "click" },
-  { t: 0.31, kind: "click" },
-  { t: 0.44, kind: "click" },
-  { t: 0.57, kind: "click" },
-  { t: 1.1, kind: "click" },
-  { t: 2.02, kind: "impact" },
-  { t: 2.62, kind: "pluck" },
-  { t: 4.42, kind: "tick" },
-  { t: 4.72, kind: "tick" },
-  { t: 5.0, kind: "tick" },
-  { t: 5.3, kind: "tick" },
-  { t: 5.78, kind: "tick" },
-  { t: 7.05, kind: "click" },
-  { t: 8.05, kind: "click" },
-  { t: 9.05, kind: "click" },
-  { t: 10.18, kind: "tick" },
-  { t: 10.32, kind: "tick" },
-  { t: 10.46, kind: "tick" },
+  { t: 0.22, kind: "click" },
+  { t: 0.4, kind: "click" },
+  { t: 0.58, kind: "click" },
+  { t: 0.76, kind: "click" },
+  { t: 0.94, kind: "click" },
+  { t: 1.35, kind: "click" },
+  { t: 3.62, kind: "impact" },
+  { t: 4.65, kind: "pluck" },
+  { t: 5.15, kind: "tick" },
+  { t: 7.75, kind: "tick" },
+  { t: 8.25, kind: "tick" },
+  { t: 8.75, kind: "tick" },
+  { t: 9.25, kind: "tick" },
   { t: 10.6, kind: "tick" },
-  { t: 11.24, kind: "click" },
-  { t: 12.06, kind: "impact" },
-  { t: 12.62, kind: "chord" },
-  { t: 13.3, kind: "tick" },
+  { t: 11.15, kind: "tick" },
+  { t: 12.05, kind: "click" },
+  { t: 13.55, kind: "click" },
+  { t: 15.1, kind: "click" },
+  { t: 17.05, kind: "tick" },
+  { t: 17.21, kind: "tick" },
+  { t: 17.37, kind: "tick" },
+  { t: 17.53, kind: "tick" },
+  { t: 17.69, kind: "tick" },
+  { t: 18.85, kind: "click" },
+  { t: 19.85, kind: "impact" },
+  { t: 20.6, kind: "chord" },
+  { t: 21.55, kind: "tick" },
 ];
 
 /**
@@ -189,7 +193,7 @@ export default function LaunchFilmView() {
     >
       {/* Screen-reader description of the film */}
       <h1 className="sr-only">
-        goha — Making Ethiopian AI legible. A 15-second launch film.
+        goha — Making Ethiopian AI legible. A 24-second launch film.
       </h1>
 
       {/* The 1920×1080 stage, uniformly scaled to the viewport */}
@@ -206,22 +210,22 @@ export default function LaunchFilmView() {
             transformOrigin: "center",
           }}
         >
-          <SceneFrame t={filmT} start={0} end={2}>
+          <SceneFrame t={filmT} start={SCENES[0].start} end={SCENES[0].end}>
             <SceneProblem t={filmT} />
           </SceneFrame>
-          <SceneFrame t={filmT} start={2} end={4}>
+          <SceneFrame t={filmT} start={SCENES[1].start} end={SCENES[1].end}>
             <SceneReveal t={filmT} />
           </SceneFrame>
-          <SceneFrame t={filmT} start={4} end={7}>
+          <SceneFrame t={filmT} start={SCENES[2].start} end={SCENES[2].end}>
             <SceneStats t={filmT} />
           </SceneFrame>
-          <SceneFrame t={filmT} start={7} end={10}>
+          <SceneFrame t={filmT} start={SCENES[3].start} end={SCENES[3].end}>
             <SceneCapabilities t={filmT} />
           </SceneFrame>
-          <SceneFrame t={filmT} start={10} end={12}>
+          <SceneFrame t={filmT} start={SCENES[4].start} end={SCENES[4].end}>
             <SceneOpenData t={filmT} />
           </SceneFrame>
-          <SceneFrame t={filmT} start={12} end={15}>
+          <SceneFrame t={filmT} start={SCENES[5].start} end={SCENES[5].end}>
             <SceneFinale t={filmT} />
           </SceneFrame>
         </div>

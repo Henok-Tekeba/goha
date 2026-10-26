@@ -1,6 +1,6 @@
 # goha launch film
 
-A 15-second, autoplaying, screen-recordable launch animation for
+A 24-second, autoplaying, screen-recordable launch animation for
 [goha](https://goha.enoch.et), served at **`/launch-film`**. One 1920×1080
 stage, one master clock, six scenes — problem, reveal, stats, capabilities,
 open data, finale. All figures come from the live index snapshot; nothing is
@@ -18,9 +18,9 @@ pnpm build && npx serve out
 2. Click **Present** in the bottom control bar (hides the controls and
    enters fullscreen), or just open `/launch-film/?present=1`.
 3. Press **R** (or the restart button) to start cleanly — the film waits
-   ~500 ms (configurable pre-roll), then plays 15 s exactly.
+   ~500 ms (configurable pre-roll), then plays 24 s exactly.
 4. Screen-record it. The last frame holds; the URL is visible for the final
-   1.5 s.
+   ~2.4 s.
 
 The stage is a fixed 16:9 canvas that scales uniformly to any window —
 letterboxed on the same background, so captures are seamless at any size.
