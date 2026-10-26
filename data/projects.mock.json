@@ -61,7 +61,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -1267,7 +1267,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -2758,7 +2758,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -3855,7 +3855,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -7277,110 +7277,6 @@
   "updatedAt": "2026-09-22T01:53:12.000Z"
  },
  {
-  "id": "pjt_2a209e2078b7e7b752e8ff523e2aeaee",
-  "sourceId": "hf:Oromor/deepseek-coder-6.7b-base-gptq-4bit",
-  "hfInternalId": "688362dcb05484b8063e707e",
-  "hfSha": "9d0fd5d77ede4b889e723923f482f3c6d836b024",
-  "title": "deepseek-coder-6.7b-base-gptq-4bit",
-  "description": "NLP model. Fine-tuned from deepseek-ai/deepseek-coder-6.7b-base.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 22,
-  "evaluations": [],
-  "baseModel": "deepseek-ai/deepseek-coder-6.7b-base",
-  "paramCount": 6741872640,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    26,
-    26,
-    26,
-    26,
-    24,
-    24,
-    22
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/Oromor/deepseek-coder-6.7b-base-gptq-4bit",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/Oromor/deepseek-coder-6.7b-base-gptq-4bit",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000725869c9",
-   "name": "Oromor"
-  },
-  "projectTechStacks": [
-   {
-    "id": "tst_00000000000000000000000000000033",
-    "name": "Safetensors",
-    "iconUrl": "/langs/sym-shield.svg",
-    "type": "TECH"
-   }
-  ],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "deepseek-coder-6.7b-base-gptq-4bit",
-   "description": null,
-   "url": "https://huggingface.co/Oromor/deepseek-coder-6.7b-base-gptq-4bit",
-   "html_url": "https://huggingface.co/Oromor/deepseek-coder-6.7b-base-gptq-4bit",
-   "created_at": "2026-10-25T10:58:23.725Z",
-   "updated_at": "2025-07-25T11:12:18.000Z",
-   "pushed_at": "2025-07-25T11:12:18.000Z",
-   "stars": 0,
-   "tags": [
-    "safetensors",
-    "llama",
-    "base_model:deepseek-ai/deepseek-coder-6.7b-base",
-    "base_model:quantized:deepseek-ai/deepseek-coder-6.7b-base",
-    "license:other",
-    "4-bit",
-    "gptq",
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": "other",
-   "languages": [],
-   "owner": {
-    "login": "Oromor",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBkZWVwc2Vlay1jb2Rlci02LjdiLWJhc2UtZ3B0cS00Yml0CgojIyBBdCBhIGdsYW5jZQoKfCB8IHwKfC0tLXwtLS18CnwgTW9udGhseSBkb3dubG9hZHMgfCAqKjIyKiogfAp8IExpa2VzIHwgMCB8CnwgUGFyYW1ldGVycyB8IDYuN0IgfAp8IExpY2Vuc2UgfCBgb3RoZXJgIHwKfCBGaWxlcyB8IDEyIHwKfCBMYXN0IHVwZGF0ZWQgfCAyMDI1LTA3LTI1IHwKCiMjIExpbmVhZ2UKCkZpbmUtdHVuZWQgZnJvbSAqKmRlZXBzZWVrLWFpL2RlZXBzZWVrLWNvZGVyLTYuN2ItYmFzZSoqCgotLS0KCltPcGVuIG9uIEh1Z2dpbmcgRmFjZV0oaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9Pcm9tb3IvZGVlcHNlZWstY29kZXItNi43Yi1iYXNlLWdwdHEtNGJpdCkgwrcgW2dvaGEuZW5vY2guZXRdKGh0dHBzOi8vZ29oYS5lbm9jaC5ldCk="
-  },
-  "createdAt": "2026-10-25T10:58:23.725Z",
-  "updatedAt": "2025-07-25T11:12:18.000Z"
- },
- {
   "id": "pjt_40efce170c5e62fb351348697ff1ca50",
   "sourceId": "hf:galigalo/afaan-oromo-next-word-bilstm",
   "hfInternalId": "6ab6606702fbd9988da3e839",
@@ -8467,7 +8363,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -10819,7 +10715,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -11808,7 +11704,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -12423,7 +12319,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -13546,7 +13442,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -13912,7 +13808,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -14606,7 +14502,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -14736,7 +14632,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -16898,118 +16794,6 @@
   "updatedAt": "2026-02-28T21:10:07.000Z"
  },
  {
-  "id": "pjt_4ed3bbdcb93eac9dc4c2291e0089e2c1",
-  "sourceId": "hf:geezyforeezy/Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-  "hfInternalId": "6acf66601233559246fef8f0",
-  "hfSha": "57bf59824a1f9f81687a890ace700c1f7bc9d4d4",
-  "title": "Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-  "description": "Language model for English. Fine-tuned from rohit267/Qwen3.8-9B-heretic-uncensored.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 416,
-  "evaluations": [],
-  "baseModel": "rohit267/Qwen3.8-9B-heretic-uncensored",
-  "paramCount": 8953803264,
-  "growth": 82,
-  "sparkline": {
-   "points": [
-    229,
-    272,
-    290,
-    309,
-    343,
-    390,
-    416
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/geezyforeezy/Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/geezyforeezy/Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000f019e34b",
-   "name": "geezyforeezy"
-  },
-  "projectTechStacks": [
-   {
-    "id": "tst_00000000000000000000000000000008",
-    "name": "English",
-    "iconUrl": "/langs/english.svg",
-    "type": "LANGUAGE"
-   },
-   {
-    "id": "tst_00000000000000000000000000000033",
-    "name": "Safetensors",
-    "iconUrl": "/langs/sym-shield.svg",
-    "type": "TECH"
-   }
-  ],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_00000000000000000000000000000007",
-    "name": "LLM"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-   "description": null,
-   "url": "https://huggingface.co/geezyforeezy/Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-   "html_url": "https://huggingface.co/geezyforeezy/Qwen3.8-9B-heretic-uncensored-4bit-MTPLX",
-   "created_at": "2026-10-25T10:58:25.258Z",
-   "updated_at": "2026-10-14T11:24:16.000Z",
-   "pushed_at": "2026-10-14T11:24:16.000Z",
-   "stars": 0,
-   "tags": [
-    "mlx",
-    "safetensors",
-    "qwen3_5",
-    "apple-silicon",
-    "mtplx",
-    "speculative-decoding",
-    "mtp",
-    "qwen3.8"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": "apache-2.0",
-   "languages": [
-    "English"
-   ],
-   "owner": {
-    "login": "geezyforeezy",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBRd2VuMy44LTlCLWhlcmV0aWMtdW5jZW5zb3JlZC00Yml0LU1UUExYCgojIyBBdCBhIGdsYW5jZQoKfCB8IHwKfC0tLXwtLS18CnwgTW9udGhseSBkb3dubG9hZHMgfCAqKjQxNioqIHwKfCBMaWtlcyB8IDAgfAp8IFBhcmFtZXRlcnMgfCA5QiB8CnwgTGljZW5zZSB8IGBhcGFjaGUtMi4wYCB8CnwgRmlsZXMgfCAxMiB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyNi0xMC0xNCB8CgojIyBMaW5lYWdlCgpGaW5lLXR1bmVkIGZyb20gKipyb2hpdDI2Ny9Rd2VuMy44LTlCLWhlcmV0aWMtdW5jZW5zb3JlZCoqCgojIyBMYW5ndWFnZXMKCi0gRW5nbGlzaAoKLS0tCgpbT3BlbiBvbiBIdWdnaW5nIEZhY2VdKGh0dHBzOi8vaHVnZ2luZ2ZhY2UuY28vZ2Vlenlmb3JlZXp5L1F3ZW4zLjgtOUItaGVyZXRpYy11bmNlbnNvcmVkLTRiaXQtTVRQTFgpIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.258Z",
-  "updatedAt": "2026-10-14T11:24:16.000Z"
- },
- {
   "id": "pjt_13566061d2d975c0e9c8b06f6641b5d2",
   "sourceId": "hf:fgaim/tiroberta-geezswitch",
   "hfInternalId": "626dbb225651e31a7a324bf6",
@@ -17077,7 +16861,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -17202,7 +16986,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -17383,116 +17167,6 @@
   },
   "createdAt": "2026-10-25T10:58:25.258Z",
   "updatedAt": "2025-12-23T22:30:40.000Z"
- },
- {
-  "id": "pjt_c714d13da55cb3c7c2c4bb08f9384ab4",
-  "sourceId": "hf:Geezy/DialoGPT-small-guy",
-  "hfInternalId": "621ffdc036468d709f1755f9",
-  "hfSha": "c6e9d240f646e3adccb6b017f7bb1189aaa82729",
-  "title": "DialoGPT-small-guy",
-  "description": "Language model.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 23,
-  "evaluations": [],
-  "baseModel": null,
-  "paramCount": null,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    24,
-    24,
-    24,
-    23,
-    24,
-    23,
-    23
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/Geezy/DialoGPT-small-guy",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/Geezy/DialoGPT-small-guy",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000555c5429",
-   "name": "Geezy"
-  },
-  "projectTechStacks": [
-   {
-    "id": "tst_00000000000000000000000000000034",
-    "name": "Transformers",
-    "iconUrl": "/langs/sym-layers.svg",
-    "type": "TECH"
-   },
-   {
-    "id": "tst_00000000000000000000000000000036",
-    "name": "PyTorch",
-    "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
-    "type": "TECH"
-   }
-  ],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_00000000000000000000000000000007",
-    "name": "LLM"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "DialoGPT-small-guy",
-   "description": null,
-   "url": "https://huggingface.co/Geezy/DialoGPT-small-guy",
-   "html_url": "https://huggingface.co/Geezy/DialoGPT-small-guy",
-   "created_at": "2026-10-25T10:58:25.258Z",
-   "updated_at": "2021-08-31T15:29:36.000Z",
-   "pushed_at": "2021-08-31T15:29:36.000Z",
-   "stars": 0,
-   "tags": [
-    "transformers",
-    "pytorch",
-    "gpt2",
-    "text-generation",
-    "conversational",
-    "text-generation-inference",
-    "endpoints_compatible",
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": null,
-   "languages": [],
-   "owner": {
-    "login": "Geezy",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBEaWFsb0dQVC1zbWFsbC1ndXkKCiMjIEF0IGEgZ2xhbmNlCgp8IHwgfAp8LS0tfC0tLXwKfCBNb250aGx5IGRvd25sb2FkcyB8ICoqMjMqKiB8CnwgTGlrZXMgfCAwIHwKfCBGaWxlcyB8IDExIHwKfCBMYXN0IHVwZGF0ZWQgfCAyMDIxLTA4LTMxIHwKCi0tLQoKW09wZW4gb24gSHVnZ2luZyBGYWNlXShodHRwczovL2h1Z2dpbmdmYWNlLmNvL0dlZXp5L0RpYWxvR1BULXNtYWxsLWd1eSkgwrcgW2dvaGEuZW5vY2guZXRdKGh0dHBzOi8vZ29oYS5lbm9jaC5ldCk="
-  },
-  "createdAt": "2026-10-25T10:58:25.258Z",
-  "updatedAt": "2021-08-31T15:29:36.000Z"
  },
  {
   "id": "pjt_bd25f0e0bf0648986d56115eee78d95d",
@@ -17742,116 +17416,6 @@
   },
   "createdAt": "2026-10-25T10:58:25.258Z",
   "updatedAt": "2026-01-11T05:51:31.000Z"
- },
- {
-  "id": "pjt_0355591ae1ab0e0a6276f777152bb4a5",
-  "sourceId": "hf:geezup123/Wan2.2-Animate-14B",
-  "hfInternalId": "69fc67b9cd7f82ff46b8f3ed",
-  "hfSha": "db3ef651f3dad81bece9cb91450e3bf7fb78ca57",
-  "title": "Wan2.2-Animate-14B",
-  "description": "NLP model. Fine-tuned from Wan-AI/Wan2.2-I2V-A14B.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 16,
-  "evaluations": [],
-  "baseModel": "Wan-AI/Wan2.2-I2V-A14B",
-  "paramCount": 17274817108,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    15,
-    15,
-    15,
-    15,
-    15,
-    16,
-    16
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/geezup123/Wan2.2-Animate-14B",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/geezup123/Wan2.2-Animate-14B",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000e687a6b9",
-   "name": "geezup123"
-  },
-  "projectTechStacks": [
-   {
-    "id": "tst_00000000000000000000000000000038",
-    "name": "Diffusers",
-    "iconUrl": "/langs/sym-spark.svg",
-    "type": "TECH"
-   },
-   {
-    "id": "tst_00000000000000000000000000000033",
-    "name": "Safetensors",
-    "iconUrl": "/langs/sym-shield.svg",
-    "type": "TECH"
-   }
-  ],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "Wan2.2-Animate-14B",
-   "description": null,
-   "url": "https://huggingface.co/geezup123/Wan2.2-Animate-14B",
-   "html_url": "https://huggingface.co/geezup123/Wan2.2-Animate-14B",
-   "created_at": "2026-10-25T10:58:25.258Z",
-   "updated_at": "2026-05-07T10:21:46.000Z",
-   "pushed_at": "2026-05-07T10:21:46.000Z",
-   "stars": 0,
-   "tags": [
-    "diffusers",
-    "onnx",
-    "safetensors",
-    "video-to-video",
-    "arxiv:2503.20314",
-    "base_model:Wan-AI/Wan2.2-I2V-A14B",
-    "base_model:quantized:Wan-AI/Wan2.2-I2V-A14B",
-    "license:apache-2.0"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": "apache-2.0",
-   "languages": [],
-   "owner": {
-    "login": "geezup123",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBXYW4yLjItQW5pbWF0ZS0xNEIKCiMjIEF0IGEgZ2xhbmNlCgp8IHwgfAp8LS0tfC0tLXwKfCBNb250aGx5IGRvd25sb2FkcyB8ICoqMTYqKiB8CnwgTGlrZXMgfCAwIHwKfCBQYXJhbWV0ZXJzIHwgMTdCIHwKfCBMaWNlbnNlIHwgYGFwYWNoZS0yLjBgIHwKfCBGaWxlcyB8IDQ0NCB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyNi0wNS0wNyB8CgojIyBMaW5lYWdlCgpGaW5lLXR1bmVkIGZyb20gKipXYW4tQUkvV2FuMi4yLUkyVi1BMTRCKioKCi0tLQoKW09wZW4gb24gSHVnZ2luZyBGYWNlXShodHRwczovL2h1Z2dpbmdmYWNlLmNvL2dlZXp1cDEyMy9XYW4yLjItQW5pbWF0ZS0xNEIpIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.258Z",
-  "updatedAt": "2026-05-07T10:21:46.000Z"
  },
  {
   "id": "pjt_95f6fe1f89a1915e37b07071ecfe6bc5",
@@ -19002,7 +18566,7 @@
     "type": "LANGUAGE"
    },
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -19403,187 +18967,6 @@
   },
   "createdAt": "2026-10-25T10:58:25.259Z",
   "updatedAt": "2022-11-05T21:49:58.000Z"
- },
- {
-  "id": "pjt_a9871c08e189ba3a00dc14dec6cc2613",
-  "sourceId": "hf:geezycake/Gpt_4",
-  "hfInternalId": "643a81f9101fbcb9402c5f78",
-  "hfSha": "41cf13b74c16f8716b71c1aabb96b0021099cf7d",
-  "title": "Gpt_4",
-  "description": "NLP model.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 0,
-  "evaluations": [],
-  "baseModel": null,
-  "paramCount": null,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/geezycake/Gpt_4",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/geezycake/Gpt_4",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000491526f5",
-   "name": "geezycake"
-  },
-  "projectTechStacks": [],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "Gpt_4",
-   "description": null,
-   "url": "https://huggingface.co/geezycake/Gpt_4",
-   "html_url": "https://huggingface.co/geezycake/Gpt_4",
-   "created_at": "2026-10-25T10:58:25.259Z",
-   "updated_at": "2023-04-15T10:52:41.000Z",
-   "pushed_at": "2023-04-15T10:52:41.000Z",
-   "stars": 0,
-   "tags": [
-    "license:openrail",
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": "openrail",
-   "languages": [],
-   "owner": {
-    "login": "geezycake",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBHcHRfNAoKIyMgQXQgYSBnbGFuY2UKCnwgfCB8CnwtLS18LS0tfAp8IE1vbnRobHkgZG93bmxvYWRzIHwgKiowKiogfAp8IExpa2VzIHwgMCB8CnwgTGljZW5zZSB8IGBvcGVucmFpbGAgfAp8IEZpbGVzIHwgMiB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyMy0wNC0xNSB8CgotLS0KCltPcGVuIG9uIEh1Z2dpbmcgRmFjZV0oaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9nZWV6eWNha2UvR3B0XzQpIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.259Z",
-  "updatedAt": "2023-04-15T10:52:41.000Z"
- },
- {
-  "id": "pjt_63db4909b18fe7c66aa7688eec1b38b3",
-  "sourceId": "hf:geezi/FYI",
-  "hfInternalId": "64757e8f82907acdddfbc55c",
-  "hfSha": "4a71b564c8defbd21fff6570ddc469e86eb065a8",
-  "title": "FYI",
-  "description": "NLP model.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 0,
-  "evaluations": [],
-  "baseModel": null,
-  "paramCount": null,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/geezi/FYI",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/geezi/FYI",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_0000000000000000000000009d266059",
-   "name": "geezi"
-  },
-  "projectTechStacks": [],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "FYI",
-   "description": null,
-   "url": "https://huggingface.co/geezi/FYI",
-   "html_url": "https://huggingface.co/geezi/FYI",
-   "created_at": "2026-10-25T10:58:25.259Z",
-   "updated_at": "2023-05-30T04:41:51.000Z",
-   "pushed_at": "2023-05-30T04:41:51.000Z",
-   "stars": 0,
-   "tags": [
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": null,
-   "languages": [],
-   "owner": {
-    "login": "geezi",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBGWUkKCiMjIEF0IGEgZ2xhbmNlCgp8IHwgfAp8LS0tfC0tLXwKfCBNb250aGx5IGRvd25sb2FkcyB8ICoqMCoqIHwKfCBMaWtlcyB8IDAgfAp8IEZpbGVzIHwgMSB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyMy0wNS0zMCB8CgotLS0KCltPcGVuIG9uIEh1Z2dpbmcgRmFjZV0oaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9nZWV6aS9GWUkpIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.259Z",
-  "updatedAt": "2023-05-30T04:41:51.000Z"
  },
  {
   "id": "pjt_39702db2d2493555b698093d8fc1e5ed",
@@ -20114,96 +19497,6 @@
   },
   "createdAt": "2026-10-25T10:58:25.260Z",
   "updatedAt": "2024-10-11T14:43:25.000Z"
- },
- {
-  "id": "pjt_ce0b0cb535c1d117bbecca08b101c2da",
-  "sourceId": "hf:Geezinho/marquinho",
-  "hfInternalId": "67a368f84c9c5a5dd03a051e",
-  "hfSha": "bd7a7eb725c9312afc1bb8cce8cc8055de447381",
-  "title": "marquinho",
-  "description": "NLP model.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 0,
-  "evaluations": [],
-  "baseModel": null,
-  "paramCount": null,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/Geezinho/marquinho",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/Geezinho/marquinho",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_00000000000000000000000096094a18",
-   "name": "Geezinho"
-  },
-  "projectTechStacks": [],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "marquinho",
-   "description": null,
-   "url": "https://huggingface.co/Geezinho/marquinho",
-   "html_url": "https://huggingface.co/Geezinho/marquinho",
-   "created_at": "2026-10-25T10:58:25.260Z",
-   "updated_at": "2025-02-05T13:34:48.000Z",
-   "pushed_at": "2025-02-05T13:34:48.000Z",
-   "stars": 0,
-   "tags": [
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": null,
-   "languages": [],
-   "owner": {
-    "login": "Geezinho",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBtYXJxdWluaG8KCiMjIEF0IGEgZ2xhbmNlCgp8IHwgfAp8LS0tfC0tLXwKfCBNb250aGx5IGRvd25sb2FkcyB8ICoqMCoqIHwKfCBMaWtlcyB8IDAgfAp8IEZpbGVzIHwgMSB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyNS0wMi0wNSB8CgotLS0KCltPcGVuIG9uIEh1Z2dpbmcgRmFjZV0oaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9HZWV6aW5oby9tYXJxdWluaG8pIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.260Z",
-  "updatedAt": "2025-02-05T13:34:48.000Z"
  },
  {
   "id": "pjt_ccaaea85c823742fe45e200ed159aa31",
@@ -20919,96 +20212,6 @@
   "updatedAt": "2026-02-15T10:54:43.000Z"
  },
  {
-  "id": "pjt_6b32fb2edd85368a79233146d15b8d2e",
-  "sourceId": "hf:geezmole/parameter-golf-models",
-  "hfInternalId": "69f0da245a7d3c83387de71a",
-  "hfSha": "04ff9e28960f75c8e19d6164700711ba148aee02",
-  "title": "parameter-golf-models",
-  "description": "NLP model.",
-  "provider": "GITHUB",
-  "logoUrl": "/types/ai.svg",
-  "published": true,
-  "trending": false,
-  "downloadsMonthly": 0,
-  "evaluations": [],
-  "baseModel": null,
-  "paramCount": null,
-  "growth": null,
-  "sparkline": {
-   "points": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "timestamps": [
-    "2026-10-19",
-    "2026-10-20",
-    "2026-10-21",
-    "2026-10-22",
-    "2026-10-23",
-    "2026-10-24",
-    "2026-10-25"
-   ]
-  },
-  "repoUrl": "https://huggingface.co/geezmole/parameter-golf-models",
-  "githubUrl": null,
-  "gitlabUrl": null,
-  "twitterUrl": null,
-  "linkedinUrl": null,
-  "discordUrl": null,
-  "websiteUrl": "https://huggingface.co/geezmole/parameter-golf-models",
-  "imagesUrls": [],
-  "owner": {
-   "id": "usr_000000000000000000000000298f7fc9",
-   "name": "geezmole"
-  },
-  "projectTechStacks": [],
-  "projectCategories": [
-   {
-    "id": "cat_00000000000000000000000000000001",
-    "name": "Model"
-   },
-   {
-    "id": "cat_0000000000000000000000000000000a",
-    "name": "Other"
-   }
-  ],
-  "repositoryDetails": {
-   "name": "parameter-golf-models",
-   "description": null,
-   "url": "https://huggingface.co/geezmole/parameter-golf-models",
-   "html_url": "https://huggingface.co/geezmole/parameter-golf-models",
-   "created_at": "2026-10-25T10:58:25.260Z",
-   "updated_at": "2026-04-29T06:09:00.000Z",
-   "pushed_at": "2026-04-29T06:09:00.000Z",
-   "stars": 0,
-   "tags": [
-    "region:us"
-   ],
-   "forksCount": 0,
-   "openIssuesCount": 0,
-   "pullRequestsCount": 0,
-   "subscribersCount": 0,
-   "license": null,
-   "languages": [],
-   "owner": {
-    "login": "geezmole",
-    "avatar_url": ""
-   },
-   "contributors": [],
-   "issues": [],
-   "issueLabels": [],
-   "pullRequests": [],
-   "readme": "IyBwYXJhbWV0ZXItZ29sZi1tb2RlbHMKCiMjIEF0IGEgZ2xhbmNlCgp8IHwgfAp8LS0tfC0tLXwKfCBNb250aGx5IGRvd25sb2FkcyB8ICoqMCoqIHwKfCBMaWtlcyB8IDAgfAp8IEZpbGVzIHwgMyB8CnwgTGFzdCB1cGRhdGVkIHwgMjAyNi0wNC0yOSB8CgotLS0KCltPcGVuIG9uIEh1Z2dpbmcgRmFjZV0oaHR0cHM6Ly9odWdnaW5nZmFjZS5jby9nZWV6bW9sZS9wYXJhbWV0ZXItZ29sZi1tb2RlbHMpIMK3IFtnb2hhLmVub2NoLmV0XShodHRwczovL2dvaGEuZW5vY2guZXQp"
-  },
-  "createdAt": "2026-10-25T10:58:25.260Z",
-  "updatedAt": "2026-04-29T06:09:00.000Z"
- },
- {
   "id": "pjt_aa7e1d78ce5ddf82c485f01f97ecc709",
   "sourceId": "hf:TsehaynehM/Geez-TTS-Project",
   "hfInternalId": "6a291b3e69bb77f1588ba184",
@@ -21617,7 +20820,7 @@
   },
   "projectTechStacks": [
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -21739,7 +20942,7 @@
     "type": "TECH"
    },
    {
-    "id": "tst_00000000000000000000000000000036",
+    "id": "tst_00000000000000000000000000000037",
     "name": "PyTorch",
     "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "type": "TECH"
@@ -22769,7 +21972,7 @@
   },
   "projectTechStacks": [
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"
@@ -22877,7 +22080,7 @@
   },
   "projectTechStacks": [
    {
-    "id": "tst_00000000000000000000000000000037",
+    "id": "tst_00000000000000000000000000000036",
     "name": "PEFT",
     "iconUrl": "/langs/sym-link.svg",
     "type": "TECH"

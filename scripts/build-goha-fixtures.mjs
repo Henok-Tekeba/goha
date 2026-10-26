@@ -865,16 +865,21 @@ const insightsRaw = JSON.parse(
   readFileSync(DATA("stats_insights.json"), "utf8")
 );
 const insights = {
-  topGainers: (insightsRaw.topGainers || []).slice(0, 12).map((g) => ({
-    id: g.id,
-    name: g.name,
-    org: g.org,
-    growth: g.growth,
-    gain: g.gain,
-    start: g.start,
-    end: g.end,
-    projectId: entityIdToProjectId.get(g.id) ?? null,
-  })),
+  topGainers: (insightsRaw.topGainers || [])
+    /* Movers must reference an indexed record — entries without one (e.g.
+       models pruned from the index) are dropped, never surfaced. */
+    .filter((g) => entityIdToProjectId.has(g.id))
+    .slice(0, 12)
+    .map((g) => ({
+      id: g.id,
+      name: g.name,
+      org: g.org,
+      growth: g.growth,
+      gain: g.gain,
+      start: g.start,
+      end: g.end,
+      projectId: entityIdToProjectId.get(g.id) ?? null,
+    })),
   mostDownloaded: [...models]
     .sort((a, b) => (b.downloads_monthly ?? 0) - (a.downloads_monthly ?? 0))
     .slice(0, 10)

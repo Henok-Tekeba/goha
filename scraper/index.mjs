@@ -4,6 +4,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 
+import { hasLanguageEvidence } from "./language-evidence.mjs";
+
 dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -438,29 +440,21 @@ function isRelevant(model) {
   // Exclude GGUF quantizations (re-uploads of other people's models)
   if (id.includes("gguf") || tags.includes("gguf")) return false;
 
-  // Keep only models with explicit Ethiopian connection in tags or id
-  const ethiopianTags = [
-    "am",
-    "ti",
-    "om",
-    "so",
-    "gz",
-    "amharic",
-    "tigrinya",
-    "oromo",
-    "afaan",
-    "geez",
-    "somali",
-    "ethiopian",
-    "ethiopia",
-    "wolaytta",
-    "sidama",
-  ];
-  const hasEthiopianTag = ethiopianTags.some(
-    (et) => tags.includes(et) || id.includes(et)
-  );
+  /* Evidence must come from the record itself — the name part (after "/"),
+     declared language fields, tags, or text. The owner/handle never counts,
+     otherwise "geezyforeezy" matches "geez" and any random LLM sneaks in. */
+  const name = id.includes("/") ? id.split("/").pop() : model.name || id;
 
-  return hasEthiopianTag;
+  return hasLanguageEvidence({
+    name,
+    tags: model.tags || [],
+    languages: [
+      ...(model.language || []),
+      ...(model.cardData?.language || []),
+      ...(model.confirmed_languages || []),
+    ],
+    descriptions: [model.description || model.desc || ""],
+  });
 }
 
 /* ─── Companies (hardcoded until a company scraper exists) ─── */

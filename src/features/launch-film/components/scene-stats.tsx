@@ -5,15 +5,15 @@ import { AnimatedNumber } from "./animated-number";
 
 /* Real snapshot figures — the supplied source of truth. */
 const STATS = [
-  { value: 188, label: "Models", x: 340 },
+  { value: 180, label: "Models", x: 340 },
   { value: 211, label: "Datasets", x: 760 },
   { value: 75, label: "Research papers", x: 1180 },
-  { value: 193, label: "Organizations", x: 1600 },
+  { value: 185, label: "Organizations", x: 1600 },
 ] as const;
 
-/* 478 records = 188 models + 211 datasets + 75 papers + 4 companies. */
+/* 478 records = 180 models + 211 datasets + 75 papers + 4 companies. */
 const SPLIT = [
-  { value: 188, label: "188 models", color: C.accent },
+  { value: 180, label: "180 models", color: C.accent },
   { value: 211, label: "211 datasets", color: "#3F3F46" },
   { value: 75, label: "75 papers", color: "#A1A1AA" },
   { value: 4, label: "4 companies", color: "#E4E4E7" },
@@ -153,7 +153,7 @@ export function SceneStats({ t }: { t: number }) {
       >
         <AnimatedNumber
           t={t}
-          target={478}
+          target={470}
           start={10.5}
           duration={0.55}
           className="font-extrabold text-[84px] leading-none"
@@ -181,7 +181,7 @@ export function SceneStats({ t }: { t: number }) {
         <div className="flex h-1.5 w-full overflow-hidden rounded-full">
           {SPLIT.map((part, i) => {
             const p = Math.min(1, seg(t, 11.0 + i * 0.07, 11.3 + i * 0.07));
-            const width = (part.value / 478) * SPLIT_W;
+            const width = (part.value / 470) * SPLIT_W;
             return (
               <div
                 key={part.label}
@@ -200,7 +200,7 @@ export function SceneStats({ t }: { t: number }) {
           {SPLIT.map((part, i) => {
             const p = seg(t, 11.32 + i * 0.06, 11.52 + i * 0.06);
             if (p <= 0) return null;
-            const width = (part.value / 478) * SPLIT_W;
+            const width = (part.value / 470) * SPLIT_W;
             const center =
               SPLIT.slice(0, i).reduce(
                 (acc, prev) => acc + (prev.value / 478) * SPLIT_W,

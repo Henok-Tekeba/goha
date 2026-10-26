@@ -189,13 +189,13 @@ export function CoverageMatrix({ t }: { t: number }) {
             className="font-extrabold text-[64px] leading-none"
             style={{ color: C.ink, letterSpacing: "-0.03em" }}
           >
-            170
+            162
           </span>
           <span
             className="font-bold text-[24px] leading-none"
             style={{ color: C.dim }}
           >
-            /188
+            /180
           </span>
         </div>
         <div
