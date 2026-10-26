@@ -205,20 +205,6 @@ export function SceneFinale({ t }: { t: number }) {
           transformOrigin: "center",
         }}
       />
-
-      {/* Open-source promise — the last fact a scroller takes with them */}
-      <div
-        className="absolute whitespace-nowrap text-center font-medium text-[21px] tracking-[0.04em]"
-        style={{
-          left: "50%",
-          top: 884,
-          transform: "translateX(-50%)",
-          color: C.dim,
-          opacity: seg(t, 21.95, 22.3),
-        }}
-      >
-        Free & open source
-      </div>
     </div>
   );
 }

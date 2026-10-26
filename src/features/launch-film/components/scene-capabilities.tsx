@@ -6,13 +6,7 @@ import {
   EChartsBarChart,
 } from "@/components/evilcharts/charts/echarts-bar-chart";
 
-import {
-  C,
-  easeInOutCubic,
-  easeOutCubic,
-  easeOutQuint,
-  seg,
-} from "../lib/film";
+import { C, easeInOutCubic, easeOutQuint, seg } from "../lib/film";
 import { filmWerRows } from "../lib/film-data";
 import { FilmChart } from "./film-chart";
 import { GapsRadar } from "./gaps-radar";
@@ -134,31 +128,15 @@ const WER_CONFIG = {
   },
 } satisfies ChartConfig;
 
-/* The WER chart mounts on cue and its bars grow from zero, driven by the
-   film clock with a per-row stagger — a formation that plays even under OS
-   reduced motion. The measurement grid locks in once the bars land. */
+/* The WER bars mount on cue so evilcharts' staggered grow-in plays fully
+   visible — the same intro the /leaderboard WER card gives you. */
 const WER_AT = 12.35;
-const WER_FORM_START = 12.45;
-const WER_STAGGER = 0.075;
-const WER_GROW = 0.6;
-const WER_AXIS_AT = 13.2;
 const WER_LEFT = 260;
 const WER_TOP = 492;
 const WER_W = 1400;
 const WER_H = 396;
 
 function CompareBeat({ t }: { t: number }) {
-  const rows = filmWerRows.map((row, i) => {
-    const p = easeOutCubic(
-      seg(
-        t,
-        WER_FORM_START + i * WER_STAGGER,
-        WER_FORM_START + i * WER_STAGGER + WER_GROW
-      )
-    );
-    return { ...row, wer: Math.round(row.wer * p * 100) / 100 };
-  });
-
   return (
     <div className="absolute inset-0">
       {COMPARE_CARDS.map((card, i) => {
@@ -286,23 +264,20 @@ function CompareBeat({ t }: { t: number }) {
       {t >= WER_AT && (
         <FilmChart left={WER_LEFT} top={WER_TOP} width={WER_W} height={WER_H}>
           <EChartsBarChart
-            data={rows as unknown as Record<string, unknown>[]}
+            data={filmWerRows}
             config={WER_CONFIG}
             renderer="svg"
             layout="horizontal"
             xDataKey="wer"
-            animation={false}
             className="h-[198px] w-full"
           >
             <EChartsBarChart.Grid />
+            <EChartsBarChart.XAxis
+              dataKey="wer"
+              tickFormatter={(value) => `${value}%`}
+              hideDots
+            />
             <EChartsBarChart.YAxis dataKey="model" hideDots />
-            {t >= WER_AXIS_AT && (
-              <EChartsBarChart.XAxis
-                dataKey="wer"
-                tickFormatter={(value) => `${value}%`}
-                hideDots
-              />
-            )}
             <EChartsBarChart.Bar dataKey="wer" radius={6} />
           </EChartsBarChart>
         </FilmChart>

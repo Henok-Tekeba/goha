@@ -11,7 +11,6 @@ export function AnimatedNumber({
   target,
   start,
   duration = 0.9,
-  format,
   className,
   style,
 }: {
@@ -19,7 +18,6 @@ export function AnimatedNumber({
   target: number;
   start: number;
   duration?: number;
-  format?: (value: number) => string;
   className?: string;
   style?: React.CSSProperties;
 }) {
@@ -30,7 +28,7 @@ export function AnimatedNumber({
       className={className}
       style={{ fontVariantNumeric: "tabular-nums", ...style }}
     >
-      {format ? format(value) : value}
+      {value}
     </span>
   );
 }
