@@ -58,7 +58,7 @@ export default function CTAFooter({
           <br className="hidden md:block" /> Ethiopian languages — indexed daily
           and open to everyone.
         </p>
-        <div className="mt-6 flex flex-row justify-center gap-3 md:justify-center">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Button asChild>
             <Link
               href={EXTERNAL_LINKS.GITHUB_REPO}
