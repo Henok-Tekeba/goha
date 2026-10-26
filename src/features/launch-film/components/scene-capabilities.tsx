@@ -1,8 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  type ChartConfig,
+  EChartsBarChart,
+} from "@/components/evilcharts/charts/echarts-bar-chart";
+
 import { C, easeInOutCubic, easeOutQuint, seg } from "../lib/film";
-import { CoverageMatrix } from "./coverage-matrix";
+import { filmWerRows } from "../lib/film-data";
+import { FilmChart } from "./film-chart";
+import { GapsRadar } from "./gaps-radar";
 import { SvgLineageGraph } from "./svg-lineage-graph";
 
 /* Ge'ez numerals — the three capability beats are a real sequence. */
@@ -113,6 +120,22 @@ function Row({
   );
 }
 
+/* The site's own WER chart config — wer-bar-chart.tsx. */
+const WER_CONFIG = {
+  wer: {
+    label: "Word Error Rate",
+    colors: { light: ["#2b7fff"], dark: ["#51a2ff"] },
+  },
+} satisfies ChartConfig;
+
+/* The WER bars mount on cue so evilcharts' staggered grow-in plays fully
+   visible — the same intro the /leaderboard WER card gives you. */
+const WER_AT = 12.35;
+const WER_LEFT = 260;
+const WER_TOP = 492;
+const WER_W = 1400;
+const WER_H = 396;
+
 function CompareBeat({ t }: { t: number }) {
   return (
     <div className="absolute inset-0">
@@ -126,7 +149,7 @@ function CompareBeat({ t }: { t: number }) {
             className="absolute rounded-2xl"
             style={{
               left: [480, 960, 1440][i],
-              top: 400,
+              top: 260,
               width: 400,
               height: 300,
               transform: `translate(-50%, calc(-50% + ${(1 - p) * 26}px))`,
@@ -201,8 +224,8 @@ function CompareBeat({ t }: { t: number }) {
           <div
             className="absolute"
             style={{
-              left: 330 + sweep * 1260,
-              top: 258,
+              left: 300 + sweep * 1320,
+              top: 118,
               width: 2,
               height: 286,
               background: C.accent,
@@ -211,6 +234,54 @@ function CompareBeat({ t }: { t: number }) {
           />
         );
       })()}
+
+      {/* Real leaderboard context under the cards */}
+      <div
+        className="absolute flex items-baseline justify-between"
+        style={{
+          left: WER_LEFT,
+          top: 448,
+          width: WER_W,
+          opacity: seg(t, 12.45, 12.75),
+        }}
+      >
+        <span
+          className="font-semibold text-[24px] leading-none"
+          style={{ color: C.ink, letterSpacing: "-0.01em" }}
+        >
+          Word error rate
+        </span>
+        <span
+          className="font-medium text-[17px] tracking-[0.04em]"
+          style={{ color: C.dim }}
+        >
+          as published · lower is better
+        </span>
+      </div>
+
+      {/* The real WER ranking — the same evilcharts bar chart and leaderboard
+          rows the /leaderboard ASR section renders */}
+      {t >= WER_AT && (
+        <FilmChart left={WER_LEFT} top={WER_TOP} width={WER_W} height={WER_H}>
+          <EChartsBarChart
+            data={filmWerRows}
+            config={WER_CONFIG}
+            renderer="svg"
+            layout="horizontal"
+            xDataKey="wer"
+            className="h-[198px] w-full"
+          >
+            <EChartsBarChart.Grid />
+            <EChartsBarChart.XAxis
+              dataKey="wer"
+              tickFormatter={(value) => `${value}%`}
+              hideDots
+            />
+            <EChartsBarChart.YAxis dataKey="model" hideDots />
+            <EChartsBarChart.Bar dataKey="wer" radius={6} />
+          </EChartsBarChart>
+        </FilmChart>
+      )}
 
       <BeatCaption t={t} beat={BEATS[0]} />
     </div>
@@ -229,7 +300,7 @@ function LineageBeat({ t }: { t: number }) {
 function GapsBeat({ t }: { t: number }) {
   return (
     <div className="absolute inset-0">
-      <CoverageMatrix t={t} />
+      <GapsRadar t={t} />
       <BeatCaption t={t} beat={BEATS[2]} />
     </div>
   );
