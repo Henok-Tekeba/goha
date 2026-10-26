@@ -6,8 +6,6 @@ import { GoArrowUpRight } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { VscIssues } from "react-icons/vsc";
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 import type { Issue } from "@/features/projects/types/project.type";
 import { Avatar } from "@/shared/components/ui/avatar";
 import { Badge } from "@/shared/components/ui/badge";
@@ -24,6 +22,10 @@ import {
   sheetManualCloseButtonClassName,
 } from "@/shared/components/ui/sheet";
 import { Skeleton } from "@/shared/components/ui/skeleton";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 import { cn } from "@/shared/lib/utils";
 import { formatTimeAgo } from "@/shared/lib/utils/format-time-ago";
 
@@ -237,8 +239,8 @@ export default function IssueDetailSheet({
               <div className="font-geist text-sm leading-relaxed">
                 {displayIssue.body ? (
                   <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
+                    remarkPlugins={markdownRemarkPlugins}
+                    rehypePlugins={markdownRehypePlugins}
                     components={issueMarkdownComponents as Components}
                   >
                     {displayIssue.body}

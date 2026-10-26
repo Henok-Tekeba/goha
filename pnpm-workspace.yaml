@@ -3,3 +3,8 @@ onlyBuiltDependencies:
   - msw
   - workerd
   - sharp
+
+overrides:
+  postcss@<8.5.23: 8.5.31
+  source-map-js@<1.2.2: 1.2.2
+  prismjs@<1.30.0: 1.30.0

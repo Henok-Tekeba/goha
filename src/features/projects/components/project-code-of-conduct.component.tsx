@@ -5,8 +5,6 @@ import { useState } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -22,6 +20,10 @@ import {
   SheetTrigger,
   sheetManualCloseButtonClassName,
 } from "@/shared/components/ui/sheet";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 import { cn } from "@/shared/lib/utils";
 
 interface ProjectCodeOfConductProps {
@@ -45,8 +47,8 @@ export default function ProjectCodeOfConduct({
         <div className="relative flex h-[322px] cursor-pointer flex-col rounded-[22px] border border-black/5 bg-white p-5 font-geist transition-colors duration-300 hover:bg-black/5">
           <div className="flex-1 overflow-hidden leading-7">
             <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={markdownRemarkPlugins}
+              rehypePlugins={markdownRehypePlugins}
               components={readmePreviewMarkdownComponents as Components}
             >
               {codeOfConduct}
@@ -91,8 +93,8 @@ export default function ProjectCodeOfConduct({
           <div className="min-h-0 flex-1 overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="my-6 max-w-none font-geist text-sm leading-relaxed">
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+                remarkPlugins={markdownRemarkPlugins}
+                rehypePlugins={markdownRehypePlugins}
                 components={readmeFullMarkdownComponents as Components}
               >
                 {codeOfConduct}

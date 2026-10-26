@@ -12,8 +12,6 @@ import {
   useState,
 } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
-import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
-import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
 import {
   CommandDialog,
@@ -23,12 +21,12 @@ import {
   CommandItem,
   CommandList,
 } from "@/shared/components/ui/command";
+import { ProjectTypeIcon } from "@/shared/components/ui/project-type-icon";
 
 import { cn } from "@/shared/lib/utils";
 
 import { useInfiniteProjectsQuery } from "../hooks/project.queries";
 
-const MAX_FREE_PROJECTS = 60;
 const ITEM_HEIGHT = 44;
 const OVERSCAN_ROWS = 6;
 const DEFAULT_LIST_HEIGHT = 300;
@@ -39,7 +37,8 @@ type ProjectSuggestion = {
   name: string;
   description: string;
   href: string;
-  iconSrc: string | null;
+  kindLabel: string | null;
+  taskLabel: string | null;
   searchText: string;
 };
 
@@ -60,8 +59,6 @@ export default function SearchCommand({
   const [search, setSearch] = useState("");
   const [scrollTop, setScrollTop] = useState(0);
   const [listHeight, setListHeight] = useState(DEFAULT_LIST_HEIGHT);
-  const currentUserQuery = useCurrentUserQuery();
-  const isAuthenticated = !!currentUserQuery.data;
   const deferredSearch = useDeferredValue(search);
   const listRef = useRef<HTMLDivElement>(null);
   const isNavigatingRef = useRef(false);
@@ -75,22 +72,17 @@ export default function SearchCommand({
   } = useInfiniteProjectsQuery(
     {
       published: true,
-      per_page: 20,
+      per_page: 500,
     },
     {
       enabled: open,
-      maxTotalItems: isAuthenticated ? undefined : MAX_FREE_PROJECTS,
     }
   );
 
   const allProjects =
     projectsPages?.pages?.flatMap((page) => page.data || []) ?? [];
 
-  const reachedFreeCap =
-    !isAuthenticated && allProjects.length >= MAX_FREE_PROJECTS;
-  const projects = reachedFreeCap
-    ? allProjects.slice(0, MAX_FREE_PROJECTS)
-    : allProjects;
+  const projects = allProjects;
 
   const suggestions = useMemo<ProjectSuggestion[]>(
     () =>
@@ -103,7 +95,8 @@ export default function SearchCommand({
           name: project.title,
           description: project.description ?? "",
           href: `/projects/${project.id}`,
-          iconSrc: project.logoUrl,
+          kindLabel: project.projectCategories?.[0]?.name ?? null,
+          taskLabel: project.projectCategories?.[1]?.name ?? null,
           searchText: normalizeText(
             `${project.title} ${project.description ?? ""}`
           ),
@@ -122,11 +115,7 @@ export default function SearchCommand({
     [normalizedSearch, suggestions]
   );
 
-  const canFetchMore =
-    open &&
-    hasNextPage &&
-    !isFetchingNextPage &&
-    (isAuthenticated || !reachedFreeCap);
+  const canFetchMore = open && hasNextPage && !isFetchingNextPage;
 
   const maybeFetchNextPage = useCallback(
     (element: HTMLElement) => {
@@ -216,15 +205,6 @@ export default function SearchCommand({
     },
     [router]
   );
-
-  const handleLoginSelect = useCallback(() => {
-    if (isNavigatingRef.current) return;
-    isNavigatingRef.current = true;
-    setOpen(false);
-    queueMicrotask(() => {
-      router.push("/auth/login");
-    });
-  }, [router]);
 
   useEffect(() => {
     if (open) {
@@ -336,17 +316,13 @@ export default function SearchCommand({
                   >
                     {isVisible ? (
                       <>
-                        {s.iconSrc ? (
-                          <Avatar
-                            src={s.iconSrc}
-                            name={s.name}
-                            alt={s.name}
-                            size="xs"
-                            shape="sharp"
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded-[6px] border border-muted-black-stroke text-primary">
+                          <ProjectTypeIcon
+                            kindLabel={s.kindLabel}
+                            taskLabel={s.taskLabel}
+                            className="size-3.5"
                           />
-                        ) : (
-                          <span className="text-muted-foreground">●</span>
-                        )}
+                        </span>
                         <span className="min-w-0 flex-1 truncate font-medium">
                           {s.name}
                         </span>
@@ -378,16 +354,6 @@ export default function SearchCommand({
                     </div>
                   )}
                 </div>
-              )}
-              {!isAuthenticated && reachedFreeCap && (
-                <CommandItem
-                  onSelect={handleLoginSelect}
-                  className="border-t px-3 py-3"
-                >
-                  <span className="font-medium text-muted-foreground text-xs">
-                    Sign in to see more projects
-                  </span>
-                </CommandItem>
               )}
             </CommandGroup>
           )}

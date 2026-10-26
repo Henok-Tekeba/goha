@@ -10,6 +10,7 @@ export async function getGithubRepoStars(): Promise<number | null> {
     const response = await fetch(GITHUB_REPO_API_URL, {
       headers: { Accept: "application/vnd.github+json" },
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(5000),
     });
 
     if (!response.ok) return null;

@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type UseFormReturn, useForm } from "react-hook-form";
+import type { z } from "zod";
 
 import { Button } from "@/shared/components/ui/button";
 import { Calendar } from "@/shared/components/ui/calendar";
@@ -24,7 +25,7 @@ import {
 
 import { experienceSchema } from "../validations/profile.schema";
 
-type ExperienceFormData = typeof experienceSchema._type;
+type ExperienceFormData = z.infer<typeof experienceSchema>;
 
 interface ExperienceModalFormProps {
   open: boolean;

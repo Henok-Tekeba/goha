@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { HiLink } from "react-icons/hi2";
 import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 import { Label } from "@/shared/components/ui/label";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 
 import FormNavigationButtons from "../../../components/stepper/stepper-navigation-buttons.component";
 import {
@@ -52,8 +54,8 @@ export default function StepGitConfirmForm({
           </div>
           <div className="mb-3 line-clamp-5 h-[100px] text-muted-foreground text-sm leading-6">
             <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={markdownRemarkPlugins}
+              rehypePlugins={markdownRehypePlugins}
             >
               {formData.selectedRepository?.description ||
                 "No description available. You can add one in the next step."}

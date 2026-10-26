@@ -1,37 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FaDownload, FaStar } from "react-icons/fa6";
-
-import { asset } from "@/shared/lib/asset";
+import { ProjectTypeIcon } from "@/shared/components/ui/project-type-icon";
 import { cn } from "@/shared/lib/utils";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
-
-/* Card icons come from goha's own type set (/public/types) — a waveform for
-   speech, a chip for LLMs, a table for datasets — so the glyph says what the
-   asset *is*, not what letter its author's handle starts with. */
-const TYPE_ICON: Record<string, string> = {
-  ASR: "/types/audio.svg",
-  TTS: "/types/audio.svg",
-  Translation: "/types/translation.svg",
-  LLM: "/types/ai.svg",
-  "Masked LM": "/types/ai.svg",
-  NLP: "/types/ai.svg",
-  Classification: "/types/ai.svg",
-  "Image Generation": "/types/ai.svg",
-  Vision: "/types/ai.svg",
-  Embeddings: "/types/embedding.svg",
-  NER: "/types/ner.svg",
-  Dataset: "/types/dataset.svg",
-  Research: "/types/research.svg",
-  Company: "/types/company.svg",
-  Other: "/types/ai.svg",
-};
-
-function iconFor(kindLabel?: string | null, taskLabel?: string | null): string {
-  return (
-    TYPE_ICON[taskLabel ?? ""] ?? TYPE_ICON[kindLabel ?? ""] ?? "/types/ai.svg"
-  );
-}
 
 const LANGUAGE_SHORT: Record<string, string> = {
   Amharic: "Amharic",
@@ -99,13 +70,8 @@ export default function ProjectCardComponent({
     >
       <article className="flex h-full flex-col rounded-[18px] border border-muted-black-stroke bg-white px-5 pt-5 pb-4 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_32px_-14px_rgb(0_0_0/0.14)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
         <header className="flex items-start gap-3">
-          <span className="mt-px flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-muted-black-stroke">
-            <Image
-              src={asset(iconFor(kindLabel, taskLabel))}
-              alt=""
-              width={22}
-              height={22}
-            />
+          <span className="mt-px flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-muted-black-stroke text-primary">
+            <ProjectTypeIcon kindLabel={kindLabel} taskLabel={taskLabel} />
           </span>
           <div className="min-w-0 flex-1">
             <h3

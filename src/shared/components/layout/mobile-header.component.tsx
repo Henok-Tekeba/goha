@@ -1,15 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { HiLogout } from "react-icons/hi";
 import {
   HiBookOpen,
-  HiCog6Tooth,
   HiMiniBars3,
-  HiMiniPencilSquare,
   HiMiniSquare2Stack,
   HiOutlineBolt,
+  HiOutlineBookmark,
   HiOutlineBuildingOffice2,
   HiOutlineChartBar,
   HiOutlineDocumentText,
@@ -18,22 +16,10 @@ import {
   HiOutlineSparkles,
   HiPlus,
   HiStar,
-  HiUserCircle,
 } from "react-icons/hi2";
-import { RiGithubFill, RiLoader2Fill } from "react-icons/ri";
-import { toast } from "sonner";
-import { useLogoutMutation } from "@/features/auth/hooks/auth.mutations";
-import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
+import { RiGithubFill } from "react-icons/ri";
 import SearchCommand from "@/features/projects/components/search-command.component";
-import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
@@ -42,7 +28,6 @@ import {
 } from "@/shared/components/ui/sheet";
 import { asset } from "@/shared/lib/asset";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
-import { getErrorMessage } from "@/shared/lib/get-error-message";
 import { formatNumberShort } from "@/shared/lib/utils/format-number";
 
 type MobileNavLink = {
@@ -66,28 +51,13 @@ const DEFAULT_LINKS: MobileNavLink[] = [
   { label: "Languages", icon: HiOutlineLanguage, href: "/lang" },
   { label: "Publishers", icon: HiOutlineBuildingOffice2, href: "/orgs" },
   { label: "Activity", icon: HiOutlineBolt, href: "/activity" },
+  { label: "Saved", icon: HiOutlineBookmark, href: "/saved" },
 ];
 
 export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
   const pathname = usePathname();
-  const router = useRouter();
-  const currentUserQuery = useCurrentUserQuery();
-  const logoutMutation = useLogoutMutation();
-  const currentUser = currentUserQuery.data;
-  const isAuthenticated = !!currentUser;
-  const isLoading = currentUserQuery.isLoading;
   const [isOpen, setIsOpen] = useState(false);
   const resolvedLinks = links ?? DEFAULT_LINKS;
-
-  const handleLogout = async () => {
-    try {
-      await logoutMutation.mutateAsync();
-      setIsOpen(false);
-      router.push("/");
-    } catch (error) {
-      toast.error(getErrorMessage(error, "Unable to sign out"));
-    }
-  };
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -193,78 +163,6 @@ export function MobileHeader({ links, githubStars }: MobileHeaderProps) {
                     )}
                   </a>
                 </nav>
-
-                {/* User Section - Fixed at bottom */}
-                <div className="mt-auto">
-                  {isLoading ? null : isAuthenticated ? (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <button
-                          type="button"
-                          className="relative flex w-full cursor-pointer items-center gap-3 py-4 text-start"
-                        >
-                          <div className="pl-4">
-                            <Avatar
-                              src={currentUser?.image}
-                              name={currentUser?.name}
-                              alt={currentUser?.name}
-                              size="md"
-                            />
-                          </div>
-                          <div className="flex flex-col truncate">
-                            <p className="mr-10 truncate font-medium text-black text-sm">
-                              {currentUser?.name}
-                            </p>
-                            <p className="mr-10 truncate text-muted-foreground text-xs">
-                              {currentUser?.email}
-                            </p>
-                          </div>
-                        </button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        align="center"
-                        className="w-[252px] min-w-[252px] max-w-[252px] text-muted-foreground"
-                      >
-                        <Link href="/profile/me" onClick={handleLinkClick}>
-                          <DropdownMenuItem>
-                            <HiUserCircle className="size-4" />
-                            View profile
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href="/profile/me/edit" onClick={handleLinkClick}>
-                          <DropdownMenuItem>
-                            <HiMiniPencilSquare className="size-4" />
-                            Edit profile
-                          </DropdownMenuItem>
-                        </Link>
-                        <DropdownMenuSeparator />
-                        <Link
-                          href="/dashboard/settings"
-                          onClick={handleLinkClick}
-                        >
-                          <DropdownMenuItem>
-                            <HiCog6Tooth className="size-4" />
-                            Settings
-                          </DropdownMenuItem>
-                        </Link>
-                        <DropdownMenuItem
-                          onClick={() => void handleLogout()}
-                          disabled={logoutMutation.isPending}
-                          variant="destructive"
-                        >
-                          {logoutMutation.isPending ? (
-                            <RiLoader2Fill className="size-4 animate-spin" />
-                          ) : (
-                            <HiLogout className="size-4" />
-                          )}
-                          {logoutMutation.isPending
-                            ? "Signing out..."
-                            : "Sign out"}
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  ) : null}
-                </div>
               </div>
             </SheetContent>
           </Sheet>

@@ -1,8 +1,10 @@
 "use client";
 
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 import { learnMarkdownComponents } from "./markdown-components";
 
 interface MarkdownRendererProps {
@@ -12,8 +14,8 @@ interface MarkdownRendererProps {
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw]}
+      remarkPlugins={markdownRemarkPlugins}
+      rehypePlugins={markdownRehypePlugins}
       components={learnMarkdownComponents as unknown as Components}
     >
       {content}

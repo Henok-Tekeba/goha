@@ -51,6 +51,7 @@ async function fetchText(path, attempts = RETRIES) {
       const response = await fetch(`${BASE}${path}`, {
         cache: "no-store",
         headers: { "user-agent": "goha-smoke-test" },
+        signal: AbortSignal.timeout(15_000),
       });
       const body = await response.text();
       if (response.ok) return body;

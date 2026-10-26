@@ -9,13 +9,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: [
-        "/dashboard/",
-        "/profile/me/",
-        "/projects/*/edit",
-        "/projects/create/",
-        "/onboarding/",
-      ],
     },
     sitemap: `${FRONTEND_URL}/sitemap.xml`,
   };

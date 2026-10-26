@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import FooterMinimal from "@/shared/components/layout/footer-minimal.component";
 import { Separator } from "@/shared/components/ui/separator";
 import { asset } from "@/shared/lib/asset";
 import { EXTERNAL_LINKS } from "@/shared/lib/constants";
@@ -76,6 +75,11 @@ const footerLinks: {
       label: "Publishers",
       href: "/orgs",
       id: "explore-orgs",
+    },
+    {
+      label: "Saved projects",
+      href: "/saved",
+      id: "explore-saved",
     },
   ],
   community: [
@@ -162,27 +166,13 @@ export default function Footer() {
     requestAnimationFrame(checkFor404);
   }, []);
 
-  const isProfileEditPage = pathname === "/profile/me/edit";
-
-  const showShortFooter = isProfileEditPage;
-
   const hideFooter =
     is404Page ||
-    pathname.startsWith("/projects/create") ||
-    pathname.startsWith("/dashboard") ||
     pathname.startsWith("/not-found") ||
-    pathname.startsWith("/auth") ||
-    pathname.startsWith("/onboarding") ||
-    pathname.startsWith("/launch-film") ||
-    isProfileEditPage;
+    pathname.startsWith("/launch-film");
 
   return (
     <>
-      {showShortFooter && (
-        <div className="mx-4 mb-8 max-w-6xl md:mx-auto">
-          <FooterMinimal className="relative z-20 block w-full bg-white" />
-        </div>
-      )}
       {!hideFooter && (
         <footer className="mx-4 mb-8 max-w-6xl bg-white md:mx-auto">
           <Separator className="mx-auto mb-8 w-11/12 lg:w-full" />

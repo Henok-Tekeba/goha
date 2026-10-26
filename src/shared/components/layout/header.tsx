@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { HiPlus } from "react-icons/hi2";
+import { HiOutlineBookmark, HiPlus } from "react-icons/hi2";
 import GithubStarsButton from "@/shared/components/layout/github-stars-button.component";
 import HeaderBreadcrumb from "@/shared/components/layout/header-breadcrumb.component";
 import LogoDropdown from "@/shared/components/layout/logo-dropdown.component";
@@ -12,11 +12,8 @@ import { MobileHeader } from "@/shared/components/layout/mobile-header.component
 import { asset } from "@/shared/lib/asset";
 import "@/shared/components/ui/breadcrumb-navigation";
 
-import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
 import SearchCommand from "@/features/projects/components/search-command.component";
 import { Button } from "@/shared/components/ui/button";
-import { SkeletonUserDropdown } from "@/shared/components/ui/skeleton-header";
-import UserDropdown from "@/shared/components/ui/user-dropdown.component";
 import { cn } from "@/shared/lib/utils";
 
 interface HeaderProps {
@@ -25,10 +22,6 @@ interface HeaderProps {
 
 export default function Header({ githubStars }: HeaderProps) {
   const pathname = usePathname();
-  const currentUserQuery = useCurrentUserQuery();
-  const isAuthenticated = !!currentUserQuery.data;
-  const isLoading = currentUserQuery.isLoading;
-
   const navContainerRef = useRef<HTMLDivElement>(null);
   const [blobStyle, setBlobStyle] = useState<React.CSSProperties>({
     opacity: 0,
@@ -71,11 +64,7 @@ export default function Header({ githubStars }: HeaderProps) {
     }));
   };
 
-  if (
-    pathname.startsWith("/auth") ||
-    pathname.startsWith("/onboarding") ||
-    pathname.startsWith("/launch-film")
-  ) {
+  if (pathname.startsWith("/launch-film")) {
     return null;
   }
 
@@ -172,17 +161,21 @@ export default function Header({ githubStars }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              href="/saved"
+              aria-label="Saved projects"
+              title="Saved projects"
+            >
+              <Button variant="outline" size="icon" aria-label="Saved projects">
+                <HiOutlineBookmark size={16} />
+              </Button>
+            </Link>
             <Link href="/contribute">
               <Button className="pr-[14px] pl-4 has-[>svg]:pr-[14px] has-[>svg]:pl-4">
                 Contribute
                 <HiPlus size={16} />
               </Button>
             </Link>
-            {isLoading ? (
-              <SkeletonUserDropdown />
-            ) : (
-              isAuthenticated && <UserDropdown />
-            )}
           </div>
         </nav>
       </header>

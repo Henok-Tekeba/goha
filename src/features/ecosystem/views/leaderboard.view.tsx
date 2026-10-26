@@ -12,6 +12,7 @@ import { formatNumberShort } from "@/shared/lib/utils/format-number";
 import EcosystemGrowthChart from "../components/charts/ecosystem-growth-chart";
 import TopModelsChart from "../components/charts/top-models-chart";
 import WerBarChart from "../components/charts/wer-bar-chart";
+import { csvEscape } from "../lib/csv";
 import {
   groupLeaderboardSections,
   type LeaderboardGroup,
@@ -22,11 +23,6 @@ import type {
   LeaderboardRow,
   TopModelHistoryPayload,
 } from "../types/ecosystem.types";
-
-function csvEscape(value: string | number | null): string {
-  const s = String(value ?? "");
-  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-}
 
 function exportCsv(group: LeaderboardGroup) {
   const header = [

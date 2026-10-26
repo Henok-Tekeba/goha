@@ -44,9 +44,9 @@ export default function PrivacyPolicyPage() {
             weekly goha updates. You can unsubscribe at any time.
           </p>
           <p className="mt-3 text-muted-foreground text-sm">
-            <strong>Your browser, not our servers:</strong> features like the
-            watchlist are stored locally in your browser (localStorage). They
-            never leave your device.
+            <strong>Your browser, not our servers:</strong> saved projects (the
+            watchlist) are stored locally in your browser (localStorage) and
+            listed at <code>/saved</code>. They never leave your device.
           </p>
         </section>
 

@@ -8,11 +8,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
   trailingSlash: true,
-  productionBrowserSourceMaps: true,
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) config.devtool = "nosources-source-map";
-    return config;
-  },
+  /* Production source maps are not shipped: they add a large download and
+     expose internal module paths without helping visitors. */
+  productionBrowserSourceMaps: false,
   basePath,
   devIndicators: false,
   images: {

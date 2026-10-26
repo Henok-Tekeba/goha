@@ -149,6 +149,9 @@ export const issueMarkdownComponents = {
       alt={alt}
       width={width}
       height={height}
+      loading="lazy"
+      decoding="async"
+      referrerPolicy="no-referrer"
       className="my-3 inline-block h-auto max-w-full rounded border-border"
     />
   ),
@@ -220,6 +223,9 @@ export const readmePreviewMarkdownComponents = {
       alt={alt}
       width={width}
       height={height}
+      loading="lazy"
+      decoding="async"
+      referrerPolicy="no-referrer"
       className="my-3 inline-block h-auto max-w-full rounded border-border"
     />
   ),
@@ -287,6 +293,9 @@ export const readmeFullMarkdownComponents = {
       alt={alt}
       width={width}
       height={height}
+      loading="lazy"
+      decoding="async"
+      referrerPolicy="no-referrer"
       className="my-3 inline-block h-auto max-w-full rounded border-border"
     />
   ),
@@ -387,6 +396,9 @@ export const learnMarkdownComponents = {
       alt={alt}
       width={width}
       height={height}
+      loading="lazy"
+      decoding="async"
+      referrerPolicy="no-referrer"
       className="my-6 inline-block h-auto w-full max-w-full rounded-lg border border-border"
     />
   ),

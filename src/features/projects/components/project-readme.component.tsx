@@ -1,10 +1,12 @@
 "use client";
 
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 import { readmeFullMarkdownComponents } from "@/shared/components/ui/markdown-components";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 
 interface ProjectReadmeProps {
   readme: string;
@@ -66,6 +68,9 @@ export default function ProjectReadme({ readme, project }: ProjectReadmeProps) {
         alt={alt}
         width={width}
         height={height}
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
         className="my-3 inline-block h-auto max-w-full rounded border-border"
       />
     ),
@@ -95,8 +100,8 @@ export default function ProjectReadme({ readme, project }: ProjectReadmeProps) {
   return (
     <div className="max-w-none font-geist text-sm leading-relaxed">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        remarkPlugins={markdownRemarkPlugins}
+        rehypePlugins={markdownRehypePlugins}
         components={components}
       >
         {readme}

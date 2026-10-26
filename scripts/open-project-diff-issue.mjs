@@ -64,7 +64,7 @@ const body = [
 
 const openIssues = await fetch(
   `https://api.github.com/repos/${repository}/issues?state=open&per_page=100`,
-  { headers }
+  { headers, signal: AbortSignal.timeout(15_000) }
 ).then((response) => (response.ok ? response.json() : []));
 if (openIssues.some((issue) => issue.title === title)) {
   console.log(`Issue already open: ${title}`);
@@ -77,6 +77,7 @@ const response = await fetch(
     method: "POST",
     headers,
     body: JSON.stringify({ title, body }),
+    signal: AbortSignal.timeout(15_000),
   }
 );
 if (!response.ok) {

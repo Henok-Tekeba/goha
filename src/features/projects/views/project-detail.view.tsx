@@ -46,7 +46,7 @@ export default function ProjectDetailView({
         queryKey={projectKeys.detail(projectId)}
         className="mt-20 mb-28"
         buttonText="Back to homepage"
-        href="/projects"
+        href="/"
       />
     );
   }

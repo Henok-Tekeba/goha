@@ -1,9 +1,10 @@
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 
+import { fetchTextLimited } from "./http.mjs";
 import { hasLanguageEvidence } from "./language-evidence.mjs";
 
 dotenv.config();
@@ -21,25 +22,25 @@ const SEARCH_TERMS = [
 const GH_ORGS = ["EthioNLP", "iCogLabs", "hasab-ai"];
 const HF_API = "https://huggingface.co/api";
 const GH_API = "https://api.github.com";
-const ARXIV_API = "http://export.arxiv.org/api/query";
+const ARXIV_API = "https://export.arxiv.org/api/query";
 const DATA_DIR = join(__dirname, "..", "data");
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function fetchPage(url, retries = 3, extraHeaders = {}) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const res = await fetch(url, {
-        headers: { "User-Agent": "goha-et-scraper/1.0", ...extraHeaders },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.text();
-    } catch (err) {
-      if (i === retries - 1) throw err;
-      await sleep(2000 * (i + 1));
-    }
-  }
+function fetchPage(url, retries = 3, extraHeaders = {}) {
+  return fetchTextLimited(url, {
+    retries,
+    headers: extraHeaders,
+  });
 }
+
+/* A Hugging Face id is normally "owner/name"; encode each segment so unusual
+   ids cannot break out of the API/raw URL path. */
+const encodeRepoPath = (id) =>
+  String(id)
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
 
 async function fetchJSON(url, retries = 3, extraHeaders = {}) {
   const text = await fetchPage(url, retries, extraHeaders);
@@ -177,6 +178,7 @@ async function enrichModelDetails(model) {
 
   console.log(`    Fetching details for model: ${modelId}`);
 
+  const safeModelId = encodeRepoPath(modelId);
   let license = null;
   let base_model = null;
   let eval_results = null;
@@ -188,7 +190,7 @@ async function enrichModelDetails(model) {
 
   // 1. Fetch full model info
   try {
-    const infoUrl = `${HF_API}/models/${modelId}`;
+    const infoUrl = `${HF_API}/models/${safeModelId}`;
     const info = await fetchHF(infoUrl);
 
     // Extract license
@@ -245,7 +247,7 @@ async function enrichModelDetails(model) {
 
   // 2. Fetch README
   try {
-    const readmeUrl = `https://huggingface.co/${modelId}/raw/main/README.md`;
+    const readmeUrl = `https://huggingface.co/${safeModelId}/raw/main/README.md`;
     const readmeText = await fetchHFPage(readmeUrl);
     if (readmeText) {
       const match1 = readmeText.match(/Word Error Rate[:\s]+([0-9.]+%?)/i);
@@ -311,7 +313,7 @@ async function fetchOrgRepos(org) {
   let page = 1;
   const allRepos = [];
   while (page <= 3) {
-    const url = `${GH_API}/orgs/${org}/repos?sort=pushed&per_page=30&page=${page}`;
+    const url = `${GH_API}/orgs/${encodeURIComponent(org)}/repos?sort=pushed&per_page=30&page=${page}`;
     const data = await fetchGH(url);
     if (!Array.isArray(data) || data.length === 0) break;
     allRepos.push(...data);
@@ -680,7 +682,7 @@ async function main() {
   /* ── 6. Regenerate activity feed ── */
   console.log("Running feed generator...");
   try {
-    execSync("node " + join(__dirname, "generate-feed.mjs"), {
+    execFileSync(process.execPath, [join(__dirname, "generate-feed.mjs")], {
       stdio: "inherit",
     });
   } catch (e) {
@@ -690,7 +692,9 @@ async function main() {
   /* ── 7. Build normalized output with computed trends ── */
   console.log("\n── [7/7] Build ──");
   try {
-    execSync("node " + join(__dirname, "build.mjs"), { stdio: "inherit" });
+    execFileSync(process.execPath, [join(__dirname, "build.mjs")], {
+      stdio: "inherit",
+    });
   } catch (e) {
     console.error("Build failed:", e.message);
   }

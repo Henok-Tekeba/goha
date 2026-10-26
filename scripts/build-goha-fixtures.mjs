@@ -1155,6 +1155,13 @@ const { aliasesAdded, disappeared } = diffProjects(
   SOURCE_ALIASES,
   legacyIds
 );
+/* Never emit a redirect to a record that no longer exists. Stale aliases are
+   useful history but a static redirect to a 404 is not. */
+const currentProjectIds = new Set(projects.map((project) => project.id));
+for (const [oldId, targetId] of Object.entries(legacyIds)) {
+  if (!currentProjectIds.has(targetId)) delete legacyIds[oldId];
+}
+
 const sortedAliases = Object.fromEntries(
   Object.entries(SOURCE_ALIASES).sort(([a], [b]) => a.localeCompare(b))
 );
@@ -2010,7 +2017,7 @@ export const categories: CategoryType[] = [
 ${categories
   .map(
     (c) =>
-      `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: "${c.name}" },`
+      `  { id: mockPublicId("cat", ${categories.indexOf(c) + 1}), name: ${JSON.stringify(c.name)} },`
   )
   .join("\n")}
 ];

@@ -1,54 +1,29 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { HiBookmark, HiOutlineBookmark } from "react-icons/hi2";
 import { toast } from "sonner";
-import { useCurrentUserQuery } from "@/features/auth/hooks/auth.queries";
-import { Button } from "@/shared/components/ui/button";
-import { getErrorMessage } from "@/shared/lib/get-error-message";
 
-import { useProjectBookmark } from "../hooks/use-project-bookmark";
+import { Button } from "@/shared/components/ui/button";
+import { useLocalBookmarks } from "@/shared/hooks/use-local-bookmarks.hook";
 
 interface BookmarkButtonProps {
   projectId: string;
-  isBookmarked?: boolean;
 }
 
-export function BookmarkButton({
-  projectId,
-  isBookmarked: isBookmarkedProp = false,
-}: BookmarkButtonProps) {
-  const router = useRouter();
-  const isAuthenticated = !!useCurrentUserQuery().data;
-  const { isBookmarked, toggleBookmarkAsync, isPending } = useProjectBookmark({
-    projectId,
-    isBookmarked: isBookmarkedProp,
-  });
+export function BookmarkButton({ projectId }: BookmarkButtonProps) {
+  const { isBookmarked, toggle } = useLocalBookmarks();
+  const saved = isBookmarked(projectId);
 
-  const handleToggleBookmark = async () => {
-    if (!isAuthenticated) {
-      router.push("/auth/login");
-      return;
-    }
-
-    const wasBookmarked = isBookmarked;
-    try {
-      const changed = await toggleBookmarkAsync();
-      if (changed) {
-        toast.success(
-          wasBookmarked ? "Bookmark removed" : "Project bookmarked"
-        );
+  const handleToggle = () => {
+    const nowSaved = toggle(projectId);
+    toast.success(
+      nowSaved ? "Saved on this device" : "Removed from saved projects",
+      {
+        description: nowSaved
+          ? "You can find it under Saved projects."
+          : undefined,
       }
-    } catch (error) {
-      toast.error(
-        getErrorMessage(
-          error,
-          wasBookmarked
-            ? "Failed to remove bookmark"
-            : "Failed to bookmark project"
-        )
-      );
-    }
+    );
   };
 
   return (
@@ -56,21 +31,11 @@ export function BookmarkButton({
       size="icon"
       variant="outline"
       className="size-9"
-      onClick={() => void handleToggleBookmark()}
-      disabled={isPending}
-      aria-label={
-        isPending
-          ? "Updating bookmark"
-          : isBookmarked
-            ? "Remove bookmark"
-            : "Add bookmark"
-      }
+      onClick={handleToggle}
+      aria-label={saved ? "Remove from saved projects" : "Save project"}
+      title={saved ? "Remove from saved projects" : "Save on this device"}
     >
-      {isBookmarked ? (
-        <HiBookmark className="text-primary" />
-      ) : (
-        <HiOutlineBookmark />
-      )}
+      {saved ? <HiBookmark className="text-primary" /> : <HiOutlineBookmark />}
     </Button>
   );
 }

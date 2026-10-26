@@ -67,6 +67,7 @@ export function ExternalLinks({
               key={String(key)}
               href={href}
               target="_blank"
+              rel="noopener noreferrer"
               title={alt}
               aria-label={alt}
               className="min-w-0"

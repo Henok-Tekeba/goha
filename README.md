@@ -28,6 +28,8 @@ secrets.
 - **Search & filters** — language, task, sort, all reflected in the URL and
   shareable. Model pages render their Hugging Face model card, evaluation
   tables, declared languages and metadata.
+- **Saved projects** — bookmark any model, dataset or paper with no account.
+  The watchlist is stored in this browser only and listed at `/saved`.
 
 ### Research
 
@@ -171,6 +173,7 @@ view are client-side.
 | `/orgs`, `/orgs/[slug]` | organization directory and profiles |
 | `/lang`, `/lang/[slug]` | language index, coverage and gaps |
 | `/activity` | ecosystem feed |
+| `/saved` | local, account-free project watchlist |
 | `/gaps` | the gap report — empty cells, unmeasured models, licensing |
 | `/about` | mission, pipeline, principles, non-goals |
 | `/api` | open data: endpoints, examples, schema, caveats |
@@ -194,6 +197,10 @@ The form and issue templates live in `src/features/contribute/` and
 
 - `.github/workflows/scrape.yml` — daily scrape, fixture regeneration, commit
 - `.github/workflows/deploy-pages.yml` — static build and GitHub Pages deploy
+- `.github/workflows/security-check.yml` — manual dependency/header baseline
+
+Security model, reporting instructions and the response headers a future host
+should send: [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -210,7 +217,12 @@ pnpm lint
 pnpm test:ask       # Ask Goha parser evaluation (48 queries)
 pnpm test:ids      # project ids are source-derived and stable across scrapes
 pnpm test:counts    # homepage tiles, radar and gap-report count reconciliation
+pnpm test:security  # markdown sanitization, CSP baseline and CSV-injection checks
+pnpm test:workflows # GitHub Actions pinning/permission/deploy-chain checks
+pnpm test:bookmarks # local saved-projects watchlist
 pnpm test:mock      # mock API contract tests
+pnpm preview:headers # serve out/ with the production header policy
+pnpm check:headers   # read-only live header check
 pnpm smoke:live    # post-deploy smoke test against https://goha.enoch.et
 pnpm report:contradictions  # CSV of type_label ↔ base_model contradictions
 pnpm backfill:hf-ids        # one-off HF internal-id backfill for the current snapshot

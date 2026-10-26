@@ -1,59 +1,45 @@
 import Link from "next/link";
-import { useState } from "react";
-import { toast } from "sonner";
 
 import ShareButton from "@/shared/components/share/share-button.component";
-import { Avatar } from "@/shared/components/ui/avatar";
 import { Button } from "@/shared/components/ui/button";
-import { Modal } from "@/shared/components/ui/modal";
-import { getErrorMessage } from "@/shared/lib/get-error-message";
+import { ProjectTypeIcon } from "@/shared/components/ui/project-type-icon";
 
-import { useCacheBustingImage } from "../../../shared/hooks/use-cache-busting-image.hook";
-import { useToggleProjectPublishedMutation } from "../hooks/project.mutations";
 import type { Project } from "../types/project.type";
 import { BookmarkButton } from "./bookmark-button.component";
-import { ClaimProjectButton } from "./claim-project-button.component";
+
+interface ProjectHeroProps {
+  project: Project;
+  hideHeader?: boolean;
+}
+
+function sourceLabel(project: Project): string {
+  const isResearch = project.projectCategories?.some(
+    (category) => category.name === "Research"
+  );
+  return isResearch ? "View Paper" : "View Repository";
+}
 
 export function ProjectMobileHero({ project }: ProjectHeroProps) {
-  const [isPublishDialogOpen, setPublishDialogOpen] = useState(false);
-  const toggleProjectPublishedMutation = useToggleProjectPublishedMutation();
-
   const {
     id = "",
     title = "",
     description = "",
-    logoUrl,
     repoUrl = "",
-    published = false,
-    updatedAt,
-    isBookmarked = false,
+    projectCategories = [],
   } = project;
-
-  const logoUrlWithCacheBusting = useCacheBustingImage(logoUrl, updatedAt);
-
-  const handlePublish = async () => {
-    try {
-      await toggleProjectPublishedMutation.mutateAsync({
-        project,
-        published: true,
-      });
-      toast.success("Project published");
-      setPublishDialogOpen(false);
-    } catch (error) {
-      toast.error(getErrorMessage(error, "Failed to publish project"));
-    }
-  };
+  const kindLabel = projectCategories[0]?.name ?? null;
+  const taskLabel = projectCategories[1]?.name ?? null;
 
   return (
     <div className="flex flex-col bg-white">
       <div className="flex min-w-0 items-center gap-4">
-        <Avatar
-          src={logoUrlWithCacheBusting}
-          name={title}
-          alt={title}
-          size="lg"
-          shape="rounded"
-        />
+        <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-muted-black-stroke text-primary">
+          <ProjectTypeIcon
+            kindLabel={kindLabel}
+            taskLabel={taskLabel}
+            className="size-6"
+          />
+        </span>
         <h1 className="flex-1 truncate text-start font-medium text-xl">
           {title}
         </h1>
@@ -68,85 +54,30 @@ export function ProjectMobileHero({ project }: ProjectHeroProps) {
           title={title}
           text={description}
         />
-        {published ? (
-          <>
-            <BookmarkButton projectId={id} isBookmarked={isBookmarked} />
-            <ClaimProjectButton project={project} />
-            <Link
-              href={repoUrl || ""}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button>View Repository</Button>
-            </Link>
-          </>
-        ) : (
-          <>
-            {isBookmarked && (
-              <BookmarkButton projectId={id} isBookmarked={isBookmarked} />
-            )}
-            <Button
-              variant="outline"
-              onClick={() => setPublishDialogOpen(true)}
-            >
-              Publish Project
-            </Button>
-            <Link href={`/projects/${id}/edit`}>
-              <Button>Edit Project</Button>
-            </Link>
-
-            <Modal
-              open={isPublishDialogOpen}
-              onOpenChange={setPublishDialogOpen}
-              title="Publish project?"
-              description="Once published, your project becomes visible to everyone. You can unpublish later."
-              isLoading={toggleProjectPublishedMutation.isPending}
-              onConfirm={() => void handlePublish()}
-              onCancel={() => setPublishDialogOpen(false)}
-              confirmText="Publish"
-            />
-          </>
-        )}
+        <BookmarkButton projectId={id} />
+        {repoUrl ? (
+          <Link href={repoUrl} target="_blank" rel="noopener noreferrer">
+            <Button>{sourceLabel(project)}</Button>
+          </Link>
+        ) : null}
       </div>
     </div>
   );
-}
-interface ProjectHeroProps {
-  project: Project;
-  hideHeader?: boolean;
 }
 
 export default function ProjectHero({
   project,
   hideHeader = false,
 }: ProjectHeroProps) {
-  const [isPublishDialogOpen, setPublishDialogOpen] = useState(false);
-  const toggleProjectPublishedMutation = useToggleProjectPublishedMutation();
   const {
     id = "",
     title = "",
     description = "",
-    logoUrl,
     repoUrl = "",
-    published = false,
-    updatedAt,
-    isBookmarked = false,
+    projectCategories = [],
   } = project;
-
-  const logoUrlWithCacheBusting = useCacheBustingImage(logoUrl, updatedAt);
-
-  const handlePublish = async () => {
-    try {
-      await toggleProjectPublishedMutation.mutateAsync({
-        project,
-        published: true,
-      });
-      toast.success("Project published");
-      setPublishDialogOpen(false);
-    } catch (error) {
-      toast.error(getErrorMessage(error, "Failed to publish project"));
-    }
-  };
+  const kindLabel = projectCategories[0]?.name ?? null;
+  const taskLabel = projectCategories[1]?.name ?? null;
 
   return (
     <div className="flex flex-col bg-white">
@@ -154,13 +85,13 @@ export default function ProjectHero({
         <div>
           <div className="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
             <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-              <Avatar
-                src={logoUrlWithCacheBusting}
-                name={title}
-                alt={title}
-                size="xl"
-                shape="rounded"
-              />
+              <span className="flex size-16 shrink-0 items-center justify-center rounded-2xl border border-muted-black-stroke text-primary">
+                <ProjectTypeIcon
+                  kindLabel={kindLabel}
+                  taskLabel={taskLabel}
+                  className="size-8"
+                />
+              </span>
               <h1 className="max-w-[70vw] truncate text-start font-medium text-2xl sm:max-w-[45vw] sm:text-2xl">
                 {title}
               </h1>
@@ -172,48 +103,12 @@ export default function ProjectHero({
                 title={title}
                 text={description}
               />
-              {published ? (
-                <>
-                  <BookmarkButton projectId={id} isBookmarked={isBookmarked} />
-                  <ClaimProjectButton project={project} />
-                  <Link
-                    href={repoUrl || ""}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button>View Repository</Button>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  {isBookmarked && (
-                    <BookmarkButton
-                      projectId={id}
-                      isBookmarked={isBookmarked}
-                    />
-                  )}
-                  <Button
-                    variant="outline"
-                    onClick={() => setPublishDialogOpen(true)}
-                  >
-                    Publish Project
-                  </Button>
-                  <Link href={`/projects/${id}/edit`}>
-                    <Button>Edit Project</Button>
-                  </Link>
-
-                  <Modal
-                    open={isPublishDialogOpen}
-                    onOpenChange={setPublishDialogOpen}
-                    title="Publish project?"
-                    description="Once published, your project becomes visible to everyone. You can unpublish later."
-                    isLoading={toggleProjectPublishedMutation.isPending}
-                    onConfirm={() => void handlePublish()}
-                    onCancel={() => setPublishDialogOpen(false)}
-                    confirmText="Publish"
-                  />
-                </>
-              )}
+              <BookmarkButton projectId={id} />
+              {repoUrl ? (
+                <Link href={repoUrl} target="_blank" rel="noopener noreferrer">
+                  <Button>{sourceLabel(project)}</Button>
+                </Link>
+              ) : null}
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import legacyProjectIds from "@data/legacy-project-ids.json";
 import projectsJson from "@data/projects.mock.json";
 import { diffProjects } from "../../../../scripts/project-diff.mjs";
 import {
@@ -96,6 +97,23 @@ test("daily diff survives renames and reports removals", () => {
     result.disappeared.map((item) => item.sourceId),
     ["hf:old/removed"]
   );
+});
+
+test("every legacy redirect targets a current project", () => {
+  const ids = new Set(
+    (projectsJson as unknown as FixtureProject[])
+      .map((project) => project.id)
+      .filter((id): id is string => Boolean(id))
+  );
+
+  for (const [oldId, targetId] of Object.entries(
+    legacyProjectIds as Record<string, string>
+  )) {
+    assert.ok(
+      ids.has(targetId),
+      `${oldId} redirects to missing project ${targetId}`
+    );
+  }
 });
 
 test("committed projects use their source-derived id", () => {

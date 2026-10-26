@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 import { Button } from "@/shared/components/ui/button";
 import { readmePreviewMarkdownComponents } from "@/shared/components/ui/markdown-components";
+import {
+  markdownRehypePlugins,
+  markdownRemarkPlugins,
+} from "@/shared/lib/markdown";
 
 interface ContributingComponentProps {
   contributionFile: string;
@@ -48,8 +50,8 @@ export default function ContributingComponent({
       >
         <div className="font-geist text-sm leading-relaxed">
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={markdownRemarkPlugins}
+            rehypePlugins={markdownRehypePlugins}
             components={readmePreviewMarkdownComponents as Components}
           >
             {contributionFile}
