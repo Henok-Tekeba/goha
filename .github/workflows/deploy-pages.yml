@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # The daily scrape commits with the repository GITHUB_TOKEN, and those pushes
+  # do not start a new workflow. Redeploy explicitly when the scrape succeeds.
+  workflow_run:
+    workflows: ["Daily Scrape"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -14,6 +19,10 @@ concurrency:
 
 jobs:
   build:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
