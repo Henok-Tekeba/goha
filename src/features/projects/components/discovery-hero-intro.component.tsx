@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
 
 import HeroBadge from "@/shared/components/ui/hero-badge";
@@ -9,17 +8,10 @@ import { EXTERNAL_LINKS } from "@/shared/lib/constants";
 import type { ProjectFilters } from "../types/project-filters.type";
 import FilterSearchBar from "./filter-search-bar.component";
 
-const ease = [0.22, 1, 0.32, 1] as const;
-
-/** Every element uses the same blur-up reveal */
-const DURATION = 0.5;
-/** Gap between each element starting */
-const STAGGER = 0.11;
-
-const variants = {
-  hidden: { opacity: 0, filter: "blur(10px)", y: 6 },
-  visible: { opacity: 1, filter: "blur(0px)", y: 0 },
-};
+/** Gap between each element starting. Keep it short: the hero is above the
+    fold, so a long cascade reads as a slow page. */
+const STAGGER = 60;
+const DURATION = "320ms";
 
 interface DiscoveryHeroIntroProps {
   onFilterChange?: (filters: ProjectFilters) => void;
@@ -27,6 +19,9 @@ interface DiscoveryHeroIntroProps {
   initialFilters?: ProjectFilters;
 }
 
+/* The hero must be visible on first paint. A JS-driven reveal (opacity: 0
+   until hydration) makes the most important content appear last, so the
+   entrance is a plain CSS animation instead — it runs before React loads. */
 export function DiscoveryHeroIntro({
   onFilterChange,
   isLoading,
@@ -35,11 +30,9 @@ export function DiscoveryHeroIntro({
   return (
     <>
       {/* 1 — badge */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={variants}
-        transition={{ duration: DURATION, delay: 0, ease }}
+      <div
+        className="hero-reveal"
+        style={{ animationDelay: "0ms", animationDuration: DURATION }}
       >
         <HeroBadge
           className="mb-3"
@@ -47,68 +40,69 @@ export function DiscoveryHeroIntro({
           description="Help support the founding team"
           href={EXTERNAL_LINKS.GITHUB_REPO}
         />
-      </motion.div>
+      </div>
 
       {/* 2 + 3 — headline lines */}
       <h1
         className="mt-3 text-center text-4xl leading-none tracking-[-0.04em] md:text-5xl"
         style={{ fontFamily: "Aspekta", fontWeight: 500 }}
       >
-        <motion.span
-          className="block"
-          initial="hidden"
-          animate="visible"
-          variants={variants}
-          transition={{ duration: DURATION, delay: STAGGER, ease }}
+        <span
+          className="hero-reveal block"
+          style={{
+            animationDelay: `${STAGGER}ms`,
+            animationDuration: DURATION,
+          }}
         >
           The home of
-        </motion.span>
-        <motion.span
-          className="block"
-          initial="hidden"
-          animate="visible"
-          variants={variants}
-          transition={{ duration: DURATION, delay: STAGGER * 2, ease }}
+        </span>
+        <span
+          className="hero-reveal block"
+          style={{
+            animationDelay: `${STAGGER * 2}ms`,
+            animationDuration: DURATION,
+          }}
         >
           Ethiopian AI
-        </motion.span>
+        </span>
       </h1>
 
       {/* 4 — subtitle */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={variants}
-        transition={{ duration: DURATION, delay: STAGGER * 3, ease }}
+      <div
+        className="hero-reveal"
+        style={{
+          animationDelay: `${STAGGER * 3}ms`,
+          animationDuration: DURATION,
+        }}
       >
         <p className="mt-5 max-w-[450px] px-2 text-center text-neutral-950 text-sm">
           A live index of models, datasets, companies and research for Ethiopian
           languages — find, compare and explore the ecosystem.
         </p>
-      </motion.div>
+      </div>
 
       {/* 5 — filter bar */}
-      <motion.div
-        className="mt-8 w-full px-6 md:w-auto"
-        initial="hidden"
-        animate="visible"
-        variants={variants}
-        transition={{ duration: DURATION, delay: STAGGER * 4, ease }}
+      <div
+        className="hero-reveal mt-8 w-full px-6 md:w-auto"
+        style={{
+          animationDelay: `${STAGGER * 4}ms`,
+          animationDuration: DURATION,
+        }}
       >
         <FilterSearchBar
           onFilterChange={onFilterChange}
           isLoading={isLoading}
           initialFilters={initialFilters}
         />
-      </motion.div>
+      </div>
 
       {/* 6 — plain-language search */}
-      <motion.p
-        className="mt-4 px-6 text-center text-muted-foreground text-xs"
-        initial="hidden"
-        animate="visible"
-        variants={variants}
-        transition={{ duration: DURATION, delay: STAGGER * 5, ease }}
+      <p
+        className="hero-reveal mt-4 px-6 text-center text-muted-foreground text-xs"
+        style={{
+          animationDelay: `${STAGGER * 5}ms`,
+          animationDuration: DURATION,
+        }}
       >
         or ask in plain language —{" "}
         <Link
@@ -117,7 +111,7 @@ export function DiscoveryHeroIntro({
         >
           Ask Goha
         </Link>
-      </motion.p>
+      </p>
     </>
   );
 }

@@ -130,15 +130,9 @@ export default async function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${GeistMono.variable} antialiased`}
     >
-      <head>
-        <link
-          rel="preload"
-          href="/fonts/Aspekta-500.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
+      {/* No manual Aspekta preload: the stylesheet already references Next's
+          hashed copy of the font, so a /fonts/... preload downloaded the same
+          22 KB file twice and competed with the hero image. */}
       <body suppressHydrationWarning>
         <Providers>
           <Header githubStars={githubStars} />

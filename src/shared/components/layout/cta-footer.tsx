@@ -26,7 +26,6 @@ export default function CTAFooter({
             quality={100}
             sizes="100vw"
             className="object-cover object-right-top"
-            priority
           />
         </div>
       ) : null}
@@ -39,8 +38,6 @@ export default function CTAFooter({
           quality={100}
           sizes="(min-width: 1280px) 1280px, 100vw"
           className="object-cover object-right-top md:object-right"
-          priority
-          fetchPriority="high"
         />
       </div>
 

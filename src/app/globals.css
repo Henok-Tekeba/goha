@@ -141,6 +141,74 @@
   }
 }
 
+/* Above-the-fold hero reveal.
+   Deliberately CSS-only: the markup ships visible and starts painting as soon
+   as the stylesheet parses, without waiting for React to hydrate. The motion is
+   transform-only so the headline is readable on the very first frame — an
+   opacity fade would still make the hero look like it "arrives late". */
+@keyframes hero-reveal {
+  from {
+    transform: translateY(8px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  animation: hero-reveal 320ms cubic-bezier(0.22, 1, 0.32, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    animation: none;
+  }
+}
+
+/* Filter chip label swap + the combobox "Clear" affordance. These used to
+   pull the whole motion library into the landing page bundle for two 220ms
+   transitions; plain CSS keeps the interaction and ships no JS. */
+@keyframes filter-value-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.filter-value-in {
+  animation: filter-value-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes filter-clear-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.filter-clear-in {
+  animation: filter-clear-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-value-in,
+  .filter-clear-in {
+    animation: none;
+  }
+}
+
 /* Skeleton placeholders: light zinc tones (no opacity pulse on white) */
 @keyframes skeleton-zinc-pulse {
   0%,

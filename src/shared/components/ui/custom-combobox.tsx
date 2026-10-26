@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { HiCheck } from "react-icons/hi2";
@@ -94,31 +93,23 @@ export function CustomCombobox({
 
   const isMaxReached = maxSelections && value.length >= maxSelections;
 
-  const clearAllButton = (
-    <AnimatePresence>
-      {value.length > 0 ? (
-        <motion.button
-          key="clear"
-          type="button"
-          initial={{ opacity: 0, x: 14, filter: "blur(6px)" }}
-          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, x: 10, filter: "blur(4px)" }}
-          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          aria-label="Clear selected items"
-          onClick={() => {
-            onChange([]);
-            handleOpenChange(false);
-          }}
-          className={cn(
-            "cursor-pointer rounded-full border border-black/5 bg-white px-2.5 py-1 font-medium text-foreground text-xs shadow-none transition-colors",
-            disabled ? "pointer-events-none opacity-50" : "hover:bg-muted/60"
-          )}
-        >
-          Clear
-        </motion.button>
-      ) : null}
-    </AnimatePresence>
-  );
+  const clearAllButton =
+    value.length > 0 ? (
+      <button
+        type="button"
+        aria-label="Clear selected items"
+        onClick={() => {
+          onChange([]);
+          handleOpenChange(false);
+        }}
+        className={cn(
+          "filter-clear-in cursor-pointer rounded-full border border-black/5 bg-white px-2.5 py-1 font-medium text-foreground text-xs shadow-none transition-colors",
+          disabled ? "pointer-events-none opacity-50" : "hover:bg-muted/60"
+        )}
+      >
+        Clear
+      </button>
+    ) : null;
 
   const commandTree = (
     <Command>
