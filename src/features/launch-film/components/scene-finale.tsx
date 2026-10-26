@@ -44,7 +44,7 @@ export function SceneFinale({ t }: { t: number }) {
               y1={node.y}
               x2={960}
               y2={384}
-              stroke="rgba(255,255,255,0.13)"
+              stroke="rgba(0,0,0,0.14)"
               strokeWidth={1}
               pathLength={1}
               strokeDasharray={1}
@@ -62,7 +62,7 @@ export function SceneFinale({ t }: { t: number }) {
                 cx={node.x}
                 cy={node.y}
                 r={node.accent ? 4.5 : 3}
-                fill={node.accent ? C.accent : "rgba(255,255,255,0.55)"}
+                fill={node.accent ? C.accent : "rgba(23,23,23,0.5)"}
                 opacity={
                   Math.min(1, p * 2) *
                   (node.accent && accentPulse >= 1 ? 0.35 : 1)
@@ -147,7 +147,7 @@ export function SceneFinale({ t }: { t: number }) {
 
       {/* Thesis line */}
       <div
-        className="absolute whitespace-nowrap text-center text-[30px] uppercase tracking-[0.34em]"
+        className="absolute whitespace-nowrap text-center font-medium text-[33px] tracking-[0.02em]"
         style={{
           left: "50%",
           top: 668,

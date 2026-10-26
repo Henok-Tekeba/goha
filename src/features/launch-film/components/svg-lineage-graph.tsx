@@ -119,9 +119,7 @@ export function SvgLineageGraph({ t }: { t: number }) {
               rx={12}
               fill={C.panel}
               stroke={
-                node.foundation
-                  ? "rgba(255,255,255,0.2)"
-                  : "rgba(81,162,255,0.45)"
+                node.foundation ? "rgba(0,0,0,0.22)" : "rgba(43,127,255,0.5)"
               }
               strokeWidth={1}
             />

@@ -156,7 +156,7 @@ export function SceneOpenData({ t }: { t: number }) {
       })}
 
       <WipeLine t={t} start={11.2} end={11.78} size={76} x="50%" y={872}>
-        OPEN DATA. TRACEABLE SOURCES.
+        Open data. Traceable sources.
       </WipeLine>
 
       <div

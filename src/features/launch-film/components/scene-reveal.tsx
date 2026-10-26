@@ -149,7 +149,7 @@ export function SceneReveal({ t }: { t: number }) {
           }}
         />
         <div
-          className="mt-6 text-center text-[24px] uppercase tracking-[0.4em]"
+          className="mt-6 text-center font-medium text-[26px] tracking-[0.1em]"
           style={{
             color: C.dim,
             opacity: seg(t, 3.25, 3.7),

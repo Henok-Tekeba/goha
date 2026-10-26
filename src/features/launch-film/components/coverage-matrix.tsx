@@ -102,7 +102,7 @@ export function CoverageMatrix({ t }: { t: number }) {
                     top: originY + r * STEP,
                     width: CELL,
                     height: CELL,
-                    background: "rgba(250,250,250,0.85)",
+                    background: "rgba(23,23,23,0.87)",
                     opacity: Math.min(1, p * 2),
                     transform: `scale(${0.3 + 0.7 * easeOutBack(p)})`,
                   }}
@@ -119,7 +119,7 @@ export function CoverageMatrix({ t }: { t: number }) {
                     top: originY + r * STEP,
                     width: CELL,
                     height: CELL,
-                    border: `1px solid ${pulse ? "rgba(81,162,255,0.4)" : "rgba(255,255,255,0.16)"}`,
+                    border: `1px solid ${pulse ? "rgba(43,127,255,0.45)" : "rgba(0,0,0,0.16)"}`,
                     opacity: 0.5 + (pulse ? 0.5 * seg(t, 9.3, 9.5) : 0),
                   }}
                 />
@@ -163,15 +163,12 @@ export function CoverageMatrix({ t }: { t: number }) {
           </span>
         </div>
         <div
-          className="mt-4 text-[21px] uppercase tracking-[0.26em]"
+          className="mt-4 font-medium text-[21px] tracking-[0.05em]"
           style={{ color: C.dim }}
         >
           empty cells
         </div>
-        <div
-          className="mt-2 text-[17px]"
-          style={{ color: "rgba(255,255,255,0.45)" }}
-        >
+        <div className="mt-2 text-[17px]" style={{ color: "rgba(0,0,0,0.45)" }}>
           language × task
         </div>
       </div>

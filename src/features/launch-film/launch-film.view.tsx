@@ -13,6 +13,7 @@ import {
   activeScene,
   C,
   FILM_DURATION,
+  FONT_SANS,
   SCENES,
   STAGE_H,
   STAGE_W,
@@ -200,6 +201,7 @@ export default function LaunchFilmView() {
             width: STAGE_W,
             height: STAGE_H,
             background: C.bg,
+            fontFamily: FONT_SANS,
             transform: `scale(${scale})`,
             transformOrigin: "center",
           }}

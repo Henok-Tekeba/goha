@@ -40,8 +40,8 @@ function BeatCaption({ t, beat }: { t: number; beat: (typeof BEATS)[number] }) {
         {BEAT_NUMERALS[index]}
       </span>
       <span
-        className="font-bold text-[40px] uppercase leading-none"
-        style={{ color: C.ink, letterSpacing: "0.28em" }}
+        className="font-semibold text-[42px] leading-none"
+        style={{ color: C.ink, letterSpacing: "0.01em" }}
       >
         {beat.caption}
       </span>
@@ -147,7 +147,7 @@ function CompareBeat({ t }: { t: number }) {
                   <span
                     className="whitespace-nowrap rounded-full px-3.5 py-1.5 text-[15px] leading-none"
                     style={{
-                      border: `1px solid ${card.evalRanked ? "rgba(81,162,255,0.5)" : "rgba(255,255,255,0.18)"}`,
+                      border: `1px solid ${card.evalRanked ? "rgba(43,127,255,0.5)" : "rgba(0,0,0,0.18)"}`,
                       color: card.evalRanked ? C.accent : C.dim,
                     }}
                   >
@@ -188,8 +188,8 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-4">
       <span
-        className="text-[14px] uppercase tracking-[0.18em]"
-        style={{ color: "rgba(255,255,255,0.42)" }}
+        className="font-medium text-[14px] tracking-[0.03em]"
+        style={{ color: "rgba(0,0,0,0.45)" }}
       >
         {label}
       </span>

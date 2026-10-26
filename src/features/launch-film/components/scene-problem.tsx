@@ -24,7 +24,7 @@ export function SceneProblem({ t }: { t: number }) {
         x="50%"
         y={880}
       >
-        ETHIOPIAN AI IS EVERYWHERE.
+        Ethiopian AI is everywhere.
       </WipeLine>
       <WipeLine
         t={t}
@@ -36,7 +36,7 @@ export function SceneProblem({ t }: { t: number }) {
         x="50%"
         y={880}
       >
-        ITS RESOURCES ARE SCATTERED.
+        Its resources are scattered.
       </WipeLine>
     </div>
   );

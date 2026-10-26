@@ -102,7 +102,7 @@ export function SceneStats({ t }: { t: number }) {
               style={{ color: C.ink, letterSpacing: "-0.03em" }}
             />
             <div
-              className="mt-5 text-[22px] uppercase tracking-[0.28em]"
+              className="mt-5 font-medium text-[23px] tracking-[0.04em]"
               style={{ color: C.dim }}
             >
               {s.label}
@@ -150,7 +150,7 @@ export function SceneStats({ t }: { t: number }) {
           style={{ color: C.ink, letterSpacing: "-0.03em" }}
         />
         <span
-          className="text-[24px] uppercase tracking-[0.3em]"
+          className="font-medium text-[25px] tracking-[0.06em]"
           style={{ color: C.dim }}
         >
           Project records
@@ -158,7 +158,7 @@ export function SceneStats({ t }: { t: number }) {
       </div>
 
       <div
-        className="absolute text-[19px] uppercase tracking-[0.32em]"
+        className="absolute font-medium text-[20px] tracking-[0.06em]"
         style={{
           left: "50%",
           top: 818,

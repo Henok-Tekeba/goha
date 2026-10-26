@@ -7,19 +7,25 @@ export const FILM_DURATION = 15;
 export const STAGE_W = 1920;
 export const STAGE_H = 1080;
 
-/* Palette — derived from goha's own token system: neutral ink on true black,
-   with the site's interactive blue (--ost-blue-two) as the single accent. */
+/* Palette — goha's own light theme: white stage, neutral-900 ink, and the
+   site's interactive blue (--ost-blue-three) as the single accent. */
 export const C = {
-  bg: "#050506",
-  ink: "#FAFAFA",
-  dim: "#A1A1AA",
-  accent: "#51A2FF",
-  accentSoft: "rgba(81, 162, 255, 0.5)",
-  line: "rgba(255, 255, 255, 0.14)",
-  lineFaint: "rgba(255, 255, 255, 0.08)",
-  panel: "rgba(255, 255, 255, 0.045)",
-  panelLine: "rgba(255, 255, 255, 0.10)",
+  bg: "#FFFFFF",
+  ink: "#171717",
+  dim: "#71717A",
+  accent: "#2B7FFF",
+  accentSoft: "rgba(43, 127, 255, 0.5)",
+  line: "rgba(0, 0, 0, 0.12)",
+  lineFaint: "rgba(0, 0, 0, 0.07)",
+  panel: "rgba(0, 0, 0, 0.03)",
+  panelLine: "rgba(0, 0, 0, 0.10)",
 } as const;
+
+/* Geist is self-hosted by the root layout; set it explicitly on the stage so
+   every element renders in it regardless of preflight defaults. */
+export const FONT_SANS =
+  "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif";
+export const FONT_MONO = "var(--font-geist-mono), ui-monospace, monospace";
 
 /* Ethiopic glyphs render through the system stack (Kefa / Nyala / Noto) —
    no network font fetch, so font readiness never delays the timeline. */

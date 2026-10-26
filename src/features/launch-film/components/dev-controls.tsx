@@ -39,15 +39,15 @@ export function DevControls({
   onTogglePresent: () => void;
 }) {
   const iconButton =
-    "flex size-9 items-center justify-center rounded-full border border-white/10 text-[#FAFAFA] transition-colors hover:bg-white/10";
+    "flex size-9 items-center justify-center rounded-full border border-black/10 text-[#171717] transition-colors hover:bg-black/5";
 
   return (
     <div className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2">
       <div
         className="flex items-center gap-2.5 rounded-full px-3 py-2"
         style={{
-          background: "rgba(12, 12, 14, 0.72)",
-          border: "1px solid rgba(255,255,255,0.12)",
+          background: "rgba(255, 255, 255, 0.85)",
+          border: "1px solid rgba(0,0,0,0.12)",
           backdropFilter: "blur(10px)",
         }}
       >
@@ -78,14 +78,14 @@ export function DevControls({
           value={t}
           onChange={(e) => onSeek(Number.parseFloat(e.target.value))}
           className="w-64"
-          style={{ accentColor: "#51A2FF" }}
+          style={{ accentColor: "#2B7FFF" }}
           aria-label="Timeline scrubber"
         />
 
         <span
           className="text-[12.5px] tabular-nums"
           style={{
-            color: "#FAFAFA",
+            color: "#171717",
             fontFamily: "var(--font-geist-mono), monospace",
           }}
         >
@@ -94,7 +94,7 @@ export function DevControls({
 
         <span
           className="ml-1 hidden text-[12.5px] lg:inline"
-          style={{ color: "#A1A1AA" }}
+          style={{ color: "#71717A" }}
         >
           {sceneLabel}
         </span>
