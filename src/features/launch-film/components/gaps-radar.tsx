@@ -57,18 +57,21 @@ export function GapsRadar({ t }: { t: number }) {
           </span>
         </div>
         <div
-          className="mt-4 font-medium text-[20px] tracking-[0.05em]"
+          className="mt-4 font-medium text-[20px] tracking-[0.02em]"
           style={{ color: C.dim }}
         >
-          empty cells
+          language-and-task pairs
         </div>
-        <div className="mt-2 text-[16px]" style={{ color: "rgba(0,0,0,0.45)" }}>
-          language × task
+        <div
+          className="mt-1.5 text-[16px]"
+          style={{ color: "rgba(0,0,0,0.45)" }}
+        >
+          with no model or dataset at all
         </div>
 
         {/* Second real gap: unevaluated models */}
         <div
-          className="mt-9 h-px"
+          className="mt-8 h-px"
           style={{
             width: 250,
             background: C.line,
@@ -93,10 +96,37 @@ export function GapsRadar({ t }: { t: number }) {
           </span>
         </div>
         <div
-          className="mt-3 text-[16px]"
+          className="mt-3 text-[16px] leading-snug"
           style={{ color: C.dim, opacity: seg(t, 16.05, 16.3) }}
         >
-          models publish no evaluation
+          models publish no accuracy test —
+          <br />
+          their claims can't be checked
+        </div>
+
+        {/* Two real gaps, in human terms (language-coverage.json:
+            ASR × Somali = 0, TTS × Ge'ez = 0) */}
+        <div
+          className="mt-9 flex flex-col gap-2.5"
+          style={{ opacity: seg(t, 16.1, 16.4) }}
+        >
+          {[
+            "No speech recognition for Somali",
+            "No text-to-speech for Ge'ez",
+          ].map((line, i) => (
+            <div key={line} className="flex items-center gap-2.5">
+              <span
+                className="size-1.5 shrink-0 rounded-full"
+                style={{ background: C.accent }}
+              />
+              <span
+                className="text-[17px] leading-snug"
+                style={{ color: C.ink }}
+              >
+                {line}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

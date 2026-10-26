@@ -57,7 +57,7 @@ function BeatCaption({ t, beat }: { t: number; beat: (typeof BEATS)[number] }) {
 }
 
 /* Real records from the index — language, size, and exactly what the
-   leaderboard publishes for each. Nothing invented. */
+   leaderboard publishes for each, in plain words. */
 const COMPARE_CARDS = [
   {
     name: "hohe-asr-amharic",
@@ -65,7 +65,7 @@ const COMPARE_CARDS = [
     lang: "Amharic",
     glyph: "አ",
     size: "606M",
-    evalBadge: "FLEURS · 16.0% WER",
+    evalBadge: "16.0% wrong · FLEURS test",
     evalRanked: true,
   },
   {
@@ -74,7 +74,7 @@ const COMPARE_CARDS = [
     lang: "Amharic",
     glyph: "አ",
     size: "242M",
-    evalBadge: "Common Voice · 69.0% WER",
+    evalBadge: "69.0% wrong · Common Voice",
     evalRanked: true,
   },
   {
@@ -83,7 +83,7 @@ const COMPARE_CARDS = [
     lang: "Ge'ez",
     glyph: "ግ",
     size: "318M",
-    evalBadge: "Reported · no test set",
+    evalBadge: "no real test · self-reported",
     evalRanked: false,
   },
 ] as const;
@@ -191,7 +191,7 @@ function CompareBeat({ t }: { t: number }) {
                     {card.lang}
                   </span>
                 </Row>
-                <Row label="Size" t={t} delay={rowDelay + 0.1}>
+                <Row label="Parameters" t={t} delay={rowDelay + 0.1}>
                   <span
                     className="text-[18px]"
                     style={{ color: C.ink, fontVariantNumeric: "tabular-nums" }}
@@ -249,13 +249,13 @@ function CompareBeat({ t }: { t: number }) {
           className="font-semibold text-[24px] leading-none"
           style={{ color: C.ink, letterSpacing: "-0.01em" }}
         >
-          Word error rate
+          Words AI gets wrong
         </span>
         <span
           className="font-medium text-[17px] tracking-[0.04em]"
           style={{ color: C.dim }}
         >
-          as published · lower is better
+          word error rate · lower is better
         </span>
       </div>
 

@@ -25,10 +25,10 @@ export function SceneProblem({ t }: { t: number }) {
         x="50%"
         y={880}
       >
-        Ethiopian AI is everywhere.
+        Ethiopian AI is being built.
       </WipeLine>
       <WipeLine t={t} start={2.15} end={2.9} size={92} x="50%" y={880}>
-        Its resources are scattered.
+        But nobody can find it.
       </WipeLine>
     </div>
   );

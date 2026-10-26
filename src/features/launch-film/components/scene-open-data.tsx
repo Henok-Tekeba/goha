@@ -44,6 +44,19 @@ export function SceneOpenData({ t }: { t: number }) {
 
   return (
     <div className="absolute inset-0">
+      {/* Plain-language framing for the panel */}
+      <div
+        className="absolute font-medium text-[21px] tracking-[0.02em]"
+        style={{
+          left: 160,
+          top: 208,
+          color: C.dim,
+          opacity: seg(t, 16.7, 17.0),
+        }}
+      >
+        Every record is open data — one JSON file.
+      </div>
+
       {/* Code panel */}
       <div
         className="absolute rounded-2xl"
@@ -176,7 +189,7 @@ export function SceneOpenData({ t }: { t: number }) {
         className="absolute flex justify-center gap-3"
         style={{ left: "50%", top: 940, transform: "translateX(-50%)" }}
       >
-        {["Search", "Compare", "Reuse"].map((word, i) => {
+        {["No sign-up", "No API key", "Free forever"].map((word, i) => {
           const p = seg(t, 19.05 + i * 0.09, 19.27 + i * 0.09);
           if (p <= 0) return null;
           return (

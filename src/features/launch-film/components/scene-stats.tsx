@@ -104,13 +104,13 @@ export function SceneStats({ t }: { t: number }) {
           className="font-semibold text-[27px] leading-none"
           style={{ color: C.ink, letterSpacing: "-0.01em" }}
         >
-          Ecosystem growth
+          The index grows every day
         </span>
         <span
           className="font-medium text-[18px] tracking-[0.04em]"
           style={{ color: C.dim }}
         >
-          models & datasets · indexed daily
+          models & datasets · straight from Hugging Face
         </span>
       </div>
 
