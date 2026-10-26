@@ -2,24 +2,38 @@
 
 import LanguageRadarChart from "@/features/ecosystem/components/charts/language-radar-chart";
 
-import { C, seg } from "../lib/film";
+import { C, easeOutCubic, seg } from "../lib/film";
 import { filmCoverage } from "../lib/film-data";
 import { FilmChart } from "./film-chart";
 
-/* The radar mounts on cue so evilcharts' own entrance plays fully visible. */
+/* The radar mounts on cue, then each language's polygon lands one by one —
+   Amharic first (it holds the per-task maximum, so the rings stay put),
+   the rest following at a beat. Driven by the film clock, so the formation
+   plays even under OS reduced motion and scrubs exactly. */
 const RADAR_AT = 15.2;
+const RADAR_FORM_START = 15.3;
+const RADAR_STAGGER = 0.11;
 const RADAR_LEFT = 110;
 const RADAR_TOP = 176;
 const RADAR_W = 1400;
 const RADAR_H = 744;
 const RADAR_SCALE = 1.5;
 
-/**
- * The gaps beat's real chart — the exact evilcharts radar and
- * language-coverage data the /lang "The gaps, side by side" section renders,
- * with the gap report's headline numbers beside it.
- */
 export function GapsRadar({ t }: { t: number }) {
+  const languageIndex = new Map(
+    filmCoverage.languages.map((lang, i) => [lang, i])
+  );
+  const rows = filmCoverage.rows.map((row) => {
+    const next: Record<string, number | string> = { task: row.task };
+    for (const lang of filmCoverage.languages) {
+      const i = languageIndex.get(lang) ?? 0;
+      next[lang] = t >= RADAR_FORM_START + i * RADAR_STAGGER ? row[lang] : 0;
+    }
+    return next;
+  });
+
+  const enter = easeOutCubic(seg(t, RADAR_AT, RADAR_AT + 0.4));
+
   return (
     <div className="absolute inset-0">
       {t >= RADAR_AT && (
@@ -29,10 +43,17 @@ export function GapsRadar({ t }: { t: number }) {
           width={RADAR_W}
           height={RADAR_H}
           scale={RADAR_SCALE}
+          opacity={enter}
+          style={{
+            transform: `scale(${0.94 + 0.06 * enter})`,
+            transformOrigin: "center center",
+          }}
         >
           <LanguageRadarChart
-            coverage={filmCoverage}
+            coverage={{ ...filmCoverage, rows }}
             className="h-[496px] w-full"
+            renderer="svg"
+            animation={false}
           />
         </FilmChart>
       )}

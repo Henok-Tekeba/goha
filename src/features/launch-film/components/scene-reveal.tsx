@@ -164,7 +164,7 @@ export function SceneReveal({ t }: { t: number }) {
 
       {/* Factual anchor line */}
       <div
-        className="absolute text-center text-[18px]"
+        className="absolute whitespace-nowrap text-center text-[18px]"
         style={{
           left: "50%",
           top: 946,
@@ -173,7 +173,7 @@ export function SceneReveal({ t }: { t: number }) {
           opacity: seg(t, 5.95, 6.55),
         }}
       >
-        A live index, rebuilt every day.
+        One search across models, datasets and research — rebuilt every day.
       </div>
     </div>
   );

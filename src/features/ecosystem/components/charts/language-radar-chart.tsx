@@ -31,15 +31,21 @@ function buildConfig(languages: string[] | undefined): ChartConfig {
 export default function LanguageRadarChart({
   coverage,
   className,
+  renderer,
+  animation,
 }: {
   coverage: LanguageCoveragePayload;
   className?: string;
+  renderer?: "canvas" | "svg";
+  animation?: boolean;
 }) {
   return (
     <EChartsRadarChart
       data={coverage.rows}
       config={buildConfig(coverage.languages)}
       className={className}
+      renderer={renderer}
+      animation={animation}
       defaultSelectedDataKey="Amharic"
     >
       <EChartsRadarChart.PolarGrid />
