@@ -199,6 +199,17 @@ The form and issue templates live in `src/features/contribute/` and
 - `.github/workflows/deploy-pages.yml` — static build and GitHub Pages deploy
 - `.github/workflows/security-check.yml` — manual dependency/header baseline
 
+Analytics is GoatCounter and is disabled unless the build has a site code.
+Create a free site at <https://www.goatcounter.com> and set the repository
+variable, then redeploy:
+
+```bash
+gh variable set NEXT_PUBLIC_GOATCOUNTER_CODE --body goha
+```
+
+The dashboard is `https://<code>.goatcounter.com`. The script is cookieless and
+only counts aggregate page views/referrers; see `/privacy-policy`.
+
 Security model, reporting instructions and the response headers a future host
 should send: [SECURITY.md](SECURITY.md).
 

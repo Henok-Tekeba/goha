@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "goha — The home of Ethiopian AI",
-    creator: "@HenokTekeba",
+    creator: "@HenaTeke",
     images: [metadataImageUrl],
     description:
       "Find models, datasets, companies, and research papers for Ethiopian languages.",

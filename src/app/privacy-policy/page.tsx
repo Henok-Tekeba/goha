@@ -29,8 +29,9 @@ export default function PrivacyPolicyPage() {
             goha is a read-only public directory. We do not require an account,
             we do not run advertising or cross-site tracking, and we do not sell
             data. The only personal information we ever handle is an email
-            address you knowingly give us for the newsletter — everything else
-            you do on the site stays in your own browser.
+            address you knowingly give us for the newsletter. Saved projects
+            stay in your browser. We count aggregate page views with a
+            cookie-free analytics service — no personal profiles.
           </p>
         </section>
 
@@ -55,15 +56,34 @@ export default function PrivacyPolicyPage() {
             3. Information We Do Not Collect
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            We do not use advertising networks, analytics trackers, or
+            We do not use advertising networks, cross-site trackers, or
             fingerprinting. We do not collect names, phone numbers, payment
             details, or browsing profiles.
           </p>
         </section>
 
         <section className="my-8">
+          <h2 className="font-medium text-lg tracking-tight">4. Analytics</h2>
+          <p className="mt-3 text-muted-foreground text-sm">
+            We use{" "}
+            <a
+              className="underline underline-offset-4 hover:text-primary"
+              href="https://www.goatcounter.com/privacy"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GoatCounter
+            </a>
+            , a cookie-free, privacy-first page counter, to see aggregate
+            traffic: page views, referring sites (for example LinkedIn),
+            country, and device type. It does not set cookies, does not store a
+            persistent identifier, and does not track visitors across websites.
+          </p>
+        </section>
+
+        <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            4. Third-party Content
+            5. Third-party Content
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
             Listings are metadata about public resources from Hugging Face,
@@ -75,19 +95,19 @@ export default function PrivacyPolicyPage() {
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            5. Hosting and Infrastructure
+            6. Hosting and Infrastructure
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
-            The website is hosted by Vercel, whose infrastructure may process
-            standard technical request data (IP address, user agent) to serve
-            pages and prevent abuse. The underlying data files are served from
-            GitHub.
+            The website is hosted by GitHub Pages, whose infrastructure may
+            process standard technical request data (IP address, user agent) to
+            serve pages and prevent abuse. The underlying data files are served
+            from the same repository.
           </p>
         </section>
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            6. Children&rsquo;s Privacy
+            7. Children&rsquo;s Privacy
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
             goha is a general-audience technical directory and does not
@@ -97,7 +117,7 @@ export default function PrivacyPolicyPage() {
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            7. Your Choices
+            8. Your Choices
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
             You can clear your browser storage at any time to remove your
@@ -109,19 +129,19 @@ export default function PrivacyPolicyPage() {
 
         <section className="my-8">
           <h2 className="font-medium text-lg tracking-tight">
-            8. Changes to This Policy
+            9. Changes to This Policy
           </h2>
           <p className="mt-3 text-muted-foreground text-sm">
             If the service changes in a way that affects this policy, we will
             update this page and the effective date below.
           </p>
           <p className="mt-3 text-muted-foreground text-sm">
-            Effective date: October 21, 2026.
+            Effective date: October 26, 2026.
           </p>
         </section>
 
         <section className="my-8">
-          <h2 className="font-medium text-lg tracking-tight">9. Contact</h2>
+          <h2 className="font-medium text-lg tracking-tight">10. Contact</h2>
           <p className="mt-3 text-muted-foreground text-sm">
             Privacy questions or data-correction requests: open an issue at
             github.com/Henok-Tekeba/goha or contact the maintainer through the

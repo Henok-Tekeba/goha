@@ -72,7 +72,7 @@ export default function CTAFooter({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Follow @HenokTekeba on X
+              Follow @HenaTeke on X
               <RiTwitterXFill size={16} aria-hidden />
             </Link>
           </Button>

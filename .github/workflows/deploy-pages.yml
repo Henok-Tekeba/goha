@@ -47,6 +47,9 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_FRONTEND_URL: https://goha.enoch.et
+          # GoatCounter site code (public). Set the repository variable to
+          # change it; the dashboard lives at https://<code>.goatcounter.com.
+          NEXT_PUBLIC_GOATCOUNTER_CODE: ${{ vars.NEXT_PUBLIC_GOATCOUNTER_CODE }}
 
       - name: Prepare Pages output
         run: touch out/.nojekyll
