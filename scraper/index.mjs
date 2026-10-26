@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import dotenv from "dotenv";
 
 import { fetchTextLimited } from "./http.mjs";
@@ -172,7 +172,7 @@ async function searchSpaces(term) {
   }));
 }
 
-async function enrichModelDetails(model) {
+export async function enrichModelDetails(model) {
   const modelId = model.id;
   if (!modelId) return model;
 
@@ -187,11 +187,15 @@ async function enrichModelDetails(model) {
   let confirmed_languages = [];
   let file_count = null;
   let wer_score = null;
+  /* Declared outside the try so the hf_internal_id/hf_sha fallbacks below can
+     still read it. Optional chaining does not rescue an out-of-scope binding:
+     `info?._id` throws ReferenceError if `info` was never declared here. */
+  let info = null;
 
   // 1. Fetch full model info
   try {
     const infoUrl = `${HF_API}/models/${safeModelId}`;
-    const info = await fetchHF(infoUrl);
+    info = await fetchHF(infoUrl);
 
     // Extract license
     const rawLicense = info.cardData?.license;
@@ -260,7 +264,7 @@ async function enrichModelDetails(model) {
         }
       }
     }
-  } catch (err) {
+  } catch {
     // README might not exist, skip silently
   }
 
@@ -700,7 +704,14 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error("Fatal error:", err);
-  process.exit(1);
-});
+/* Only run the scrape when this file is executed directly. Importing it from
+   the regression tests must not start a six-minute network crawl. */
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  main().catch((err) => {
+    console.error("Fatal error:", err);
+    process.exit(1);
+  });
+}

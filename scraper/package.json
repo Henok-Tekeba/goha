@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.mjs",
-    "test": "node --test http.test.mjs"
+    "test": "node --test"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
