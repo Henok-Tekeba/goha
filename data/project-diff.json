@@ -1,35 +1,56 @@
 {
-  "generatedAt": "2026-10-26T15:31:21.645Z",
-  "previousCount": 470,
-  "currentCount": 472,
+  "generatedAt": "2026-10-27T11:54:18.997Z",
+  "previousCount": 472,
+  "currentCount": 470,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_0ced33fab8eb24a9e125acc190d7794c",
-      "sourceId": "hf-dataset:abdukuzi45/amharic-sft-combined-2026-with-cot",
-      "hfInternalId": "6a86d6a87a55e2e83c37271a",
-      "title": "amharic-sft-combined-2026-with-cot",
+      "id": "pjt_a95cc3cc35d61f9358c792fbbe3537dd",
+      "sourceId": "hf:dice-research/amharic-property-retriever-base-xlmr",
+      "hfInternalId": "69b1aaadff84b2bf803c0b91",
+      "title": "amharic-property-retriever-base-xlmr",
+      "category": "Embeddings"
+    },
+    {
+      "id": "pjt_01d47ef4172f9e153e88e2a43888d8b6",
+      "sourceId": "hf-dataset:EthioNLP/Amharic_Instruction_dataset",
+      "hfInternalId": "65f19055bf339495495a825b",
+      "title": "Amharic_Instruction_dataset",
       "category": "Dataset"
     },
     {
-      "id": "pjt_7500161e2ec51ebbf79fcf030a0a78b1",
-      "sourceId": "hf-dataset:hadamard-2/leyu-amharic-gonder-dialect",
-      "hfInternalId": "6a8b1b9e0d2e15d716ad592e",
-      "title": "leyu-amharic-gonder-dialect",
-      "category": "ASR"
-    },
-    {
-      "id": "pjt_afaee016c29ed0980835fb5fac06acb8",
-      "sourceId": "hf-dataset:michsethowusu/bambara-tigrinya_sentence-pairs",
-      "hfInternalId": "67ee71a0cc32d68788013752",
-      "title": "bambara-tigrinya_sentence-pairs",
+      "id": "pjt_5d2ad13d4f6b45f19cc24feef8e035ae",
+      "sourceId": "hf-dataset:michsethowusu/oromo-wolof_sentence-pairs",
+      "hfInternalId": "67e96e95cb39affeccdcfc39",
+      "title": "oromo-wolof_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_01f79eb6e45e84bb15f4b372f60f05dc",
-      "sourceId": "arxiv:2607.15209v3",
+      "id": "pjt_ac337bb4dd5b53e45bbbd5d6a8f189e5",
+      "sourceId": "hf-dataset:french-datasets/michsethowusu_french-tigrinya_sentence-pairs",
+      "hfInternalId": "682c918608fd63b9f122ce22",
+      "title": "michsethowusu_french-tigrinya_sentence-pairs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_919e4e4d199993e241c23eaebd62c314",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-attacks-on-aid-operations-education-health-and-protection",
+      "hfInternalId": "69d95bc557840dba65289ccd",
+      "title": "africa-ethiopia-attacks-on-aid-operations-education-health-and-protection",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_0a9a398721deefdddec8f064c623eed8",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-uneca-education",
+      "hfInternalId": "69d8dea8720771d666c44f08",
+      "title": "africa-ethiopia-uneca-education",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_fdfea47062161f91497e0a85902637c0",
+      "sourceId": "arxiv:2610.27205v1",
       "hfInternalId": null,
-      "title": "Expanding the Lexicon of Ge'ez Based African Languages: A Comparative Study of Amharic and Tigrinya",
+      "title": "LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents",
       "category": null
     }
   ]

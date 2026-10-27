@@ -1,7 +1,7 @@
 [
   {
     "slug": "lowagent-a-low-resource-multilingual-benchmark-for-web-agents",
-    "arxivId": "2610.27205v1",
+    "arxivId": "2610.27205v2",
     "title": "LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents",
     "authors": [
       "Ocean Monjur",
@@ -15,7 +15,7 @@
     "abstract": "Web agents are typically evaluated on English-language interfaces, leaving their ability to operate across the world's multilingual websites largely unexplored. This gap is especially significant for low-resource languages, where standardized resources for evaluating web agents remain limited. To address this gap, we introduce Low-Resource Web Agent Benchmark (LoWAgent), a benchmark for evaluating web agents across different low-resource languages (LRLs) in comparison to the default, English. LoWAgent evaluates web agents across English and four LRLs: Hindi, Bengali, Urdu, and Amharic. The benchmark comprises of six fully localized websites, instantiated across five languages to yield 3,000 task instances. We evaluate three closed-source and five open-source models across all five languages on all six websites. Our findings show that both closed-source and open-source models experience performance degradation for LRLs compared to English, with substantially greater performance drops observed among the open-source model agents. We further evaluate the robustness of the models on realistic interface disruptions, such as cookie notices and advertisement pop-ups, and find that these further degrade agentic performance. Finally, we show that post-training on a small subset of LoWAgent traces can significantly improve low-resource language agentic task performance, demonstrating the usefulness of our benchmark.",
     "published": "2026-10-19T19:40:15.000Z",
     "year": 2026,
-    "url": "https://arxiv.org/abs/2610.27205v1",
+    "url": "https://arxiv.org/abs/2610.27205v2",
     "categories": [
       "cs.CL",
       "cs.AI"
@@ -27,7 +27,7 @@
     "tasks": [
       "Benchmark"
     ],
-    "projectId": "pjt_fdfea47062161f91497e0a85902637c0"
+    "projectId": "pjt_dcd4c6159fc7209d5b54de771b974dab"
   },
   {
     "slug": "teleasr-amharic-a-benchmark-for-robust-amharic-asr-in-realistic-telecommunication-conditions",
