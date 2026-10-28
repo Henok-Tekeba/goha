@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${org.name} — Ethiopian AI organization`,
       description:
-        org.desc ?? `${org.name} on goha — the home of Ethiopian AI.`,
+        org.desc ?? `${org.name} on goha — an open index of Ethiopian AI.`,
       url: orgUrl,
       type: "profile",
       siteName: "goha",

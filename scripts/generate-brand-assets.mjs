@@ -25,7 +25,7 @@ const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"
   <rect x="0" y="0" width="1200" height="6" fill="#171717" />
   ${mark(2.2).replace('transform="translate(0 0) scale(2.2)"', 'transform="translate(96 120) scale(2.2)"')}
   <text x="96" y="380" font-family="${FONT}" font-size="132" font-weight="700" fill="#171717" letter-spacing="-4">goha</text>
-  <text x="100" y="440" font-family="${FONT}" font-size="36" font-weight="500" fill="#404040">The home of Ethiopian AI</text>
+  <text x="100" y="440" font-family="${FONT}" font-size="36" font-weight="500" fill="#404040">An open index of Ethiopian AI</text>
   <text x="100" y="492" font-family="${FONT}" font-size="24" fill="#8a8a8a">Models · Datasets · Research · Benchmarks · Lineage</text>
   <text x="1104" y="580" text-anchor="end" font-family="${FONT}" font-size="22" fill="#a3a3a3">goha.enoch.et</text>
 </svg>`;

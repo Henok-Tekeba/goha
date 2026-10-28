@@ -34,7 +34,7 @@ const metadataImageUrl = `${FRONTEND_URL}/og.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(FRONTEND_URL),
   title: {
-    default: "goha — The home of Ethiopian AI",
+    default: "goha — An open index of Ethiopian AI",
     template: "%s | goha",
   },
   description:
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   category: "technology",
   openGraph: {
-    title: "goha — The home of Ethiopian AI",
+    title: "goha — An open index of Ethiopian AI",
     description:
       "Find models, datasets, companies, and research papers for Ethiopian languages.",
     images: [
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "goha — The home of Ethiopian AI",
+    title: "goha — An open index of Ethiopian AI",
     creator: "@HenaTeke",
     images: [metadataImageUrl],
     description:

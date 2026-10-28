@@ -4,7 +4,7 @@ import { pageMetadata } from "@/shared/lib/page-metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Terms and Conditions",
   description:
-    "The terms that govern your use of goha — the home of the Ethiopian AI ecosystem.",
+    "The terms that govern your use of goha — an open index of the Ethiopian AI ecosystem.",
   path: "/terms-and-conditions",
 });
 

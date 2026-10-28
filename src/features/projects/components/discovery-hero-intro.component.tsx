@@ -54,7 +54,7 @@ export function DiscoveryHeroIntro({
             animationDuration: DURATION,
           }}
         >
-          The home of
+          An open index of
         </span>
         <span
           className="hero-reveal block"

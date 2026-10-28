@@ -55,8 +55,8 @@ export default function HomepageDashboard({
               </Button>
               <ShareButton
                 path="/"
-                title="goha — The home of Ethiopian AI"
-                text="The home of Ethiopian AI — models, datasets and research in one open index."
+                title="goha — An open index of Ethiopian AI"
+                text="An open index of Ethiopian AI — models, datasets and research in one place."
                 label="Share"
               />
             </div>

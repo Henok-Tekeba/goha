@@ -1,4 +1,4 @@
-# goha — The Home of Ethiopian AI
+# goha — An Open Index of Ethiopian AI
 
 **Live at [goha.enoch.et](https://goha.enoch.et)**
 
