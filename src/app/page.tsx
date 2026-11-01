@@ -7,7 +7,7 @@ import { asset } from "@/shared/lib/asset";
 import { pageMetadata } from "@/shared/lib/page-metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title: "goha — Find and discover the Ethiopian AI ecosystem",
+  title: "goha — An open index of Ethiopian AI",
   description:
     "Find models, datasets, companies, and research papers for Ethiopian languages.",
   path: "/",

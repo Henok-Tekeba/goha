@@ -316,7 +316,7 @@ cd scraper && npm test
 
 | Command | What it covers |
 |---|---|
-| `pnpm build` | Runs the data, copy, workflow, security and artifact gates, then builds 1,140 static HTML pages. |
+| `pnpm build` | Runs the data, copy, workflow, security and artifact gates, then builds the static export (over 1,100 HTML pages). |
 | `pnpm type-check` | TypeScript across the app and scripts. |
 | `pnpm lint` | Biome formatting and lint rules. |
 | `pnpm test:mock` | 16 MSW handler and fixture tests for the upstream UI flows. |
@@ -333,7 +333,7 @@ cd scraper && npm test
 | `pnpm test:artifact` | Export checks: no source maps, mock-session strings or secret-shaped strings; CSP and referrer metadata present. |
 | `cd scraper && npm test` | Bounded HTTP responses, timeouts and model enrichment fallbacks. |
 
-Local verification on 2026-11-01: `pnpm build`, `pnpm test:mock`, `pnpm test:ask`, `pnpm test:leaderboard`, `pnpm test:copy`, `pnpm test:activity` and `pnpm type-check` pass. The build emits 1,140 HTML pages.
+Local verification on 2026-11-01: `pnpm build`, `pnpm test:mock`, `pnpm test:ask`, `pnpm test:leaderboard`, `pnpm test:copy`, `pnpm test:activity` and `pnpm type-check` pass. The build emits over 1,100 static HTML pages.
 
 ## Deployment
 
