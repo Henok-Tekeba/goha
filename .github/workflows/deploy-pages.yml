@@ -3,6 +3,23 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    # Documentation and repository metadata do not change the exported site.
+    # Keep the build allowlist explicit so a README edit cannot redeploy Pages.
+    paths:
+      - "src/**"
+      - "public/**"
+      - "data/**"
+      - "scripts/**"
+      - "next.config.ts"
+      - "next-env.d.ts"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - "postcss.config.mjs"
+      - "tsconfig.json"
+      - "open-next.config.ts"
+      - "wrangler.toml"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
   # The daily scrape commits with the repository GITHUB_TOKEN, and those pushes
   # do not start a new workflow. Redeploy explicitly when the scrape succeeds.

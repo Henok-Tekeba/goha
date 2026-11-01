@@ -50,6 +50,14 @@ for (const name of workflows) {
 }
 
 const deploy = readFileSync(path.join(DIR, "deploy-pages.yml"), "utf8");
+if (!/^ {4}paths:/m.test(deploy)) {
+  failures.push("deploy-pages.yml: push trigger has no path allowlist");
+}
+if (/README\.md|\bdocs\//.test(deploy)) {
+  failures.push(
+    "deploy-pages.yml: documentation paths must not trigger a site deploy"
+  );
+}
 if (!/pnpm install --frozen-lockfile/.test(deploy)) {
   failures.push("deploy-pages.yml: dependencies are not installed frozen");
 }
