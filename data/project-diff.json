@@ -1,35 +1,77 @@
 {
-  "generatedAt": "2026-11-06T14:02:28.622Z",
+  "generatedAt": "2026-11-07T12:46:02.312Z",
   "previousCount": 474,
   "currentCount": 474,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_234f619aab647a06cc42ebf6a8e12d36",
-      "sourceId": "hf-dataset:addisai/wikipedia-amharic",
-      "hfInternalId": "692fbfd15e5d56233ea0a20e",
-      "title": "wikipedia-amharic",
+      "id": "pjt_bf599f30cbc9f0349cd42159cb990a72",
+      "sourceId": "hf:b1n1yam/shook-medium-amharic-2k",
+      "hfInternalId": "6936fa0dd55656c87fd937c4",
+      "title": "shook-medium-amharic-2k",
+      "category": "ASR"
+    },
+    {
+      "id": "pjt_a32c7817790efdc3e44eb0c64e552e28",
+      "sourceId": "hf:rasyosef/roberta-amharic-text-embedding-medium",
+      "hfInternalId": "677c568abaada14e03e02862",
+      "title": "roberta-amharic-text-embedding-medium",
+      "category": "Embeddings"
+    },
+    {
+      "id": "pjt_15a83b7834c6653c0a779c759bec0389",
+      "sourceId": "hf:rasyosef/snowflake-arctic-embed-l-v2.0-finetuned-amharic",
+      "hfInternalId": "67af9dcd68f07dd7a706a472",
+      "title": "snowflake-arctic-embed-l-v2.0-finetuned-amharic",
+      "category": "Embeddings"
+    },
+    {
+      "id": "pjt_0cca467119a75e589cda9a672c556035",
+      "sourceId": "hf:yosefw/bert-amharic-embed-small",
+      "hfInternalId": "67b3d680df138a246f7c7c7b",
+      "title": "bert-amharic-embed-small",
+      "category": "Embeddings"
+    },
+    {
+      "id": "pjt_aad2b836545993e58aa32715f23647d7",
+      "sourceId": "hf-dataset:abdukuzi45/amharic-cpt-with-english-replay-v1",
+      "hfInternalId": "6aca34ab8ba9d27147287287",
+      "title": "amharic-cpt-with-english-replay-v1",
       "category": "Dataset"
     },
     {
-      "id": "pjt_d0bc67e6af91a88cc70f3ad8e61d65a7",
-      "sourceId": "hf-dataset:addisai/FineTome-single-turn-dedup-amharic",
-      "hfInternalId": "68cea69f254721e0011585b7",
-      "title": "FineTome-single-turn-dedup-amharic",
+      "id": "pjt_e9b82a0c8d73cbe255b3a48550c416b8",
+      "sourceId": "hf-dataset:abdukuzi45/amharic-cpt-packed-text-2048-v9",
+      "hfInternalId": "6ac989040cd5150ed908a3b4",
+      "title": "amharic-cpt-packed-text-2048-v9",
       "category": "Dataset"
     },
     {
-      "id": "pjt_45853cad2f0518d95230e5069bbd741e",
-      "sourceId": "hf-dataset:abdukuzi45/amharic-cpt-text-only-v1",
-      "hfInternalId": "6ae3747edd92c50c978aed14",
-      "title": "amharic-cpt-text-only-v1",
+      "id": "pjt_3dd6b46beccbe8946a3fe38b021e3455",
+      "sourceId": "hf-dataset:abdukuzi45/amharic-cpt-corpus-v16-balanced",
+      "hfInternalId": "6aaecd660b7db407b23bd4d2",
+      "title": "amharic-cpt-corpus-v16-balanced",
       "category": "Dataset"
     },
     {
-      "id": "pjt_bb51b4aadcd188357ca365183f346b4f",
-      "sourceId": "hf-dataset:electricsheepafrica/africa-world-bank-health-indicators-for-ethiopia",
-      "hfInternalId": "69d8aaa06add43f6718e2af2",
-      "title": "africa-world-bank-health-indicators-for-ethiopia",
+      "id": "pjt_a81353f0b9481017007f0ae86b87b456",
+      "sourceId": "hf-dataset:abdukuzi45/amharic-sft-mixed-cot-2026",
+      "hfInternalId": "6a87365db3982fed74017195",
+      "title": "amharic-sft-mixed-cot-2026",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_0ced33fab8eb24a9e125acc190d7794c",
+      "sourceId": "hf-dataset:abdukuzi45/amharic-sft-combined-2026-with-cot",
+      "hfInternalId": "6a86d6a87a55e2e83c37271a",
+      "title": "amharic-sft-combined-2026-with-cot",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_1308c35c71e7594a6de330b33d31b211",
+      "sourceId": "hf-dataset:michsethowusu/pedi-oromo_sentence-pairs",
+      "hfInternalId": "67e96d0b648b9f5598b4bf36",
+      "title": "pedi-oromo_sentence-pairs",
       "category": "Dataset"
     }
   ]
