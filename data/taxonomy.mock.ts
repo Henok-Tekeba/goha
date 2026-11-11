@@ -101,14 +101,14 @@ export const techStacks: TechStackType[] = [
   ),
   tech(
     "tst_00000000000000000000000000000036",
-    "PyTorch",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+    "PEFT",
+    "/langs/sym-link.svg",
     "TECH"
   ),
   tech(
     "tst_00000000000000000000000000000037",
-    "PEFT",
-    "/langs/sym-link.svg",
+    "PyTorch",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
     "TECH"
   ),
   tech(
