@@ -1,5 +1,28 @@
 [
   {
+    "slug": "what-do-tokenizer-comparisons-measure-disentangling-granularity-root-assignment-and-word-level-readout-across-amharic-and-hausa",
+    "arxivId": "2611.14818v1",
+    "title": "What Do Tokenizer Comparisons Measure? Disentangling Granularity, Root Assignment, and Word-Level Readout across Amharic and Hausa",
+    "authors": [
+      "Abdul Rehman Antall",
+      "Baidya Nath Saha"
+    ],
+    "abstract": "Morphology-aware tokenizers are expected to help morphologically rich languages, and their reported gains over byte-pair encoding (BPE) are usually credited to their linguistic units. A comparison with BPE cannot support this attribution, since such a tokenizer also segments text more finely (granularity) and, on token-level tasks, changes how much the sub-token readout matters. We separate both factors from the effect of grouping words by their roots (root assignment) in Amharic, a Semitic language whose Ge'ez abugida hides consonantal roots inside syllabic glyphs, with Latin-script Hausa as an orthographic contrast. Our design combines a lossless root-and-pattern tokenizer with controls that change one factor at a time, in two independent implementations. In both, real root assignment improves Amharic named-entity recognition over scrambled roots (+4.9 and +4.7 F1), and root-frequency structure explains little of this gain. In small from-scratch models, the readout choice moves F1 by up to 13.4 points and reverses the sign of every comparison of the root-and-pattern arms with BPE, whereas in two pretrained encoders it moves F1 by less than one point. The granularity effect changes sign across languages and implementations. We recommend decomposing tokenizer effects, and reporting the readout, before a gain is attributed to linguistic structure.",
+    "published": "2026-11-10T23:11:51.000Z",
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2611.14818v1",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ],
+    "languages": [
+      "Amharic",
+      "Ge'ez"
+    ],
+    "tasks": [],
+    "projectId": "pjt_e3336b8d2cec7be3df486ccc033e5861"
+  },
+  {
     "slug": "inherited-weights-measuring-the-tokenization-premium-and-the-sovereignty-cost-of-language-models-for-the-global-south",
     "arxivId": "2611.13441v1",
     "title": "Inherited Weights: Measuring the Tokenization Premium and the Sovereignty Cost of Language Models for the Global South",
@@ -1920,32 +1943,6 @@
     ],
     "tasks": [],
     "projectId": "pjt_05e9c5852dd6c217c9c3678311bd7e2c"
-  },
-  {
-    "slug": "anec-an-amharic-named-entity-corpus-and-transformer-based-recognizer",
-    "arxivId": "2207.00785v1",
-    "title": "ANEC: An Amharic Named Entity Corpus and Transformer Based Recognizer",
-    "authors": [
-      "Ebrahim Chekol Jibril",
-      "A. Cüneyd Tantğ"
-    ],
-    "abstract": "Named Entity Recognition is an information extraction task that serves as a preprocessing step for other natural language processing tasks, such as machine translation, information retrieval, and question answering. Named entity recognition enables the identification of proper names as well as temporal and numeric expressions in an open domain text. For Semitic languages such as Arabic, Amharic, and Hebrew, the named entity recognition task is more challenging due to the heavily inflected structure of these languages. In this paper, we present an Amharic named entity recognition system based on bidirectional long short-term memory with a conditional random fields layer. We annotate a new Amharic named entity recognition dataset (8,070 sentences, which has 182,691 tokens) and apply Synthetic Minority Over-sampling Technique to our dataset to mitigate the imbalanced classification problem. Our named entity recognition system achieves an F_1 score of 93%, which is the new state-of-the-art result for Amharic named entity recognition.",
-    "published": "2022-07-02T09:50:37.000Z",
-    "year": 2022,
-    "url": "https://arxiv.org/abs/2207.00785v1",
-    "categories": [
-      "cs.CL",
-      "cs.AI",
-      "cs.LG"
-    ],
-    "languages": [
-      "Amharic"
-    ],
-    "tasks": [
-      "Translation",
-      "NER"
-    ],
-    "projectId": "pjt_168796c13cdb67a3caf02bf1d8d76a6d"
   },
   {
     "slug": "a-new-amharic-speech-emotion-dataset-and-classification-benchmark",

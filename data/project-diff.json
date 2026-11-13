@@ -1,78 +1,57 @@
 {
-  "generatedAt": "2026-11-12T14:55:56.214Z",
-  "previousCount": 476,
+  "generatedAt": "2026-11-13T14:17:38.017Z",
+  "previousCount": 477,
   "currentCount": 477,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_a897568631709382f1964e2f7b46f929",
-      "sourceId": "hf:abdukuzi45/qwen3.5-4b-amharic-newrows-only-v6-fixed",
-      "hfInternalId": "6ae300ecd9b29a69546ff763",
-      "title": "qwen3.5-4b-amharic-newrows-only-v6-fixed",
-      "category": "Embeddings"
-    },
-    {
-      "id": "pjt_03fc0bab4b1c68946b20fed8a1468d9c",
-      "sourceId": "hf-dataset:DevnilMaster1/Handwritten-Amharic-character-Dataset",
-      "hfInternalId": "69f74fa93078959575a8ed14",
-      "title": "Handwritten-Amharic-character-Dataset",
+      "id": "pjt_d4e0929c5eea50416e182d04ac26d3e1",
+      "sourceId": "hf-dataset:michsethowusu/oromo-swahili_sentence-pairs",
+      "hfInternalId": "67e9709a983f02b73810bc05",
+      "title": "oromo-swahili_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_088224e6b3ebb7790e4f162fb9c789ee",
-      "sourceId": "hf-dataset:rasyosef/amharic-passage-retrieval-dataset",
-      "hfInternalId": "682b8b24e82ef994e9ac90a2",
-      "title": "amharic-passage-retrieval-dataset",
+      "id": "pjt_97491ae2dd7c9f922eceed6e9d902c92",
+      "sourceId": "hf-dataset:michsethowusu/lingala-oromo_sentence-pairs",
+      "hfInternalId": "67e97a35c46b7f474ca2a448",
+      "title": "lingala-oromo_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_62103e6a22ced92ff1d66d227c65332c",
-      "sourceId": "hf-dataset:Zagol/wikipedia-amharic",
-      "hfInternalId": "6accd5091a679f99b3e0a1da",
-      "title": "wikipedia-amharic",
+      "id": "pjt_ffb414982236b866e88e575396ba43ca",
+      "sourceId": "hf-dataset:michsethowusu/tigrinya-tumbuka_sentence-pairs",
+      "hfInternalId": "67e9577dea97f3c65c3457d3",
+      "title": "tigrinya-tumbuka_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_3f7a1cf04eebbe87a068db8452662a66",
-      "sourceId": "hf-dataset:michsethowusu/chichewa-oromo_sentence-pairs",
-      "hfInternalId": "67ee66af5224e5e2c1c5ebf7",
-      "title": "chichewa-oromo_sentence-pairs",
+      "id": "pjt_c1265246667043b53e41a8ad3cf4fbc5",
+      "sourceId": "hf-dataset:michsethowusu/kamba-tigrinya_sentence-pairs",
+      "hfInternalId": "67ea437ea4a1a8e93446461e",
+      "title": "kamba-tigrinya_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_29ba68eb4691334e706e2eda0b055d19",
-      "sourceId": "hf-dataset:michsethowusu/dinka-oromo_sentence-pairs",
-      "hfInternalId": "67ed3e2c1fa141774644aebc",
-      "title": "dinka-oromo_sentence-pairs",
+      "id": "pjt_1158498b11de5c1de0da2a53dad61b13",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-targeted-populaton-food-cluster",
+      "hfInternalId": "69d8928ad4ea9f408620d77e",
+      "title": "africa-ethiopia-targeted-populaton-food-cluster",
       "category": "Dataset"
     },
     {
-      "id": "pjt_d2abd8599fd75382f988c3a5d7c8e5f7",
-      "sourceId": "hf-dataset:michsethowusu/amharic-oromo_sentence-pairs",
-      "hfInternalId": "67ee7c400907b06925063cfb",
-      "title": "amharic-oromo_sentence-pairs",
+      "id": "pjt_45fe1aa00b4e683121262e47c2501918",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-education-ethiopia",
+      "hfInternalId": "69eeb5dd5624f54038bed81b",
+      "title": "africa-education-ethiopia",
       "category": "Dataset"
     },
     {
-      "id": "pjt_f97db4dab347874e25f558d1af62c08d",
-      "sourceId": "hf-dataset:michsethowusu/igbo-tigrinya_sentence-pairs",
-      "hfInternalId": "67ed0b7019e86da3a991036a",
-      "title": "igbo-tigrinya_sentence-pairs",
-      "category": "Dataset"
-    },
-    {
-      "id": "pjt_28db29e2b38159121048db1717531af6",
-      "sourceId": "hf-dataset:michsethowusu/hausa-tigrinya_sentence-pairs",
-      "hfInternalId": "67ed1214bd4559b0db8d6f77",
-      "title": "hausa-tigrinya_sentence-pairs",
-      "category": "Dataset"
-    },
-    {
-      "id": "pjt_c033dd8e1c5a1dd6397220e21d4fee2f",
-      "sourceId": "hf-dataset:michsethowusu/fulah-tigrinya_sentence-pairs",
-      "hfInternalId": "67ed1dc2bd4559b0db90e1b1",
-      "title": "fulah-tigrinya_sentence-pairs",
-      "category": "Dataset"
+      "id": "pjt_168796c13cdb67a3caf02bf1d8d76a6d",
+      "sourceId": "arxiv:2207.00785v1",
+      "hfInternalId": null,
+      "title": "ANEC: An Amharic Named Entity Corpus and Transformer Based Recognizer",
+      "category": null
     }
   ]
 }
