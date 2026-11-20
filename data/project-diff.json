@@ -1,42 +1,63 @@
 {
-  "generatedAt": "2026-11-19T15:32:20.399Z",
-  "previousCount": 478,
+  "generatedAt": "2026-11-20T15:09:13.146Z",
+  "previousCount": 480,
   "currentCount": 480,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_a9d5b2e3120939ab81e4435df0763d45",
-      "sourceId": "hf:klohdfhk/amharic-sentiment-ai",
-      "hfInternalId": "6ae809c39b60e7b122715e1e",
-      "title": "amharic-sentiment-ai",
+      "id": "pjt_d6900ed3ce2ed14e5fe67df8323fd7c8",
+      "sourceId": "hf:abdukuzi45/Qwen3.5-4B-Amharic-32k-StageA-Merged",
+      "hfInternalId": "6af112a079ad42b6a581cc37",
+      "title": "Qwen3.5-4B-Amharic-32k-StageA-Merged",
+      "category": "LLM"
+    },
+    {
+      "id": "pjt_1037242f99868e440d89ea84484c278b",
+      "sourceId": "hf:rasyosef/bert-medium-amharic-finetuned-sentiment",
+      "hfInternalId": "667cc157535b839564afdb31",
+      "title": "bert-medium-amharic-finetuned-sentiment",
       "category": "Other"
     },
     {
-      "id": "pjt_01d47ef4172f9e153e88e2a43888d8b6",
-      "sourceId": "hf-dataset:EthioNLP/Amharic_Instruction_dataset",
-      "hfInternalId": "65f19055bf339495495a825b",
-      "title": "Amharic_Instruction_dataset",
+      "id": "pjt_2b261e9f8c8457e2aeca325fe950806b",
+      "sourceId": "hf-dataset:a3xrfgb/amharic-sentences-corpus",
+      "hfInternalId": "69484ddd1f5441608be95bb2",
+      "title": "amharic-sentences-corpus",
       "category": "Dataset"
     },
     {
-      "id": "pjt_9ed78a658e5daad7faae624b5b103224",
-      "sourceId": "hf-dataset:michsethowusu/oromo-tumbuka_sentence-pairs",
-      "hfInternalId": "67e96f57b3a87cc3bc49fd81",
-      "title": "oromo-tumbuka_sentence-pairs",
+      "id": "pjt_ffe9b85a3c7434ed7456d3d2914b3d02",
+      "sourceId": "hf-dataset:yosefw/amharic-news-retrieval-dataset-v2-with-negatives-V2",
+      "hfInternalId": "68545097a6dd57e46517421b",
+      "title": "amharic-news-retrieval-dataset-v2-with-negatives-V2",
       "category": "Dataset"
     },
     {
-      "id": "pjt_d18428c0469e592355be5dc72d14928a",
-      "sourceId": "hf-dataset:michsethowusu/kongo-tigrinya_sentence-pairs",
-      "hfInternalId": "67e97da65e63bac35a48132c",
-      "title": "kongo-tigrinya_sentence-pairs",
+      "id": "pjt_d1076e73d80d77fb6c06ee7112cd6a7f",
+      "sourceId": "hf-dataset:birhanu23/leyu-amharic-shewa-dialect",
+      "hfInternalId": "6a89eecd3e7d6cc7a5aad981",
+      "title": "leyu-amharic-shewa-dialect",
+      "category": "ASR"
+    },
+    {
+      "id": "pjt_32b2bdb673067f15d9bf67ba89b6b9f3",
+      "sourceId": "hf-dataset:michsethowusu/oromo-xhosa_sentence-pairs",
+      "hfInternalId": "67e96e53c655d64ca897769e",
+      "title": "oromo-xhosa_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_9a4e9fc52f84f80c79c84c93ed08f560",
-      "sourceId": "hf-dataset:saillab/alpaca_tigrinya_taco",
-      "hfInternalId": "665e622b5f18d9b328a8b064",
-      "title": "alpaca_tigrinya_taco",
+      "id": "pjt_c033dd8e1c5a1dd6397220e21d4fee2f",
+      "sourceId": "hf-dataset:michsethowusu/fulah-tigrinya_sentence-pairs",
+      "hfInternalId": "67ed1dc2bd4559b0db90e1b1",
+      "title": "fulah-tigrinya_sentence-pairs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_afaee016c29ed0980835fb5fac06acb8",
+      "sourceId": "hf-dataset:michsethowusu/bambara-tigrinya_sentence-pairs",
+      "hfInternalId": "67ee71a0cc32d68788013752",
+      "title": "bambara-tigrinya_sentence-pairs",
       "category": "Dataset"
     }
   ]

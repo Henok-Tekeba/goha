@@ -28,7 +28,7 @@
     "name": "amharic-omnivoice-tts",
     "id": "gheero-Leyu/amharic-omnivoice-tts",
     "projectId": "pjt_5b7b249b0e6b360af397492873521ff7",
-    "dl": 121
+    "dl": 118
    }
   ],
   "topRepos": [
@@ -92,11 +92,11 @@
   ],
   "counts": {
    "models": 0,
-   "datasets": 68,
+   "datasets": 66,
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1359,
+  "downloadsMonthly": 1383,
   "likes": 4,
   "topModels": [],
   "topRepos": [],
@@ -122,38 +122,38 @@
    "spaces": 0,
    "repos": 4
   },
-  "downloadsMonthly": 122,
+  "downloadsMonthly": 134,
   "likes": 4,
   "topModels": [
    {
     "name": "whisper-small-tigrinya-merged",
     "id": "Aregay01/whisper-small-tigrinya-merged",
     "projectId": "pjt_85de75e07833419c045cd89e0bf7c572",
-    "dl": 23
+    "dl": 24
    },
    {
     "name": "whisper-large-v3-tigrinya-experiment",
     "id": "Aregay01/whisper-large-v3-tigrinya-experiment",
     "projectId": "pjt_8c9ec5eff932c3d2028cf68a9c1a0534",
-    "dl": 11
+    "dl": 12
    },
    {
     "name": "whisper-medium-tigrinya-experiment",
     "id": "Aregay01/whisper-medium-tigrinya-experiment",
     "projectId": "pjt_d04a9aa573b3842292d8dfb2b916da5c",
-    "dl": 10
+    "dl": 11
    },
    {
     "name": "whisper-medium-tigrinya-exp",
     "id": "Aregay01/whisper-medium-tigrinya-exp",
     "projectId": "pjt_39fbbea7197d1f84596161a5963cd8da",
-    "dl": 8
+    "dl": 9
    },
    {
     "name": "whisper-small-tigrinya-r-32",
     "id": "Aregay01/whisper-small-tigrinya-r-32",
     "projectId": "pjt_dde4fb145f126fbe54c713f7d741eabd",
-    "dl": 7
+    "dl": 8
    }
   ],
   "topRepos": [
@@ -206,7 +206,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 6736,
+  "downloadsMonthly": 6765,
   "likes": 14,
   "topModels": [
    {
@@ -219,25 +219,25 @@
     "name": "Llama-3.2-1B-Amharic-Instruct",
     "id": "rasyosef/Llama-3.2-1B-Amharic-Instruct",
     "projectId": "pjt_c98e4e697cb1d173803cc9d6627c4858",
-    "dl": 841
+    "dl": 833
    },
    {
     "name": "Llama-3.2-400M-Amharic",
     "id": "rasyosef/Llama-3.2-400M-Amharic",
     "projectId": "pjt_66810a2ea9349a87375f450577e1fc05",
-    "dl": 696
+    "dl": 715
    },
    {
     "name": "Llama-3.2-1B-Amharic",
     "id": "rasyosef/Llama-3.2-1B-Amharic",
     "projectId": "pjt_19233d64ab337c516b4651f3a7a94e90",
-    "dl": 651
+    "dl": 648
    },
    {
     "name": "gpt2-mini-amharic-28k",
     "id": "rasyosef/gpt2-mini-amharic-28k",
     "projectId": "pjt_3516ea4e21bbdbe5df7d121bbc26ba67",
-    "dl": 465
+    "dl": 462
    }
   ],
   "topRepos": [],
@@ -263,20 +263,20 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 158,
+  "downloadsMonthly": 159,
   "likes": 3,
   "topModels": [
    {
     "name": "tigrinya-asr-characters",
     "id": "Samuael/tigrinya-asr-characters",
     "projectId": "pjt_b5af4d48e1b4771153324a0943d69fb9",
-    "dl": 53
+    "dl": 52
    },
    {
     "name": "geez_t5-big-15k",
     "id": "Samuael/geez_t5-big-15k",
     "projectId": "pjt_bd25f0e0bf0648986d56115eee78d95d",
-    "dl": 50
+    "dl": 51
    },
    {
     "name": "ethiopic-sec2sec-tigrinya",
@@ -288,7 +288,7 @@
     "name": "geez_t5-15k",
     "id": "Samuael/geez_t5-15k",
     "projectId": "pjt_6ae59bf0c0e8af76743e1038f7bd8c92",
-    "dl": 12
+    "dl": 13
    },
    {
     "name": "geez_15k_sc_mt5",
@@ -298,78 +298,6 @@
    }
   ],
   "topRepos": [],
-  "topSpaces": []
- },
- {
-  "slug": "fgaim",
-  "key": "fgaim",
-  "name": "fgaim",
-  "kind": "individual",
-  "desc": "GLOCR: GeezLab OCR Dataset Overview GLOCR is a Text Recognition (TR) and Optical Character Recognition (OCR) dataset for the Tigrinya language. The dataset contains a total of 661K image-label pairs f",
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Tigrinya"
-  ],
-  "counts": {
-   "models": 2,
-   "datasets": 3,
-   "spaces": 0,
-   "repos": 5
-  },
-  "downloadsMonthly": 850,
-  "likes": 42,
-  "topModels": [
-   {
-    "name": "tielectra-geezswitch",
-    "id": "fgaim/tielectra-geezswitch",
-    "projectId": "pjt_53fc6e438623abf62ed5c71b1e424144",
-    "dl": 121
-   },
-   {
-    "name": "tiroberta-geezswitch",
-    "id": "fgaim/tiroberta-geezswitch",
-    "projectId": "pjt_13566061d2d975c0e9c8b06f6641b5d2",
-    "dl": 108
-   }
-  ],
-  "topRepos": [
-   {
-    "name": "fgaim/HornMorpho",
-    "url": "https://github.com/fgaim/HornMorpho",
-    "stars": 12,
-    "desc": "Morphological analysis and generation of Amharic, Oromo, and Tigrinya"
-   },
-   {
-    "name": "fgaim/TiALD",
-    "url": "https://github.com/fgaim/TiALD",
-    "stars": 10,
-    "desc": "A Multi-task Benchmark for Abusive Language Detection in Tigrinya Social Media"
-   },
-   {
-    "name": "fgaim/Tigrinya-PLMs",
-    "url": "https://github.com/fgaim/Tigrinya-PLMs",
-    "stars": 8,
-    "desc": "Monolingual Pre-trained Language Models for Tigrinya"
-   },
-   {
-    "name": "fgaim/TiQuAD",
-    "url": "https://github.com/fgaim/TiQuAD",
-    "stars": 3,
-    "desc": "Tigrinya Question-Answering Benchmark Dataset"
-   },
-   {
-    "name": "fgaim/tigrinya-numbers",
-    "url": "https://github.com/fgaim/tigrinya-numbers",
-    "stars": 2,
-    "desc": "Python package to convert numbers to Tigrinya words"
-   }
-  ],
   "topSpaces": []
  },
  {
@@ -392,12 +320,12 @@
   ],
   "counts": {
    "models": 1,
-   "datasets": 0,
+   "datasets": 1,
    "spaces": 0,
    "repos": 6
   },
-  "downloadsMonthly": 118,
-  "likes": 29,
+  "downloadsMonthly": 211,
+  "likes": 36,
   "topModels": [
    {
     "name": "Amharic-llama-base-model",
@@ -447,6 +375,78 @@
   "topSpaces": []
  },
  {
+  "slug": "fgaim",
+  "key": "fgaim",
+  "name": "fgaim",
+  "kind": "individual",
+  "desc": "GLOCR: GeezLab OCR Dataset Overview GLOCR is a Text Recognition (TR) and Optical Character Recognition (OCR) dataset for the Tigrinya language. The dataset contains a total of 661K image-label pairs f",
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Tigrinya"
+  ],
+  "counts": {
+   "models": 2,
+   "datasets": 3,
+   "spaces": 0,
+   "repos": 5
+  },
+  "downloadsMonthly": 613,
+  "likes": 42,
+  "topModels": [
+   {
+    "name": "tielectra-geezswitch",
+    "id": "fgaim/tielectra-geezswitch",
+    "projectId": "pjt_53fc6e438623abf62ed5c71b1e424144",
+    "dl": 76
+   },
+   {
+    "name": "tiroberta-geezswitch",
+    "id": "fgaim/tiroberta-geezswitch",
+    "projectId": "pjt_13566061d2d975c0e9c8b06f6641b5d2",
+    "dl": 61
+   }
+  ],
+  "topRepos": [
+   {
+    "name": "fgaim/HornMorpho",
+    "url": "https://github.com/fgaim/HornMorpho",
+    "stars": 12,
+    "desc": "Morphological analysis and generation of Amharic, Oromo, and Tigrinya"
+   },
+   {
+    "name": "fgaim/TiALD",
+    "url": "https://github.com/fgaim/TiALD",
+    "stars": 10,
+    "desc": "A Multi-task Benchmark for Abusive Language Detection in Tigrinya Social Media"
+   },
+   {
+    "name": "fgaim/Tigrinya-PLMs",
+    "url": "https://github.com/fgaim/Tigrinya-PLMs",
+    "stars": 8,
+    "desc": "Monolingual Pre-trained Language Models for Tigrinya"
+   },
+   {
+    "name": "fgaim/TiQuAD",
+    "url": "https://github.com/fgaim/TiQuAD",
+    "stars": 3,
+    "desc": "Tigrinya Question-Answering Benchmark Dataset"
+   },
+   {
+    "name": "fgaim/tigrinya-numbers",
+    "url": "https://github.com/fgaim/tigrinya-numbers",
+    "stars": 2,
+    "desc": "Python package to convert numbers to Tigrinya words"
+   }
+  ],
+  "topSpaces": []
+ },
+ {
   "slug": "electricsheepafrica",
   "key": "electricsheepafrica",
   "name": "electricsheepafrica",
@@ -468,7 +468,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 922,
+  "downloadsMonthly": 964,
   "likes": 1,
   "topModels": [],
   "topRepos": [],
@@ -494,14 +494,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 164,
+  "downloadsMonthly": 152,
   "likes": 0,
   "topModels": [
    {
     "name": "speecht5_afan_oromo_final_done",
     "id": "froabera/speecht5_afan_oromo_final_done",
     "projectId": "pjt_134aad68ea7321dc767a6df48025fd1c",
-    "dl": 88
+    "dl": 77
    },
    {
     "name": "speecht5_afan_oromo15",
@@ -551,7 +551,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 57,
+  "downloadsMonthly": 58,
   "likes": 1,
   "topModels": [
    {
@@ -582,7 +582,7 @@
     "name": "Geez_word2vec_skipgram.model",
     "id": "Hailay/Geez_word2vec_skipgram.model",
     "projectId": "pjt_95f6fe1f89a1915e37b07071ecfe6bc5",
-    "dl": 2
+    "dl": 3
    }
   ],
   "topRepos": [],
@@ -608,14 +608,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 47,
+  "downloadsMonthly": 48,
   "likes": 1,
   "topModels": [
    {
     "name": "afaan-oromo-whisper-small",
     "id": "HNDE/afaan-oromo-whisper-small",
     "projectId": "pjt_10ac18911f00adbb80e7cae4d1f75ff9",
-    "dl": 35
+    "dl": 36
    },
    {
     "name": "oromo-whisper-enterprise",
@@ -643,6 +643,43 @@
    }
   ],
   "topRepos": [],
+  "topSpaces": []
+ },
+ {
+  "slug": "hadamard-2",
+  "key": "hadamard2",
+  "name": "hadamard-2",
+  "kind": "individual",
+  "desc": "Leyu Amharic - Gojjam Dialect Speech Corpus Dataset Description A parallel speech corpus of audio recordings paired with their transcripts, focused on the Gojjam dialect of Amharic, for ASR and TTS re",
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Afaan Oromo",
+   "Amharic",
+   "Tigrinya"
+  ],
+  "counts": {
+   "models": 0,
+   "datasets": 8,
+   "spaces": 0,
+   "repos": 1
+  },
+  "downloadsMonthly": 757,
+  "likes": 10,
+  "topModels": [],
+  "topRepos": [
+   {
+    "name": "hadamard-2/AbugidaNLP",
+    "url": "https://github.com/hadamard-2/AbugidaNLP",
+    "stars": 9,
+    "desc": "natural language processing (NLP) library for Ethiopian languages"
+   }
+  ],
   "topSpaces": []
  },
  {
@@ -759,26 +796,26 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 2432,
+  "downloadsMonthly": 2337,
   "likes": 11,
   "topModels": [
    {
     "name": "Ethio-ASR-amharic",
     "id": "badrex/Ethio-ASR-amharic",
     "projectId": "pjt_d3cd3ddc412f6df1adcdc037723e2074",
-    "dl": 693
+    "dl": 694
    },
    {
     "name": "Ethio-ASR-oromo",
     "id": "badrex/Ethio-ASR-oromo",
     "projectId": "pjt_b0c09e4800b0c6de90388df940b75fdf",
-    "dl": 174
+    "dl": 141
    },
    {
     "name": "Ethio-ASR-tigrinya",
     "id": "badrex/Ethio-ASR-tigrinya",
     "projectId": "pjt_d1f51036b00a7d98a24695f0305b4e15",
-    "dl": 102
+    "dl": 93
    }
   ],
   "topRepos": [],
@@ -806,7 +843,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 886,
+  "downloadsMonthly": 901,
   "likes": 1,
   "topModels": [
    {
@@ -844,91 +881,6 @@
   "topSpaces": []
  },
  {
-  "slug": "hadamard-2",
-  "key": "hadamard2",
-  "name": "hadamard-2",
-  "kind": "individual",
-  "desc": "Leyu Amharic - Gojjam Dialect Speech Corpus Dataset Description A parallel speech corpus of audio recordings paired with their transcripts, focused on the Gojjam dialect of Amharic, for ASR and TTS re",
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Afaan Oromo",
-   "Amharic",
-   "Tigrinya"
-  ],
-  "counts": {
-   "models": 0,
-   "datasets": 7,
-   "spaces": 0,
-   "repos": 1
-  },
-  "downloadsMonthly": 663,
-  "likes": 9,
-  "topModels": [],
-  "topRepos": [
-   {
-    "name": "hadamard-2/AbugidaNLP",
-    "url": "https://github.com/hadamard-2/AbugidaNLP",
-    "stars": 9,
-    "desc": "natural language processing (NLP) library for Ethiopian languages"
-   }
-  ],
-  "topSpaces": []
- },
- {
-  "slug": "abdukuzi45",
-  "key": "abdukuzi45",
-  "name": "abdukuzi45",
-  "kind": "individual",
-  "desc": "Cleaned Amharic–English CPT corpus — packed up to 8,192 tokens This is a cleaned, pre-tokenized corpus, not a trained model. All 60 packed Parquet shards are at the repository root. Reading them requi",
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Amharic",
-   "English"
-  ],
-  "counts": {
-   "models": 3,
-   "datasets": 3,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 2104,
-  "likes": 1,
-  "topModels": [
-   {
-    "name": "Qwen3.5-4B-Amharic-32k-StageA-Merged",
-    "id": "abdukuzi45/Qwen3.5-4B-Amharic-32k-StageA-Merged",
-    "projectId": "pjt_d6900ed3ce2ed14e5fe67df8323fd7c8",
-    "dl": 645
-   },
-   {
-    "name": "qwen3.5-4b-amharic-sft",
-    "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
-    "projectId": "pjt_1d987c0e0da8fb97c6c374bf07d9302d",
-    "dl": 213
-   },
-   {
-    "name": "qwen3.5-amharic-4b-thinking-uncensored",
-    "id": "abdukuzi45/qwen3.5-amharic-4b-thinking-uncensored",
-    "projectId": "pjt_591241d9c3e00786e2353e45fd6251c0",
-    "dl": 94
-   }
-  ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
   "slug": "kyagaba",
   "key": "kyagaba",
   "name": "KYAGABA",
@@ -948,7 +900,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 562,
+  "downloadsMonthly": 560,
   "likes": 1,
   "topModels": [
    {
@@ -989,7 +941,7 @@
    "spaces": 0,
    "repos": 2
   },
-  "downloadsMonthly": 397,
+  "downloadsMonthly": 394,
   "likes": 16,
   "topModels": [],
   "topRepos": [
@@ -1028,14 +980,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 191,
+  "downloadsMonthly": 192,
   "likes": 3,
   "topModels": [
    {
     "name": "gpt2-tigrinya-medium",
     "id": "luel/gpt2-tigrinya-medium",
     "projectId": "pjt_d16fac57e1dffdc97c52ec26a262903c",
-    "dl": 122
+    "dl": 125
    },
    {
     "name": "gpt2-tigrinya-small",
@@ -1047,13 +999,13 @@
     "name": "gemma-3-4b-tigrinya-qa",
     "id": "luel/gemma-3-4b-tigrinya-qa",
     "projectId": "pjt_43786093cf2c9edf56dc67a4afe764be",
-    "dl": 19
+    "dl": 18
    },
    {
     "name": "gemma-3-4b-tigrinya",
     "id": "luel/gemma-3-4b-tigrinya",
     "projectId": "pjt_4d3b3b097b26819a2a479dcc9ade578d",
-    "dl": 15
+    "dl": 14
    }
   ],
   "topRepos": [],
@@ -1216,6 +1168,48 @@
   "topSpaces": []
  },
  {
+  "slug": "abdukuzi45",
+  "key": "abdukuzi45",
+  "name": "abdukuzi45",
+  "kind": "individual",
+  "desc": "Cleaned Amharic–English CPT corpus — packed up to 8,192 tokens This is a cleaned, pre-tokenized corpus, not a trained model. All 60 packed Parquet shards are at the repository root. Reading them requi",
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Amharic",
+   "English"
+  ],
+  "counts": {
+   "models": 2,
+   "datasets": 3,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 1471,
+  "likes": 1,
+  "topModels": [
+   {
+    "name": "qwen3.5-4b-amharic-sft",
+    "id": "abdukuzi45/qwen3.5-4b-amharic-sft",
+    "projectId": "pjt_1d987c0e0da8fb97c6c374bf07d9302d",
+    "dl": 218
+   },
+   {
+    "name": "qwen3.5-amharic-4b-thinking-uncensored",
+    "id": "abdukuzi45/qwen3.5-amharic-4b-thinking-uncensored",
+    "projectId": "pjt_591241d9c3e00786e2353e45fd6251c0",
+    "dl": 91
+   }
+  ],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
   "slug": "mewaeltsegay",
   "key": "mewaeltsegay",
   "name": "mewaeltsegay",
@@ -1237,7 +1231,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 83,
+  "downloadsMonthly": 88,
   "likes": 0,
   "topModels": [
    {
@@ -1285,7 +1279,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 152,
+  "downloadsMonthly": 162,
   "likes": 0,
   "topModels": [
    {
@@ -1324,14 +1318,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 686,
+  "downloadsMonthly": 696,
   "likes": 2,
   "topModels": [
    {
     "name": "AmharicRoBERTa",
     "id": "israel/AmharicRoBERTa",
     "projectId": "pjt_5f73702ffd1253d3f3745a1a7b10e827",
-    "dl": 231
+    "dl": 233
    },
    {
     "name": "AmharicXLMRoberta",
@@ -1363,26 +1357,26 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 435,
+  "downloadsMonthly": 431,
   "likes": 4,
   "topModels": [
    {
     "name": "bert-base-multilingual-cased-finetuned-amharic",
     "id": "Davlan/bert-base-multilingual-cased-finetuned-amharic",
     "projectId": "pjt_b61300e5be6cb2512808e2947f92c154",
-    "dl": 217
+    "dl": 213
    },
    {
     "name": "xlm-roberta-large-finetuned-amharic",
     "id": "Davlan/xlm-roberta-large-finetuned-amharic",
     "projectId": "pjt_659189baafef843c3fff688b857fbbef",
-    "dl": 110
+    "dl": 111
    },
    {
     "name": "xlm-roberta-base-finetuned-amharic",
     "id": "Davlan/xlm-roberta-base-finetuned-amharic",
     "projectId": "pjt_99365ae37e0156be870215bc358f235d",
-    "dl": 108
+    "dl": 107
    }
   ],
   "topRepos": [],
@@ -1413,20 +1407,20 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 838,
+  "downloadsMonthly": 853,
   "likes": 8,
   "topModels": [
    {
     "name": "addis-scribe-oromo-streaming",
     "id": "addisai/addis-scribe-oromo-streaming",
     "projectId": "pjt_d1c879821606567b3d54d9e699dc2d79",
-    "dl": 239
+    "dl": 240
    },
    {
     "name": "addis-scribe-tigrinya-streaming",
     "id": "addisai/addis-scribe-tigrinya-streaming",
     "projectId": "pjt_835c93bca4beca616d3cce95adad1b10",
-    "dl": 232
+    "dl": 237
    }
   ],
   "topRepos": [],
@@ -1452,7 +1446,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 67,
+  "downloadsMonthly": 69,
   "likes": 1,
   "topModels": [
    {
@@ -1465,7 +1459,7 @@
     "name": "F5-TTS-OpenBible-Oromo",
     "id": "multilingual-tts/F5-TTS-OpenBible-Oromo",
     "projectId": "pjt_e500654e3481a0dd87e3dc4a5e1b655d",
-    "dl": 29
+    "dl": 31
    },
    {
     "name": "EveryVoice-OpenBible-Oromo",
@@ -1497,26 +1491,26 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1347,
+  "downloadsMonthly": 1319,
   "likes": 1,
   "topModels": [
    {
     "name": "Ethiopia_Flux_LoRA",
     "id": "obann001/Ethiopia_Flux_LoRA",
     "projectId": "pjt_9a975c39886635aaf322bab4c05dba92",
-    "dl": 734
+    "dl": 735
    },
    {
     "name": "Ethiopia_sdxl_lora",
     "id": "obann001/Ethiopia_sdxl_lora",
     "projectId": "pjt_fa1c934ebdaf82cc04b3bd484e49fc76",
-    "dl": 459
+    "dl": 456
    },
    {
     "name": "Ethiopia_V2_sdxl_lora",
     "id": "obann001/Ethiopia_V2_sdxl_lora",
     "projectId": "pjt_c05e38366967c220478670268387670a",
-    "dl": 154
+    "dl": 128
    }
   ],
   "topRepos": [],
@@ -1568,6 +1562,42 @@
   "topSpaces": []
  },
  {
+  "slug": "snapwre",
+  "key": "snapwre",
+  "name": "snapwre",
+  "kind": "individual",
+  "desc": "Dataset.ET Amharic Speech — v0.2.0 51.547 hours · 16,866 clips · 493 speakers · 15,443 distinct prompts Dataset Summary Read speech in Amharic, crowdsourced from volunteer contributors in Ethiopia thr",
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Afaan Oromo",
+   "Amharic"
+  ],
+  "counts": {
+   "models": 1,
+   "datasets": 3,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 1991,
+  "likes": 38,
+  "topModels": [
+   {
+    "name": "hohe-asr-amharic",
+    "id": "snapwre/hohe-asr-amharic",
+    "projectId": "pjt_219f2ff7ddad9f098361264d5acaab7c",
+    "dl": 584
+   }
+  ],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
   "slug": "leyu-amharic",
   "key": "leyuamharic",
   "name": "leyu-amharic",
@@ -1589,18 +1619,18 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1397,
+  "downloadsMonthly": 1376,
   "likes": 5,
   "topModels": [],
   "topRepos": [],
   "topSpaces": []
  },
  {
-  "slug": "snapwre",
-  "key": "snapwre",
-  "name": "snapwre",
+  "slug": "buzzasr",
+  "key": "buzzasr",
+  "name": "BuzzASR",
   "kind": "individual",
-  "desc": "Dataset.ET Amharic Speech — v0.2.0 51.547 hours · 16,866 clips · 493 speakers · 15,443 distinct prompts Dataset Summary Read speech in Amharic, crowdsourced from volunteer contributors in Ethiopia thr",
+  "desc": null,
   "website": null,
   "github": null,
   "hfOrg": null,
@@ -1608,24 +1638,27 @@
   "verified": false,
   "isNew": false,
   "featured": false,
-  "langs": [
-   "Afaan Oromo",
-   "Amharic"
-  ],
+  "langs": [],
   "counts": {
-   "models": 1,
-   "datasets": 2,
+   "models": 2,
+   "datasets": 0,
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1884,
-  "likes": 38,
+  "downloadsMonthly": 112,
+  "likes": 0,
   "topModels": [
    {
-    "name": "hohe-asr-amharic",
-    "id": "snapwre/hohe-asr-amharic",
-    "projectId": "pjt_219f2ff7ddad9f098361264d5acaab7c",
-    "dl": 579
+    "name": "amharic",
+    "id": "BuzzASR/amharic",
+    "projectId": "pjt_8d1ea9a49ea40cb1956dd9abc71d7291",
+    "dl": 90
+   },
+   {
+    "name": "oromo",
+    "id": "BuzzASR/oromo",
+    "projectId": "pjt_a0a31fcf64e8ac5c39eeed5c85f0cc10",
+    "dl": 22
    }
   ],
   "topRepos": [],
@@ -1846,20 +1879,20 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 147,
+  "downloadsMonthly": 155,
   "likes": 0,
   "topModels": [
    {
     "name": "tigrinya-trocrprinted",
     "id": "Yonatanhaile2026/tigrinya-trocrprinted",
     "projectId": "pjt_6e242bf3a1db3274bdc2e150126b3943",
-    "dl": 77
+    "dl": 81
    },
    {
     "name": "tigrinya-trocrhandwritten",
     "id": "Yonatanhaile2026/tigrinya-trocrhandwritten",
     "projectId": "pjt_c6421ca87a9ff5c128a4406b9337d79b",
-    "dl": 70
+    "dl": 74
    }
   ],
   "topRepos": [],
@@ -1885,20 +1918,20 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 72,
+  "downloadsMonthly": 68,
   "likes": 0,
   "topModels": [
    {
     "name": "tigrinya-human-model",
     "id": "lamekyemane09/tigrinya-human-model",
     "projectId": "pjt_ef58031371b0a0d650829697b2e61675",
-    "dl": 51
+    "dl": 46
    },
    {
     "name": "qwen3-4b-tigrinya-tokenizer",
     "id": "lamekyemane09/qwen3-4b-tigrinya-tokenizer",
     "projectId": "pjt_19ead927b79f65dfc61929f706934f4a",
-    "dl": 21
+    "dl": 22
    }
   ],
   "topRepos": [],
@@ -1924,14 +1957,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 14,
+  "downloadsMonthly": 12,
   "likes": 0,
   "topModels": [
    {
     "name": "tigrinya-tts-model",
     "id": "husnainbinmunawar/tigrinya-tts-model",
     "projectId": "pjt_ffec06377279d002aa4383b3f780702c",
-    "dl": 14
+    "dl": 12
    },
    {
     "name": "tigrinya_tts",
@@ -2041,7 +2074,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 679,
+  "downloadsMonthly": 683,
   "likes": 0,
   "topModels": [
    {
@@ -2120,13 +2153,13 @@
     "name": "whisper-lora-v3-ethiopian",
     "id": "ethiospeech01/whisper-lora-v3-ethiopian",
     "projectId": "pjt_f11eaa9cb5faa495b529abb71def01f4",
-    "dl": 10
+    "dl": 9
    },
    {
     "name": "whisper-fullft-v3-ethiopian",
     "id": "ethiospeech01/whisper-fullft-v3-ethiopian",
     "projectId": "pjt_3dd7b73aca2725e0a185e4d83590378a",
-    "dl": 5
+    "dl": 6
    }
   ],
   "topRepos": [],
@@ -2158,8 +2191,37 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 298,
+  "downloadsMonthly": 313,
   "likes": 0,
+  "topModels": [],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
+  "slug": "saillab",
+  "key": "saillab",
+  "name": "saillab",
+  "kind": "individual",
+  "desc": "This repository contains the dataset used for the TaCo paper. The dataset follows the style outlined in the TaCo paper, as follows: { \"instruction\": \"instruction in xx\", \"input\": \"input in xx\", \"outpu",
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [
+   "Afaan Oromo",
+   "Tigrinya"
+  ],
+  "counts": {
+   "models": 0,
+   "datasets": 4,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 89,
+  "likes": 1,
   "topModels": [],
   "topRepos": [],
   "topSpaces": []
@@ -4892,14 +4954,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 997,
+  "downloadsMonthly": 991,
   "likes": 15,
   "topModels": [
    {
     "name": "omnivoice-amharic",
     "id": "Lab-et/omnivoice-amharic",
     "projectId": "pjt_b5659ea74be5d58d692c0cffcc9cf241",
-    "dl": 429
+    "dl": 420
    }
   ],
   "topRepos": [],
@@ -4927,49 +4989,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 798,
+  "downloadsMonthly": 835,
   "likes": 3,
   "topModels": [
    {
     "name": "whisper-amharic-small-v2",
     "id": "chappM/whisper-amharic-small-v2",
     "projectId": "pjt_c997a03eb66dd70763f447f07268ef6b",
-    "dl": 176
-   }
-  ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
-  "slug": "yosefw",
-  "key": "yosefw",
-  "name": "yosefw",
-  "kind": "individual",
-  "desc": null,
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Amharic"
-  ],
-  "counts": {
-   "models": 1,
-   "datasets": 1,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 258,
-  "likes": 0,
-  "topModels": [
-   {
-    "name": "llama-3.2-amharic-32k-1024-v8",
-    "id": "yosefw/llama-3.2-amharic-32k-1024-v8",
-    "projectId": "pjt_a1777c1fd65bffd5680566f40e6f09f9",
-    "dl": 170
+    "dl": 192
    }
   ],
   "topRepos": [],
@@ -4997,7 +5024,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 66,
+  "downloadsMonthly": 69,
   "likes": 0,
   "topModels": [
    {
@@ -5032,7 +5059,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 223,
+  "downloadsMonthly": 245,
   "likes": 3,
   "topModels": [
    {
@@ -5068,7 +5095,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 73,
+  "downloadsMonthly": 78,
   "likes": 4,
   "topModels": [
    {
@@ -5101,7 +5128,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 18,
+  "downloadsMonthly": 20,
   "likes": 0,
   "topModels": [
    {
@@ -5111,35 +5138,6 @@
     "dl": 0
    }
   ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
-  "slug": "saillab",
-  "key": "saillab",
-  "name": "saillab",
-  "kind": "individual",
-  "desc": "This repository contains the dataset used for the TaCo paper. The dataset follows the style outlined in the TaCo paper, as follows: { \"instruction\": \"instruction in xx\", \"input\": \"input in xx\", \"outpu",
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [
-   "Afaan Oromo",
-   "Tigrinya"
-  ],
-  "counts": {
-   "models": 0,
-   "datasets": 3,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 60,
-  "likes": 0,
-  "topModels": [],
   "topRepos": [],
   "topSpaces": []
  },
@@ -5163,14 +5161,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 15305,
+  "downloadsMonthly": 14441,
   "likes": 6,
   "topModels": [
    {
     "name": "wav2vec2-large-xlsr-53-amharic",
     "id": "agkphysics/wav2vec2-large-xlsr-53-amharic",
     "projectId": "pjt_46ad4683ffdf2103ab9281836fe3cfd5",
-    "dl": 15305
+    "dl": 14441
    }
   ],
   "topRepos": [],
@@ -5196,14 +5194,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1535,
+  "downloadsMonthly": 1549,
   "likes": 0,
   "topModels": [
    {
     "name": "supra15_amharic_gec_v1g",
     "id": "ntily/supra15_amharic_gec_v1g",
     "projectId": "pjt_ee23bb209266f1c52419437cbd407795",
-    "dl": 1535
+    "dl": 1549
    }
   ],
   "topRepos": [],
@@ -5229,47 +5227,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 417,
+  "downloadsMonthly": 394,
   "likes": 1,
   "topModels": [
    {
     "name": "amharic-captions-model",
     "id": "kal11/amharic-captions-model",
     "projectId": "pjt_9b028104399af814fe34b749ec62030a",
-    "dl": 417
-   }
-  ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
-  "slug": "dice-research",
-  "key": "diceresearch",
-  "name": "dice-research",
-  "kind": "individual",
-  "desc": null,
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [],
-  "counts": {
-   "models": 1,
-   "datasets": 0,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 342,
-  "likes": 0,
-  "topModels": [
-   {
-    "name": "amharic-property-retriever-afro-xlmr-base",
-    "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
-    "projectId": "pjt_5359b79fdc0d38c5da26f17253f3c3a0",
-    "dl": 342
+    "dl": 394
    }
   ],
   "topRepos": [],
@@ -5295,14 +5260,80 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 332,
+  "downloadsMonthly": 335,
   "likes": 0,
   "topModels": [
    {
     "name": "tiny-aya-earth-amharic-maternal-health",
     "id": "5LeaderW/tiny-aya-earth-amharic-maternal-health",
     "projectId": "pjt_cc22d1be7a93b19f1e264194febc580a",
-    "dl": 332
+    "dl": 335
+   }
+  ],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
+  "slug": "dice-research",
+  "key": "diceresearch",
+  "name": "dice-research",
+  "kind": "individual",
+  "desc": null,
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [],
+  "counts": {
+   "models": 1,
+   "datasets": 0,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 299,
+  "likes": 0,
+  "topModels": [
+   {
+    "name": "amharic-property-retriever-afro-xlmr-base",
+    "id": "dice-research/amharic-property-retriever-afro-xlmr-base",
+    "projectId": "pjt_5359b79fdc0d38c5da26f17253f3c3a0",
+    "dl": 299
+   }
+  ],
+  "topRepos": [],
+  "topSpaces": []
+ },
+ {
+  "slug": "yosefw",
+  "key": "yosefw",
+  "name": "yosefw",
+  "kind": "individual",
+  "desc": null,
+  "website": null,
+  "github": null,
+  "hfOrg": null,
+  "founded": null,
+  "verified": false,
+  "isNew": false,
+  "featured": false,
+  "langs": [],
+  "counts": {
+   "models": 1,
+   "datasets": 0,
+   "spaces": 0,
+   "repos": 0
+  },
+  "downloadsMonthly": 171,
+  "likes": 0,
+  "topModels": [
+   {
+    "name": "llama-3.2-amharic-32k-1024-v8",
+    "id": "yosefw/llama-3.2-amharic-32k-1024-v8",
+    "projectId": "pjt_a1777c1fd65bffd5680566f40e6f09f9",
+    "dl": 171
    }
   ],
   "topRepos": [],
@@ -5328,14 +5359,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 117,
+  "downloadsMonthly": 119,
   "likes": 0,
   "topModels": [
    {
     "name": "pegasus-large-amharic-summarization",
     "id": "Desalegnn/pegasus-large-amharic-summarization",
     "projectId": "pjt_707f93958abc954a8eaa238385135678",
-    "dl": 117
+    "dl": 119
    }
   ],
   "topRepos": [],
@@ -5361,14 +5392,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 116,
+  "downloadsMonthly": 118,
   "likes": 0,
   "topModels": [
    {
     "name": "wav2vec2-large-xlsr-amharic",
     "id": "Dinolh/wav2vec2-large-xlsr-amharic",
     "projectId": "pjt_3dac427bdfb2411badbf2ce720bea265",
-    "dl": 116
+    "dl": 118
    }
   ],
   "topRepos": [],
@@ -5468,39 +5499,6 @@
     "id": "Elu-dan/afri-berta-large-NER-Afan-oromo",
     "projectId": "pjt_a7b8ad8c376fa24bc13119097dbd0f8e",
     "dl": 23
-   }
-  ],
-  "topRepos": [],
-  "topSpaces": []
- },
- {
-  "slug": "buzzasr",
-  "key": "buzzasr",
-  "name": "BuzzASR",
-  "kind": "individual",
-  "desc": null,
-  "website": null,
-  "github": null,
-  "hfOrg": null,
-  "founded": null,
-  "verified": false,
-  "isNew": false,
-  "featured": false,
-  "langs": [],
-  "counts": {
-   "models": 1,
-   "datasets": 0,
-   "spaces": 0,
-   "repos": 0
-  },
-  "downloadsMonthly": 20,
-  "likes": 0,
-  "topModels": [
-   {
-    "name": "oromo",
-    "id": "BuzzASR/oromo",
-    "projectId": "pjt_a0a31fcf64e8ac5c39eeed5c85f0cc10",
-    "dl": 20
    }
   ],
   "topRepos": [],
@@ -6285,14 +6283,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 8,
+  "downloadsMonthly": 7,
   "likes": 0,
   "topModels": [
    {
     "name": "ethiopian-airlines",
     "id": "Kaleab1999/ethiopian-airlines",
     "projectId": "pjt_e09ab5bb6734f47159342eda45d1aa5a",
-    "dl": 8
+    "dl": 7
    }
   ],
   "topRepos": [],
@@ -6450,14 +6448,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 12,
+  "downloadsMonthly": 13,
   "likes": 0,
   "topModels": [
    {
     "name": "Amharic-llama-for-family-code-of-Ethiopia-with-context-2",
     "id": "beimnet777/Amharic-llama-for-family-code-of-Ethiopia-with-context-2",
     "projectId": "pjt_3fb383b3646233bf18948d749f5c1759",
-    "dl": 12
+    "dl": 13
    }
   ],
   "topRepos": [],
@@ -6483,14 +6481,14 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 11,
+  "downloadsMonthly": 12,
   "likes": 0,
   "topModels": [
    {
     "name": "spillover-nile_source_ethiopia",
     "id": "cds-jb/spillover-nile_source_ethiopia",
     "projectId": "pjt_f4770c1a7e89f7f41999731551d3f893",
-    "dl": 11
+    "dl": 12
    }
   ],
   "topRepos": [],
@@ -6554,7 +6552,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 1607,
+  "downloadsMonthly": 1611,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6582,7 +6580,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 267,
+  "downloadsMonthly": 268,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6611,7 +6609,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 292,
+  "downloadsMonthly": 293,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6640,7 +6638,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 97,
+  "downloadsMonthly": 99,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6668,7 +6666,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 31,
+  "downloadsMonthly": 35,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6700,7 +6698,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 118,
+  "downloadsMonthly": 120,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6726,7 +6724,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 49,
+  "downloadsMonthly": 51,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
@@ -6755,7 +6753,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 635,
+  "downloadsMonthly": 644,
   "likes": 1,
   "topModels": [],
   "topRepos": [],
@@ -6783,7 +6781,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 398,
+  "downloadsMonthly": 416,
   "likes": 1,
   "topModels": [],
   "topRepos": [],
@@ -6812,7 +6810,7 @@
    "spaces": 0,
    "repos": 0
   },
-  "downloadsMonthly": 145,
+  "downloadsMonthly": 152,
   "likes": 0,
   "topModels": [],
   "topRepos": [],
