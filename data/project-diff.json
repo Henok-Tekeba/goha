@@ -1,63 +1,77 @@
 {
-  "generatedAt": "2026-11-22T14:22:42.836Z",
-  "previousCount": 481,
-  "currentCount": 480,
+  "generatedAt": "2026-11-23T17:46:02.258Z",
+  "previousCount": 480,
+  "currentCount": 481,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_ffe9b85a3c7434ed7456d3d2914b3d02",
-      "sourceId": "hf-dataset:yosefw/amharic-news-retrieval-dataset-v2-with-negatives-V2",
-      "hfInternalId": "68545097a6dd57e46517421b",
-      "title": "amharic-news-retrieval-dataset-v2-with-negatives-V2",
+      "id": "pjt_858aadb3d109aafe2aae91d2478c533a",
+      "sourceId": "hf:rasyosef/bert-small-amharic",
+      "hfInternalId": "663cd8f5c572f25c121e047d",
+      "title": "bert-small-amharic",
+      "category": "Other"
+    },
+    {
+      "id": "pjt_8db1747280da0fc8e0a34409f54d079a",
+      "sourceId": "hf-dataset:hadamard-2/leyu-amharic-wello-dialect",
+      "hfInternalId": "6a8b1b65f8e2cc6e6d137753",
+      "title": "leyu-amharic-wello-dialect",
+      "category": "ASR"
+    },
+    {
+      "id": "pjt_2b261e9f8c8457e2aeca325fe950806b",
+      "sourceId": "hf-dataset:a3xrfgb/amharic-sentences-corpus",
+      "hfInternalId": "69484ddd1f5441608be95bb2",
+      "title": "amharic-sentences-corpus",
       "category": "Dataset"
     },
     {
-      "id": "pjt_1441f35d2a56e2224102ecba8baf7ae2",
-      "sourceId": "hf-dataset:gintamo/amharichatespeechranlp",
-      "hfInternalId": "6a3fee817a1475ae81f498b1",
-      "title": "amharichatespeechranlp",
+      "id": "pjt_ffc844abe733bcbc3f6ffb225e75fb73",
+      "sourceId": "hf-dataset:michsethowusu/ganda-oromo_sentence-pairs",
+      "hfInternalId": "67ed1ac1285da669de559630",
+      "title": "ganda-oromo_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_d2abd8599fd75382f988c3a5d7c8e5f7",
-      "sourceId": "hf-dataset:michsethowusu/amharic-oromo_sentence-pairs",
-      "hfInternalId": "67ee7c400907b06925063cfb",
-      "title": "amharic-oromo_sentence-pairs",
+      "id": "pjt_37153577e4706ef9237bc4894d09a364",
+      "sourceId": "hf-dataset:michsethowusu/afrikaans-oromo_sentence-pairs",
+      "hfInternalId": "67ee8e7ccdc35e3eac945901",
+      "title": "afrikaans-oromo_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_25461f86675cfd363814200cca80b243",
-      "sourceId": "hf-dataset:michsethowusu/oromo-tsonga_sentence-pairs",
-      "hfInternalId": "67e96fd8cb39affeccdd4cbe",
-      "title": "oromo-tsonga_sentence-pairs",
+      "id": "pjt_4b96831e366fe3e4ebc3f017985c7c08",
+      "sourceId": "hf-dataset:Ha-Te-21/tigrinya-corpus",
+      "hfInternalId": "6a75fea5f772614d610b3852",
+      "title": "tigrinya-corpus",
       "category": "Dataset"
     },
     {
-      "id": "pjt_9f8e6e7d3bf561bac2232b7cae5bef40",
-      "sourceId": "hf-dataset:michsethowusu/rundi-tigrinya_sentence-pairs",
-      "hfInternalId": "67e9678981f58a85df08e51e",
-      "title": "rundi-tigrinya_sentence-pairs",
+      "id": "pjt_484be99a0138f54a65c921cd17b1ff9b",
+      "sourceId": "hf-dataset:michsethowusu/swahili-tigrinya_sentence-pairs",
+      "hfInternalId": "67e95da96d6505d79a7e941d",
+      "title": "swahili-tigrinya_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_33d1699ec4db4768153f585a5ed9cd1b",
-      "sourceId": "hf-dataset:michsethowusu/pedi-tigrinya_sentence-pairs",
-      "hfInternalId": "67e96b7d46d9dd867e76d193",
-      "title": "pedi-tigrinya_sentence-pairs",
+      "id": "pjt_ac337bb4dd5b53e45bbbd5d6a8f189e5",
+      "sourceId": "hf-dataset:french-datasets/michsethowusu_french-tigrinya_sentence-pairs",
+      "hfInternalId": "682c918608fd63b9f122ce22",
+      "title": "michsethowusu_french-tigrinya_sentence-pairs",
       "category": "Dataset"
     },
     {
-      "id": "pjt_28db29e2b38159121048db1717531af6",
-      "sourceId": "hf-dataset:michsethowusu/hausa-tigrinya_sentence-pairs",
-      "hfInternalId": "67ed1214bd4559b0db8d6f77",
-      "title": "hausa-tigrinya_sentence-pairs",
+      "id": "pjt_3c45466bd1035486e17653cc8558ed78",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-zonal-level-hiv-aids-estimates-for-year-2024",
+      "hfInternalId": "69d465bc12206255013aa9bf",
+      "title": "africa-ethiopia-zonal-level-hiv-aids-estimates-for-year-2024",
       "category": "Dataset"
     },
     {
-      "id": "pjt_6d00fee78117fd72fbd5431fcf62a104",
-      "sourceId": "hf-dataset:electricsheepafrica/africa-world-bank-financial-sector-indicators-for-ethiopia",
-      "hfInternalId": "69d8abd943b857f3bf6ad312",
-      "title": "africa-world-bank-financial-sector-indicators-for-ethiopia",
+      "id": "pjt_549440e8e51c36a837c1f5e3b9953ae4",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-world-bank-combined-indicators-for-ethiopia",
+      "hfInternalId": "69d95d19ffe75ba004b918dd",
+      "title": "africa-world-bank-combined-indicators-for-ethiopia",
       "category": "Dataset"
     }
   ]
