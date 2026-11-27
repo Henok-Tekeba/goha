@@ -1,15 +1,120 @@
 {
-  "generatedAt": "2026-11-26T16:41:22.529Z",
-  "previousCount": 482,
-  "currentCount": 481,
+  "generatedAt": "2026-11-27T16:26:14.168Z",
+  "previousCount": 481,
+  "currentCount": 480,
   "aliasesAdded": [],
   "disappeared": [
     {
-      "id": "pjt_048ffd94a9c0d5fdc3a5e8c75af2f928",
-      "sourceId": "hf:rasyosef/gpt2-small-amharic",
-      "hfInternalId": "668734a4b5f8fdd9f8a56486",
-      "title": "gpt2-small-amharic",
-      "category": "LLM"
+      "id": "pjt_da56fe8a2724d1fc79b0db5acab4b0ca",
+      "sourceId": "hf-dataset:yordanoswuletaw/amharic-pretraining-corpus",
+      "hfInternalId": "67b5bcb358369f6b38becbec",
+      "title": "amharic-pretraining-corpus",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_ac45ec82ac8c803ffdfb90e49bbaabbe",
+      "sourceId": "hf-dataset:amanuelbyte/amharic_merged_dataset1",
+      "hfInternalId": "68a0bcbbd56f11d2d0935470",
+      "title": "amharic_merged_dataset1",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_0e10ab0ea8ccf9fd43f84daac7ff9bd8",
+      "sourceId": "hf-dataset:michsethowusu/english-amharic_sentence-pairs_mt560",
+      "hfInternalId": "686a292d103e339ca62d4714",
+      "title": "english-amharic_sentence-pairs_mt560",
+      "category": "Translation"
+    },
+    {
+      "id": "pjt_ba4ca7b6d772927273a1190983f846a3",
+      "sourceId": "hf-dataset:5LeaderW/amharic-maternal-health-aya-eval-logs",
+      "hfInternalId": "6aedaa1f09af05c05782b3a8",
+      "title": "amharic-maternal-health-aya-eval-logs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_e83c4fdc5bf94d72659ab5a9c2db1e07",
+      "sourceId": "hf-dataset:rasyosef/Amharic-Passage-Retrieval-Dataset-V2",
+      "hfInternalId": "67ce3569fee7f7ce99f04076",
+      "title": "Amharic-Passage-Retrieval-Dataset-V2",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_d0bc67e6af91a88cc70f3ad8e61d65a7",
+      "sourceId": "hf-dataset:addisai/FineTome-single-turn-dedup-amharic",
+      "hfInternalId": "68cea69f254721e0011585b7",
+      "title": "FineTome-single-turn-dedup-amharic",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_10d78252871e310ad6c71a26f73ed4ad",
+      "sourceId": "hf-dataset:KYAGABA/KYAGABA_AMHARIC_ALFA_DATASET_100HRS",
+      "hfInternalId": "6729f9840909f21dbb000936",
+      "title": "KYAGABA_AMHARIC_ALFA_DATASET_100HRS",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_a050fd5e8e772f69876e0d92e4d6826a",
+      "sourceId": "hf-dataset:hadamard-2/leyu-amharic-gojjam-dialect",
+      "hfInternalId": "6a8b1bac018323efd17d1d8f",
+      "title": "leyu-amharic-gojjam-dialect",
+      "category": "ASR"
+    },
+    {
+      "id": "pjt_ffcb5e377253896155ea13c401ce4c6e",
+      "sourceId": "hf-dataset:Asmahan22/Oromo-Mobile-Fraud-Behavioral-Dataset",
+      "hfInternalId": "69f76a475ec43b12d4fb7156",
+      "title": "Oromo-Mobile-Fraud-Behavioral-Dataset",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_988f46b5a20750e67821266005b516e0",
+      "sourceId": "hf-dataset:michsethowusu/tigrinya-umbundu_sentence-pairs",
+      "hfInternalId": "67e956eeb3a87cc3bc440801",
+      "title": "tigrinya-umbundu_sentence-pairs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_d18428c0469e592355be5dc72d14928a",
+      "sourceId": "hf-dataset:michsethowusu/kongo-tigrinya_sentence-pairs",
+      "hfInternalId": "67e97da65e63bac35a48132c",
+      "title": "kongo-tigrinya_sentence-pairs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_8dcf1a77818d2d771089392a0eafa32d",
+      "sourceId": "hf-dataset:michsethowusu/kinyarwanda-tigrinya_sentence-pairs",
+      "hfInternalId": "67e98346d9392a6235072f96",
+      "title": "kinyarwanda-tigrinya_sentence-pairs",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_919e4e4d199993e241c23eaebd62c314",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-attacks-on-aid-operations-education-health-and-protection",
+      "hfInternalId": "69d95bc557840dba65289ccd",
+      "title": "africa-ethiopia-attacks-on-aid-operations-education-health-and-protection",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_fca9cd6252fa32e1e903f038be904f66",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-climate-data",
+      "hfInternalId": "69e4e84a38ea97219695fff5",
+      "title": "africa-ethiopia-climate-data",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_d79b4c55526c6e9a59877391cdad9114",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-current-situation-fewsnet-ipc-classification",
+      "hfInternalId": "69d13514113d807afaa07e49",
+      "title": "africa-ethiopia-current-situation-fewsnet-ipc-classification",
+      "category": "Dataset"
+    },
+    {
+      "id": "pjt_3c45466bd1035486e17653cc8558ed78",
+      "sourceId": "hf-dataset:electricsheepafrica/africa-ethiopia-zonal-level-hiv-aids-estimates-for-year-2024",
+      "hfInternalId": "69d465bc12206255013aa9bf",
+      "title": "africa-ethiopia-zonal-level-hiv-aids-estimates-for-year-2024",
+      "category": "Dataset"
     }
   ]
 }
